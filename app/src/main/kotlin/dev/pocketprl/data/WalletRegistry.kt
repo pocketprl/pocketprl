@@ -1,0 +1,127 @@
+package dev.pocketprl.data
+
+import dev.pocketprl.core.chain.Network
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
+import java.io.File
+import java.security.SecureRandom
+
+/** One wallet on this device. Everything here is public metadata; secrets live in the vault file. */
+@Serializable
+data class WalletEntry(
+    val id: String,
+    val name: String,
+    val network: String,
+    val createdAt: Long,
+    /** Vault file name inside `filesDir`. */
+    val vaultFile: String,
+    /** SQLite database name. */
+    val dbName: String,
+    /** Android Keystore alias for the biometric DEK wrap. */
+    val keystoreAlias: String,
+)
+
+@Serializable
+data class WalletList(val version: Int = 1, val wallets: List<WalletEntry> = emptyList(), val activeId: String? = null)
+
+/**
+ * Index of the wallets on this device (`filesDir/wallets.json`). An install with
+ * the single-wallet layout (`vault.json` + `wallet.db`) is registered in place as
+ * the default wallet on first load; nothing is moved or re-encrypted.
+ */
+class WalletRegistry(private val dir: File) {
+    private val file = File(dir, FILE_NAME)
+    private val json = Json { ignoreUnknownKeys = true }
+    private val random = SecureRandom()
+    private val _state = MutableStateFlow(load())
+    val state: StateFlow<WalletList> = _state
+
+    val wallets: List<WalletEntry> get() = _state.value.wallets
+    val activeId: String? get() = _state.value.activeId
+    fun get(id: String): WalletEntry? = wallets.firstOrNull { it.id == id }
+
+    private fun load(): WalletList {
+        if (file.exists()) {
+            runCatching { json.decodeFromString(WalletList.serializer(), file.readText()) }.getOrNull()?.let { return it }
+        }
+        val legacy = File(dir, LEGACY_VAULT)
+        if (legacy.exists()) {
+            val (name, network, created) = legacyMeta(legacy)
+            val entry = WalletEntry(LEGACY_ID, name, network, created, LEGACY_VAULT, LEGACY_DB, LEGACY_ALIAS)
+            // persist(), not save(): this runs from the constructor, before the state flow exists.
+            return WalletList(wallets = listOf(entry), activeId = LEGACY_ID).also { persist(it) }
+        }
+        return WalletList()
+    }
+
+    private fun legacyMeta(vault: File): Triple<String, String, Long> = runCatching {
+        val o = json.parseToJsonElement(vault.readText()).jsonObject
+        Triple(
+            o["walletName"]?.jsonPrimitive?.content?.ifBlank { null } ?: "My Pearl Wallet",
+            Network.fromId(o["network"]?.jsonPrimitive?.content).id,
+            o["createdAt"]?.jsonPrimitive?.content?.toLongOrNull() ?: vault.lastModified(),
+        )
+    }.getOrElse { Triple("My Pearl Wallet", Network.MAINNET.id, vault.lastModified()) }
+
+    private fun persist(v: WalletList) {
+        val tmp = File(dir, "$FILE_NAME.tmp")
+        tmp.writeText(json.encodeToString(WalletList.serializer(), v))
+        if (!tmp.renameTo(file)) {
+            file.writeText(json.encodeToString(WalletList.serializer(), v))
+            tmp.delete()
+        }
+    }
+
+    @Synchronized
+    private fun save(v: WalletList) {
+        persist(v)
+        _state.value = v
+    }
+
+    /** Allocates file names for a wallet that is about to be created; nothing is persisted until [add]. */
+    fun newEntry(name: String, network: Network): WalletEntry {
+        var id: String
+        do {
+            val b = ByteArray(4).also { random.nextBytes(it) }
+            id = b.joinToString("") { "%02x".format(it) }
+        } while (get(id) != null || id == LEGACY_ID)
+        return WalletEntry(id, name.trim().ifBlank { "Wallet" }, network.id, System.currentTimeMillis(), "vault-$id.json", "wallet-$id.db", "$LEGACY_ALIAS.$id")
+    }
+
+    fun add(entry: WalletEntry, makeActive: Boolean = true) {
+        val cur = _state.value
+        val list = cur.wallets.filter { it.id != entry.id } + entry
+        save(cur.copy(wallets = list, activeId = if (makeActive || cur.activeId == null) entry.id else cur.activeId))
+    }
+
+    /** Removes the entry; if it was active, the most recently created remaining wallet becomes active. */
+    fun remove(id: String) {
+        val cur = _state.value
+        val list = cur.wallets.filter { it.id != id }
+        val active = if (cur.activeId == id) list.maxByOrNull { it.createdAt }?.id else cur.activeId
+        save(cur.copy(wallets = list, activeId = active))
+    }
+
+    fun setActive(id: String) {
+        val cur = _state.value
+        if (cur.activeId == id || get(id) == null) return
+        save(cur.copy(activeId = id))
+    }
+
+    fun rename(id: String, name: String) {
+        val cur = _state.value
+        save(cur.copy(wallets = cur.wallets.map { if (it.id == id) it.copy(name = name.trim()) else it }))
+    }
+
+    companion object {
+        const val FILE_NAME = "wallets.json"
+        const val LEGACY_ID = "default"
+        const val LEGACY_VAULT = "vault.json"
+        const val LEGACY_DB = "wallet.db"
+        const val LEGACY_ALIAS = "pocketprl.bio.dek"
+    }
+}
