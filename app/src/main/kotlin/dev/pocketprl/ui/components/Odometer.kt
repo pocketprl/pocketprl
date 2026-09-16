@@ -1,5 +1,6 @@
 package dev.pocketprl.ui.components
 
+import android.os.SystemClock
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
@@ -18,6 +19,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.BlurredEdgeTreatment
@@ -29,7 +31,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -53,6 +57,8 @@ import kotlinx.coroutines.delay
  * "9.99" -> "10.05" spins the decimals in place. Non-digit characters are drawn
  * as ordinary text. While [spinning] every roller free-runs at its own pace;
  * when it stops, the rollers land left to right on the value in [text].
+ * Every digit boundary a roller crosses fires one shared throttled tick, so a
+ * spin feels like a slot machine and settling lands as slowing clicks.
  */
 @Composable
 fun OdometerText(
@@ -84,6 +90,21 @@ fun OdometerText(
 
     val anchor = text.indexOf('.').let { if (it >= 0) it else text.length }
 
+    // One shared throttle for every roller in this number: a tick per digit
+    // roll, but simultaneous crossings land as one physical click.
+    val feedback = LocalHapticFeedback.current
+    val onRoll: () -> Unit = remember(feedback) {
+        val lastTick = longArrayOf(0L)
+        val tick: () -> Unit = {
+            val now = SystemClock.uptimeMillis()
+            if (now - lastTick[0] >= ROLL_TICK_MIN_INTERVAL_MILLIS) {
+                lastTick[0] = now
+                feedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
+            }
+        }
+        tick
+    }
+
     // One semantics node for the whole string, or a screen reader announces digit by digit.
     val a11y = modifier.clearAndSetSemantics {
         contentDescription = text
@@ -109,6 +130,7 @@ fun OdometerText(
                         spinning = spinning && animate,
                         durationMillis = durationMillis,
                         extraTurns = extraTurns,
+                        onRoll = onRoll,
                     )
                 }
                 rank++
@@ -143,6 +165,15 @@ private const val LAND_MISS_MAX_DIGITS = 3
 /** How long the wrong digit stays on screen before the correction. */
 private const val LAND_MISS_HOLD_MIN_MILLIS = 120L
 private const val LAND_MISS_HOLD_MAX_MILLIS = 280L
+/**
+ * Fastest the roll ticks may fire: rollers share one throttle per number, so
+ * digits crossing a boundary on the same frame collapse into a single tick
+ * instead of stacking vibrator calls.
+ */
+private const val ROLL_TICK_MIN_INTERVAL_MILLIS = 50L
+
+/** True mathematical mod: the render strip only ever shows value mod 10. */
+private fun mod10(v: Int) = ((v % 10) + 10) % 10
 
 /** Alpha mask for a moving cell: solid through the middle, gone at the top and bottom edge. */
 private val EDGE_FADE = Brush.verticalGradient(
@@ -164,12 +195,30 @@ private fun DigitRoller(
     spinning: Boolean,
     durationMillis: Int,
     extraTurns: Int,
+    /** Fired once per digit boundary the roller crosses; null disables roll ticks. */
+    onRoll: (() -> Unit)? = null,
 ) {
     // Rolling digit counter; the fractional part is the strip's travel between two digits.
     val position = remember { Animatable(digit.toFloat()) }
     var shownDigit by remember { mutableStateOf<Int?>(null) }
     // Plain holder, not state: only the effect reads it, and a write must not recompose.
     val wasSpinning = remember { booleanArrayOf(false) }
+
+    // Slot-machine ticks: one callback per digit the strip rolls past. Compared
+    // mod 10 so the counter fold-back (12.7 -> 2.7, same digit on screen) stays
+    // silent, and gated on animate so frozen/snap changes never vibrate.
+    if (onRoll != null && animate) {
+        LaunchedEffect(animate) {
+            var last = mod10(floor(position.value).toInt())
+            snapshotFlow { floor(position.value).toInt() }.collect { raw ->
+                val idx = mod10(raw)
+                if (idx != last) {
+                    last = idx
+                    onRoll()
+                }
+            }
+        }
+    }
 
     LaunchedEffect(digit, animate, spinning) {
         val previous = shownDigit
