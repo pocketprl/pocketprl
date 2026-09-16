@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="imgs/logo.png" width="120" alt="PocketPRL logo">
+</p>
+
 # PocketPRL
 
 A secure, fast and lightweight Android wallet for the **Pearl (PRL)** network,
@@ -86,5 +90,15 @@ tools/vectors/   Go generator that produces the vectors from the Pearl source tr
 Version 1.0.0. Key derivation and signing are verified byte-for-byte against the
 Pearl reference code; sync and sending are exercised against the public Blockbook
 indexer. Not independently audited (yet). Not affiliated with Pearl Research Labs.
+
+## User Interface
+
+UI is as shown, in light mode, on my personal phone.
+
+<p align="center">
+  <img src="imgs/home.jpg" width="250" alt="Home screen with balance and activity">
+  <img src="imgs/unlock.jpg" width="250" alt="Wallet unlock screen">
+  <img src="imgs/add-wallet.jpg" width="250" alt="Add a wallet screen">
+</p>
 
 License: ISC. Bundled fonts, icons and libraries are listed in [THIRD_PARTY.md](THIRD_PARTY.md).
