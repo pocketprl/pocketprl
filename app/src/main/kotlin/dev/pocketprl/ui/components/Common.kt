@@ -67,6 +67,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -106,6 +107,8 @@ val ButtonHeight = 52.dp
 
 /** What an amount shows as while balances are hidden. */
 const val HIDDEN = "•••••"
+/** Content alpha for a disabled settings row (Material3 has no ContentAlpha). */
+private const val DisabledContentAlpha = 0.38f
 
 /**
  * Standard screen frame: top bar, system-bar insets and keyboard (IME) insets.
@@ -303,9 +306,9 @@ fun SectionTitle(text: String, modifier: Modifier = Modifier, color: Color = Mat
 }
 
 @Composable
-fun SettingRow(title: String, subtitle: String? = null, onClick: (() -> Unit)? = null, icon: ImageVector? = null, trailing: @Composable (() -> Unit)? = null) {
+fun SettingRow(title: String, subtitle: String? = null, onClick: (() -> Unit)? = null, icon: ImageVector? = null, enabled: Boolean = true, trailing: @Composable (() -> Unit)? = null) {
     Row(
-        modifier = Modifier.fillMaxWidth().let { if (onClick != null) it.clickable(onClick = onClick) else it }.heightIn(min = 56.dp).padding(vertical = 8.dp),
+        modifier = Modifier.fillMaxWidth().let { if (onClick != null && enabled) it.clickable(onClick = onClick) else it }.heightIn(min = 56.dp).padding(vertical = 8.dp).alpha(if (enabled) 1f else DisabledContentAlpha),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         if (icon != null) {
@@ -346,12 +349,16 @@ fun AmountText(
     odometer: Boolean = false,
     /** Odometer only: keep every digit turning while the number is still being worked out. */
     spinning: Boolean = false,
+    /** Master switch for the roll animation itself; false snaps to the new value. */
+    animate: Boolean = true,
+    /** Slot-machine tick on every digit roll; needs [animate] to have any effect. */
+    haptics: Boolean = true,
 ) {
     val sign = if (signed && grain > 0) "+" else ""
     val body = if (hidden) HIDDEN else "$sign${Amount.pretty(grain)}"
     val full = "$body ${network.ticker}"
     if (odometer && !hidden) {
-        OdometerText(full, modifier = modifier, style = style.merge(TextStyle(fontWeight = FontWeight.Bold)), color = color, spinning = spinning)
+        OdometerText(full, modifier = modifier, style = style.merge(TextStyle(fontWeight = FontWeight.Bold)), color = color, spinning = spinning, animate = animate, haptics = haptics)
     } else {
         // Screen readers announce the bullets literally; say what they mean instead.
         val m = if (hidden) modifier.semantics { contentDescription = "Balance hidden" } else modifier

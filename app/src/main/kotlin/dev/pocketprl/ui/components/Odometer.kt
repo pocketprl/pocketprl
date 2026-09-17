@@ -2,6 +2,7 @@ package dev.pocketprl.ui.components
 
 import android.os.SystemClock
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.spring
@@ -19,7 +20,6 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.BlurredEdgeTreatment
@@ -31,6 +31,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -59,6 +60,8 @@ import kotlinx.coroutines.delay
  * when it stops, the rollers land left to right on the value in [text].
  * Every digit boundary a roller crosses fires one shared throttled tick, so a
  * spin feels like a slot machine and settling lands as slowing clicks.
+ * [haptics] false silences the ticks; [animate] false already implies silence
+ * because frozen rollers never cross a boundary.
  */
 @Composable
 fun OdometerText(
@@ -70,6 +73,8 @@ fun OdometerText(
     animate: Boolean = true,
     /** Keep the trailing digits turning until this goes false (a sync in progress). */
     spinning: Boolean = false,
+    /** Slot-machine ticks on every digit roll; silently ignored when [animate] is false. */
+    haptics: Boolean = true,
     durationMillis: Int = 900,
     /** Whole 0..9 turns a changed digit makes before it lands on its target. */
     extraTurns: Int = 1,
@@ -90,19 +95,12 @@ fun OdometerText(
 
     val anchor = text.indexOf('.').let { if (it >= 0) it else text.length }
 
-    // One shared throttle for every roller in this number: a tick per digit
-    // roll, but simultaneous crossings land as one physical click.
+    // Ticks only exist while the rollers can actually move; the driver holds
+    // the only reference, so disabled rollers keep no watcher at all.
     val feedback = LocalHapticFeedback.current
-    val onRoll: () -> Unit = remember(feedback) {
-        val lastTick = longArrayOf(0L)
-        val tick: () -> Unit = {
-            val now = SystemClock.uptimeMillis()
-            if (now - lastTick[0] >= ROLL_TICK_MIN_INTERVAL_MILLIS) {
-                lastTick[0] = now
-                feedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
-            }
-        }
-        tick
+    val fire: () -> Unit = { RollTicks.fire(feedback) }
+    val onRoll: (() -> Unit)? = remember(feedback, haptics, animate) {
+        if (haptics && animate) fire else null
     }
 
     // One semantics node for the whole string, or a screen reader announces digit by digit.
@@ -166,11 +164,65 @@ private const val LAND_MISS_MAX_DIGITS = 3
 private const val LAND_MISS_HOLD_MIN_MILLIS = 120L
 private const val LAND_MISS_HOLD_MAX_MILLIS = 280L
 /**
- * Fastest the roll ticks may fire: rollers share one throttle per number, so
- * digits crossing a boundary on the same frame collapse into a single tick
- * instead of stacking vibrator calls.
+ * Fastest the roll ticks may fire: every odometer on screen shares one budget,
+ * so rollers crossing a boundary on the same frame collapse into a single tick
+ * instead of stacking vibrator Binder calls on the UI thread. Main thread only.
  */
 private const val ROLL_TICK_MIN_INTERVAL_MILLIS = 50L
+/** Minimum strip travel between two ticks: the landing spring rings around its
+ * digit, and re-crossings smaller than this are settle wobble, not rolls. */
+private const val ROLL_TICK_MIN_TRAVEL_DIGITS = 0.6f
+
+private object RollTicks {
+    private var last = 0L
+    fun fire(feedback: HapticFeedback) {
+        val now = SystemClock.uptimeMillis()
+        if (now - last >= ROLL_TICK_MIN_INTERVAL_MILLIS) {
+            last = now
+            feedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
+        }
+    }
+}
+
+/**
+ * Boundary-crossing detector with a settle guard. One per roller, kept across
+ * launches so a spin, its landing and the correction share continuity.
+ * Plain holder, not state: only animation frames touch it, never composition.
+ */
+private class RollTickTracker {
+    private var tickedIdx: Int? = null
+    private var anchor = 0f
+
+    /** Call on every animation frame; [fire] runs once per genuine digit roll. */
+    fun onFrame(pos: Float, fire: () -> Unit) {
+        val idx = mod10(floor(pos).toInt())
+        val last = tickedIdx
+        if (last == null) {
+            tickedIdx = idx
+            anchor = pos
+            return
+        }
+        if (idx != last && abs(pos - anchor) >= ROLL_TICK_MIN_TRAVEL_DIGITS) {
+            tickedIdx = idx
+            anchor = pos
+            fire()
+        }
+    }
+
+    /**
+     * Call when the choreography completes: if a tick was throttled or held
+     * back as wobble, the final digit still gets its click. Bypasses the
+     * throttle on purpose so the tick lands exactly with the last digit.
+     */
+    fun flush(pos: Float, fire: () -> Unit) {
+        val idx = mod10(floor(pos).toInt())
+        if (tickedIdx != idx) {
+            tickedIdx = idx
+            anchor = pos
+            fire()
+        }
+    }
+}
 
 /** True mathematical mod: the render strip only ever shows value mod 10. */
 private fun mod10(v: Int) = ((v % 10) + 10) % 10
@@ -203,24 +255,14 @@ private fun DigitRoller(
     var shownDigit by remember { mutableStateOf<Int?>(null) }
     // Plain holder, not state: only the effect reads it, and a write must not recompose.
     val wasSpinning = remember { booleanArrayOf(false) }
-
-    // Slot-machine ticks: one callback per digit the strip rolls past. Compared
-    // mod 10 so the counter fold-back (12.7 -> 2.7, same digit on screen) stays
-    // silent, and gated on animate so frozen/snap changes never vibrate.
-    if (onRoll != null && animate) {
-        LaunchedEffect(animate) {
-            var last = mod10(floor(position.value).toInt())
-            snapshotFlow { floor(position.value).toInt() }.collect { raw ->
-                val idx = mod10(raw)
-                if (idx != last) {
-                    last = idx
-                    onRoll()
-                }
-            }
-        }
+    val tracker = remember { RollTickTracker() }
+    // Ticks ride the animation frames themselves: no watcher, no flow, nothing
+    // waking up between frames. Snaps never pass through here, so they stay silent.
+    val tickFrame: (Animatable<Float, AnimationVector1D>) -> Unit = { anim ->
+        if (onRoll != null) tracker.onFrame(anim.value, onRoll)
     }
 
-    LaunchedEffect(digit, animate, spinning) {
+    LaunchedEffect(digit, animate, spinning, onRoll) {
         val previous = shownDigit
         shownDigit = digit
         val landing = wasSpinning[0] && !spinning
@@ -239,6 +281,7 @@ private fun DigitRoller(
                 position.animateTo(
                     position.value + legDigits,
                     tween((pace * legDigits / 10f).roundToInt(), easing = LinearEasing),
+                    block = tickFrame,
                 )
                 legDigits = rng.nextInt(5, 16)
             }
@@ -252,15 +295,20 @@ private fun DigitRoller(
         val delta = (digit - current + 10f).mod(10f)
         val target = current + delta + 10f * extraTurns
         if (!landing) {
-            position.animateTo(target, tween(durationMillis, easing = FastOutSlowInEasing))
+            position.animateTo(target, tween(durationMillis, easing = FastOutSlowInEasing), block = tickFrame)
+            // The throttle may have eaten the last crossing: land the final click exactly.
+            if (onRoll != null) tracker.flush(position.value, onRoll)
             return@LaunchedEffect
         }
         // Landing from a spin: settle left to right, overshoot, hold, then spring back.
         val stagger = rank * LAND_STAGGER_MILLIS + Random.nextInt(0, 120)
         val miss = Random.nextInt(1, LAND_MISS_MAX_DIGITS + 1) * (if (Random.nextBoolean()) 1 else -1)
-        position.animateTo(target + miss, tween(durationMillis + stagger, easing = FastOutSlowInEasing))
+        position.animateTo(target + miss, tween(durationMillis + stagger, easing = FastOutSlowInEasing), block = tickFrame)
         delay(Random.nextLong(LAND_MISS_HOLD_MIN_MILLIS, LAND_MISS_HOLD_MAX_MILLIS))
-        position.animateTo(target, spring(dampingRatio = 0.5f, stiffness = 260f))
+        position.animateTo(target, spring(dampingRatio = 0.5f, stiffness = 260f), block = tickFrame)
+        // The spring rings around the digit after arriving; the guard held those
+        // back as wobble, so flush the one click the landing actually ends on.
+        if (onRoll != null) tracker.flush(position.value, onRoll)
     }
 
     val p = position.value

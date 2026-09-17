@@ -96,6 +96,7 @@ fun DashboardScreen(vm: WalletViewModel, onSend: () -> Unit, onReceive: () -> Un
     DashboardContent(
         snap = snap, sync = sync, price = price, walletCount = wallets.wallets.size,
         hide = settings.hideBalance, showFiat = settings.showFiat, secondsPerBlock = secondsPerBlock,
+        odometer = settings.odometer, odometerHaptics = settings.odometerHaptics,
         onRefresh = vm::refresh, onToggleHide = vm::toggleHideBalance, onSwitchWallet = { showSwitcher = true },
         onSend = onSend, onReceive = onReceive, onActivity = onActivity, onTx = onTx, onSettings = onSettings, onLock = onLock,
     )
@@ -111,6 +112,8 @@ fun DashboardContent(
     walletCount: Int,
     hide: Boolean,
     showFiat: Boolean,
+    odometer: Boolean,
+    odometerHaptics: Boolean,
     onRefresh: () -> Unit,
     secondsPerBlock: Long = Network.TARGET_BLOCK_SECONDS,
     onToggleHide: () -> Unit,
@@ -146,7 +149,7 @@ fun DashboardContent(
                 val fiat = if (showFiat && !hide && snap.network.isMainnet) Amount.fiat(snap.balances.total, price.usdPerPrl) else null
                 val quote = if (showFiat && snap.network.isMainnet) price else null
                 val haptics = rememberHaptics()
-                BalanceHero(snap.balances, snap.network, sync, hide = hide, fiat = fiat, quote = quote, onToggleHide = { haptics.toggle(!hide); onToggleHide() })
+                BalanceHero(snap.balances, snap.network, sync, hide = hide, fiat = fiat, quote = quote, odometer = odometer, odometerHaptics = odometerHaptics, onToggleHide = { haptics.toggle(!hide); onToggleHide() })
 
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     ActionButton("Send", AppIcons.SendArrow, onSend, Modifier.weight(1f), height = 56.dp)
@@ -190,7 +193,7 @@ fun DashboardContent(
  * ticker set smaller after it. Tap anywhere on it to hide or show the balance.
  */
 @Composable
-private fun BalanceHero(b: Balances, network: Network, sync: SyncState, hide: Boolean, fiat: String?, quote: PriceState?, onToggleHide: () -> Unit) {
+private fun BalanceHero(b: Balances, network: Network, sync: SyncState, hide: Boolean, fiat: String?, quote: PriceState?, odometer: Boolean, odometerHaptics: Boolean, onToggleHide: () -> Unit) {
     val cs = MaterialTheme.colorScheme
     val palette = PearlTheme.palette
     Column(
@@ -205,12 +208,12 @@ private fun BalanceHero(b: Balances, network: Network, sync: SyncState, hide: Bo
             Icon(if (hide) AppIcons.VisibilityOff else AppIcons.Visibility, contentDescription = null, tint = cs.onSurfaceVariant, modifier = Modifier.size(16.dp))
         }
         Spacer(Modifier.height(6.dp))
-        BigAmount(b.total, network, hide = hide, spinning = sync.syncing)
+        BigAmount(b.total, network, hide = hide, spinning = sync.syncing, odometer = odometer, odometerHaptics = odometerHaptics)
         val usd = quote?.usdPerPrl
         if (fiat != null || usd != null) {
             Spacer(Modifier.height(4.dp))
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (fiat != null) OdometerText("≈ $fiat", style = MaterialTheme.typography.titleMedium, color = cs.onSurfaceVariant, spinning = sync.syncing)
+                if (fiat != null) OdometerText("≈ $fiat", style = MaterialTheme.typography.titleMedium, color = cs.onSurfaceVariant, spinning = sync.syncing, animate = odometer, haptics = odometerHaptics)
                 if (usd != null) PriceLine(network, usd, quote.change24h)
             }
         }
@@ -238,7 +241,7 @@ private fun BalanceHero(b: Balances, network: Network, sync: SyncState, hide: Bo
  * baseline. Steps down a size for a long whole part so it never leaves the screen.
  */
 @Composable
-private fun BigAmount(grain: Long, network: Network, hide: Boolean, spinning: Boolean) {
+private fun BigAmount(grain: Long, network: Network, hide: Boolean, spinning: Boolean, odometer: Boolean, odometerHaptics: Boolean) {
     val cs = MaterialTheme.colorScheme
     val t = MaterialTheme.typography
     val pretty = Amount.pretty(grain)
@@ -259,8 +262,8 @@ private fun BigAmount(grain: Long, network: Network, hide: Boolean, spinning: Bo
     val m = Modifier.semantics(mergeDescendants = true) { contentDescription = if (hide) "Balance hidden" else "$pretty ${network.ticker}" }
     Row(modifier = m, verticalAlignment = Alignment.Bottom) {
         if (hide) Text(whole, style = bigStyle, color = cs.onBackground, maxLines = 1, softWrap = false)
-        else OdometerText(whole, style = bigStyle, color = cs.onBackground, spinning = spinning)
-        OdometerText(tail, style = smallStyle, color = cs.onSurfaceVariant, spinning = spinning, firstRank = whole.count { it.isDigit() }, modifier = Modifier.padding(bottom = lift))
+        else OdometerText(whole, style = bigStyle, color = cs.onBackground, spinning = spinning, animate = odometer, haptics = odometerHaptics)
+        OdometerText(tail, style = smallStyle, color = cs.onSurfaceVariant, spinning = spinning, animate = odometer, haptics = odometerHaptics, firstRank = whole.count { it.isDigit() }, modifier = Modifier.padding(bottom = lift))
     }
 }
 

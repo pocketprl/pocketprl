@@ -489,6 +489,9 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
         viewModelScope.launch { runCatching { ctx.repository.refreshPrice(force = true) } }
     }
 
+    fun setOdometer(v: Boolean) { c.settings.odometer = v }
+    fun setOdometerHaptics(v: Boolean) { c.settings.odometerHaptics = v }
+
     /** Only call once POST_NOTIFICATIONS has been granted (or is not required). */
     fun setNotifyIncoming(v: Boolean) {
         c.settings.notifyIncoming = v

@@ -218,6 +218,23 @@ fun SettingsScreen(
                 SettingRow("Show USD value", icon = AppIcons.Dollar) {
                     Switch(checked = settings.showFiat, onCheckedChange = { haptics.toggle(it); vm.setShowFiat(it) })
                 }
+                HorizontalDivider()
+                SettingRow("Odometer animation", "Rolling digits on balances", icon = AppIcons.Odometer) {
+                    Switch(checked = settings.odometer, onCheckedChange = { haptics.toggle(it); vm.setOdometer(it) })
+                }
+                HorizontalDivider()
+                SettingRow(
+                    "Odometer haptics",
+                    if (settings.odometer) "Tick with each roll" else "No effect while animation is off",
+                    icon = AppIcons.Haptics,
+                    enabled = settings.odometer,
+                ) {
+                    Switch(
+                        checked = settings.odometerHaptics,
+                        enabled = settings.odometer,
+                        onCheckedChange = { haptics.toggle(it); vm.setOdometerHaptics(it) },
+                    )
+                }
             }
 
             SectionTitle("Backup")

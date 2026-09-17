@@ -118,6 +118,9 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     }
 
     var cameraDenied by remember { mutableStateOf<PermissionOutcome?>(null) }
+    // Hoisted above the sent/content split: both branches read wallet settings.
+    // "Hide balances" applies to the spendable line only; the summary of what is about to be signed stays visible.
+    val walletSettings by walletVm.settings.collectAsStateWithLifecycle()
     val scan = rememberQrScanner(
         prompt = "Scan a Pearl address or payment link",
         onScanned = { text -> if (!vm.applyPaymentRequest(text)) vm.setAddress(text) },
@@ -145,6 +148,8 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
             toLabel = s.contactName ?: p?.let { Address.short(it.toAddress, 12, 8) } ?: "",
             onExplorer = { leavingApp(); runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, explorerUrl(txid).toUri())) } },
             onDone = { vm.reset(); onBack() },
+            odometer = walletSettings.odometer,
+            odometerHaptics = walletSettings.odometerHaptics,
             secondsPerBlock = secondsPerBlock,
         )
     } else {
@@ -162,8 +167,6 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     LaunchedEffect(s.amountText) { if (fiatMode && s.amountText != pushed) fiatText = usdTextFor(amountGrain) }
     if (fiatMode && !canFiat) fiatMode = false
     val fiatHint = if (canFiat && amountGrain != null) Amount.fiat(amountGrain, usd) else null
-    // "Hide balances" applies to the spendable line only; the summary of what is about to be signed stays visible.
-    val walletSettings by walletVm.settings.collectAsStateWithLifecycle()
     val spendable = if (walletSettings.hideBalance) HIDDEN else Amount.pretty(snap.balances.spendable)
 
     ScreenScaffold(title = "Send $ticker", subtitle = "Spendable $spendable $ticker", onBack = onBack) {

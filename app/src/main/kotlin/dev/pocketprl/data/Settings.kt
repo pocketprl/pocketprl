@@ -24,6 +24,8 @@ class Settings(context: Context) {
         val feeTier: String,
         val hideBalance: Boolean,
         val showFiat: Boolean,
+        val odometer: Boolean,
+        val odometerHaptics: Boolean,
         val notifyIncoming: Boolean,
         val themeMode: ThemeMode,
         val preferredNetwork: Network,
@@ -39,6 +41,8 @@ class Settings(context: Context) {
         feeTier = prefs.getString(KEY_FEE_TIER, "medium") ?: "medium",
         hideBalance = prefs.getBoolean(KEY_HIDE_BALANCE, false),
         showFiat = prefs.getBoolean(KEY_SHOW_FIAT, true),
+        odometer = prefs.getBoolean(KEY_ODOMETER, true),
+        odometerHaptics = prefs.getBoolean(KEY_ODOMETER_HAPTICS, true),
         notifyIncoming = prefs.getBoolean(KEY_NOTIFY_INCOMING, false),
         themeMode = ThemeMode.fromId(prefs.getString(KEY_THEME_MODE, ThemeMode.AUTO.id)),
         preferredNetwork = Network.fromId(prefs.getString(KEY_PREF_NETWORK, null)),
@@ -70,6 +74,16 @@ class Settings(context: Context) {
         get() = _state.value.showFiat
         set(v) = edit { putBoolean(KEY_SHOW_FIAT, v) }
 
+    /** Roll changed digits like an odometer instead of swapping the text. */
+    var odometer: Boolean
+        get() = _state.value.odometer
+        set(v) = edit { putBoolean(KEY_ODOMETER, v) }
+
+    /** Slot-machine tick on every odometer digit roll. No effect while [odometer] is off. */
+    var odometerHaptics: Boolean
+        get() = _state.value.odometerHaptics
+        set(v) = edit { putBoolean(KEY_ODOMETER_HAPTICS, v) }
+
     /** Periodic background check for incoming payments with a system notification. */
     var notifyIncoming: Boolean
         get() = _state.value.notifyIncoming
@@ -98,6 +112,8 @@ class Settings(context: Context) {
         private const val KEY_FEE_TIER = "fee_tier"
         private const val KEY_HIDE_BALANCE = "hide_balance"
         private const val KEY_SHOW_FIAT = "show_fiat"
+        private const val KEY_ODOMETER = "odometer"
+        private const val KEY_ODOMETER_HAPTICS = "odometer_haptics"
         private const val KEY_NOTIFY_INCOMING = "notify_incoming"
         private const val KEY_PREF_NETWORK = "preferred_network"
         private const val KEY_THEME_MODE = "theme_mode"
