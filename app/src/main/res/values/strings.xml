@@ -124,6 +124,7 @@
     <string name="unlock_error_biometric">Biometric key unavailable (was a fingerprint added or removed?). Use your password.</string>
     <string name="unlock_error_incorrect">Incorrect password</string>
     <string name="unlock_error_failed">Unlock failed</string>
+    <string name="unlock_error_vault_corrupt">This wallet\'s key file is unreadable. Restore from your recovery phrase.</string>
     <string name="unlock_error_biometric_failed">Biometric unlock failed: %1$s. Use your password.</string>
 
     <!-- ===================== wallet switcher ===================== -->
@@ -209,6 +210,9 @@
     <string name="send_err_no_funds">No spendable funds</string>
     <string name="send_err_insufficient">Insufficient funds: need %1$s %2$s including the fee, have %3$s</string>
     <string name="send_err_changed">The payment changed while you were confirming it. Check the details and try again.</string>
+    <string name="send_err_auth_required">Authentication is required before this payment can be sent.</string>
+    <string name="send_external_warning_title">External payment request</string>
+    <string name="send_external_warning">This address, amount and label came from a link or QR code, not from you. Check the full address below before sending.</string>
     <string name="send_password_title">Wallet password</string>
     <string name="send_password_body">Sends %1$s %2$s to %3$s.</string>
     <string name="send_auth_failed">Authentication failed</string>
@@ -432,6 +436,56 @@
     <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
     <string name="settings_about_blurb">PocketPRL is an independent, open-source light wallet for the Pearl network. It derives the same addresses as the official desktop wallet (oyster) and is verified against it with test vectors generated from the Pearl source code.</string>
     <string name="settings_about_warranty">This software is provided as-is without warranty. Verify builds, keep your recovery phrase offline, and test with small amounts first.</string>
+
+    <!-- ===================== stats ===================== -->
+    <string name="settings_stats">On-chain stats</string>
+    <string name="settings_stats_sub">Your history at a glance</string>
+    <string name="stats_title">On-chain stats</string>
+    <string name="stats_section_totals">Totals</string>
+    <string name="stats_section_activity">Activity</string>
+    <string name="stats_section_records">Records</string>
+    <string name="stats_section_missed">Time machine</string>
+    <string name="stats_section_charts">Charts</string>
+    <string name="stats_received_total">Total received</string>
+    <string name="stats_sent_total">Total sent</string>
+    <string name="stats_fees_total">Fees paid</string>
+    <string name="stats_net">Net flow</string>
+    <string name="stats_mined_total">Mining rewards</string>
+    <string name="stats_tx_count">Transactions</string>
+    <string name="stats_breakdown">%1$d received • %2$d sent • %3$d mined</string>
+    <string name="stats_first_tx">First transaction</string>
+    <string name="stats_last_tx">Last transaction</string>
+    <string name="stats_days_active">Days active</string>
+    <string name="stats_busiest_day">Busiest day</string>
+    <string name="stats_blocks_mined">Blocks mined</string>
+    <string name="stats_largest_received">Largest received</string>
+    <string name="stats_largest_sent">Largest sent</string>
+    <string name="stats_biggest_fee">Highest fee in one tx</string>
+    <string name="stats_avg_fee">Average fee</string>
+    <string name="stats_empty_value">—</string>
+    <string name="stats_biggest_missed">Biggest missed gain</string>
+    <string name="stats_total_missed">Total missed gains</string>
+    <string name="stats_total_missed_sub">If you had held every sale until now</string>
+    <string name="stats_missed_sub">Sold %1$s %2$s at %3$s on %4$s</string>
+    <string name="stats_avg_sell">Average sell price</string>
+    <string name="stats_avg_sell_sub">All-time high since: %1$s on %2$s</string>
+    <string name="stats_current_price">Current price</string>
+    <string name="stats_missed_off">Historical prices need fiat value. Turn on Show fiat value and use mainnet.</string>
+    <string name="stats_missed_loading">Fetching price history…</string>
+    <string name="stats_missed_unavailable">Price history is unavailable right now. Check your connection and try again.</string>
+    <string name="stats_missed_none">No outgoing payments to look back on yet.</string>
+    <string name="stats_chart_flows">Weekly flow</string>
+    <string name="stats_chart_balance">Balance over time</string>
+    <string name="stats_week_readout">Week of %1$s • %2$s in • %3$s out</string>
+    <string name="stats_balance_readout">%1$s • %2$s</string>
+    <string name="stats_legend_in">In</string>
+    <string name="stats_legend_out">Out</string>
+    <string name="stats_none_title">No history yet</string>
+    <string name="stats_none_body">Once this wallet has transactions, your on-chain story shows up here.</string>
+    <plurals name="stats_day_tx">
+        <item quantity="one">%1$d transaction</item>
+        <item quantity="other">%1$d transactions</item>
+    </plurals>
 
     <!-- ===================== indexer ===================== -->
     <string name="indexer_title">Indexer</string>

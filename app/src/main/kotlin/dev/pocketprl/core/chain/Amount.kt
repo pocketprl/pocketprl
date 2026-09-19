@@ -1,6 +1,5 @@
 package dev.pocketprl.core.chain
 
-import dev.pocketprl.core.format.DecimalSeparator
 import dev.pocketprl.core.format.FiatCurrency
 import dev.pocketprl.core.format.Format
 import dev.pocketprl.core.format.GroupingSeparator
@@ -88,6 +87,13 @@ object Amount {
         return sign + applyFiatSymbol(money(value.abs(), finePrecisionBelow = BigDecimal("0.01")))
     }
 
+    /** "$1 234.56" for a value that is already in the configured fiat. */
+    fun fiatValue(value: Double): String {
+        if (!value.isFinite()) return applyFiatSymbol("0.00")
+        val sign = if (value < 0) "-" else ""
+        return sign + applyFiatSymbol(money(BigDecimal(value).abs(), finePrecisionBelow = BigDecimal("0.01")))
+    }
+
     /**
      * A unit price in the configured fiat, with four places under one unit.
      * Kept named `usdPrice` for source compatibility; it now renders the
@@ -101,14 +107,52 @@ object Amount {
         return applyGrouping(f).format(abs)
     }
 
-    /** Parses a decimal amount, tolerating the configured separators and both '.'/','. */
+    /**
+     * Parses a decimal amount, tolerating the configured separators and both '.'/','.
+     *
+     * The decimal separator is decided *before* any grouping separator is
+     * stripped. Otherwise a comma typed as a decimal on a comma-grouping locale
+     * (en-US "1,5") is deleted as grouping and the amount inflates 10x, 100x or
+     * 1000x with no warning.
+     */
     fun parse(text: String): Long? {
         val c = Format.config
         var t = text.trim()
         t = t.replace('\u202F'.toString(), "").replace("\u00A0", "").replace(" ", "")
-        c.groupingSeparator.char?.takeIf { it != c.decimalSeparator.char }?.let { g -> t = t.replace(g.toString(), "") }
-        t = if (c.decimalSeparator == DecimalSeparator.COMMA) t.replace('.', ',') else t
-        t = t.replace(c.decimalSeparator.char, '.').replace(',', '.')
+        if (t.isEmpty() || t == "." || t == ",") return null
+
+        val grouping = c.groupingSeparator.char
+        val configuredDec = c.decimalSeparator.char
+        val lastDot = t.lastIndexOf('.')
+        val lastComma = t.lastIndexOf(',')
+        val decChar: Char? = when {
+            // Both present: the last one is the decimal separator, the other groups.
+            lastDot >= 0 && lastComma >= 0 -> if (lastDot > lastComma) '.' else ','
+            lastDot >= 0 || lastComma >= 0 -> {
+                val ch = if (lastDot >= 0) '.' else ','
+                when {
+                    ch == configuredDec -> ch
+                    ch == grouping -> {
+                        val count = t.count { it == ch }
+                        val digitsAfter = t.length - t.lastIndexOf(ch) - 1
+                        // One separator followed by anything but a full three-digit
+                        // group is a decimal typed with the "wrong" character.
+                        if (count == 1 && digitsAfter != 3) ch else null
+                    }
+                    else -> ch
+                }
+            }
+            else -> null
+        }
+
+        if (decChar == null) {
+            if (grouping != null) t = t.replace(grouping.toString(), "")
+        } else {
+            val other = if (decChar == '.') ',' else '.'
+            t = t.replace(other.toString(), "")
+            if (grouping != null && grouping != decChar) t = t.replace(grouping.toString(), "")
+            if (decChar == ',') t = t.replace(',', '.')
+        }
         if (t.isEmpty() || t == ".") return null
         if (!AMOUNT_RE.matches(t)) return null
         val bd = try { BigDecimal(t).stripTrailingZeros() } catch (_: NumberFormatException) { return null }

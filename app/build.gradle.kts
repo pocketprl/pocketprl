@@ -12,31 +12,38 @@ android {
         applicationId = "dev.pocketprl.wallet"
         minSdk = 28
         targetSdk = 37
-        versionCode = 4
-        versionName = "2.0.0"
+        versionCode = 8
+        versionName = "2.1.0"
         ndk {
             abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
         }
     }
 
-    // Release signing comes from the environment; without it the debug key is used
-    // so assembleRelease still produces an installable, non-distributable APK.
+    // Release signing comes from the environment. It is never silently replaced
+    // with the debug key: without a keystore the release APK is left UNSIGNED
+    // (not installable, so it cannot be mistaken for a shippable build). For a
+    // throwaway local release, set POCKETPRL_ALLOW_DEBUG_SIGNING=1.
     signingConfigs {
-        create("release") {
-            val ks = System.getenv("POCKETPRL_KEYSTORE")
-            if (ks != null) {
-                storeFile = file(ks)
+        val keystore = System.getenv("POCKETPRL_KEYSTORE")
+        val allowDebug = System.getenv("POCKETPRL_ALLOW_DEBUG_SIGNING") == "1"
+        if (keystore != null) {
+            create("release") {
+                storeFile = file(keystore)
                 storePassword = System.getenv("POCKETPRL_KEYSTORE_PASSWORD")
                 keyAlias = System.getenv("POCKETPRL_KEY_ALIAS")
                 keyPassword = System.getenv("POCKETPRL_KEY_PASSWORD")
-            } else {
-                logger.warn("POCKETPRL_KEYSTORE not set: release builds will be signed with the DEBUG key and must not be distributed.")
+            }
+        } else if (allowDebug) {
+            logger.warn("POCKETPRL_ALLOW_DEBUG_SIGNING=1: release APK will be signed with the DEBUG key and must not be distributed.")
+            create("release") {
                 val debug = getByName("debug")
                 storeFile = debug.storeFile
                 storePassword = debug.storePassword
                 keyAlias = debug.keyAlias
                 keyPassword = debug.keyPassword
             }
+        } else {
+            logger.warn("POCKETPRL_KEYSTORE not set: release APK will be UNSIGNED and must not be distributed. Set POCKETPRL_KEYSTORE or POCKETPRL_ALLOW_DEBUG_SIGNING=1.")
         }
     }
 
@@ -44,7 +51,7 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            signingConfig = signingConfigs.getByName("release")
+            signingConfigs.findByName("release")?.let { signingConfig = it }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",

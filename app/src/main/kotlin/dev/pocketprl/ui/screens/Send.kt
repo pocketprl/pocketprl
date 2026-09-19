@@ -85,6 +85,7 @@ import dev.pocketprl.ui.components.RecipientField
 import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SectionCard
 import dev.pocketprl.ui.components.SectionTitle
+import dev.pocketprl.ui.components.SecureWindow
 import dev.pocketprl.ui.components.SlideToSend
 import dev.pocketprl.ui.components.addressErrorText
 import dev.pocketprl.ui.components.etaBlocks
@@ -119,6 +120,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     var authError by remember { mutableStateOf<String?>(null) }
     val leavingApp = rememberLeaveAppMarker()
     val reduced = LocalReducedMotion.current
+    SecureWindow()
 
     LaunchedEffect(pending) {
         pending?.let { uri ->
@@ -237,6 +239,14 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                 }
             }
 
+            if (s.externalRequest) {
+                InfoBanner(
+                    stringResource(R.string.send_external_warning),
+                    BannerKind.WARNING,
+                    title = stringResource(R.string.send_external_warning_title),
+                )
+            }
+
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                     SectionTitle(stringResource(R.string.send_network_fee))
@@ -272,7 +282,10 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                     if (vm.showFiat) Amount.fiat(p.build.amount + p.build.fee, usd)?.let { KeyValueRow(stringResource(R.string.send_fiat_approx, Format.config.fiat.code.uppercase()), it) }
                     val inputsValue = if (p.build.change > 0) stringResource(R.string.send_inputs_change, p.build.selected.size, Amount.pretty(p.build.change, 8)) else "${p.build.selected.size}"
                     KeyValueRow(stringResource(R.string.send_inputs), inputsValue)
-                    KeyValueRow(stringResource(R.string.send_to), s.contactName ?: Address.short(p.toAddress, 14, 10))
+                    KeyValueRow(
+                        stringResource(R.string.send_to),
+                        s.contactName ?: if (s.externalRequest) p.toAddress else Address.short(p.toAddress, 14, 10),
+                    )
                 }
             }
 
@@ -295,7 +308,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                                 val title = context.getString(R.string.send_title, "${Amount.pretty(p.build.amount, 8)} $ticker")
                                 val to = context.getString(R.string.sent_to, s.contactName ?: Address.short(p.toAddress, 14, 10))
                                 when (val r = Biometrics.authenticate(activity!!, title, to, cipher, negative = context.getString(R.string.action_cancel))) {
-                                    is Biometrics.Outcome.Success -> if (vm.confirmBiometric(r.cipher)) { authBusy = false; vm.send(p) } else { authError = context.getString(R.string.send_auth_failed); authBusy = false }
+                                    is Biometrics.Outcome.Success -> if (vm.confirmBiometric(r.cipher)) { authBusy = false; vm.authorizeSend(p); vm.send(p) } else { authError = context.getString(R.string.send_auth_failed); authBusy = false }
                                     is Biometrics.Outcome.Error -> { authError = r.message; authBusy = false }
                                     is Biometrics.Outcome.Cancelled -> authBusy = false
                                 }
@@ -340,7 +353,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                 scope.launch {
                     val ok = withContext(Dispatchers.Default) { vm.verifyPassword(authPassword) }
                     checking = false
-                    if (ok) { askPassword = false; authBusy = false; vm.send(p) } else authError = context.getString(R.string.unlock_error_incorrect)
+                    if (ok) { askPassword = false; authBusy = false; vm.authorizeSend(p); vm.send(p) } else authError = context.getString(R.string.unlock_error_incorrect)
                 }
             }
         }

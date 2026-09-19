@@ -48,6 +48,7 @@ import dev.pocketprl.ui.components.InfoBanner
 import dev.pocketprl.ui.components.PasswordField
 import dev.pocketprl.ui.components.PrimaryButton
 import dev.pocketprl.ui.components.rememberHaptics
+import dev.pocketprl.ui.components.SecureWindow
 import dev.pocketprl.ui.theme.PearlMark
 import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.theme.AppIcons
@@ -56,6 +57,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun UnlockScreen(vm: UnlockViewModel, onUnlocked: () -> Unit, onAddWallet: () -> Unit) {
+    SecureWindow()
     val state by vm.state.collectAsStateWithLifecycle()
     val wallets by vm.wallets.collectAsStateWithLifecycle()
     var password by remember { mutableStateOf("") }

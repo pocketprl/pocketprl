@@ -13,6 +13,7 @@ import dev.pocketprl.core.crypto.wipe
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import java.io.File
+import java.io.FileOutputStream
 import java.security.KeyStore
 import java.security.SecureRandom
 import javax.crypto.AEADBadTagException
@@ -39,6 +40,9 @@ sealed class SeedMaterial {
 }
 
 class WrongPasswordException : Exception("wrong password")
+
+/** The vault file exists but cannot be decoded (corruption, truncation or a bad restore). */
+class VaultUnreadableException : Exception("vault is unreadable (corrupt or truncated)")
 
 /**
  * Envelope-encrypted secret store:
@@ -77,25 +81,49 @@ class KeyVault(context: Context, fileName: String = "vault.json", private val ke
     private fun load(): VaultFile? {
         cached?.let { return it }
         if (!file.exists()) return null
-        return json.decodeFromString(VaultFile.serializer(), file.readText()).also { cached = it }
+        val text = try { file.readText() } catch (_: Exception) { throw VaultUnreadableException() }
+        val decoded = try { json.decodeFromString(VaultFile.serializer(), text) } catch (_: Exception) { throw VaultUnreadableException() }
+        cached = decoded
+        return decoded
     }
 
+    /** Like [load], but a corrupt file reads as absent so UI getters never crash in composition. */
+    private fun loadOrNull(): VaultFile? = runCatching { load() }.getOrNull()
+
+    /** True when a vault file exists but cannot be decoded. */
+    fun isUnreadable(): Boolean = file.exists() && runCatching { load() }.isFailure
+
     private fun save(v: VaultFile) {
+        val bytes = json.encodeToString(VaultFile.serializer(), v).toByteArray(Charsets.UTF_8)
         val tmp = File(file.parentFile, file.name + ".tmp")
-        tmp.writeText(json.encodeToString(VaultFile.serializer(), v))
-        if (!tmp.renameTo(file)) {
-            file.writeText(json.encodeToString(VaultFile.serializer(), v))
-            tmp.delete()
+        try {
+            FileOutputStream(tmp).use { out ->
+                out.write(bytes)
+                out.flush()
+                out.fd.sync()
+            }
+            if (!tmp.renameTo(file)) {
+                // Rename can fail across odd filesystems; fall back to a direct write.
+                FileOutputStream(file).use { out ->
+                    out.write(bytes)
+                    out.flush()
+                    out.fd.sync()
+                }
+                tmp.delete()
+            }
+        } finally {
+            tmp.delete() // never leave a complete envelope behind if the rename did not happen
         }
+        fsyncDir(file.parentFile)
         cached = v
     }
 
     fun exists(): Boolean = file.exists()
-    val walletName: String? get() = load()?.walletName
-    val network: Network? get() = load()?.let { Network.fromId(it.network) }
-    val createdAt: Long? get() = load()?.createdAt
-    val biometricEnabled: Boolean get() = load()?.biometricWrappedDek != null
-    val seedKind: String? get() = load()?.seedKind
+    val walletName: String? get() = loadOrNull()?.walletName
+    val network: Network? get() = loadOrNull()?.let { Network.fromId(it.network) }
+    val createdAt: Long? get() = loadOrNull()?.createdAt
+    val biometricEnabled: Boolean get() = loadOrNull()?.biometricWrappedDek != null
+    val seedKind: String? get() = loadOrNull()?.seedKind
 
     /**
      * Creates the vault and returns the fresh DEK so the caller can unlock the
@@ -144,7 +172,12 @@ class KeyVault(context: Context, fileName: String = "vault.json", private val ke
         }
     }
 
-    fun verifyPassword(password: CharArray): Boolean = runCatching { unlockWithPassword(password).wipe(); true }.getOrDefault(false)
+    fun verifyPassword(password: CharArray): Boolean = try {
+        unlockWithPassword(password).wipe()
+        true
+    } catch (_: WrongPasswordException) {
+        false
+    }
 
     fun openSeed(dek: ByteArray): SeedMaterial {
         val v = load() ?: error("no vault")
@@ -180,11 +213,21 @@ class KeyVault(context: Context, fileName: String = "vault.json", private val ke
 
     /** Cipher to hand to BiometricPrompt for *unlocking* (decrypt DEK). Null if biometrics not enabled. */
     fun biometricDecryptCipher(): Cipher? {
-        val v = load() ?: return null
+        val v = loadOrNull() ?: return null
         val blob = v.biometricWrappedDek ?: return null
         val key = getKeystoreKey() ?: return null
-        return Cipher.getInstance("AES/GCM/NoPadding").apply {
-            init(Cipher.DECRYPT_MODE, key, GCMParameterSpec(128, blob.iv.hexToBytes()))
+        return try {
+            Cipher.getInstance("AES/GCM/NoPadding").apply {
+                init(Cipher.DECRYPT_MODE, key, GCMParameterSpec(128, blob.iv.hexToBytes()))
+            }
+        } catch (_: java.security.InvalidKeyException) {
+            // The Keystore key was invalidated (a biometric was enrolled or the key
+            // was cleared). Drop the unusable wrap so the UI stops offering
+            // biometrics; a password unlock can re-enable it.
+            runCatching { disableBiometric() }
+            null
+        } catch (_: java.security.GeneralSecurityException) {
+            null
         }
     }
 
@@ -213,14 +256,27 @@ class KeyVault(context: Context, fileName: String = "vault.json", private val ke
     fun wipe() {
         runCatching { keyStore().deleteEntry(keystoreAlias) }
         cached = null
-        if (file.exists()) {
+        // Remove the staging file too: a crash between write and rename can leave a
+        // complete encrypted envelope behind that would otherwise survive deletion.
+        for (f in listOf(file, File(file.parentFile, file.name + ".tmp"), File(file.parentFile, file.name + ".bak"))) {
+            if (!f.exists()) continue
             // Overwrite before unlinking; flash wear-levelling makes this best-effort only.
-            runCatching { file.writeBytes(ByteArray(file.length().toInt().coerceAtMost(1 shl 20))) }
-            file.delete()
+            runCatching { f.writeBytes(ByteArray(f.length().toInt().coerceAtMost(1 shl 20))) }
+            f.delete()
         }
+        fsyncDir(file.parentFile)
     }
 
     // ---- internals ----
+
+    /** Best-effort directory fsync so a rename is durable before the process can die. */
+    private fun fsyncDir(dir: File?) {
+        if (dir == null) return
+        runCatching {
+            val fd = android.system.Os.open(dir.absolutePath, android.system.OsConstants.O_RDONLY, 0)
+            try { android.system.Os.fsync(fd) } finally { android.system.Os.close(fd) }
+        }
+    }
 
     private fun deriveKey(password: CharArray, salt: ByteArray, iterations: Int): ByteArray {
         val pw = String(password).toByteArray(Charsets.UTF_8)

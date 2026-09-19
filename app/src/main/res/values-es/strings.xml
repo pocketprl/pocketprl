@@ -588,4 +588,54 @@
     <string name="settings_section_language">Idioma</string>
     <string name="settings_language">Idioma</string>
     <string name="settings_language_system">Predeterminado del sistema</string>
+
+    <!-- ===================== stats ===================== -->
+    <string name="settings_stats">Estadísticas on-chain</string>
+    <string name="settings_stats_sub">Tu historial de un vistazo</string>
+    <string name="stats_title">Estadísticas on-chain</string>
+    <string name="stats_section_totals">Totales</string>
+    <string name="stats_section_activity">Actividad</string>
+    <string name="stats_section_records">Récords</string>
+    <string name="stats_section_missed">Máquina del tiempo</string>
+    <string name="stats_section_charts">Gráficos</string>
+    <string name="stats_received_total">Total recibido</string>
+    <string name="stats_sent_total">Total enviado</string>
+    <string name="stats_fees_total">Comisiones pagadas</string>
+    <string name="stats_net">Flujo neto</string>
+    <string name="stats_mined_total">Recompensas de minería</string>
+    <string name="stats_tx_count">Transacciones</string>
+    <string name="stats_breakdown">%1$d recibidas • %2$d enviadas • %3$d minadas</string>
+    <string name="stats_first_tx">Primera transacción</string>
+    <string name="stats_last_tx">Última transacción</string>
+    <string name="stats_days_active">Días activos</string>
+    <string name="stats_busiest_day">Día más ajetreado</string>
+    <string name="stats_blocks_mined">Bloques minados</string>
+    <string name="stats_largest_received">Mayor importe recibido</string>
+    <string name="stats_largest_sent">Mayor importe enviado</string>
+    <string name="stats_biggest_fee">Comisión más alta en una transacción</string>
+    <string name="stats_avg_fee">Comisión media</string>
+    <string name="stats_empty_value">—</string>
+    <string name="stats_biggest_missed">Mayor ganancia perdida</string>
+    <string name="stats_total_missed">Total de ganancias perdidas</string>
+    <string name="stats_total_missed_sub">Si hubieras conservado cada venta hasta ahora</string>
+    <string name="stats_missed_sub">Vendido %1$s %2$s a %3$s el %4$s</string>
+    <string name="stats_avg_sell">Precio de venta medio</string>
+    <string name="stats_avg_sell_sub">Máximo histórico desde entonces: %1$s el %2$s</string>
+    <string name="stats_current_price">Precio actual</string>
+    <string name="stats_missed_off">Los precios históricos necesitan el valor fiduciario. Activa Mostrar valor en moneda fiduciaria y usa Mainnet.</string>
+    <string name="stats_missed_loading">Cargando el historial de precios…</string>
+    <string name="stats_missed_unavailable">El historial de precios no está disponible ahora mismo. Comprueba tu conexión e inténtalo de nuevo.</string>
+    <string name="stats_chart_flows">Flujo semanal</string>
+    <string name="stats_missed_none">Aún no hay pagos salientes que revisar.</string>
+    <string name="stats_week_readout">Semana del %1$s • %2$s recibidos • %3$s enviados</string>
+    <string name="stats_balance_readout">%1$s • %2$s</string>
+    <string name="stats_chart_balance">Evolución del saldo</string>
+    <string name="stats_legend_in">Entradas</string>
+    <string name="stats_legend_out">Salidas</string>
+    <string name="stats_none_title">Aún no hay historial</string>
+    <string name="stats_none_body">Cuando esta cartera tenga transacciones, tu historia on-chain aparecerá aquí.</string>
+    <plurals name="stats_day_tx">
+        <item quantity="one">%1$d transacción</item>
+        <item quantity="other">%1$d transacciones</item>
+    </plurals>
 </resources>

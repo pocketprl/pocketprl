@@ -588,4 +588,54 @@
     <string name="settings_section_language">Språk</string>
     <string name="settings_language">Språk</string>
     <string name="settings_language_system">Systemstandard</string>
+
+    <!-- ===================== stats ===================== -->
+    <string name="settings_stats">On-chain-statistik</string>
+    <string name="settings_stats_sub">Din historik i korthet</string>
+    <string name="stats_title">On-chain-statistik</string>
+    <string name="stats_section_totals">Summor</string>
+    <string name="stats_section_activity">Aktivitet</string>
+    <string name="stats_section_records">Rekord</string>
+    <string name="stats_section_missed">Tidsmaskin</string>
+    <string name="stats_section_charts">Diagram</string>
+    <string name="stats_received_total">Totalt mottaget</string>
+    <string name="stats_sent_total">Totalt skickat</string>
+    <string name="stats_fees_total">Betalda avgifter</string>
+    <string name="stats_net">Nettoflöde</string>
+    <string name="stats_mined_total">Mining-belöningar</string>
+    <string name="stats_tx_count">Transaktioner</string>
+    <string name="stats_breakdown">%1$d mottagna • %2$d skickade • %3$d utvunna</string>
+    <string name="stats_first_tx">Första transaktionen</string>
+    <string name="stats_last_tx">Senaste transaktionen</string>
+    <string name="stats_days_active">Aktiva dagar</string>
+    <string name="stats_busiest_day">Livligaste dagen</string>
+    <string name="stats_blocks_mined">Utvunna block</string>
+    <string name="stats_largest_received">Största mottagna</string>
+    <string name="stats_largest_sent">Största skickade</string>
+    <string name="stats_biggest_fee">Högsta avgiften i en transaktion</string>
+    <string name="stats_avg_fee">Genomsnittlig avgift</string>
+    <string name="stats_empty_value">—</string>
+    <string name="stats_biggest_missed">Största missade vinsten</string>
+    <string name="stats_total_missed">Totala missade vinster</string>
+    <string name="stats_total_missed_sub">Om du hade hållit varje försäljning till nu</string>
+    <string name="stats_missed_sub">Sålde %1$s %2$s till %3$s den %4$s</string>
+    <string name="stats_avg_sell">Genomsnittligt säljpris</string>
+    <string name="stats_avg_sell_sub">All-time high sedan: %1$s den %2$s</string>
+    <string name="stats_current_price">Aktuellt pris</string>
+    <string name="stats_missed_off">Historiska priser kräver fiatvärde. Slå på Visa fiatvärde och använd mainnet.</string>
+    <string name="stats_missed_loading">Hämtar prishistorik…</string>
+    <string name="stats_missed_unavailable">Prishistorik är inte tillgänglig just nu. Kontrollera anslutningen och försök igen.</string>
+    <string name="stats_chart_flows">Veckoflöde</string>
+    <string name="stats_missed_none">Inga utgående betalningar att blicka tillbaka på än.</string>
+    <string name="stats_week_readout">Vecka från %1$s • %2$s in • %3$s ut</string>
+    <string name="stats_balance_readout">%1$s • %2$s</string>
+    <string name="stats_chart_balance">Saldo över tid</string>
+    <string name="stats_legend_in">In</string>
+    <string name="stats_legend_out">Ut</string>
+    <string name="stats_none_title">Ingen historik än</string>
+    <string name="stats_none_body">När plånboken har transaktioner visas din on-chain-historia här.</string>
+    <plurals name="stats_day_tx">
+        <item quantity="one">%1$d transaktion</item>
+        <item quantity="other">%1$d transaktioner</item>
+    </plurals>
 </resources>

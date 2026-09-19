@@ -11,6 +11,7 @@ import dev.pocketprl.core.chain.TxBuilder
 import dev.pocketprl.core.chain.TxOut
 import dev.pocketprl.core.crypto.toHex
 import dev.pocketprl.core.crypto.wipe
+import dev.pocketprl.core.format.Format
 import dev.pocketprl.core.wallet.AddressVariant
 import dev.pocketprl.core.wallet.BRANCH_EXTERNAL
 import dev.pocketprl.core.wallet.BRANCH_INTERNAL
@@ -23,6 +24,7 @@ import dev.pocketprl.data.db.TxRow
 import dev.pocketprl.data.db.UtxoRow
 import dev.pocketprl.data.db.WalletDb
 import dev.pocketprl.data.price.PriceApi
+import dev.pocketprl.data.price.PriceHistory
 import dev.pocketprl.data.vault.KeyVault
 import dev.pocketprl.data.vault.SeedMaterial
 import kotlinx.coroutines.CancellationException
@@ -142,6 +144,9 @@ class WalletRepository(
     @Volatile private var feeCache: FeeRates? = null
 
     private val _price = MutableStateFlow(PriceState())
+
+    /** Daily PRL/fiat series for the Stats time machine, keyed by fiat code. */
+    private val historyCache = java.util.concurrent.ConcurrentHashMap<String, PriceHistory>()
 
     /**
      * Incoming money a sync discovered, whoever ran it. [fresh] is seen for the
@@ -541,7 +546,11 @@ class WalletRepository(
         if (newConfirmed > confirmedOnFirst) {
             var pageNo = 1
             var processed = 0
+            var pages = 0
             while (true) {
+                // Bound the walk: the page count is server-controlled, so a hostile
+                // indexer must not be able to keep the loop running forever.
+                if (++pages > MAX_BACKFILL_PAGES) { backfilled = false; break }
                 val page = api.address(row.address, page = pageNo, pageSize = BACKFILL_PAGE_SIZE)
                 for (t in page.transactions) {
                     if (t.isConfirmed) processed++
@@ -649,6 +658,38 @@ class WalletRepository(
         return _price.value.usdPerPrl
     }
 
+    /**
+     * Daily PRL price series in the configured fiat, for the Stats "time machine".
+     * Kept in memory and in `meta` for [PRICE_HISTORY_TTL_MS]; null when fiat is
+     * off, on testnet, or the feed is unreachable with nothing cached from before.
+     */
+    suspend fun priceHistory(force: Boolean = false): PriceHistory? = withContext(Dispatchers.IO) {
+        if (!settings.showFiat || !network.isMainnet) return@withContext null
+        val api = priceApi ?: return@withContext null
+        val code = Format.config.fiat.code
+        val now = System.currentTimeMillis()
+        val storedAt = db.getMeta(historyAtKey(code))?.toLongOrNull() ?: 0L
+        val fresh = now - storedAt < PRICE_HISTORY_TTL_MS
+        historyCache[code]?.let { if (!force && fresh) return@withContext it }
+        val stored = historyCache[code] ?: PriceHistory.decode(db.getMeta(historyKey(code)))
+        if (!force && stored != null && fresh) {
+            historyCache[code] = stored
+            return@withContext stored
+        }
+        val fetched = runCatching { api.priceHistory(code) }.getOrNull()
+        if (fetched != null && fetched.isNotEmpty()) {
+            val history = PriceHistory(fetched)
+            historyCache[code] = history
+            db.setMeta(historyKey(code), history.encode())
+            db.setMeta(historyAtKey(code), now.toString())
+            return@withContext history
+        }
+        stored
+    }
+
+    private fun historyKey(code: String) = "price_history_$code"
+    private fun historyAtKey(code: String) = "price_history_at_$code"
+
     // ---------------------------------------------------------------- send
 
     fun spendableUtxos(): List<SpendableUtxo> {
@@ -741,6 +782,8 @@ class WalletRepository(
         private const val CONCURRENCY = 4
         private const val PAGE_SIZE = 50
         private const val BACKFILL_PAGE_SIZE = 500
+        /** Hard cap on history pages walked per address (500 each) so a hostile indexer cannot loop forever. */
+        private const val MAX_BACKFILL_PAGES = 40
         private const val MAX_DISCOVERY_ROUNDS = 12
         private const val PENDING_GRACE_SECONDS = 20 * 60L
 
@@ -758,6 +801,9 @@ class WalletRepository(
         private const val META_LAST_SYNC = "last_sync"
         private const val META_LAST_FULL_SYNC = "last_full_sync"
         private const val PRICE_TTL_MS = 300_000L
+
+        /** How long a fetched daily price series is trusted before being refreshed. */
+        private const val PRICE_HISTORY_TTL_MS = 6 * 3600_000L
     }
 }
 

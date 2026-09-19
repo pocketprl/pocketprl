@@ -1,5 +1,60 @@
 # Changelog
 
+## 2.1.0
+
+* **Security hardening** (unaudited wallet, pre-release review):
+  * Fixed a locale-dependent amount-parsing bug where a comma typed as a decimal
+    on an anglophone locale (grouping `,` / decimal `.`) was treated as thousands
+    grouping, silently inflating a payment 10–1000x. Amounts now decide the
+    decimal separator before stripping grouping.
+  * Release builds no longer silently fall back to the debug signing key; a
+    keystore is required (or `POCKETPRL_ALLOW_DEBUG_SIGNING=1` for throwaway local
+    builds), otherwise the release APK is left unsigned.
+  * Pinned the Gradle distribution checksum in the wrapper.
+  * Vault writes are fsync'd and the staging file is removed on delete, so a crash
+    can no longer leave a recoverable encrypted vault behind after "delete wallet".
+  * Corrupt/unreadable vault files now show a clear error instead of crashing the UI.
+  * Biometric keys invalidated by a new enrolment are cleared and reported instead
+    of leaving the lock screen stuck.
+  * Indexer responses are size-capped and the history backfill walk is bounded, so
+    a hostile or broken indexer cannot OOM or hang the app.
+  * Payments prefilled from an external link or QR now show an "external payment
+    request" warning and the full destination address.
+  * "Require authentication to send" is enforced in the view model, not just the UI.
+  * Auto-lock's self-started-activity grace is bounded by the user's timeout.
+  * `verify-release.sh` now fails when it cannot check the signing certificate.
+  * Unlock and Send screens block screenshots/recents thumbnails.
+* **On-chain stats.** A new screen under Settings › Wallet, right below Created,
+  rolls up everything this wallet has ever done: total received and sent in PRL
+  and your fiat, fees paid, net flow, first and last transaction, days active,
+  busiest day, blocks mined, and records like the largest received/sent and the
+  highest fee paid in a single transaction.
+* **Charts.** Weekly inflow/outflow bars for the last twelve weeks and a
+  cumulative balance curve over the whole history, drawn locally from the cached
+  transactions. Both charts carry y-axis levels and respond to touch: press and
+  drag to drop a crosshair on a bar or point and read its numbers.
+* **Time machine.** With fiat value on, PocketPRL fetches a daily PRL price
+  series (cached for six hours, last 365 days) and shows the biggest missed gain
+  since a past send, the total missed across every sale that now sits below the
+  current price, the average sell price against the all-time high since your
+  first sale, and the current price.
+* Stats and the price history are localized into all 18 supported languages.
+
+## 2.0.1
+
+* **Odometer performance.** The rolling digits no longer recompose and re-measure
+  the cell on every animation frame: the counter is read only in the layer/draw
+  phase, and the digit strip has static content that is simply translated.
+* **Odometer spin.** The free-run used to chain tween legs at a randomly varying
+  pace, so every second the velocity jumped and the motion blur flickered in and
+  out, which read as the digits aligning and ticking instead of blurring. Each
+  roller now holds one steady speed for the whole spin, matching the smooth look of
+  the settle animation.
+* **Background work no longer starves the UI.** XMSS lookahead keygen runs on a
+  bounded, minimum-priority pool instead of the common ForkJoinPool, so a sync no
+  longer pins every core while the dashboard is animating. Keygen output and
+  timing-sensitive crypto are unchanged.
+
 ## 2.0.0
 
 * **Localization.** Every user-facing string moved to resources; the app follows the

@@ -40,6 +40,7 @@ import dev.pocketprl.ui.screens.RestoreWalletScreen
 import dev.pocketprl.ui.screens.RevealSeedScreen
 import dev.pocketprl.ui.screens.SendScreen
 import dev.pocketprl.ui.screens.SettingsScreen
+import dev.pocketprl.ui.screens.StatsScreen
 import dev.pocketprl.ui.screens.TxDetailScreen
 import dev.pocketprl.ui.screens.UnlockScreen
 import dev.pocketprl.ui.screens.WelcomeScreen
@@ -68,6 +69,7 @@ object Routes {
     const val NETWORK = "settings/network"
     const val ADDRESSES = "settings/addresses"
     const val CONTACTS = "settings/contacts"
+    const val STATS = "settings/stats"
     const val ABOUT = "settings/about"
 
     fun personalize(next: String) = "personalize/$next"
@@ -261,6 +263,7 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
                 onNetwork = { nav.navigate(Routes.NETWORK) },
                 onAddresses = { nav.navigate(Routes.ADDRESSES) },
                 onContacts = { nav.navigate(Routes.CONTACTS) },
+                onStats = { nav.navigate(Routes.STATS) },
                 onAbout = { nav.navigate(Routes.ABOUT) },
                 onAddWallet = addWallet,
             )
@@ -270,6 +273,7 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
         composable(Routes.NETWORK) { val vm: SettingsViewModel = appViewModel(); NetworkSettingsScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.ADDRESSES) { val vm: SettingsViewModel = appViewModel(); AddressesScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.CONTACTS) { val vm: SettingsViewModel = appViewModel(); ContactsScreen(vm, onBack = { nav.popBackStack() }) }
+        composable(Routes.STATS) { val vm: SettingsViewModel = appViewModel(); StatsScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.ABOUT) { val vm: SettingsViewModel = appViewModel(); AboutScreen(vm, onBack = { nav.popBackStack() }) }
     }
 }

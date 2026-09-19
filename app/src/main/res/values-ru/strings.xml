@@ -600,4 +600,56 @@
     <string name="settings_section_language">Язык</string>
     <string name="settings_language">Язык</string>
     <string name="settings_language_system">По умолчанию в системе</string>
+
+    <!-- ===================== stats ===================== -->
+    <string name="settings_stats">Статистика в блокчейне</string>
+    <string name="settings_stats_sub">Ваша история как на ладони</string>
+    <string name="stats_title">Статистика в блокчейне</string>
+    <string name="stats_section_totals">Итоги</string>
+    <string name="stats_section_activity">Активность</string>
+    <string name="stats_section_records">Рекорды</string>
+    <string name="stats_section_missed">Машина времени</string>
+    <string name="stats_section_charts">Графики</string>
+    <string name="stats_received_total">Всего получено</string>
+    <string name="stats_sent_total">Всего отправлено</string>
+    <string name="stats_fees_total">Уплаченные комиссии</string>
+    <string name="stats_net">Чистый поток</string>
+    <string name="stats_mined_total">Награды за майнинг</string>
+    <string name="stats_tx_count">Транзакции</string>
+    <string name="stats_breakdown">%1$d получено • %2$d отправлено • %3$d намайнено</string>
+    <string name="stats_first_tx">Первая транзакция</string>
+    <string name="stats_last_tx">Последняя транзакция</string>
+    <string name="stats_days_active">Дней активности</string>
+    <string name="stats_busiest_day">Самый активный день</string>
+    <string name="stats_blocks_mined">Намайнено блоков</string>
+    <string name="stats_largest_received">Крупнейшее получение</string>
+    <string name="stats_largest_sent">Крупнейшая отправка</string>
+    <string name="stats_biggest_fee">Наибольшая комиссия в одной транзакции</string>
+    <string name="stats_avg_fee">Средняя комиссия</string>
+    <string name="stats_empty_value">—</string>
+    <string name="stats_biggest_missed">Наибольшая упущенная выгода</string>
+    <string name="stats_total_missed">Общая упущенная выгода</string>
+    <string name="stats_total_missed_sub">Если бы вы удерживали каждую продажу до сих пор</string>
+    <string name="stats_missed_sub">Продано %1$s %2$s по %3$s %4$s</string>
+    <string name="stats_avg_sell">Средняя цена продажи</string>
+    <string name="stats_avg_sell_sub">Исторический максимум с: %1$s %2$s</string>
+    <string name="stats_current_price">Текущая цена</string>
+    <string name="stats_missed_off">Исторические цены требуют фиатной стоимости. Включите «Показывать фиатную стоимость» и используйте mainnet.</string>
+    <string name="stats_missed_loading">Загрузка истории цен…</string>
+    <string name="stats_missed_unavailable">История цен сейчас недоступна. Проверьте подключение и повторите попытку.</string>
+    <string name="stats_chart_flows">Недельный поток</string>
+    <string name="stats_missed_none">Пока нет исходящих платежей, к которым можно вернуться.</string>
+    <string name="stats_week_readout">Неделя с %1$s • %2$s поступлений • %3$s списаний</string>
+    <string name="stats_balance_readout">%1$s • %2$s</string>
+    <string name="stats_chart_balance">Баланс во времени</string>
+    <string name="stats_legend_in">Поступления</string>
+    <string name="stats_legend_out">Списания</string>
+    <string name="stats_none_title">Истории пока нет</string>
+    <string name="stats_none_body">Как только в кошельке появятся транзакции, ваша история в блокчейне отобразится здесь.</string>
+    <plurals name="stats_day_tx">
+        <item quantity="one">%1$d транзакция</item>
+        <item quantity="few">%1$d транзакции</item>
+        <item quantity="many">%1$d транзакций</item>
+        <item quantity="other">%1$d транзакции</item>
+    </plurals>
 </resources>

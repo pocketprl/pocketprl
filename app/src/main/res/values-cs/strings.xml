@@ -600,4 +600,56 @@
     <string name="settings_section_language">Jazyk</string>
     <string name="settings_language">Jazyk</string>
     <string name="settings_language_system">Výchozí systémové</string>
+
+    <!-- ===================== stats ===================== -->
+    <string name="settings_stats">Statistiky on-chain</string>
+    <string name="settings_stats_sub">Vaše historie na první pohled</string>
+    <string name="stats_title">Statistiky on-chain</string>
+    <string name="stats_section_totals">Součty</string>
+    <string name="stats_section_activity">Aktivita</string>
+    <string name="stats_section_records">Rekordy</string>
+    <string name="stats_section_missed">Stroj času</string>
+    <string name="stats_section_charts">Grafy</string>
+    <string name="stats_received_total">Celkem přijato</string>
+    <string name="stats_sent_total">Celkem odesláno</string>
+    <string name="stats_fees_total">Zaplacené poplatky</string>
+    <string name="stats_net">Čistý tok</string>
+    <string name="stats_mined_total">Těžební odměny</string>
+    <string name="stats_tx_count">Transakce</string>
+    <string name="stats_breakdown">%1$d přijato • %2$d odesláno • %3$d vytěženo</string>
+    <string name="stats_first_tx">První transakce</string>
+    <string name="stats_last_tx">Poslední transakce</string>
+    <string name="stats_days_active">Aktivní dny</string>
+    <string name="stats_busiest_day">Nejrušnější den</string>
+    <string name="stats_blocks_mined">Vytěžené bloky</string>
+    <string name="stats_largest_received">Největší přijatá</string>
+    <string name="stats_largest_sent">Největší odeslaná</string>
+    <string name="stats_biggest_fee">Nejvyšší poplatek v jedné transakci</string>
+    <string name="stats_avg_fee">Průměrný poplatek</string>
+    <string name="stats_empty_value">—</string>
+    <string name="stats_biggest_missed">Největší ušlý zisk</string>
+    <string name="stats_total_missed">Celkové ušlé zisky</string>
+    <string name="stats_total_missed_sub">Kdybyste každý prodej podrželi až dodnes</string>
+    <string name="stats_missed_sub">Prodáno %1$s %2$s za %3$s dne %4$s</string>
+    <string name="stats_avg_sell">Průměrná prodejní cena</string>
+    <string name="stats_avg_sell_sub">Historické maximum od: %1$s dne %2$s</string>
+    <string name="stats_current_price">Aktuální cena</string>
+    <string name="stats_missed_off">Historické ceny vyžadují fiat hodnotu. Zapněte „Zobrazit hodnotu v fiat měně“ a použijte mainnet.</string>
+    <string name="stats_missed_loading">Načítání historie cen…</string>
+    <string name="stats_missed_unavailable">Historie cen teď není dostupná. Zkontrolujte připojení a zkuste to znovu.</string>
+    <string name="stats_chart_flows">Týdenní tok</string>
+    <string name="stats_missed_none">Zatím žádné odchozí platby k ohlédnutí.</string>
+    <string name="stats_week_readout">Týden od %1$s • %2$s příjmů • %3$s výdajů</string>
+    <string name="stats_balance_readout">%1$s • %2$s</string>
+    <string name="stats_chart_balance">Zůstatek v čase</string>
+    <string name="stats_legend_in">Přítok</string>
+    <string name="stats_legend_out">Odtok</string>
+    <string name="stats_none_title">Zatím žádná historie</string>
+    <string name="stats_none_body">Jakmile bude mít tato peněženka transakce, vaše on-chain historie se objeví zde.</string>
+    <plurals name="stats_day_tx">
+        <item quantity="one">%1$d transakce</item>
+        <item quantity="few">%1$d transakce</item>
+        <item quantity="many">%1$d transakce</item>
+        <item quantity="other">%1$d transakcí</item>
+    </plurals>
 </resources>

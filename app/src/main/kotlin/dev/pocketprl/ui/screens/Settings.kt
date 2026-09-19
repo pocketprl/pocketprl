@@ -115,6 +115,7 @@ fun SettingsScreen(
     onNetwork: () -> Unit,
     onAddresses: () -> Unit,
     onContacts: () -> Unit,
+    onStats: () -> Unit,
     onAbout: () -> Unit,
     onAddWallet: () -> Unit,
 ) {
@@ -190,6 +191,8 @@ fun SettingsScreen(
                 SettingRow(stringResource(R.string.label_network), vm.network.displayName, icon = AppIcons.Globe)
                 HorizontalDivider()
                 SettingRow(stringResource(R.string.settings_created), formatDateTime(vm.createdAt / 1000), icon = Icons.Filled.DateRange)
+                HorizontalDivider()
+                SettingRow(stringResource(R.string.settings_stats), stringResource(R.string.settings_stats_sub), onClick = onStats, icon = AppIcons.History)
                 HorizontalDivider()
                 SettingRow(stringResource(R.string.settings_wallets), if (wallets.wallets.size == 1) stringResource(R.string.settings_wallets_one) else stringResource(R.string.settings_wallets_n, wallets.wallets.size), onClick = { showSwitcher = true }, icon = AppIcons.Wallet)
                 HorizontalDivider()

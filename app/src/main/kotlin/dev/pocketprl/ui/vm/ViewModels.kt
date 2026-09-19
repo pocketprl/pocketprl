@@ -32,13 +32,19 @@ import dev.pocketprl.data.PreparedSend
 import dev.pocketprl.data.ThemeMode
 import dev.pocketprl.data.WalletContext
 import dev.pocketprl.data.WalletList
+import dev.pocketprl.data.WalletStats
+import dev.pocketprl.data.WalletStatsCalculator
 import dev.pocketprl.data.db.AddressRow
 import dev.pocketprl.data.db.Contact
 import dev.pocketprl.data.notify.PaymentCheckJob
 import dev.pocketprl.data.notify.PaymentNotifier
 import dev.pocketprl.data.notify.PriceAlertJob
 import dev.pocketprl.data.notify.PriceAlertNotifier
+import dev.pocketprl.data.price.PriceHistory
+import dev.pocketprl.data.price.PriceStats
+import dev.pocketprl.data.price.PriceStatsCalculator
 import dev.pocketprl.data.vault.SeedMaterial
+import dev.pocketprl.data.vault.VaultUnreadableException
 import dev.pocketprl.data.vault.WrongPasswordException
 import dev.pocketprl.ui.Export
 import dev.pocketprl.ui.Qr
@@ -303,6 +309,8 @@ class UnlockViewModel(private val c: AppContainer, private val ctx: WalletContex
                 _state.update { it.copy(busy = false, unlocked = true) }
             } catch (_: WrongPasswordException) {
                 _state.update { it.copy(busy = false, error = c.appContext.getString(R.string.unlock_error_incorrect)) }
+            } catch (_: VaultUnreadableException) {
+                _state.update { it.copy(busy = false, error = c.appContext.getString(R.string.unlock_error_vault_corrupt)) }
             } catch (e: Exception) {
                 _state.update { it.copy(busy = false, error = e.message ?: c.appContext.getString(R.string.unlock_error_failed)) }
             }
@@ -355,6 +363,8 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
         val sending: Boolean = false,
         val sentTxid: String? = null,
         val error: String? = null,
+        /** The recipient/amount came from an external payment link or scanned request, not from typing. */
+        val externalRequest: Boolean = false,
     ) {
         val feeRatePerKb: Long?
             get() = when (tier) {
@@ -374,6 +384,9 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
     val showFiat: Boolean get() = c.settings.showFiat && network.isMainnet
 
     private var prepareJob: Job? = null
+
+    /** The exact [PreparedSend] the user authenticated for; see [authorizeSend]. */
+    private var authFor: PreparedSend? = null
 
     init {
         loadFees()
@@ -396,7 +409,7 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
     fun setAddress(v: String) {
         val trimmed = v.trim()
         val name = repo.snapshot.value.contactNames[trimmed]
-        _state.update { it.copy(address = v, addressError = null, contactName = name, error = null) }
+        _state.update { it.copy(address = v, addressError = null, contactName = name, error = null, externalRequest = false) }
         reprepare()
     }
 
@@ -426,7 +439,9 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
         }
         setAddress(pr.address)
         pr.amountGrain?.let { setAmount(Amount.format(it)) }
-        _state.update { it.copy(label = pr.label) }
+        // Mark it as an external request so the screen can warn even though the
+        // label/amount are attacker-supplied free text.
+        _state.update { it.copy(label = pr.label, externalRequest = true) }
         return true
     }
 
@@ -467,11 +482,22 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
     }
 
     /**
+     * Records that the user just passed biometric/password auth for [prepared], so
+     * [send] can enforce "require auth to send" itself instead of trusting the UI.
+     */
+    fun authorizeSend(prepared: PreparedSend) { authFor = prepared }
+
+    /**
      * Called after the user authenticated (or when auth is not required). [prepared] is the
      * exact transaction the user approved; it is passed in rather than re-read from state so a
      * form rewritten during authentication (e.g. by a `pearl:` link) can never be broadcast unseen.
      */
     fun send(prepared: PreparedSend) {
+        if (requireAuth && authFor !== prepared) {
+            _state.update { it.copy(sending = false, error = c.appContext.getString(R.string.send_err_auth_required)) }
+            return
+        }
+        authFor = null
         val p = _state.value.prepared
         if (p !== prepared) {
             _state.update { it.copy(sending = false, error = c.appContext.getString(R.string.send_err_changed)) }
@@ -489,7 +515,7 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
         }
     }
 
-    fun verifyPassword(pw: String): Boolean = ctx.vault.verifyPassword(pw.toCharArray())
+    fun verifyPassword(pw: String): Boolean = runCatching { ctx.vault.verifyPassword(pw.toCharArray()) }.getOrDefault(false)
     fun biometricCipher(): Cipher? = runCatching { ctx.vault.biometricDecryptCipher() }.getOrNull()
     fun confirmBiometric(cipher: Cipher): Boolean = runCatching { ctx.vault.unlockWithBiometric(cipher).fill(0); true }.getOrDefault(false)
 
@@ -509,6 +535,33 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
     val createdAt: Long get() = ctx.vault.createdAt ?: ctx.entry.createdAt
     val snapshot = ctx.repository.snapshot
     val syncState = ctx.repository.syncState
+    val price = ctx.repository.priceState
+
+    /** On-chain roll-up of the whole local history; recomputed when the snapshot revision changes. */
+    fun stats(): WalletStats = WalletStatsCalculator.compute(ctx.repository.allTxs())
+
+    private val _priceHistory = MutableStateFlow<PriceHistory?>(null)
+    val priceHistory: StateFlow<PriceHistory?> = _priceHistory
+    private val _priceHistoryLoading = MutableStateFlow(false)
+    val priceHistoryLoading: StateFlow<Boolean> = _priceHistoryLoading
+
+    /** Fetches (or reuses a cached) daily price series for the Stats time machine. */
+    fun loadPriceHistory(force: Boolean = false) {
+        if (_priceHistoryLoading.value) return
+        _priceHistoryLoading.value = true
+        viewModelScope.launch {
+            try {
+                ctx.repository.priceHistory(force)?.let { _priceHistory.value = it }
+            } finally {
+                _priceHistoryLoading.value = false
+            }
+        }
+    }
+
+    /** "What if" numbers for past sends, or null when there is no price series yet. */
+    fun priceStats(): PriceStats? = _priceHistory.value?.let {
+        PriceStatsCalculator.compute(ctx.repository.allTxs(), it, ctx.repository.priceState.value.usdPerPrl)
+    }
 
     /** Full sweep of every derived address, both variants. */
     fun rescan() {
@@ -572,7 +625,7 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
     fun defaultBlockbookUrl(): String = network.defaultBlockbookUrl
     fun setBlockbookUrl(url: String?) = c.settings.setBlockbookUrl(network, url)
 
-    fun verifyPassword(pw: String): Boolean = ctx.vault.verifyPassword(pw.toCharArray())
+    fun verifyPassword(pw: String): Boolean = runCatching { ctx.vault.verifyPassword(pw.toCharArray()) }.getOrDefault(false)
 
     suspend fun changePassword(current: String, new: String): String? = withContext(Dispatchers.Default) {
         try {

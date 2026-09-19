@@ -45,8 +45,9 @@ fi
 
 if [ -z "$APKSIGNER" ] || [ ! -x "$APKSIGNER" ]; then
   echo
-  echo "warning: apksigner not found. Set ANDROID_HOME or install build-tools." >&2
-  exit 0
+  echo "error: apksigner not found; cannot verify the signing certificate." >&2
+  echo "       Set ANDROID_HOME or install Android build-tools, then re-run." >&2
+  exit 1
 fi
 
 echo

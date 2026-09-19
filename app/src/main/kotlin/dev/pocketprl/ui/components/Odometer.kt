@@ -10,11 +10,13 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
@@ -153,9 +155,15 @@ fun OdometerText(
 private const val BLUR_FULL_SPEED = 28f
 /** Blur at full speed. */
 private val MAX_BLUR = 1.1.dp
-/** Pace band for a free-running roller, in milliseconds per full 0..9 turn; each roller picks its own base within it. */
-private const val SPIN_TURN_MIN_MILLIS = 600
-private const val SPIN_TURN_MAX_MILLIS = 920
+/** Blur radius is rounded to this many steps so the RenderEffect is rebuilt rarely. */
+private const val BLUR_QUANTISATION = 6f
+/** Highest digit-strip index rendered: floor(roll % 10) peaks at 9, plus one cell of blur margin each side. */
+private const val DIGIT_STRIP_END = 11
+/** Steady free-run speed band, in digits per second; each roller holds one speed for the whole spin. */
+private const val SPIN_MIN_DIGITS_PER_SECOND = 15f
+private const val SPIN_MAX_DIGITS_PER_SECOND = 20f
+/** Digits per free-run leg. Equal-length legs at a fixed speed chain without a seam. */
+private const val SPIN_LEG_DIGITS = 40
 /** Extra settle time per digit of rank when landing from a spin, so the number stops left to right. */
 private const val LAND_STAGGER_MILLIS = 90
 /** Furthest a landing reel overshoots or undershoots its digit before correcting. */
@@ -256,6 +264,7 @@ private fun DigitRoller(
     // Plain holder, not state: only the effect reads it, and a write must not recompose.
     val wasSpinning = remember { booleanArrayOf(false) }
     val tracker = remember { RollTickTracker() }
+    val cellHeightPx = with(LocalDensity.current) { height.toPx() }
     // Ticks ride the animation frames themselves: no watcher, no flow, nothing
     // waking up between frames. Snaps never pass through here, so they stay silent.
     val tickFrame: (Animatable<Float, AnimationVector1D>) -> Unit = { anim ->
@@ -272,18 +281,22 @@ private fun DigitRoller(
         val current = position.value.mod(10f)
         position.snapTo(current)
         if (spinning) {
-            // Free-run until cancelled; the next launch rolls on to the real digit from wherever this stopped.
+            // Steady free-run. Each roller picks one speed and holds it. This used to
+            // chain legs of randomly varying pace, so every ~1 s the tween restarted and
+            // the velocity (and therefore the motion blur) jumped; once the balance
+            // stopped changing and the free-run ran uninterrupted that read as the digits
+            // "aligning" and ticking instead of blurring. A constant velocity per roller
+            // keeps the same smooth look the settle has.
             val rng = Random
-            val base = rng.nextInt(SPIN_TURN_MIN_MILLIS, SPIN_TURN_MAX_MILLIS + 1)
-            var legDigits = rng.nextInt(2, 12)
+            val digitsPerSecond = SPIN_MIN_DIGITS_PER_SECOND +
+                rng.nextFloat() * (SPIN_MAX_DIGITS_PER_SECOND - SPIN_MIN_DIGITS_PER_SECOND)
+            val legMillis = (SPIN_LEG_DIGITS / digitsPerSecond * 1000f).roundToInt().coerceAtLeast(16)
             while (true) {
-                val pace = base * rng.nextInt(75, 126) / 100
                 position.animateTo(
-                    position.value + legDigits,
-                    tween((pace * legDigits / 10f).roundToInt(), easing = LinearEasing),
+                    position.value + SPIN_LEG_DIGITS,
+                    tween(legMillis, easing = LinearEasing),
                     block = tickFrame,
                 )
-                legDigits = rng.nextInt(5, 16)
             }
         }
         // A roller stopped mid-turn must finish its journey even if the digit did not change.
@@ -311,40 +324,59 @@ private fun DigitRoller(
         if (onRoll != null) tracker.flush(position.value, onRoll)
     }
 
-    val p = position.value
-    val speed = (abs(position.velocity) / BLUR_FULL_SPEED).coerceIn(0f, 1f)
-    // Quantised so a new RenderEffect is not built on every frame.
-    val blur = MAX_BLUR * ((speed * 6f).roundToInt() / 6f)
-    val base = floor(p)
-    val moving = speed > 0f || abs(p - base) > 0.001f
+    // Blur goes through a derived state: the block re-evaluates on each velocity
+    // change but only invalidates composition when the rounded radius moves, so the
+    // RenderEffect is rebuilt a handful of times per roll instead of every frame.
+    val blur by remember {
+        derivedStateOf {
+            val s = (abs(position.velocity) / BLUR_FULL_SPEED).coerceIn(0f, 1f)
+            MAX_BLUR * ((s * BLUR_QUANTISATION).roundToInt() / BLUR_QUANTISATION)
+        }
+    }
+    // "Is this roller moving" is read only inside the layer/draw lambdas below. Reading
+    // the animation state in composition would recompose and re-measure the cell on
+    // every frame; inside these it only invalidates the layer/draw phase.
+    val isMoving: () -> Boolean = {
+        val p = position.value
+        position.velocity != 0f || abs(p - floor(p)) > 0.001f
+    }
 
     Box(
         modifier = Modifier.width(width).height(height).clipToBounds()
-            // Fade the top and bottom edges while moving; at rest the digit is drawn plain.
-            .graphicsLayer { compositingStrategy = if (moving) CompositingStrategy.Offscreen else CompositingStrategy.Auto }
+            .graphicsLayer {
+                // Fade the top and bottom edges while moving; at rest the digit is drawn plain.
+                val speed = (abs(position.velocity) / BLUR_FULL_SPEED).coerceIn(0f, 1f)
+                alpha = 1f - 0.08f * speed
+                // DstIn fade needs an offscreen buffer; only pay for it while moving.
+                compositingStrategy = if (isMoving()) CompositingStrategy.Offscreen else CompositingStrategy.Auto
+            }
             .drawWithContent {
                 drawContent()
-                if (moving) drawRect(brush = EDGE_FADE, blendMode = BlendMode.DstIn)
+                if (isMoving()) drawRect(brush = EDGE_FADE, blendMode = BlendMode.DstIn)
             },
         contentAlignment = Alignment.Center,
     ) {
         // Unbounded: a blur clamped at the strip's own rectangle shows as a faint band at the cell edges.
         Box(modifier = if (blur > 0.dp) Modifier.blur(blur, BlurredEdgeTreatment.Unbounded) else Modifier) {
-            // One digit either side of the window so the blur has something to smear in from the edges.
-            for (k in -1..2) {
-                val value = base + k
-                val shown = ((value.toInt() % 10) + 10) % 10
-                Text(
-                    ('0' + shown).toString(),
-                    style = style,
-                    color = color,
-                    maxLines = 1,
-                    softWrap = false,
-                    modifier = Modifier.graphicsLayer {
-                        translationY = (value - p) * size.height
-                        alpha = 1f - 0.08f * speed.coerceIn(0f, 1f)
-                    },
-                )
+            // A static 0..9 strip; the content never recomposes, only this translation
+            // moves each frame. The window reaches one cell past the visible digit
+            // either way so the blur has a neighbour to smear in from the edges.
+            Box(
+                modifier = Modifier.graphicsLayer {
+                    // One full turn, then repeat: identity is periodic every 10.
+                    translationY = -position.value.mod(10f) * cellHeightPx
+                },
+            ) {
+                for (j in -1..DIGIT_STRIP_END) {
+                    Text(
+                        ('0' + mod10(j)).toString(),
+                        style = style,
+                        color = color,
+                        maxLines = 1,
+                        softWrap = false,
+                        modifier = Modifier.offset(y = (j * height.value).dp),
+                    )
+                }
             }
         }
     }

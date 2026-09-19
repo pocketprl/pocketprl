@@ -5,6 +5,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import okhttp3.MediaType.Companion.toMediaType
@@ -39,10 +40,27 @@ class BlockbookApi(baseUrlProvider: () -> String, private val userAgent: String)
         return base + path
     }
 
+    /**
+     * Reads a response body with a hard size cap. A hostile or broken indexer
+     * cannot make the app allocate an unbounded string and OOM.
+     */
+    private fun readBody(resp: okhttp3.Response): String {
+        val source = resp.body.source()
+        val buffer = okio.Buffer()
+        while (true) {
+            val remaining = (MAX_RESPONSE_BYTES + 1) - buffer.size
+            if (remaining <= 0) throw BlockbookException("response exceeds $MAX_RESPONSE_BYTES bytes")
+            val read = source.read(buffer, remaining)
+            if (read == -1L) break
+        }
+        if (buffer.size > MAX_RESPONSE_BYTES) throw BlockbookException("response exceeds $MAX_RESPONSE_BYTES bytes")
+        return buffer.readString(Charsets.UTF_8)
+    }
+
     private suspend fun get(path: String): String = withContext(Dispatchers.IO) {
         val req = Request.Builder().url(url(path)).header("User-Agent", userAgent).header("Accept", "application/json").get().build()
         client.newCall(req).execute().use { resp ->
-            val body = resp.body.string()
+            val body = readBody(resp)
             if (!resp.isSuccessful) throw BlockbookException(extractError(body) ?: "HTTP ${resp.code}", resp.code)
             body
         }
@@ -52,7 +70,7 @@ class BlockbookApi(baseUrlProvider: () -> String, private val userAgent: String)
         val req = Request.Builder().url(url(path)).header("User-Agent", userAgent)
             .post(payload.toRequestBody("text/plain".toMediaType())).build()
         client.newCall(req).execute().use { resp ->
-            val body = resp.body.string()
+            val body = readBody(resp)
             if (!resp.isSuccessful) throw BlockbookException(extractError(body) ?: "HTTP ${resp.code}", resp.code)
             body
         }
@@ -89,6 +107,14 @@ class BlockbookApi(baseUrlProvider: () -> String, private val userAgent: String)
         // A non-JSON body (a proxy error page, say) must surface the node's rejection, not a parse error.
         val obj = runCatching { json.parseToJsonElement(body).jsonObject }.getOrNull()
         extractError(body)?.let { throw BlockbookException(it) }
-        return obj?.get("result")?.jsonPrimitive?.content ?: throw BlockbookException("broadcast returned no txid")
+        // A result that is not a string primitive must not throw an unrelated
+        // parse exception after the node has already accepted the transaction.
+        val result = obj?.get("result") as? JsonPrimitive
+        return result?.contentOrNull ?: throw BlockbookException("broadcast returned no txid")
+    }
+
+    companion object {
+        /** Generous ceiling for a page of 500 Blockbook transactions; anything larger is hostile. */
+        private const val MAX_RESPONSE_BYTES = 8L * 1024 * 1024
     }
 }

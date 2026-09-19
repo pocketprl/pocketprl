@@ -47,6 +47,23 @@ class FormattingTest {
         assertEquals(123_456_000_000L, Amount.parse("1234,56"))
     }
 
+    /**
+     * The production default on anglophone locales is grouping ',' with decimal
+     * '.'. A comma typed as a decimal must not be deleted as grouping, or the
+     * amount silently inflates. Regression for the fund-loss parse bug.
+     */
+    @Test fun commaDecimalOnCommaGroupingLocaleIsNotInflated() {
+        Format.config = Format.config.copy(decimalSeparator = DecimalSeparator.PERIOD, groupingSeparator = GroupingSeparator.COMMA)
+        assertEquals(150_000_000L, Amount.parse("1,5"))
+        assertEquals(123_000_000L, Amount.parse("1,23"))
+        assertEquals(50_000_000L, Amount.parse("0,5"))
+        // Real grouping still parses.
+        assertEquals(123_400_000_000L, Amount.parse("1,234"))
+        assertEquals(123_456_000_000L, Amount.parse("1,234.56"))
+        assertEquals(1_234_560_000_000L, Amount.parse("12,345.6"))
+        assertEquals(123_456_700_000_000L, Amount.parse("1,234,567"))
+    }
+
     @Test fun machineFormatIgnoresDisplayConfig() {
         Format.config = Format.config.copy(decimalSeparator = DecimalSeparator.COMMA, groupingSeparator = GroupingSeparator.NONE, decimals = 2)
         assertEquals("1.5", Amount.format(150_000_000L))

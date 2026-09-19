@@ -588,4 +588,54 @@
     <string name="settings_section_language">Taal</string>
     <string name="settings_language">Taal</string>
     <string name="settings_language_system">Systeemstandaard</string>
+
+    <!-- ===================== stats ===================== -->
+    <string name="settings_stats">On-chain statistieken</string>
+    <string name="settings_stats_sub">Je geschiedenis in één oogopslag</string>
+    <string name="stats_title">On-chain statistieken</string>
+    <string name="stats_section_totals">Totalen</string>
+    <string name="stats_section_activity">Activiteit</string>
+    <string name="stats_section_records">Records</string>
+    <string name="stats_section_missed">Tijdmachine</string>
+    <string name="stats_section_charts">Grafieken</string>
+    <string name="stats_received_total">Totaal ontvangen</string>
+    <string name="stats_sent_total">Totaal verzonden</string>
+    <string name="stats_fees_total">Betaalde kosten</string>
+    <string name="stats_net">Nettoflow</string>
+    <string name="stats_mined_total">Mijnbeloningen</string>
+    <string name="stats_tx_count">Transacties</string>
+    <string name="stats_breakdown">%1$d ontvangen • %2$d verzonden • %3$d gedolven</string>
+    <string name="stats_first_tx">Eerste transactie</string>
+    <string name="stats_last_tx">Laatste transactie</string>
+    <string name="stats_days_active">Actieve dagen</string>
+    <string name="stats_busiest_day">Drukste dag</string>
+    <string name="stats_blocks_mined">Gedolven blokken</string>
+    <string name="stats_largest_received">Grootste ontvangst</string>
+    <string name="stats_largest_sent">Grootste verzending</string>
+    <string name="stats_biggest_fee">Hoogste kosten in één transactie</string>
+    <string name="stats_avg_fee">Gemiddelde kosten</string>
+    <string name="stats_empty_value">—</string>
+    <string name="stats_biggest_missed">Grootste misgelopen winst</string>
+    <string name="stats_total_missed">Totaal misgelopen winst</string>
+    <string name="stats_total_missed_sub">Als je elke verkoop tot nu toe had aangehouden</string>
+    <string name="stats_missed_sub">Verkocht: %1$s %2$s tegen %3$s op %4$s</string>
+    <string name="stats_avg_sell">Gemiddelde verkoopprijs</string>
+    <string name="stats_avg_sell_sub">All-time high sindsdien: %1$s op %2$s</string>
+    <string name="stats_current_price">Huidige prijs</string>
+    <string name="stats_missed_off">Historische prijzen vereisen een fiatwaarde. Schakel Fiatwaarde tonen in en gebruik Mainnet.</string>
+    <string name="stats_missed_loading">Prijsgeschiedenis laden…</string>
+    <string name="stats_missed_unavailable">Prijsgeschiedenis is momenteel niet beschikbaar. Controleer je verbinding en probeer het opnieuw.</string>
+    <string name="stats_chart_flows">Wekelijkse stroom</string>
+    <string name="stats_missed_none">Nog geen uitgaande betalingen om op terug te kijken.</string>
+    <string name="stats_week_readout">Week van %1$s • %2$s in • %3$s uit</string>
+    <string name="stats_balance_readout">%1$s • %2$s</string>
+    <string name="stats_chart_balance">Saldo in de tijd</string>
+    <string name="stats_legend_in">In</string>
+    <string name="stats_legend_out">Uit</string>
+    <string name="stats_none_title">Nog geen geschiedenis</string>
+    <string name="stats_none_body">Zodra deze wallet transacties heeft, verschijnt je on-chain verhaal hier.</string>
+    <plurals name="stats_day_tx">
+        <item quantity="one">%1$d transactie</item>
+        <item quantity="other">%1$d transacties</item>
+    </plurals>
 </resources>

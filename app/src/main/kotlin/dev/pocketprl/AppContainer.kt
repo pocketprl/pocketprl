@@ -75,9 +75,17 @@ class AppContainer(val appContext: Context) {
             override fun onStart(owner: LifecycleOwner) {
                 isInForeground = true
                 val timeout = settings.autoLockSeconds
-                if (backgroundedAt > 0 && timeout >= 0 && !returningFromOwnActivity()) {
+                if (backgroundedAt > 0 && timeout >= 0) {
                     val away = System.currentTimeMillis() - backgroundedAt
-                    if (timeout == 0 || away > timeout * 1000L) lockAll()
+                    if (returningFromOwnActivity()) {
+                        // A self-started detour (QR scan, share sheet, permission
+                        // prompt) may excuse a short absence, but never longer than
+                        // the user's own timeout, and never more than a fixed cap.
+                        val grace = if (timeout == 0) IMMEDIATE_GRACE_MS else minOf(OWN_ACTIVITY_GRACE_MS, timeout * 1000L)
+                        if (away > grace) lockAll()
+                    } else if (timeout == 0 || away > timeout * 1000L) {
+                        lockAll()
+                    }
                 }
                 backgroundedAt = 0
                 expectedReturn = 0
@@ -201,7 +209,10 @@ class AppContainer(val appContext: Context) {
 
     companion object {
         /** How long a self-started activity may keep the app in the background before auto-lock applies again. */
-        private const val OWN_ACTIVITY_GRACE_MS = 5 * 60_000L
+        private const val OWN_ACTIVITY_GRACE_MS = 2 * 60_000L
+
+        /** Grace for a self-started activity when auto-lock is set to "immediately". */
+        private const val IMMEDIATE_GRACE_MS = 30_000L
 
         /** How often the idle timer is examined while the app is on screen. */
         private const val IDLE_CHECK_MS = 10_000L

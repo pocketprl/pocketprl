@@ -37,6 +37,24 @@ object Xmss {
     private const val ADDR_TYPE_LTREE = 1
     private const val ADDR_TYPE_HASHTREE = 2
 
+    /**
+     * Dedicated pool for the parallel leaf fan-out: one fewer worker than cores and
+     * at [Thread.MIN_PRIORITY], so keygen never puts the common ForkJoinPool under
+     * load and the Android UI/render thread can preempt it. Throughput is unchanged
+     * when the foreground is idle; only scheduling changes, not the algorithm.
+     */
+    private val KEYGEN_POOL = java.util.concurrent.ForkJoinPool(
+        maxOf(1, Runtime.getRuntime().availableProcessors() - 1),
+        object : java.util.concurrent.ForkJoinPool.ForkJoinWorkerThreadFactory {
+            override fun newThread(pool: java.util.concurrent.ForkJoinPool) =
+                java.util.concurrent.ForkJoinPool.defaultForkJoinWorkerThreadFactory.newThread(pool).apply {
+                    priority = Thread.MIN_PRIORITY
+                }
+        },
+        null,
+        false,
+    )
+
     /** Returns pk = root(32) || pubSeed(32). */
     fun keygen(privateSeed: ByteArray, publicSeed: ByteArray, parallel: Boolean = true): ByteArray {
         require(privateSeed.size == PRIVATE_SEED_LEN) { "private seed must be 64 bytes" }
@@ -45,8 +63,15 @@ object Xmss {
         try {
             val leaves = arrayOfNulls<ByteArray>(LEAVES)
             val work = { i: Int -> leaves[i] = genLeaf(Ctx(), skSeed, publicSeed, i) }
-            if (parallel) IntStream.range(0, LEAVES).parallel().forEach { work(it) }
-            else for (i in 0 until LEAVES) work(i)
+            if (parallel) {
+                // Leaf keygen is embarrassingly parallel, but running it on the common
+                // ForkJoinPool pins every core and starves the UI render thread for the
+                // duration of the keygen (hundreds of ms per address on a phone). Use a
+                // bounded, minimum-priority pool so foreground frames always preempt it.
+                KEYGEN_POOL.submit { IntStream.range(0, LEAVES).parallel().forEach { work(it) } }.join()
+            } else {
+                for (i in 0 until LEAVES) work(i)
+            }
 
             // Merkle tree; node addresses use (tree_height = lower layer, tree_index = parent index).
             val ctx = Ctx()

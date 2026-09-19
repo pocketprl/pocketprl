@@ -7,9 +7,12 @@ import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.doubleOrNull
+import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.longOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.util.concurrent.TimeUnit
@@ -88,6 +91,49 @@ class PriceApi(private val userAgent: String) {
                 // CoinEx reports no percentage, only the price 24 h ago.
                 val open = t?.open?.toDoubleOrNull()?.takeIf { it.isFinite() && it > 0 }
                 last?.let { PriceQuote(it, open?.let { o -> (it - o) / o * 100 }.finiteOrNull()) }
+            }
+        }.getOrNull()
+    }
+
+    /**
+     * Daily price history in the user's fiat, oldest first, for the "time machine"
+     * stats. CoinGecko can mint a full series in one call, but the public API caps
+     * history at 365 days (days=max is 401); CoinPaprika's daily endpoint is the
+     * fallback and its free plan likewise refuses anything older than a year.
+     * Best-effort: null when offline or unavailable.
+     */
+    suspend fun priceHistory(fiatCode: String): List<PricePoint>? = withContext(Dispatchers.IO) {
+        val code = fiatCode.lowercase()
+        val upper = fiatCode.uppercase()
+
+        ensureActive()
+        runCatching {
+            withTimeout(20_000) {
+                val prices = json.parseToJsonElement(
+                    get("https://api.coingecko.com/api/v3/coins/pearl-2/market_chart?vs_currency=$code&days=365"),
+                ).jsonObject["prices"]?.jsonArray
+                prices?.mapNotNull { el ->
+                    val p = el.jsonArray
+                    val ms = p.getOrNull(0)?.jsonPrimitive?.longOrNull
+                    val price = p.getOrNull(1)?.jsonPrimitive?.doubleOrNull
+                    if (ms != null && price != null && price.isFinite() && price > 0) PricePoint(ms / 1000, price) else null
+                }?.sortedBy { it.time }?.takeIf { it.isNotEmpty() }
+            }
+        }.getOrNull()?.let { return@withContext it }
+
+        ensureActive()
+        runCatching {
+            withTimeout(20_000) {
+                val start = java.time.LocalDate.now().minusDays(365)
+                val end = java.time.LocalDate.now()
+                val body = get("https://api.coinpaprika.com/v1/tickers/prl-pearl-1/historical?start=$start&end=$end&interval=1d&quote=$upper")
+                json.parseToJsonElement(body).jsonArray.mapNotNull { el ->
+                    val o = el.jsonObject
+                    val time = o["timestamp"]?.jsonPrimitive?.contentOrNull
+                        ?.let { runCatching { java.time.Instant.parse(it).epochSecond }.getOrNull() }
+                    val price = o["price"]?.jsonPrimitive?.doubleOrNull
+                    if (time != null && price != null && price.isFinite() && price > 0) PricePoint(time, price) else null
+                }.sortedBy { it.time }.takeIf { it.isNotEmpty() }
             }
         }.getOrNull()
     }
