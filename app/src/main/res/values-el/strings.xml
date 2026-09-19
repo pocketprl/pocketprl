@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Πίσω</string>
+    <string name="action_cancel">Άκυρο</string>
+    <string name="action_save">Αποθήκευση</string>
+    <string name="action_delete">Διαγραφή</string>
+    <string name="action_done">Τέλος</string>
+    <string name="action_edit">Επεξεργασία</string>
+    <string name="action_continue">Συνέχεια</string>
+    <string name="action_close">Κλείσιμο</string>
+    <string name="action_add">Προσθήκη</string>
+    <string name="action_share">Κοινοποίηση</string>
+    <string name="action_copy">Αντιγραφή</string>
+    <string name="action_retry">Επανάληψη</string>
+    <string name="action_scan">Σάρωση</string>
+    <string name="action_paste">Επικόλληση</string>
+    <string name="action_clear">Καθαρισμός</string>
+    <string name="action_contacts">Επαφές</string>
+    <string name="action_send">Αποστολή</string>
+    <string name="label_amount">Ποσό</string>
+    <string name="label_name">Όνομα</string>
+    <string name="label_address">Διεύθυνση</string>
+    <string name="label_fee">Χρέωση</string>
+    <string name="label_date">Ημερομηνία</string>
+    <string name="label_block">Μπλοκ</string>
+    <string name="label_total">Σύνολο</string>
+    <string name="label_to">Προς</string>
+    <string name="label_from">Από</string>
+    <string name="label_network">Δίκτυο</string>
+    <string name="copied">Αντιγράφηκε</string>
+    <string name="clipboard_address">Διεύθυνση Pearl</string>
+    <string name="clipboard_txid">Αναγνωριστικό συναλλαγής</string>
+    <string name="balance_hidden">Το υπόλοιπο είναι κρυφό</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Σήμερα</string>
+    <string name="day_yesterday">Χθες</string>
+    <string name="time_just_now">μόλις τώρα</string>
+    <string name="time_pending">σε εκκρεμότητα</string>
+    <string name="label_unconfirmed">Μη επιβεβαιωμένο</string>
+    <string name="eta_minutes">~%1$d λεπτά</string>
+    <string name="eta_hours">~%1$d ώρες</string>
+    <string name="eta_hours_half">~%1$d,5 ώρες</string>
+    <string name="time_ago_s">πριν %1$dδ</string>
+    <string name="time_ago_m">πριν %1$dλ</string>
+    <string name="time_ago_h">πριν %1$dώ</string>
+    <string name="time_ago_d">πριν %1$dημ</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Προσθήκη πορτοφολιού</string>
+    <string name="welcome_add_headline">Άλλο πορτοφόλι, εντελώς ξεχωριστό</string>
+    <string name="welcome_add_body">Δική του φράση ανάκτησης, κωδικός, ιστορικό και επαφές. Αλλάξτε πορτοφόλι από τον τίτλο της αρχικής οθόνης.</string>
+    <string name="welcome_one_unlocked">Μόνο ένα πορτοφόλι είναι ξεκλείδωτο τη φορά· η αλλαγή κλειδώνει το τρέχον.</string>
+    <string name="welcome_tagline">Pearl (PRL) στην τσέπη σας. Ίδια κλειδιά με το πορτοφόλι υπολογιστή, χωρίς το βάρος.</string>
+    <string name="welcome_feature_selfcustody_title">Αυτοφύλαξη</string>
+    <string name="welcome_feature_selfcustody_body">Τα κλειδιά δημιουργούνται και παραμένουν σε αυτό το τηλέφωνο, κρυπτογραφημένα και με βιομετρικό έλεγχο.</string>
+    <string name="welcome_feature_desktop_title">Συμβατό με υπολογιστή</string>
+    <string name="welcome_feature_desktop_body">Παράγει τις ίδιες ακριβώς μετα-κβαντικές διευθύνσεις Taproot με το oyster. Μετακινηθείτε ελεύθερα μεταξύ τους.</string>
+    <string name="welcome_feature_overview_title">Άμεση εικόνα</string>
+    <string name="welcome_feature_overview_body">Υπόλοιπα, ιστορικό και ανταμοιβές εξόρυξης από τον δείκτη Pearl. Χωρίς λήψη αλυσίδας.</string>
+    <string name="welcome_feature_phone_title">Φτιαγμένο για τηλέφωνο</string>
+    <string name="welcome_feature_phone_body">Σύνδεσμοι πληρωμής, επαφές, σημειώσεις, πολλά πορτοφόλια και ειδοποιήσεις «πληρωθήκατε».</string>
+    <string name="welcome_network">Δίκτυο</string>
+    <string name="welcome_create">Δημιουργία νέου πορτοφολιού</string>
+    <string name="welcome_restore">Επαναφορά από φράση ανάκτησης</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Το πορτοφόλι Pearl μου</string>
+    <string name="onboard_step">Βήμα %1$d από 3 • %2$s</string>
+    <string name="onboard_title_create">Δημιουργία πορτοφολιού</string>
+    <string name="onboard_title_seed">Η φράση ανάκτησής σας</string>
+    <string name="onboard_title_verify">Επαλήθευση φράσης</string>
+    <string name="onboard_title_working">Ρύθμιση</string>
+    <string name="onboard_name_protect">Ονομάστε και προστατέψτε το πορτοφόλι σας</string>
+    <string name="onboard_wallet_name">Όνομα πορτοφολιού</string>
+    <string name="onboard_password">Κωδικός πρόσβασης</string>
+    <string name="onboard_confirm_password">Επιβεβαίωση κωδικού</string>
+    <string name="onboard_password_warning">Ο κωδικός κρυπτογραφεί τα κλειδιά σας σε αυτή τη συσκευή. Δεν υπάρχει επαναφορά: αν τον ξεχάσετε, κάντε επαναφορά από τη φράση ανάκτησης.</string>
+    <string name="onboard_password_hint">Χρησιμοποιήστε τουλάχιστον 8 χαρακτήρες με συνδυασμό γραμμάτων, αριθμών ή συμβόλων.</string>
+    <string name="onboard_seed_write">Γράψτε αυτές τις 12 λέξεις, με σειρά, και κρατήστε τις εκτός σύνδεσης.</string>
+    <string name="onboard_seed_secret_title">Κρατήστε το μυστικό</string>
+    <string name="onboard_seed_secret_body">Όποιος έχει αυτές τις λέξεις ελέγχει τα χρήματά σας. Τα στιγμιότυπα οθόνης είναι αποκλεισμένα σε αυτή την οθόνη· μην αποθηκεύετε τη φράση ψηφιακά.</string>
+    <string name="onboard_written">Την έγραψα</string>
+    <string name="onboard_creating">Δημιουργία πορτοφολιού…</string>
+    <string name="onboard_restoring">Επαναφορά…</string>
+    <string name="onboard_quiz_instruction">Διαλέξτε τη σωστή λέξη για κάθε θέση για να επιβεβαιώσετε το αντίγραφο ασφαλείας.</string>
+    <string name="onboard_word_n">Λέξη #%1$d</string>
+    <string name="onboard_quiz_error">Οι λέξεις δεν ταιριάζουν με τη φράση σας. Πηγαίνετε πίσω και ελέγξτε την προσεκτικά.</string>
+    <string name="onboard_verify_create">Επαλήθευση &amp; δημιουργία πορτοφολιού</string>
+    <string name="onboard_restore_title">Επαναφορά πορτοφολιού</string>
+    <string name="onboard_restore_progress_body">Κάθε διεύθυνση χρειάζεται ένα μετα-κβαντικό κλειδί, οπότε η παραγωγή του παραθύρου αναζήτησης παίρνει λίγο χρόνο. Στη συνέχεια το πορτοφόλι σαρώνει τον δείκτη Pearl για το ιστορικό σας.</string>
+    <string name="onboard_recovery_label">Φράση ανάκτησης ή hex seed</string>
+    <string name="onboard_recovery_placeholder">12–24 λέξεις χωρισμένες με κενά</string>
+    <string name="onboard_new_password">Νέος κωδικός</string>
+    <string name="onboard_restore_compatible">Λειτουργεί με φράσεις από το επίσημο πορτοφόλι Pearl για υπολογιστή (oyster) και με κάθε πορτοφόλι BIP-39 που χρησιμοποιεί την παραγωγή της Pearl.</string>
+    <string name="onboard_restore_button">Επαναφορά πορτοφολιού</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">Φράση ανάκτησης %1$d λέξεων</string>
+    <string name="onboard_check_hex">hex seed %1$d byte</string>
+    <string name="onboard_err_enter_phrase">Εισαγάγετε τη φράση ανάκτησής σας</string>
+    <string name="onboard_err_hex_even">Το hex seed πρέπει να έχει ζυγό αριθμό χαρακτήρων</string>
+    <string name="onboard_err_hex_range">Το hex seed πρέπει να είναι μεταξύ 128 και 512 bit</string>
+    <string name="onboard_err_enter_phrase_or_hex">Εισαγάγετε φράση ανάκτησης 12–24 λέξεων ή hex seed</string>
+    <string name="onboard_err_word_count">Μια φράση ανάκτησης έχει 12, 15, 18, 21 ή 24 λέξεις (βρέθηκαν %1$d)</string>
+    <string name="onboard_err_unknown_word">Το «%1$s» δεν είναι λέξη BIP39</string>
+    <string name="onboard_err_checksum">Ασυμφωνία checksum: ελέγξτε τη σειρά και την ορθογραφία των λέξεων</string>
+    <string name="onboard_err_create_failed">Αποτυχία δημιουργίας πορτοφολιού</string>
+    <string name="onboard_err_restore_failed">Η επαναφορά απέτυχε</string>
+    <string name="onboard_preparing">Προετοιμασία πορτοφολιού…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">Ξεκλείδωμα %1$s</string>
+    <string name="unlock_password">Κωδικός πορτοφολιού</string>
+    <string name="unlock_button">Ξεκλείδωμα</string>
+    <string name="unlock_use_biometrics">Χρήση βιομετρικών</string>
+    <string name="unlock_switch_wallet">Αλλαγή πορτοφολιού (%1$d)</string>
+    <string name="unlock_add_another">Προσθήκη άλλου πορτοφολιού</string>
+    <string name="unlock_forgot">Ξεχάσατε τον κωδικό; Διαγραφή και επαναφορά</string>
+    <string name="unlock_erase_title">Διαγραφή «%1$s»;</string>
+    <string name="unlock_erase_body">Τα κλειδιά και το τοπικό ιστορικό αυτού του πορτοφολιού σε αυτό το τηλέφωνο θα διαγραφούν. Τα άλλα πορτοφόλια δεν επηρεάζονται. Μπορείτε να ανακτήσετε τα χρήματα μόνο με τη φράση ανάκτησης. Πληκτρολογήστε ERASE για επιβεβαίωση.</string>
+    <string name="unlock_erase_confirm">Διαγραφή</string>
+    <string name="unlock_error_biometric">Το βιομετρικό κλειδί δεν είναι διαθέσιμο (προστέθηκε ή αφαιρέθηκε δακτυλικό αποτύπωμα;). Χρησιμοποιήστε τον κωδικό σας.</string>
+    <string name="unlock_error_incorrect">Λανθασμένος κωδικός</string>
+    <string name="unlock_error_failed">Το ξεκλείδωμα απέτυχε</string>
+    <string name="unlock_error_biometric_failed">Το βιομετρικό ξεκλείδωμα απέτυχε: %1$s. Χρησιμοποιήστε τον κωδικό σας.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Πορτοφόλια</string>
+    <string name="switcher_test_coins">%1$s • δοκιμαστικά νομίσματα</string>
+    <string name="switcher_current">Τρέχον πορτοφόλι</string>
+    <string name="switcher_add_title">Προσθήκη πορτοφολιού</string>
+    <string name="switcher_add_body">Δημιουργήστε ένα νέο ή επαναφέρετε άλλη φράση. Κάθε πορτοφόλι έχει τον δικό του κωδικό.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Συνολικό υπόλοιπο</string>
+    <string name="dash_spendable">Διαθέσιμο</string>
+    <string name="dash_incoming">Εισερχόμενα</string>
+    <string name="dash_maturing">Ωρίμανση</string>
+    <string name="dash_activity">Δραστηριότητα</string>
+    <string name="dash_view_all">Προβολή όλων (%1$d)</string>
+    <string name="dash_looking">Αναζήτηση συναλλαγών…</string>
+    <string name="dash_no_tx">Δεν υπάρχουν συναλλαγές ακόμη</string>
+    <string name="dash_no_tx_body">Κοινοποιήστε τη διεύθυνση λήψης ή έναν σύνδεσμο πληρωμής για να ξεκινήσετε.</string>
+    <string name="dash_show_address">Εμφάνιση της διεύθυνσής μου</string>
+    <string name="dash_testnet_warning">Βρίσκεστε στο %1$s. Τα νομίσματα εδώ δεν έχουν αξία.</string>
+    <string name="dash_sync_syncing">Συγχρονισμός…</string>
+    <string name="dash_sync_failed">Ο συγχρονισμός απέτυχε</string>
+    <string name="dash_sync_synced">Συγχρονισμένο</string>
+    <string name="dash_sync_not_synced">Δεν έχει συγχρονιστεί ακόμη</string>
+    <string name="dash_sync_block">Μπλοκ %1$s • ενημερώθηκε %2$s</string>
+    <string name="dash_sync_last">Τελευταίος συγχρονισμός %1$s • μπλοκ %2$s</string>
+    <string name="dash_mining_rewards">Ανταμοιβές εξόρυξης</string>
+    <string name="dash_last_7_days">Τελευταίες 7 ημέρες</string>
+    <string name="dash_all_time">Από την αρχή</string>
+    <string name="dash_mining_progress">%1$s σε ωρίμανση • επόμενο διαθέσιμο σε %2$d μπλοκ (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Ανταμοιβές σε ωρίμανση</string>
+    <string name="dash_price_content_desc">%1$s %2$s τοις εκατό σε 24 ώρες</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d μπλοκ</item>
+        <item quantity="other">%1$d μπλοκ</item>
+    </plurals>
+    <string name="tx_received">Ελήφθη</string>
+    <string name="tx_sent">Στάλθηκε</string>
+    <string name="tx_self">Μεταφορά στον εαυτό</string>
+    <string name="tx_mined">Εξορύχθηκε</string>
+    <string name="tx_to_contact">Προς %1$s</string>
+    <string name="tx_from_contact">Από %1$s</string>
+    <string name="tx_pending">Σε εκκρεμότητα</string>
+    <string name="tx_pending_seen">Σε εκκρεμότητα • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d επιβ.</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">Αποστολή %1$s</string>
+    <string name="send_spendable">Διαθέσιμα %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Εισαγάγετε έγκυρο ποσό (έως 8 δεκαδικά)</string>
+    <string name="send_enter_valid_amount_short">Εισαγάγετε έγκυρο ποσό</string>
+    <string name="send_enter_in">Εισαγωγή σε %1$s</string>
+    <string name="send_max">Μέγιστο</string>
+    <string name="send_max_selected">Μέγιστο ✓</string>
+    <string name="send_to">Προς</string>
+    <string name="send_to_contact">Προς • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… ή μια επαφή</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Χρέωση δικτύου</string>
+    <string name="send_use_estimates">Χρήση εκτιμήσεων</string>
+    <string name="send_custom_rate">Προσαρμοσμένη χρέωση</string>
+    <string name="send_fee_rate_label">Ρυθμός χρέωσης (grain ανά vbyte, ελάχ. 1)</string>
+    <string name="send_fee_normal">Κανονική</string>
+    <string name="send_fee_fast">Γρήγορη</string>
+    <string name="send_fee_loading">Αδυναμία φόρτωσης εκτιμήσεων χρέωσης: %1$s</string>
+    <string name="send_summary">Σύνοψη</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Είσοδοι</string>
+    <string name="send_inputs_change">%1$d • ρέστα %2$s</string>
+    <string name="send_slider">Αποστολή</string>
+    <string name="send_not_ready">Μη έτοιμο</string>
+    <string name="send_sending">Αποστολή</string>
+    <string name="send_confirming">Επιβεβαίωση</string>
+    <string name="send_slide">Σύρετε ή πατήστε διπλά για αποστολή</string>
+    <string name="send_why_amount_blank">Εισαγάγετε ποσό για να συνεχίσετε</string>
+    <string name="send_why_amount_invalid">Εισαγάγετε έγκυρο ποσό για να συνεχίσετε</string>
+    <string name="send_why_recipient_blank">Εισαγάγετε παραλήπτη για να συνεχίσετε</string>
+    <string name="send_why_recipient_invalid">Διορθώστε τη διεύθυνση παραλήπτη για να συνεχίσετε</string>
+    <string name="send_why_fee_unavailable">Η εκτίμηση χρέωσης δεν είναι διαθέσιμη</string>
+    <string name="send_why_waiting_fees">Αναμονή για εκτιμήσεις χρέωσης…</string>
+    <string name="send_why_preparing">Προετοιμασία της πληρωμής…</string>
+    <string name="send_err_no_funds">Δεν υπάρχουν διαθέσιμα χρήματα</string>
+    <string name="send_err_insufficient">Ανεπαρκή χρήματα: χρειάζονται %1$s %2$s μαζί με τη χρέωση, υπάρχουν %3$s</string>
+    <string name="send_err_changed">Η πληρωμή άλλαξε όσο την επιβεβαιώνατε. Ελέγξτε τα στοιχεία και δοκιμάστε ξανά.</string>
+    <string name="send_password_title">Κωδικός πορτοφολιού</string>
+    <string name="send_password_body">Στέλνει %1$s %2$s στον/στην %3$s.</string>
+    <string name="send_auth_failed">Η επαλήθευση απέτυχε</string>
+    <string name="send_bio_unavailable">Το βιομετρικό κλειδί δεν είναι διαθέσιμο· απενεργοποιήστε και ενεργοποιήστε ξανά τα βιομετρικά στις Ρυθμίσεις.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">Λήψη %1$s</string>
+    <string name="receive_preparing">Προετοιμασία διεύθυνσης…</string>
+    <string name="receive_standard">Διεύθυνση #%1$d • Taproot, ίδια με το πορτοφόλι υπολογιστή</string>
+    <string name="receive_pq">Διεύθυνση #%1$d • μετα-κβαντική παραλλαγή</string>
+    <string name="receive_copy">Αντιγραφή</string>
+    <string name="receive_share">Κοινοποίηση</string>
+    <string name="receive_share_request">Κοινοποίηση αιτήματος</string>
+    <string name="receive_request_amount">Αίτημα ποσού</string>
+    <string name="receive_label">Ετικέτα (προαιρετικό)</string>
+    <string name="receive_label_placeholder">Τιμολόγιο #42</string>
+    <string name="receive_link_hint">Με ποσό ή ετικέτα, ο κωδικός και ο σύνδεσμος κοινοποίησης γίνονται σύνδεσμος πληρωμής που συμπληρώνει το ποσό για τον αποστολέα.</string>
+    <string name="receive_fresh">Χρήση νέας διεύθυνσης</string>
+    <string name="receive_generating">Δημιουργία…</string>
+    <string name="receive_show_pq">Εμφάνιση μετα-κβαντικής παραλλαγής</string>
+    <string name="receive_show_std">Εμφάνιση τυπικής διεύθυνσης</string>
+    <string name="receive_pq_warning_title">Μη ορατή στο πορτοφόλι υπολογιστή</string>
+    <string name="receive_pq_warning_body">Αυτή η παραλλαγή ενσωματώνει ένα μετα-κβαντικό κλειδί XMSS μέσα στη διεύθυνση. Το επίσημο πορτοφόλι υπολογιστή δεν την παράγει, οπότε τα νομίσματα που στέλνονται εδώ είναι ορατά μόνο στο PocketPRL έως ότου το πορτοφόλι υπολογιστή της Pearl την υποστηρίξει. Χρησιμοποιήστε την τυπική διεύθυνση εκτός αν ο πληρωτής χρειάζεται συγκεκριμένα αυτήν.</string>
+    <string name="receive_reuse_info">Οι διευθύνσεις μπορούν να επαναχρησιμοποιηθούν, αλλά μια νέα ανά πληρωτή κρατά το ιστορικό σας ιδιωτικό. Οι εισερχόμενες πληρωμές εμφανίζονται στη Δραστηριότητα μόλις ο αποστολέας τις μεταδώσει.</string>
+    <string name="receive_only_send">Στείλτε μόνο Pearl (%1$s) σε αυτή τη διεύθυνση.</string>
+    <string name="receive_qr_failed">Δεν ήταν δυνατή η σχεδίαση του κωδικού QR. Αντιγράψτε ή κοινοποιήστε τη διεύθυνση αντ’ αυτού.</string>
+    <string name="receive_qr_desc">Κωδικός QR διεύθυνσης</string>
+    <string name="receive_requesting">Αίτημα %1$s %2$s</string>
+    <string name="receive_requesting_any">Αίτημα οποιουδήποτε ποσού</string>
+    <string name="receive_requesting_for">%1$s για «%2$s»</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Στάλθηκε</string>
+    <string name="sent_to">προς %1$s</string>
+    <string name="sent_confirms">Επιβεβαιώνεται σε %1$s κατά μέσο όρο.</string>
+    <string name="sent_txid">Αναγνωριστικό συναλλαγής</string>
+    <string name="sent_view_explorer">Προβολή στον εξερευνητή</string>
+    <string name="sent_done">Τέλος</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Δραστηριότητα</string>
+    <string name="activity_export">Εξαγωγή CSV</string>
+    <string name="activity_loading">Φόρτωση ιστορικού…</string>
+    <string name="activity_none">Δεν υπάρχει δραστηριότητα ακόμη</string>
+    <string name="activity_nothing">Τίποτα εδώ</string>
+    <string name="activity_none_body">Οι πληρωμές και οι ανταμοιβές εξόρυξης θα εμφανιστούν μόλις τις δει ο δείκτης.</string>
+    <string name="activity_title_single">Συναλλαγή</string>
+    <string name="activity_not_found">Η συναλλαγή δεν βρέθηκε</string>
+    <string name="activity_self">Στάλθηκε στον εαυτό σας • μόνο χρέωση δικτύου</string>
+    <string name="activity_fiat_today">≈ %1$s σήμερα</string>
+    <string name="activity_pending_mempool">Σε εκκρεμότητα στο mempool</string>
+    <string name="activity_conf_of_maturity">%1$d από %2$d επιβεβαιώσεις για δαπάνη</string>
+    <string name="activity_confirmed">Επιβεβαιωμένο • %1$s επιβεβαιώσεις</string>
+    <string name="activity_spendable_in">Διαθέσιμο σε %1$d μπλοκ (%2$s)</string>
+    <string name="activity_txid">Αναγνωριστικό συναλλαγής</string>
+    <string name="activity_from">Από</string>
+    <string name="activity_to">Προς</string>
+    <string name="activity_from_your">Από τη διεύθυνσή σας</string>
+    <string name="activity_to_your">Στη διεύθυνσή σας</string>
+    <string name="activity_save_contact">Αποθήκευση ως επαφή</string>
+    <string name="activity_view_explorer">Προβολή στον εξερευνητή</string>
+    <string name="activity_maturity_info">Οι ανταμοιβές μπλοκ γίνονται διαθέσιμες μετά από %1$d επιβεβαιώσεις, όπως σε κάθε αλυσίδα που προέρχεται από το Bitcoin.</string>
+    <string name="activity_note">Σημείωση</string>
+    <string name="activity_note_placeholder">Για τι ήταν αυτό;</string>
+    <string name="activity_note_hint">Οι σημειώσεις μένουν μόνο σε αυτό το τηλέφωνο.</string>
+    <string name="activity_contact_new">Νέα επαφή</string>
+    <string name="activity_contact_edit">Επεξεργασία επαφής</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Σύνολο εξόδων</string>
+    <string name="activity_filter_all">Όλα</string>
+    <string name="activity_filter_received">Ελήφθησαν</string>
+    <string name="activity_filter_sent">Στάλθηκαν</string>
+    <string name="activity_filter_mined">Εξορύχθηκαν</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d συναλλαγή</item>
+        <item quantity="other">%1$d συναλλαγές</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d επιβεβαίωση</item>
+        <item quantity="other">%1$d επιβεβαιώσεις</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_section_wallet">Πορτοφόλι</string>
+    <string name="settings_section_appearance">Εμφάνιση</string>
+    <string name="settings_section_numbers">Αριθμοί &amp; νόμισμα</string>
+    <string name="settings_section_dashboard">Πίνακας ελέγχου</string>
+    <string name="settings_section_security">Ασφάλεια &amp; απόρρητο</string>
+    <string name="settings_section_notifications">Ειδοποιήσεις</string>
+    <string name="settings_section_network">Δίκτυο</string>
+    <string name="settings_section_backup">Αντίγραφο ασφαλείας</string>
+    <string name="settings_section_about">Σχετικά</string>
+    <string name="settings_section_danger">Ζώνη κινδύνου</string>
+    <string name="settings_name">Όνομα</string>
+    <string name="settings_created">Δημιουργήθηκε</string>
+    <string name="settings_wallets">Πορτοφόλια</string>
+    <string name="settings_wallets_one">Μόνο αυτό</string>
+    <string name="settings_wallets_n">%1$d σε αυτή τη συσκευή</string>
+    <string name="settings_contacts">Επαφές</string>
+    <string name="settings_contacts_saved">%1$d αποθηκευμένες</string>
+    <string name="settings_addresses">Διευθύνσεις</string>
+    <string name="settings_addresses_derived">%1$d παρήχθησαν</string>
+    <string name="settings_change_password">Αλλαγή κωδικού</string>
+    <string name="settings_biometric">Βιομετρικό ξεκλείδωμα</string>
+    <string name="settings_biometric_none">Κανένα καταχωρισμένο</string>
+    <string name="settings_biometric_sub">Δακτυλικό αποτύπωμα ή πρόσωπο</string>
+    <string name="settings_confirm_send">Επιβεβαίωση πριν από την αποστολή</string>
+    <string name="settings_confirm_send_sub">Ερώτηση σε κάθε πληρωμή</string>
+    <string name="settings_auto_lock">Αυτόματο κλείδωμα</string>
+    <string name="settings_hide_balances">Απόκρυψη υπολοίπων</string>
+    <string name="settings_hide_balances_sub">Απόκρυψη κάθε ποσού</string>
+    <string name="settings_start_hidden">Έναρξη κρυφά</string>
+    <string name="settings_start_hidden_sub">Απόκρυψη υπολοίπων κατά το ξεκλείδωμα</string>
+    <string name="settings_secure_all">Αποκλεισμός στιγμιοτύπων παντού</string>
+    <string name="settings_secure_all_sub">Προστασία και των οθονών αρχικής και δραστηριότητας</string>
+    <string name="settings_theme">Θέμα</string>
+    <string name="settings_accent">Χρώμα έμφασης</string>
+    <string name="settings_dynamic_color">Δυναμικό χρώμα</string>
+    <string name="settings_dynamic_color_sub">Χρήση της παλέτας ταπετσαρίας συστήματος (Android 12+)</string>
+    <string name="settings_reduced_motion">Μειωμένη κίνηση</string>
+    <string name="settings_reduced_motion_sub">Χωρίς κυλιόμενα ψηφία ή κινούμενα σχέδια</string>
+    <string name="settings_odometer">Κινούμενη εικόνα οδομέτρου</string>
+    <string name="settings_odometer_sub">Κυλιόμενα ψηφία στα υπόλοιπα</string>
+    <string name="settings_odometer_haptics">Απτική ανάδραση οδομέτρου</string>
+    <string name="settings_odometer_haptics_sub">Δόνηση σε κάθε περιστροφή</string>
+    <string name="settings_odometer_haptics_off">Χωρίς εφέ όταν η κίνηση είναι απενεργοποιημένη</string>
+    <string name="settings_show_fiat">Εμφάνιση αξίας σε fiat</string>
+    <string name="settings_fiat_currency">Νόμισμα fiat</string>
+    <string name="settings_decimals">Δεκαδικά υπολοίπου</string>
+    <string name="settings_decimal_sep">Διαχωριστικό δεκαδικών</string>
+    <string name="settings_grouping_sep">Διαχωριστικό χιλιάδων</string>
+    <string name="settings_hero">Μεγάλος αριθμός</string>
+    <string name="settings_hero_total">Συνολικό υπόλοιπο</string>
+    <string name="settings_hero_spendable">Διαθέσιμο υπόλοιπο</string>
+    <string name="settings_show_change">Μεταβολή 24ωρου</string>
+    <string name="settings_show_change_sub">Εμφάνιση της ένδειξης ημερήσιας μεταβολής</string>
+    <string name="settings_show_mining">Κάρτα ανταμοιβών εξόρυξης</string>
+    <string name="settings_show_mining_sub">Απόκρυψη αν δεν εξορύσσετε σε αυτό το πορτοφόλι</string>
+    <string name="settings_poll_mode">Ρυθμός ανανέωσης</string>
+    <string name="settings_poll_live">Ζωντανά</string>
+    <string name="settings_poll_balanced">Ισορροπημένο</string>
+    <string name="settings_poll_battery">Εξοικονόμηση μπαταρίας</string>
+    <string name="settings_notify_incoming">Εισερχόμενες πληρωμές</string>
+    <string name="settings_notify_incoming_sub">Έλεγχος %1$s</string>
+    <string name="settings_price_alerts">Ειδοποιήσεις τιμής</string>
+    <string name="settings_price_alerts_sub">Ειδοποίηση για μεγάλες μεταβολές 24ώρου</string>
+    <string name="settings_alert_threshold">Όριο ειδοποίησης</string>
+    <string name="settings_alert_threshold_sub">Μεταβολή %1$s σε 24 ώρες</string>
+    <string name="settings_reveal_seed">Εμφάνιση φράσης ανάκτησης</string>
+    <string name="settings_reveal_seed_sub">Απαιτεί τον κωδικό σας</string>
+    <string name="settings_indexer">Δείκτης (Blockbook)</string>
+    <string name="settings_about_version">Έκδοση %1$s</string>
+    <string name="settings_delete">Διαγραφή αυτού του πορτοφολιού</string>
+    <string name="settings_password_title">Αλλαγή κωδικού</string>
+    <string name="settings_password_current">Τρέχων κωδικός</string>
+    <string name="settings_password_new">Νέος κωδικός</string>
+    <string name="settings_password_confirm">Επιβεβαίωση νέου κωδικού</string>
+    <string name="settings_password_updated">Ο κωδικός άλλαξε.</string>
+    <string name="settings_password_update">Ενημέρωση κωδικού</string>
+    <string name="settings_password_info">Η αλλαγή κωδικού επανακρυπτογραφεί το κλειδί μόνο σε αυτή τη συσκευή. Η φράση ανάκτησης παραμένει η ίδια.</string>
+    <string name="settings_password_error_current">Ο τρέχων κωδικός είναι λανθασμένος</string>
+    <string name="settings_password_error_short">Χρησιμοποιήστε τουλάχιστον 8 χαρακτήρες με συνδυασμό γραμμάτων, αριθμών ή συμβόλων.</string>
+    <string name="settings_seed_title">Φράση ανάκτησης</string>
+    <string name="settings_seed_warning">Μην κοινοποιείτε ποτέ τη φράση ανάκτησής σας. Το προσωπικό του PocketPRL ή οι προγραμματιστές της Pearl δεν θα τη ζητήσουν ποτέ.</string>
+    <string name="settings_seed_reveal">Αποκάλυψη</string>
+    <string name="settings_seed_hex">Hex seed</string>
+    <string name="settings_seed_written_hint">Γράψτε τη σε χαρτί. Τα στιγμιότυπα οθόνης είναι αποκλεισμένα σε αυτή την οθόνη.</string>
+    <string name="settings_rename_title">Μετονομασία πορτοφολιού</string>
+    <string name="settings_auto_lock_title">Αυτόματο κλείδωμα μετά από</string>
+    <string name="settings_theme_title">Θέμα</string>
+    <string name="settings_accent_title">Χρώμα έμφασης</string>
+    <string name="settings_delete_title">Διαγραφή «%1$s»;</string>
+    <string name="settings_delete_body">Αυτό αφαιρεί τα κρυπτογραφημένα κλειδιά, το προσωρινά αποθηκευμένο ιστορικό, τις επαφές και τις σημειώσεις αυτού του πορτοφολιού από αυτό το τηλέφωνο. Τα άλλα πορτοφόλια δεν επηρεάζονται. Βεβαιωθείτε ότι έχετε τη φράση ανάκτησης. Πληκτρολογήστε DELETE για επιβεβαίωση.</string>
+    <string name="settings_threshold_title">Όριο ειδοποίησης τιμής</string>
+    <string name="settings_threshold_intro">Ειδοποίηση όταν η μεταβολή 24ώρου φτάσει:</string>
+    <string name="settings_addresses_title">Διευθύνσεις</string>
+    <string name="settings_addresses_checking">Έλεγχος…</string>
+    <string name="settings_addresses_derived_sub">%1$d δείκτες παρήχθησαν</string>
+    <string name="settings_addresses_rescan">Επανάσαρωση κάθε διεύθυνσης</string>
+    <string name="settings_addresses_receive">Λήψη #%1$d</string>
+    <string name="settings_addresses_change">Ρέστα #%1$d</string>
+    <string name="settings_addresses_pq">%1$s • μετα-κβαντική παραλλαγή</string>
+    <string name="settings_addresses_used">χρησιμοποιημένη</string>
+    <string name="settings_addresses_info">Πατήστε μια διεύθυνση για αντιγραφή. Παραγωγή: m/86’/%1$d’/0’/branch/index, διαδρομή κλειδιού BIP-86 όπως στο πορτοφόλι υπολογιστή. Κάθε δείκτης έχει επίσης μια μετα-κβαντική παραλλαγή (XMSS tapleaf από purpose 222’) που παρακολουθείται και εμφανίζεται εδώ μόλις χρησιμοποιηθεί. Το κουμπί ανανέωσης ελέγχει κάθε διεύθυνση, και τις δύο παραλλαγές, αυτή τη στιγμή· η αρχική οθόνη ελέγχει μόνο όσες χρησιμοποιούνται.</string>
+    <string name="settings_contacts_title">Επαφές</string>
+    <string name="settings_contacts_empty">Δεν υπάρχουν επαφές ακόμη</string>
+    <string name="settings_contacts_empty_body">Αποθηκεύστε τις διευθύνσεις που πληρώνετε συχνά. Τα ονόματα εμφανίζονται στη δραστηριότητά σας και στο πεδίο παραλήπτη.</string>
+    <string name="settings_contacts_add">Προσθήκη επαφής</string>
+    <string name="settings_contacts_info">Οι επαφές αποθηκεύονται μόνο σε αυτό το τηλέφωνο και δεν είναι μέρος της φράσης ανάκτησής σας.</string>
+    <string name="settings_contacts_new">Νέα επαφή</string>
+    <string name="settings_contacts_address">Διεύθυνση %1$s</string>
+    <string name="settings_contacts_invalid">Μη έγκυρη διεύθυνση %1$s</string>
+    <string name="settings_contacts_name_required">Δώστε ένα όνομα στην επαφή</string>
+    <string name="settings_about_title">Σχετικά</string>
+    <string name="settings_about_source">Πηγαίος κώδικας PocketPRL</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Πηγαίος κώδικας Pearl (GitHub)</string>
+    <string name="settings_about_explorer">Εξερευνητής μπλοκ</string>
+    <string name="settings_about_check">Έλεγχος για ενημερώσεις</string>
+    <string name="settings_about_checking">Έλεγχος…</string>
+    <string name="settings_about_latest">Έχετε την τελευταία έκδοση (v%1$s).</string>
+    <string name="settings_about_failed">Δεν ήταν δυνατή η πρόσβαση στο GitHub. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.</string>
+    <string name="settings_about_update_title">Διαθέσιμη ενημέρωση</string>
+    <string name="settings_about_update_body">Η έκδοση %1$s είναι διαθέσιμη. Έχετε την v%2$s.</string>
+    <string name="settings_about_update">Ενημέρωση</string>
+    <string name="settings_about_later">Αργότερα</string>
+    <string name="settings_about_version_label">Έκδοση</string>
+    <string name="settings_about_network">Δίκτυο</string>
+    <string name="settings_about_coin_type">Τύπος νομίσματος</string>
+    <string name="settings_about_addresses">Διευθύνσεις</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Υπογραφή</string>
+    <string name="settings_about_signing_value">Διαδρομή κλειδιού BIP-340 Schnorr, libsecp256k1</string>
+    <string name="settings_about_pq">Δέσμευση PQ</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">Το PocketPRL είναι ένα ανεξάρτητο, ανοιχτού κώδικα ελαφρύ πορτοφόλι για το δίκτυο Pearl. Παράγει τις ίδιες διευθύνσεις με το επίσημο πορτοφόλι υπολογιστή (oyster) και είναι επαληθευμένο με διανύσματα δοκιμής που δημιουργήθηκαν από τον πηγαίο κώδικα της Pearl.</string>
+    <string name="settings_about_warranty">Αυτό το λογισμικό παρέχεται ως έχει χωρίς εγγύηση. Επαληθεύστε τις εκδόσεις, κρατήστε τη φράση ανάκτησης εκτός σύνδεσης και δοκιμάστε πρώτα με μικρά ποσά.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Δείκτης</string>
+    <string name="indexer_body">Το PocketPRL διαβάζει υπόλοιπα, ιστορικό και εκτιμήσεις χρεώσεων από έναν δείκτη Blockbook και μεταδίδει μέσω αυτού. Τα κλειδιά δεν φεύγουν ποτέ από το τηλέφωνο, αλλά ο δείκτης μαθαίνει ποιες διευθύνσεις αναζητάτε. Στρέψτε το στη δική σας εγκατάσταση αν αυτό σας απασχολεί.</string>
+    <string name="indexer_label">URL Blockbook (μόνο https)</string>
+    <string name="indexer_default">Προεπιλογή: %1$s</string>
+    <string name="indexer_saved">Αποθηκεύτηκε. Σύρετε προς τα κάτω στην αρχική οθόνη για επανασυγχρονισμό.</string>
+    <string name="indexer_save">Αποθήκευση</string>
+    <string name="indexer_reset">Επαναφορά προεπιλογής</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Αυτόματο (σύστημα)</string>
+    <string name="theme_light">Φωτεινό</string>
+    <string name="theme_dark">Σκοτεινό</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Ωκεανός</string>
+    <string name="accent_sunset">Ηλιοβασίλεμα</string>
+    <string name="accent_violet">Βιολετί</string>
+    <string name="accent_forest">Δάσος</string>
+    <string name="accent_rose">Ροζ</string>
+    <string name="accent_mono">Μονόχρωμο</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Στενό κενό</string>
+    <string name="grouping_space">Κενό</string>
+    <string name="grouping_comma">Κόμμα</string>
+    <string name="grouping_period">Τελεία</string>
+    <string name="grouping_apostrophe">Απόστροφος</string>
+    <string name="grouping_none">Κανένα</string>
+    <string name="decimal_period">Τελεία (.)</string>
+    <string name="decimal_comma">Κόμμα (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Καμία σύνδεση με τον δείκτη</string>
+    <string name="sync_err_not_responding">Ο δείκτης δεν αποκρίνεται</string>
+    <string name="sync_err_no_internet">Καμία σύνδεση στο διαδίκτυο</string>
+    <string name="sync_err_lost_connection">Χάθηκε η σύνδεση με τον δείκτη</string>
+    <string name="wallet_deriving_receive">Παραγωγή διεύθυνσης λήψης %1$d από %2$d</string>
+    <string name="wallet_deriving_change">Παραγωγή διεύθυνσης ρέστων %1$d από %2$d</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">Έλεγχος %1$d διεύθυνσης…</item>
+        <item quantity="other">Έλεγχος %1$d διευθύνσεων…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">Δεν ήταν δυνατός ο έλεγχος %1$d διεύθυνσης (%2$s)· επανάληψη</item>
+        <item quantity="other">Δεν ήταν δυνατός ο έλεγχος %1$d διευθύνσεων (%2$s)· επανάληψη</item>
+    </plurals>
+    <string name="address_err_enter">Εισαγάγετε διεύθυνση παραλήπτη</string>
+    <string name="address_err_invalid">Μη έγκυρη διεύθυνση Pearl</string>
+    <string name="address_err_unknown_prefix">Άγνωστο πρόθεμα διεύθυνσης «%1$s»</string>
+    <string name="address_err_only_taproot">Υποστηρίζονται μόνο διευθύνσεις Taproot (%1$s1p…)</string>
+    <string name="address_err_invalid_length">Μη έγκυρο μήκος διεύθυνσης Taproot</string>
+    <string name="address_err_wrong_network">Αυτή είναι διεύθυνση %1$s· αυτό το πορτοφόλι είναι στο %2$s</string>
+    <string name="qr_err_invalid_link">Αυτός ο σύνδεσμος δεν είναι έγκυρο αίτημα πληρωμής %1$s.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Εισερχόμενες πληρωμές</string>
+    <string name="notif_channel_payments_desc">Πληρωμές και ανταμοιβές μπλοκ που λαμβάνονται, όταν εμφανίζονται και όταν επιβεβαιώνονται</string>
+    <string name="notif_channel_price">Ειδοποιήσεις τιμής</string>
+    <string name="notif_channel_price_desc">Μεγάλες μεταβολές τιμής PRL σε 24 ώρες</string>
+    <string name="notif_block_confirmed">Η ανταμοιβή μπλοκ επιβεβαιώθηκε</string>
+    <string name="notif_block">Ανταμοιβή μπλοκ</string>
+    <string name="notif_payment_confirmed">Η πληρωμή επιβεβαιώθηκε</string>
+    <string name="notif_payment_received">Ελήφθη πληρωμή</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Ανοίξτε το PocketPRL για λεπτομέρειες</string>
+    <string name="notif_mined">+%1$s %2$s • διαθέσιμο μετά από %3$d επιβεβαιώσεις</string>
+    <string name="notif_waiting">+%1$s %2$s • αναμονή επιβεβαίωσης</string>
+    <string name="notif_in_block">+%1$s %2$s • στο μπλοκ %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">Ειδοποίηση τιμής PRL</string>
+    <string name="price_dir_up">Πάνω</string>
+    <string name="price_dir_down">Κάτω</string>
+    <string name="price_alert_body">%1$s %2$s%%: τώρα στα %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Εξαγωγή ιστορικού</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Κάντε το δικό σας</string>
+    <string name="personalize_subtitle">Διαλέξτε πώς φαίνεται και διαβάζεται το PocketPRL. Μπορείτε να αλλάξετε όλα αυτά αργότερα στις Ρυθμίσεις.</string>
+    <string name="personalize_preview">Προεπισκόπηση</string>
+    <string name="personalize_section_look">Εμφάνιση</string>
+    <string name="personalize_section_numbers">Αριθμοί</string>
+    <string name="personalize_section_currency">Νόμισμα</string>
+    <string name="personalize_section_motion">Κίνηση</string>
+    <string name="personalize_continue">Συνέχεια</string>
+    <string name="personalize_reset">Επαναφορά προεπιλογών</string>
+    <string name="personalize_grouping_toggle">Ομαδοποίηση χιλιάδων</string>
+    <string name="notif_period">περίπου κάθε λεπτό</string>
+    <string name="autolock_immediately">Αμέσως</string>
+    <string name="autolock_1m">1 λεπτό</string>
+    <string name="autolock_5m">5 λεπτά</string>
+    <string name="autolock_15m">15 λεπτά</string>
+    <string name="autolock_1h">1 ώρα</string>
+    <string name="autolock_never">Ποτέ</string>
+    <string name="duration_seconds">%1$d δευτερόλεπτα</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Αλλαγή πορτοφολιού</string>
+    <string name="action_receive">Λήψη</string>
+    <string name="action_lock">Κλείδωμα</string>
+    <string name="action_show_balance">Εμφάνιση υπολοίπου</string>
+    <string name="action_hide_balance">Απόκρυψη υπολοίπου</string>
+    <string name="pwd_weak">Αδύναμος</string>
+    <string name="pwd_fair">Μέτριος</string>
+    <string name="pwd_good">Καλός</string>
+    <string name="pwd_strong">Ισχυρός</string>
+    <string name="pwd_strength">Κωδικός %1$s</string>
+    <string name="pwd_show">Εμφάνιση κωδικού</string>
+    <string name="pwd_hide">Απόκρυψη κωδικού</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d πορτοφόλι • %2$s</item>
+        <item quantity="other">%1$d πορτοφόλια • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Είσοδοι / έξοδοι</string>
+    <string name="activity_size_label">Μέγεθος</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Χρήση κωδικού</string>
+    <string name="bio_no_crypto_object">Κανένα αντικείμενο crypto</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Σαρώστε μια διεύθυνση Pearl ή σύνδεσμο πληρωμής</string>
+    <string name="send_open_settings">Άνοιγμα ρυθμίσεων</string>
+    <string name="send_camera_off">Η πρόσβαση στην κάμερα είναι απενεργοποιημένη για το PocketPRL.</string>
+    <string name="send_camera_needed">Η σάρωση χρειάζεται την κάμερα.</string>
+    <string name="send_for_label">Για: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Αποθηκεύστε μια διεύθυνση από μια συναλλαγή ή στις Ρυθμίσεις › Επαφές.</string>
+    <string name="receive_optional">Προαιρετικό</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Άνοιγμα ρυθμίσεων</string>
+    <string name="settings_notif_off">Οι ειδοποιήσεις είναι απενεργοποιημένες, οπότε αυτό παραμένει ανενεργό.</string>
+    <string name="settings_notif_blocked">Οι ειδοποιήσεις είναι αποκλεισμένες για το PocketPRL.</string>
+    <string name="settings_keystore_error">Δεν ήταν δυνατή η δημιουργία κλειδιού Keystore</string>
+    <string name="settings_biometric_prompt">Ενεργοποίηση βιομετρικού ξεκλειδώματος</string>
+    <string name="settings_seed_password">Κωδικός πορτοφολιού</string>
+    <string name="settings_seed_incorrect">Λανθασμένος κωδικός</string>
+    <string name="settings_copy_address">Αντιγραφή διεύθυνσης</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Αποτυχία</string>
+    <string name="vm_biometric_enable_failed">Αποτυχία ενεργοποίησης βιομετρικών</string>
+    <string name="settings_section_language">Γλώσσα</string>
+    <string name="settings_language">Γλώσσα</string>
+    <string name="settings_language_system">Προεπιλογή συστήματος</string>
+</resources>

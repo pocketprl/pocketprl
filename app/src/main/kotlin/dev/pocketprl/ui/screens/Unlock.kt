@@ -34,11 +34,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.pocketprl.R
 import dev.pocketprl.ui.Biometrics
 import dev.pocketprl.ui.components.BannerKind
 import dev.pocketprl.ui.components.FieldShape
@@ -68,12 +70,14 @@ fun UnlockScreen(vm: UnlockViewModel, onUnlocked: () -> Unit, onAddWallet: () ->
     LaunchedEffect(state.error) { if (state.error != null) haptics.reject() }
 
     var bioLaunched by rememberSaveable { mutableStateOf(false) }
+    val unlockTitle = stringResource(R.string.unlock_title, vm.walletName)
+    val biometricKeyUnavailable = stringResource(R.string.unlock_error_biometric)
 
     fun biometric() {
         val act = activity ?: return
-        val cipher = vm.biometricCipher() ?: run { vm.setError("Biometric key unavailable (was a fingerprint added or removed?). Use your password."); return }
+        val cipher = vm.biometricCipher() ?: run { vm.setError(biometricKeyUnavailable); return }
         scope.launch {
-            when (val r = Biometrics.authenticate(act, "Unlock ${vm.walletName}", "PocketPRL", cipher)) {
+            when (val r = Biometrics.authenticate(act, unlockTitle, "PocketPRL", cipher)) {
                 is Biometrics.Outcome.Success -> vm.unlockWithBiometric(r.cipher)
                 is Biometrics.Outcome.Error -> vm.setError(r.message)
                 is Biometrics.Outcome.Cancelled -> Unit
@@ -93,19 +97,19 @@ fun UnlockScreen(vm: UnlockViewModel, onUnlocked: () -> Unit, onAddWallet: () ->
         Text(vm.walletName, style = MaterialTheme.typography.headlineMedium, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onBackground)
         Text(vm.network.displayName, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         Spacer(Modifier.height(24.dp))
-        PasswordField(password, { password = it }, "Wallet password", imeAction = ImeAction.Done, onDone = { if (password.isNotEmpty()) vm.unlockWithPassword(password) }, enabled = !state.busy)
+        PasswordField(password, { password = it }, stringResource(R.string.unlock_password), imeAction = ImeAction.Done, onDone = { if (password.isNotEmpty()) vm.unlockWithPassword(password) }, enabled = !state.busy)
         Spacer(Modifier.height(12.dp))
         state.error?.let { InfoBanner(it, BannerKind.ERROR); Spacer(Modifier.height(12.dp)) }
-        PrimaryButton("Unlock", onClick = { vm.unlockWithPassword(password) }, enabled = password.isNotEmpty(), loading = state.busy)
+        PrimaryButton(stringResource(R.string.unlock_button), onClick = { vm.unlockWithPassword(password) }, enabled = password.isNotEmpty(), loading = state.busy)
         if (bioAvailable) {
             Spacer(Modifier.height(12.dp))
-            SecondaryButton("Use biometrics", onClick = { biometric() }, icon = AppIcons.Fingerprint)
+            SecondaryButton(stringResource(R.string.unlock_use_biometrics), onClick = { biometric() }, icon = AppIcons.Fingerprint)
         }
         Spacer(Modifier.height(24.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically) {
-            TextButton(onClick = { showSwitcher = true }) { Text(if (wallets.wallets.size > 1) "Switch wallet (${wallets.wallets.size})" else "Add another wallet") }
+            TextButton(onClick = { showSwitcher = true }) { Text(if (wallets.wallets.size > 1) stringResource(R.string.unlock_switch_wallet, wallets.wallets.size) else stringResource(R.string.unlock_add_another)) }
         }
-        TextButton(onClick = { showWipe = true }) { Text("Forgot password? Erase and restore", color = MaterialTheme.colorScheme.error) }
+        TextButton(onClick = { showWipe = true }) { Text(stringResource(R.string.unlock_forgot), color = MaterialTheme.colorScheme.error) }
     }
 
     if (showSwitcher) {
@@ -117,17 +121,17 @@ fun UnlockScreen(vm: UnlockViewModel, onUnlocked: () -> Unit, onAddWallet: () ->
         AlertDialog(
             onDismissRequest = { showWipe = false },
             icon = { Icon(AppIcons.Shield, contentDescription = null) },
-            title = { Text("Erase “${vm.walletName}”?") },
+            title = { Text(stringResource(R.string.unlock_erase_title, vm.walletName)) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Text("This wallet's keys and local history on this phone will be deleted. Other wallets are not affected. You can only get the funds back with the recovery phrase. Type ERASE to confirm.")
+                    Text(stringResource(R.string.unlock_erase_body))
                     OutlinedTextField(value = typed, onValueChange = { typed = it }, singleLine = true, modifier = Modifier.fillMaxWidth(), shape = FieldShape)
                 }
             },
             confirmButton = {
-                TextButton(enabled = typed == "ERASE", onClick = { scope.launch { vm.deleteWallet(); showWipe = false } }) { Text("Erase", color = MaterialTheme.colorScheme.error) }
+                TextButton(enabled = typed == "ERASE", onClick = { scope.launch { vm.deleteWallet(); showWipe = false } }) { Text(stringResource(R.string.unlock_erase_confirm), color = MaterialTheme.colorScheme.error) }
             },
-            dismissButton = { TextButton(onClick = { showWipe = false }) { Text("Cancel") } },
+            dismissButton = { TextButton(onClick = { showWipe = false }) { Text(stringResource(R.string.action_cancel)) } },
         )
     }
 }

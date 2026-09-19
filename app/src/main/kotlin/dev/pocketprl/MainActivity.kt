@@ -1,5 +1,6 @@
 package dev.pocketprl
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -13,11 +14,16 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.pocketprl.ui.AppNav
 import dev.pocketprl.ui.Qr
+import dev.pocketprl.ui.components.SecureFlags
 import dev.pocketprl.ui.theme.PocketPrlTheme
 import dev.pocketprl.ui.theme.isDarkTheme
 
 /** FragmentActivity (not ComponentActivity) because androidx.biometric needs it. */
 class MainActivity : FragmentActivity() {
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(Locales.wrap(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,7 +38,17 @@ class MainActivity : FragmentActivity() {
                 enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
                 onDispose {}
             }
-            PocketPrlTheme(darkTheme = dark) {
+            // App-wide screenshot blocking, toggled in Settings › Security.
+            DisposableEffect(settings.secureAllScreens) {
+                SecureFlags.setAppWide(window, settings.secureAllScreens)
+                onDispose {}
+            }
+            PocketPrlTheme(
+                themeMode = settings.themeMode,
+                accentTheme = settings.accentTheme,
+                dynamicColor = settings.dynamicColor,
+                reducedMotion = settings.reducedMotion,
+            ) {
                 AppNav()
             }
         }

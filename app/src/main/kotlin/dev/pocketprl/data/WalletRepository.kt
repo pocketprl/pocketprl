@@ -1,5 +1,6 @@
 package dev.pocketprl.data
 
+import dev.pocketprl.R
 import dev.pocketprl.core.chain.Address
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.chain.BuildResult
@@ -115,8 +116,12 @@ class WalletRepository(
     val vault: KeyVault,
     val settings: Settings,
     private val scope: CoroutineScope,
+    private val context: android.content.Context,
     private val priceApi: PriceApi? = null,
 ) {
+    private fun tr(resId: Int, vararg args: Any): String = context.getString(resId, *args)
+    private fun trPlural(resId: Int, quantity: Int, vararg args: Any): String =
+        context.resources.getQuantityString(resId, quantity, quantity, *args)
     val network: Network get() = vault.network ?: settings.preferredNetwork
 
     private val changed = MutableSharedFlow<Unit>(replay = 0, extraBufferCapacity = 1)
@@ -297,7 +302,7 @@ class WalletRepository(
                     if (have >= target) continue
                     session.withKeys(network) { keys ->
                         for (i in have until target) {
-                            onProgress("Deriving ${if (branch == BRANCH_EXTERNAL) "receive" else "change"} address ${i + 1} of $target")
+                            onProgress(tr(if (branch == BRANCH_EXTERNAL) R.string.wallet_deriving_receive else R.string.wallet_deriving_change, i + 1, target))
                             val (plain, pq) = keys.deriveAddresses(branch, i)
                             db.transaction { db.insertAddress(plain); db.insertAddress(pq) }
                             derived = true
@@ -388,7 +393,7 @@ class WalletRepository(
                 // Ownership is judged against every known address, not just the ones being
                 // checked, or a payment to an unchecked change address is filed as outgoing.
                 val own = db.addresses().map { it.address }.toHashSet()
-                val msg = "Checking ${rows.size} ${if (rows.size == 1) "address" else "addresses"}…"
+                val msg = trPlural(R.plurals.wallet_checking, rows.size)
                 onProgress(msg)
                 _sync.value = _sync.value.copy(progress = msg)
                 val sem = Semaphore(CONCURRENCY)
@@ -460,7 +465,7 @@ class WalletRepository(
                     ))
                 }
             }
-            val partial = failed.get().let { n -> if (n > 0) "$n ${if (n == 1) "address" else "addresses"} could not be checked (${friendlyNetwork(lastFailure)}); retrying" else null }
+            val partial = failed.get().let { n -> if (n > 0) trPlural(R.plurals.wallet_check_failed, n, friendlyNetwork(lastFailure)) else null }
             _sync.value = _sync.value.copy(syncing = false, tipHeight = tip, lastSyncAt = now, error = partial, progress = null)
             partial == null
         } catch (e: CancellationException) {
@@ -497,11 +502,11 @@ class WalletRepository(
 
     /** Maps socket-level error text to something a person can act on. */
     private fun friendlyNetwork(message: String?): String = when {
-        message == null -> "No connection to the indexer"
-        message.contains("timeout", true) || message.contains("timed out", true) -> "The indexer is not responding"
-        message.contains("Unable to resolve host", true) || message.contains("UnknownHost", true) -> "No internet connection"
+        message == null -> tr(R.string.sync_err_no_connection)
+        message.contains("timeout", true) || message.contains("timed out", true) -> tr(R.string.sync_err_not_responding)
+        message.contains("Unable to resolve host", true) || message.contains("UnknownHost", true) -> tr(R.string.sync_err_no_internet)
         message.contains("end of stream", true) || message.contains("connection abort", true) ||
-            message.contains("Connection reset", true) || message.contains("ECONNREFUSED", true) -> "Lost the connection to the indexer"
+            message.contains("Connection reset", true) || message.contains("ECONNREFUSED", true) -> tr(R.string.sync_err_lost_connection)
         else -> message
     }
 
@@ -639,8 +644,8 @@ class WalletRepository(
         val now = System.currentTimeMillis()
         if (!force && now - _price.value.fetchedAt < PRICE_TTL_MS) return _price.value.usdPerPrl
         val api = priceApi ?: return _price.value.usdPerPrl
-        val q = runCatching { api.prlUsd() }.getOrNull()
-        if (q != null) _price.value = PriceState(q.usd, now, q.change24h)
+        val q = runCatching { api.prlFiat() }.getOrNull()
+        if (q != null) _price.value = PriceState(q.fiat, now, q.change24h)
         return _price.value.usdPerPrl
     }
 
@@ -666,7 +671,7 @@ class WalletRepository(
             is Address.Result.Invalid -> throw IllegalArgumentException(r.reason)
         }
         val utxos = spendableUtxos()
-        if (utxos.isEmpty()) throw IllegalStateException("No spendable funds")
+        if (utxos.isEmpty()) throw IllegalStateException(tr(R.string.send_err_no_funds))
         var change = db.firstUnused(BRANCH_INTERNAL)
         if (change == null) { ensureLookahead(); change = db.firstUnused(BRANCH_INTERNAL) }
         val changeScript = change?.script ?: utxos.first().script

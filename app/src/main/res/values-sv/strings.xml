@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Tillbaka</string>
+    <string name="action_cancel">Avbryt</string>
+    <string name="action_save">Spara</string>
+    <string name="action_delete">Ta bort</string>
+    <string name="action_done">Klart</string>
+    <string name="action_edit">Redigera</string>
+    <string name="action_continue">Fortsätt</string>
+    <string name="action_close">Stäng</string>
+    <string name="action_add">Lägg till</string>
+    <string name="action_share">Dela</string>
+    <string name="action_copy">Kopiera</string>
+    <string name="action_retry">Försök igen</string>
+    <string name="action_scan">Skanna</string>
+    <string name="action_paste">Klistra in</string>
+    <string name="action_clear">Rensa</string>
+    <string name="action_contacts">Kontakter</string>
+    <string name="action_send">Skicka</string>
+    <string name="label_amount">Belopp</string>
+    <string name="label_name">Namn</string>
+    <string name="label_address">Adress</string>
+    <string name="label_fee">Avgift</string>
+    <string name="label_date">Datum</string>
+    <string name="label_block">Block</string>
+    <string name="label_total">Totalt</string>
+    <string name="label_to">Till</string>
+    <string name="label_from">Från</string>
+    <string name="label_network">Nätverk</string>
+    <string name="copied">Kopierat</string>
+    <string name="clipboard_address">Pearl-adress</string>
+    <string name="clipboard_txid">Transaktions-ID</string>
+    <string name="balance_hidden">Saldo dolt</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">I dag</string>
+    <string name="day_yesterday">I går</string>
+    <string name="time_just_now">nyss</string>
+    <string name="time_pending">väntar</string>
+    <string name="label_unconfirmed">Obekräftad</string>
+    <string name="eta_minutes">~%1$d min</string>
+    <string name="eta_hours">~%1$d h</string>
+    <string name="eta_hours_half">~%1$d,5 h</string>
+    <string name="time_ago_s">för %1$d s sedan</string>
+    <string name="time_ago_m">för %1$d min sedan</string>
+    <string name="time_ago_h">för %1$d h sedan</string>
+    <string name="time_ago_d">för %1$d d sedan</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Lägg till en plånbok</string>
+    <string name="welcome_add_headline">Ännu en plånbok, helt separat</string>
+    <string name="welcome_add_body">Egen återställningsfras, lösenord, historik och kontakter. Byt mellan plånböcker via rubriken på startskärmen.</string>
+    <string name="welcome_one_unlocked">Endast en plånbok är upplåst i taget; att byta låser den nuvarande.</string>
+    <string name="welcome_tagline">Pearl (PRL) i fickan. Samma nycklar som skrivbordsplånboken, utan tyngden.</string>
+    <string name="welcome_feature_selfcustody_title">Egen förvaring</string>
+    <string name="welcome_feature_selfcustody_body">Nycklar skapas och stannar på den här telefonen, krypterade och skyddade med biometri.</string>
+    <string name="welcome_feature_desktop_title">Kompatibel med skrivbordet</string>
+    <string name="welcome_feature_desktop_body">Härleder exakt samma post-kvantum-Taproot-adresser som oyster. Flytta mellan dem fritt.</string>
+    <string name="welcome_feature_overview_title">Omedelbar översikt</string>
+    <string name="welcome_feature_overview_body">Saldon, historik och mining-belöningar från Pearl-indexeraren. Ingen kedjenedladdning.</string>
+    <string name="welcome_feature_phone_title">Byggd för en telefon</string>
+    <string name="welcome_feature_phone_body">Betalningslänkar, kontakter, anteckningar, flera plånböcker och aviseringar när du får betalt.</string>
+    <string name="welcome_network">Nätverk</string>
+    <string name="welcome_create">Skapa en ny plånbok</string>
+    <string name="welcome_restore">Återställ från återställningsfras</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Min Pearl-plånbok</string>
+    <string name="onboard_step">Steg %1$d av 3 • %2$s</string>
+    <string name="onboard_title_create">Skapa plånbok</string>
+    <string name="onboard_title_seed">Din återställningsfras</string>
+    <string name="onboard_title_verify">Verifiera frasen</string>
+    <string name="onboard_title_working">Konfigurerar</string>
+    <string name="onboard_name_protect">Namnge och skydda din plånbok</string>
+    <string name="onboard_wallet_name">Plånbokens namn</string>
+    <string name="onboard_password">Lösenord</string>
+    <string name="onboard_confirm_password">Bekräfta lösenord</string>
+    <string name="onboard_password_warning">Lösenordet krypterar dina nycklar på den här enheten. Det går inte att återställa: om du glömmer det, återställ från din återställningsfras.</string>
+    <string name="onboard_password_hint">Använd minst 8 tecken med en blandning av bokstäver, siffror eller symboler.</string>
+    <string name="onboard_seed_write">Skriv ner dessa 12 ord i rätt ordning och förvara dem offline.</string>
+    <string name="onboard_seed_secret_title">Håll det hemligt</string>
+    <string name="onboard_seed_secret_body">Den som har dessa ord kontrollerar dina medel. Skärmdumpar blockeras på den här skärmen; förvara inte frasen digitalt.</string>
+    <string name="onboard_written">Jag har skrivit ner det</string>
+    <string name="onboard_creating">Skapar plånbok…</string>
+    <string name="onboard_restoring">Återställer…</string>
+    <string name="onboard_quiz_instruction">Välj rätt ord för varje position för att bekräfta din säkerhetskopia.</string>
+    <string name="onboard_word_n">Ord nr %1$d</string>
+    <string name="onboard_quiz_error">De orden matchar inte din fras. Gå tillbaka och kontrollera noga.</string>
+    <string name="onboard_verify_create">Verifiera och skapa plånbok</string>
+    <string name="onboard_restore_title">Återställ plånbok</string>
+    <string name="onboard_restore_progress_body">Varje adress behöver en post-kvantum-nyckel, så det tar en stund att härleda sökfönstret. Plånboken söker sedan igenom Pearl-indexeraren efter din historik.</string>
+    <string name="onboard_recovery_label">Återställningsfras eller hex-seed</string>
+    <string name="onboard_recovery_placeholder">12–24 ord åtskilda av mellanslag</string>
+    <string name="onboard_new_password">Nytt lösenord</string>
+    <string name="onboard_restore_compatible">Fungerar med fraser från den officiella Pearl-skrivbordsplånboken (oyster) och alla BIP-39-plånböcker som använder Pearls härledning.</string>
+    <string name="onboard_restore_button">Återställ plånbok</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">återställningsfras med %1$d ord</string>
+    <string name="onboard_check_hex">hex-seed på %1$d byte</string>
+    <string name="onboard_err_enter_phrase">Ange din återställningsfras</string>
+    <string name="onboard_err_hex_even">Hex-seed måste ha ett jämnt antal tecken</string>
+    <string name="onboard_err_hex_range">Hex-seed måste vara mellan 128 och 512 bitar</string>
+    <string name="onboard_err_enter_phrase_or_hex">Ange en återställningsfras med 12–24 ord eller en hex-seed</string>
+    <string name="onboard_err_word_count">En återställningsfras har 12, 15, 18, 21 eller 24 ord (fick %1$d)</string>
+    <string name="onboard_err_unknown_word">”%1$s” är inte ett BIP39-ord</string>
+    <string name="onboard_err_checksum">Kontrollsumman stämmer inte: kontrollera ordordningen och stavningen</string>
+    <string name="onboard_err_create_failed">Kunde inte skapa plånboken</string>
+    <string name="onboard_err_restore_failed">Återställningen misslyckades</string>
+    <string name="onboard_preparing">Förbereder plånbok…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">Lås upp %1$s</string>
+    <string name="unlock_password">Plånbokens lösenord</string>
+    <string name="unlock_button">Lås upp</string>
+    <string name="unlock_use_biometrics">Använd biometri</string>
+    <string name="unlock_switch_wallet">Byt plånbok (%1$d)</string>
+    <string name="unlock_add_another">Lägg till en plånbok</string>
+    <string name="unlock_forgot">Glömt lösenordet? Radera och återställ</string>
+    <string name="unlock_erase_title">Radera ”%1$s”?</string>
+    <string name="unlock_erase_body">Den här plånbokens nycklar och lokala historik på telefonen raderas. Andra plånböcker påverkas inte. Du kan bara få tillbaka pengarna med återställningsfrasen. Skriv ERASE för att bekräfta.</string>
+    <string name="unlock_erase_confirm">Radera</string>
+    <string name="unlock_error_biometric">Biometrisk nyckel otillgänglig (lades ett fingeravtryck till eller togs bort?). Använd ditt lösenord.</string>
+    <string name="unlock_error_incorrect">Felaktigt lösenord</string>
+    <string name="unlock_error_failed">Upplåsningen misslyckades</string>
+    <string name="unlock_error_biometric_failed">Biometrisk upplåsning misslyckades: %1$s. Använd ditt lösenord.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Plånböcker</string>
+    <string name="switcher_test_coins">%1$s • testmynt</string>
+    <string name="switcher_current">Aktuell plånbok</string>
+    <string name="switcher_add_title">Lägg till en plånbok</string>
+    <string name="switcher_add_body">Skapa en ny eller återställ en annan fras. Varje plånbok har sitt eget lösenord.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Totalt saldo</string>
+    <string name="dash_spendable">Spenderbart</string>
+    <string name="dash_incoming">Inkommande</string>
+    <string name="dash_maturing">Mognar</string>
+    <string name="dash_activity">Aktivitet</string>
+    <string name="dash_view_all">Visa alla (%1$d)</string>
+    <string name="dash_looking">Söker efter transaktioner…</string>
+    <string name="dash_no_tx">Inga transaktioner än</string>
+    <string name="dash_no_tx_body">Dela din mottagaradress eller en betalningslänk för att komma igång.</string>
+    <string name="dash_show_address">Visa min adress</string>
+    <string name="dash_testnet_warning">Du är på %1$s. Mynt här har inget värde.</string>
+    <string name="dash_sync_syncing">Synkroniserar…</string>
+    <string name="dash_sync_failed">Synkroniseringen misslyckades</string>
+    <string name="dash_sync_synced">Synkroniserad</string>
+    <string name="dash_sync_not_synced">Inte synkroniserad än</string>
+    <string name="dash_sync_block">Block %1$s • uppdaterad %2$s</string>
+    <string name="dash_sync_last">Senast synkroniserad %1$s • block %2$s</string>
+    <string name="dash_mining_rewards">Mining-belöningar</string>
+    <string name="dash_last_7_days">Senaste 7 dagarna</string>
+    <string name="dash_all_time">Totalt</string>
+    <string name="dash_mining_progress">%1$s mognar • nästa spenderbara om %2$d block (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Belöningar som mognar</string>
+    <string name="dash_price_content_desc">%1$s %2$s procent på 24 timmar</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d block</item>
+        <item quantity="other">%1$d block</item>
+    </plurals>
+    <string name="tx_received">Mottaget</string>
+    <string name="tx_sent">Skickat</string>
+    <string name="tx_self">Egen överföring</string>
+    <string name="tx_mined">Utvunnet</string>
+    <string name="tx_to_contact">Till %1$s</string>
+    <string name="tx_from_contact">Från %1$s</string>
+    <string name="tx_pending">Väntar</string>
+    <string name="tx_pending_seen">Väntar • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d bekr.</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">Skicka %1$s</string>
+    <string name="send_spendable">Spenderbart %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Ange ett giltigt belopp (upp till 8 decimaler)</string>
+    <string name="send_enter_valid_amount_short">Ange ett giltigt belopp</string>
+    <string name="send_enter_in">Ange i %1$s</string>
+    <string name="send_max">Max</string>
+    <string name="send_max_selected">Max ✓</string>
+    <string name="send_to">Till</string>
+    <string name="send_to_contact">Till • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… eller en kontakt</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Nätverksavgift</string>
+    <string name="send_use_estimates">Använd uppskattningar</string>
+    <string name="send_custom_rate">Anpassad kurs</string>
+    <string name="send_fee_rate_label">Avgiftskurs (grain per vbyte, min 1)</string>
+    <string name="send_fee_normal">Normal</string>
+    <string name="send_fee_fast">Snabb</string>
+    <string name="send_fee_loading">Kunde inte hämta avgiftsuppskattningar: %1$s</string>
+    <string name="send_summary">Sammanfattning</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Indata</string>
+    <string name="send_inputs_change">%1$d • växel %2$s</string>
+    <string name="send_slider">Skicka</string>
+    <string name="send_not_ready">Inte redo</string>
+    <string name="send_sending">Skickar</string>
+    <string name="send_confirming">Bekräftar</string>
+    <string name="send_slide">Dra eller dubbeltryck för att skicka</string>
+    <string name="send_why_amount_blank">Ange ett belopp för att fortsätta</string>
+    <string name="send_why_amount_invalid">Ange ett giltigt belopp för att fortsätta</string>
+    <string name="send_why_recipient_blank">Ange en mottagare för att fortsätta</string>
+    <string name="send_why_recipient_invalid">Åtgärda mottagaradressen för att fortsätta</string>
+    <string name="send_why_fee_unavailable">Avgiftsuppskattning otillgänglig</string>
+    <string name="send_why_waiting_fees">Väntar på avgiftsuppskattningar…</string>
+    <string name="send_why_preparing">Förbereder betalningen…</string>
+    <string name="send_err_no_funds">Inga spenderbara medel</string>
+    <string name="send_err_insufficient">Otillräckliga medel: behöver %1$s %2$s inklusive avgiften, har %3$s</string>
+    <string name="send_err_changed">Betalningen ändrades medan du bekräftade den. Kontrollera uppgifterna och försök igen.</string>
+    <string name="send_password_title">Plånbokens lösenord</string>
+    <string name="send_password_body">Skickar %1$s %2$s till %3$s.</string>
+    <string name="send_auth_failed">Autentiseringen misslyckades</string>
+    <string name="send_bio_unavailable">Biometrisk nyckel otillgänglig; inaktivera och aktivera biometri igen i Inställningar.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">Ta emot %1$s</string>
+    <string name="receive_preparing">Förbereder adress…</string>
+    <string name="receive_standard">Adress nr %1$d • Taproot, samma som skrivbordsplånboken</string>
+    <string name="receive_pq">Adress nr %1$d • post-kvantum-variant</string>
+    <string name="receive_copy">Kopiera</string>
+    <string name="receive_share">Dela</string>
+    <string name="receive_share_request">Dela begäran</string>
+    <string name="receive_request_amount">Begär ett belopp</string>
+    <string name="receive_label">Etikett (valfritt)</string>
+    <string name="receive_label_placeholder">Faktura nr 42</string>
+    <string name="receive_link_hint">Med ett belopp eller en etikett blir koden och delningslänken en betalningslänk som fyller i beloppet åt avsändaren.</string>
+    <string name="receive_fresh">Använd en ny adress</string>
+    <string name="receive_generating">Genererar…</string>
+    <string name="receive_show_pq">Visa post-kvantum-variant</string>
+    <string name="receive_show_std">Visa standardadress</string>
+    <string name="receive_pq_warning_title">Inte synlig för skrivbordsplånboken</string>
+    <string name="receive_pq_warning_body">Den här varianten bäddar in en XMSS-post-kvantumnyckel i adressen. Den officiella skrivbordsplånboken härleder den inte, så mynt som skickas hit är bara synliga i PocketPRL tills Pearls skrivbordsplånbok stöder det. Använd standardadressen om inte betalaren särskilt behöver den här.</string>
+    <string name="receive_reuse_info">Adresser kan återanvändas, men en ny för varje betalare håller din historik privat. Inkommande betalningar visas i Aktivitet så snart avsändaren sänder.</string>
+    <string name="receive_only_send">Skicka endast Pearl (%1$s) till den här adressen.</string>
+    <string name="receive_qr_failed">QR-koden kunde inte ritas. Kopiera eller dela adressen i stället.</string>
+    <string name="receive_qr_desc">QR-kod för adress</string>
+    <string name="receive_requesting">Begär %1$s %2$s</string>
+    <string name="receive_requesting_any">Begär valfritt belopp</string>
+    <string name="receive_requesting_for">%1$s för ”%2$s”</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Skickat</string>
+    <string name="sent_to">till %1$s</string>
+    <string name="sent_confirms">Bekräftas i genomsnitt om %1$s.</string>
+    <string name="sent_txid">Transaktions-ID</string>
+    <string name="sent_view_explorer">Visa i utforskaren</string>
+    <string name="sent_done">Klart</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Aktivitet</string>
+    <string name="activity_export">Exportera CSV</string>
+    <string name="activity_loading">Laddar historik…</string>
+    <string name="activity_none">Ingen aktivitet än</string>
+    <string name="activity_nothing">Inget här</string>
+    <string name="activity_none_body">Betalningar och mining-belöningar visas så snart indexeraren ser dem.</string>
+    <string name="activity_title_single">Transaktion</string>
+    <string name="activity_not_found">Transaktionen hittades inte</string>
+    <string name="activity_self">Skickat till dig själv • endast nätverksavgift</string>
+    <string name="activity_fiat_today">≈ %1$s i dag</string>
+    <string name="activity_pending_mempool">Väntar i mempool</string>
+    <string name="activity_conf_of_maturity">%1$d av %2$d bekräftelser för att spendera</string>
+    <string name="activity_confirmed">Bekräftad • %1$s bekräftelser</string>
+    <string name="activity_spendable_in">Spenderbar om %1$d block (%2$s)</string>
+    <string name="activity_txid">Transaktions-ID</string>
+    <string name="activity_from">Från</string>
+    <string name="activity_to">Till</string>
+    <string name="activity_from_your">Från din adress</string>
+    <string name="activity_to_your">Till din adress</string>
+    <string name="activity_save_contact">Spara som kontakt</string>
+    <string name="activity_view_explorer">Visa i utforskaren</string>
+    <string name="activity_maturity_info">Blockbelöningar blir spenderbara efter %1$d bekräftelser, precis som på varje Bitcoin-baserad kedja.</string>
+    <string name="activity_note">Anteckning</string>
+    <string name="activity_note_placeholder">Vad var detta till?</string>
+    <string name="activity_note_hint">Anteckningar stannar bara på den här telefonen.</string>
+    <string name="activity_contact_new">Ny kontakt</string>
+    <string name="activity_contact_edit">Redigera kontakt</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Totalt ut</string>
+    <string name="activity_filter_all">Alla</string>
+    <string name="activity_filter_received">Mottagna</string>
+    <string name="activity_filter_sent">Skickade</string>
+    <string name="activity_filter_mined">Utvunna</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d transaktion</item>
+        <item quantity="other">%1$d transaktioner</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d bekräftelse</item>
+        <item quantity="other">%1$d bekräftelser</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Inställningar</string>
+    <string name="settings_section_wallet">Plånbok</string>
+    <string name="settings_section_appearance">Utseende</string>
+    <string name="settings_section_numbers">Siffror och valuta</string>
+    <string name="settings_section_dashboard">Översikt</string>
+    <string name="settings_section_security">Säkerhet och integritet</string>
+    <string name="settings_section_notifications">Aviseringar</string>
+    <string name="settings_section_network">Nätverk</string>
+    <string name="settings_section_backup">Säkerhetskopiering</string>
+    <string name="settings_section_about">Om</string>
+    <string name="settings_section_danger">Riskzon</string>
+    <string name="settings_name">Namn</string>
+    <string name="settings_created">Skapad</string>
+    <string name="settings_wallets">Plånböcker</string>
+    <string name="settings_wallets_one">Endast den här</string>
+    <string name="settings_wallets_n">%1$d på den här enheten</string>
+    <string name="settings_contacts">Kontakter</string>
+    <string name="settings_contacts_saved">%1$d sparade</string>
+    <string name="settings_addresses">Adresser</string>
+    <string name="settings_addresses_derived">%1$d härledda</string>
+    <string name="settings_change_password">Byt lösenord</string>
+    <string name="settings_biometric">Biometrisk upplåsning</string>
+    <string name="settings_biometric_none">Ingen registrerad</string>
+    <string name="settings_biometric_sub">Fingeravtryck eller ansikte</string>
+    <string name="settings_confirm_send">Bekräfta före sändning</string>
+    <string name="settings_confirm_send_sub">Fråga vid varje betalning</string>
+    <string name="settings_auto_lock">Automatisk låsning</string>
+    <string name="settings_hide_balances">Dölj saldon</string>
+    <string name="settings_hide_balances_sub">Maskera varje belopp</string>
+    <string name="settings_start_hidden">Starta dold</string>
+    <string name="settings_start_hidden_sub">Dölj saldon när du låser upp</string>
+    <string name="settings_secure_all">Blockera skärmdumpar överallt</string>
+    <string name="settings_secure_all_sub">Skydda även start- och aktivitetsskärmarna</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_accent">Accentfärg</string>
+    <string name="settings_dynamic_color">Dynamisk färg</string>
+    <string name="settings_dynamic_color_sub">Använd systemets bakgrundspalett (Android 12+)</string>
+    <string name="settings_reduced_motion">Minska rörelse</string>
+    <string name="settings_reduced_motion_sub">Inga rullande siffror eller skärmanimeringar</string>
+    <string name="settings_odometer">Vägmätaranimering</string>
+    <string name="settings_odometer_sub">Rullande siffror på saldon</string>
+    <string name="settings_odometer_haptics">Vägmätarhaptik</string>
+    <string name="settings_odometer_haptics_sub">Känn ett tick vid varje rullning</string>
+    <string name="settings_odometer_haptics_off">Ingen effekt när animeringen är av</string>
+    <string name="settings_show_fiat">Visa fiatvärde</string>
+    <string name="settings_fiat_currency">Fiatvaluta</string>
+    <string name="settings_decimals">Saldodecimaler</string>
+    <string name="settings_decimal_sep">Decimaltecken</string>
+    <string name="settings_grouping_sep">Tusentalsavgränsare</string>
+    <string name="settings_hero">Stort nummer</string>
+    <string name="settings_hero_total">Totalt saldo</string>
+    <string name="settings_hero_spendable">Spenderbart saldo</string>
+    <string name="settings_show_change">24 h prisförändring</string>
+    <string name="settings_show_change_sub">Visa chipset för daglig förändring</string>
+    <string name="settings_show_mining">Kort för mining-belöningar</string>
+    <string name="settings_show_mining_sub">Dölj om du inte minar till den här plånboken</string>
+    <string name="settings_poll_mode">Uppdateringsfrekvens</string>
+    <string name="settings_poll_live">Live</string>
+    <string name="settings_poll_balanced">Balanserad</string>
+    <string name="settings_poll_battery">Batterisparläge</string>
+    <string name="settings_notify_incoming">Inkommande betalningar</string>
+    <string name="settings_notify_incoming_sub">Kontrolleras %1$s</string>
+    <string name="settings_price_alerts">Prislarm</string>
+    <string name="settings_price_alerts_sub">Avisera vid stora 24 h-rörelser</string>
+    <string name="settings_alert_threshold">Larmtröskel</string>
+    <string name="settings_alert_threshold_sub">%1$s rörelse över 24 timmar</string>
+    <string name="settings_reveal_seed">Visa återställningsfras</string>
+    <string name="settings_reveal_seed_sub">Kräver ditt lösenord</string>
+    <string name="settings_indexer">Indexerare (Blockbook)</string>
+    <string name="settings_about_version">Version %1$s</string>
+    <string name="settings_delete">Ta bort den här plånboken</string>
+    <string name="settings_password_title">Byt lösenord</string>
+    <string name="settings_password_current">Nuvarande lösenord</string>
+    <string name="settings_password_new">Nytt lösenord</string>
+    <string name="settings_password_confirm">Bekräfta nytt lösenord</string>
+    <string name="settings_password_updated">Lösenordet har ändrats.</string>
+    <string name="settings_password_update">Uppdatera lösenord</string>
+    <string name="settings_password_info">Att byta lösenord krypterar om nyckeln endast på den här enheten. Din återställningsfras förblir densamma.</string>
+    <string name="settings_password_error_current">Nuvarande lösenord är felaktigt</string>
+    <string name="settings_password_error_short">Använd minst 8 tecken med en blandning av bokstäver, siffror eller symboler.</string>
+    <string name="settings_seed_title">Återställningsfras</string>
+    <string name="settings_seed_warning">Dela aldrig din återställningsfras. Personal från PocketPRL eller Pearls utvecklare kommer aldrig att be om den.</string>
+    <string name="settings_seed_reveal">Visa</string>
+    <string name="settings_seed_hex">Hex-seed</string>
+    <string name="settings_seed_written_hint">Skriv ner den på papper. Skärmdumpar blockeras på den här skärmen.</string>
+    <string name="settings_rename_title">Byt namn på plånboken</string>
+    <string name="settings_auto_lock_title">Automatisk låsning efter</string>
+    <string name="settings_theme_title">Tema</string>
+    <string name="settings_accent_title">Accentfärg</string>
+    <string name="settings_delete_title">Ta bort ”%1$s”?</string>
+    <string name="settings_delete_body">Detta tar bort den här plånbokens krypterade nycklar, cachelagrade historik, kontakter och anteckningar från telefonen. Andra plånböcker påverkas inte. Se till att du har återställningsfrasen. Skriv DELETE för att bekräfta.</string>
+    <string name="settings_threshold_title">Tröskel för prislarm</string>
+    <string name="settings_threshold_intro">Larma när 24-timmarsförändringen når:</string>
+    <string name="settings_addresses_title">Adresser</string>
+    <string name="settings_addresses_checking">Kontrollerar…</string>
+    <string name="settings_addresses_derived_sub">%1$d index härledda</string>
+    <string name="settings_addresses_rescan">Skanna om alla adresser</string>
+    <string name="settings_addresses_receive">Mottagning nr %1$d</string>
+    <string name="settings_addresses_change">Växel nr %1$d</string>
+    <string name="settings_addresses_pq">%1$s • post-kvantum-variant</string>
+    <string name="settings_addresses_used">använd</string>
+    <string name="settings_addresses_info">Tryck på en adress för att kopiera den. Härledning: m/86’/%1$d’/0’/branch/index, BIP-86-nyckelsökväg som skrivbordsplånboken. Varje index har också en post-kvantum-variant (XMSS-tapleaf från purpose 222’) som övervakas och listas här när den har använts. Uppdateringsknappen kontrollerar varje adress, båda varianterna, just nu; startskärmen kontrollerar bara de som används.</string>
+    <string name="settings_contacts_title">Kontakter</string>
+    <string name="settings_contacts_empty">Inga kontakter än</string>
+    <string name="settings_contacts_empty_body">Spara adresserna du betalar ofta. Namnen visas i din aktivitet och i mottagarfältet.</string>
+    <string name="settings_contacts_add">Lägg till kontakt</string>
+    <string name="settings_contacts_info">Kontakter lagras bara på den här telefonen och ingår inte i din återställningsfras.</string>
+    <string name="settings_contacts_new">Ny kontakt</string>
+    <string name="settings_contacts_address">%1$s-adress</string>
+    <string name="settings_contacts_invalid">Inte en giltig %1$s-adress</string>
+    <string name="settings_contacts_name_required">Ge kontakten ett namn</string>
+    <string name="settings_about_title">Om</string>
+    <string name="settings_about_source">Källkod för PocketPRL</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Pearl-källkod (GitHub)</string>
+    <string name="settings_about_explorer">Blockutforskare</string>
+    <string name="settings_about_check">Sök efter uppdateringar</string>
+    <string name="settings_about_checking">Kontrollerar…</string>
+    <string name="settings_about_latest">Du har den senaste versionen (v%1$s).</string>
+    <string name="settings_about_failed">Kunde inte nå GitHub. Kontrollera anslutningen och försök igen.</string>
+    <string name="settings_about_update_title">Uppdatering tillgänglig</string>
+    <string name="settings_about_update_body">Version %1$s finns tillgänglig. Du har v%2$s.</string>
+    <string name="settings_about_update">Uppdatera</string>
+    <string name="settings_about_later">Senare</string>
+    <string name="settings_about_version_label">Version</string>
+    <string name="settings_about_network">Nätverk</string>
+    <string name="settings_about_coin_type">Mynttyp</string>
+    <string name="settings_about_addresses">Adresser</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Signering</string>
+    <string name="settings_about_signing_value">BIP-340 Schnorr-nyckelsökväg, libsecp256k1</string>
+    <string name="settings_about_pq">PQ-åtagande</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL är en oberoende plånbok med öppen källkod och låg vikt för Pearl-nätverket. Den härleder samma adresser som den officiella skrivbordsplånboken (oyster) och är verifierad mot den med testvektorer genererade från Pearl-källkoden.</string>
+    <string name="settings_about_warranty">Den här programvaran tillhandahålls i befintligt skick utan garanti. Verifiera byggen, förvara din återställningsfras offline och testa med små belopp först.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Indexerare</string>
+    <string name="indexer_body">PocketPRL läser saldon, historik och avgiftsuppskattningar från en Blockbook-indexerare och sänder via den. Nycklar lämnar aldrig telefonen, men indexeraren får veta vilka adresser du slår upp. Peka den mot din egen instans om det är viktigt för dig.</string>
+    <string name="indexer_label">Blockbook-URL (endast https)</string>
+    <string name="indexer_default">Standard: %1$s</string>
+    <string name="indexer_saved">Sparat. Dra för att uppdatera på startskärmen för att synkronisera om.</string>
+    <string name="indexer_save">Spara</string>
+    <string name="indexer_reset">Återställ till standard</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Auto (system)</string>
+    <string name="theme_light">Ljust</string>
+    <string name="theme_dark">Mörkt</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Ocean</string>
+    <string name="accent_sunset">Solnedgång</string>
+    <string name="accent_violet">Violett</string>
+    <string name="accent_forest">Skog</string>
+    <string name="accent_rose">Ros</string>
+    <string name="accent_mono">Mono</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Smalt mellanslag</string>
+    <string name="grouping_space">Mellanslag</string>
+    <string name="grouping_comma">Komma</string>
+    <string name="grouping_period">Punkt</string>
+    <string name="grouping_apostrophe">Apostrof</string>
+    <string name="grouping_none">Ingen</string>
+    <string name="decimal_period">Punkt (.)</string>
+    <string name="decimal_comma">Komma (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Ingen anslutning till indexeraren</string>
+    <string name="sync_err_not_responding">Indexeraren svarar inte</string>
+    <string name="sync_err_no_internet">Ingen internetanslutning</string>
+    <string name="sync_err_lost_connection">Tappade anslutningen till indexeraren</string>
+    <string name="wallet_deriving_receive">Härleder mottagaradress %1$d av %2$d</string>
+    <string name="wallet_deriving_change">Härleder växeladress %1$d av %2$d</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">Kontrollerar %1$d adress…</item>
+        <item quantity="other">Kontrollerar %1$d adresser…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">%1$d adress kunde inte kontrolleras (%2$s); försöker igen</item>
+        <item quantity="other">%1$d adresser kunde inte kontrolleras (%2$s); försöker igen</item>
+    </plurals>
+    <string name="address_err_enter">Ange en mottagaradress</string>
+    <string name="address_err_invalid">Inte en giltig Pearl-adress</string>
+    <string name="address_err_unknown_prefix">Okänt adressprefix ”%1$s”</string>
+    <string name="address_err_only_taproot">Endast Taproot-adresser (%1$s1p…) stöds</string>
+    <string name="address_err_invalid_length">Ogiltig längd på Taproot-adress</string>
+    <string name="address_err_wrong_network">Det är en %1$s-adress; den här plånboken är på %2$s</string>
+    <string name="qr_err_invalid_link">Den länken är inte en giltig %1$s-betalningsbegäran.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Inkommande betalningar</string>
+    <string name="notif_channel_payments_desc">Mottagna betalningar och blockbelöningar, när de visas och när de bekräftas</string>
+    <string name="notif_channel_price">Prislarm</string>
+    <string name="notif_channel_price_desc">Stora PRL-prisrörelser över 24 timmar</string>
+    <string name="notif_block_confirmed">Blockbelöning bekräftad</string>
+    <string name="notif_block">Blockbelöning</string>
+    <string name="notif_payment_confirmed">Betalning bekräftad</string>
+    <string name="notif_payment_received">Betalning mottagen</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Öppna PocketPRL för detaljer</string>
+    <string name="notif_mined">+%1$s %2$s • spenderbar efter %3$d bekräftelser</string>
+    <string name="notif_waiting">+%1$s %2$s • väntar på bekräftelse</string>
+    <string name="notif_in_block">+%1$s %2$s • i block %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">PRL-prislarm</string>
+    <string name="price_dir_up">Upp</string>
+    <string name="price_dir_down">Ner</string>
+    <string name="price_alert_body">%1$s %2$s%%: nu på %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Exportera historik</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Gör det till ditt</string>
+    <string name="personalize_subtitle">Välj hur PocketPRL ser ut och läser. Du kan ändra allt detta senare i Inställningar.</string>
+    <string name="personalize_preview">Förhandsvisning</string>
+    <string name="personalize_section_look">Utseende</string>
+    <string name="personalize_section_numbers">Siffror</string>
+    <string name="personalize_section_currency">Valuta</string>
+    <string name="personalize_section_motion">Rörelse</string>
+    <string name="personalize_continue">Fortsätt</string>
+    <string name="personalize_reset">Återställ till standard</string>
+    <string name="personalize_grouping_toggle">Gruppera tusental</string>
+    <string name="notif_period">ungefär varje minut</string>
+    <string name="autolock_immediately">Omedelbart</string>
+    <string name="autolock_1m">1 minut</string>
+    <string name="autolock_5m">5 minuter</string>
+    <string name="autolock_15m">15 minuter</string>
+    <string name="autolock_1h">1 timme</string>
+    <string name="autolock_never">Aldrig</string>
+    <string name="duration_seconds">%1$d sekunder</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Byt plånbok</string>
+    <string name="action_receive">Ta emot</string>
+    <string name="action_lock">Lås</string>
+    <string name="action_show_balance">Visa saldo</string>
+    <string name="action_hide_balance">Dölj saldo</string>
+    <string name="pwd_weak">Svagt</string>
+    <string name="pwd_fair">Okej</string>
+    <string name="pwd_good">Bra</string>
+    <string name="pwd_strong">Starkt</string>
+    <string name="pwd_strength">%1$s lösenord</string>
+    <string name="pwd_show">Visa lösenord</string>
+    <string name="pwd_hide">Dölj lösenord</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d plånbok • %2$s</item>
+        <item quantity="other">%1$d plånböcker • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Indata / utdata</string>
+    <string name="activity_size_label">Storlek</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Använd lösenord</string>
+    <string name="bio_no_crypto_object">Inget kryptoobjekt</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Skanna en Pearl-adress eller betalningslänk</string>
+    <string name="send_open_settings">Öppna inställningar</string>
+    <string name="send_camera_off">Kameratillgång är avstängd för PocketPRL.</string>
+    <string name="send_camera_needed">Skanning kräver kameran.</string>
+    <string name="send_for_label">Till: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Spara en adress från en transaktion eller i Inställningar › Kontakter.</string>
+    <string name="receive_optional">Valfritt</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Öppna inställningar</string>
+    <string name="settings_notif_off">Aviseringar är av, så detta förblir inaktiverat.</string>
+    <string name="settings_notif_blocked">Aviseringar är blockerade för PocketPRL.</string>
+    <string name="settings_keystore_error">Kunde inte skapa en Keystore-nyckel</string>
+    <string name="settings_biometric_prompt">Aktivera biometrisk upplåsning</string>
+    <string name="settings_seed_password">Plånbokens lösenord</string>
+    <string name="settings_seed_incorrect">Felaktigt lösenord</string>
+    <string name="settings_copy_address">Kopiera adress</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Misslyckades</string>
+    <string name="vm_biometric_enable_failed">Kunde inte aktivera biometri</string>
+    <string name="settings_section_language">Språk</string>
+    <string name="settings_language">Språk</string>
+    <string name="settings_language_system">Systemstandard</string>
+</resources>

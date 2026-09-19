@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Zpět</string>
+    <string name="action_cancel">Zrušit</string>
+    <string name="action_save">Uložit</string>
+    <string name="action_delete">Smazat</string>
+    <string name="action_done">Hotovo</string>
+    <string name="action_edit">Upravit</string>
+    <string name="action_continue">Pokračovat</string>
+    <string name="action_close">Zavřít</string>
+    <string name="action_add">Přidat</string>
+    <string name="action_share">Sdílet</string>
+    <string name="action_copy">Kopírovat</string>
+    <string name="action_retry">Zkusit znovu</string>
+    <string name="action_scan">Skenovat</string>
+    <string name="action_paste">Vložit</string>
+    <string name="action_clear">Vymazat</string>
+    <string name="action_contacts">Kontakty</string>
+    <string name="action_send">Odeslat</string>
+    <string name="label_amount">Částka</string>
+    <string name="label_name">Název</string>
+    <string name="label_address">Adresa</string>
+    <string name="label_fee">Poplatek</string>
+    <string name="label_date">Datum</string>
+    <string name="label_block">Blok</string>
+    <string name="label_total">Celkem</string>
+    <string name="label_to">Komu</string>
+    <string name="label_from">Od</string>
+    <string name="label_network">Síť</string>
+    <string name="copied">Zkopírováno</string>
+    <string name="clipboard_address">Adresa Pearl</string>
+    <string name="clipboard_txid">ID transakce</string>
+    <string name="balance_hidden">Zůstatek skryt</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Dnes</string>
+    <string name="day_yesterday">Včera</string>
+    <string name="time_just_now">právě teď</string>
+    <string name="time_pending">čeká</string>
+    <string name="label_unconfirmed">Nepotvrzeno</string>
+    <string name="eta_minutes">~%1$d min</string>
+    <string name="eta_hours">~%1$d h</string>
+    <string name="eta_hours_half">~%1$d,5 h</string>
+    <string name="time_ago_s">před %1$d s</string>
+    <string name="time_ago_m">před %1$d min</string>
+    <string name="time_ago_h">před %1$d h</string>
+    <string name="time_ago_d">před %1$d d</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Přidat peněženku</string>
+    <string name="welcome_add_headline">Další peněženka, zcela oddělená</string>
+    <string name="welcome_add_body">Vlastní fráze pro obnovení, heslo, historie a kontakty. Mezi peněženkami přepínáte klepnutím na název na domovské obrazovce.</string>
+    <string name="welcome_one_unlocked">Odemčená je vždy jen jedna peněženka; přepnutím se aktuální uzamkne.</string>
+    <string name="welcome_tagline">Pearl (PRL) ve vaší kapse. Stejné klíče jako v desktopové peněžence, žádná zátěž navíc.</string>
+    <string name="welcome_feature_selfcustody_title">Vlastní úschova</string>
+    <string name="welcome_feature_selfcustody_body">Klíče se vytvářejí a zůstávají v tomto telefonu, šifrované a chráněné biometrií.</string>
+    <string name="welcome_feature_desktop_title">Kompatibilní s desktopem</string>
+    <string name="welcome_feature_desktop_body">Odvozuje stejné postkvantové adresy Taproot jako oyster. Volně mezi nimi přenášejte prostředky.</string>
+    <string name="welcome_feature_overview_title">Okamžitý přehled</string>
+    <string name="welcome_feature_overview_body">Zůstatky, historie a těžební odměny z indexeru Pearl. Bez stahování řetězce.</string>
+    <string name="welcome_feature_phone_title">Vytvořeno pro telefon</string>
+    <string name="welcome_feature_phone_body">Platební odkazy, kontakty, poznámky, více peněženek a oznámení „byla vám zaslána platba“.</string>
+    <string name="welcome_network">Síť</string>
+    <string name="welcome_create">Vytvořit novou peněženku</string>
+    <string name="welcome_restore">Obnovit z fráze pro obnovení</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Moje peněženka Pearl</string>
+    <string name="onboard_step">Krok %1$d ze 3 • %2$s</string>
+    <string name="onboard_title_create">Vytvořit peněženku</string>
+    <string name="onboard_title_seed">Vaše fráze pro obnovení</string>
+    <string name="onboard_title_verify">Ověřit frázi</string>
+    <string name="onboard_title_working">Nastavování</string>
+    <string name="onboard_name_protect">Pojmenujte a chraňte svou peněženku</string>
+    <string name="onboard_wallet_name">Název peněženky</string>
+    <string name="onboard_password">Heslo</string>
+    <string name="onboard_confirm_password">Potvrdit heslo</string>
+    <string name="onboard_password_warning">Heslo šifruje vaše klíče v tomto zařízení. Nelze ho resetovat: pokud ho zapomenete, obnovte peněženku z fráze pro obnovení.</string>
+    <string name="onboard_password_hint">Použijte alespoň 8 znaků s kombinací písmen, číslic nebo symbolů.</string>
+    <string name="onboard_seed_write">Zapište těchto 12 slov v pořadí a uchovávejte je offline.</string>
+    <string name="onboard_seed_secret_title">Uchovejte to v tajnosti</string>
+    <string name="onboard_seed_secret_body">Kdokoli s těmito slovy ovládá vaše prostředky. Snímky obrazovky jsou na této obrazovce zakázány; neukládejte frázi digitálně.</string>
+    <string name="onboard_written">Zapsal/a jsem si ji</string>
+    <string name="onboard_creating">Vytváření peněženky…</string>
+    <string name="onboard_restoring">Obnovování…</string>
+    <string name="onboard_quiz_instruction">Vyberte správné slovo pro každou pozici a potvrďte zálohu.</string>
+    <string name="onboard_word_n">Slovo č. %1$d</string>
+    <string name="onboard_quiz_error">Tato slova neodpovídají vaší frázi. Vraťte se a pečlivě ji zkontrolujte.</string>
+    <string name="onboard_verify_create">Ověřit a vytvořit peněženku</string>
+    <string name="onboard_restore_title">Obnovit peněženku</string>
+    <string name="onboard_restore_progress_body">Každá adresa potřebuje postkvantový klíč, takže odvození vyhledávacího okna chvíli trvá. Peněženka pak prohledá indexer Pearl a najde vaši historii.</string>
+    <string name="onboard_recovery_label">Fráze pro obnovení nebo hex seed</string>
+    <string name="onboard_recovery_placeholder">12–24 slov oddělených mezerami</string>
+    <string name="onboard_new_password">Nové heslo</string>
+    <string name="onboard_restore_compatible">Funguje s frázemi z oficiální desktopové peněženky Pearl (oyster) a s jakoukoli peněženkou BIP-39 používající odvození Pearl.</string>
+    <string name="onboard_restore_button">Obnovit peněženku</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">fráze pro obnovení o %1$d slovech</string>
+    <string name="onboard_check_hex">hex seed o %1$d bajtech</string>
+    <string name="onboard_err_enter_phrase">Zadejte svou frázi pro obnovení</string>
+    <string name="onboard_err_hex_even">Hex seed musí mít sudý počet znaků</string>
+    <string name="onboard_err_hex_range">Hex seed musí mít mezi 128 a 512 bity</string>
+    <string name="onboard_err_enter_phrase_or_hex">Zadejte frázi pro obnovení o 12–24 slovech nebo hex seed</string>
+    <string name="onboard_err_word_count">Fráze pro obnovení má 12, 15, 18, 21 nebo 24 slov (získáno %1$d)</string>
+    <string name="onboard_err_unknown_word">„%1$s“ není slovo BIP39</string>
+    <string name="onboard_err_checksum">Nesouhlas kontrolního součtu: zkontrolujte pořadí a pravopis slov</string>
+    <string name="onboard_err_create_failed">Peněženku se nepodařilo vytvořit</string>
+    <string name="onboard_err_restore_failed">Obnovení se nezdařilo</string>
+    <string name="onboard_preparing">Příprava peněženky…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">Odemknout %1$s</string>
+    <string name="unlock_password">Heslo peněženky</string>
+    <string name="unlock_button">Odemknout</string>
+    <string name="unlock_use_biometrics">Použít biometrii</string>
+    <string name="unlock_switch_wallet">Přepnout peněženku (%1$d)</string>
+    <string name="unlock_add_another">Přidat další peněženku</string>
+    <string name="unlock_forgot">Zapomněli jste heslo? Vymazat a obnovit</string>
+    <string name="unlock_erase_title">Vymazat „%1$s“?</string>
+    <string name="unlock_erase_body">Klíče této peněženky a místní historie v tomto telefonu budou smazány. Ostatní peněženky nebudou ovlivněny. Prostředky lze získat zpět pouze pomocí fráze pro obnovení. Potvrďte zadáním ERASE.</string>
+    <string name="unlock_erase_confirm">Vymazat</string>
+    <string name="unlock_error_biometric">Biometrický klíč není k dispozici (byl přidán nebo odebrán otisk prstu?). Použijte heslo.</string>
+    <string name="unlock_error_incorrect">Nesprávné heslo</string>
+    <string name="unlock_error_failed">Odemčení se nezdařilo</string>
+    <string name="unlock_error_biometric_failed">Biometrické odemčení se nezdařilo: %1$s. Použijte heslo.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Peněženky</string>
+    <string name="switcher_test_coins">%1$s • testovací mince</string>
+    <string name="switcher_current">Aktuální peněženka</string>
+    <string name="switcher_add_title">Přidat peněženku</string>
+    <string name="switcher_add_body">Vytvořte novou nebo obnovte jinou frázi. Každá peněženka má vlastní heslo.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Celkový zůstatek</string>
+    <string name="dash_spendable">K dispozici</string>
+    <string name="dash_incoming">Příchozí</string>
+    <string name="dash_maturing">Zrající</string>
+    <string name="dash_activity">Aktivita</string>
+    <string name="dash_view_all">Zobrazit vše (%1$d)</string>
+    <string name="dash_looking">Hledání transakcí…</string>
+    <string name="dash_no_tx">Zatím žádné transakce</string>
+    <string name="dash_no_tx_body">Sdílejte svou přijímací adresu nebo platební odkaz a začněte.</string>
+    <string name="dash_show_address">Zobrazit mou adresu</string>
+    <string name="dash_testnet_warning">Nacházíte se na %1$s. Mince zde nemají žádnou hodnotu.</string>
+    <string name="dash_sync_syncing">Synchronizace…</string>
+    <string name="dash_sync_failed">Synchronizace se nezdařila</string>
+    <string name="dash_sync_synced">Synchronizováno</string>
+    <string name="dash_sync_not_synced">Zatím nesynchronizováno</string>
+    <string name="dash_sync_block">Blok %1$s • aktualizováno %2$s</string>
+    <string name="dash_sync_last">Naposledy synchronizováno %1$s • blok %2$s</string>
+    <string name="dash_mining_rewards">Těžební odměny</string>
+    <string name="dash_last_7_days">Posledních 7 dní</string>
+    <string name="dash_all_time">Celou dobu</string>
+    <string name="dash_mining_progress">%1$s zraje • další dostupné za %2$d bloků (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Odměny zrají</string>
+    <string name="dash_price_content_desc">%1$s %2$s procent za 24 hodin</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d blok</item>
+        <item quantity="few">%1$d bloky</item>
+        <item quantity="many">%1$d bloku</item>
+        <item quantity="other">%1$d bloků</item>
+    </plurals>
+    <string name="tx_received">Přijato</string>
+    <string name="tx_sent">Odesláno</string>
+    <string name="tx_self">Převod sobě</string>
+    <string name="tx_mined">Vytěženo</string>
+    <string name="tx_to_contact">Komu %1$s</string>
+    <string name="tx_from_contact">Od %1$s</string>
+    <string name="tx_pending">Čeká</string>
+    <string name="tx_pending_seen">Čeká • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d potvrz.</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">Odeslat %1$s</string>
+    <string name="send_spendable">K dispozici %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Zadejte platnou částku (až 8 desetinných míst)</string>
+    <string name="send_enter_valid_amount_short">Zadejte platnou částku</string>
+    <string name="send_enter_in">Zadejte v %1$s</string>
+    <string name="send_max">Max</string>
+    <string name="send_max_selected">Max ✓</string>
+    <string name="send_to">Komu</string>
+    <string name="send_to_contact">Komu • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… nebo kontakt</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Poplatek za síť</string>
+    <string name="send_use_estimates">Použít odhady</string>
+    <string name="send_custom_rate">Vlastní sazba</string>
+    <string name="send_fee_rate_label">Sazba poplatku (grain za vbyte, min. 1)</string>
+    <string name="send_fee_normal">Normální</string>
+    <string name="send_fee_fast">Rychlý</string>
+    <string name="send_fee_loading">Odhady poplatku se nepodařilo načíst: %1$s</string>
+    <string name="send_summary">Souhrn</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Vstupy</string>
+    <string name="send_inputs_change">%1$d • drobné %2$s</string>
+    <string name="send_slider">Odeslat</string>
+    <string name="send_not_ready">Není připraveno</string>
+    <string name="send_sending">Odesílání</string>
+    <string name="send_confirming">Potvrzování</string>
+    <string name="send_slide">Posunutím nebo dvojitým klepnutím odešlete</string>
+    <string name="send_why_amount_blank">Chcete-li pokračovat, zadejte částku</string>
+    <string name="send_why_amount_invalid">Chcete-li pokračovat, zadejte platnou částku</string>
+    <string name="send_why_recipient_blank">Chcete-li pokračovat, zadejte příjemce</string>
+    <string name="send_why_recipient_invalid">Chcete-li pokračovat, opravte adresu příjemce</string>
+    <string name="send_why_fee_unavailable">Odhad poplatku není k dispozici</string>
+    <string name="send_why_waiting_fees">Čekání na odhady poplatku…</string>
+    <string name="send_why_preparing">Příprava platby…</string>
+    <string name="send_err_no_funds">Žádné dostupné prostředky</string>
+    <string name="send_err_insufficient">Nedostatek prostředků: potřeba %1$s %2$s včetně poplatku, k dispozici %3$s</string>
+    <string name="send_err_changed">Platba se během potvrzování změnila. Zkontrolujte údaje a zkuste to znovu.</string>
+    <string name="send_password_title">Heslo peněženky</string>
+    <string name="send_password_body">Odešle %1$s %2$s na %3$s.</string>
+    <string name="send_auth_failed">Ověření se nezdařilo</string>
+    <string name="send_bio_unavailable">Biometrický klíč není k dispozici; v Nastavení biometrii vypněte a znovu zapněte.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">Přijmout %1$s</string>
+    <string name="receive_preparing">Příprava adresy…</string>
+    <string name="receive_standard">Adresa č. %1$d • Taproot, stejná jako v desktopové peněžence</string>
+    <string name="receive_pq">Adresa č. %1$d • postkvantová varianta</string>
+    <string name="receive_copy">Kopírovat</string>
+    <string name="receive_share">Sdílet</string>
+    <string name="receive_share_request">Sdílet žádost</string>
+    <string name="receive_request_amount">Požadovat částku</string>
+    <string name="receive_label">Štítek (volitelné)</string>
+    <string name="receive_label_placeholder">Faktura č. 42</string>
+    <string name="receive_link_hint">S částkou nebo štítkem se kód a odkaz pro sdílení stanou platebním odkazem, který odesílateli předvyplní částku.</string>
+    <string name="receive_fresh">Použít novou adresu</string>
+    <string name="receive_generating">Generování…</string>
+    <string name="receive_show_pq">Zobrazit postkvantovou variantu</string>
+    <string name="receive_show_std">Zobrazit standardní adresu</string>
+    <string name="receive_pq_warning_title">Není viditelná pro desktopovou peněženku</string>
+    <string name="receive_pq_warning_body">Tato varianta vkládá postkvantový klíč XMSS do adresy. Oficiální desktopová peněženka jej neodvozuje, takže mince odeslané sem jsou viditelné jen v PocketPRL, dokud je desktopová peněženka Pearl nepodpoří. Použijte standardní adresu, pokud plátce konkrétně nepotřebuje tuto.</string>
+    <string name="receive_reuse_info">Adresy lze znovu použít, ale nová adresa pro každého plátce udrží vaši historii v soukromí. Příchozí platby se v Aktivita zobrazí, jakmile je odesílatel odešle.</string>
+    <string name="receive_only_send">Na tuto adresu posílejte pouze Pearl (%1$s).</string>
+    <string name="receive_qr_failed">Kód QR se nepodařilo vykreslit. Místo toho adresu zkopírujte nebo sdílejte.</string>
+    <string name="receive_qr_desc">QR kód adresy</string>
+    <string name="receive_requesting">Požadavek na %1$s %2$s</string>
+    <string name="receive_requesting_any">Požadavek na libovolnou částku</string>
+    <string name="receive_requesting_for">%1$s za „%2$s“</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Odesláno</string>
+    <string name="sent_to">na %1$s</string>
+    <string name="sent_confirms">Průměrně se potvrdí za %1$s.</string>
+    <string name="sent_txid">ID transakce</string>
+    <string name="sent_view_explorer">Zobrazit v průzkumníku</string>
+    <string name="sent_done">Hotovo</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Aktivita</string>
+    <string name="activity_export">Exportovat CSV</string>
+    <string name="activity_loading">Načítání historie…</string>
+    <string name="activity_none">Zatím žádná aktivita</string>
+    <string name="activity_nothing">Nic zde</string>
+    <string name="activity_none_body">Platby a těžební odměny se objeví, jakmile je indexer uvidí.</string>
+    <string name="activity_title_single">Transakce</string>
+    <string name="activity_not_found">Transakce nenalezena</string>
+    <string name="activity_self">Odesláno sobě • pouze poplatek za síť</string>
+    <string name="activity_fiat_today">≈ %1$s dnes</string>
+    <string name="activity_pending_mempool">Čeká v mempoolu</string>
+    <string name="activity_conf_of_maturity">%1$d z %2$d potvrzení k utracení</string>
+    <string name="activity_confirmed">Potvrzeno • %1$s potvrzení</string>
+    <string name="activity_spendable_in">K dispozici za %1$d bloků (%2$s)</string>
+    <string name="activity_txid">ID transakce</string>
+    <string name="activity_from">Od</string>
+    <string name="activity_to">Komu</string>
+    <string name="activity_from_your">Z vaší adresy</string>
+    <string name="activity_to_your">Na vaši adresu</string>
+    <string name="activity_save_contact">Uložit jako kontakt</string>
+    <string name="activity_view_explorer">Zobrazit v průzkumníku</string>
+    <string name="activity_maturity_info">Odměny za blok budou k dispozici po %1$d potvrzeních, stejně jako v každém řetězci odvozeném od Bitcoinu.</string>
+    <string name="activity_note">Poznámka</string>
+    <string name="activity_note_placeholder">K čemu to bylo?</string>
+    <string name="activity_note_hint">Poznámky zůstávají pouze v tomto telefonu.</string>
+    <string name="activity_contact_new">Nový kontakt</string>
+    <string name="activity_contact_edit">Upravit kontakt</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Celkem odesláno</string>
+    <string name="activity_filter_all">Vše</string>
+    <string name="activity_filter_received">Přijato</string>
+    <string name="activity_filter_sent">Odesláno</string>
+    <string name="activity_filter_mined">Vytěženo</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d transakce</item>
+        <item quantity="few">%1$d transakce</item>
+        <item quantity="many">%1$d transakce</item>
+        <item quantity="other">%1$d transakcí</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d potvrzení</item>
+        <item quantity="few">%1$d potvrzení</item>
+        <item quantity="many">%1$d potvrzení</item>
+        <item quantity="other">%1$d potvrzení</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Nastavení</string>
+    <string name="settings_section_wallet">Peněženka</string>
+    <string name="settings_section_appearance">Vzhled</string>
+    <string name="settings_section_numbers">Čísla a měna</string>
+    <string name="settings_section_dashboard">Domovská obrazovka</string>
+    <string name="settings_section_security">Zabezpečení a soukromí</string>
+    <string name="settings_section_notifications">Oznámení</string>
+    <string name="settings_section_network">Síť</string>
+    <string name="settings_section_backup">Záloha</string>
+    <string name="settings_section_about">O aplikaci</string>
+    <string name="settings_section_danger">Nebezpečná zóna</string>
+    <string name="settings_name">Název</string>
+    <string name="settings_created">Vytvořeno</string>
+    <string name="settings_wallets">Peněženky</string>
+    <string name="settings_wallets_one">Pouze tato</string>
+    <string name="settings_wallets_n">%1$d v tomto zařízení</string>
+    <string name="settings_contacts">Kontakty</string>
+    <string name="settings_contacts_saved">uloženo %1$d</string>
+    <string name="settings_addresses">Adresy</string>
+    <string name="settings_addresses_derived">odvozeno %1$d</string>
+    <string name="settings_change_password">Změnit heslo</string>
+    <string name="settings_biometric">Biometrické odemčení</string>
+    <string name="settings_biometric_none">Žádné zapsané</string>
+    <string name="settings_biometric_sub">Otisk prstu nebo obličej</string>
+    <string name="settings_confirm_send">Potvrdit před odesláním</string>
+    <string name="settings_confirm_send_sub">Ptát se u každé platby</string>
+    <string name="settings_auto_lock">Automatické uzamčení</string>
+    <string name="settings_hide_balances">Skrýt zůstatky</string>
+    <string name="settings_hide_balances_sub">Skrýt všechny částky</string>
+    <string name="settings_start_hidden">Začínat skryté</string>
+    <string name="settings_start_hidden_sub">Skrýt zůstatky po odemčení</string>
+    <string name="settings_secure_all">Blokovat snímky obrazovky všude</string>
+    <string name="settings_secure_all_sub">Chránit i domovskou obrazovku a aktivitu</string>
+    <string name="settings_theme">Motiv</string>
+    <string name="settings_accent">Barva zvýraznění</string>
+    <string name="settings_dynamic_color">Dynamická barva</string>
+    <string name="settings_dynamic_color_sub">Použít paletu tapety systému (Android 12+)</string>
+    <string name="settings_reduced_motion">Omezit pohyb</string>
+    <string name="settings_reduced_motion_sub">Žádné rolující číslice ani animace obrazovky</string>
+    <string name="settings_odometer">Animace počítadla</string>
+    <string name="settings_odometer_sub">Rolující číslice na zůstatcích</string>
+    <string name="settings_odometer_haptics">Haptická odezva počítadla</string>
+    <string name="settings_odometer_haptics_sub">Zavibrovat při každém otočení</string>
+    <string name="settings_odometer_haptics_off">Žádný efekt, když je animace vypnutá</string>
+    <string name="settings_show_fiat">Zobrazit hodnotu v fiat měně</string>
+    <string name="settings_fiat_currency">Fiat měna</string>
+    <string name="settings_decimals">Desetinná místa zůstatku</string>
+    <string name="settings_decimal_sep">Oddělovač desetinných míst</string>
+    <string name="settings_grouping_sep">Oddělovač tisíců</string>
+    <string name="settings_hero">Velké číslo</string>
+    <string name="settings_hero_total">Celkový zůstatek</string>
+    <string name="settings_hero_spendable">Zůstatek k dispozici</string>
+    <string name="settings_show_change">Změna ceny za 24 h</string>
+    <string name="settings_show_change_sub">Zobrazit indikátor denní změny</string>
+    <string name="settings_show_mining">Karta těžebních odměn</string>
+    <string name="settings_show_mining_sub">Skrýt, pokud na tuto peněženku netěžíte</string>
+    <string name="settings_poll_mode">Frekvence obnovování</string>
+    <string name="settings_poll_live">Živě</string>
+    <string name="settings_poll_balanced">Vyvážené</string>
+    <string name="settings_poll_battery">Šetření baterie</string>
+    <string name="settings_notify_incoming">Příchozí platby</string>
+    <string name="settings_notify_incoming_sub">Kontrolováno %1$s</string>
+    <string name="settings_price_alerts">Upozornění na cenu</string>
+    <string name="settings_price_alerts_sub">Upozornit na velké změny za 24 h</string>
+    <string name="settings_alert_threshold">Práh upozornění</string>
+    <string name="settings_alert_threshold_sub">změna o %1$s za 24 hodin</string>
+    <string name="settings_reveal_seed">Zobrazit frázi pro obnovení</string>
+    <string name="settings_reveal_seed_sub">Vyžaduje vaše heslo</string>
+    <string name="settings_indexer">Indexer (Blockbook)</string>
+    <string name="settings_about_version">Verze %1$s</string>
+    <string name="settings_delete">Smazat tuto peněženku</string>
+    <string name="settings_password_title">Změnit heslo</string>
+    <string name="settings_password_current">Aktuální heslo</string>
+    <string name="settings_password_new">Nové heslo</string>
+    <string name="settings_password_confirm">Potvrdit nové heslo</string>
+    <string name="settings_password_updated">Heslo změněno.</string>
+    <string name="settings_password_update">Aktualizovat heslo</string>
+    <string name="settings_password_info">Změna hesla znovu zašifruje klíč pouze v tomto zařízení. Vaše fráze pro obnovení zůstává stejná.</string>
+    <string name="settings_password_error_current">Aktuální heslo je nesprávné</string>
+    <string name="settings_password_error_short">Použijte alespoň 8 znaků s kombinací písmen, číslic nebo symbolů.</string>
+    <string name="settings_seed_title">Fráze pro obnovení</string>
+    <string name="settings_seed_warning">Nikdy nesdílejte svou frázi pro obnovení. Zaměstnanci PocketPRL ani vývojáři Pearl ji nikdy nebudou požadovat.</string>
+    <string name="settings_seed_reveal">Zobrazit</string>
+    <string name="settings_seed_hex">Hex seed</string>
+    <string name="settings_seed_written_hint">Zapište ji na papír. Snímky obrazovky jsou na této obrazovce zakázány.</string>
+    <string name="settings_rename_title">Přejmenovat peněženku</string>
+    <string name="settings_auto_lock_title">Automatické uzamčení po</string>
+    <string name="settings_theme_title">Motiv</string>
+    <string name="settings_accent_title">Barva zvýraznění</string>
+    <string name="settings_delete_title">Smazat „%1$s“?</string>
+    <string name="settings_delete_body">Tímto z tohoto telefonu odstraníte zašifrované klíče, uloženou historii, kontakty a poznámky této peněženky. Ostatní peněženky nebudou ovlivněny. Ujistěte se, že máte frázi pro obnovení. Potvrďte zadáním DELETE.</string>
+    <string name="settings_threshold_title">Práh upozornění na cenu</string>
+    <string name="settings_threshold_intro">Upozornit, když změna za 24 hodin dosáhne:</string>
+    <string name="settings_addresses_title">Adresy</string>
+    <string name="settings_addresses_checking">Kontrola…</string>
+    <string name="settings_addresses_derived_sub">odvozeno %1$d indexů</string>
+    <string name="settings_addresses_rescan">Znovu prohledat všechny adresy</string>
+    <string name="settings_addresses_receive">Přijímací č. %1$d</string>
+    <string name="settings_addresses_change">Drobné č. %1$d</string>
+    <string name="settings_addresses_pq">%1$s • postkvantová varianta</string>
+    <string name="settings_addresses_used">použito</string>
+    <string name="settings_addresses_info">Klepnutím na adresu ji zkopírujete. Odvození: m/86’/%1$d’/0’/branch/index, cesta klíče BIP-86 jako v desktopové peněžence. Každý index má také postkvantovou variantu (XMSS tapleaf z účelu 222’), která je sledována a uvedena zde, jakmile je použita. Tlačítko obnovení zkontroluje právě teď všechny adresy, obě varianty; domovská obrazovka kontroluje jen používané.</string>
+    <string name="settings_contacts_title">Kontakty</string>
+    <string name="settings_contacts_empty">Zatím žádné kontakty</string>
+    <string name="settings_contacts_empty_body">Ukládejte adresy, na které často platíte. Názvy se objeví ve vaší aktivitě a v poli příjemce.</string>
+    <string name="settings_contacts_add">Přidat kontakt</string>
+    <string name="settings_contacts_info">Kontakty jsou uloženy pouze v tomto telefonu a nejsou součástí vaší fráze pro obnovení.</string>
+    <string name="settings_contacts_new">Nový kontakt</string>
+    <string name="settings_contacts_address">Adresa %1$s</string>
+    <string name="settings_contacts_invalid">Neplatná adresa %1$s</string>
+    <string name="settings_contacts_name_required">Zadejte kontaktu název</string>
+    <string name="settings_about_title">O aplikaci</string>
+    <string name="settings_about_source">Zdrojový kód PocketPRL</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Zdrojový kód Pearl (GitHub)</string>
+    <string name="settings_about_explorer">Průzkumník bloků</string>
+    <string name="settings_about_check">Zkontrolovat aktualizace</string>
+    <string name="settings_about_checking">Kontrola…</string>
+    <string name="settings_about_latest">Máte nejnovější verzi (v%1$s).</string>
+    <string name="settings_about_failed">Nepodařilo se připojit ke GitHubu. Zkontrolujte připojení a zkuste to znovu.</string>
+    <string name="settings_about_update_title">Je k dispozici aktualizace</string>
+    <string name="settings_about_update_body">Je k dispozici verze %1$s. Máte v%2$s.</string>
+    <string name="settings_about_update">Aktualizovat</string>
+    <string name="settings_about_later">Později</string>
+    <string name="settings_about_version_label">Verze</string>
+    <string name="settings_about_network">Síť</string>
+    <string name="settings_about_coin_type">Typ mince</string>
+    <string name="settings_about_addresses">Adresy</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Podepisování</string>
+    <string name="settings_about_signing_value">Cesta klíče Schnorr BIP-340, libsecp256k1</string>
+    <string name="settings_about_pq">Závazek PQ</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL je nezávislá open-source lehká peněženka pro síť Pearl. Odvozuje stejné adresy jako oficiální desktopová peněženka (oyster) a je proti ní ověřována testovacími vektory vygenerovanými ze zdrojového kódu Pearl.</string>
+    <string name="settings_about_warranty">Tento software je poskytován tak, jak je, bez záruky. Ověřujte sestavení, uchovávejte frázi pro obnovení offline a nejprve testujte s malými částkami.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Indexer</string>
+    <string name="indexer_body">PocketPRL čte zůstatky, historii a odhady poplatků z indexeru Blockbook a odesílá přes něj transakce. Klíče nikdy neopustí telefon, ale indexer zjistí, které adresy vyhledáváte. Pokud je to pro vás důležité, nasměrujte jej na vlastní instanci.</string>
+    <string name="indexer_label">URL Blockbook (pouze https)</string>
+    <string name="indexer_default">Výchozí: %1$s</string>
+    <string name="indexer_saved">Uloženo. Obnovte tažením na domovské obrazovce a znovu synchronizujte.</string>
+    <string name="indexer_save">Uložit</string>
+    <string name="indexer_reset">Obnovit výchozí</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Automaticky (systém)</string>
+    <string name="theme_light">Světlý</string>
+    <string name="theme_dark">Tmavý</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Oceán</string>
+    <string name="accent_sunset">Západ slunce</string>
+    <string name="accent_violet">Fialová</string>
+    <string name="accent_forest">Les</string>
+    <string name="accent_rose">Růžová</string>
+    <string name="accent_mono">Mono</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Úzká mezera</string>
+    <string name="grouping_space">Mezera</string>
+    <string name="grouping_comma">Čárka</string>
+    <string name="grouping_period">Tečka</string>
+    <string name="grouping_apostrophe">Apostrof</string>
+    <string name="grouping_none">Žádný</string>
+    <string name="decimal_period">Tečka (.)</string>
+    <string name="decimal_comma">Čárka (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Žádné připojení k indexeru</string>
+    <string name="sync_err_not_responding">Indexer neodpovídá</string>
+    <string name="sync_err_no_internet">Žádné připojení k internetu</string>
+    <string name="sync_err_lost_connection">Připojení k indexeru bylo ztraceno</string>
+    <string name="wallet_deriving_receive">Odvozování přijímací adresy %1$d z %2$d</string>
+    <string name="wallet_deriving_change">Odvozování adresy pro drobné %1$d z %2$d</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">Kontrola %1$d adresy…</item>
+        <item quantity="few">Kontrola %1$d adres…</item>
+        <item quantity="many">Kontrola %1$d adresy…</item>
+        <item quantity="other">Kontrola %1$d adres…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">Adresu %1$d se nepodařilo zkontrolovat (%2$s); zkouším znovu</item>
+        <item quantity="few">%1$d adres se nepodařilo zkontrolovat (%2$s); zkouším znovu</item>
+        <item quantity="many">%1$d adresy se nepodařilo zkontrolovat (%2$s); zkouším znovu</item>
+        <item quantity="other">%1$d adres se nepodařilo zkontrolovat (%2$s); zkouším znovu</item>
+    </plurals>
+    <string name="address_err_enter">Zadejte adresu příjemce</string>
+    <string name="address_err_invalid">Neplatná adresa Pearl</string>
+    <string name="address_err_unknown_prefix">Neznámý prefix adresy „%1$s“</string>
+    <string name="address_err_only_taproot">Podporovány jsou pouze adresy Taproot (%1$s1p…)</string>
+    <string name="address_err_invalid_length">Neplatná délka adresy Taproot</string>
+    <string name="address_err_wrong_network">To je adresa %1$s; tato peněženka je na %2$s</string>
+    <string name="qr_err_invalid_link">Tento odkaz není platným platebním požadavkem %1$s.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Příchozí platby</string>
+    <string name="notif_channel_payments_desc">Přijaté platby a odměny za blok, když se objeví a když se potvrdí</string>
+    <string name="notif_channel_price">Upozornění na cenu</string>
+    <string name="notif_channel_price_desc">Velké změny ceny PRL za 24 hodin</string>
+    <string name="notif_block_confirmed">Odměna za blok potvrzena</string>
+    <string name="notif_block">Odměna za blok</string>
+    <string name="notif_payment_confirmed">Platba potvrzena</string>
+    <string name="notif_payment_received">Platba přijata</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Podrobnosti najdete v PocketPRL</string>
+    <string name="notif_mined">+%1$s %2$s • k dispozici po %3$d potvrzeních</string>
+    <string name="notif_waiting">+%1$s %2$s • čekání na potvrzení</string>
+    <string name="notif_in_block">+%1$s %2$s • v bloku %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">Upozornění na cenu PRL</string>
+    <string name="price_dir_up">Nahoru</string>
+    <string name="price_dir_down">Dolů</string>
+    <string name="price_alert_body">%1$s %2$s%%: nyní na %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Exportovat historii</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Přizpůsobte si to</string>
+    <string name="personalize_subtitle">Zvolte, jak PocketPRL vypadá a čte se. Všechno to můžete později změnit v Nastavení.</string>
+    <string name="personalize_preview">Náhled</string>
+    <string name="personalize_section_look">Vzhled</string>
+    <string name="personalize_section_numbers">Čísla</string>
+    <string name="personalize_section_currency">Měna</string>
+    <string name="personalize_section_motion">Pohyb</string>
+    <string name="personalize_continue">Pokračovat</string>
+    <string name="personalize_reset">Obnovit výchozí hodnoty</string>
+    <string name="personalize_grouping_toggle">Seskupovat tisíce</string>
+    <string name="notif_period">zhruba každou minutu</string>
+    <string name="autolock_immediately">Okamžitě</string>
+    <string name="autolock_1m">1 minuta</string>
+    <string name="autolock_5m">5 minut</string>
+    <string name="autolock_15m">15 minut</string>
+    <string name="autolock_1h">1 hodina</string>
+    <string name="autolock_never">Nikdy</string>
+    <string name="duration_seconds">%1$d sekund</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Přepnout peněženku</string>
+    <string name="action_receive">Přijmout</string>
+    <string name="action_lock">Uzamknout</string>
+    <string name="action_show_balance">Zobrazit zůstatek</string>
+    <string name="action_hide_balance">Skrýt zůstatek</string>
+    <string name="pwd_weak">Slabé</string>
+    <string name="pwd_fair">Ucházející</string>
+    <string name="pwd_good">Dobré</string>
+    <string name="pwd_strong">Silné</string>
+    <string name="pwd_strength">heslo %1$s</string>
+    <string name="pwd_show">Zobrazit heslo</string>
+    <string name="pwd_hide">Skrýt heslo</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d peněženka • %2$s</item>
+        <item quantity="few">%1$d peněženky • %2$s</item>
+        <item quantity="many">%1$d peněženky • %2$s</item>
+        <item quantity="other">%1$d peněženek • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Vstupy / výstupy</string>
+    <string name="activity_size_label">Velikost</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Použít heslo</string>
+    <string name="bio_no_crypto_object">Žádný kryptografický objekt</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Naskenujte adresu Pearl nebo platební odkaz</string>
+    <string name="send_open_settings">Otevřít nastavení</string>
+    <string name="send_camera_off">Přístup ke kameře je pro PocketPRL vypnutý.</string>
+    <string name="send_camera_needed">Skenování vyžaduje kameru.</string>
+    <string name="send_for_label">Pro: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Uložte adresu z transakce nebo v Nastavení › Kontakty.</string>
+    <string name="receive_optional">Volitelné</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Otevřít nastavení</string>
+    <string name="settings_notif_off">Oznámení jsou vypnutá, proto zůstává tato volba nedostupná.</string>
+    <string name="settings_notif_blocked">Oznámení jsou pro PocketPRL zablokována.</string>
+    <string name="settings_keystore_error">Klíč Keystore se nepodařilo vytvořit</string>
+    <string name="settings_biometric_prompt">Zapnout biometrické odemčení</string>
+    <string name="settings_seed_password">Heslo peněženky</string>
+    <string name="settings_seed_incorrect">Nesprávné heslo</string>
+    <string name="settings_copy_address">Kopírovat adresu</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Neúspěch</string>
+    <string name="vm_biometric_enable_failed">Biometrii se nepodařilo zapnout</string>
+    <string name="settings_section_language">Jazyk</string>
+    <string name="settings_language">Jazyk</string>
+    <string name="settings_language_system">Výchozí systémové</string>
+</resources>

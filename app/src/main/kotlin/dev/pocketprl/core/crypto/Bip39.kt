@@ -3,6 +3,9 @@ package dev.pocketprl.core.crypto
 import java.security.SecureRandom
 import java.text.Normalizer
 
+/** Why a recovery phrase failed validation; maps to a localized message in the UI. */
+enum class Bip39Error { EMPTY, WORD_COUNT, UNKNOWN_WORD, CHECKSUM }
+
 /** BIP-39 mnemonics (English wordlist), matching go-bip39 as used by oyster. */
 object Bip39 {
     val VALID_WORD_COUNTS = setOf(12, 15, 18, 21, 24)
@@ -56,19 +59,25 @@ object Bip39 {
 
     sealed class Validation {
         data class Ok(val normalized: String, val wordCount: Int) : Validation()
-        data class Invalid(val reason: String, val badWord: String? = null) : Validation()
+        data class Invalid(
+            val error: Bip39Error,
+            /** English fallback for callers that cannot reach Android resources. */
+            val reason: String,
+            val badWord: String? = null,
+            val wordCount: Int = 0,
+        ) : Validation()
     }
 
     fun validate(raw: String): Validation {
         val normalized = normalize(raw)
-        if (normalized.isEmpty()) return Validation.Invalid("Enter your recovery phrase")
+        if (normalized.isEmpty()) return Validation.Invalid(Bip39Error.EMPTY, "Enter your recovery phrase")
         val ws = normalized.split(' ')
         if (ws.size !in VALID_WORD_COUNTS) {
-            return Validation.Invalid("A recovery phrase has 12, 15, 18, 21 or 24 words (got ${ws.size})")
+            return Validation.Invalid(Bip39Error.WORD_COUNT, "A recovery phrase has 12, 15, 18, 21 or 24 words (got ${ws.size})", wordCount = ws.size)
         }
         val unknown = ws.firstOrNull { !index.containsKey(it) }
-        if (unknown != null) return Validation.Invalid("\"$unknown\" is not a BIP39 word", unknown)
-        if (!checksumOk(ws)) return Validation.Invalid("Checksum mismatch: check the word order and spelling")
+        if (unknown != null) return Validation.Invalid(Bip39Error.UNKNOWN_WORD, "\"$unknown\" is not a BIP39 word", unknown)
+        if (!checksumOk(ws)) return Validation.Invalid(Bip39Error.CHECKSUM, "Checksum mismatch: check the word order and spelling")
         return Validation.Ok(normalized, ws.size)
     }
 

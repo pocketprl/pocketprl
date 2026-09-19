@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Vissza</string>
+    <string name="action_cancel">Mégse</string>
+    <string name="action_save">Mentés</string>
+    <string name="action_delete">Törlés</string>
+    <string name="action_done">Kész</string>
+    <string name="action_edit">Szerkesztés</string>
+    <string name="action_continue">Folytatás</string>
+    <string name="action_close">Bezárás</string>
+    <string name="action_add">Hozzáadás</string>
+    <string name="action_share">Megosztás</string>
+    <string name="action_copy">Másolás</string>
+    <string name="action_retry">Újra</string>
+    <string name="action_scan">Beolvasás</string>
+    <string name="action_paste">Beillesztés</string>
+    <string name="action_clear">Kiürítés</string>
+    <string name="action_contacts">Névjegyek</string>
+    <string name="action_send">Küldés</string>
+    <string name="label_amount">Összeg</string>
+    <string name="label_name">Név</string>
+    <string name="label_address">Cím</string>
+    <string name="label_fee">Díj</string>
+    <string name="label_date">Dátum</string>
+    <string name="label_block">Blokk</string>
+    <string name="label_total">Összesen</string>
+    <string name="label_to">Címzett</string>
+    <string name="label_from">Feladó</string>
+    <string name="label_network">Hálózat</string>
+    <string name="copied">Másolva</string>
+    <string name="clipboard_address">Pearl-cím</string>
+    <string name="clipboard_txid">Tranzakció azonosítója</string>
+    <string name="balance_hidden">Egyenleg elrejtve</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Ma</string>
+    <string name="day_yesterday">Tegnap</string>
+    <string name="time_just_now">épp most</string>
+    <string name="time_pending">függőben</string>
+    <string name="label_unconfirmed">Megerősítetlen</string>
+    <string name="eta_minutes">~%1$d perc</string>
+    <string name="eta_hours">~%1$d ó</string>
+    <string name="eta_hours_half">~%1$d,5 ó</string>
+    <string name="time_ago_s">%1$d mp-e</string>
+    <string name="time_ago_m">%1$d perce</string>
+    <string name="time_ago_h">%1$d órája</string>
+    <string name="time_ago_d">%1$d napja</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Pénztárca hozzáadása</string>
+    <string name="welcome_add_headline">Új pénztárca, teljesen különálló</string>
+    <string name="welcome_add_body">Saját helyreállítási frázissal, jelszóval, előzményekkel és névjegyekkel rendelkezik. A kezdőképernyő címénél válthatsz a pénztárcák között.</string>
+    <string name="welcome_one_unlocked">Egyszerre csak egy pénztárca lehet feloldva; a váltás zárolja az aktuálisat.</string>
+    <string name="welcome_tagline">Pearl (PRL) a zsebedben. Ugyanazok a kulcsok, mint az asztali pénztárcában, de teher nélkül.</string>
+    <string name="welcome_feature_selfcustody_title">Saját letétkezelés</string>
+    <string name="welcome_feature_selfcustody_body">A kulcsok ezen a telefonon jönnek létre és maradnak, titkosítva és biometrikus védelemmel.</string>
+    <string name="welcome_feature_desktop_title">Asztali géppel kompatibilis</string>
+    <string name="welcome_feature_desktop_body">Pontosan ugyanazokat a poszt-kvantum Taproot-címeket származtatja, mint az oyster. Szabadon válthatsz közöttük.</string>
+    <string name="welcome_feature_overview_title">Azonnali áttekintés</string>
+    <string name="welcome_feature_overview_body">Egyenlegek, előzmények és bányászati jutalmak a Pearl indexerből. Nincs láncletöltés.</string>
+    <string name="welcome_feature_phone_title">Telefonra tervezve</string>
+    <string name="welcome_feature_phone_body">Fizetési linkek, névjegyek, jegyzetek, több pénztárca és „fizetést kaptál” értesítések.</string>
+    <string name="welcome_network">Hálózat</string>
+    <string name="welcome_create">Új pénztárca létrehozása</string>
+    <string name="welcome_restore">Visszaállítás helyreállítási frázisból</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Pearl pénztárcám</string>
+    <string name="onboard_step">%1$d. lépés a 3-ból • %2$s</string>
+    <string name="onboard_title_create">Pénztárca létrehozása</string>
+    <string name="onboard_title_seed">A helyreállítási frázisod</string>
+    <string name="onboard_title_verify">Frázis ellenőrzése</string>
+    <string name="onboard_title_working">Beállítás</string>
+    <string name="onboard_name_protect">Nevezd el és védd meg a pénztárcádat</string>
+    <string name="onboard_wallet_name">Pénztárca neve</string>
+    <string name="onboard_password">Jelszó</string>
+    <string name="onboard_confirm_password">Jelszó megerősítése</string>
+    <string name="onboard_password_warning">A jelszó titkosítja a kulcsaidat ezen az eszközön. Nincs visszaállítás: ha elfelejted, állítsd vissza a helyreállítási frázisból.</string>
+    <string name="onboard_password_hint">Használj legalább 8 karaktert betűk, számok vagy szimbólumok keverékével.</string>
+    <string name="onboard_seed_write">Írd le ezt a 12 szót sorrendben, és tartsd offline.</string>
+    <string name="onboard_seed_secret_title">Tartsd titokban</string>
+    <string name="onboard_seed_secret_body">Aki ismeri ezeket a szavakat, az irányítja a pénzedet. A képernyőképek le vannak tiltva ezen a képernyőn; ne tárold a frázist digitálisan.</string>
+    <string name="onboard_written">Leírtam</string>
+    <string name="onboard_creating">Pénztárca létrehozása…</string>
+    <string name="onboard_restoring">Visszaállítás…</string>
+    <string name="onboard_quiz_instruction">Válaszd ki a megfelelő szót minden pozícióhoz a biztonsági mentés megerősítéséhez.</string>
+    <string name="onboard_word_n">%1$d. szó</string>
+    <string name="onboard_quiz_error">Ezek a szavak nem egyeznek a frázisoddal. Menj vissza, és ellenőrizd figyelmesen.</string>
+    <string name="onboard_verify_create">Ellenőrzés és pénztárca létrehozása</string>
+    <string name="onboard_restore_title">Pénztárca visszaállítása</string>
+    <string name="onboard_restore_progress_body">Minden címhez poszt-kvantum kulcs kell, ezért a felderítési ablak származtatása eltart egy ideig. A pénztárca ezután átvizsgálja a Pearl indexert az előzményeidért.</string>
+    <string name="onboard_recovery_label">Helyreállítási frázis vagy hex seed</string>
+    <string name="onboard_recovery_placeholder">12–24 szó szóközzel elválasztva</string>
+    <string name="onboard_new_password">Új jelszó</string>
+    <string name="onboard_restore_compatible">Működik a hivatalos Pearl asztali pénztárca (oyster) frázisaival és bármely olyan BIP-39 pénztárcával, amely a Pearl származtatását használja.</string>
+    <string name="onboard_restore_button">Pénztárca visszaállítása</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">%1$d szavas helyreállítási frázis</string>
+    <string name="onboard_check_hex">%1$d bájtos hex seed</string>
+    <string name="onboard_err_enter_phrase">Add meg a helyreállítási frázist</string>
+    <string name="onboard_err_hex_even">A hex seed karaktereinek száma páros kell legyen</string>
+    <string name="onboard_err_hex_range">A hex seed 128 és 512 bit között kell legyen</string>
+    <string name="onboard_err_enter_phrase_or_hex">Adj meg egy 12–24 szavas helyreállítási frázist vagy egy hex seedet</string>
+    <string name="onboard_err_word_count">A helyreállítási frázis 12, 15, 18, 21 vagy 24 szóból áll (kapott: %1$d)</string>
+    <string name="onboard_err_unknown_word">A(z) „%1$s” nem BIP39 szó</string>
+    <string name="onboard_err_checksum">Ellenőrzőösszeg-eltérés: ellenőrizd a szavak sorrendjét és helyesírását</string>
+    <string name="onboard_err_create_failed">A pénztárca létrehozása sikertelen</string>
+    <string name="onboard_err_restore_failed">A visszaállítás sikertelen</string>
+    <string name="onboard_preparing">Pénztárca előkészítése…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">%1$s feloldása</string>
+    <string name="unlock_password">Pénztárca jelszava</string>
+    <string name="unlock_button">Feloldás</string>
+    <string name="unlock_use_biometrics">Biometria használata</string>
+    <string name="unlock_switch_wallet">Pénztárca váltása (%1$d)</string>
+    <string name="unlock_add_another">Másik pénztárca hozzáadása</string>
+    <string name="unlock_forgot">Elfelejtetted a jelszót? Törlés és visszaállítás</string>
+    <string name="unlock_erase_title">Törlöd a(z) „%1$s” pénztárcát?</string>
+    <string name="unlock_erase_body">A pénztárca kulcsai és a helyi előzmények törlődnek erről a telefonról. Más pénztárcákra ez nincs hatással. A pénzt csak a helyreállítási frázissal kaphatod vissza. A megerősítéshez írd be: ERASE.</string>
+    <string name="unlock_erase_confirm">Törlés</string>
+    <string name="unlock_error_biometric">A biometrikus kulcs nem érhető el (hozzáadtak vagy töröltek egy ujjlenyomatot?). Használd a jelszavad.</string>
+    <string name="unlock_error_incorrect">Hibás jelszó</string>
+    <string name="unlock_error_failed">A feloldás sikertelen</string>
+    <string name="unlock_error_biometric_failed">A biometrikus feloldás sikertelen: %1$s. Használd a jelszavad.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Pénztárcák</string>
+    <string name="switcher_test_coins">%1$s • tesztérmék</string>
+    <string name="switcher_current">Jelenlegi pénztárca</string>
+    <string name="switcher_add_title">Pénztárca hozzáadása</string>
+    <string name="switcher_add_body">Hozz létre újat vagy állíts vissza egy másik frázist. Minden pénztárcának saját jelszava van.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Teljes egyenleg</string>
+    <string name="dash_spendable">Elkölthető</string>
+    <string name="dash_incoming">Bejövő</string>
+    <string name="dash_maturing">Érőben</string>
+    <string name="dash_activity">Tevékenység</string>
+    <string name="dash_view_all">Összes megtekintése (%1$d)</string>
+    <string name="dash_looking">Tranzakciók keresése…</string>
+    <string name="dash_no_tx">Még nincsenek tranzakciók</string>
+    <string name="dash_no_tx_body">Oszd meg a fogadási címedet vagy egy fizetési linket az induláshoz.</string>
+    <string name="dash_show_address">Címem megjelenítése</string>
+    <string name="dash_testnet_warning">A(z) %1$s hálózaton vagy. Az itteni érméknek nincs értékük.</string>
+    <string name="dash_sync_syncing">Szinkronizálás…</string>
+    <string name="dash_sync_failed">A szinkronizálás sikertelen</string>
+    <string name="dash_sync_synced">Szinkronizálva</string>
+    <string name="dash_sync_not_synced">Még nincs szinkronizálva</string>
+    <string name="dash_sync_block">%1$s. blokk • frissítve: %2$s</string>
+    <string name="dash_sync_last">Utoljára szinkronizálva: %1$s • %2$s. blokk</string>
+    <string name="dash_mining_rewards">Bányászati jutalmak</string>
+    <string name="dash_last_7_days">Elmúlt 7 nap</string>
+    <string name="dash_all_time">Összes idő</string>
+    <string name="dash_mining_progress">%1$s érőben • a következő elkölthető %2$d blokk múlva (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Érő jutalmak</string>
+    <string name="dash_price_content_desc">%1$s %2$s százalék 24 óra alatt</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d blokk</item>
+        <item quantity="other">%1$d blokk</item>
+    </plurals>
+    <string name="tx_received">Bejövő</string>
+    <string name="tx_sent">Kimenő</string>
+    <string name="tx_self">Saját átutalás</string>
+    <string name="tx_mined">Bányászott</string>
+    <string name="tx_to_contact">Címzett: %1$s</string>
+    <string name="tx_from_contact">Feladó: %1$s</string>
+    <string name="tx_pending">Függőben</string>
+    <string name="tx_pending_seen">Függőben • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d megerősítés</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">%1$s küldése</string>
+    <string name="send_spendable">Elkölthető: %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Adj meg érvényes összeget (legfeljebb 8 tizedesjegy)</string>
+    <string name="send_enter_valid_amount_short">Adj meg érvényes összeget</string>
+    <string name="send_enter_in">Megadás %1$s-ben</string>
+    <string name="send_max">Max</string>
+    <string name="send_max_selected">Max ✓</string>
+    <string name="send_to">Címzett</string>
+    <string name="send_to_contact">Címzett • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… vagy egy névjegy</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Hálózati díj</string>
+    <string name="send_use_estimates">Becslések használata</string>
+    <string name="send_custom_rate">Egyéni díj</string>
+    <string name="send_fee_rate_label">Díjráta (grain/vbyte, min. 1)</string>
+    <string name="send_fee_normal">Normál</string>
+    <string name="send_fee_fast">Gyors</string>
+    <string name="send_fee_loading">Nem sikerült betölteni a díjbécsléseket: %1$s</string>
+    <string name="send_summary">Összegzés</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Bemenetek</string>
+    <string name="send_inputs_change">%1$d • visszajáró %2$s</string>
+    <string name="send_slider">Küldés</string>
+    <string name="send_not_ready">Nem áll készen</string>
+    <string name="send_sending">Küldés folyamatban</string>
+    <string name="send_confirming">Megerősítés</string>
+    <string name="send_slide">Csúsztasd vagy koppints duplán a küldéshez</string>
+    <string name="send_why_amount_blank">Adj meg egy összeget a folytatáshoz</string>
+    <string name="send_why_amount_invalid">Adj meg érvényes összeget a folytatáshoz</string>
+    <string name="send_why_recipient_blank">Adj meg egy címzettet a folytatáshoz</string>
+    <string name="send_why_recipient_invalid">Javítsd ki a címzett címét a folytatáshoz</string>
+    <string name="send_why_fee_unavailable">A díjbécslés nem elérhető</string>
+    <string name="send_why_waiting_fees">Várakozás a díjbécslésekre…</string>
+    <string name="send_why_preparing">A fizetés előkészítése…</string>
+    <string name="send_err_no_funds">Nincs elkölthető pénz</string>
+    <string name="send_err_insufficient">Elégtelen fedezet: %1$s %2$s szükséges a díjjal együtt, ennyid van: %3$s</string>
+    <string name="send_err_changed">A fizetés megváltozott, miközben megerősítetted. Ellenőrizd a részleteket, és próbáld újra.</string>
+    <string name="send_password_title">Pénztárca jelszava</string>
+    <string name="send_password_body">%1$s %2$s küldése a következőnek: %3$s.</string>
+    <string name="send_auth_failed">A hitelesítés sikertelen</string>
+    <string name="send_bio_unavailable">A biometrikus kulcs nem érhető el; kapcsold ki, majd be a biometriát a Beállításokban.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">%1$s fogadása</string>
+    <string name="receive_preparing">Cím előkészítése…</string>
+    <string name="receive_standard">#%1$d cím • Taproot, ugyanaz, mint az asztali pénztárcában</string>
+    <string name="receive_pq">#%1$d cím • poszt-kvantum változat</string>
+    <string name="receive_copy">Másolás</string>
+    <string name="receive_share">Megosztás</string>
+    <string name="receive_share_request">Kérés megosztása</string>
+    <string name="receive_request_amount">Összeg kérése</string>
+    <string name="receive_label">Címke (nem kötelező)</string>
+    <string name="receive_label_placeholder">#42 számla</string>
+    <string name="receive_link_hint">Összeggel vagy címkével a kód és a megosztási link fizetési linkké válik, amely kitölti az összeget a küldő számára.</string>
+    <string name="receive_fresh">Használj friss címet</string>
+    <string name="receive_generating">Generálás…</string>
+    <string name="receive_show_pq">Poszt-kvantum változat megjelenítése</string>
+    <string name="receive_show_std">Standard cím megjelenítése</string>
+    <string name="receive_pq_warning_title">Az asztali pénztárca nem látja</string>
+    <string name="receive_pq_warning_body">Ez a változat egy XMSS poszt-kvantum kulcsot foglal a címbe. A hivatalos asztali pénztárca nem származtatja, így az ide küldött érmék csak a PocketPRL-ben láthatók, amíg a Pearl asztali pénztárcája nem támogatja. Használd a standard címet, kivéve, ha a fizetőnek kifejezetten erre van szüksége.</string>
+    <string name="receive_reuse_info">A címek újrahasznosíthatók, de a fizetőnként friss cím megőrzi az előzményeid titkosságát. A bejövő fizetések azonnal megjelennek a Tevékenységben, amint a küldő sugározza azokat.</string>
+    <string name="receive_only_send">Csak Pearl (%1$s) küldhető erre a címre.</string>
+    <string name="receive_qr_failed">A QR-kódot nem sikerült megrajzolni. Másold vagy oszd meg helyette a címet.</string>
+    <string name="receive_qr_desc">Cím QR-kódja</string>
+    <string name="receive_requesting">%1$s %2$s kérése</string>
+    <string name="receive_requesting_any">Bármilyen összeg kérése</string>
+    <string name="receive_requesting_for">%1$s a következőért: „%2$s”</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Elküldve</string>
+    <string name="sent_to">címzett: %1$s</string>
+    <string name="sent_confirms">Átlagosan %1$s alatt erősítődik meg.</string>
+    <string name="sent_txid">Tranzakció azonosítója</string>
+    <string name="sent_view_explorer">Megtekintés az explorerben</string>
+    <string name="sent_done">Kész</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Tevékenység</string>
+    <string name="activity_export">CSV exportálása</string>
+    <string name="activity_loading">Előzmények betöltése…</string>
+    <string name="activity_none">Még nincs tevékenység</string>
+    <string name="activity_nothing">Itt nincs semmi</string>
+    <string name="activity_none_body">A fizetések és bányászati jutalmak azonnal megjelennek, amint az indexer észleli őket.</string>
+    <string name="activity_title_single">Tranzakció</string>
+    <string name="activity_not_found">A tranzakció nem található</string>
+    <string name="activity_self">Saját magadnak küldve • csak hálózati díj</string>
+    <string name="activity_fiat_today">≈ %1$s ma</string>
+    <string name="activity_pending_mempool">Függőben a mempoolban</string>
+    <string name="activity_conf_of_maturity">%1$d / %2$d megerősítés a költéshez</string>
+    <string name="activity_confirmed">Megerősítve • %1$s megerősítés</string>
+    <string name="activity_spendable_in">%1$d blokk múlva elkölthető (%2$s)</string>
+    <string name="activity_txid">Tranzakció azonosítója</string>
+    <string name="activity_from">Feladó</string>
+    <string name="activity_to">Címzett</string>
+    <string name="activity_from_your">A te címedről</string>
+    <string name="activity_to_your">A te címedre</string>
+    <string name="activity_save_contact">Mentés névjegyként</string>
+    <string name="activity_view_explorer">Megtekintés az explorerben</string>
+    <string name="activity_maturity_info">A blokkjutalmak %1$d megerősítés után válnak elkölthetővé, mint minden Bitcoin-alapú láncon.</string>
+    <string name="activity_note">Jegyzet</string>
+    <string name="activity_note_placeholder">Mire volt ez?</string>
+    <string name="activity_note_hint">A jegyzetek csak ezen a telefonon maradnak.</string>
+    <string name="activity_contact_new">Új névjegy</string>
+    <string name="activity_contact_edit">Névjegy szerkesztése</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Teljes kimenő</string>
+    <string name="activity_filter_all">Összes</string>
+    <string name="activity_filter_received">Bejövő</string>
+    <string name="activity_filter_sent">Kimenő</string>
+    <string name="activity_filter_mined">Bányászott</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d tranzakció</item>
+        <item quantity="other">%1$d tranzakció</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d megerősítés</item>
+        <item quantity="other">%1$d megerősítés</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Beállítások</string>
+    <string name="settings_section_wallet">Pénztárca</string>
+    <string name="settings_section_appearance">Megjelenés</string>
+    <string name="settings_section_numbers">Számok és pénznem</string>
+    <string name="settings_section_dashboard">Irányítópult</string>
+    <string name="settings_section_security">Biztonság és adatvédelem</string>
+    <string name="settings_section_notifications">Értesítések</string>
+    <string name="settings_section_network">Hálózat</string>
+    <string name="settings_section_backup">Biztonsági mentés</string>
+    <string name="settings_section_about">Információk</string>
+    <string name="settings_section_danger">Veszélyzóna</string>
+    <string name="settings_name">Név</string>
+    <string name="settings_created">Létrehozva</string>
+    <string name="settings_wallets">Pénztárcák</string>
+    <string name="settings_wallets_one">Csak ez az egy</string>
+    <string name="settings_wallets_n">%1$d ezen az eszközön</string>
+    <string name="settings_contacts">Névjegyek</string>
+    <string name="settings_contacts_saved">%1$d mentve</string>
+    <string name="settings_addresses">Címek</string>
+    <string name="settings_addresses_derived">%1$d származtatva</string>
+    <string name="settings_change_password">Jelszó módosítása</string>
+    <string name="settings_biometric">Biometrikus feloldás</string>
+    <string name="settings_biometric_none">Nincs regisztrálva</string>
+    <string name="settings_biometric_sub">Ujjlenyomat vagy arc</string>
+    <string name="settings_confirm_send">Megerősítés küldés előtt</string>
+    <string name="settings_confirm_send_sub">Kérdezzen minden fizetésnél</string>
+    <string name="settings_auto_lock">Automatikus zárolás</string>
+    <string name="settings_hide_balances">Egyenlegek elrejtése</string>
+    <string name="settings_hide_balances_sub">Minden összeg maszkolása</string>
+    <string name="settings_start_hidden">Indítás rejtve</string>
+    <string name="settings_start_hidden_sub">Egyenlegek elrejtése feloldáskor</string>
+    <string name="settings_secure_all">Képernyőképek tiltása mindenhol</string>
+    <string name="settings_secure_all_sub">A kezdő- és tevékenységképernyő védelme is</string>
+    <string name="settings_theme">Téma</string>
+    <string name="settings_accent">Kiemelőszín</string>
+    <string name="settings_dynamic_color">Dinamikus szín</string>
+    <string name="settings_dynamic_color_sub">A rendszer háttérkép-palettájának használata (Android 12+)</string>
+    <string name="settings_reduced_motion">Mozgás csökkentése</string>
+    <string name="settings_reduced_motion_sub">Nincs gördülő számjegy vagy képernyőanimáció</string>
+    <string name="settings_odometer">Odométer animáció</string>
+    <string name="settings_odometer_sub">Gördülő számjegyek az egyenlegeken</string>
+    <string name="settings_odometer_haptics">Odométer haptika</string>
+    <string name="settings_odometer_haptics_sub">Rezgés minden gördülésnél</string>
+    <string name="settings_odometer_haptics_off">Nincs hatás, ha az animáció ki van kapcsolva</string>
+    <string name="settings_show_fiat">Fiat érték megjelenítése</string>
+    <string name="settings_fiat_currency">Fiat pénznem</string>
+    <string name="settings_decimals">Egyenleg tizedesjegyei</string>
+    <string name="settings_decimal_sep">Tizedeselválasztó</string>
+    <string name="settings_grouping_sep">Ezreselválasztó</string>
+    <string name="settings_hero">Nagy szám</string>
+    <string name="settings_hero_total">Teljes egyenleg</string>
+    <string name="settings_hero_spendable">Elkölthető egyenleg</string>
+    <string name="settings_show_change">24 órás árváltozás</string>
+    <string name="settings_show_change_sub">A napi változás jelzőjének megjelenítése</string>
+    <string name="settings_show_mining">Bányászati jutalmak kártya</string>
+    <string name="settings_show_mining_sub">Elrejtés, ha nem bányászol erre a pénztárcára</string>
+    <string name="settings_poll_mode">Frissítési gyakoriság</string>
+    <string name="settings_poll_live">Élő</string>
+    <string name="settings_poll_balanced">Kiegyensúlyozott</string>
+    <string name="settings_poll_battery">Energiatakarékos</string>
+    <string name="settings_notify_incoming">Bejövő fizetések</string>
+    <string name="settings_notify_incoming_sub">Ellenőrizve %1$s</string>
+    <string name="settings_price_alerts">Árriasztások</string>
+    <string name="settings_price_alerts_sub">Értesítés nagy 24 órás mozgásokról</string>
+    <string name="settings_alert_threshold">Riasztási küszöb</string>
+    <string name="settings_alert_threshold_sub">%1$s mozgás 24 óra alatt</string>
+    <string name="settings_reveal_seed">Helyreállítási frázis megjelenítése</string>
+    <string name="settings_reveal_seed_sub">Jelszó szükséges</string>
+    <string name="settings_indexer">Indexer (Blockbook)</string>
+    <string name="settings_about_version">%1$s verzió</string>
+    <string name="settings_delete">Pénztárca törlése</string>
+    <string name="settings_password_title">Jelszó módosítása</string>
+    <string name="settings_password_current">Jelenlegi jelszó</string>
+    <string name="settings_password_new">Új jelszó</string>
+    <string name="settings_password_confirm">Új jelszó megerősítése</string>
+    <string name="settings_password_updated">A jelszó megváltozott.</string>
+    <string name="settings_password_update">Jelszó frissítése</string>
+    <string name="settings_password_info">A jelszó megváltoztatása csak ezen az eszközön titkosítja újra a kulcsot. A helyreállítási frázis változatlan marad.</string>
+    <string name="settings_password_error_current">A jelenlegi jelszó helytelen</string>
+    <string name="settings_password_error_short">Használj legalább 8 karaktert betűk, számok vagy szimbólumok keverékével.</string>
+    <string name="settings_seed_title">Helyreállítási frázis</string>
+    <string name="settings_seed_warning">Soha ne oszd meg a helyreállítási frázisodat. A PocketPRL munkatársai vagy a Pearl fejlesztői soha nem kérik.</string>
+    <string name="settings_seed_reveal">Felfedés</string>
+    <string name="settings_seed_hex">Hex seed</string>
+    <string name="settings_seed_written_hint">Írd le papírra. A képernyőképek le vannak tiltva ezen a képernyőn.</string>
+    <string name="settings_rename_title">Pénztárca átnevezése</string>
+    <string name="settings_auto_lock_title">Automatikus zárolás ennyi után</string>
+    <string name="settings_theme_title">Téma</string>
+    <string name="settings_accent_title">Kiemelőszín</string>
+    <string name="settings_delete_title">Törlöd a(z) „%1$s” pénztárcát?</string>
+    <string name="settings_delete_body">Ez eltávolítja a pénztárca titkosított kulcsait, gyorsítótárazott előzményeit, névjegyeit és jegyzeteit erről a telefonról. Más pénztárcákra ez nincs hatással. Győződj meg róla, hogy megvan a helyreállítási frázis. A megerősítéshez írd be: DELETE.</string>
+    <string name="settings_threshold_title">Árriasztási küszöb</string>
+    <string name="settings_threshold_intro">Riasztás, amikor a 24 órás változás eléri:</string>
+    <string name="settings_addresses_title">Címek</string>
+    <string name="settings_addresses_checking">Ellenőrzés…</string>
+    <string name="settings_addresses_derived_sub">%1$d index származtatva</string>
+    <string name="settings_addresses_rescan">Minden cím újraolvasása</string>
+    <string name="settings_addresses_receive">#%1$d fogadása</string>
+    <string name="settings_addresses_change">#%1$d visszajáró</string>
+    <string name="settings_addresses_pq">%1$s • poszt-kvantum változat</string>
+    <string name="settings_addresses_used">használt</string>
+    <string name="settings_addresses_info">Koppints egy címre a másoláshoz. Származtatás: m/86’/%1$d’/0’/branch/index, BIP-86 kulcsútvonal, mint az asztali pénztárcában. Minden indexnek van egy poszt-kvantum változata is (XMSS tapleaf a 222’ célból), amelyet figyelünk, és itt listázunk, amint használták. A frissítés gomb most minden címet ellenőriz, mindkét változatot; a kezdőképernyő csak a használatban lévőket.</string>
+    <string name="settings_contacts_title">Névjegyek</string>
+    <string name="settings_contacts_empty">Még nincsenek névjegyek</string>
+    <string name="settings_contacts_empty_body">Mentsd el a gyakran használt címeket. A nevek megjelennek a tevékenységeidben és a címzett mezőben.</string>
+    <string name="settings_contacts_add">Névjegy hozzáadása</string>
+    <string name="settings_contacts_info">A névjegyek csak ezen a telefonon tárolódnak, és nem részei a helyreállítási frázisnak.</string>
+    <string name="settings_contacts_new">Új névjegy</string>
+    <string name="settings_contacts_address">%1$s cím</string>
+    <string name="settings_contacts_invalid">Nem érvényes %1$s cím</string>
+    <string name="settings_contacts_name_required">Adj nevet a névjegynek</string>
+    <string name="settings_about_title">Információk</string>
+    <string name="settings_about_source">PocketPRL forráskód</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Pearl forráskód (GitHub)</string>
+    <string name="settings_about_explorer">Blokkfelfedező</string>
+    <string name="settings_about_check">Frissítések keresése</string>
+    <string name="settings_about_checking">Ellenőrzés…</string>
+    <string name="settings_about_latest">A legújabb verziót használod (v%1$s).</string>
+    <string name="settings_about_failed">Nem sikerült elérni a GitHubot. Ellenőrizd a kapcsolatot, és próbáld újra.</string>
+    <string name="settings_about_update_title">Frissítés elérhető</string>
+    <string name="settings_about_update_body">A %1$s verzió elérhető. Jelenleg v%2$s.</string>
+    <string name="settings_about_update">Frissítés</string>
+    <string name="settings_about_later">Később</string>
+    <string name="settings_about_version_label">Verzió</string>
+    <string name="settings_about_network">Hálózat</string>
+    <string name="settings_about_coin_type">Érmetípus</string>
+    <string name="settings_about_addresses">Címek</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Aláírás</string>
+    <string name="settings_about_signing_value">BIP-340 Schnorr kulcsútvonal, libsecp256k1</string>
+    <string name="settings_about_pq">PQ-elkötelezettség</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">A PocketPRL egy független, nyílt forráskódú könnyű pénztárca a Pearl hálózathoz. Ugyanazokat a címeket származtatja, mint a hivatalos asztali pénztárca (oyster), és a Pearl forráskódjából generált tesztektorokkal ellenőrizték vele szemben.</string>
+    <string name="settings_about_warranty">Ez a szoftver garancia nélkül, „adott állapotában” érhető el. Ellenőrizd a buildeket, tartsd offline a helyreállítási frázist, és először kis összegekkel tesztelj.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Indexer</string>
+    <string name="indexer_body">A PocketPRL az egyenlegeket, az előzményeket és a díjbécsléseket egy Blockbook indexerből olvassa, és azon keresztül sugároz. A kulcsok soha nem hagyják el a telefont, de az indexer megtudja, mely címeket keresed. Állítsd a saját példányodra, ha ez számít neked.</string>
+    <string name="indexer_label">Blockbook URL (csak https)</string>
+    <string name="indexer_default">Alapértelmezett: %1$s</string>
+    <string name="indexer_saved">Mentve. Húzd le a kezdőképernyőn az újraszinkronizáláshoz.</string>
+    <string name="indexer_save">Mentés</string>
+    <string name="indexer_reset">Visszaállítás alapértelmezettre</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Automatikus (rendszer)</string>
+    <string name="theme_light">Világos</string>
+    <string name="theme_dark">Sötét</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Óceán</string>
+    <string name="accent_sunset">Naplemente</string>
+    <string name="accent_violet">Ibolya</string>
+    <string name="accent_forest">Erdő</string>
+    <string name="accent_rose">Rózsa</string>
+    <string name="accent_mono">Mono</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Keskeny szóköz</string>
+    <string name="grouping_space">Szóköz</string>
+    <string name="grouping_comma">Vessző</string>
+    <string name="grouping_period">Pont</string>
+    <string name="grouping_apostrophe">Aposztróf</string>
+    <string name="grouping_none">Nincs</string>
+    <string name="decimal_period">Pont (.)</string>
+    <string name="decimal_comma">Vessző (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Nincs kapcsolat az indexerrel</string>
+    <string name="sync_err_not_responding">Az indexer nem válaszol</string>
+    <string name="sync_err_no_internet">Nincs internetkapcsolat</string>
+    <string name="sync_err_lost_connection">Megszakadt a kapcsolat az indexerrel</string>
+    <string name="wallet_deriving_receive">%1$d/%2$d fogadási cím származtatása</string>
+    <string name="wallet_deriving_change">%1$d/%2$d visszajáró cím származtatása</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">%1$d cím ellenőrzése…</item>
+        <item quantity="other">%1$d cím ellenőrzése…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">%1$d cím nem ellenőrizhető (%2$s); újrapróbálás</item>
+        <item quantity="other">%1$d cím nem ellenőrizhető (%2$s); újrapróbálás</item>
+    </plurals>
+    <string name="address_err_enter">Add meg a címzett címét</string>
+    <string name="address_err_invalid">Nem érvényes Pearl-cím</string>
+    <string name="address_err_unknown_prefix">Ismeretlen címelőtag: „%1$s”</string>
+    <string name="address_err_only_taproot">Csak Taproot (%1$s1p…) címek támogatottak</string>
+    <string name="address_err_invalid_length">Érvénytelen Taproot-címhossz</string>
+    <string name="address_err_wrong_network">Az egy %1$s cím; ez a pénztárca a(z) %2$s hálózaton van</string>
+    <string name="qr_err_invalid_link">Az a link nem érvényes %1$s fizetési kérés.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Bejövő fizetések</string>
+    <string name="notif_channel_payments_desc">Beérkező fizetések és blokkjutalmak, amikor megjelennek és amikor megerősítést nyernek</string>
+    <string name="notif_channel_price">Árriasztások</string>
+    <string name="notif_channel_price_desc">Nagy PRL árváltozások 24 óra alatt</string>
+    <string name="notif_block_confirmed">Blokkjutalom megerősítve</string>
+    <string name="notif_block">Blokkjutalom</string>
+    <string name="notif_payment_confirmed">Fizetés megerősítve</string>
+    <string name="notif_payment_received">Fizetés beérkezett</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Részletekért nyisd meg a PocketPRL-t</string>
+    <string name="notif_mined">+%1$s %2$s • %3$d megerősítés után elkölthető</string>
+    <string name="notif_waiting">+%1$s %2$s • várakozás megerősítésre</string>
+    <string name="notif_in_block">+%1$s %2$s • a(z) %3$s blokkban</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">PRL árriasztás</string>
+    <string name="price_dir_up">Növekedés</string>
+    <string name="price_dir_down">Csökkenés</string>
+    <string name="price_alert_body">%1$s %2$s%%: most %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Előzmények exportálása</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Tedd a magadévá</string>
+    <string name="personalize_subtitle">Válaszd ki, hogyan nézzen ki és olvasódjon a PocketPRL. Mindezt később a Beállításokban módosíthatod.</string>
+    <string name="personalize_preview">Előnézet</string>
+    <string name="personalize_section_look">Megjelenés</string>
+    <string name="personalize_section_numbers">Számok</string>
+    <string name="personalize_section_currency">Pénznem</string>
+    <string name="personalize_section_motion">Mozgás</string>
+    <string name="personalize_continue">Folytatás</string>
+    <string name="personalize_reset">Visszaállítás alapértékekre</string>
+    <string name="personalize_grouping_toggle">Ezrek csoportosítása</string>
+    <string name="notif_period">körülbelül percenként</string>
+    <string name="autolock_immediately">Azonnal</string>
+    <string name="autolock_1m">1 perc</string>
+    <string name="autolock_5m">5 perc</string>
+    <string name="autolock_15m">15 perc</string>
+    <string name="autolock_1h">1 óra</string>
+    <string name="autolock_never">Soha</string>
+    <string name="duration_seconds">%1$d másodperc</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Pénztárca váltása</string>
+    <string name="action_receive">Fogadás</string>
+    <string name="action_lock">Zárolás</string>
+    <string name="action_show_balance">Egyenleg megjelenítése</string>
+    <string name="action_hide_balance">Egyenleg elrejtése</string>
+    <string name="pwd_weak">Gyenge</string>
+    <string name="pwd_fair">Elfogadható</string>
+    <string name="pwd_good">Jó</string>
+    <string name="pwd_strong">Erős</string>
+    <string name="pwd_strength">%1$s jelszó</string>
+    <string name="pwd_show">Jelszó megjelenítése</string>
+    <string name="pwd_hide">Jelszó elrejtése</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d pénztárca • %2$s</item>
+        <item quantity="other">%1$d pénztárca • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Bemenetek / kimenetek</string>
+    <string name="activity_size_label">Méret</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Jelszó használata</string>
+    <string name="bio_no_crypto_object">Nincs kriptoobjektum</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Olvass be egy Pearl-címet vagy fizetési linket</string>
+    <string name="send_open_settings">Beállítások megnyitása</string>
+    <string name="send_camera_off">A kamera-hozzáférés ki van kapcsolva a PocketPRL számára.</string>
+    <string name="send_camera_needed">A beolvasáshoz kamera kell.</string>
+    <string name="send_for_label">Részére: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Ments el egy címet egy tranzakcióból vagy a Beállítások › Névjegyek menüből.</string>
+    <string name="receive_optional">Nem kötelező</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Beállítások megnyitása</string>
+    <string name="settings_notif_off">Az értesítések ki vannak kapcsolva, ezért ez letiltva marad.</string>
+    <string name="settings_notif_blocked">Az értesítések le vannak tiltva a PocketPRL számára.</string>
+    <string name="settings_keystore_error">Nem sikerült Keystore-kulcsot létrehozni</string>
+    <string name="settings_biometric_prompt">Biometrikus feloldás engedélyezése</string>
+    <string name="settings_seed_password">Pénztárca jelszava</string>
+    <string name="settings_seed_incorrect">Hibás jelszó</string>
+    <string name="settings_copy_address">Cím másolása</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Sikertelen</string>
+    <string name="vm_biometric_enable_failed">A biometria engedélyezése sikertelen</string>
+    <string name="settings_section_language">Nyelv</string>
+    <string name="settings_language">Nyelv</string>
+    <string name="settings_language_system">Rendszer alapértelmezett</string>
+</resources>

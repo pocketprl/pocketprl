@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Wstecz</string>
+    <string name="action_cancel">Anuluj</string>
+    <string name="action_save">Zapisz</string>
+    <string name="action_delete">Usuń</string>
+    <string name="action_done">Gotowe</string>
+    <string name="action_edit">Edytuj</string>
+    <string name="action_continue">Dalej</string>
+    <string name="action_close">Zamknij</string>
+    <string name="action_add">Dodaj</string>
+    <string name="action_share">Udostępnij</string>
+    <string name="action_copy">Kopiuj</string>
+    <string name="action_retry">Ponów</string>
+    <string name="action_scan">Skanuj</string>
+    <string name="action_paste">Wklej</string>
+    <string name="action_clear">Wyczyść</string>
+    <string name="action_contacts">Kontakty</string>
+    <string name="action_send">Wyślij</string>
+    <string name="label_amount">Kwota</string>
+    <string name="label_name">Nazwa</string>
+    <string name="label_address">Adres</string>
+    <string name="label_fee">Opłata</string>
+    <string name="label_date">Data</string>
+    <string name="label_block">Blok</string>
+    <string name="label_total">Razem</string>
+    <string name="label_to">Do</string>
+    <string name="label_from">Od</string>
+    <string name="label_network">Sieć</string>
+    <string name="copied">Skopiowano</string>
+    <string name="clipboard_address">Adres Pearl</string>
+    <string name="clipboard_txid">ID transakcji</string>
+    <string name="balance_hidden">Saldo ukryte</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Dziś</string>
+    <string name="day_yesterday">Wczoraj</string>
+    <string name="time_just_now">przed chwilą</string>
+    <string name="time_pending">oczekuje</string>
+    <string name="label_unconfirmed">Niepotwierdzona</string>
+    <string name="eta_minutes">~%1$d min</string>
+    <string name="eta_hours">~%1$d godz.</string>
+    <string name="eta_hours_half">~%1$d,5 godz.</string>
+    <string name="time_ago_s">%1$d s temu</string>
+    <string name="time_ago_m">%1$d min temu</string>
+    <string name="time_ago_h">%1$d godz. temu</string>
+    <string name="time_ago_d">%1$d dni temu</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Dodaj portfel</string>
+    <string name="welcome_add_headline">Kolejny portfel, całkowicie odrębny</string>
+    <string name="welcome_add_body">Własna fraza odzyskiwania, hasło, historia i kontakty. Przełączaj portfele, dotykając tytułu na ekranie głównym.</string>
+    <string name="welcome_one_unlocked">W danym momencie odblokowany jest tylko jeden portfel; przełączenie blokuje bieżący.</string>
+    <string name="welcome_tagline">Pearl (PRL) w Twojej kieszeni. Te same klucze co w portfelu desktopowym, bez zbędnego balastu.</string>
+    <string name="welcome_feature_selfcustody_title">Samodzielne przechowywanie</string>
+    <string name="welcome_feature_selfcustody_body">Klucze są tworzone i pozostają na tym telefonie, zaszyfrowane i chronione biometrią.</string>
+    <string name="welcome_feature_desktop_title">Zgodność z desktopem</string>
+    <string name="welcome_feature_desktop_body">Tworzy dokładnie te same postkwantowe adresy Taproot co oyster. Swobodnie przenoś środki między nimi.</string>
+    <string name="welcome_feature_overview_title">Natychmiastowy przegląd</string>
+    <string name="welcome_feature_overview_body">Salda, historia i nagrody za kopanie z indeksera Pearl. Bez pobierania łańcucha.</string>
+    <string name="welcome_feature_phone_title">Stworzony na telefon</string>
+    <string name="welcome_feature_phone_body">Linki do płatności, kontakty, notatki, wiele portfeli i powiadomienia „otrzymano płatność”.</string>
+    <string name="welcome_network">Sieć</string>
+    <string name="welcome_create">Utwórz nowy portfel</string>
+    <string name="welcome_restore">Przywróć z frazy odzyskiwania</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Mój portfel Pearl</string>
+    <string name="onboard_step">Krok %1$d z 3 • %2$s</string>
+    <string name="onboard_title_create">Utwórz portfel</string>
+    <string name="onboard_title_seed">Twoja fraza odzyskiwania</string>
+    <string name="onboard_title_verify">Zweryfikuj frazę</string>
+    <string name="onboard_title_working">Konfigurowanie</string>
+    <string name="onboard_name_protect">Nazwij i zabezpiecz portfel</string>
+    <string name="onboard_wallet_name">Nazwa portfela</string>
+    <string name="onboard_password">Hasło</string>
+    <string name="onboard_confirm_password">Potwierdź hasło</string>
+    <string name="onboard_password_warning">Hasło szyfruje klucze na tym urządzeniu. Nie można go zresetować: jeśli je zapomnisz, przywróć portfel z frazy odzyskiwania.</string>
+    <string name="onboard_password_hint">Użyj co najmniej 8 znaków, mieszając litery, cyfry lub symbole.</string>
+    <string name="onboard_seed_write">Zapisz te 12 słów w kolejności i przechowuj je offline.</string>
+    <string name="onboard_seed_secret_title">Trzymaj to w tajemnicy</string>
+    <string name="onboard_seed_secret_body">Każdy, kto zna te słowa, kontroluje Twoje środki. Zrzuty ekranu na tym ekranie są zablokowane; nie przechowuj frazy w formie cyfrowej.</string>
+    <string name="onboard_written">Zapisałem ją</string>
+    <string name="onboard_creating">Tworzenie portfela…</string>
+    <string name="onboard_restoring">Przywracanie…</string>
+    <string name="onboard_quiz_instruction">Wybierz właściwe słowo dla każdej pozycji, aby potwierdzić kopię zapasową.</string>
+    <string name="onboard_word_n">Słowo nr %1$d</string>
+    <string name="onboard_quiz_error">Te słowa nie pasują do Twojej frazy. Wróć i sprawdź ją dokładnie.</string>
+    <string name="onboard_verify_create">Zweryfikuj i utwórz portfel</string>
+    <string name="onboard_restore_title">Przywróć portfel</string>
+    <string name="onboard_restore_progress_body">Każdy adres wymaga klucza postkwantowego, więc wyprowadzenie okna wyszukiwania chwilę trwa. Następnie portfel skanuje indekser Pearl w poszukiwaniu Twojej historii.</string>
+    <string name="onboard_recovery_label">Fraza odzyskiwania lub ziarno szesnastkowe</string>
+    <string name="onboard_recovery_placeholder">12–24 słowa oddzielone spacjami</string>
+    <string name="onboard_new_password">Nowe hasło</string>
+    <string name="onboard_restore_compatible">Współpracuje z frazami z oficjalnego portfela desktopowego Pearl (oyster) oraz z każdym portfelem BIP-39 korzystającym z derywacji Pearl.</string>
+    <string name="onboard_restore_button">Przywróć portfel</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">fraza odzyskiwania: %1$d słów</string>
+    <string name="onboard_check_hex">ziarno szesnastkowe: %1$d bajtów</string>
+    <string name="onboard_err_enter_phrase">Wprowadź frazę odzyskiwania</string>
+    <string name="onboard_err_hex_even">Ziarno szesnastkowe musi mieć parzystą liczbę znaków</string>
+    <string name="onboard_err_hex_range">Ziarno szesnastkowe musi mieć od 128 do 512 bitów</string>
+    <string name="onboard_err_enter_phrase_or_hex">Wprowadź frazę odzyskiwania składającą się z 12–24 słów lub ziarno szesnastkowe</string>
+    <string name="onboard_err_word_count">Fraza odzyskiwania ma 12, 15, 18, 21 lub 24 słowa (otrzymano %1$d)</string>
+    <string name="onboard_err_unknown_word">„%1$s” nie jest słowem BIP39</string>
+    <string name="onboard_err_checksum">Niezgodność sumy kontrolnej: sprawdź kolejność i pisownię słów</string>
+    <string name="onboard_err_create_failed">Nie udało się utworzyć portfela</string>
+    <string name="onboard_err_restore_failed">Przywracanie nie powiodło się</string>
+    <string name="onboard_preparing">Przygotowywanie portfela…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">Odblokuj %1$s</string>
+    <string name="unlock_password">Hasło portfela</string>
+    <string name="unlock_button">Odblokuj</string>
+    <string name="unlock_use_biometrics">Użyj biometrii</string>
+    <string name="unlock_switch_wallet">Przełącz portfel (%1$d)</string>
+    <string name="unlock_add_another">Dodaj kolejny portfel</string>
+    <string name="unlock_forgot">Nie pamiętasz hasła? Usuń i przywróć</string>
+    <string name="unlock_erase_title">Usunąć „%1$s”?</string>
+    <string name="unlock_erase_body">Klucze tego portfela i lokalna historia na tym telefonie zostaną usunięte. Nie wpłynie to na inne portfele. Środki odzyskasz tylko za pomocą frazy odzyskiwania. Wpisz ERASE, aby potwierdzić.</string>
+    <string name="unlock_erase_confirm">Usuń</string>
+    <string name="unlock_error_biometric">Klucz biometryczny jest niedostępny (czy dodano lub usunięto odcisk palca?). Użyj hasła.</string>
+    <string name="unlock_error_incorrect">Nieprawidłowe hasło</string>
+    <string name="unlock_error_failed">Odblokowanie nie powiodło się</string>
+    <string name="unlock_error_biometric_failed">Odblokowanie biometryczne nie powiodło się: %1$s. Użyj hasła.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Portfele</string>
+    <string name="switcher_test_coins">%1$s • monety testowe</string>
+    <string name="switcher_current">Bieżący portfel</string>
+    <string name="switcher_add_title">Dodaj portfel</string>
+    <string name="switcher_add_body">Utwórz nowy lub przywróć inną frazę. Każdy portfel ma własne hasło.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Saldo łączne</string>
+    <string name="dash_spendable">Dostępne</string>
+    <string name="dash_incoming">Przychodzące</string>
+    <string name="dash_maturing">Dojrzewające</string>
+    <string name="dash_activity">Aktywność</string>
+    <string name="dash_view_all">Zobacz wszystkie (%1$d)</string>
+    <string name="dash_looking">Szukanie transakcji…</string>
+    <string name="dash_no_tx">Brak transakcji</string>
+    <string name="dash_no_tx_body">Udostępnij swój adres odbiorczy lub link do płatności, aby rozpocząć.</string>
+    <string name="dash_show_address">Pokaż mój adres</string>
+    <string name="dash_testnet_warning">Korzystasz z %1$s. Monety tutaj nie mają wartości.</string>
+    <string name="dash_sync_syncing">Synchronizacja…</string>
+    <string name="dash_sync_failed">Synchronizacja nie powiodła się</string>
+    <string name="dash_sync_synced">Zsynchronizowano</string>
+    <string name="dash_sync_not_synced">Jeszcze nie zsynchronizowano</string>
+    <string name="dash_sync_block">Blok %1$s • zaktualizowano %2$s</string>
+    <string name="dash_sync_last">Ostatnia synchronizacja %1$s • blok %2$s</string>
+    <string name="dash_mining_rewards">Nagrody za kopanie</string>
+    <string name="dash_last_7_days">Ostatnie 7 dni</string>
+    <string name="dash_all_time">Od początku</string>
+    <string name="dash_mining_progress">%1$s dojrzewa • następne dostępne za %2$d bloków (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Nagrody dojrzewają</string>
+    <string name="dash_price_content_desc">%1$s %2$s procent w ciągu 24 godzin</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d blok</item>
+        <item quantity="few">%1$d bloki</item>
+        <item quantity="many">%1$d bloków</item>
+        <item quantity="other">%1$d bloku</item>
+    </plurals>
+    <string name="tx_received">Otrzymano</string>
+    <string name="tx_sent">Wysłano</string>
+    <string name="tx_self">Przelew do siebie</string>
+    <string name="tx_mined">Wydobyto</string>
+    <string name="tx_to_contact">Do %1$s</string>
+    <string name="tx_from_contact">Od %1$s</string>
+    <string name="tx_pending">Oczekuje</string>
+    <string name="tx_pending_seen">Oczekuje • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d potw.</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">Wyślij %1$s</string>
+    <string name="send_spendable">Dostępne %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Wprowadź prawidłową kwotę (do 8 miejsc po przecinku)</string>
+    <string name="send_enter_valid_amount_short">Wprowadź prawidłową kwotę</string>
+    <string name="send_enter_in">Wprowadź w %1$s</string>
+    <string name="send_max">Maks.</string>
+    <string name="send_max_selected">Maks. ✓</string>
+    <string name="send_to">Do</string>
+    <string name="send_to_contact">Do • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… lub kontakt</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Opłata sieciowa</string>
+    <string name="send_use_estimates">Użyj szacunków</string>
+    <string name="send_custom_rate">Własna stawka</string>
+    <string name="send_fee_rate_label">Stawka opłaty (grain na vbyte, min. 1)</string>
+    <string name="send_fee_normal">Normalna</string>
+    <string name="send_fee_fast">Szybka</string>
+    <string name="send_fee_loading">Nie udało się wczytać szacunków opłaty: %1$s</string>
+    <string name="send_summary">Podsumowanie</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Wejścia</string>
+    <string name="send_inputs_change">%1$d • reszta %2$s</string>
+    <string name="send_slider">Wyślij</string>
+    <string name="send_not_ready">Niegotowe</string>
+    <string name="send_sending">Wysyłanie</string>
+    <string name="send_confirming">Potwierdzanie</string>
+    <string name="send_slide">Przesuń lub dotknij dwukrotnie, aby wysłać</string>
+    <string name="send_why_amount_blank">Wprowadź kwotę, aby kontynuować</string>
+    <string name="send_why_amount_invalid">Wprowadź prawidłową kwotę, aby kontynuować</string>
+    <string name="send_why_recipient_blank">Wprowadź odbiorcę, aby kontynuować</string>
+    <string name="send_why_recipient_invalid">Popraw adres odbiorcy, aby kontynuować</string>
+    <string name="send_why_fee_unavailable">Szacunek opłaty niedostępny</string>
+    <string name="send_why_waiting_fees">Oczekiwanie na szacunki opłaty…</string>
+    <string name="send_why_preparing">Przygotowywanie płatności…</string>
+    <string name="send_err_no_funds">Brak dostępnych środków</string>
+    <string name="send_err_insufficient">Niewystarczające środki: potrzeba %1$s %2$s wraz z opłatą, dostępne %3$s</string>
+    <string name="send_err_changed">Płatność zmieniła się podczas jej potwierdzania. Sprawdź szczegóły i spróbuj ponownie.</string>
+    <string name="send_password_title">Hasło portfela</string>
+    <string name="send_password_body">Wysyła %1$s %2$s do %3$s.</string>
+    <string name="send_auth_failed">Uwierzytelnianie nie powiodło się</string>
+    <string name="send_bio_unavailable">Klucz biometryczny niedostępny; wyłącz i ponownie włącz biometrię w Ustawieniach.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">Odbierz %1$s</string>
+    <string name="receive_preparing">Przygotowywanie adresu…</string>
+    <string name="receive_standard">Adres #%1$d • Taproot, taki sam jak w portfelu desktopowym</string>
+    <string name="receive_pq">Adres #%1$d • wariant postkwantowy</string>
+    <string name="receive_copy">Kopiuj</string>
+    <string name="receive_share">Udostępnij</string>
+    <string name="receive_share_request">Udostępnij prośbę</string>
+    <string name="receive_request_amount">Poproś o kwotę</string>
+    <string name="receive_label">Etykieta (opcjonalnie)</string>
+    <string name="receive_label_placeholder">Faktura nr 42</string>
+    <string name="receive_link_hint">Z kwotą lub etykietą kod i link do udostępnienia stają się linkiem do płatności, który wypełnia kwotę u nadawcy.</string>
+    <string name="receive_fresh">Użyj nowego adresu</string>
+    <string name="receive_generating">Generowanie…</string>
+    <string name="receive_show_pq">Pokaż wariant postkwantowy</string>
+    <string name="receive_show_std">Pokaż standardowy adres</string>
+    <string name="receive_pq_warning_title">Niewidoczny dla portfela desktopowego</string>
+    <string name="receive_pq_warning_body">Ten wariant osadza postkwantowy klucz XMSS w adresie. Oficjalny portfel desktopowy go nie wyprowadza, więc monety wysłane tutaj są widoczne tylko w PocketPRL, dopóki portfel desktopowy Pearl nie zacznie go obsługiwać. Użyj standardowego adresu, chyba że płacący konkretnie potrzebuje tego.</string>
+    <string name="receive_reuse_info">Adresy można używać ponownie, ale nowy adres dla każdego płacącego chroni prywatność Twojej historii. Płatności przychodzące pojawiają się w Aktywności, gdy tylko nadawca je rozgłosi.</string>
+    <string name="receive_only_send">Na ten adres wysyłaj wyłącznie Pearl (%1$s).</string>
+    <string name="receive_qr_failed">Nie udało się wygenerować kodu QR. Zamiast tego skopiuj lub udostępnij adres.</string>
+    <string name="receive_qr_desc">Kod QR adresu</string>
+    <string name="receive_requesting">Prośba o %1$s %2$s</string>
+    <string name="receive_requesting_any">Prośba o dowolną kwotę</string>
+    <string name="receive_requesting_for">%1$s za „%2$s”</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Wysłano</string>
+    <string name="sent_to">do %1$s</string>
+    <string name="sent_confirms">Potwierdzenie średnio w %1$s.</string>
+    <string name="sent_txid">ID transakcji</string>
+    <string name="sent_view_explorer">Zobacz w eksploratorze</string>
+    <string name="sent_done">Gotowe</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Aktywność</string>
+    <string name="activity_export">Eksportuj CSV</string>
+    <string name="activity_loading">Wczytywanie historii…</string>
+    <string name="activity_none">Brak aktywności</string>
+    <string name="activity_nothing">Nic tutaj nie ma</string>
+    <string name="activity_none_body">Płatności i nagrody za kopanie pojawią się, gdy tylko indekser je zauważy.</string>
+    <string name="activity_title_single">Transakcja</string>
+    <string name="activity_not_found">Nie znaleziono transakcji</string>
+    <string name="activity_self">Wysłano do siebie • tylko opłata sieciowa</string>
+    <string name="activity_fiat_today">≈ %1$s dzisiaj</string>
+    <string name="activity_pending_mempool">Oczekuje w mempoolu</string>
+    <string name="activity_conf_of_maturity">%1$d z %2$d potwierdzeń do wydania</string>
+    <string name="activity_confirmed">Potwierdzono • %1$s potwierdzeń</string>
+    <string name="activity_spendable_in">Dostępne za %1$d bloków (%2$s)</string>
+    <string name="activity_txid">ID transakcji</string>
+    <string name="activity_from">Od</string>
+    <string name="activity_to">Do</string>
+    <string name="activity_from_your">Z Twojego adresu</string>
+    <string name="activity_to_your">Na Twój adres</string>
+    <string name="activity_save_contact">Zapisz jako kontakt</string>
+    <string name="activity_view_explorer">Zobacz w eksploratorze</string>
+    <string name="activity_maturity_info">Nagrody za blok stają się dostępne po %1$d potwierdzeniach, tak jak w każdym łańcuchu wywodzącym się z Bitcoina.</string>
+    <string name="activity_note">Notatka</string>
+    <string name="activity_note_placeholder">Do czego to było?</string>
+    <string name="activity_note_hint">Notatki pozostają tylko na tym telefonie.</string>
+    <string name="activity_contact_new">Nowy kontakt</string>
+    <string name="activity_contact_edit">Edytuj kontakt</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Łącznie na wyjściu</string>
+    <string name="activity_filter_all">Wszystkie</string>
+    <string name="activity_filter_received">Otrzymane</string>
+    <string name="activity_filter_sent">Wysłane</string>
+    <string name="activity_filter_mined">Wydobyte</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d transakcja</item>
+        <item quantity="few">%1$d transakcje</item>
+        <item quantity="many">%1$d transakcji</item>
+        <item quantity="other">%1$d transakcji</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d potwierdzenie</item>
+        <item quantity="few">%1$d potwierdzenia</item>
+        <item quantity="many">%1$d potwierdzeń</item>
+        <item quantity="other">%1$d potwierdzenia</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Ustawienia</string>
+    <string name="settings_section_wallet">Portfel</string>
+    <string name="settings_section_appearance">Wygląd</string>
+    <string name="settings_section_numbers">Liczby i waluta</string>
+    <string name="settings_section_dashboard">Pulpit</string>
+    <string name="settings_section_security">Bezpieczeństwo i prywatność</string>
+    <string name="settings_section_notifications">Powiadomienia</string>
+    <string name="settings_section_network">Sieć</string>
+    <string name="settings_section_backup">Kopia zapasowa</string>
+    <string name="settings_section_about">Informacje</string>
+    <string name="settings_section_danger">Strefa zagrożenia</string>
+    <string name="settings_name">Nazwa</string>
+    <string name="settings_created">Utworzono</string>
+    <string name="settings_wallets">Portfele</string>
+    <string name="settings_wallets_one">Tylko ten</string>
+    <string name="settings_wallets_n">%1$d na tym urządzeniu</string>
+    <string name="settings_contacts">Kontakty</string>
+    <string name="settings_contacts_saved">zapisano %1$d</string>
+    <string name="settings_addresses">Adresy</string>
+    <string name="settings_addresses_derived">wyprowadzono %1$d</string>
+    <string name="settings_change_password">Zmień hasło</string>
+    <string name="settings_biometric">Odblokowanie biometryczne</string>
+    <string name="settings_biometric_none">Brak zapisanych</string>
+    <string name="settings_biometric_sub">Odcisk palca lub twarz</string>
+    <string name="settings_confirm_send">Potwierdź przed wysłaniem</string>
+    <string name="settings_confirm_send_sub">Pytaj przy każdej płatności</string>
+    <string name="settings_auto_lock">Automatyczna blokada</string>
+    <string name="settings_hide_balances">Ukryj salda</string>
+    <string name="settings_hide_balances_sub">Maskuj każdą kwotę</string>
+    <string name="settings_start_hidden">Zaczynaj ukryte</string>
+    <string name="settings_start_hidden_sub">Ukryj salda po odblokowaniu</string>
+    <string name="settings_secure_all">Blokuj zrzuty ekranu wszędzie</string>
+    <string name="settings_secure_all_sub">Chroń także ekran główny i ekran aktywności</string>
+    <string name="settings_theme">Motyw</string>
+    <string name="settings_accent">Kolor akcentu</string>
+    <string name="settings_dynamic_color">Kolor dynamiczny</string>
+    <string name="settings_dynamic_color_sub">Użyj palety tapety systemowej (Android 12+)</string>
+    <string name="settings_reduced_motion">Ogranicz animacje</string>
+    <string name="settings_reduced_motion_sub">Bez przewijających się cyfr i animacji ekranu</string>
+    <string name="settings_odometer">Animacja licznika</string>
+    <string name="settings_odometer_sub">Przewijające się cyfry na saldach</string>
+    <string name="settings_odometer_haptics">Wibracje licznika</string>
+    <string name="settings_odometer_haptics_sub">Drgnienie przy każdym przewinięciu</string>
+    <string name="settings_odometer_haptics_off">Bez efektu, gdy animacja jest wyłączona</string>
+    <string name="settings_show_fiat">Pokaż wartość w walucie fiducjarnej</string>
+    <string name="settings_fiat_currency">Waluta fiducjarna</string>
+    <string name="settings_decimals">Miejsca dziesiętne salda</string>
+    <string name="settings_decimal_sep">Separator dziesiętny</string>
+    <string name="settings_grouping_sep">Separator tysięcy</string>
+    <string name="settings_hero">Duża liczba</string>
+    <string name="settings_hero_total">Saldo łączne</string>
+    <string name="settings_hero_spendable">Saldo dostępne</string>
+    <string name="settings_show_change">Zmiana ceny w 24 godz.</string>
+    <string name="settings_show_change_sub">Pokaż wskaźnik dziennej zmiany</string>
+    <string name="settings_show_mining">Karta nagród za kopanie</string>
+    <string name="settings_show_mining_sub">Ukryj, jeśli nie kopiesz na ten portfel</string>
+    <string name="settings_poll_mode">Częstotliwość odświeżania</string>
+    <string name="settings_poll_live">Na żywo</string>
+    <string name="settings_poll_balanced">Zrównoważona</string>
+    <string name="settings_poll_battery">Oszczędzanie baterii</string>
+    <string name="settings_notify_incoming">Płatności przychodzące</string>
+    <string name="settings_notify_incoming_sub">Sprawdzane %1$s</string>
+    <string name="settings_price_alerts">Alerty cenowe</string>
+    <string name="settings_price_alerts_sub">Powiadamiaj o dużych zmianach w 24 godz.</string>
+    <string name="settings_alert_threshold">Próg alertu</string>
+    <string name="settings_alert_threshold_sub">zmiana %1$s w ciągu 24 godzin</string>
+    <string name="settings_reveal_seed">Pokaż frazę odzyskiwania</string>
+    <string name="settings_reveal_seed_sub">Wymaga hasła</string>
+    <string name="settings_indexer">Indekser (Blockbook)</string>
+    <string name="settings_about_version">Wersja %1$s</string>
+    <string name="settings_delete">Usuń ten portfel</string>
+    <string name="settings_password_title">Zmień hasło</string>
+    <string name="settings_password_current">Bieżące hasło</string>
+    <string name="settings_password_new">Nowe hasło</string>
+    <string name="settings_password_confirm">Potwierdź nowe hasło</string>
+    <string name="settings_password_updated">Hasło zmienione.</string>
+    <string name="settings_password_update">Zaktualizuj hasło</string>
+    <string name="settings_password_info">Zmiana hasła ponownie szyfruje klucz tylko na tym urządzeniu. Twoja fraza odzyskiwania pozostaje bez zmian.</string>
+    <string name="settings_password_error_current">Bieżące hasło jest nieprawidłowe</string>
+    <string name="settings_password_error_short">Użyj co najmniej 8 znaków, mieszając litery, cyfry lub symbole.</string>
+    <string name="settings_seed_title">Fraza odzyskiwania</string>
+    <string name="settings_seed_warning">Nigdy nie udostępniaj frazy odzyskiwania. Zespół PocketPRL ani deweloperzy Pearl nigdy o nią nie poproszą.</string>
+    <string name="settings_seed_reveal">Pokaż</string>
+    <string name="settings_seed_hex">Ziarno szesnastkowe</string>
+    <string name="settings_seed_written_hint">Zapisz je na papierze. Zrzuty ekranu na tym ekranie są zablokowane.</string>
+    <string name="settings_rename_title">Zmień nazwę portfela</string>
+    <string name="settings_auto_lock_title">Automatyczna blokada po</string>
+    <string name="settings_theme_title">Motyw</string>
+    <string name="settings_accent_title">Kolor akcentu</string>
+    <string name="settings_delete_title">Usunąć „%1$s”?</string>
+    <string name="settings_delete_body">Spowoduje to usunięcie z tego telefonu zaszyfrowanych kluczy, historii w pamięci podręcznej, kontaktów i notatek tego portfela. Nie wpłynie to na inne portfele. Upewnij się, że masz frazę odzyskiwania. Wpisz DELETE, aby potwierdzić.</string>
+    <string name="settings_threshold_title">Próg alertu cenowego</string>
+    <string name="settings_threshold_intro">Powiadom, gdy zmiana w ciągu 24 godzin osiągnie:</string>
+    <string name="settings_addresses_title">Adresy</string>
+    <string name="settings_addresses_checking">Sprawdzanie…</string>
+    <string name="settings_addresses_derived_sub">wyprowadzono %1$d indeksów</string>
+    <string name="settings_addresses_rescan">Ponownie przeskanuj każdy adres</string>
+    <string name="settings_addresses_receive">Odbiorczy #%1$d</string>
+    <string name="settings_addresses_change">Resztowy #%1$d</string>
+    <string name="settings_addresses_pq">%1$s • wariant postkwantowy</string>
+    <string name="settings_addresses_used">użyty</string>
+    <string name="settings_addresses_info">Dotknij adresu, aby go skopiować. Derywacja: m/86’/%1$d’/0’/branch/index, ścieżka klucza BIP-86 jak w portfelu desktopowym. Każdy indeks ma też wariant postkwantowy (XMSS tapleaf z celu 222’), który jest obserwowany i wyświetlany tutaj po użyciu. Przycisk odświeżania sprawdza teraz każdy adres, oba warianty; ekran główny sprawdza tylko te używane.</string>
+    <string name="settings_contacts_title">Kontakty</string>
+    <string name="settings_contacts_empty">Brak kontaktów</string>
+    <string name="settings_contacts_empty_body">Zapisuj adresy, na które często płacisz. Nazwy pojawiają się w aktywności i w polu odbiorcy.</string>
+    <string name="settings_contacts_add">Dodaj kontakt</string>
+    <string name="settings_contacts_info">Kontakty są przechowywane tylko na tym telefonie i nie są częścią frazy odzyskiwania.</string>
+    <string name="settings_contacts_new">Nowy kontakt</string>
+    <string name="settings_contacts_address">Adres %1$s</string>
+    <string name="settings_contacts_invalid">Nieprawidłowy adres %1$s</string>
+    <string name="settings_contacts_name_required">Nadaj kontaktowi nazwę</string>
+    <string name="settings_about_title">Informacje</string>
+    <string name="settings_about_source">Kod źródłowy PocketPRL</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Kod źródłowy Pearl (GitHub)</string>
+    <string name="settings_about_explorer">Eksplorator bloków</string>
+    <string name="settings_about_check">Sprawdź aktualizacje</string>
+    <string name="settings_about_checking">Sprawdzanie…</string>
+    <string name="settings_about_latest">Masz najnowszą wersję (v%1$s).</string>
+    <string name="settings_about_failed">Nie udało się połączyć z GitHub. Sprawdź połączenie i spróbuj ponownie.</string>
+    <string name="settings_about_update_title">Dostępna aktualizacja</string>
+    <string name="settings_about_update_body">Dostępna jest wersja %1$s. Masz v%2$s.</string>
+    <string name="settings_about_update">Aktualizuj</string>
+    <string name="settings_about_later">Później</string>
+    <string name="settings_about_version_label">Wersja</string>
+    <string name="settings_about_network">Sieć</string>
+    <string name="settings_about_coin_type">Typ monety</string>
+    <string name="settings_about_addresses">Adresy</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Podpisywanie</string>
+    <string name="settings_about_signing_value">Ścieżka klucza Schnorr BIP-340, libsecp256k1</string>
+    <string name="settings_about_pq">Zobowiązanie PQ</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL to niezależny, otwartoźródłowy lekki portfel dla sieci Pearl. Tworzy te same adresy co oficjalny portfel desktopowy (oyster) i jest weryfikowany względem niego wektorami testowymi wygenerowanymi z kodu źródłowego Pearl.</string>
+    <string name="settings_about_warranty">To oprogramowanie jest dostarczane w stanie takim, w jakim jest, bez gwarancji. Weryfikuj kompilacje, przechowuj frazę odzyskiwania offline i najpierw testuj z małymi kwotami.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Indekser</string>
+    <string name="indexer_body">PocketPRL odczytuje salda, historię i szacunki opłat z indeksera Blockbook i rozgłasza transakcje przez niego. Klucze nigdy nie opuszczają telefonu, ale indekser dowiaduje się, których adresów szukasz. Wskaż własną instancję, jeśli ma to dla Ciebie znaczenie.</string>
+    <string name="indexer_label">Adres URL Blockbook (tylko https)</string>
+    <string name="indexer_default">Domyślnie: %1$s</string>
+    <string name="indexer_saved">Zapisano. Pociągnij, aby odświeżyć na ekranie głównym i zsynchronizować ponownie.</string>
+    <string name="indexer_save">Zapisz</string>
+    <string name="indexer_reset">Przywróć domyślne</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Automatyczny (system)</string>
+    <string name="theme_light">Jasny</string>
+    <string name="theme_dark">Ciemny</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Ocean</string>
+    <string name="accent_sunset">Zachód słońca</string>
+    <string name="accent_violet">Fiolet</string>
+    <string name="accent_forest">Las</string>
+    <string name="accent_rose">Róż</string>
+    <string name="accent_mono">Mono</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Wąska spacja</string>
+    <string name="grouping_space">Spacja</string>
+    <string name="grouping_comma">Przecinek</string>
+    <string name="grouping_period">Kropka</string>
+    <string name="grouping_apostrophe">Apostrof</string>
+    <string name="grouping_none">Brak</string>
+    <string name="decimal_period">Kropka (.)</string>
+    <string name="decimal_comma">Przecinek (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Brak połączenia z indekserem</string>
+    <string name="sync_err_not_responding">Indekser nie odpowiada</string>
+    <string name="sync_err_no_internet">Brak połączenia z internetem</string>
+    <string name="sync_err_lost_connection">Utracono połączenie z indekserem</string>
+    <string name="wallet_deriving_receive">Wyprowadzanie adresu odbiorczego %1$d z %2$d</string>
+    <string name="wallet_deriving_change">Wyprowadzanie adresu resztowego %1$d z %2$d</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">Sprawdzanie %1$d adresu…</item>
+        <item quantity="few">Sprawdzanie %1$d adresów…</item>
+        <item quantity="many">Sprawdzanie %1$d adresów…</item>
+        <item quantity="other">Sprawdzanie %1$d adresu…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">Nie udało się sprawdzić %1$d adresu (%2$s); ponawianie</item>
+        <item quantity="few">Nie udało się sprawdzić %1$d adresów (%2$s); ponawianie</item>
+        <item quantity="many">Nie udało się sprawdzić %1$d adresów (%2$s); ponawianie</item>
+        <item quantity="other">Nie udało się sprawdzić %1$d adresu (%2$s); ponawianie</item>
+    </plurals>
+    <string name="address_err_enter">Wprowadź adres odbiorcy</string>
+    <string name="address_err_invalid">Nieprawidłowy adres Pearl</string>
+    <string name="address_err_unknown_prefix">Nieznany prefiks adresu „%1$s”</string>
+    <string name="address_err_only_taproot">Obsługiwane są tylko adresy Taproot (%1$s1p…)</string>
+    <string name="address_err_invalid_length">Nieprawidłowa długość adresu Taproot</string>
+    <string name="address_err_wrong_network">To adres %1$s; ten portfel działa w sieci %2$s</string>
+    <string name="qr_err_invalid_link">Ten link nie jest prawidłowym żądaniem płatności %1$s.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Płatności przychodzące</string>
+    <string name="notif_channel_payments_desc">Otrzymane płatności i nagrody za blok, gdy się pojawią i gdy zostaną potwierdzone</string>
+    <string name="notif_channel_price">Alerty cenowe</string>
+    <string name="notif_channel_price_desc">Duże zmiany ceny PRL w ciągu 24 godzin</string>
+    <string name="notif_block_confirmed">Nagroda za blok potwierdzona</string>
+    <string name="notif_block">Nagroda za blok</string>
+    <string name="notif_payment_confirmed">Płatność potwierdzona</string>
+    <string name="notif_payment_received">Otrzymano płatność</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Otwórz PocketPRL, aby zobaczyć szczegóły</string>
+    <string name="notif_mined">+%1$s %2$s • dostępne po %3$d potwierdzeniach</string>
+    <string name="notif_waiting">+%1$s %2$s • oczekiwanie na potwierdzenie</string>
+    <string name="notif_in_block">+%1$s %2$s • w bloku %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">Alert cenowy PRL</string>
+    <string name="price_dir_up">W górę</string>
+    <string name="price_dir_down">W dół</string>
+    <string name="price_alert_body">%1$s %2$s%%: teraz %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Eksportuj historię</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Dostosuj do siebie</string>
+    <string name="personalize_subtitle">Wybierz, jak PocketPRL wygląda i brzmi. Wszystko to możesz później zmienić w Ustawieniach.</string>
+    <string name="personalize_preview">Podgląd</string>
+    <string name="personalize_section_look">Wygląd</string>
+    <string name="personalize_section_numbers">Liczby</string>
+    <string name="personalize_section_currency">Waluta</string>
+    <string name="personalize_section_motion">Ruch</string>
+    <string name="personalize_continue">Dalej</string>
+    <string name="personalize_reset">Przywróć wartości domyślne</string>
+    <string name="personalize_grouping_toggle">Grupuj tysiące</string>
+    <string name="notif_period">mniej więcej co minutę</string>
+    <string name="autolock_immediately">Natychmiast</string>
+    <string name="autolock_1m">1 minuta</string>
+    <string name="autolock_5m">5 minut</string>
+    <string name="autolock_15m">15 minut</string>
+    <string name="autolock_1h">1 godzina</string>
+    <string name="autolock_never">Nigdy</string>
+    <string name="duration_seconds">%1$d sekund</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Przełącz portfel</string>
+    <string name="action_receive">Odbierz</string>
+    <string name="action_lock">Zablokuj</string>
+    <string name="action_show_balance">Pokaż saldo</string>
+    <string name="action_hide_balance">Ukryj saldo</string>
+    <string name="pwd_weak">Słabe</string>
+    <string name="pwd_fair">Przeciętne</string>
+    <string name="pwd_good">Dobre</string>
+    <string name="pwd_strong">Silne</string>
+    <string name="pwd_strength">hasło: %1$s</string>
+    <string name="pwd_show">Pokaż hasło</string>
+    <string name="pwd_hide">Ukryj hasło</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d portfel • %2$s</item>
+        <item quantity="few">%1$d portfele • %2$s</item>
+        <item quantity="many">%1$d portfeli • %2$s</item>
+        <item quantity="other">%1$d portfela • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Wejścia / wyjścia</string>
+    <string name="activity_size_label">Rozmiar</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Użyj hasła</string>
+    <string name="bio_no_crypto_object">Brak obiektu kryptograficznego</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Zeskanuj adres Pearl lub link do płatności</string>
+    <string name="send_open_settings">Otwórz ustawienia</string>
+    <string name="send_camera_off">Dostęp do aparatu jest wyłączony dla PocketPRL.</string>
+    <string name="send_camera_needed">Skanowanie wymaga aparatu.</string>
+    <string name="send_for_label">Dla: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Zapisz adres z transakcji lub w Ustawienia › Kontakty.</string>
+    <string name="receive_optional">Opcjonalnie</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Otwórz ustawienia</string>
+    <string name="settings_notif_off">Powiadomienia są wyłączone, więc ta opcja pozostaje niedostępna.</string>
+    <string name="settings_notif_blocked">Powiadomienia są zablokowane dla PocketPRL.</string>
+    <string name="settings_keystore_error">Nie udało się utworzyć klucza Keystore</string>
+    <string name="settings_biometric_prompt">Włącz odblokowanie biometryczne</string>
+    <string name="settings_seed_password">Hasło portfela</string>
+    <string name="settings_seed_incorrect">Nieprawidłowe hasło</string>
+    <string name="settings_copy_address">Kopiuj adres</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Niepowodzenie</string>
+    <string name="vm_biometric_enable_failed">Nie udało się włączyć biometrii</string>
+    <string name="settings_section_language">Język</string>
+    <string name="settings_language">Język</string>
+    <string name="settings_language_system">Domyślny systemowy</string>
+</resources>

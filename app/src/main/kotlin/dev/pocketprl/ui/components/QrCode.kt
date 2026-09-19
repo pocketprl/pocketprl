@@ -11,10 +11,12 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 import com.google.zxing.qrcode.encoder.Encoder
+import dev.pocketprl.R
 
 /**
  * A centre mark six modules wide or under decodes reliably; at seven it can be
@@ -51,13 +53,14 @@ fun QrCode(
     logo: (@Composable () -> Unit)? = null,
     /** Side of the centre hole as a fraction of the code's side, capped at [MAX_HOLE_MODULES]. */
     logoFraction: Float = 0.22f,
-    contentDescription: String = "QR code",
+    contentDescription: String? = null,
 ) {
     val n = matrix.n
+    val description = contentDescription ?: stringResource(R.string.receive_qr_desc)
     // Capped in modules, not just as a fraction: the mark must stay under a finder pattern's seven modules.
     val hole = if (logo != null) (minOf((n * logoFraction).toInt(), MAX_HOLE_MODULES) or 1) else 0
     val markModules = minOf(hole * 0.67f, MAX_MARK_MODULES)
-    Box(modifier = modifier.aspectRatio(1f).semantics { this.contentDescription = contentDescription }) {
+    Box(modifier = modifier.aspectRatio(1f).semantics { this.contentDescription = description }) {
         Canvas(modifier = Modifier.fillMaxSize()) {
             val cell = size.width / n
             val h0 = (n - hole) / 2

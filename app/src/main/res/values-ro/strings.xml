@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Înapoi</string>
+    <string name="action_cancel">Anulează</string>
+    <string name="action_save">Salvează</string>
+    <string name="action_delete">Șterge</string>
+    <string name="action_done">Gata</string>
+    <string name="action_edit">Editează</string>
+    <string name="action_continue">Continuă</string>
+    <string name="action_close">Închide</string>
+    <string name="action_add">Adaugă</string>
+    <string name="action_share">Partajează</string>
+    <string name="action_copy">Copiază</string>
+    <string name="action_retry">Reîncearcă</string>
+    <string name="action_scan">Scanează</string>
+    <string name="action_paste">Lipește</string>
+    <string name="action_clear">Golește</string>
+    <string name="action_contacts">Contacte</string>
+    <string name="action_send">Trimite</string>
+    <string name="label_amount">Sumă</string>
+    <string name="label_name">Nume</string>
+    <string name="label_address">Adresă</string>
+    <string name="label_fee">Comision</string>
+    <string name="label_date">Dată</string>
+    <string name="label_block">Bloc</string>
+    <string name="label_total">Total</string>
+    <string name="label_to">Către</string>
+    <string name="label_from">De la</string>
+    <string name="label_network">Rețea</string>
+    <string name="copied">Copiat</string>
+    <string name="clipboard_address">Adresă Pearl</string>
+    <string name="clipboard_txid">ID tranzacție</string>
+    <string name="balance_hidden">Sold ascuns</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Astăzi</string>
+    <string name="day_yesterday">Ieri</string>
+    <string name="time_just_now">chiar acum</string>
+    <string name="time_pending">în așteptare</string>
+    <string name="label_unconfirmed">Neconfirmat</string>
+    <string name="eta_minutes">~%1$d min</string>
+    <string name="eta_hours">~%1$d h</string>
+    <string name="eta_hours_half">~%1$d,5 h</string>
+    <string name="time_ago_s">acum %1$ds</string>
+    <string name="time_ago_m">acum %1$dm</string>
+    <string name="time_ago_h">acum %1$dh</string>
+    <string name="time_ago_d">acum %1$dz</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Adaugă un portofel</string>
+    <string name="welcome_add_headline">Un alt portofel, complet separat</string>
+    <string name="welcome_add_body">Are propria frază de recuperare, parolă, istoric și contacte. Comută între portofele din titlul ecranului principal.</string>
+    <string name="welcome_one_unlocked">Doar un portofel este deblocat o dată; comutarea îl blochează pe cel curent.</string>
+    <string name="welcome_tagline">Pearl (PRL) în buzunar. Aceleași chei ca portofelul desktop, fără greutate.</string>
+    <string name="welcome_feature_selfcustody_title">Autocustodie</string>
+    <string name="welcome_feature_selfcustody_body">Cheile sunt create și rămân pe acest telefon, criptate și protejate biometric.</string>
+    <string name="welcome_feature_desktop_title">Compatibil cu desktop</string>
+    <string name="welcome_feature_desktop_body">Derivă exact aceleași adrese Taproot post-cuanto ca oyster. Treci liber între ele.</string>
+    <string name="welcome_feature_overview_title">Privire de ansamblu instantanee</string>
+    <string name="welcome_feature_overview_body">Solduri, istoric și recompense de minerit de la indexerul Pearl. Fără descărcarea lanțului.</string>
+    <string name="welcome_feature_phone_title">Creat pentru telefon</string>
+    <string name="welcome_feature_phone_body">Linkuri de plată, contacte, note, mai multe portofele și notificări „ai fost plătit”.</string>
+    <string name="welcome_network">Rețea</string>
+    <string name="welcome_create">Creează un portofel nou</string>
+    <string name="welcome_restore">Restaurează din fraza de recuperare</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Portofelul meu Pearl</string>
+    <string name="onboard_step">Pasul %1$d din 3 • %2$s</string>
+    <string name="onboard_title_create">Creează portofel</string>
+    <string name="onboard_title_seed">Fraza ta de recuperare</string>
+    <string name="onboard_title_verify">Verifică fraza</string>
+    <string name="onboard_title_working">Se configurează</string>
+    <string name="onboard_name_protect">Denumește și protejează-ți portofelul</string>
+    <string name="onboard_wallet_name">Numele portofelului</string>
+    <string name="onboard_password">Parolă</string>
+    <string name="onboard_confirm_password">Confirmă parola</string>
+    <string name="onboard_password_warning">Parola criptează cheile pe acest dispozitiv. Nu există resetare: dacă o uiți, restaurează din fraza de recuperare.</string>
+    <string name="onboard_password_hint">Folosește cel puțin 8 caractere cu o combinație de litere, cifre sau simboluri.</string>
+    <string name="onboard_seed_write">Scrie aceste 12 cuvinte, în ordine, și păstrează-le offline.</string>
+    <string name="onboard_seed_secret_title">Păstrează secretul</string>
+    <string name="onboard_seed_secret_body">Oricine are aceste cuvinte îți controlează fondurile. Capturile de ecran sunt blocate pe acest ecran; nu stoca fraza în format digital.</string>
+    <string name="onboard_written">Am scris-o</string>
+    <string name="onboard_creating">Se creează portofelul…</string>
+    <string name="onboard_restoring">Se restaurează…</string>
+    <string name="onboard_quiz_instruction">Alege cuvântul potrivit pentru fiecare poziție pentru a-ți confirma backupul.</string>
+    <string name="onboard_word_n">Cuvântul #%1$d</string>
+    <string name="onboard_quiz_error">Acele cuvinte nu corespund frazei tale. Întoarce-te și verifică cu atenție.</string>
+    <string name="onboard_verify_create">Verifică și creează portofelul</string>
+    <string name="onboard_restore_title">Restaurează portofelul</string>
+    <string name="onboard_restore_progress_body">Fiecare adresă necesită o cheie post-cuanto, așa că derivarea ferestrei de descoperire durează puțin. Portofelul scanează apoi indexerul Pearl pentru istoricul tău.</string>
+    <string name="onboard_recovery_label">Frază de recuperare sau seed hex</string>
+    <string name="onboard_recovery_placeholder">12–24 de cuvinte separate prin spații</string>
+    <string name="onboard_new_password">Parolă nouă</string>
+    <string name="onboard_restore_compatible">Funcționează cu fraze din portofelul desktop oficial Pearl (oyster) și orice portofel BIP-39 care folosește derivarea Pearl.</string>
+    <string name="onboard_restore_button">Restaurează portofelul</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">frază de recuperare din %1$d cuvinte</string>
+    <string name="onboard_check_hex">seed hex de %1$d octeți</string>
+    <string name="onboard_err_enter_phrase">Introdu fraza de recuperare</string>
+    <string name="onboard_err_hex_even">Seedul hex trebuie să aibă un număr par de caractere</string>
+    <string name="onboard_err_hex_range">Seedul hex trebuie să fie între 128 și 512 biți</string>
+    <string name="onboard_err_enter_phrase_or_hex">Introdu o frază de recuperare de 12–24 de cuvinte sau un seed hex</string>
+    <string name="onboard_err_word_count">O frază de recuperare are 12, 15, 18, 21 sau 24 de cuvinte (primit %1$d)</string>
+    <string name="onboard_err_unknown_word">„%1$s” nu este un cuvânt BIP39</string>
+    <string name="onboard_err_checksum">Checksum nepotrivit: verifică ordinea și scrierea cuvintelor</string>
+    <string name="onboard_err_create_failed">Crearea portofelului a eșuat</string>
+    <string name="onboard_err_restore_failed">Restaurarea a eșuat</string>
+    <string name="onboard_preparing">Se pregătește portofelul…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">Deblochează %1$s</string>
+    <string name="unlock_password">Parola portofelului</string>
+    <string name="unlock_button">Deblochează</string>
+    <string name="unlock_use_biometrics">Folosește biometria</string>
+    <string name="unlock_switch_wallet">Comută portofelul (%1$d)</string>
+    <string name="unlock_add_another">Adaugă un alt portofel</string>
+    <string name="unlock_forgot">Ai uitat parola? Șterge și restaurează</string>
+    <string name="unlock_erase_title">Ștergi „%1$s”?</string>
+    <string name="unlock_erase_body">Cheile acestui portofel și istoricul local de pe acest telefon vor fi șterse. Alte portofele nu sunt afectate. Poți recupera fondurile doar cu fraza de recuperare. Scrie ERASE pentru a confirma.</string>
+    <string name="unlock_erase_confirm">Șterge</string>
+    <string name="unlock_error_biometric">Cheia biometrică nu este disponibilă (a fost adăugată sau eliminată o amprentă?). Folosește parola.</string>
+    <string name="unlock_error_incorrect">Parolă incorectă</string>
+    <string name="unlock_error_failed">Deblocarea a eșuat</string>
+    <string name="unlock_error_biometric_failed">Deblocarea biometrică a eșuat: %1$s. Folosește parola.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Portofele</string>
+    <string name="switcher_test_coins">%1$s • monede de test</string>
+    <string name="switcher_current">Portofelul curent</string>
+    <string name="switcher_add_title">Adaugă un portofel</string>
+    <string name="switcher_add_body">Creează unul nou sau restaurează o altă frază. Fiecare portofel are propria parolă.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Sold total</string>
+    <string name="dash_spendable">Cheltuibil</string>
+    <string name="dash_incoming">Intrări</string>
+    <string name="dash_maturing">În maturare</string>
+    <string name="dash_activity">Activitate</string>
+    <string name="dash_view_all">Vezi tot (%1$d)</string>
+    <string name="dash_looking">Se caută tranzacții…</string>
+    <string name="dash_no_tx">Încă nicio tranzacție</string>
+    <string name="dash_no_tx_body">Partajează adresa de primire sau un link de plată pentru a începe.</string>
+    <string name="dash_show_address">Arată adresa mea</string>
+    <string name="dash_testnet_warning">Ești pe %1$s. Monedele de aici nu au valoare.</string>
+    <string name="dash_sync_syncing">Se sincronizează…</string>
+    <string name="dash_sync_failed">Sincronizarea a eșuat</string>
+    <string name="dash_sync_synced">Sincronizat</string>
+    <string name="dash_sync_not_synced">Încă nesincronizat</string>
+    <string name="dash_sync_block">Blocul %1$s • actualizat %2$s</string>
+    <string name="dash_sync_last">Ultima sincronizare %1$s • blocul %2$s</string>
+    <string name="dash_mining_rewards">Recompense de minerit</string>
+    <string name="dash_last_7_days">Ultimele 7 zile</string>
+    <string name="dash_all_time">Din totdeauna</string>
+    <string name="dash_mining_progress">%1$s în maturare • următorul cheltuibil în %2$d blocuri (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Recompense în maturare</string>
+    <string name="dash_price_content_desc">%1$s %2$s la sută în 24 de ore</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d bloc</item>
+        <item quantity="few">%1$d blocuri</item>
+        <item quantity="other">%1$d de blocuri</item>
+    </plurals>
+    <string name="tx_received">Primit</string>
+    <string name="tx_sent">Trimis</string>
+    <string name="tx_self">Transfer către sine</string>
+    <string name="tx_mined">Minat</string>
+    <string name="tx_to_contact">Către %1$s</string>
+    <string name="tx_from_contact">De la %1$s</string>
+    <string name="tx_pending">În așteptare</string>
+    <string name="tx_pending_seen">În așteptare • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d conf</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">Trimite %1$s</string>
+    <string name="send_spendable">Cheltuibil %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Introdu o sumă validă (până la 8 zecimale)</string>
+    <string name="send_enter_valid_amount_short">Introdu o sumă validă</string>
+    <string name="send_enter_in">Introdu în %1$s</string>
+    <string name="send_max">Max</string>
+    <string name="send_max_selected">Max ✓</string>
+    <string name="send_to">Către</string>
+    <string name="send_to_contact">Către • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… sau un contact</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Comision de rețea</string>
+    <string name="send_use_estimates">Folosește estimările</string>
+    <string name="send_custom_rate">Rată personalizată</string>
+    <string name="send_fee_rate_label">Rata comisionului (grain per vbyte, min 1)</string>
+    <string name="send_fee_normal">Normal</string>
+    <string name="send_fee_fast">Rapid</string>
+    <string name="send_fee_loading">Nu s-au putut încărca estimările comisionului: %1$s</string>
+    <string name="send_summary">Rezumat</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Intrări</string>
+    <string name="send_inputs_change">%1$d • rest %2$s</string>
+    <string name="send_slider">Trimite</string>
+    <string name="send_not_ready">Nepregătit</string>
+    <string name="send_sending">Se trimite</string>
+    <string name="send_confirming">Se confirmă</string>
+    <string name="send_slide">Glisează sau atinge de două ori pentru a trimite</string>
+    <string name="send_why_amount_blank">Introdu o sumă pentru a continua</string>
+    <string name="send_why_amount_invalid">Introdu o sumă validă pentru a continua</string>
+    <string name="send_why_recipient_blank">Introdu un destinatar pentru a continua</string>
+    <string name="send_why_recipient_invalid">Corectează adresa destinatarului pentru a continua</string>
+    <string name="send_why_fee_unavailable">Estimarea comisionului nu este disponibilă</string>
+    <string name="send_why_waiting_fees">Se așteaptă estimările comisionului…</string>
+    <string name="send_why_preparing">Se pregătește plata…</string>
+    <string name="send_err_no_funds">Fără fonduri cheltuibile</string>
+    <string name="send_err_insufficient">Fonduri insuficiente: este nevoie de %1$s %2$s inclusiv comisionul, ai %3$s</string>
+    <string name="send_err_changed">Plata s-a modificat în timp ce o confirmai. Verifică detaliile și încearcă din nou.</string>
+    <string name="send_password_title">Parola portofelului</string>
+    <string name="send_password_body">Trimite %1$s %2$s către %3$s.</string>
+    <string name="send_auth_failed">Autentificarea a eșuat</string>
+    <string name="send_bio_unavailable">Cheia biometrică nu este disponibilă; dezactivează și reactivează biometria din Setări.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">Primește %1$s</string>
+    <string name="receive_preparing">Se pregătește adresa…</string>
+    <string name="receive_standard">Adresa #%1$d • Taproot, la fel ca portofelul desktop</string>
+    <string name="receive_pq">Adresa #%1$d • variantă post-cuanto</string>
+    <string name="receive_copy">Copiază</string>
+    <string name="receive_share">Partajează</string>
+    <string name="receive_share_request">Partajează cererea</string>
+    <string name="receive_request_amount">Solicită o sumă</string>
+    <string name="receive_label">Etichetă (opțional)</string>
+    <string name="receive_label_placeholder">Factura #42</string>
+    <string name="receive_link_hint">Cu o sumă sau o etichetă, codul și linkul de partajare devin un link de plată care completează suma pentru expeditor.</string>
+    <string name="receive_fresh">Folosește o adresă nouă</string>
+    <string name="receive_generating">Se generează…</string>
+    <string name="receive_show_pq">Arată varianta post-cuanto</string>
+    <string name="receive_show_std">Arată adresa standard</string>
+    <string name="receive_pq_warning_title">Nu este vizibilă pentru portofelul desktop</string>
+    <string name="receive_pq_warning_body">Această variantă încorporează o cheie post-cuanto XMSS în adresă. Portofelul desktop oficial nu o derivă, așa că monedele trimise aici sunt vizibile doar în PocketPRL până când portofelul desktop Pearl o va accepta. Folosește adresa standard cu excepția cazului în care plătitorul are nevoie în mod special de aceasta.</string>
+    <string name="receive_reuse_info">Adresele pot fi refolosite, dar una nouă pentru fiecare plătitor îți păstrează istoricul privat. Plățile primite apar în Activitate imediat ce expeditorul le difuzează.</string>
+    <string name="receive_only_send">Trimite doar Pearl (%1$s) la această adresă.</string>
+    <string name="receive_qr_failed">Codul QR nu a putut fi generat. Copiază sau partajează adresa în schimb.</string>
+    <string name="receive_qr_desc">Cod QR al adresei</string>
+    <string name="receive_requesting">Se solicită %1$s %2$s</string>
+    <string name="receive_requesting_any">Se solicită orice sumă</string>
+    <string name="receive_requesting_for">%1$s pentru „%2$s”</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Trimis</string>
+    <string name="sent_to">către %1$s</string>
+    <string name="sent_confirms">Se confirmă în %1$s în medie.</string>
+    <string name="sent_txid">ID tranzacție</string>
+    <string name="sent_view_explorer">Vezi în explorer</string>
+    <string name="sent_done">Gata</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Activitate</string>
+    <string name="activity_export">Exportă CSV</string>
+    <string name="activity_loading">Se încarcă istoricul…</string>
+    <string name="activity_none">Încă nicio activitate</string>
+    <string name="activity_nothing">Nimic aici</string>
+    <string name="activity_none_body">Plățile și recompensele de minerit vor apărea imediat ce indexerul le detectează.</string>
+    <string name="activity_title_single">Tranzacție</string>
+    <string name="activity_not_found">Tranzacția nu a fost găsită</string>
+    <string name="activity_self">Trimis către tine • doar comision de rețea</string>
+    <string name="activity_fiat_today">≈ %1$s astăzi</string>
+    <string name="activity_pending_mempool">În așteptare în mempool</string>
+    <string name="activity_conf_of_maturity">%1$d din %2$d confirmări pentru a cheltui</string>
+    <string name="activity_confirmed">Confirmat • %1$s confirmări</string>
+    <string name="activity_spendable_in">Cheltuibil în %1$d blocuri (%2$s)</string>
+    <string name="activity_txid">ID tranzacție</string>
+    <string name="activity_from">De la</string>
+    <string name="activity_to">Către</string>
+    <string name="activity_from_your">De la adresa ta</string>
+    <string name="activity_to_your">La adresa ta</string>
+    <string name="activity_save_contact">Salvează ca contact</string>
+    <string name="activity_view_explorer">Vezi în explorer</string>
+    <string name="activity_maturity_info">Recompensele de bloc devin cheltuibile după %1$d confirmări, ca pe orice lanț derivat din Bitcoin.</string>
+    <string name="activity_note">Notă</string>
+    <string name="activity_note_placeholder">Pentru ce a fost?</string>
+    <string name="activity_note_hint">Notele rămân doar pe acest telefon.</string>
+    <string name="activity_contact_new">Contact nou</string>
+    <string name="activity_contact_edit">Editează contactul</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Total ieșit</string>
+    <string name="activity_filter_all">Toate</string>
+    <string name="activity_filter_received">Primit</string>
+    <string name="activity_filter_sent">Trimis</string>
+    <string name="activity_filter_mined">Minat</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d tranzacție</item>
+        <item quantity="few">%1$d tranzacții</item>
+        <item quantity="other">%1$d de tranzacții</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d confirmare</item>
+        <item quantity="few">%1$d confirmări</item>
+        <item quantity="other">%1$d de confirmări</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Setări</string>
+    <string name="settings_section_wallet">Portofel</string>
+    <string name="settings_section_appearance">Aspect</string>
+    <string name="settings_section_numbers">Numere și valută</string>
+    <string name="settings_section_dashboard">Panou principal</string>
+    <string name="settings_section_security">Securitate și confidențialitate</string>
+    <string name="settings_section_notifications">Notificări</string>
+    <string name="settings_section_network">Rețea</string>
+    <string name="settings_section_backup">Backup</string>
+    <string name="settings_section_about">Despre</string>
+    <string name="settings_section_danger">Zonă periculoasă</string>
+    <string name="settings_name">Nume</string>
+    <string name="settings_created">Creat</string>
+    <string name="settings_wallets">Portofele</string>
+    <string name="settings_wallets_one">Doar acesta</string>
+    <string name="settings_wallets_n">%1$d pe acest dispozitiv</string>
+    <string name="settings_contacts">Contacte</string>
+    <string name="settings_contacts_saved">%1$d salvate</string>
+    <string name="settings_addresses">Adrese</string>
+    <string name="settings_addresses_derived">%1$d derivate</string>
+    <string name="settings_change_password">Schimbă parola</string>
+    <string name="settings_biometric">Deblocare biometrică</string>
+    <string name="settings_biometric_none">Niciuna înregistrată</string>
+    <string name="settings_biometric_sub">Amprentă sau față</string>
+    <string name="settings_confirm_send">Confirmă înainte de trimitere</string>
+    <string name="settings_confirm_send_sub">Întreabă la fiecare plată</string>
+    <string name="settings_auto_lock">Blocare automată</string>
+    <string name="settings_hide_balances">Ascunde soldurile</string>
+    <string name="settings_hide_balances_sub">Maschează fiecare sumă</string>
+    <string name="settings_start_hidden">Pornește ascuns</string>
+    <string name="settings_start_hidden_sub">Ascunde soldurile la deblocare</string>
+    <string name="settings_secure_all">Blochează capturile de ecran peste tot</string>
+    <string name="settings_secure_all_sub">Protejează și ecranele principal și de activitate</string>
+    <string name="settings_theme">Temă</string>
+    <string name="settings_accent">Culoare de accent</string>
+    <string name="settings_dynamic_color">Culoare dinamică</string>
+    <string name="settings_dynamic_color_sub">Folosește paleta de fundal a sistemului (Android 12+)</string>
+    <string name="settings_reduced_motion">Reduce mișcarea</string>
+    <string name="settings_reduced_motion_sub">Fără cifre derulante sau animații de ecran</string>
+    <string name="settings_odometer">Animație odometru</string>
+    <string name="settings_odometer_sub">Cifre derulante pe solduri</string>
+    <string name="settings_odometer_haptics">Vibrații odometru</string>
+    <string name="settings_odometer_haptics_sub">Vibrează la fiecare derulare</string>
+    <string name="settings_odometer_haptics_off">Fără efect când animația este oprită</string>
+    <string name="settings_show_fiat">Arată valoarea fiat</string>
+    <string name="settings_fiat_currency">Monedă fiat</string>
+    <string name="settings_decimals">Zecimale sold</string>
+    <string name="settings_decimal_sep">Separator zecimal</string>
+    <string name="settings_grouping_sep">Separator de mii</string>
+    <string name="settings_hero">Număr mare</string>
+    <string name="settings_hero_total">Sold total</string>
+    <string name="settings_hero_spendable">Sold cheltuibil</string>
+    <string name="settings_show_change">Variație preț 24h</string>
+    <string name="settings_show_change_sub">Arată indicatorul variației zilnice</string>
+    <string name="settings_show_mining">Cardul recompenselor de minerit</string>
+    <string name="settings_show_mining_sub">Ascunde dacă nu minezi către acest portofel</string>
+    <string name="settings_poll_mode">Rata de reîmprospătare</string>
+    <string name="settings_poll_live">Live</string>
+    <string name="settings_poll_balanced">Echilibrat</string>
+    <string name="settings_poll_battery">Economisire baterie</string>
+    <string name="settings_notify_incoming">Plăți primite</string>
+    <string name="settings_notify_incoming_sub">Verificate %1$s</string>
+    <string name="settings_price_alerts">Alerte de preț</string>
+    <string name="settings_price_alerts_sub">Notifică la variații mari de 24h</string>
+    <string name="settings_alert_threshold">Prag de alertă</string>
+    <string name="settings_alert_threshold_sub">variație de %1$s în 24 de ore</string>
+    <string name="settings_reveal_seed">Arată fraza de recuperare</string>
+    <string name="settings_reveal_seed_sub">Necesită parola ta</string>
+    <string name="settings_indexer">Indexer (Blockbook)</string>
+    <string name="settings_about_version">Versiunea %1$s</string>
+    <string name="settings_delete">Șterge acest portofel</string>
+    <string name="settings_password_title">Schimbă parola</string>
+    <string name="settings_password_current">Parola actuală</string>
+    <string name="settings_password_new">Parolă nouă</string>
+    <string name="settings_password_confirm">Confirmă parola nouă</string>
+    <string name="settings_password_updated">Parola a fost schimbată.</string>
+    <string name="settings_password_update">Actualizează parola</string>
+    <string name="settings_password_info">Schimbarea parolei recriptează cheia doar pe acest dispozitiv. Fraza de recuperare rămâne aceeași.</string>
+    <string name="settings_password_error_current">Parola actuală este incorectă</string>
+    <string name="settings_password_error_short">Folosește cel puțin 8 caractere cu o combinație de litere, cifre sau simboluri.</string>
+    <string name="settings_seed_title">Frază de recuperare</string>
+    <string name="settings_seed_warning">Nu partaja niciodată fraza de recuperare. Echipa PocketPRL sau dezvoltatorii Pearl nu o vor cere niciodată.</string>
+    <string name="settings_seed_reveal">Dezvăluie</string>
+    <string name="settings_seed_hex">Seed hex</string>
+    <string name="settings_seed_written_hint">Scrie-o pe hârtie. Capturile de ecran sunt blocate pe acest ecran.</string>
+    <string name="settings_rename_title">Redenumește portofelul</string>
+    <string name="settings_auto_lock_title">Blocare automată după</string>
+    <string name="settings_theme_title">Temă</string>
+    <string name="settings_accent_title">Culoare de accent</string>
+    <string name="settings_delete_title">Ștergi „%1$s”?</string>
+    <string name="settings_delete_body">Aceasta elimină cheile criptate ale acestui portofel, istoricul din cache, contactele și notele de pe acest telefon. Alte portofele nu sunt afectate. Asigură-te că ai fraza de recuperare. Scrie DELETE pentru a confirma.</string>
+    <string name="settings_threshold_title">Prag de alertă pentru preț</string>
+    <string name="settings_threshold_intro">Alertă când variația pe 24 de ore atinge:</string>
+    <string name="settings_addresses_title">Adrese</string>
+    <string name="settings_addresses_checking">Se verifică…</string>
+    <string name="settings_addresses_derived_sub">%1$d indici derivați</string>
+    <string name="settings_addresses_rescan">Rescanează fiecare adresă</string>
+    <string name="settings_addresses_receive">Primire #%1$d</string>
+    <string name="settings_addresses_change">Rest #%1$d</string>
+    <string name="settings_addresses_pq">%1$s • variantă post-cuanto</string>
+    <string name="settings_addresses_used">folosită</string>
+    <string name="settings_addresses_info">Atinge o adresă pentru a o copia. Derivare: m/86’/%1$d’/0’/branch/index, cale de chei BIP-86 ca la portofelul desktop. Fiecare index are și o variantă post-cuanto (tapleaf XMSS din scopul 222’) care este urmărită și listată aici după ce a fost folosită. Butonul de reîmprospătare verifică fiecare adresă, ambele variante, chiar acum; ecranul principal le verifică doar pe cele utilizate.</string>
+    <string name="settings_contacts_title">Contacte</string>
+    <string name="settings_contacts_empty">Încă niciun contact</string>
+    <string name="settings_contacts_empty_body">Salvează adresele către care plătești des. Numele apar în activitatea ta și în câmpul destinatarului.</string>
+    <string name="settings_contacts_add">Adaugă contact</string>
+    <string name="settings_contacts_info">Contactele sunt stocate doar pe acest telefon și nu fac parte din fraza de recuperare.</string>
+    <string name="settings_contacts_new">Contact nou</string>
+    <string name="settings_contacts_address">Adresă %1$s</string>
+    <string name="settings_contacts_invalid">Nu este o adresă %1$s validă</string>
+    <string name="settings_contacts_name_required">Dă un nume contactului</string>
+    <string name="settings_about_title">Despre</string>
+    <string name="settings_about_source">Codul sursă PocketPRL</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Codul sursă Pearl (GitHub)</string>
+    <string name="settings_about_explorer">Explorator de blocuri</string>
+    <string name="settings_about_check">Verifică actualizările</string>
+    <string name="settings_about_checking">Se verifică…</string>
+    <string name="settings_about_latest">Ai cea mai recentă versiune (v%1$s).</string>
+    <string name="settings_about_failed">Nu s-a putut conecta la GitHub. Verifică conexiunea și încearcă din nou.</string>
+    <string name="settings_about_update_title">Actualizare disponibilă</string>
+    <string name="settings_about_update_body">Versiunea %1$s este disponibilă. Ai v%2$s.</string>
+    <string name="settings_about_update">Actualizează</string>
+    <string name="settings_about_later">Mai târziu</string>
+    <string name="settings_about_version_label">Versiune</string>
+    <string name="settings_about_network">Rețea</string>
+    <string name="settings_about_coin_type">Tip de monedă</string>
+    <string name="settings_about_addresses">Adrese</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Semnare</string>
+    <string name="settings_about_signing_value">Cale de chei BIP-340 Schnorr, libsecp256k1</string>
+    <string name="settings_about_pq">Angajament PQ</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL este un portofel ușor independent, open-source, pentru rețeaua Pearl. Derivă aceleași adrese ca portofelul desktop oficial (oyster) și este verificat față de acesta cu vectori de test generați din codul sursă Pearl.</string>
+    <string name="settings_about_warranty">Acest software este furnizat ca atare, fără garanție. Verifică buildurile, păstrează fraza de recuperare offline și testează mai întâi cu sume mici.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Indexer</string>
+    <string name="indexer_body">PocketPRL citește soldurile, istoricul și estimările comisionului de la un indexer Blockbook și difuzează prin el. Cheile nu părăsesc niciodată telefonul, dar indexerul află ce adrese cauți. Îndreaptă-l către propria instanță dacă acest lucru contează pentru tine.</string>
+    <string name="indexer_label">URL Blockbook (doar https)</string>
+    <string name="indexer_default">Implicit: %1$s</string>
+    <string name="indexer_saved">Salvat. Trage pentru a reîmprospăta pe ecranul principal și a resincroniza.</string>
+    <string name="indexer_save">Salvează</string>
+    <string name="indexer_reset">Resetează la implicit</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Automat (sistem)</string>
+    <string name="theme_light">Luminos</string>
+    <string name="theme_dark">Întunecat</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Ocean</string>
+    <string name="accent_sunset">Apus</string>
+    <string name="accent_violet">Violet</string>
+    <string name="accent_forest">Pădure</string>
+    <string name="accent_rose">Roz</string>
+    <string name="accent_mono">Mono</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Spațiu îngust</string>
+    <string name="grouping_space">Spațiu</string>
+    <string name="grouping_comma">Virgulă</string>
+    <string name="grouping_period">Punct</string>
+    <string name="grouping_apostrophe">Apostrof</string>
+    <string name="grouping_none">Niciunul</string>
+    <string name="decimal_period">Punct (.)</string>
+    <string name="decimal_comma">Virgulă (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Nicio conexiune la indexer</string>
+    <string name="sync_err_not_responding">Indexerul nu răspunde</string>
+    <string name="sync_err_no_internet">Nicio conexiune la internet</string>
+    <string name="sync_err_lost_connection">S-a pierdut conexiunea la indexer</string>
+    <string name="wallet_deriving_receive">Se derivă adresa de primire %1$d din %2$d</string>
+    <string name="wallet_deriving_change">Se derivă adresa de rest %1$d din %2$d</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">Se verifică %1$d adresă…</item>
+        <item quantity="few">Se verifică %1$d adrese…</item>
+        <item quantity="other">Se verifică %1$d de adrese…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">%1$d adresă nu a putut fi verificată (%2$s); se reîncearcă</item>
+        <item quantity="few">%1$d adrese nu au putut fi verificate (%2$s); se reîncearcă</item>
+        <item quantity="other">%1$d de adrese nu au putut fi verificate (%2$s); se reîncearcă</item>
+    </plurals>
+    <string name="address_err_enter">Introdu adresa destinatarului</string>
+    <string name="address_err_invalid">Nu este o adresă Pearl validă</string>
+    <string name="address_err_unknown_prefix">Prefix de adresă necunoscut „%1$s”</string>
+    <string name="address_err_only_taproot">Sunt acceptate doar adrese Taproot (%1$s1p…)</string>
+    <string name="address_err_invalid_length">Lungime invalidă a adresei Taproot</string>
+    <string name="address_err_wrong_network">Aceea este o adresă %1$s; acest portofel este pe %2$s</string>
+    <string name="qr_err_invalid_link">Acel link nu este o cerere de plată %1$s validă.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Plăți primite</string>
+    <string name="notif_channel_payments_desc">Plăți primite și recompense de bloc, când apar și când se confirmă</string>
+    <string name="notif_channel_price">Alerte de preț</string>
+    <string name="notif_channel_price_desc">Variații mari ale prețului PRL în 24 de ore</string>
+    <string name="notif_block_confirmed">Recompensă de bloc confirmată</string>
+    <string name="notif_block">Recompensă de bloc</string>
+    <string name="notif_payment_confirmed">Plată confirmată</string>
+    <string name="notif_payment_received">Plată primită</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Deschide PocketPRL pentru detalii</string>
+    <string name="notif_mined">+%1$s %2$s • cheltuibil după %3$d confirmări</string>
+    <string name="notif_waiting">+%1$s %2$s • se așteaptă confirmarea</string>
+    <string name="notif_in_block">+%1$s %2$s • în blocul %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">Alertă de preț PRL</string>
+    <string name="price_dir_up">În creștere</string>
+    <string name="price_dir_down">În scădere</string>
+    <string name="price_alert_body">%1$s %2$s%%: acum la %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Exportă istoricul</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Personalizează-l</string>
+    <string name="personalize_subtitle">Alege cum arată și cum se citește PocketPRL. Poți schimba toate acestea mai târziu în Setări.</string>
+    <string name="personalize_preview">Previzualizare</string>
+    <string name="personalize_section_look">Aspect</string>
+    <string name="personalize_section_numbers">Numere</string>
+    <string name="personalize_section_currency">Monedă</string>
+    <string name="personalize_section_motion">Mișcare</string>
+    <string name="personalize_continue">Continuă</string>
+    <string name="personalize_reset">Resetează la valorile implicite</string>
+    <string name="personalize_grouping_toggle">Grupează miile</string>
+    <string name="notif_period">aproximativ în fiecare minut</string>
+    <string name="autolock_immediately">Imediat</string>
+    <string name="autolock_1m">1 minut</string>
+    <string name="autolock_5m">5 minute</string>
+    <string name="autolock_15m">15 minute</string>
+    <string name="autolock_1h">1 oră</string>
+    <string name="autolock_never">Niciodată</string>
+    <string name="duration_seconds">%1$d secunde</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Comută portofelul</string>
+    <string name="action_receive">Primește</string>
+    <string name="action_lock">Blochează</string>
+    <string name="action_show_balance">Arată soldul</string>
+    <string name="action_hide_balance">Ascunde soldul</string>
+    <string name="pwd_weak">Slabă</string>
+    <string name="pwd_fair">Acceptabilă</string>
+    <string name="pwd_good">Bună</string>
+    <string name="pwd_strong">Puternică</string>
+    <string name="pwd_strength">Parolă %1$s</string>
+    <string name="pwd_show">Arată parola</string>
+    <string name="pwd_hide">Ascunde parola</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d portofel • %2$s</item>
+        <item quantity="few">%1$d portofele • %2$s</item>
+        <item quantity="other">%1$d de portofele • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Intrări / ieșiri</string>
+    <string name="activity_size_label">Dimensiune</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Folosește parola</string>
+    <string name="bio_no_crypto_object">Niciun obiect criptografic</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Scanează o adresă Pearl sau un link de plată</string>
+    <string name="send_open_settings">Deschide setările</string>
+    <string name="send_camera_off">Accesul la cameră este oprit pentru PocketPRL.</string>
+    <string name="send_camera_needed">Scanarea necesită camera.</string>
+    <string name="send_for_label">Pentru: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Salvează o adresă dintr-o tranzacție sau din Setări › Contacte.</string>
+    <string name="receive_optional">Opțional</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Deschide setările</string>
+    <string name="settings_notif_off">Notificările sunt oprite, așa că aceasta rămâne dezactivată.</string>
+    <string name="settings_notif_blocked">Notificările sunt blocate pentru PocketPRL.</string>
+    <string name="settings_keystore_error">Nu s-a putut crea o cheie Keystore</string>
+    <string name="settings_biometric_prompt">Activează deblocarea biometrică</string>
+    <string name="settings_seed_password">Parola portofelului</string>
+    <string name="settings_seed_incorrect">Parolă incorectă</string>
+    <string name="settings_copy_address">Copiază adresa</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Eșuat</string>
+    <string name="vm_biometric_enable_failed">Activarea biometriei a eșuat</string>
+    <string name="settings_section_language">Limbă</string>
+    <string name="settings_language">Limbă</string>
+    <string name="settings_language_system">Implicit de sistem</string>
+</resources>

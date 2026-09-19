@@ -39,8 +39,8 @@ object PriceAlertNotifier {
         val nm = context.getSystemService(NotificationManager::class.java)
         if (nm.getNotificationChannel(CHANNEL_ID) == null) {
             nm.createNotificationChannel(
-                NotificationChannel(CHANNEL_ID, "Price alerts", NotificationManager.IMPORTANCE_DEFAULT).apply {
-                    description = "Large PRL price moves over 24 hours"
+                NotificationChannel(CHANNEL_ID, context.getString(R.string.notif_channel_price), NotificationManager.IMPORTANCE_DEFAULT).apply {
+                    description = context.getString(R.string.notif_channel_price_desc)
                     enableVibration(true)
                 },
             )
@@ -57,9 +57,9 @@ object PriceAlertNotifier {
      * [threshold]. A later, larger move in the same direction fires again at the
      * next multiple; a reversal fires immediately.
      */
-    fun maybeNotify(context: Context, change24h: Double?, usd: Double, threshold: Double) {
+    fun maybeNotify(context: Context, change24h: Double?, price: Double, threshold: Double) {
         if (change24h == null || !change24h.isFinite()) return
-        if (!usd.isFinite() || usd <= 0) return
+        if (!price.isFinite() || price <= 0) return
         if (threshold <= 0) return
         val band = (abs(change24h) / threshold).toInt()
         if (band < 1) return
@@ -73,8 +73,8 @@ object PriceAlertNotifier {
         prefs.edit().putInt(KEY_LAST_BAND, band).putInt(KEY_LAST_SIGN, sign).apply()
 
         ensureChannel(context)
-        val direction = if (change24h >= 0) "Up" else "Down"
-        val text = String.format(Locale.US, "%s %.2f%%: now at %s", direction, abs(change24h), Amount.usdPrice(usd))
+        val direction = context.getString(if (change24h >= 0) R.string.price_dir_up else R.string.price_dir_down)
+        val text = context.getString(R.string.price_alert_body, direction, String.format(Locale.US, "%.2f", abs(change24h)), Amount.usdPrice(price))
         val open = PendingIntent.getActivity(
             context, 0,
             Intent(context, MainActivity::class.java).apply { flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_NEW_TASK },
@@ -82,7 +82,7 @@ object PriceAlertNotifier {
         )
         val n = Notification.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle("PRL price alert")
+            .setContentTitle(context.getString(R.string.notif_price_title))
             .setContentText(text)
             .setContentIntent(open)
             .setAutoCancel(true)
@@ -106,9 +106,9 @@ class PriceAlertJob : JobService() {
         }
         running = c.scope.launch {
             try {
-                val quote = c.priceApi.prlUsd()
+                val quote = c.priceApi.prlFiat()
                 if (quote != null) {
-                    PriceAlertNotifier.maybeNotify(applicationContext, quote.change24h, quote.usd, c.settings.priceAlertPercent)
+                    PriceAlertNotifier.maybeNotify(applicationContext, quote.change24h, quote.fiat, c.settings.priceAlertPercent)
                 } else {
                     Log.i(PriceAlertNotifier.TAG, "no quote available")
                 }

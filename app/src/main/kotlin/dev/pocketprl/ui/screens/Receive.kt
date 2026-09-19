@@ -35,9 +35,11 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.pocketprl.R
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.chain.Network
 import dev.pocketprl.data.db.AddressRow
@@ -103,16 +105,16 @@ fun ReceiveScreen(vm: WalletViewModel, onBack: () -> Unit) {
         isRequest = isRequest,
         amountText = amountText,
         onAmountChange = { amountText = it },
-        amountError = if (amountText.isNotBlank() && amount == null) "Enter a valid amount" else null,
+        amountError = if (amountText.isNotBlank() && amount == null) stringResource(R.string.send_enter_valid_amount_short) else null,
         fiatHint = fiat?.let { "≈ $it" },
         label = label,
         onLabelChange = { label = it.take(60) },
         rotating = rotating,
-        onCopy = { shown?.let { haptics.confirm(); copyToClipboard(context, "Pearl address", it.address) } },
+        onCopy = { shown?.let { haptics.confirm(); copyToClipboard(context, context.getString(R.string.clipboard_address), it.address) } },
         onShare = {
             val send = Intent(Intent.ACTION_SEND).apply { type = "text/plain"; putExtra(Intent.EXTRA_TEXT, payload) }
             leavingApp()
-            runCatching { context.startActivity(Intent.createChooser(send, if (isRequest) "Share payment request" else "Share address")) }
+            runCatching { context.startActivity(Intent.createChooser(send, context.getString(if (isRequest) R.string.receive_share_request else R.string.receive_share))) }
         },
         onRotate = {
             haptics.click()
@@ -150,9 +152,9 @@ fun ReceiveContent(
     val cs = MaterialTheme.colorScheme
     val dark = PearlTheme.palette.isDark
     val ticker = network.ticker
-    ScreenScaffold(title = "Receive $ticker", onBack = onBack) {
+    ScreenScaffold(title = stringResource(R.string.receive_title, ticker), onBack = onBack) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            if (address == null) { LoadingBlock("Preparing address…"); return@Column }
+            if (address == null) { LoadingBlock(stringResource(R.string.receive_preparing)); return@Column }
             // The address, Copy and Share do not depend on the QR encode succeeding.
             val matrix = remember(payload) { payload?.let { encodeQr(it) } }
             val plate = if (dark) cs.surfaceContainerHigh else Color.White
@@ -167,58 +169,56 @@ fun ReceiveContent(
                 )
                 Box(modifier = Modifier.size(264.dp).clip(RoundedCornerShape(28.dp)).background(plate).padding(18.dp), contentAlignment = Alignment.Center) {
                     if (matrix != null) {
-                        QrCode(matrix, foreground = ink, background = plate, contentDescription = "Address QR code", logo = { PearlMark(size = 64.dp, color = ink, behind = plate) })
+                        QrCode(matrix, foreground = ink, background = plate, contentDescription = stringResource(R.string.receive_qr_desc), logo = { PearlMark(size = 64.dp, color = ink, behind = plate) })
                     } else {
-                        Text("The QR code could not be drawn. Copy or share the address instead.", style = MaterialTheme.typography.bodyMedium, color = cs.error, textAlign = TextAlign.Center)
+                        Text(stringResource(R.string.receive_qr_failed), style = MaterialTheme.typography.bodyMedium, color = cs.error, textAlign = TextAlign.Center)
                     }
                 }
             }
             if (isRequest) {
+                val a = Amount.parse(amountText)
+                val requesting = if (a != null && a > 0) stringResource(R.string.receive_requesting, Amount.pretty(a), ticker) else stringResource(R.string.receive_requesting_any)
+                val requestText = if (label.isNotBlank()) stringResource(R.string.receive_requesting_for, requesting, label.trim()) else requesting
                 Text(
-                    buildString {
-                        append("Requesting ")
-                        val a = Amount.parse(amountText)
-                        append(if (a != null && a > 0) "${Amount.pretty(a)} $ticker" else "any amount")
-                        if (label.isNotBlank()) append(" for “${label.trim()}”")
-                    },
+                    requestText,
                     style = MaterialTheme.typography.bodyMedium.merge(TabularNumbers), color = cs.onSurfaceVariant, textAlign = TextAlign.Center,
                 )
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    if (showPq) "Address #${index + 1} • post-quantum variant" else "Address #${index + 1} • Taproot, same as the desktop wallet",
+                    if (showPq) stringResource(R.string.receive_pq, index + 1) else stringResource(R.string.receive_standard, index + 1),
                     style = MaterialTheme.typography.labelSmall, color = cs.onSurfaceVariant, textAlign = TextAlign.Center,
                 )
                 Spacer(Modifier.height(6.dp))
                 AddressText(address, textAlign = TextAlign.Center, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(horizontal = 8.dp))
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                ActionButton("Copy", AppIcons.Copy, onCopy, Modifier.weight(1f), outlined = true)
-                ActionButton(if (isRequest) "Share request" else "Share", Icons.Filled.Share, onShare, Modifier.weight(1f))
+                ActionButton(stringResource(R.string.receive_copy), AppIcons.Copy, onCopy, Modifier.weight(1f), outlined = true)
+                ActionButton(if (isRequest) stringResource(R.string.receive_share_request) else stringResource(R.string.receive_share), Icons.Filled.Share, onShare, Modifier.weight(1f))
             }
             SectionCard {
-                SectionTitle("Request an amount", modifier = Modifier.padding(bottom = 6.dp))
+                SectionTitle(stringResource(R.string.receive_request_amount), modifier = Modifier.padding(bottom = 6.dp))
                 AmountHero(
                     text = amountText, onTextChange = onAmountChange, ticker = ticker, fiatMode = false,
-                    secondary = fiatHint ?: "Optional", error = amountError, onSwap = null, compact = true,
+                    secondary = fiatHint ?: stringResource(R.string.receive_optional), error = amountError, onSwap = null, compact = true,
                 )
                 Spacer(Modifier.height(12.dp))
                 OutlinedTextField(
-                    value = label, onValueChange = onLabelChange, label = { Text("Label (optional)") }, placeholder = { Text("Invoice #42") }, singleLine = true,
+                    value = label, onValueChange = onLabelChange, label = { Text(stringResource(R.string.receive_label)) }, placeholder = { Text(stringResource(R.string.receive_label_placeholder)) }, singleLine = true,
                     modifier = Modifier.fillMaxWidth(), shape = FieldShape,
                 )
-                Text("With an amount or label, the code and the share link become a payment link that fills in the amount for the sender.", style = MaterialTheme.typography.labelSmall, color = cs.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp))
+                Text(stringResource(R.string.receive_link_hint), style = MaterialTheme.typography.labelSmall, color = cs.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp))
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                TextButton(enabled = !rotating, onClick = onRotate) { Text(if (rotating) "Generating…" else "Use a fresh address") }
-                if (pqAvailable) TextButton(onClick = onTogglePq) { Text(if (showPq) "Show standard address" else "Show post-quantum variant") }
+                TextButton(enabled = !rotating, onClick = onRotate) { Text(if (rotating) stringResource(R.string.receive_generating) else stringResource(R.string.receive_fresh)) }
+                if (pqAvailable) TextButton(onClick = onTogglePq) { Text(if (showPq) stringResource(R.string.receive_show_std) else stringResource(R.string.receive_show_pq)) }
             }
             if (showPq) InfoBanner(
-                "This variant commits an XMSS post-quantum key inside the address. The official desktop wallet does not derive it, so coins sent here are only visible in PocketPRL until Pearl's desktop wallet supports it. Use the standard address unless the payer specifically needs this one.",
-                BannerKind.WARNING, title = "Not visible to the desktop wallet",
+                stringResource(R.string.receive_pq_warning_body),
+                BannerKind.WARNING, title = stringResource(R.string.receive_pq_warning_title),
             )
-            InfoBanner("Addresses can be reused, but a fresh one per payer keeps your history private. Incoming payments appear in Activity as soon as the sender broadcasts.", BannerKind.INFO)
-            Text("Only send Pearl (${network.displayName}) to this address.", style = MaterialTheme.typography.labelSmall, color = cs.onSurfaceVariant, textAlign = TextAlign.Center)
+            InfoBanner(stringResource(R.string.receive_reuse_info), BannerKind.INFO)
+            Text(stringResource(R.string.receive_only_send, network.displayName), style = MaterialTheme.typography.labelSmall, color = cs.onSurfaceVariant, textAlign = TextAlign.Center)
             Spacer(Modifier.height(8.dp))
         }
     }

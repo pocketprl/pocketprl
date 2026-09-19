@@ -12,15 +12,22 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.pocketprl.AppContainer
 import dev.pocketprl.PocketPrlApp
+import dev.pocketprl.R
 import dev.pocketprl.core.chain.Address
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.chain.InsufficientFundsException
 import dev.pocketprl.core.chain.Network
 import dev.pocketprl.core.chain.TxBuilder
 import dev.pocketprl.core.crypto.Bip39
+import dev.pocketprl.core.crypto.Bip39Error
 import dev.pocketprl.core.crypto.hexToBytes
 import dev.pocketprl.core.crypto.isHex
+import dev.pocketprl.core.format.DecimalSeparator
+import dev.pocketprl.core.format.FiatCurrency
+import dev.pocketprl.core.format.GroupingSeparator
+import dev.pocketprl.data.AccentTheme
 import dev.pocketprl.data.FeeRates
+import dev.pocketprl.data.PollMode
 import dev.pocketprl.data.PreparedSend
 import dev.pocketprl.data.ThemeMode
 import dev.pocketprl.data.WalletContext
@@ -119,11 +126,11 @@ class WalletViewModel(private val c: AppContainer, private val ctx: WalletContex
             runCatching { repo.refreshPrice() }
             lastTip = repo.tipHeight
             while (isActive) {
-                delay(POLL_INTERVAL_MS)
+                delay(pollIntervalMs())
                 if (c.registry.activeId != ctx.id) break
                 if (!ctx.session.isUnlocked) continue
                 val tip = repo.pollTip()
-                val stale = System.currentTimeMillis() - repo.syncState.value.lastSyncAt > FULL_SYNC_INTERVAL_MS
+                val stale = System.currentTimeMillis() - repo.syncState.value.lastSyncAt > fullSyncIntervalMs()
                 if (tip == null || tip != lastTip || stale) {
                     repo.sync()
                     lastTip = repo.tipHeight
@@ -131,6 +138,18 @@ class WalletViewModel(private val c: AppContainer, private val ctx: WalletContex
                 }
             }
         }
+    }
+
+    private fun pollIntervalMs(): Long = when (c.settings.pollMode) {
+        PollMode.LIVE -> 15_000L
+        PollMode.BALANCED -> 30_000L
+        PollMode.BATTERY -> 60_000L
+    }
+
+    private fun fullSyncIntervalMs(): Long = when (c.settings.pollMode) {
+        PollMode.LIVE -> 90_000L
+        PollMode.BALANCED -> 180_000L
+        PollMode.BATTERY -> 600_000L
     }
 
     fun stopPolling() {
@@ -208,7 +227,7 @@ class OnboardingViewModel(private val c: AppContainer) : ViewModel() {
                 }
                 _state.update { it.copy(busy = false, done = true, progress = null) }
             } catch (e: Exception) {
-                _state.update { it.copy(busy = false, error = e.message ?: "Failed to create wallet", progress = null) }
+                _state.update { it.copy(busy = false, error = e.message ?: c.appContext.getString(R.string.onboard_err_create_failed), progress = null) }
             }
         }
     }
@@ -220,26 +239,34 @@ class OnboardingViewModel(private val c: AppContainer) : ViewModel() {
 
     /** Mirrors the desktop wallet: BIP-39 phrase (12/15/18/21/24 words) or a 16..64 byte hex seed. */
     fun checkSeedInput(raw: String): SeedCheck {
+        val res = c.appContext.resources
         val t = raw.trim()
-        if (t.isEmpty()) return SeedCheck.Bad("Enter your recovery phrase")
+        if (t.isEmpty()) return SeedCheck.Bad(res.getString(R.string.onboard_err_enter_phrase))
         if (!t.contains(Regex("\\s"))) {
             val h = t.lowercase().removePrefix("0x")
             if (h.isHex()) {
-                if (h.length % 2 != 0) return SeedCheck.Bad("Hex seed must have an even number of characters")
+                if (h.length % 2 != 0) return SeedCheck.Bad(res.getString(R.string.onboard_err_hex_even))
                 val n = h.length / 2
-                if (n < 16 || n > 64) return SeedCheck.Bad("Hex seed must be between 128 and 512 bits")
-                return SeedCheck.Ok(SeedMaterial.Hex(h.hexToBytes()), "$n-byte hex seed")
+                if (n < 16 || n > 64) return SeedCheck.Bad(res.getString(R.string.onboard_err_hex_range))
+                return SeedCheck.Ok(SeedMaterial.Hex(h.hexToBytes()), res.getString(R.string.onboard_check_hex, n))
             }
-            return SeedCheck.Bad("Enter a 12–24 word recovery phrase or a hex seed")
+            return SeedCheck.Bad(res.getString(R.string.onboard_err_enter_phrase_or_hex))
         }
         return when (val v = Bip39.validate(t)) {
-            is Bip39.Validation.Ok -> SeedCheck.Ok(SeedMaterial.Mnemonic(v.normalized), "${v.wordCount}-word recovery phrase")
-            is Bip39.Validation.Invalid -> SeedCheck.Bad(v.reason)
+            is Bip39.Validation.Ok -> SeedCheck.Ok(SeedMaterial.Mnemonic(v.normalized), res.getString(R.string.onboard_check_phrase, v.wordCount))
+            is Bip39.Validation.Invalid -> SeedCheck.Bad(
+                when (v.error) {
+                    Bip39Error.EMPTY -> res.getString(R.string.onboard_err_enter_phrase)
+                    Bip39Error.WORD_COUNT -> res.getString(R.string.onboard_err_word_count, v.wordCount)
+                    Bip39Error.UNKNOWN_WORD -> res.getString(R.string.onboard_err_unknown_word, v.badWord ?: "")
+                    Bip39Error.CHECKSUM -> res.getString(R.string.onboard_err_checksum)
+                },
+            )
         }
     }
 
     fun restore(name: String, material: SeedMaterial, password: String) {
-        _state.update { it.copy(busy = true, error = null, progress = "Preparing wallet…") }
+        _state.update { it.copy(busy = true, error = null, progress = c.appContext.getString(R.string.onboard_preparing)) }
         viewModelScope.launch {
             try {
                 c.restoreWallet(name.trim(), network.value, material, password.toCharArray()) { p ->
@@ -247,7 +274,7 @@ class OnboardingViewModel(private val c: AppContainer) : ViewModel() {
                 }
                 _state.update { it.copy(busy = false, done = true, progress = null) }
             } catch (e: Exception) {
-                _state.update { it.copy(busy = false, error = e.message ?: "Restore failed", progress = null) }
+                _state.update { it.copy(busy = false, error = e.message ?: c.appContext.getString(R.string.onboard_err_restore_failed), progress = null) }
             }
         }
     }
@@ -272,11 +299,12 @@ class UnlockViewModel(private val c: AppContainer, private val ctx: WalletContex
             try {
                 val dek = withContext(Dispatchers.Default) { ctx.vault.unlockWithPassword(password.toCharArray()) }
                 ctx.session.unlock(dek)
+                afterUnlock()
                 _state.update { it.copy(busy = false, unlocked = true) }
             } catch (_: WrongPasswordException) {
-                _state.update { it.copy(busy = false, error = "Incorrect password") }
+                _state.update { it.copy(busy = false, error = c.appContext.getString(R.string.unlock_error_incorrect)) }
             } catch (e: Exception) {
-                _state.update { it.copy(busy = false, error = e.message ?: "Unlock failed") }
+                _state.update { it.copy(busy = false, error = e.message ?: c.appContext.getString(R.string.unlock_error_failed)) }
             }
         }
     }
@@ -286,10 +314,16 @@ class UnlockViewModel(private val c: AppContainer, private val ctx: WalletContex
     fun unlockWithBiometric(cipher: Cipher) {
         try {
             ctx.session.unlock(ctx.vault.unlockWithBiometric(cipher))
+            afterUnlock()
             _state.update { it.copy(unlocked = true, error = null) }
         } catch (e: Exception) {
-            _state.update { it.copy(error = "Biometric unlock failed: ${e.message}. Use your password.") }
+            _state.update { it.copy(error = c.appContext.getString(R.string.unlock_error_biometric_failed, e.message ?: "")) }
         }
+    }
+
+    /** Applies "start with balances hidden" if configured. */
+    private fun afterUnlock() {
+        if (c.settings.startHidden) c.settings.hideBalance = true
     }
 
     fun setError(msg: String?) = _state.update { it.copy(error = msg) }
@@ -352,7 +386,7 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
                 _state.update { it.copy(fees = f, feeError = null) }
                 reprepare()
             } catch (e: Exception) {
-                _state.update { it.copy(feeError = "Could not load fee estimates: ${e.message}") }
+                _state.update { it.copy(feeError = c.appContext.getString(R.string.send_fee_loading, e.message ?: "")) }
             }
         }
     }
@@ -387,7 +421,7 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
     fun applyPaymentRequest(raw: String): Boolean {
         val pr = Qr.parsePayment(raw, network)
         if (pr == null) {
-            _state.update { it.copy(error = "That link is not a valid ${network.displayName} payment request.") }
+            _state.update { it.copy(error = c.appContext.getString(R.string.qr_err_invalid_link, network.displayName)) }
             return false
         }
         setAddress(pr.address)
@@ -428,7 +462,7 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
 
     private fun friendly(e: Exception): String = when (e) {
         is InsufficientFundsException ->
-            "Insufficient funds: need ${Amount.pretty(e.needed, 8)} ${network.ticker} including the fee, have ${Amount.pretty(e.available, 8)}"
+            c.appContext.getString(R.string.send_err_insufficient, Amount.pretty(e.needed, 8), network.ticker, Amount.pretty(e.available, 8))
         else -> e.message ?: e.javaClass.simpleName
     }
 
@@ -440,7 +474,7 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
     fun send(prepared: PreparedSend) {
         val p = _state.value.prepared
         if (p !== prepared) {
-            _state.update { it.copy(sending = false, error = "The payment changed while you were confirming it. Check the details and try again.") }
+            _state.update { it.copy(sending = false, error = c.appContext.getString(R.string.send_err_changed)) }
             return
         }
         _state.update { it.copy(sending = true, error = null) }
@@ -485,6 +519,7 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
     fun setRequireAuthToSend(v: Boolean) { c.settings.requireAuthToSend = v }
     fun setHideBalance(v: Boolean) { c.settings.hideBalance = v }
     fun setThemeMode(mode: ThemeMode) { c.settings.themeMode = mode }
+    fun setAppLanguage(tag: String) { c.settings.appLanguage = tag }
 
     fun setShowFiat(v: Boolean) {
         c.settings.showFiat = v
@@ -493,6 +528,19 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
 
     fun setOdometer(v: Boolean) { c.settings.odometer = v }
     fun setOdometerHaptics(v: Boolean) { c.settings.odometerHaptics = v }
+    fun setAccentTheme(v: AccentTheme) { c.settings.accentTheme = v }
+    fun setDynamicColor(v: Boolean) { c.settings.dynamicColor = v }
+    fun setReducedMotion(v: Boolean) { c.settings.reducedMotion = v }
+    fun setDecimals(v: Int) { c.settings.decimals = v }
+    fun setDecimalSeparator(v: DecimalSeparator) { c.settings.decimalSeparator = v }
+    fun setGroupingSeparator(v: GroupingSeparator) { c.settings.groupingSeparator = v }
+    fun setFiatCurrency(v: FiatCurrency) { c.settings.fiatCurrency = v }
+    fun setHeroSpendable(v: Boolean) { c.settings.heroSpendable = v }
+    fun setShowChange24h(v: Boolean) { c.settings.showChange24h = v }
+    fun setShowMiningCard(v: Boolean) { c.settings.showMiningCard = v }
+    fun setStartHidden(v: Boolean) { c.settings.startHidden = v }
+    fun setSecureAllScreens(v: Boolean) { c.settings.secureAllScreens = v }
+    fun setPollMode(v: PollMode) { c.settings.pollMode = v }
 
     /** Only call once POST_NOTIFICATIONS has been granted (or is not required). */
     fun setNotifyIncoming(v: Boolean) {
@@ -531,7 +579,7 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
             val dek = ctx.vault.unlockWithPassword(current.toCharArray())
             try { ctx.vault.changePassword(dek, new.toCharArray()) } finally { dek.fill(0) }
             null
-        } catch (_: WrongPasswordException) { "Current password is incorrect" } catch (e: Exception) { e.message ?: "Failed" }
+        } catch (_: WrongPasswordException) { c.appContext.getString(R.string.settings_password_error_current) } catch (e: Exception) { e.message ?: c.appContext.getString(R.string.vm_error_failed) }
     }
 
     fun biometricEncryptCipher(): Cipher? = runCatching { ctx.vault.biometricEncryptCipher() }.getOrNull()
@@ -539,7 +587,7 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
     fun enableBiometric(cipher: Cipher): String? = try {
         ctx.session.withDek { dek -> ctx.vault.enableBiometric(dek, cipher) }
         null
-    } catch (e: Exception) { e.message ?: "Failed to enable biometrics" }
+    } catch (e: Exception) { e.message ?: c.appContext.getString(R.string.vm_biometric_enable_failed) }
 
     fun disableBiometric() = ctx.vault.disableBiometric()
 
@@ -555,8 +603,8 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
 
     fun contacts(): List<Contact> = ctx.repository.contacts()
     fun saveContact(address: String, name: String): String? {
-        if (Address.parse(address, network) !is Address.Result.Valid) return "Not a valid ${network.displayName} address"
-        if (name.isBlank()) return "Give the contact a name"
+        if (Address.parse(address, network) !is Address.Result.Valid) return c.appContext.getString(R.string.settings_contacts_invalid, network.displayName)
+        if (name.isBlank()) return c.appContext.getString(R.string.settings_contacts_name_required)
         ctx.repository.saveContact(address, name)
         return null
     }

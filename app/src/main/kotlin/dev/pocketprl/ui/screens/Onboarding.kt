@@ -26,12 +26,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.pocketprl.R
 import dev.pocketprl.core.crypto.Bip39
 import dev.pocketprl.ui.components.BannerKind
 import dev.pocketprl.ui.components.FieldShape
@@ -62,7 +64,8 @@ fun CreateWalletScreen(vm: OnboardingViewModel, onDone: () -> Unit, onBack: () -
     val state by vm.state.collectAsStateWithLifecycle()
     val network by vm.network.collectAsStateWithLifecycle()
     var step by rememberSaveable { mutableStateOf(CreateStep.SETUP) }
-    var name by rememberSaveable { mutableStateOf("My Pearl Wallet") }
+    val defaultName = stringResource(R.string.onboard_default_wallet_name)
+    var name by rememberSaveable { mutableStateOf(defaultName) }
     var password by remember { mutableStateOf("") }
     var confirm by remember { mutableStateOf("") }
 
@@ -76,35 +79,40 @@ fun CreateWalletScreen(vm: OnboardingViewModel, onDone: () -> Unit, onBack: () -
     val shown = if (lostSecrets) CreateStep.SETUP else step
 
     ScreenScaffold(
-        title = when (shown) { CreateStep.SETUP -> "Create wallet"; CreateStep.SEED -> "Your recovery phrase"; CreateStep.VERIFY -> "Verify phrase"; CreateStep.WORKING -> "Setting up" },
-        subtitle = "Step ${(shown.ordinal + 1).coerceAtMost(3)} of 3 • ${network.displayName}",
+        title = when (shown) {
+            CreateStep.SETUP -> stringResource(R.string.onboard_title_create)
+            CreateStep.SEED -> stringResource(R.string.onboard_title_seed)
+            CreateStep.VERIFY -> stringResource(R.string.onboard_title_verify)
+            CreateStep.WORKING -> stringResource(R.string.onboard_title_working)
+        },
+        subtitle = stringResource(R.string.onboard_step, (shown.ordinal + 1).coerceAtMost(3), network.displayName),
         onBack = when (shown) { CreateStep.SETUP -> onBack; CreateStep.SEED -> ({ step = CreateStep.SETUP }); CreateStep.VERIFY -> ({ step = CreateStep.SEED }); CreateStep.WORKING -> null },
     ) {
         StepProgress(shown.ordinal, 3)
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             when (shown) {
                 CreateStep.SETUP -> {
-                    Text("Name and protect your wallet", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
-                    OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text("Wallet name") }, singleLine = true, modifier = Modifier.fillMaxWidth(), shape = FieldShape)
-                    PasswordField(password, { password = it }, "Password")
+                    Text(stringResource(R.string.onboard_name_protect), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
+                    OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text(stringResource(R.string.onboard_wallet_name)) }, singleLine = true, modifier = Modifier.fillMaxWidth(), shape = FieldShape)
+                    PasswordField(password, { password = it }, stringResource(R.string.onboard_password))
                     if (password.isNotEmpty()) PasswordStrength(password)
-                    PasswordField(confirm, { confirm = it }, "Confirm password", imeAction = ImeAction.Done, isError = confirm.isNotEmpty() && confirm != password)
-                    InfoBanner("The password encrypts your keys on this device. There is no reset: if you forget it, restore from your recovery phrase.", BannerKind.WARNING)
+                    PasswordField(confirm, { confirm = it }, stringResource(R.string.onboard_confirm_password), imeAction = ImeAction.Done, isError = confirm.isNotEmpty() && confirm != password)
+                    InfoBanner(stringResource(R.string.onboard_password_warning), BannerKind.WARNING)
                     state.error?.let { InfoBanner(it, BannerKind.ERROR) }
                     PrimaryButton(
-                        "Continue",
+                        stringResource(R.string.action_continue),
                         onClick = { vm.clearError(); step = CreateStep.SEED },
                         enabled = name.isNotBlank() && password.length >= 8 && password == confirm && passwordScore(password) >= 2,
                     )
-                    if (password.isNotEmpty() && passwordScore(password) < 2) Text("Use at least 8 characters with a mix of letters, numbers or symbols.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                    if (password.isNotEmpty() && passwordScore(password) < 2) Text(stringResource(R.string.onboard_password_hint), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
                 }
                 CreateStep.SEED -> {
                     SecureWindow()
                     val words = state.mnemonic?.split(' ') ?: emptyList()
-                    Text("Write these 12 words down, in order, and keep them offline.", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onBackground)
+                    Text(stringResource(R.string.onboard_seed_write), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onBackground)
                     SectionCard { WordGrid(words) }
-                    InfoBanner("Anyone with these words controls your funds. Screenshots are blocked on this screen; do not store the phrase digitally.", BannerKind.WARNING, title = "Keep it secret")
-                    PrimaryButton("I've written it down", onClick = { step = CreateStep.VERIFY })
+                    InfoBanner(stringResource(R.string.onboard_seed_secret_body), BannerKind.WARNING, title = stringResource(R.string.onboard_seed_secret_title))
+                    PrimaryButton(stringResource(R.string.onboard_written), onClick = { step = CreateStep.VERIFY })
                 }
                 CreateStep.VERIFY -> {
                     SecureWindow()
@@ -112,8 +120,8 @@ fun CreateWalletScreen(vm: OnboardingViewModel, onDone: () -> Unit, onBack: () -
                     SeedQuiz(words = words, onVerified = { step = CreateStep.WORKING; vm.create(name, password) })
                 }
                 CreateStep.WORKING -> {
-                    LoadingBlock(state.progress ?: "Creating wallet…")
-                    state.error?.let { InfoBanner(it, BannerKind.ERROR); SecondaryButton("Back", onClick = { step = CreateStep.SETUP }) }
+                    LoadingBlock(state.progress ?: stringResource(R.string.onboard_creating))
+                    state.error?.let { InfoBanner(it, BannerKind.ERROR); SecondaryButton(stringResource(R.string.action_back), onClick = { step = CreateStep.SETUP }) }
                 }
             }
         }
@@ -159,10 +167,10 @@ private fun SeedQuiz(words: List<String>, onVerified: () -> Unit) {
     }
     val selected = remember(words) { mutableStateOf(List<String?>(positions.size) { null }) }
     var wrong by remember { mutableStateOf(false) }
-    Text("Pick the right word for each position to confirm your backup.", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onBackground)
+    Text(stringResource(R.string.onboard_quiz_instruction), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onBackground)
     positions.forEachIndexed { qi, pos ->
         SectionCard {
-            Text("Word #${pos + 1}", style = MaterialTheme.typography.titleMedium)
+            Text(stringResource(R.string.onboard_word_n, pos + 1), style = MaterialTheme.typography.titleMedium)
             Spacer(Modifier.height(8.dp))
             val haptics = rememberHaptics()
             for (r in 0 until 2) Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
@@ -173,8 +181,8 @@ private fun SeedQuiz(words: List<String>, onVerified: () -> Unit) {
             }
         }
     }
-    if (wrong) InfoBanner("Those words don't match your phrase. Go back and check it carefully.", BannerKind.ERROR)
-    PrimaryButton("Verify & create wallet", enabled = selected.value.all { it != null }, onClick = {
+    if (wrong) InfoBanner(stringResource(R.string.onboard_quiz_error), BannerKind.ERROR)
+    PrimaryButton(stringResource(R.string.onboard_verify_create), enabled = selected.value.all { it != null }, onClick = {
         if (positions.indices.all { selected.value[it] == words[positions[it]] }) onVerified() else wrong = true
     })
 }
@@ -183,43 +191,44 @@ private fun SeedQuiz(words: List<String>, onVerified: () -> Unit) {
 fun RestoreWalletScreen(vm: OnboardingViewModel, onDone: () -> Unit, onBack: () -> Unit) {
     val state by vm.state.collectAsStateWithLifecycle()
     val network by vm.network.collectAsStateWithLifecycle()
-    var name by rememberSaveable { mutableStateOf("My Pearl Wallet") }
+    val defaultName = stringResource(R.string.onboard_default_wallet_name)
+    var name by rememberSaveable { mutableStateOf(defaultName) }
     var phrase by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirm by remember { mutableStateOf("") }
     val check = remember(phrase) { vm.checkSeedInput(phrase) }
     LaunchedEffect(state.done) { if (state.done) onDone() }
 
-    ScreenScaffold(title = "Restore wallet", subtitle = network.displayName, onBack = if (state.busy) null else onBack) {
+    ScreenScaffold(title = stringResource(R.string.onboard_restore_title), subtitle = network.displayName, onBack = if (state.busy) null else onBack) {
         SecureWindow()
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             if (state.busy) {
-                LoadingBlock(state.progress ?: "Restoring…")
-                InfoBanner("Each address needs a post-quantum key, so deriving the discovery window takes a little while. The wallet then scans the Pearl indexer for your history.", BannerKind.INFO)
+                LoadingBlock(state.progress ?: stringResource(R.string.onboard_restoring))
+                InfoBanner(stringResource(R.string.onboard_restore_progress_body), BannerKind.INFO)
                 return@Column
             }
-            OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text("Wallet name") }, singleLine = true, modifier = Modifier.fillMaxWidth(), shape = FieldShape)
+            OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text(stringResource(R.string.onboard_wallet_name)) }, singleLine = true, modifier = Modifier.fillMaxWidth(), shape = FieldShape)
             OutlinedTextField(
                 value = phrase, onValueChange = { phrase = it },
-                label = { Text("Recovery phrase or hex seed") },
-                placeholder = { Text("12–24 words separated by spaces") },
+                label = { Text(stringResource(R.string.onboard_recovery_label)) },
+                placeholder = { Text(stringResource(R.string.onboard_recovery_placeholder)) },
                 minLines = 3, modifier = Modifier.fillMaxWidth(), shape = FieldShape,
                 keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.None, autoCorrectEnabled = false, keyboardType = KeyboardType.Password),
                 isError = phrase.isNotBlank() && check is OnboardingViewModel.SeedCheck.Bad,
                 supportingText = {
                     when (check) {
-                        is OnboardingViewModel.SeedCheck.Ok -> Text("✓ ${check.description}", color = MaterialTheme.colorScheme.primary)
+                        is OnboardingViewModel.SeedCheck.Ok -> Text(stringResource(R.string.onboard_check_ok, check.description), color = MaterialTheme.colorScheme.primary)
                         is OnboardingViewModel.SeedCheck.Bad -> if (phrase.isNotBlank()) Text(check.reason, color = MaterialTheme.colorScheme.error)
                     }
                 },
             )
-            PasswordField(password, { password = it }, "New password")
+            PasswordField(password, { password = it }, stringResource(R.string.onboard_new_password))
             if (password.isNotEmpty()) PasswordStrength(password)
-            PasswordField(confirm, { confirm = it }, "Confirm password", imeAction = ImeAction.Done, isError = confirm.isNotEmpty() && confirm != password)
+            PasswordField(confirm, { confirm = it }, stringResource(R.string.onboard_confirm_password), imeAction = ImeAction.Done, isError = confirm.isNotEmpty() && confirm != password)
             state.error?.let { InfoBanner(it, BannerKind.ERROR) }
-            InfoBanner("Works with phrases from the official Pearl desktop wallet (oyster) and any BIP-39 wallet using Pearl's derivation.", BannerKind.INFO)
+            InfoBanner(stringResource(R.string.onboard_restore_compatible), BannerKind.INFO)
             PrimaryButton(
-                "Restore wallet",
+                stringResource(R.string.onboard_restore_button),
                 enabled = name.isNotBlank() && check is OnboardingViewModel.SeedCheck.Ok && password.length >= 8 && password == confirm && passwordScore(password) >= 2,
                 onClick = { (check as? OnboardingViewModel.SeedCheck.Ok)?.let { vm.restore(name, it.material, password) } },
             )

@@ -34,6 +34,7 @@ import dev.pocketprl.ui.screens.ContactsScreen
 import dev.pocketprl.ui.screens.CreateWalletScreen
 import dev.pocketprl.ui.screens.DashboardScreen
 import dev.pocketprl.ui.screens.NetworkSettingsScreen
+import dev.pocketprl.ui.screens.PersonalizeScreen
 import dev.pocketprl.ui.screens.ReceiveScreen
 import dev.pocketprl.ui.screens.RestoreWalletScreen
 import dev.pocketprl.ui.screens.RevealSeedScreen
@@ -52,6 +53,7 @@ import dev.pocketprl.ui.vm.appViewModel
 
 object Routes {
     const val WELCOME = "welcome"
+    const val PERSONALIZE = "personalize/{next}"
     const val CREATE = "create"
     const val RESTORE = "restore"
     const val UNLOCK = "unlock"
@@ -68,7 +70,9 @@ object Routes {
     const val CONTACTS = "settings/contacts"
     const val ABOUT = "settings/about"
 
-    val PUBLIC = setOf(WELCOME, CREATE, RESTORE, UNLOCK)
+    fun personalize(next: String) = "personalize/$next"
+
+    val PUBLIC = setOf(WELCOME, PERSONALIZE, CREATE, RESTORE, UNLOCK)
 }
 
 private fun NavHostController.resetTo(route: String) = navigate(route) { popUpTo(0) { inclusive = true }; launchSingleTop = true }
@@ -154,9 +158,18 @@ private fun NavGraphBuilder.onboardingRoutes(nav: NavHostController, addMode: Bo
         WelcomeScreen(
             network = network,
             onNetworkChange = { vm.setNetwork(it) },
+            onCreate = { nav.navigate(if (addMode) Routes.CREATE else Routes.personalize("create")) },
+            onRestore = { nav.navigate(if (addMode) Routes.RESTORE else Routes.personalize("restore")) },
+            onBack = if (addMode) ({ nav.popBackStack() }) else null,
+        )
+    }
+    // First-run only: pick theme, accent, number format and currency before creating a wallet.
+    composable(Routes.PERSONALIZE) { entry ->
+        PersonalizeScreen(
+            next = entry.arguments?.getString("next") ?: "create",
             onCreate = { nav.navigate(Routes.CREATE) },
             onRestore = { nav.navigate(Routes.RESTORE) },
-            onBack = if (addMode) ({ nav.popBackStack() }) else null,
+            onBack = { nav.popBackStack() },
         )
     }
     // onDone is a no-op: the new wallet becomes active, which rebuilds the tree on its home screen.

@@ -42,6 +42,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
@@ -51,6 +53,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.pocketprl.R
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.chain.Network
 import dev.pocketprl.data.Balances
@@ -63,7 +66,6 @@ import dev.pocketprl.data.db.TxRow
 import dev.pocketprl.ui.components.ActionButton
 import dev.pocketprl.ui.components.BannerKind
 import dev.pocketprl.ui.components.EmptyState
-import dev.pocketprl.ui.components.HIDDEN
 import dev.pocketprl.ui.components.InfoBanner
 import dev.pocketprl.ui.components.OdometerText
 import dev.pocketprl.ui.components.ScreenScaffold
@@ -71,8 +73,10 @@ import dev.pocketprl.ui.components.SectionCard
 import dev.pocketprl.ui.components.SectionTitle
 import dev.pocketprl.ui.components.rememberHaptics
 import dev.pocketprl.ui.components.rememberNowSeconds
+import dev.pocketprl.ui.components.etaBlocks
 import dev.pocketprl.ui.components.timeAgo
 import dev.pocketprl.ui.theme.AppIcons
+import dev.pocketprl.ui.theme.LocalReducedMotion
 import dev.pocketprl.ui.theme.PearlTheme
 import dev.pocketprl.ui.theme.TabularNumbers
 import dev.pocketprl.ui.vm.WalletViewModel
@@ -87,6 +91,7 @@ fun DashboardScreen(vm: WalletViewModel, onSend: () -> Unit, onReceive: () -> Un
     val price by vm.price.collectAsStateWithLifecycle()
     val wallets by vm.wallets.collectAsStateWithLifecycle()
     val secondsPerBlock by vm.blockSeconds.collectAsStateWithLifecycle()
+    val reduce = LocalReducedMotion.current
     var showSwitcher by remember { mutableStateOf(false) }
 
     if (showSwitcher) {
@@ -96,7 +101,8 @@ fun DashboardScreen(vm: WalletViewModel, onSend: () -> Unit, onReceive: () -> Un
     DashboardContent(
         snap = snap, sync = sync, price = price, walletCount = wallets.wallets.size,
         hide = settings.hideBalance, showFiat = settings.showFiat, secondsPerBlock = secondsPerBlock,
-        odometer = settings.odometer, odometerHaptics = settings.odometerHaptics,
+        heroSpendable = settings.heroSpendable, showChange24h = settings.showChange24h, showMiningCard = settings.showMiningCard,
+        odometer = settings.odometer && !reduce, odometerHaptics = settings.odometerHaptics && !reduce,
         onRefresh = vm::refresh, onToggleHide = vm::toggleHideBalance, onSwitchWallet = { showSwitcher = true },
         onSend = onSend, onReceive = onReceive, onActivity = onActivity, onTx = onTx, onSettings = onSettings, onLock = onLock,
     )
@@ -112,6 +118,9 @@ fun DashboardContent(
     walletCount: Int,
     hide: Boolean,
     showFiat: Boolean,
+    heroSpendable: Boolean,
+    showChange24h: Boolean,
+    showMiningCard: Boolean,
     odometer: Boolean,
     odometerHaptics: Boolean,
     onRefresh: () -> Unit,
@@ -125,13 +134,14 @@ fun DashboardContent(
     onSettings: () -> Unit,
     onLock: () -> Unit,
 ) {
+    val appName = stringResource(R.string.app_name)
     ScreenScaffold(
-        title = snap.walletName.ifBlank { "PocketPRL" },
-        subtitle = if (walletCount > 1) "$walletCount wallets • ${snap.network.displayName}" else null,
+        title = snap.walletName.ifBlank { appName },
+        subtitle = if (walletCount > 1) pluralStringResource(R.plurals.dash_wallets, walletCount, walletCount, snap.network.displayName) else null,
         onTitleClick = onSwitchWallet,
         actions = {
-            IconButton(onClick = onSettings) { Icon(Icons.Filled.Settings, contentDescription = "Settings") }
-            IconButton(onClick = onLock) { Icon(Icons.Filled.Lock, contentDescription = "Lock") }
+            IconButton(onClick = onSettings) { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings_title)) }
+            IconButton(onClick = onLock) { Icon(Icons.Filled.Lock, contentDescription = stringResource(R.string.action_lock)) }
         },
     ) {
         // The pull indicator only shows for an actual pull, not for background polls.
@@ -139,35 +149,35 @@ fun DashboardContent(
         LaunchedEffect(sync.syncing) { if (!sync.syncing) pulled = false }
         PullToRefreshBox(isRefreshing = pulled && sync.syncing, onRefresh = { pulled = true; onRefresh() }, modifier = Modifier.fillMaxSize()) {
             Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(start = 20.dp, end = 20.dp, top = 12.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                if (!snap.network.isMainnet) InfoBanner("You are on ${snap.network.displayName}. Coins here have no value.", BannerKind.WARNING)
+                if (!snap.network.isMainnet) InfoBanner(stringResource(R.string.dash_testnet_warning, snap.network.displayName), BannerKind.WARNING)
                 val syncError = sync.error
                 if (syncError != null && !sync.syncing) {
-                    InfoBanner(syncError, BannerKind.ERROR, title = "Sync failed", action = { TextButton(onClick = onRefresh) { Text("Retry") } })
+                    InfoBanner(syncError, BannerKind.ERROR, title = stringResource(R.string.dash_sync_failed), action = { TextButton(onClick = onRefresh) { Text(stringResource(R.string.action_retry)) } })
                 }
 
                 // No USD for testnet coins. The market price is not a balance, so it stays when balances are hidden.
                 val fiat = if (showFiat && !hide && snap.network.isMainnet) Amount.fiat(snap.balances.total, price.usdPerPrl) else null
                 val quote = if (showFiat && snap.network.isMainnet) price else null
                 val haptics = rememberHaptics()
-                BalanceHero(snap.balances, snap.network, sync, hide = hide, fiat = fiat, quote = quote, odometer = odometer, odometerHaptics = odometerHaptics, onToggleHide = { haptics.toggle(!hide); onToggleHide() })
+                BalanceHero(snap.balances, snap.network, sync, hide = hide, fiat = fiat, quote = quote, heroSpendable = heroSpendable, showChange24h = showChange24h, odometer = odometer, odometerHaptics = odometerHaptics, onToggleHide = { haptics.toggle(!hide); onToggleHide() })
 
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    ActionButton("Send", AppIcons.SendArrow, onSend, Modifier.weight(1f), height = 56.dp)
-                    ActionButton("Receive", AppIcons.ReceiveArrow, onReceive, Modifier.weight(1f), outlined = true, height = 56.dp)
+                    ActionButton(stringResource(R.string.action_send), AppIcons.SendArrow, onSend, Modifier.weight(1f), height = 56.dp)
+                    ActionButton(stringResource(R.string.action_receive), AppIcons.ReceiveArrow, onReceive, Modifier.weight(1f), outlined = true, height = 56.dp)
                 }
 
-                snap.mining?.let { MiningCard(it, snap.network, hide, secondsPerBlock) }
+                if (showMiningCard) snap.mining?.let { MiningCard(it, snap.network, hide, secondsPerBlock) }
 
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                    SectionTitle("Activity")
-                    if (snap.txCount > 0) TextButton(onClick = onActivity) { Text("View all (${snap.txCount})") }
+                    SectionTitle(stringResource(R.string.dash_activity))
+                    if (snap.txCount > 0) TextButton(onClick = onActivity) { Text(stringResource(R.string.dash_view_all, snap.txCount)) }
                 }
                 if (snap.recentTxs.isEmpty()) {
                     SectionCard(padding = 0.dp) {
-                        if (sync.syncing && sync.lastSyncAt == 0L) EmptyState(AppIcons.History, "Looking for transactions…")
+                        if (sync.syncing && sync.lastSyncAt == 0L) EmptyState(AppIcons.History, stringResource(R.string.dash_looking))
                         else EmptyState(
-                            AppIcons.ReceiveArrow, "No transactions yet", text = "Share your receive address or a payment link to get started.",
-                            action = { TextButton(onClick = onReceive) { Text("Show my address") } },
+                            AppIcons.ReceiveArrow, stringResource(R.string.dash_no_tx), text = stringResource(R.string.dash_no_tx_body),
+                            action = { TextButton(onClick = onReceive) { Text(stringResource(R.string.dash_show_address)) } },
                         )
                     }
                 } else {
@@ -193,41 +203,41 @@ fun DashboardContent(
  * ticker set smaller after it. Tap anywhere on it to hide or show the balance.
  */
 @Composable
-private fun BalanceHero(b: Balances, network: Network, sync: SyncState, hide: Boolean, fiat: String?, quote: PriceState?, odometer: Boolean, odometerHaptics: Boolean, onToggleHide: () -> Unit) {
+private fun BalanceHero(b: Balances, network: Network, sync: SyncState, hide: Boolean, fiat: String?, quote: PriceState?, heroSpendable: Boolean, showChange24h: Boolean, odometer: Boolean, odometerHaptics: Boolean, onToggleHide: () -> Unit) {
     val cs = MaterialTheme.colorScheme
     val palette = PearlTheme.palette
     Column(
         modifier = Modifier.fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .clickable(onClick = onToggleHide, onClickLabel = if (hide) "Show balance" else "Hide balance")
+            .clickable(onClick = onToggleHide, onClickLabel = stringResource(if (hide) R.string.action_show_balance else R.string.action_hide_balance))
             .padding(horizontal = 4.dp, vertical = 8.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("Total balance", style = MaterialTheme.typography.labelLarge, color = cs.onSurfaceVariant)
+            Text(stringResource(if (heroSpendable) R.string.dash_spendable else R.string.dash_total_balance), style = MaterialTheme.typography.labelLarge, color = cs.onSurfaceVariant)
             Spacer(Modifier.width(6.dp))
             Icon(if (hide) AppIcons.VisibilityOff else AppIcons.Visibility, contentDescription = null, tint = cs.onSurfaceVariant, modifier = Modifier.size(16.dp))
         }
         Spacer(Modifier.height(6.dp))
-        BigAmount(b.total, network, hide = hide, spinning = sync.syncing, odometer = odometer, odometerHaptics = odometerHaptics)
+        BigAmount(if (heroSpendable) b.spendable else b.total, network, hide = hide, spinning = sync.syncing, odometer = odometer, odometerHaptics = odometerHaptics)
         val usd = quote?.usdPerPrl
         if (fiat != null || usd != null) {
             Spacer(Modifier.height(4.dp))
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 if (fiat != null) OdometerText("≈ $fiat", style = MaterialTheme.typography.titleMedium, color = cs.onSurfaceVariant, spinning = sync.syncing, animate = odometer, haptics = odometerHaptics)
-                if (usd != null) PriceLine(network, usd, quote.change24h)
+                if (usd != null) PriceLine(network, usd, quote.change24h, showChange24h)
             }
         }
         if (!hide && (b.pendingIncoming != 0L || b.immature != 0L)) {
             Spacer(Modifier.height(20.dp))
             Row(modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min), verticalAlignment = Alignment.CenterVertically) {
-                MiniStat("Spendable", Amount.pretty(b.spendable), cs.primary, Modifier.weight(1.2f))
+                MiniStat(stringResource(R.string.dash_spendable), Amount.pretty(b.spendable), cs.primary, Modifier.weight(1.2f))
                 if (b.pendingIncoming != 0L) {
                     VerticalDivider(color = cs.outlineVariant, modifier = Modifier.fillMaxHeight().padding(horizontal = 10.dp))
-                    MiniStat("Incoming", Amount.pretty(b.pendingIncoming), palette.warning, Modifier.weight(1f))
+                    MiniStat(stringResource(R.string.dash_incoming), Amount.pretty(b.pendingIncoming), palette.warning, Modifier.weight(1f))
                 }
                 if (b.immature != 0L) {
                     VerticalDivider(color = cs.outlineVariant, modifier = Modifier.fillMaxHeight().padding(horizontal = 10.dp))
-                    MiniStat("Maturing", Amount.pretty(b.immature), cs.secondary, Modifier.weight(1f))
+                    MiniStat(stringResource(R.string.dash_maturing), Amount.pretty(b.immature), cs.secondary, Modifier.weight(1f))
                 }
             }
         }
@@ -245,7 +255,9 @@ private fun BigAmount(grain: Long, network: Network, hide: Boolean, spinning: Bo
     val cs = MaterialTheme.colorScheme
     val t = MaterialTheme.typography
     val pretty = Amount.pretty(grain)
-    val whole = if (hide) HIDDEN else pretty.substringBefore('.')
+    val hiddenText = stringResource(R.string.hidden_placeholder)
+    val hiddenDesc = stringResource(R.string.balance_hidden)
+    val whole = if (hide) hiddenText else pretty.substringBefore('.')
     val frac = if (hide) "" else pretty.substringAfter('.', "")
     val tail = (if (frac.isEmpty()) "" else ".$frac") + " " + network.ticker
     val chars = whole.length + tail.length
@@ -259,7 +271,7 @@ private fun BigAmount(grain: Long, network: Network, hide: Boolean, spinning: Bo
     val bigStyle = big.merge(TabularNumbers).copy(fontWeight = FontWeight.ExtraBold)
     val smallStyle = small.merge(TabularNumbers).copy(fontWeight = FontWeight.SemiBold)
     // Read to a screen reader as one number, not digit by digit.
-    val m = Modifier.semantics(mergeDescendants = true) { contentDescription = if (hide) "Balance hidden" else "$pretty ${network.ticker}" }
+    val m = Modifier.semantics(mergeDescendants = true) { contentDescription = if (hide) hiddenDesc else "$pretty ${network.ticker}" }
     Row(modifier = m, verticalAlignment = Alignment.Bottom) {
         if (hide) Text(whole, style = bigStyle, color = cs.onBackground, maxLines = 1, softWrap = false)
         else OdometerText(whole, style = bigStyle, color = cs.onBackground, spinning = spinning, animate = odometer, haptics = odometerHaptics)
@@ -285,11 +297,11 @@ private fun MiniStat(label: String, value: String, accent: Color, modifier: Modi
  * Informational, so it is never rolled and never hidden with the balances.
  */
 @Composable
-private fun PriceLine(network: Network, usdPerPrl: Double, change24h: Double?) {
+private fun PriceLine(network: Network, usdPerPrl: Double, change24h: Double?, showChange: Boolean) {
     val cs = MaterialTheme.colorScheme
     val palette = PearlTheme.palette
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        if (change24h != null) {
+        if (showChange && change24h != null) {
             // Anything that rounds to zero shows as "0.0%", never "-0.0%".
             val flat = change24h > -0.05 && change24h < 0.05
             val (fg, bg) = when {
@@ -298,10 +310,12 @@ private fun PriceLine(network: Network, usdPerPrl: Double, change24h: Double?) {
                 else -> cs.error to cs.errorContainer
             }
             val arrow = when { flat -> "–"; change24h > 0 -> "▲"; else -> "▼" }
+            val pct = "%.1f".format(Locale.US, abs(change24h))
+            val desc = stringResource(R.string.dash_price_content_desc, arrow, pct)
             Text(
-                "$arrow %.1f%%".format(Locale.US, if (flat) 0.0 else abs(change24h)),
+                "$arrow $pct%",
                 style = MaterialTheme.typography.labelMedium.merge(TabularNumbers).copy(fontWeight = FontWeight.Bold), color = fg,
-                modifier = Modifier.background(bg, CircleShape).padding(horizontal = 8.dp, vertical = 2.dp).semantics { contentDescription = "$arrow ${"%.1f".format(Locale.US, abs(change24h))} percent in 24 hours" },
+                modifier = Modifier.background(bg, CircleShape).padding(horizontal = 8.dp, vertical = 2.dp).semantics { contentDescription = desc },
                 maxLines = 1,
             )
         }
@@ -313,15 +327,15 @@ private fun PriceLine(network: Network, usdPerPrl: Double, change24h: Double?) {
 private fun SyncLine(s: SyncState) {
     val now = rememberNowSeconds()
     val text = when {
-        s.syncing -> s.progress ?: "Syncing…"
-        s.error != null -> if (s.tipHeight > 0) "Last synced ${timeAgo(s.lastSyncAt / 1000, now)} • block ${Amount.group(s.tipHeight)}" else "Not synced yet"
-        s.tipHeight > 0 -> "Block ${Amount.group(s.tipHeight)} • updated ${timeAgo(s.lastSyncAt / 1000, now)}"
-        else -> "Not synced yet"
+        s.syncing -> s.progress ?: stringResource(R.string.dash_sync_syncing)
+        s.error != null -> if (s.tipHeight > 0) stringResource(R.string.dash_sync_last, timeAgo(s.lastSyncAt / 1000, now), Amount.group(s.tipHeight)) else stringResource(R.string.dash_sync_not_synced)
+        s.tipHeight > 0 -> stringResource(R.string.dash_sync_block, Amount.group(s.tipHeight), timeAgo(s.lastSyncAt / 1000, now))
+        else -> stringResource(R.string.dash_sync_not_synced)
     }
     val (dot, state) = when {
-        s.syncing -> MaterialTheme.colorScheme.primary to "Syncing"
-        s.error != null -> MaterialTheme.colorScheme.error to "Sync failed"
-        else -> PearlTheme.palette.success to "Synced"
+        s.syncing -> MaterialTheme.colorScheme.primary to stringResource(R.string.dash_sync_syncing)
+        s.error != null -> MaterialTheme.colorScheme.error to stringResource(R.string.dash_sync_failed)
+        else -> PearlTheme.palette.success to stringResource(R.string.dash_sync_synced)
     }
     Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.semantics(mergeDescendants = true) { contentDescription = "$state. $text" }) {
         Box(Modifier.size(6.dp).background(dot, CircleShape))
@@ -339,20 +353,22 @@ private fun MiningCard(m: MiningStats, network: Network, hide: Boolean, secondsP
                 Icon(AppIcons.Pickaxe, contentDescription = null, tint = accent, modifier = Modifier.size(18.dp))
             }
             Spacer(Modifier.width(10.dp))
-            Text("Mining rewards", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
+            Text(stringResource(R.string.dash_mining_rewards), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
         }
         Spacer(Modifier.height(12.dp))
         Row(modifier = Modifier.fillMaxWidth()) {
-            Stat("Last 7 days", if (hide) HIDDEN else Amount.pretty(m.last7Days), "${m.blocksLast7Days} ${if (m.blocksLast7Days == 1) "block" else "blocks"}", Modifier.weight(1f))
-            Stat("All time", if (hide) HIDDEN else Amount.pretty(m.totalMined), "${m.blocks} ${if (m.blocks == 1) "block" else "blocks"}", Modifier.weight(1f))
+            Stat(stringResource(R.string.dash_last_7_days), if (hide) stringResource(R.string.hidden_placeholder) else Amount.pretty(m.last7Days), pluralStringResource(R.plurals.dash_blocks, m.blocksLast7Days, m.blocksLast7Days), Modifier.weight(1f))
+            Stat(stringResource(R.string.dash_all_time), if (hide) stringResource(R.string.hidden_placeholder) else Amount.pretty(m.totalMined), pluralStringResource(R.plurals.dash_blocks, m.blocks, m.blocks), Modifier.weight(1f))
         }
         if (m.immature > 0 && m.nextMatureIn != null) {
             Spacer(Modifier.height(12.dp))
             val progress = 1f - m.nextMatureIn / Network.COINBASE_MATURITY.toFloat()
             LinearProgressIndicator(progress = { progress.coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth().height(6.dp), color = accent, trackColor = MaterialTheme.colorScheme.surfaceVariant)
             Spacer(Modifier.height(6.dp))
+            val progressText = if (hide) stringResource(R.string.dash_mining_rewards_maturing)
+                else stringResource(R.string.dash_mining_progress, "${Amount.pretty(m.immature)} ${network.ticker}", m.nextMatureIn, etaBlocks(m.nextMatureIn, secondsPerBlock))
             Text(
-                (if (hide) "Rewards maturing" else "${Amount.pretty(m.immature)} ${network.ticker} maturing") + " • next spendable in ${m.nextMatureIn} blocks (${Network.etaForBlocks(m.nextMatureIn, secondsPerBlock)})",
+                progressText,
                 style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
@@ -368,12 +384,13 @@ private fun Stat(label: String, value: String, sub: String, modifier: Modifier =
     }
 }
 
-fun TxKind.title(): String = when (this) {
-    TxKind.RECEIVED -> "Received"
-    TxKind.SENT -> "Sent"
-    TxKind.SELF -> "Self transfer"
-    TxKind.MINED -> "Mined"
-}
+@Composable
+fun TxKind.title(): String = stringResource(when (this) {
+    TxKind.RECEIVED -> R.string.tx_received
+    TxKind.SENT -> R.string.tx_sent
+    TxKind.SELF -> R.string.tx_self
+    TxKind.MINED -> R.string.tx_mined
+})
 
 @Composable
 fun TxListItem(
@@ -395,13 +412,15 @@ fun TxListItem(
         TxKind.MINED -> AppIcons.Pickaxe to palette.accent
     }
     val title = when {
-        contactName != null && tx.kind == TxKind.SENT -> "To $contactName"
-        contactName != null && tx.kind == TxKind.RECEIVED -> "From $contactName"
+        contactName != null && tx.kind == TxKind.SENT -> stringResource(R.string.tx_to_contact, contactName)
+        contactName != null && tx.kind == TxKind.RECEIVED -> stringResource(R.string.tx_from_contact, contactName)
         else -> tx.kind.title()
     }
     val now = rememberNowSeconds()
-    val seen = tx.firstSeen.takeIf { it > 0 }?.let { timeAgo(it, now) }
-    val status = if (conf == 0) listOfNotNull("Pending", seen).joinToString(" • ") else "${timeAgo(tx.time, now)} • $conf conf"
+    val seen = if (tx.firstSeen > 0) timeAgo(tx.firstSeen, now) else null
+    val status = if (conf == 0) {
+        if (seen != null) stringResource(R.string.tx_pending_seen, seen) else stringResource(R.string.tx_pending)
+    } else stringResource(R.string.tx_conf, timeAgo(tx.time, now), conf)
     Row(modifier = modifier.fillMaxWidth().clickable(onClick = onClick).padding(vertical = 12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         Box(modifier = Modifier.size(40.dp).background(tint.copy(alpha = 0.12f), CircleShape), contentAlignment = Alignment.Center) {
             Icon(icon, contentDescription = null, tint = tint, modifier = Modifier.size(20.dp))
@@ -416,7 +435,7 @@ fun TxListItem(
         val signed = tx.netAmount
         val color: Color = if (signed > 0) palette.success else MaterialTheme.colorScheme.onSurface
         Text(
-            if (hide) "$HIDDEN ${network.ticker}" else (if (signed > 0) "+" else "") + Amount.pretty(signed) + " " + network.ticker,
+            if (hide) "${stringResource(R.string.hidden_placeholder)} ${network.ticker}" else (if (signed > 0) "+" else "") + Amount.pretty(signed) + " " + network.ticker,
             style = MaterialTheme.typography.bodyLarge.merge(TabularNumbers), fontWeight = FontWeight.SemiBold, color = color,
             maxLines = 1, overflow = TextOverflow.Ellipsis, textAlign = TextAlign.End,
         )

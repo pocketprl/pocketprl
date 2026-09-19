@@ -39,8 +39,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import dev.pocketprl.R
 import dev.pocketprl.core.chain.Network
 import dev.pocketprl.ui.components.AmountText
 import dev.pocketprl.ui.components.PrimaryButton
@@ -48,8 +50,10 @@ import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.components.SectionCard
 import dev.pocketprl.ui.components.copyToClipboard
+import dev.pocketprl.ui.components.etaBlocks
 import dev.pocketprl.ui.components.rememberHaptics
 import dev.pocketprl.ui.theme.AppIcons
+import dev.pocketprl.ui.theme.LocalReducedMotion
 import dev.pocketprl.ui.theme.PearlTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -78,6 +82,7 @@ fun SentContent(
     val haptics = rememberHaptics()
     val palette = PearlTheme.palette
     val cs = MaterialTheme.colorScheme
+    val reduce = LocalReducedMotion.current
     val fly = remember { Animatable(if (animate) 0f else 1f) }
     val badge = remember { Animatable(if (animate) 0f else 1f) }
     val tick = remember { Animatable(if (animate) 0f else 1f) }
@@ -138,28 +143,29 @@ fun SentContent(
                 }
             }
             AnimatedVisibility(visible = stage >= 1, enter = fadeIn(tween(350)) + slideInVertically(tween(350)) { it / 4 }) {
-                Text("Sent", style = MaterialTheme.typography.headlineLarge, color = cs.onBackground)
+                Text(stringResource(R.string.sent_title), style = MaterialTheme.typography.headlineLarge, color = cs.onBackground)
             }
             Spacer(Modifier.height(6.dp))
             // Always in the tree so the odometer has a starting value to roll from.
-            AmountText(shownGrain, network, style = MaterialTheme.typography.displaySmall, odometer = true, animate = odometer, haptics = odometerHaptics, modifier = Modifier.graphicsLayer { alpha = amountAlpha })
+            AmountText(shownGrain, network, style = MaterialTheme.typography.displaySmall, odometer = true, animate = odometer && !reduce, haptics = odometerHaptics, modifier = Modifier.graphicsLayer { alpha = amountAlpha })
             AnimatedVisibility(visible = stage >= 3, enter = fadeIn(tween(350)) + slideInVertically(tween(350)) { it / 4 }) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Spacer(Modifier.height(4.dp))
-                    Text("to $toLabel", style = MaterialTheme.typography.bodyLarge, color = cs.onSurfaceVariant, textAlign = TextAlign.Center)
+                    Text(stringResource(R.string.sent_to, toLabel), style = MaterialTheme.typography.bodyLarge, color = cs.onSurfaceVariant, textAlign = TextAlign.Center)
                     Spacer(Modifier.height(4.dp))
-                    Text("Confirms in ${Network.etaForBlocks(1, secondsPerBlock)} on average.", style = MaterialTheme.typography.labelMedium, color = cs.onSurfaceVariant, textAlign = TextAlign.Center)
+                    Text(stringResource(R.string.sent_confirms, etaBlocks(1, secondsPerBlock)), style = MaterialTheme.typography.labelMedium, color = cs.onSurfaceVariant, textAlign = TextAlign.Center)
                 }
             }
             Spacer(Modifier.height(28.dp))
             AnimatedVisibility(visible = stage >= 4, enter = fadeIn(tween(450)) + slideInVertically(tween(450)) { it / 5 }) {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     SectionCard {
-                        Text("Transaction ID", style = MaterialTheme.typography.labelLarge, color = cs.onSurfaceVariant)
-                        AddressLine(txid) { haptics.confirm(); copyToClipboard(context, "Transaction ID", txid) }
+                        Text(stringResource(R.string.sent_txid), style = MaterialTheme.typography.labelLarge, color = cs.onSurfaceVariant)
+                        val txidLabel = stringResource(R.string.clipboard_txid)
+                        AddressLine(txid) { haptics.confirm(); copyToClipboard(context, txidLabel, txid) }
                     }
-                    SecondaryButton("View in explorer", icon = AppIcons.OpenInNew, onClick = onExplorer)
-                    PrimaryButton("Done", onClick = onDone)
+                    SecondaryButton(stringResource(R.string.sent_view_explorer), icon = AppIcons.OpenInNew, onClick = onExplorer)
+                    PrimaryButton(stringResource(R.string.sent_done), onClick = onDone)
                 }
             }
             Spacer(Modifier.height(16.dp))

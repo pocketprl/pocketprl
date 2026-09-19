@@ -28,9 +28,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import dev.pocketprl.R
 import dev.pocketprl.core.chain.Network
 import dev.pocketprl.ui.components.BannerKind
 import dev.pocketprl.ui.components.InfoBanner
@@ -49,8 +51,8 @@ fun WelcomeScreen(network: Network, onNetworkChange: (Network) -> Unit, onCreate
     Column(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).safeDrawingPadding()) {
         if (onBack != null) {
             Row(modifier = Modifier.fillMaxWidth().padding(start = 4.dp, top = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back") }
-                Text("Add a wallet", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
+                IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.action_back)) }
+                Text(stringResource(R.string.welcome_add_title), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
             }
         }
         Column(
@@ -61,32 +63,32 @@ fun WelcomeScreen(network: Network, onNetworkChange: (Network) -> Unit, onCreate
             PearlMark(size = 92.dp)
             Spacer(Modifier.height(20.dp))
             if (addMode) {
-                Text("Another wallet, fully separate", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground, textAlign = TextAlign.Center)
+                Text(stringResource(R.string.welcome_add_headline), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground, textAlign = TextAlign.Center)
                 Spacer(Modifier.height(4.dp))
-                Text("Its own recovery phrase, password, history and contacts. Switch between wallets from the home screen title.", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
+                Text(stringResource(R.string.welcome_add_body), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
                 Spacer(Modifier.height(20.dp))
-                InfoBanner("Only one wallet is unlocked at a time; switching locks the current one.", BannerKind.INFO)
+                InfoBanner(stringResource(R.string.welcome_one_unlocked), BannerKind.INFO)
             } else {
                 Text("PocketPRL", style = MaterialTheme.typography.displaySmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground)
                 Spacer(Modifier.height(4.dp))
-                Text("Pearl (PRL) in your pocket. Same keys as the desktop wallet, none of the weight.", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
+                Text(stringResource(R.string.welcome_tagline), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
                 Spacer(Modifier.height(28.dp))
-                Feature(AppIcons.Shield, "Self-custody", "Keys are created and stay on this phone, encrypted and biometric-gated.")
-                Feature(AppIcons.Key, "Desktop-compatible", "Derives the exact same post-quantum Taproot addresses as oyster. Move between them freely.")
-                Feature(AppIcons.History, "Instant overview", "Balances, history and mining rewards from the Pearl indexer. No chain download.")
-                Feature(AppIcons.Wallet, "Built for a phone", "Payment links, contacts, notes, multiple wallets and “you got paid” notifications.")
+                Feature(AppIcons.Shield, stringResource(R.string.welcome_feature_selfcustody_title), stringResource(R.string.welcome_feature_selfcustody_body))
+                Feature(AppIcons.Key, stringResource(R.string.welcome_feature_desktop_title), stringResource(R.string.welcome_feature_desktop_body))
+                Feature(AppIcons.History, stringResource(R.string.welcome_feature_overview_title), stringResource(R.string.welcome_feature_overview_body))
+                Feature(AppIcons.Wallet, stringResource(R.string.welcome_feature_phone_title), stringResource(R.string.welcome_feature_phone_body))
             }
             Spacer(Modifier.height(24.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text("Network", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(stringResource(R.string.welcome_network), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 for (n in Network.entries) {
                     FilterChip(selected = n == network, onClick = { onNetworkChange(n) }, label = { Text(n.displayName, maxLines = 1) })
                 }
             }
             Spacer(Modifier.height(16.dp))
-            PrimaryButton("Create a new wallet", onCreate)
+            PrimaryButton(stringResource(R.string.welcome_create), onCreate)
             Spacer(Modifier.height(12.dp))
-            SecondaryButton("Restore from recovery phrase", onRestore)
+            SecondaryButton(stringResource(R.string.welcome_restore), onRestore)
             Spacer(Modifier.height(16.dp))
         }
     }

@@ -32,7 +32,7 @@ class WalletContext(
         baseUrlProvider = { settings.blockbookUrl(vault.network ?: Network.fromId(entry.network)) },
         userAgent = userAgent,
     )
-    val repository = WalletRepository(db, api, session, vault, settings, scope, priceApi)
+    val repository = WalletRepository(db, api, session, vault, settings, scope, appContext, priceApi)
 
     override fun close() {
         session.lock()

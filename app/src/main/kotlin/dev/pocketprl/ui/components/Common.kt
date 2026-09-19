@@ -72,6 +72,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
@@ -84,8 +85,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.pocketprl.core.chain.Address
+import dev.pocketprl.core.chain.AddressError
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.chain.Network
+import dev.pocketprl.R
 import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.theme.Mono
 import dev.pocketprl.ui.theme.PearlTheme
@@ -134,13 +138,13 @@ fun ScreenScaffold(
                     Column(modifier = titleModifier) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(title, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f, fill = false))
-                            if (onTitleClick != null) Icon(Icons.Filled.ArrowDropDown, contentDescription = "Switch wallet", tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                            if (onTitleClick != null) Icon(Icons.Filled.ArrowDropDown, contentDescription = stringResource(R.string.action_switch_wallet), tint = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                         if (subtitle != null) Text(subtitle, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
                     }
                 },
                 navigationIcon = {
-                    if (onBack != null) IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back") }
+                    if (onBack != null) IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.action_back)) }
                 },
                 actions = { actions() },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background),
@@ -209,7 +213,7 @@ fun PasswordField(
         keyboardActions = KeyboardActions(onDone = { onDone?.invoke() }),
         trailingIcon = {
             IconButton(onClick = { visible = !visible }) {
-                Icon(if (visible) AppIcons.VisibilityOff else AppIcons.Visibility, contentDescription = if (visible) "Hide" else "Show")
+                Icon(if (visible) AppIcons.VisibilityOff else AppIcons.Visibility, contentDescription = stringResource(if (visible) R.string.pwd_hide else R.string.pwd_show))
             }
         },
         shape = FieldShape,
@@ -234,10 +238,10 @@ fun PasswordStrength(password: String, modifier: Modifier = Modifier) {
     val score = passwordScore(password)
     val palette = PearlTheme.palette
     val (label, color) = when (score) {
-        0, 1 -> "Weak" to MaterialTheme.colorScheme.error
-        2 -> "Fair" to palette.warning
-        3 -> "Good" to MaterialTheme.colorScheme.primary
-        else -> "Strong" to palette.success
+        0, 1 -> stringResource(R.string.pwd_weak) to MaterialTheme.colorScheme.error
+        2 -> stringResource(R.string.pwd_fair) to palette.warning
+        3 -> stringResource(R.string.pwd_good) to MaterialTheme.colorScheme.primary
+        else -> stringResource(R.string.pwd_strong) to palette.success
     }
     val target = (score / 4f).coerceAtLeast(0.08f)
     val animated by animateFloatAsState(
@@ -248,7 +252,7 @@ fun PasswordStrength(password: String, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxWidth()) {
         LinearProgressIndicator(progress = { animated }, modifier = Modifier.fillMaxWidth().height(6.dp), color = color, trackColor = MaterialTheme.colorScheme.surfaceVariant)
         Spacer(Modifier.height(4.dp))
-        Text("$label password", style = MaterialTheme.typography.labelSmall, color = color)
+        Text(stringResource(R.string.pwd_strength, label), style = MaterialTheme.typography.labelSmall, color = color)
     }
 }
 
@@ -355,13 +359,15 @@ fun AmountText(
     haptics: Boolean = true,
 ) {
     val sign = if (signed && grain > 0) "+" else ""
-    val body = if (hidden) HIDDEN else "$sign${Amount.pretty(grain)}"
+    val hiddenText = stringResource(R.string.hidden_placeholder)
+    val hiddenDesc = stringResource(R.string.balance_hidden)
+    val body = if (hidden) hiddenText else "$sign${Amount.pretty(grain)}"
     val full = "$body ${network.ticker}"
     if (odometer && !hidden) {
         OdometerText(full, modifier = modifier, style = style.merge(TextStyle(fontWeight = FontWeight.Bold)), color = color, spinning = spinning, animate = animate, haptics = haptics)
     } else {
         // Screen readers announce the bullets literally; say what they mean instead.
-        val m = if (hidden) modifier.semantics { contentDescription = "Balance hidden" } else modifier
+        val m = if (hidden) modifier.semantics { contentDescription = hiddenDesc } else modifier
         Text(full, modifier = m, style = style.merge(TabularNumbers), color = color, fontWeight = FontWeight.Bold, textAlign = textAlign, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
@@ -439,8 +445,21 @@ fun SecureWindow() {
     }
 }
 
-private object SecureFlags {
+object SecureFlags {
     private val counts = IdentityHashMap<Window, Int>()
+
+    @Volatile
+    private var appWide = false
+
+    /** App-wide screenshot blocking (Settings › Security). Survives per-screen acquire/release. */
+    fun setAppWide(w: Window, enabled: Boolean) {
+        appWide = enabled
+        if (enabled) {
+            w.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+        } else {
+            synchronized(counts) { if ((counts[w] ?: 0) == 0) w.clearFlags(WindowManager.LayoutParams.FLAG_SECURE) }
+        }
+    }
 
     fun acquire(w: Window) = synchronized(counts) {
         val n = (counts[w] ?: 0) + 1
@@ -450,7 +469,10 @@ private object SecureFlags {
 
     fun release(w: Window) = synchronized(counts) {
         val n = (counts[w] ?: 1) - 1
-        if (n <= 0) { counts.remove(w); w.clearFlags(WindowManager.LayoutParams.FLAG_SECURE) } else counts[w] = n
+        if (n <= 0) {
+            counts.remove(w)
+            if (!appWide) w.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+        } else counts[w] = n
     }
 }
 
@@ -461,7 +483,7 @@ fun copyToClipboard(context: Context, label: String, text: String, sensitive: Bo
         clip.description.extras = PersistableBundle().apply { putBoolean(ClipDescription.EXTRA_IS_SENSITIVE, true) }
     }
     cm.setPrimaryClip(clip)
-    if (toast && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show()
+    if (toast && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) Toast.makeText(context, context.getString(R.string.copied), Toast.LENGTH_SHORT).show()
 }
 
 fun readClipboard(context: Context): String? {
@@ -474,15 +496,16 @@ fun readClipboard(context: Context): String? {
  * minutes from there. Pass a ticking [nowSeconds] (see [rememberNowSeconds]) so
  * the label keeps counting between recompositions.
  */
+@Composable
 fun timeAgo(epochSeconds: Long, nowSeconds: Long = System.currentTimeMillis() / 1000): String {
-    if (epochSeconds <= 0) return "pending"
+    if (epochSeconds <= 0) return stringResource(R.string.time_pending)
     val diff = (nowSeconds - epochSeconds).coerceAtLeast(0)
     return when {
-        diff <= 5 -> "just now"
-        diff < 60 -> "${diff}s ago"
-        diff < 3600 -> "${diff / 60}m ago"
-        diff < 86400 -> "${diff / 3600}h ago"
-        diff < 86400 * 30 -> "${diff / 86400}d ago"
+        diff <= 5 -> stringResource(R.string.time_just_now)
+        diff < 60 -> stringResource(R.string.time_ago_s, diff)
+        diff < 3600 -> stringResource(R.string.time_ago_m, diff / 60)
+        diff < 86400 -> stringResource(R.string.time_ago_h, diff / 3600)
+        diff < 86400 * 30 -> stringResource(R.string.time_ago_d, diff / 86400)
         else -> DateFormat.getDateInstance(DateFormat.MEDIUM).format(Date(epochSeconds * 1000))
     }
 }
@@ -501,19 +524,42 @@ fun rememberNowSeconds(): Long {
     return now
 }
 
+@Composable
 fun formatDateTime(epochSeconds: Long): String =
-    if (epochSeconds <= 0) "Unconfirmed" else DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(Date(epochSeconds * 1000))
+    if (epochSeconds <= 0) stringResource(R.string.label_unconfirmed) else DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(Date(epochSeconds * 1000))
+
+/** Localized message for an address parse failure. */
+fun addressErrorText(context: Context, invalid: Address.Result.Invalid): String = when (invalid.error) {
+    AddressError.ENTER -> context.getString(R.string.address_err_enter)
+    AddressError.INVALID -> context.getString(R.string.address_err_invalid)
+    AddressError.UNKNOWN_PREFIX -> context.getString(R.string.address_err_unknown_prefix, invalid.arg1 ?: "")
+    AddressError.ONLY_TAPROOT -> context.getString(R.string.address_err_only_taproot, invalid.arg1 ?: "")
+    AddressError.INVALID_LENGTH -> context.getString(R.string.address_err_invalid_length)
+    AddressError.WRONG_NETWORK -> context.getString(R.string.address_err_wrong_network, invalid.arg1 ?: "", invalid.arg2 ?: "")
+}
+
+/** Rough human ETA for a confirmation target, localized; see [Network.etaForBlocks]. */
+@Composable
+fun etaBlocks(blocks: Int, secondsPerBlock: Long = Network.TARGET_BLOCK_SECONDS): String {
+    val minutes = (blocks * secondsPerBlock + 30) / 60
+    return when {
+        minutes < 60 -> stringResource(R.string.eta_minutes, minutes)
+        minutes % 60 < 15 -> stringResource(R.string.eta_hours, minutes / 60)
+        else -> stringResource(R.string.eta_hours_half, minutes / 60)
+    }
+}
 
 private val DAY_FORMAT: DateTimeFormatter = DateTimeFormatter.ofPattern("EEE, d MMM")
 private val DAY_YEAR_FORMAT: DateTimeFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
 
 /** "Today" / "Yesterday" / "Tue, 3 Sep" / "3 Sep 2025" group header for a timestamp. */
+@Composable
 fun dayLabel(epochSeconds: Long, now: LocalDate = LocalDate.now()): String {
-    if (epochSeconds <= 0) return "Pending"
+    if (epochSeconds <= 0) return stringResource(R.string.time_pending)
     val day = Instant.ofEpochSecond(epochSeconds).atZone(ZoneId.systemDefault()).toLocalDate()
     return when {
-        day == now -> "Today"
-        day == now.minusDays(1) -> "Yesterday"
+        day == now -> stringResource(R.string.day_today)
+        day == now.minusDays(1) -> stringResource(R.string.day_yesterday)
         day.year == now.year -> DAY_FORMAT.format(day)
         else -> DAY_YEAR_FORMAT.format(day)
     }

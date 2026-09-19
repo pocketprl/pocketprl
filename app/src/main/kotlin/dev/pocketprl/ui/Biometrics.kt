@@ -5,6 +5,7 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import dev.pocketprl.R
 import javax.crypto.Cipher
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -20,12 +21,13 @@ object Biometrics {
     }
 
     /** Shows the system prompt bound to a Keystore cipher. Resolves once the user is done. */
-    suspend fun authenticate(activity: FragmentActivity, title: String, subtitle: String, cipher: Cipher, negative: String = "Use password"): Outcome =
+    suspend fun authenticate(activity: FragmentActivity, title: String, subtitle: String, cipher: Cipher, negative: String? = null): Outcome =
         suspendCancellableCoroutine { cont ->
+            val negativeText = negative ?: activity.getString(R.string.bio_use_password)
             val prompt = BiometricPrompt(activity, ContextCompat.getMainExecutor(activity), object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     val c = result.cryptoObject?.cipher
-                    if (cont.isActive) cont.resume(if (c != null) Outcome.Success(c) else Outcome.Error("No crypto object"))
+                    if (cont.isActive) cont.resume(if (c != null) Outcome.Success(c) else Outcome.Error(activity.getString(R.string.bio_no_crypto_object)))
                 }
 
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
@@ -40,7 +42,7 @@ object Biometrics {
             val info = BiometricPrompt.PromptInfo.Builder()
                 .setTitle(title)
                 .setSubtitle(subtitle)
-                .setNegativeButtonText(negative)
+                .setNegativeButtonText(negativeText)
                 .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG)
                 .setConfirmationRequired(false)
                 .build()

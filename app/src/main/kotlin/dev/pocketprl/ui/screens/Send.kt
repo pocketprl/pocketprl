@@ -1,8 +1,11 @@
 package dev.pocketprl.ui.screens
 
+import android.content.Context
 import android.content.Intent
 import androidx.activity.compose.LocalActivity
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -45,6 +48,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -54,9 +58,11 @@ import androidx.core.net.toUri
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.pocketprl.R
 import dev.pocketprl.core.chain.Address
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.chain.Network
+import dev.pocketprl.core.format.Format
 import dev.pocketprl.data.WalletRepository
 import dev.pocketprl.data.db.Contact
 import dev.pocketprl.ui.Biometrics
@@ -80,7 +86,10 @@ import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SectionCard
 import dev.pocketprl.ui.components.SectionTitle
 import dev.pocketprl.ui.components.SlideToSend
+import dev.pocketprl.ui.components.addressErrorText
+import dev.pocketprl.ui.components.etaBlocks
 import dev.pocketprl.ui.components.readClipboard
+import dev.pocketprl.ui.theme.LocalReducedMotion
 import dev.pocketprl.ui.vm.FeeTier
 import dev.pocketprl.ui.vm.SendViewModel
 import dev.pocketprl.ui.vm.WalletViewModel
@@ -109,6 +118,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     var authPassword by remember { mutableStateOf("") }
     var authError by remember { mutableStateOf<String?>(null) }
     val leavingApp = rememberLeaveAppMarker()
+    val reduced = LocalReducedMotion.current
 
     LaunchedEffect(pending) {
         pending?.let { uri ->
@@ -122,7 +132,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     // "Hide balances" applies to the spendable line only; the summary of what is about to be signed stays visible.
     val walletSettings by walletVm.settings.collectAsStateWithLifecycle()
     val scan = rememberQrScanner(
-        prompt = "Scan a Pearl address or payment link",
+        prompt = stringResource(R.string.send_scan_prompt),
         onScanned = { text -> if (!vm.applyPaymentRequest(text)) vm.setAddress(text) },
         onUnavailable = { cameraDenied = it },
     )
@@ -134,7 +144,8 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     AnimatedContent(
         targetState = s.sentTxid,
         transitionSpec = {
-            (fadeIn(tween(450, delayMillis = 80)) + slideInVertically(tween(450, delayMillis = 80)) { it / 14 }) togetherWith fadeOut(tween(250))
+            if (reduced) EnterTransition.None togetherWith ExitTransition.None
+            else (fadeIn(tween(450, delayMillis = 80)) + slideInVertically(tween(450, delayMillis = 80)) { it / 14 }) togetherWith fadeOut(tween(250))
         },
         label = "send",
     ) { txid ->
@@ -148,7 +159,8 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
             toLabel = s.contactName ?: p?.let { Address.short(it.toAddress, 12, 8) } ?: "",
             onExplorer = { leavingApp(); runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, explorerUrl(txid).toUri())) } },
             onDone = { vm.reset(); onBack() },
-            odometer = walletSettings.odometer,
+            animate = !reduced,
+            odometer = walletSettings.odometer && !reduced,
             odometerHaptics = walletSettings.odometerHaptics,
             secondsPerBlock = secondsPerBlock,
         )
@@ -162,16 +174,20 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     var fiatMode by rememberSaveable { mutableStateOf(false) }
     var fiatText by rememberSaveable { mutableStateOf("") }
     var pushed by remember { mutableStateOf<String?>(null) }
-    fun usdTextFor(grain: Long?): String = grain?.let { Amount.fiat(it, usd) }?.removePrefix("$")?.replace(Amount.GROUP_SEPARATOR.toString(), "") ?: ""
+    fun fiatTextFor(grain: Long?): String {
+        val group = Format.config.groupingSeparator.char?.toString() ?: ""
+        val decimal = Format.config.decimalSeparator.char.toString()
+        return grain?.let { Amount.fiat(it, usd) }?.removePrefix(Format.config.fiat.symbol)?.replace(group, "")?.replace(decimal, ".") ?: ""
+    }
     // MAX or a payment link can rewrite the PRL amount underneath the USD field.
-    LaunchedEffect(s.amountText) { if (fiatMode && s.amountText != pushed) fiatText = usdTextFor(amountGrain) }
+    LaunchedEffect(s.amountText) { if (fiatMode && s.amountText != pushed) fiatText = fiatTextFor(amountGrain) }
     if (fiatMode && !canFiat) fiatMode = false
     val fiatHint = if (canFiat && amountGrain != null) Amount.fiat(amountGrain, usd) else null
     val spendable = if (walletSettings.hideBalance) HIDDEN else Amount.pretty(snap.balances.spendable)
 
-    ScreenScaffold(title = "Send $ticker", subtitle = "Spendable $spendable $ticker", onBack = onBack) {
+    ScreenScaffold(title = stringResource(R.string.send_title, ticker), subtitle = stringResource(R.string.send_spendable, spendable, ticker), onBack = onBack) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            val addrInvalid = s.addressError ?: rememberAddrReason(s.address, snap.network)
+            val addrInvalid = s.addressError ?: rememberAddrReason(context, s.address, snap.network)
             val amountInvalid = s.amountText.isNotBlank() && amountGrain == null
 
             AmountHero(
@@ -187,13 +203,12 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                 ticker = ticker,
                 fiatMode = fiatMode,
                 secondary = when {
-                    fiatMode -> amountGrain?.let { "≈ ${Amount.pretty(it, 8)} $ticker" }
-                    fiatHint != null -> "≈ $fiatHint"
-                    s.label != null -> "For: ${s.label}"
-                    else -> null
+                    fiatMode -> amountGrain?.let { stringResource(R.string.send_fiat_approx, "${Amount.pretty(it, 8)} $ticker") }
+                    fiatHint != null -> stringResource(R.string.send_fiat_approx, fiatHint)
+                    else -> s.label?.let { stringResource(R.string.send_for_label, it) }
                 },
-                error = if (amountInvalid) "Enter a valid amount (up to 8 decimals)" else null,
-                onSwap = if (canFiat) ({ fiatMode = !fiatMode; if (fiatMode) fiatText = usdTextFor(amountGrain) }) else null,
+                error = if (amountInvalid) stringResource(R.string.send_enter_valid_amount) else null,
+                onSwap = if (canFiat) ({ fiatMode = !fiatMode; if (fiatMode) fiatText = fiatTextFor(amountGrain) }) else null,
                 onMax = vm::useMax,
                 maxSelected = s.sendMax,
                 maxEnabled = s.feeRatePerKb != null,
@@ -213,30 +228,30 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
             cameraDenied?.let { outcome ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        if (outcome == PermissionOutcome.DENIED_PERMANENTLY) "Camera access is off for PocketPRL." else "Scanning needs the camera.",
+                        if (outcome == PermissionOutcome.DENIED_PERMANENTLY) stringResource(R.string.send_camera_off) else stringResource(R.string.send_camera_needed),
                         style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error, modifier = Modifier.weight(1f),
                     )
                     if (outcome == PermissionOutcome.DENIED_PERMANENTLY) {
-                        TextButton(onClick = { leavingApp(); Permissions.openAppSettings(context) }) { Text("Open settings") }
+                        TextButton(onClick = { leavingApp(); Permissions.openAppSettings(context) }) { Text(stringResource(R.string.send_open_settings)) }
                     }
                 }
             }
 
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                    SectionTitle("Network fee")
+                    SectionTitle(stringResource(R.string.send_network_fee))
                     TextButton(onClick = { vm.setTier(if (s.tier == FeeTier.CUSTOM) FeeTier.MEDIUM else FeeTier.CUSTOM) }) {
-                        Text(if (s.tier == FeeTier.CUSTOM) "Use estimates" else "Custom rate")
+                        Text(if (s.tier == FeeTier.CUSTOM) stringResource(R.string.send_use_estimates) else stringResource(R.string.send_custom_rate))
                     }
                 }
                 val options = listOf(
-                    FeeOption(FeeTier.MEDIUM, "Normal", Network.etaForBlocks(WalletRepository.MEDIUM_BLOCKS, secondsPerBlock), s.fees?.mediumPerKb?.let { "${Amount.formatGrainPerVbyte(it)} grain/vB" }),
-                    FeeOption(FeeTier.FAST, "Fast", Network.etaForBlocks(WalletRepository.FAST_BLOCKS, secondsPerBlock), s.fees?.fastPerKb?.let { "${Amount.formatGrainPerVbyte(it)} grain/vB" }),
+                    FeeOption(FeeTier.MEDIUM, stringResource(R.string.send_fee_normal), etaBlocks(WalletRepository.MEDIUM_BLOCKS, secondsPerBlock), s.fees?.mediumPerKb?.let { stringResource(R.string.send_grain_per_vbyte, Amount.formatGrainPerVbyte(it)) }),
+                    FeeOption(FeeTier.FAST, stringResource(R.string.send_fee_fast), etaBlocks(WalletRepository.FAST_BLOCKS, secondsPerBlock), s.fees?.fastPerKb?.let { stringResource(R.string.send_grain_per_vbyte, Amount.formatGrainPerVbyte(it)) }),
                 )
                 FeeTierPicker(options = options, selected = s.tier, onSelect = vm::setTier)
                 if (s.tier == FeeTier.CUSTOM) {
                     OutlinedTextField(
-                        value = s.customRateText, onValueChange = vm::setCustomRate, label = { Text("Fee rate (grain per vbyte, min 1)") }, singleLine = true,
+                        value = s.customRateText, onValueChange = vm::setCustomRate, label = { Text(stringResource(R.string.send_fee_rate_label)) }, singleLine = true,
                         modifier = Modifier.fillMaxWidth(), shape = FieldShape, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                         isError = s.customRateText.isNotBlank() && s.feeRatePerKb == null,
                     )
@@ -249,14 +264,15 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
 
             s.prepared?.let { p ->
                 SectionCard {
-                    Text("Summary", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(stringResource(R.string.send_summary), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     // Full precision: this is what gets signed.
-                    KeyValueRow("Amount", "${Amount.pretty(p.build.amount, 8)} $ticker")
-                    KeyValueRow("Fee", "${Amount.pretty(p.build.fee, 8)} $ticker (${p.build.vsize} vB)")
-                    KeyValueRow("Total", "${Amount.pretty(p.build.amount + p.build.fee, 8)} $ticker")
-                    if (vm.showFiat) Amount.fiat(p.build.amount + p.build.fee, usd)?.let { KeyValueRow("≈ USD", it) }
-                    KeyValueRow("Inputs", "${p.build.selected.size}" + if (p.build.change > 0) " • change ${Amount.pretty(p.build.change, 8)}" else "")
-                    KeyValueRow("To", s.contactName ?: Address.short(p.toAddress, 14, 10))
+                    KeyValueRow(stringResource(R.string.label_amount), "${Amount.pretty(p.build.amount, 8)} $ticker")
+                    KeyValueRow(stringResource(R.string.label_fee), stringResource(R.string.send_summary_fee, Amount.pretty(p.build.fee, 8), ticker, p.build.vsize))
+                    KeyValueRow(stringResource(R.string.label_total), "${Amount.pretty(p.build.amount + p.build.fee, 8)} $ticker")
+                    if (vm.showFiat) Amount.fiat(p.build.amount + p.build.fee, usd)?.let { KeyValueRow(stringResource(R.string.send_fiat_approx, Format.config.fiat.code.uppercase()), it) }
+                    val inputsValue = if (p.build.change > 0) stringResource(R.string.send_inputs_change, p.build.selected.size, Amount.pretty(p.build.change, 8)) else "${p.build.selected.size}"
+                    KeyValueRow(stringResource(R.string.send_inputs), inputsValue)
+                    KeyValueRow(stringResource(R.string.send_to), s.contactName ?: Address.short(p.toAddress, 14, 10))
                 }
             }
 
@@ -273,13 +289,13 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                     when {
                         needBio -> {
                             val cipher = vm.biometricCipher()
-                            if (cipher == null) { authError = "Biometric key unavailable; disable and re-enable biometrics in Settings."; return@SlideToSend }
+                            if (cipher == null) { authError = context.getString(R.string.send_bio_unavailable); return@SlideToSend }
                             authBusy = true
                             scope.launch {
-                                val title = "Send ${Amount.pretty(p.build.amount, 8)} $ticker"
-                                val to = "to ${s.contactName ?: Address.short(p.toAddress, 14, 10)}"
-                                when (val r = Biometrics.authenticate(activity!!, title, to, cipher, negative = "Cancel")) {
-                                    is Biometrics.Outcome.Success -> if (vm.confirmBiometric(r.cipher)) { authBusy = false; vm.send(p) } else { authError = "Authentication failed"; authBusy = false }
+                                val title = context.getString(R.string.send_title, "${Amount.pretty(p.build.amount, 8)} $ticker")
+                                val to = context.getString(R.string.sent_to, s.contactName ?: Address.short(p.toAddress, 14, 10))
+                                when (val r = Biometrics.authenticate(activity!!, title, to, cipher, negative = context.getString(R.string.action_cancel))) {
+                                    is Biometrics.Outcome.Success -> if (vm.confirmBiometric(r.cipher)) { authBusy = false; vm.send(p) } else { authError = context.getString(R.string.send_auth_failed); authBusy = false }
                                     is Biometrics.Outcome.Error -> { authError = r.message; authBusy = false }
                                     is Biometrics.Outcome.Cancelled -> authBusy = false
                                 }
@@ -293,12 +309,12 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
             if (!askPassword) authError?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
             if (s.prepared == null && !s.sending && s.prepareError == null && s.error == null) {
                 val why = when {
-                    s.amountText.isBlank() -> "Enter an amount to continue"
-                    amountGrain == null -> "Enter a valid amount to continue"
-                    s.address.isBlank() -> "Enter a recipient to continue"
-                    addrInvalid != null -> "Fix the recipient address to continue"
-                    s.feeRatePerKb == null -> if (s.feeError != null) "Fee estimate unavailable" else "Waiting for fee estimates…"
-                    else -> "Preparing the payment…"
+                    s.amountText.isBlank() -> stringResource(R.string.send_why_amount_blank)
+                    amountGrain == null -> stringResource(R.string.send_why_amount_invalid)
+                    s.address.isBlank() -> stringResource(R.string.send_why_recipient_blank)
+                    addrInvalid != null -> stringResource(R.string.send_why_recipient_invalid)
+                    s.feeRatePerKb == null -> if (s.feeError != null) stringResource(R.string.send_why_fee_unavailable) else stringResource(R.string.send_why_waiting_fees)
+                    else -> stringResource(R.string.send_why_preparing)
                 }
                 Text(why, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
             }
@@ -324,22 +340,22 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                 scope.launch {
                     val ok = withContext(Dispatchers.Default) { vm.verifyPassword(authPassword) }
                     checking = false
-                    if (ok) { askPassword = false; authBusy = false; vm.send(p) } else authError = "Incorrect password"
+                    if (ok) { askPassword = false; authBusy = false; vm.send(p) } else authError = context.getString(R.string.unlock_error_incorrect)
                 }
             }
         }
         AlertDialog(
             onDismissRequest = { if (!checking) cancel() },
-            title = { Text("Wallet password") },
+            title = { Text(stringResource(R.string.send_password_title)) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text("Sends ${Amount.pretty(p.build.amount, 8)} ${snap.network.ticker} to ${s.contactName ?: Address.short(p.toAddress, 14, 10)}.", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    PasswordField(authPassword, { authPassword = it; authError = null }, "Wallet password", imeAction = ImeAction.Done, onDone = { submit() })
+                    Text(stringResource(R.string.send_password_body, Amount.pretty(p.build.amount, 8), snap.network.ticker, s.contactName ?: Address.short(p.toAddress, 14, 10)), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    PasswordField(authPassword, { authPassword = it; authError = null }, stringResource(R.string.send_password_title), imeAction = ImeAction.Done, onDone = { submit() })
                     authError?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
                 }
             },
-            confirmButton = { TextButton(enabled = authPassword.isNotEmpty() && !checking, onClick = { submit() }) { Text("Send") } },
-            dismissButton = { TextButton(enabled = !checking, onClick = cancel) { Text("Cancel") } },
+            confirmButton = { TextButton(enabled = authPassword.isNotEmpty() && !checking, onClick = { submit() }) { Text(stringResource(R.string.action_send)) } },
+            dismissButton = { TextButton(enabled = !checking, onClick = cancel) { Text(stringResource(R.string.action_cancel)) } },
         )
     }
 }
@@ -348,9 +364,9 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
 @Composable
 private fun ContactPickerSheet(contacts: List<Contact>, onDismiss: () -> Unit, onPick: (Contact) -> Unit) {
     ModalBottomSheet(onDismissRequest = onDismiss) {
-        Text("Contacts", style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp))
+        Text(stringResource(R.string.action_contacts), style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp))
         if (contacts.isEmpty()) {
-            EmptyState(Icons.Filled.Person, "No contacts yet", text = "Save an address from a transaction or in Settings › Contacts.")
+            EmptyState(Icons.Filled.Person, stringResource(R.string.settings_contacts_empty), text = stringResource(R.string.send_contacts_empty_body))
         } else {
             LazyColumn(modifier = Modifier.padding(bottom = 24.dp)) {
                 items(contacts, key = { it.address }) { c ->
@@ -370,7 +386,7 @@ private fun ContactPickerSheet(contacts: List<Contact>, onDismiss: () -> Unit, o
 }
 
 @Composable
-private fun rememberAddrReason(address: String, network: Network): String? {
+private fun rememberAddrReason(context: Context, address: String, network: Network): String? {
     val parsed = remember(address, network) { if (address.isBlank()) null else Address.parse(address, network) }
-    return (parsed as? Address.Result.Invalid)?.reason
+    return (parsed as? Address.Result.Invalid)?.let { addressErrorText(context, it) }
 }

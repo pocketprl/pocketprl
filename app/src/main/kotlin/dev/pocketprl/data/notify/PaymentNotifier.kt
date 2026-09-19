@@ -42,8 +42,8 @@ object PaymentNotifier {
         if (nm.getNotificationChannel(LEGACY_CHANNEL_ID) != null) nm.deleteNotificationChannel(LEGACY_CHANNEL_ID)
         if (nm.getNotificationChannel(CHANNEL_ID) == null) {
             nm.createNotificationChannel(
-                NotificationChannel(CHANNEL_ID, "Incoming payments", NotificationManager.IMPORTANCE_HIGH).apply {
-                    description = "Received payments and block rewards, when they appear and when they confirm"
+                NotificationChannel(CHANNEL_ID, context.getString(R.string.notif_channel_payments), NotificationManager.IMPORTANCE_HIGH).apply {
+                    description = context.getString(R.string.notif_channel_payments_desc)
                     enableVibration(true)
                 },
             )
@@ -68,17 +68,17 @@ object PaymentNotifier {
         )
         for (tx in txs) {
             val base = when {
-                tx.kind == TxKind.MINED -> if (confirmed) "Block reward confirmed" else "Block reward"
-                confirmed -> "Payment confirmed"
-                else -> "Payment received"
+                tx.kind == TxKind.MINED -> context.getString(if (confirmed) R.string.notif_block_confirmed else R.string.notif_block)
+                confirmed -> context.getString(R.string.notif_payment_confirmed)
+                else -> context.getString(R.string.notif_payment_received)
             }
-            val title = if (walletName != null) "$base • $walletName" else base
+            val title = if (walletName != null) context.getString(R.string.notif_title_wallet, base, walletName) else base
             val text = when {
-                hideAmounts -> "Open PocketPRL for details"
-                tx.kind == TxKind.MINED -> "+${Amount.pretty(tx.amount)} ${network.ticker} • spendable after ${Network.COINBASE_MATURITY} confirmations"
-                tx.height <= 0 -> "+${Amount.pretty(tx.amount)} ${network.ticker} • waiting for confirmation"
-                confirmed -> "+${Amount.pretty(tx.amount)} ${network.ticker} • in block ${Amount.group(tx.height)}"
-                else -> "+${Amount.pretty(tx.amount)} ${network.ticker}"
+                hideAmounts -> context.getString(R.string.notif_hidden)
+                tx.kind == TxKind.MINED -> context.getString(R.string.notif_mined, Amount.pretty(tx.amount), network.ticker, Network.COINBASE_MATURITY)
+                tx.height <= 0 -> context.getString(R.string.notif_waiting, Amount.pretty(tx.amount), network.ticker)
+                confirmed -> context.getString(R.string.notif_in_block, Amount.pretty(tx.amount), network.ticker, Amount.group(tx.height))
+                else -> context.getString(R.string.notif_amount, Amount.pretty(tx.amount), network.ticker)
             }
             val n = Notification.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification)

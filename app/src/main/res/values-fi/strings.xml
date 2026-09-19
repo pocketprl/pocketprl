@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Takaisin</string>
+    <string name="action_cancel">Peruuta</string>
+    <string name="action_save">Tallenna</string>
+    <string name="action_delete">Poista</string>
+    <string name="action_done">Valmis</string>
+    <string name="action_edit">Muokkaa</string>
+    <string name="action_continue">Jatka</string>
+    <string name="action_close">Sulje</string>
+    <string name="action_add">Lisää</string>
+    <string name="action_share">Jaa</string>
+    <string name="action_copy">Kopioi</string>
+    <string name="action_retry">Yritä uudelleen</string>
+    <string name="action_scan">Skannaa</string>
+    <string name="action_paste">Liitä</string>
+    <string name="action_clear">Tyhjennä</string>
+    <string name="action_contacts">Yhteystiedot</string>
+    <string name="action_send">Lähetä</string>
+    <string name="label_amount">Summa</string>
+    <string name="label_name">Nimi</string>
+    <string name="label_address">Osoite</string>
+    <string name="label_fee">Kulu</string>
+    <string name="label_date">Päivämäärä</string>
+    <string name="label_block">Lohko</string>
+    <string name="label_total">Yhteensä</string>
+    <string name="label_to">Vastaanottaja</string>
+    <string name="label_from">Lähettäjä</string>
+    <string name="label_network">Verkko</string>
+    <string name="copied">Kopioitu</string>
+    <string name="clipboard_address">Pearl-osoite</string>
+    <string name="clipboard_txid">Tapahtumatunnus</string>
+    <string name="balance_hidden">Saldo piilotettu</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Tänään</string>
+    <string name="day_yesterday">Eilen</string>
+    <string name="time_just_now">juuri nyt</string>
+    <string name="time_pending">odottaa</string>
+    <string name="label_unconfirmed">Vahvistamaton</string>
+    <string name="eta_minutes">~%1$d min</string>
+    <string name="eta_hours">~%1$d t</string>
+    <string name="eta_hours_half">~%1$d,5 t</string>
+    <string name="time_ago_s">%1$ds sitten</string>
+    <string name="time_ago_m">%1$dm sitten</string>
+    <string name="time_ago_h">%1$dt sitten</string>
+    <string name="time_ago_d">%1$dd sitten</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Lisää lompakko</string>
+    <string name="welcome_add_headline">Toinen lompakko, täysin erillinen</string>
+    <string name="welcome_add_body">Oma palautuslause, salasana, historia ja yhteystiedot. Vaihda lompakoiden välillä kotinäytön otsikosta.</string>
+    <string name="welcome_one_unlocked">Vain yksi lompakko on avattuna kerrallaan; vaihtaminen lukitsee nykyisen.</string>
+    <string name="welcome_tagline">Pearl (PRL) taskussasi. Samat avaimet kuin työpöytälompakossa, ilman painoa.</string>
+    <string name="welcome_feature_selfcustody_title">Itsesäilytys</string>
+    <string name="welcome_feature_selfcustody_body">Avaimet luodaan ja pysyvät tässä puhelimessa, salattuna ja biometrisesti suojattuna.</string>
+    <string name="welcome_feature_desktop_title">Työpöytäyhteensopiva</string>
+    <string name="welcome_feature_desktop_body">Johtaa täsmälleen samat post-kvantti-Taproot-osoitteet kuin oyster. Siirry niiden välillä vapaasti.</string>
+    <string name="welcome_feature_overview_title">Välitön yleiskuva</string>
+    <string name="welcome_feature_overview_body">Saldot, historia ja louhintapalkkiot Pearl-indeksoijalta. Ei ketjun latausta.</string>
+    <string name="welcome_feature_phone_title">Suunniteltu puhelimelle</string>
+    <string name="welcome_feature_phone_body">Maksulinkit, yhteystiedot, muistiinpanot, useita lompakoita ja ilmoitukset ”sait maksun”.</string>
+    <string name="welcome_network">Verkko</string>
+    <string name="welcome_create">Luo uusi lompakko</string>
+    <string name="welcome_restore">Palauta palautuslauseesta</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Oma Pearl-lompakko</string>
+    <string name="onboard_step">Vaihe %1$d / 3 • %2$s</string>
+    <string name="onboard_title_create">Luo lompakko</string>
+    <string name="onboard_title_seed">Palautuslauseesi</string>
+    <string name="onboard_title_verify">Vahvista lause</string>
+    <string name="onboard_title_working">Valmistellaan</string>
+    <string name="onboard_name_protect">Nimeä ja suojaa lompakkosi</string>
+    <string name="onboard_wallet_name">Lompakon nimi</string>
+    <string name="onboard_password">Salasana</string>
+    <string name="onboard_confirm_password">Vahvista salasana</string>
+    <string name="onboard_password_warning">Salasana salaa avaimesi tällä laitteella. Nollaus ei ole mahdollinen: jos unohdat sen, palauta palautuslauseesta.</string>
+    <string name="onboard_password_hint">Käytä vähintään 8 merkkiä, joissa on kirjaimia, numeroita tai symboleja.</string>
+    <string name="onboard_seed_write">Kirjoita nämä 12 sanaa muistiin järjestyksessä ja pidä ne offline-tilassa.</string>
+    <string name="onboard_seed_secret_title">Pidä se salassa</string>
+    <string name="onboard_seed_secret_body">Kuka tahansa, jolla on nämä sanat, hallitsee varojasi. Kuvakaappaukset on estetty tällä näytöllä; älä tallenna lausetta digitaalisesti.</string>
+    <string name="onboard_written">Olen kirjoittanut sen muistiin</string>
+    <string name="onboard_creating">Luodaan lompakkoa…</string>
+    <string name="onboard_restoring">Palautetaan…</string>
+    <string name="onboard_quiz_instruction">Valitse oikea sana jokaiseen kohtaan vahvistaaksesi varmuuskopion.</string>
+    <string name="onboard_word_n">Sana nro %1$d</string>
+    <string name="onboard_quiz_error">Nämä sanat eivät vastaa lausettasi. Palaa takaisin ja tarkista huolellisesti.</string>
+    <string name="onboard_verify_create">Vahvista ja luo lompakko</string>
+    <string name="onboard_restore_title">Palauta lompakko</string>
+    <string name="onboard_restore_progress_body">Jokainen osoite tarvitsee post-kvanttiavaimen, joten etsintäikkunan johtaminen kestää hetken. Sen jälkeen lompakko skannaa Pearl-indeksoijaa historiasi osalta.</string>
+    <string name="onboard_recovery_label">Palautuslause tai hex-siemen</string>
+    <string name="onboard_recovery_placeholder">12–24 välilyönnillä erotettua sanaa</string>
+    <string name="onboard_new_password">Uusi salasana</string>
+    <string name="onboard_restore_compatible">Toimii virallisen Pearl-työpöytälompakon (oyster) lauseiden ja minkä tahansa Pearlin johdosta käyttävän BIP-39-lompakon kanssa.</string>
+    <string name="onboard_restore_button">Palauta lompakko</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">%1$d sanan palautuslause</string>
+    <string name="onboard_check_hex">%1$d tavun hex-siemen</string>
+    <string name="onboard_err_enter_phrase">Syötä palautuslauseesi</string>
+    <string name="onboard_err_hex_even">Hex-siemenessä on oltava parillinen määrä merkkejä</string>
+    <string name="onboard_err_hex_range">Hex-siemenen on oltava 128–512 bittiä</string>
+    <string name="onboard_err_enter_phrase_or_hex">Syötä 12–24 sanan palautuslause tai hex-siemen</string>
+    <string name="onboard_err_word_count">Palautuslauseessa on 12, 15, 18, 21 tai 24 sanaa (sait %1$d)</string>
+    <string name="onboard_err_unknown_word">”%1$s” ei ole BIP39-sana</string>
+    <string name="onboard_err_checksum">Tarkistussumma ei täsmää: tarkista sanojen järjestys ja oikeinkirjoitus</string>
+    <string name="onboard_err_create_failed">Lompakon luonti epäonnistui</string>
+    <string name="onboard_err_restore_failed">Palautus epäonnistui</string>
+    <string name="onboard_preparing">Valmistellaan lompakkoa…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">Avaa %1$s</string>
+    <string name="unlock_password">Lompakon salasana</string>
+    <string name="unlock_button">Avaa</string>
+    <string name="unlock_use_biometrics">Käytä biometriaa</string>
+    <string name="unlock_switch_wallet">Vaihda lompakkoa (%1$d)</string>
+    <string name="unlock_add_another">Lisää toinen lompakko</string>
+    <string name="unlock_forgot">Unohditko salasanan? Poista ja palauta</string>
+    <string name="unlock_erase_title">Poistetaanko ”%1$s”?</string>
+    <string name="unlock_erase_body">Tämän lompakon avaimet ja paikallinen historia poistetaan tästä puhelimesta. Muut lompakot eivät muutu. Voit saada varat takaisin vain palautuslauseella. Kirjoita ERASE vahvistaaksesi.</string>
+    <string name="unlock_erase_confirm">Poista</string>
+    <string name="unlock_error_biometric">Biometrinen avain ei ole käytettävissä (lisättiinkö vai poistettiinko sormenjälki?). Käytä salasanaasi.</string>
+    <string name="unlock_error_incorrect">Väärä salasana</string>
+    <string name="unlock_error_failed">Avaaminen epäonnistui</string>
+    <string name="unlock_error_biometric_failed">Biometrinen avaaminen epäonnistui: %1$s. Käytä salasanaasi.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Lompakot</string>
+    <string name="switcher_test_coins">%1$s • testikolikot</string>
+    <string name="switcher_current">Nykyinen lompakko</string>
+    <string name="switcher_add_title">Lisää lompakko</string>
+    <string name="switcher_add_body">Luo uusi tai palauta toinen lause. Jokaisella lompakolla on oma salasanansa.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Kokonaissaldo</string>
+    <string name="dash_spendable">Käytettävissä</string>
+    <string name="dash_incoming">Saapuva</string>
+    <string name="dash_maturing">Kypsyy</string>
+    <string name="dash_activity">Tapahtumat</string>
+    <string name="dash_view_all">Näytä kaikki (%1$d)</string>
+    <string name="dash_looking">Etsitään tapahtumia…</string>
+    <string name="dash_no_tx">Ei vielä tapahtumia</string>
+    <string name="dash_no_tx_body">Jaa vastaanotto-osoitteesi tai maksulinkki aloittaaksesi.</string>
+    <string name="dash_show_address">Näytä osoitteeni</string>
+    <string name="dash_testnet_warning">Olet verkossa %1$s. Täällä kolikoilla ei ole arvoa.</string>
+    <string name="dash_sync_syncing">Synkronoidaan…</string>
+    <string name="dash_sync_failed">Synkronointi epäonnistui</string>
+    <string name="dash_sync_synced">Synkronoitu</string>
+    <string name="dash_sync_not_synced">Ei vielä synkronoitu</string>
+    <string name="dash_sync_block">Lohko %1$s • päivitetty %2$s</string>
+    <string name="dash_sync_last">Viimeksi synkronoitu %1$s • lohko %2$s</string>
+    <string name="dash_mining_rewards">Louhintapalkkiot</string>
+    <string name="dash_last_7_days">Viimeiset 7 päivää</string>
+    <string name="dash_all_time">Koko ajalta</string>
+    <string name="dash_mining_progress">%1$s kypsyy • seuraava käytettävissä %2$d lohkon kuluttua (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Palkkiot kypsyvät</string>
+    <string name="dash_price_content_desc">%1$s %2$s prosenttia 24 tunnissa</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d lohko</item>
+        <item quantity="other">%1$d lohkoa</item>
+    </plurals>
+    <string name="tx_received">Vastaanotettu</string>
+    <string name="tx_sent">Lähetetty</string>
+    <string name="tx_self">Siirto itselle</string>
+    <string name="tx_mined">Louhittu</string>
+    <string name="tx_to_contact">Vastaanottaja %1$s</string>
+    <string name="tx_from_contact">Lähettäjä %1$s</string>
+    <string name="tx_pending">Odottaa</string>
+    <string name="tx_pending_seen">Odottaa • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d vahv.</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">Lähetä %1$s</string>
+    <string name="send_spendable">Käytettävissä %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Syötä kelvollinen summa (enintään 8 desimaalia)</string>
+    <string name="send_enter_valid_amount_short">Syötä kelvollinen summa</string>
+    <string name="send_enter_in">Syötä yksikössä %1$s</string>
+    <string name="send_max">Enint.</string>
+    <string name="send_max_selected">Enint. ✓</string>
+    <string name="send_to">Vastaanottaja</string>
+    <string name="send_to_contact">Vastaanottaja • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… tai yhteystieto</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Verkkomaksu</string>
+    <string name="send_use_estimates">Käytä arvioita</string>
+    <string name="send_custom_rate">Mukautettu hinta</string>
+    <string name="send_fee_rate_label">Maksun hinta (grain/vbyte, vähintään 1)</string>
+    <string name="send_fee_normal">Normaali</string>
+    <string name="send_fee_fast">Nopea</string>
+    <string name="send_fee_loading">Maksuarvioiden lataus epäonnistui: %1$s</string>
+    <string name="send_summary">Yhteenveto</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Syötteet</string>
+    <string name="send_inputs_change">%1$d • vaihtoraha %2$s</string>
+    <string name="send_slider">Lähetä</string>
+    <string name="send_not_ready">Ei valmis</string>
+    <string name="send_sending">Lähetetään</string>
+    <string name="send_confirming">Vahvistetaan</string>
+    <string name="send_slide">Liu’uta tai kaksoisnapauta lähettääksesi</string>
+    <string name="send_why_amount_blank">Syötä summa jatkaaksesi</string>
+    <string name="send_why_amount_invalid">Syötä kelvollinen summa jatkaaksesi</string>
+    <string name="send_why_recipient_blank">Syötä vastaanottaja jatkaaksesi</string>
+    <string name="send_why_recipient_invalid">Korjaa vastaanottajan osoite jatkaaksesi</string>
+    <string name="send_why_fee_unavailable">Maksuarvio ei ole saatavilla</string>
+    <string name="send_why_waiting_fees">Odotetaan maksuarvioita…</string>
+    <string name="send_why_preparing">Valmistellaan maksua…</string>
+    <string name="send_err_no_funds">Ei käytettävissä olevia varoja</string>
+    <string name="send_err_insufficient">Varat eivät riitä: tarvitaan %1$s %2$s maksu mukaan lukien, käytettävissä %3$s</string>
+    <string name="send_err_changed">Maksu muuttui vahvistuksen aikana. Tarkista tiedot ja yritä uudelleen.</string>
+    <string name="send_password_title">Lompakon salasana</string>
+    <string name="send_password_body">Lähettää %1$s %2$s vastaanottajalle %3$s.</string>
+    <string name="send_auth_failed">Tunnistautuminen epäonnistui</string>
+    <string name="send_bio_unavailable">Biometrinen avain ei ole käytettävissä; poista biometria käytöstä ja ota se uudelleen käyttöön Asetuksissa.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">Vastaanota %1$s</string>
+    <string name="receive_preparing">Valmistellaan osoitetta…</string>
+    <string name="receive_standard">Osoite #%1$d • Taproot, sama kuin työpöytälompakossa</string>
+    <string name="receive_pq">Osoite #%1$d • post-kvanttivariantti</string>
+    <string name="receive_copy">Kopioi</string>
+    <string name="receive_share">Jaa</string>
+    <string name="receive_share_request">Jaa pyyntö</string>
+    <string name="receive_request_amount">Pyydä summa</string>
+    <string name="receive_label">Tunniste (valinnainen)</string>
+    <string name="receive_label_placeholder">Lasku #42</string>
+    <string name="receive_link_hint">Summan tai tunnisteen kanssa koodista ja jakolinkistä tulee maksulinkki, joka täyttää summan lähettäjälle.</string>
+    <string name="receive_fresh">Käytä uutta osoitetta</string>
+    <string name="receive_generating">Luodaan…</string>
+    <string name="receive_show_pq">Näytä post-kvanttivariantti</string>
+    <string name="receive_show_std">Näytä vakio-osoite</string>
+    <string name="receive_pq_warning_title">Ei näy työpöytälompakossa</string>
+    <string name="receive_pq_warning_body">Tämä variantti sitoo XMSS-post-kvanttiavaimen osoitteeseen. Virallinen työpöytälompakko ei johda sitä, joten tänne lähetetyt kolikot näkyvät vain PocketPRL:ssä, kunnes Pearlin työpöytälompakko tukee sitä. Käytä vakio-osoitetta, ellet erityisesti tarvitse tätä.</string>
+    <string name="receive_reuse_info">Osoitteita voi käyttää uudelleen, mutta uusi osoite jokaista maksajaa kohti pitää historiasi yksityisenä. Saapuvat maksut näkyvät Tapahtumat-näkymässä heti, kun lähettäjä lähettää ne.</string>
+    <string name="receive_only_send">Lähetä tähän osoitteeseen vain Pearlia (%1$s).</string>
+    <string name="receive_qr_failed">QR-koodia ei voitu piirtää. Kopioi tai jaa osoite sen sijaan.</string>
+    <string name="receive_qr_desc">Osoitteen QR-koodi</string>
+    <string name="receive_requesting">Pyydetään %1$s %2$s</string>
+    <string name="receive_requesting_any">Pyydetään mitä tahansa summaa</string>
+    <string name="receive_requesting_for">%1$s kohteelle ”%2$s”</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Lähetetty</string>
+    <string name="sent_to">vastaanottajalle %1$s</string>
+    <string name="sent_confirms">Vahvistuu keskimäärin %1$s kuluttua.</string>
+    <string name="sent_txid">Tapahtumatunnus</string>
+    <string name="sent_view_explorer">Näytä lohkoselaimessa</string>
+    <string name="sent_done">Valmis</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Tapahtumat</string>
+    <string name="activity_export">Vie CSV</string>
+    <string name="activity_loading">Ladataan historiaa…</string>
+    <string name="activity_none">Ei vielä tapahtumia</string>
+    <string name="activity_nothing">Täällä ei ole mitään</string>
+    <string name="activity_none_body">Maksut ja louhintapalkkiot näkyvät heti, kun indeksoija näkee ne.</string>
+    <string name="activity_title_single">Tapahtuma</string>
+    <string name="activity_not_found">Tapahtumaa ei löytynyt</string>
+    <string name="activity_self">Lähetetty itsellesi • vain verkkomaksu</string>
+    <string name="activity_fiat_today">≈ %1$s tänään</string>
+    <string name="activity_pending_mempool">Odottaa mempoolissa</string>
+    <string name="activity_conf_of_maturity">%1$d / %2$d vahvistusta käytettäväksi</string>
+    <string name="activity_confirmed">Vahvistettu • %1$s vahvistusta</string>
+    <string name="activity_spendable_in">Käytettävissä %1$d lohkon kuluttua (%2$s)</string>
+    <string name="activity_txid">Tapahtumatunnus</string>
+    <string name="activity_from">Lähettäjä</string>
+    <string name="activity_to">Vastaanottaja</string>
+    <string name="activity_from_your">Osoitteestasi</string>
+    <string name="activity_to_your">Osoitteeseesi</string>
+    <string name="activity_save_contact">Tallenna yhteystiedoksi</string>
+    <string name="activity_view_explorer">Näytä lohkoselaimessa</string>
+    <string name="activity_maturity_info">Lohkopalkkiot tulevat käytettäviksi %1$d vahvistuksen jälkeen, kuten kaikissa Bitcoin-johdetuissa ketjuissa.</string>
+    <string name="activity_note">Muistiinpano</string>
+    <string name="activity_note_placeholder">Mihin tämä oli tarkoitettu?</string>
+    <string name="activity_note_hint">Muistiinpanot pysyvät vain tässä puhelimessa.</string>
+    <string name="activity_contact_new">Uusi yhteystieto</string>
+    <string name="activity_contact_edit">Muokkaa yhteystietoa</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Lähtevä yhteensä</string>
+    <string name="activity_filter_all">Kaikki</string>
+    <string name="activity_filter_received">Vastaanotetut</string>
+    <string name="activity_filter_sent">Lähetetyt</string>
+    <string name="activity_filter_mined">Louhitut</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d tapahtuma</item>
+        <item quantity="other">%1$d tapahtumaa</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d vahvistus</item>
+        <item quantity="other">%1$d vahvistusta</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Asetukset</string>
+    <string name="settings_section_wallet">Lompakko</string>
+    <string name="settings_section_appearance">Ulkoasu</string>
+    <string name="settings_section_numbers">Numerot &amp; valuutta</string>
+    <string name="settings_section_dashboard">Yleisnäkymä</string>
+    <string name="settings_section_security">Turvallisuus &amp; yksityisyys</string>
+    <string name="settings_section_notifications">Ilmoitukset</string>
+    <string name="settings_section_network">Verkko</string>
+    <string name="settings_section_backup">Varmuuskopio</string>
+    <string name="settings_section_about">Tietoja</string>
+    <string name="settings_section_danger">Vaaravyöhyke</string>
+    <string name="settings_name">Nimi</string>
+    <string name="settings_created">Luotu</string>
+    <string name="settings_wallets">Lompakot</string>
+    <string name="settings_wallets_one">Vain tämä</string>
+    <string name="settings_wallets_n">%1$d tällä laitteella</string>
+    <string name="settings_contacts">Yhteystiedot</string>
+    <string name="settings_contacts_saved">%1$d tallennettua</string>
+    <string name="settings_addresses">Osoitteet</string>
+    <string name="settings_addresses_derived">%1$d johdettu</string>
+    <string name="settings_change_password">Vaihda salasana</string>
+    <string name="settings_biometric">Biometrinen avaus</string>
+    <string name="settings_biometric_none">Ei rekisteröity</string>
+    <string name="settings_biometric_sub">Sormenjälki tai kasvot</string>
+    <string name="settings_confirm_send">Vahvista ennen lähetystä</string>
+    <string name="settings_confirm_send_sub">Kysy jokaisesta maksusta</string>
+    <string name="settings_auto_lock">Automaattinen lukitus</string>
+    <string name="settings_hide_balances">Piilota saldot</string>
+    <string name="settings_hide_balances_sub">Peitä jokainen summa</string>
+    <string name="settings_start_hidden">Aloita piilotettuna</string>
+    <string name="settings_start_hidden_sub">Piilota saldot, kun avaat lompakon</string>
+    <string name="settings_secure_all">Estä kuvakaappaukset kaikkialla</string>
+    <string name="settings_secure_all_sub">Suojaa myös koti- ja tapahtumanäkymät</string>
+    <string name="settings_theme">Teema</string>
+    <string name="settings_accent">Korostusväri</string>
+    <string name="settings_dynamic_color">Dynaaminen väri</string>
+    <string name="settings_dynamic_color_sub">Käytä järjestelmän taustakuvan palettia (Android 12+)</string>
+    <string name="settings_reduced_motion">Vähennä liikettä</string>
+    <string name="settings_reduced_motion_sub">Ei pyöriviä numeroita tai näyttöanimaatioita</string>
+    <string name="settings_odometer">Matkamittarin animaatio</string>
+    <string name="settings_odometer_sub">Pyörivät numerot saldoissa</string>
+    <string name="settings_odometer_haptics">Matkamittarin värinä</string>
+    <string name="settings_odometer_haptics_sub">Napsahdus jokaisella pyörähdyksellä</string>
+    <string name="settings_odometer_haptics_off">Ei tehostetta, kun animaatio on pois päältä</string>
+    <string name="settings_show_fiat">Näytä fiat-arvo</string>
+    <string name="settings_fiat_currency">Fiat-valuutta</string>
+    <string name="settings_decimals">Saldon desimaalit</string>
+    <string name="settings_decimal_sep">Desimaalierotin</string>
+    <string name="settings_grouping_sep">Tuhaterotin</string>
+    <string name="settings_hero">Iso luku</string>
+    <string name="settings_hero_total">Kokonaissaldo</string>
+    <string name="settings_hero_spendable">Käytettävissä oleva saldo</string>
+    <string name="settings_show_change">24 h:n hinnanmuutos</string>
+    <string name="settings_show_change_sub">Näytä päivittäinen muutosmerkki</string>
+    <string name="settings_show_mining">Louhintapalkkiokortti</string>
+    <string name="settings_show_mining_sub">Piilota, jos et louhi tähän lompakkoon</string>
+    <string name="settings_poll_mode">Päivitystahti</string>
+    <string name="settings_poll_live">Reaaliaikainen</string>
+    <string name="settings_poll_balanced">Tasapainoinen</string>
+    <string name="settings_poll_battery">Virransäästö</string>
+    <string name="settings_notify_incoming">Saapuvat maksut</string>
+    <string name="settings_notify_incoming_sub">Tarkistettu %1$s</string>
+    <string name="settings_price_alerts">Hintahälytykset</string>
+    <string name="settings_price_alerts_sub">Ilmoita suurista 24 h:n muutoksista</string>
+    <string name="settings_alert_threshold">Hälytysraja</string>
+    <string name="settings_alert_threshold_sub">%1$s muutos 24 tunnissa</string>
+    <string name="settings_reveal_seed">Näytä palautuslause</string>
+    <string name="settings_reveal_seed_sub">Vaatii salasanasi</string>
+    <string name="settings_indexer">Indeksoija (Blockbook)</string>
+    <string name="settings_about_version">Versio %1$s</string>
+    <string name="settings_delete">Poista tämä lompakko</string>
+    <string name="settings_password_title">Vaihda salasana</string>
+    <string name="settings_password_current">Nykyinen salasana</string>
+    <string name="settings_password_new">Uusi salasana</string>
+    <string name="settings_password_confirm">Vahvista uusi salasana</string>
+    <string name="settings_password_updated">Salasana vaihdettu.</string>
+    <string name="settings_password_update">Päivitä salasana</string>
+    <string name="settings_password_info">Salasanan vaihtaminen salaa avaimen uudelleen vain tällä laitteella. Palautuslauseesi pysyy samana.</string>
+    <string name="settings_password_error_current">Nykyinen salasana on väärä</string>
+    <string name="settings_password_error_short">Käytä vähintään 8 merkkiä, joissa on kirjaimia, numeroita tai symboleja.</string>
+    <string name="settings_seed_title">Palautuslause</string>
+    <string name="settings_seed_warning">Älä koskaan jaa palautuslausettasi. PocketPRL:n henkilökunta tai Pearlin kehittäjät eivät koskaan pyydä sitä.</string>
+    <string name="settings_seed_reveal">Näytä</string>
+    <string name="settings_seed_hex">Hex-siemen</string>
+    <string name="settings_seed_written_hint">Kirjoita se paperille. Kuvakaappaukset on estetty tällä näytöllä.</string>
+    <string name="settings_rename_title">Nimeä lompakko uudelleen</string>
+    <string name="settings_auto_lock_title">Automaattinen lukitus</string>
+    <string name="settings_theme_title">Teema</string>
+    <string name="settings_accent_title">Korostusväri</string>
+    <string name="settings_delete_title">Poistetaanko ”%1$s”?</string>
+    <string name="settings_delete_body">Tämä poistaa tämän lompakon salatut avaimet, välimuistiin tallennetun historian, yhteystiedot ja muistiinpanot tästä puhelimesta. Muut lompakot eivät muutu. Varmista, että sinulla on palautuslause. Kirjoita DELETE vahvistaaksesi.</string>
+    <string name="settings_threshold_title">Hintahälytyksen raja</string>
+    <string name="settings_threshold_intro">Hälytä, kun 24 tunnin muutos saavuttaa:</string>
+    <string name="settings_addresses_title">Osoitteet</string>
+    <string name="settings_addresses_checking">Tarkistetaan…</string>
+    <string name="settings_addresses_derived_sub">%1$d indeksiä johdettu</string>
+    <string name="settings_addresses_rescan">Skannaa kaikki osoitteet uudelleen</string>
+    <string name="settings_addresses_receive">Vastaanotto #%1$d</string>
+    <string name="settings_addresses_change">Vaihtoraha #%1$d</string>
+    <string name="settings_addresses_pq">%1$s • post-kvanttivariantti</string>
+    <string name="settings_addresses_used">käytetty</string>
+    <string name="settings_addresses_info">Napauta osoitetta kopioidaksesi sen. Johdanto: m/86’/%1$d’/0’/haara/indeksi, BIP-86-avainpolku kuten työpöytälompakossa. Jokaisella indeksillä on myös post-kvanttivariantti (XMSS-tapleaf tarkoituksesta 222’), jota seurataan ja joka luetellaan täällä, kun sitä on käytetty. Päivitä-painike tarkistaa jokaisen osoitteen, molemmat variantit, juuri nyt; kotinäyttö tarkistaa vain käytössä olevat.</string>
+    <string name="settings_contacts_title">Yhteystiedot</string>
+    <string name="settings_contacts_empty">Ei vielä yhteystietoja</string>
+    <string name="settings_contacts_empty_body">Tallenna usein maksamasi osoitteet. Nimet näkyvät tapahtumissasi ja vastaanottajakentässä.</string>
+    <string name="settings_contacts_add">Lisää yhteystieto</string>
+    <string name="settings_contacts_info">Yhteystiedot tallennetaan vain tähän puhelimeen, eivätkä ne ole osa palautuslausetta.</string>
+    <string name="settings_contacts_new">Uusi yhteystieto</string>
+    <string name="settings_contacts_address">%1$s-osoite</string>
+    <string name="settings_contacts_invalid">Ei kelvollinen %1$s-osoite</string>
+    <string name="settings_contacts_name_required">Anna yhteystiedolle nimi</string>
+    <string name="settings_about_title">Tietoja</string>
+    <string name="settings_about_source">PocketPRL:n lähdekoodi</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Pearlin lähdekoodi (GitHub)</string>
+    <string name="settings_about_explorer">Lohkoselain</string>
+    <string name="settings_about_check">Tarkista päivitykset</string>
+    <string name="settings_about_checking">Tarkistetaan…</string>
+    <string name="settings_about_latest">Käytössäsi on uusin versio (v%1$s).</string>
+    <string name="settings_about_failed">GitHubiin ei saatu yhteyttä. Tarkista yhteytesi ja yritä uudelleen.</string>
+    <string name="settings_about_update_title">Päivitys saatavilla</string>
+    <string name="settings_about_update_body">Versio %1$s on saatavilla. Käytössäsi on v%2$s.</string>
+    <string name="settings_about_update">Päivitä</string>
+    <string name="settings_about_later">Myöhemmin</string>
+    <string name="settings_about_version_label">Versio</string>
+    <string name="settings_about_network">Verkko</string>
+    <string name="settings_about_coin_type">Kolikkotyyppi</string>
+    <string name="settings_about_addresses">Osoitteet</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Allekirjoitus</string>
+    <string name="settings_about_signing_value">BIP-340 Schnorr -avainpolku, libsecp256k1</string>
+    <string name="settings_about_pq">PQ-sitoumus</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL on riippumaton, avoimen lähdekoodin kevytlompakko Pearl-verkkoon. Se johtaa samat osoitteet kuin virallinen työpöytälompakko (oyster) ja on vahvistettu sitä vastaan testivektoreilla, jotka on luotu Pearlin lähdekoodista.</string>
+    <string name="settings_about_warranty">Tämä ohjelmisto tarjotaan sellaisenaan ilman takuuta. Vahvista koontiversiot, pidä palautuslause offline-tilassa ja testaa ensin pienillä summilla.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Indeksoija</string>
+    <string name="indexer_body">PocketPRL lukee saldot, historian ja maksuarviot Blockbook-indeksoijalta ja lähettää sen kautta. Avaimet eivät koskaan poistu puhelimesta, mutta indeksoija saa tietää, mitä osoitteita haet. Kohdista se omaan instanssiisi, jos se on sinulle tärkeää.</string>
+    <string name="indexer_label">Blockbook-URL (vain https)</string>
+    <string name="indexer_default">Oletus: %1$s</string>
+    <string name="indexer_saved">Tallennettu. Vedä päivittääksesi kotinäytöllä synkronoidaksesi uudelleen.</string>
+    <string name="indexer_save">Tallenna</string>
+    <string name="indexer_reset">Palauta oletus</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Automaattinen (järjestelmä)</string>
+    <string name="theme_light">Vaalea</string>
+    <string name="theme_dark">Tumma</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Valtameri</string>
+    <string name="accent_sunset">Auringonlasku</string>
+    <string name="accent_violet">Violetti</string>
+    <string name="accent_forest">Metsä</string>
+    <string name="accent_rose">Ruusu</string>
+    <string name="accent_mono">Mono</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Kapea välilyönti</string>
+    <string name="grouping_space">Välilyönti</string>
+    <string name="grouping_comma">Pilkku</string>
+    <string name="grouping_period">Piste</string>
+    <string name="grouping_apostrophe">Heittomerkki</string>
+    <string name="grouping_none">Ei mitään</string>
+    <string name="decimal_period">Piste (.)</string>
+    <string name="decimal_comma">Pilkku (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Ei yhteyttä indeksoijaan</string>
+    <string name="sync_err_not_responding">Indeksoija ei vastaa</string>
+    <string name="sync_err_no_internet">Ei internetyhteyttä</string>
+    <string name="sync_err_lost_connection">Yhteys indeksoijaan menetettiin</string>
+    <string name="wallet_deriving_receive">Johdetaan vastaanotto-osoitetta %1$d / %2$d</string>
+    <string name="wallet_deriving_change">Johdetaan vaihtorahaosoitetta %1$d / %2$d</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">Tarkistetaan %1$d osoite…</item>
+        <item quantity="other">Tarkistetaan %1$d osoitetta…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">%1$d osoitetta ei voitu tarkistaa (%2$s); yritetään uudelleen</item>
+        <item quantity="other">%1$d osoitetta ei voitu tarkistaa (%2$s); yritetään uudelleen</item>
+    </plurals>
+    <string name="address_err_enter">Syötä vastaanottajan osoite</string>
+    <string name="address_err_invalid">Ei kelvollinen Pearl-osoite</string>
+    <string name="address_err_unknown_prefix">Tuntematon osoiteprefiksi ”%1$s”</string>
+    <string name="address_err_only_taproot">Vain Taproot-osoitteet (%1$s1p…) ovat tuettuja</string>
+    <string name="address_err_invalid_length">Virheellinen Taproot-osoitteen pituus</string>
+    <string name="address_err_wrong_network">Se on %1$s-osoite; tämä lompakko on verkossa %2$s</string>
+    <string name="qr_err_invalid_link">Tämä linkki ei ole kelvollinen %1$s-maksupyyntö.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Saapuvat maksut</string>
+    <string name="notif_channel_payments_desc">Vastaanotetut maksut ja lohkopalkkiot, kun ne ilmestyvät ja kun ne vahvistuvat</string>
+    <string name="notif_channel_price">Hintahälytykset</string>
+    <string name="notif_channel_price_desc">Suuret PRL-hinnanmuutokset 24 tunnin aikana</string>
+    <string name="notif_block_confirmed">Lohkopalkkio vahvistettu</string>
+    <string name="notif_block">Lohkopalkkio</string>
+    <string name="notif_payment_confirmed">Maksu vahvistettu</string>
+    <string name="notif_payment_received">Maksu vastaanotettu</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Avaa PocketPRL nähdäksesi tiedot</string>
+    <string name="notif_mined">+%1$s %2$s • käytettävissä %3$d vahvistuksen jälkeen</string>
+    <string name="notif_waiting">+%1$s %2$s • odottaa vahvistusta</string>
+    <string name="notif_in_block">+%1$s %2$s • lohkossa %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">PRL-hintahälytys</string>
+    <string name="price_dir_up">Ylös</string>
+    <string name="price_dir_down">Alas</string>
+    <string name="price_alert_body">%1$s %2$s%%: nyt %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Vie historia</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Tee siitä omasi</string>
+    <string name="personalize_subtitle">Valitse, miltä PocketPRL näyttää ja tuntuu. Voit muuttaa kaikkea myöhemmin Asetuksissa.</string>
+    <string name="personalize_preview">Esikatselu</string>
+    <string name="personalize_section_look">Ulkoasu</string>
+    <string name="personalize_section_numbers">Numerot</string>
+    <string name="personalize_section_currency">Valuutta</string>
+    <string name="personalize_section_motion">Liike</string>
+    <string name="personalize_continue">Jatka</string>
+    <string name="personalize_reset">Palauta oletukset</string>
+    <string name="personalize_grouping_toggle">Ryhmittele tuhannet</string>
+    <string name="notif_period">noin minuutin välein</string>
+    <string name="autolock_immediately">Heti</string>
+    <string name="autolock_1m">1 minuutti</string>
+    <string name="autolock_5m">5 minuuttia</string>
+    <string name="autolock_15m">15 minuuttia</string>
+    <string name="autolock_1h">1 tunti</string>
+    <string name="autolock_never">Ei koskaan</string>
+    <string name="duration_seconds">%1$d sekuntia</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Vaihda lompakkoa</string>
+    <string name="action_receive">Vastaanota</string>
+    <string name="action_lock">Lukitse</string>
+    <string name="action_show_balance">Näytä saldo</string>
+    <string name="action_hide_balance">Piilota saldo</string>
+    <string name="pwd_weak">Heikko</string>
+    <string name="pwd_fair">Kohtalainen</string>
+    <string name="pwd_good">Hyvä</string>
+    <string name="pwd_strong">Vahva</string>
+    <string name="pwd_strength">%1$s salasana</string>
+    <string name="pwd_show">Näytä salasana</string>
+    <string name="pwd_hide">Piilota salasana</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d lompakko • %2$s</item>
+        <item quantity="other">%1$d lompakkoa • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Syötteet / tulosteet</string>
+    <string name="activity_size_label">Koko</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Käytä salasanaa</string>
+    <string name="bio_no_crypto_object">Ei krypto-objektia</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Skannaa Pearl-osoite tai maksulinkki</string>
+    <string name="send_open_settings">Avaa asetukset</string>
+    <string name="send_camera_off">Kameran käyttö on pois päältä PocketPRL:ltä.</string>
+    <string name="send_camera_needed">Skannaaminen vaatii kameran.</string>
+    <string name="send_for_label">Kohteelle: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Tallenna osoite tapahtumasta tai Asetukset › Yhteystiedot -kohdasta.</string>
+    <string name="receive_optional">Valinnainen</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Avaa asetukset</string>
+    <string name="settings_notif_off">Ilmoitukset ovat pois päältä, joten tämä pysyy poistettuna käytöstä.</string>
+    <string name="settings_notif_blocked">Ilmoitukset on estetty PocketPRL:ltä.</string>
+    <string name="settings_keystore_error">Keystore-avaimen luonti epäonnistui</string>
+    <string name="settings_biometric_prompt">Ota biometrinen avaus käyttöön</string>
+    <string name="settings_seed_password">Lompakon salasana</string>
+    <string name="settings_seed_incorrect">Väärä salasana</string>
+    <string name="settings_copy_address">Kopioi osoite</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Epäonnistui</string>
+    <string name="vm_biometric_enable_failed">Biometrian käyttöönotto epäonnistui</string>
+    <string name="settings_section_language">Kieli</string>
+    <string name="settings_language">Kieli</string>
+    <string name="settings_language_system">Järjestelmän oletus</string>
+</resources>

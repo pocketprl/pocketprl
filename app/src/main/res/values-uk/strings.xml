@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Назад</string>
+    <string name="action_cancel">Скасувати</string>
+    <string name="action_save">Зберегти</string>
+    <string name="action_delete">Видалити</string>
+    <string name="action_done">Готово</string>
+    <string name="action_edit">Змінити</string>
+    <string name="action_continue">Продовжити</string>
+    <string name="action_close">Закрити</string>
+    <string name="action_add">Додати</string>
+    <string name="action_share">Поділитися</string>
+    <string name="action_copy">Копіювати</string>
+    <string name="action_retry">Повторити</string>
+    <string name="action_scan">Сканувати</string>
+    <string name="action_paste">Вставити</string>
+    <string name="action_clear">Очистити</string>
+    <string name="action_contacts">Контакти</string>
+    <string name="action_send">Надіслати</string>
+    <string name="label_amount">Сума</string>
+    <string name="label_name">Ім\'я</string>
+    <string name="label_address">Адреса</string>
+    <string name="label_fee">Комісія</string>
+    <string name="label_date">Дата</string>
+    <string name="label_block">Блок</string>
+    <string name="label_total">Разом</string>
+    <string name="label_to">Кому</string>
+    <string name="label_from">Від</string>
+    <string name="label_network">Мережа</string>
+    <string name="copied">Скопійовано</string>
+    <string name="clipboard_address">Адреса Pearl</string>
+    <string name="clipboard_txid">ID транзакції</string>
+    <string name="balance_hidden">Баланс приховано</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Сьогодні</string>
+    <string name="day_yesterday">Вчора</string>
+    <string name="time_just_now">щойно</string>
+    <string name="time_pending">в очікуванні</string>
+    <string name="label_unconfirmed">Непідтверджено</string>
+    <string name="eta_minutes">~%1$d хв</string>
+    <string name="eta_hours">~%1$d год</string>
+    <string name="eta_hours_half">~%1$d,5 год</string>
+    <string name="time_ago_s">%1$d с тому</string>
+    <string name="time_ago_m">%1$d хв тому</string>
+    <string name="time_ago_h">%1$d год тому</string>
+    <string name="time_ago_d">%1$d дн. тому</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Додати гаманець</string>
+    <string name="welcome_add_headline">Ще один гаманець, повністю окремий</string>
+    <string name="welcome_add_body">Власна фраза відновлення, пароль, історія та контакти. Перемикайтеся між гаманцями за допомогою заголовка на головному екрані.</string>
+    <string name="welcome_one_unlocked">Одночасно розблоковано лише один гаманець; під час перемикання поточний блокується.</string>
+    <string name="welcome_tagline">Pearl (PRL) у вашій кишені. Ті самі ключі, що й у настільного гаманця, але без зайвої ваги.</string>
+    <string name="welcome_feature_selfcustody_title">Самостійне зберігання</string>
+    <string name="welcome_feature_selfcustody_body">Ключі створюються та залишаються на цьому телефоні — зашифровані й захищені біометрією.</string>
+    <string name="welcome_feature_desktop_title">Сумісність із настільним</string>
+    <string name="welcome_feature_desktop_body">Створює точно такі самі постквантові Taproot-адреси, як oyster. Вільно переходьте між ними.</string>
+    <string name="welcome_feature_overview_title">Миттєвий огляд</string>
+    <string name="welcome_feature_overview_body">Баланси, історія та винагороди за майнінг з індексатора Pearl. Без завантаження ланцюга.</string>
+    <string name="welcome_feature_phone_title">Створено для телефону</string>
+    <string name="welcome_feature_phone_body">Платіжні посилання, контакти, нотатки, кілька гаманців і сповіщення «вам заплатили».</string>
+    <string name="welcome_network">Мережа</string>
+    <string name="welcome_create">Створити новий гаманець</string>
+    <string name="welcome_restore">Відновити з фрази відновлення</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Мій гаманець Pearl</string>
+    <string name="onboard_step">Крок %1$d з 3 • %2$s</string>
+    <string name="onboard_title_create">Створення гаманця</string>
+    <string name="onboard_title_seed">Ваша фраза відновлення</string>
+    <string name="onboard_title_verify">Перевірка фрази</string>
+    <string name="onboard_title_working">Налаштування</string>
+    <string name="onboard_name_protect">Назвіть і захистіть свій гаманець</string>
+    <string name="onboard_wallet_name">Назва гаманця</string>
+    <string name="onboard_password">Пароль</string>
+    <string name="onboard_confirm_password">Підтвердьте пароль</string>
+    <string name="onboard_password_warning">Пароль шифрує ваші ключі на цьому пристрої. Скидання немає: якщо забудете його, відновіть гаманець із фрази відновлення.</string>
+    <string name="onboard_password_hint">Використовуйте щонайменше 8 символів із поєднанням літер, цифр або символів.</string>
+    <string name="onboard_seed_write">Запишіть ці 12 слів по порядку та зберігайте їх офлайн.</string>
+    <string name="onboard_seed_secret_title">Зберігайте в таємниці</string>
+    <string name="onboard_seed_secret_body">Будь-хто з цими словами керує вашими коштами. На цьому екрані знімки екрана заблоковано; не зберігайте фразу в цифровому вигляді.</string>
+    <string name="onboard_written">Я записав(ла) їх</string>
+    <string name="onboard_creating">Створення гаманця…</string>
+    <string name="onboard_restoring">Відновлення…</string>
+    <string name="onboard_quiz_instruction">Виберіть правильне слово для кожної позиції, щоб підтвердити резервну копію.</string>
+    <string name="onboard_word_n">Слово №%1$d</string>
+    <string name="onboard_quiz_error">Ці слова не збігаються з вашою фразою. Поверніться та уважно перевірте її.</string>
+    <string name="onboard_verify_create">Перевірити й створити гаманець</string>
+    <string name="onboard_restore_title">Відновлення гаманця</string>
+    <string name="onboard_restore_progress_body">Кожній адресі потрібен постквантовий ключ, тому виведення вікна пошуку триває певний час. Потім гаманець сканує індексатор Pearl на предмет вашої історії.</string>
+    <string name="onboard_recovery_label">Фраза відновлення або hex-сід</string>
+    <string name="onboard_recovery_placeholder">12–24 слова, розділені пробілами</string>
+    <string name="onboard_new_password">Новий пароль</string>
+    <string name="onboard_restore_compatible">Працює з фразами з офіційного настільного гаманця Pearl (oyster) і будь-якого гаманця BIP-39, що використовує деривацію Pearl.</string>
+    <string name="onboard_restore_button">Відновити гаманець</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">фраза відновлення з %1$d слів</string>
+    <string name="onboard_check_hex">hex-сід із %1$d байтів</string>
+    <string name="onboard_err_enter_phrase">Введіть фразу відновлення</string>
+    <string name="onboard_err_hex_even">Hex-сід має містити парну кількість символів</string>
+    <string name="onboard_err_hex_range">Hex-сід має бути від 128 до 512 бітів</string>
+    <string name="onboard_err_enter_phrase_or_hex">Введіть фразу відновлення з 12–24 слів або hex-сід</string>
+    <string name="onboard_err_word_count">Фраза відновлення складається з 12, 15, 18, 21 або 24 слів (отримано %1$d)</string>
+    <string name="onboard_err_unknown_word">«%1$s» не є словом BIP39</string>
+    <string name="onboard_err_checksum">Невідповідність контрольної суми: перевірте порядок і написання слів</string>
+    <string name="onboard_err_create_failed">Не вдалося створити гаманець</string>
+    <string name="onboard_err_restore_failed">Не вдалося відновити</string>
+    <string name="onboard_preparing">Підготовка гаманця…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">Розблокувати %1$s</string>
+    <string name="unlock_password">Пароль гаманця</string>
+    <string name="unlock_button">Розблокувати</string>
+    <string name="unlock_use_biometrics">Використати біометрію</string>
+    <string name="unlock_switch_wallet">Змінити гаманець (%1$d)</string>
+    <string name="unlock_add_another">Додати ще гаманець</string>
+    <string name="unlock_forgot">Забули пароль? Видалити й відновити</string>
+    <string name="unlock_erase_title">Видалити «%1$s»?</string>
+    <string name="unlock_erase_body">Ключі цього гаманця та локальна історія на цьому телефоні буде видалено. Інші гаманці не постраждають. Повернути кошти можна лише за допомогою фрази відновлення. Введіть ERASE для підтвердження.</string>
+    <string name="unlock_erase_confirm">Видалити</string>
+    <string name="unlock_error_biometric">Біометричний ключ недоступний (відбиток було додано чи видалено?). Використайте пароль.</string>
+    <string name="unlock_error_incorrect">Неправильний пароль</string>
+    <string name="unlock_error_failed">Не вдалося розблокувати</string>
+    <string name="unlock_error_biometric_failed">Не вдалося розблокувати за біометрією: %1$s. Використайте пароль.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Гаманці</string>
+    <string name="switcher_test_coins">%1$s • тестові монети</string>
+    <string name="switcher_current">Поточний гаманець</string>
+    <string name="switcher_add_title">Додати гаманець</string>
+    <string name="switcher_add_body">Створіть новий або відновіть іншу фразу. Кожен гаманець має власний пароль.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Загальний баланс</string>
+    <string name="dash_spendable">Доступно</string>
+    <string name="dash_incoming">Надходження</string>
+    <string name="dash_maturing">Дозріває</string>
+    <string name="dash_activity">Активність</string>
+    <string name="dash_view_all">Усі (%1$d)</string>
+    <string name="dash_looking">Пошук транзакцій…</string>
+    <string name="dash_no_tx">Транзакцій ще немає</string>
+    <string name="dash_no_tx_body">Поділіться адресою для отримання або платіжним посиланням, щоб почати.</string>
+    <string name="dash_show_address">Показати мою адресу</string>
+    <string name="dash_testnet_warning">Ви в мережі %1$s. Монети тут не мають цінності.</string>
+    <string name="dash_sync_syncing">Синхронізація…</string>
+    <string name="dash_sync_failed">Не вдалося синхронізувати</string>
+    <string name="dash_sync_synced">Синхронізовано</string>
+    <string name="dash_sync_not_synced">Ще не синхронізовано</string>
+    <string name="dash_sync_block">Блок %1$s • оновлено %2$s</string>
+    <string name="dash_sync_last">Остання синхронізація %1$s • блок %2$s</string>
+    <string name="dash_mining_rewards">Винагороди за майнінг</string>
+    <string name="dash_last_7_days">Останні 7 днів</string>
+    <string name="dash_all_time">За весь час</string>
+    <string name="dash_mining_progress">%1$s дозріває • наступні доступні через %2$d блоків (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Винагороди дозрівають</string>
+    <string name="dash_price_content_desc">%1$s %2$s відсотків за 24 години</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d блок</item>
+        <item quantity="few">%1$d блоки</item>
+        <item quantity="many">%1$d блоків</item>
+        <item quantity="other">%1$d блоку</item>
+    </plurals>
+    <string name="tx_received">Отримано</string>
+    <string name="tx_sent">Надіслано</string>
+    <string name="tx_self">Переказ собі</string>
+    <string name="tx_mined">Намайнено</string>
+    <string name="tx_to_contact">Кому %1$s</string>
+    <string name="tx_from_contact">Від %1$s</string>
+    <string name="tx_pending">В очікуванні</string>
+    <string name="tx_pending_seen">В очікуванні • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d підтв.</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">Надіслати %1$s</string>
+    <string name="send_spendable">Доступно %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Введіть коректну суму (до 8 знаків після коми)</string>
+    <string name="send_enter_valid_amount_short">Введіть коректну суму</string>
+    <string name="send_enter_in">Введіть у %1$s</string>
+    <string name="send_max">Макс.</string>
+    <string name="send_max_selected">Макс. ✓</string>
+    <string name="send_to">Кому</string>
+    <string name="send_to_contact">Кому • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… або контакт</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Комісія мережі</string>
+    <string name="send_use_estimates">Використати оцінки</string>
+    <string name="send_custom_rate">Власна ставка</string>
+    <string name="send_fee_rate_label">Ставка комісії (grain за vbyte, мін. 1)</string>
+    <string name="send_fee_normal">Звичайна</string>
+    <string name="send_fee_fast">Швидка</string>
+    <string name="send_fee_loading">Не вдалося завантажити оцінки комісії: %1$s</string>
+    <string name="send_summary">Підсумок</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Входи</string>
+    <string name="send_inputs_change">%1$d • решта %2$s</string>
+    <string name="send_slider">Надіслати</string>
+    <string name="send_not_ready">Не готово</string>
+    <string name="send_sending">Надсилання</string>
+    <string name="send_confirming">Підтвердження</string>
+    <string name="send_slide">Суньте або двічі торкніться, щоб надіслати</string>
+    <string name="send_why_amount_blank">Введіть суму, щоб продовжити</string>
+    <string name="send_why_amount_invalid">Введіть коректну суму, щоб продовжити</string>
+    <string name="send_why_recipient_blank">Введіть отримувача, щоб продовжити</string>
+    <string name="send_why_recipient_invalid">Виправте адресу отримувача, щоб продовжити</string>
+    <string name="send_why_fee_unavailable">Оцінка комісії недоступна</string>
+    <string name="send_why_waiting_fees">Очікування оцінок комісії…</string>
+    <string name="send_why_preparing">Підготовка платежу…</string>
+    <string name="send_err_no_funds">Немає доступних коштів</string>
+    <string name="send_err_insufficient">Недостатньо коштів: потрібно %1$s %2$s з урахуванням комісії, є %3$s</string>
+    <string name="send_err_changed">Платіж змінився, поки ви його підтверджували. Перевірте деталі та спробуйте знову.</string>
+    <string name="send_password_title">Пароль гаманця</string>
+    <string name="send_password_body">Надсилає %1$s %2$s на %3$s.</string>
+    <string name="send_auth_failed">Не вдалося автентифікуватися</string>
+    <string name="send_bio_unavailable">Біометричний ключ недоступний; вимкніть і знову ввімкніть біометрію в налаштуваннях.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">Отримати %1$s</string>
+    <string name="receive_preparing">Підготовка адреси…</string>
+    <string name="receive_standard">Адреса №%1$d • Taproot, як у настільному гаманці</string>
+    <string name="receive_pq">Адреса №%1$d • постквантовий варіант</string>
+    <string name="receive_copy">Копіювати</string>
+    <string name="receive_share">Поділитися</string>
+    <string name="receive_share_request">Поділитися запитом</string>
+    <string name="receive_request_amount">Запросити суму</string>
+    <string name="receive_label">Мітка (необов\'язково)</string>
+    <string name="receive_label_placeholder">Рахунок №42</string>
+    <string name="receive_link_hint">Із сумою або міткою код і посилання для надсилання стають платіжним посиланням, яке підставляє суму для відправника.</string>
+    <string name="receive_fresh">Використати нову адресу</string>
+    <string name="receive_generating">Створення…</string>
+    <string name="receive_show_pq">Показати постквантовий варіант</string>
+    <string name="receive_show_std">Показати стандартну адресу</string>
+    <string name="receive_pq_warning_title">Не видно настільному гаманцю</string>
+    <string name="receive_pq_warning_body">Цей варіант вбудовує постквантовий ключ XMSS в адресу. Офіційний настільний гаманець його не створює, тому монети, надіслані сюди, будуть видні лише в PocketPRL, доки настільний гаманець Pearl не почне його підтримувати. Використовуйте стандартну адресу, якщо платникові не потрібна саме ця.</string>
+    <string name="receive_reuse_info">Адреси можна використовувати повторно, але нова адреса для кожного платника зберігає вашу історію конфіденційною. Вхідні платежі з\'являються в розділі «Активність», щойно відправник транслює транзакцію.</string>
+    <string name="receive_only_send">Надсилайте на цю адресу лише Pearl (%1$s).</string>
+    <string name="receive_qr_failed">Не вдалося намалювати QR-код. Скопіюйте або поділіться адресою.</string>
+    <string name="receive_qr_desc">QR-код адреси</string>
+    <string name="receive_requesting">Запит %1$s %2$s</string>
+    <string name="receive_requesting_any">Запит будь-якої суми</string>
+    <string name="receive_requesting_for">%1$s для «%2$s»</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Надіслано</string>
+    <string name="sent_to">кому %1$s</string>
+    <string name="sent_confirms">Підтверджується в середньому за %1$s.</string>
+    <string name="sent_txid">ID транзакції</string>
+    <string name="sent_view_explorer">Переглянути в оглядачі</string>
+    <string name="sent_done">Готово</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Активність</string>
+    <string name="activity_export">Експорт CSV</string>
+    <string name="activity_loading">Завантаження історії…</string>
+    <string name="activity_none">Активності ще немає</string>
+    <string name="activity_nothing">Тут нічого немає</string>
+    <string name="activity_none_body">Платежі та винагороди за майнінг з\'являться, щойно індексатор їх побачить.</string>
+    <string name="activity_title_single">Транзакція</string>
+    <string name="activity_not_found">Транзакцію не знайдено</string>
+    <string name="activity_self">Надіслано собі • лише комісія мережі</string>
+    <string name="activity_fiat_today">≈ %1$s сьогодні</string>
+    <string name="activity_pending_mempool">В очікуванні в мемпулі</string>
+    <string name="activity_conf_of_maturity">%1$d з %2$d підтверджень для витрати</string>
+    <string name="activity_confirmed">Підтверджено • %1$s підтверджень</string>
+    <string name="activity_spendable_in">Доступно через %1$d блоків (%2$s)</string>
+    <string name="activity_txid">ID транзакції</string>
+    <string name="activity_from">Від</string>
+    <string name="activity_to">Кому</string>
+    <string name="activity_from_your">З вашої адреси</string>
+    <string name="activity_to_your">На вашу адресу</string>
+    <string name="activity_save_contact">Зберегти як контакт</string>
+    <string name="activity_view_explorer">Переглянути в оглядачі</string>
+    <string name="activity_maturity_info">Винагороди за блок стають доступними після %1$d підтверджень, як і в будь-якому ланцюгу на базі Bitcoin.</string>
+    <string name="activity_note">Нотатка</string>
+    <string name="activity_note_placeholder">Для чого це було?</string>
+    <string name="activity_note_hint">Нотатки зберігаються лише на цьому телефоні.</string>
+    <string name="activity_contact_new">Новий контакт</string>
+    <string name="activity_contact_edit">Змінити контакт</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Усього вихідних</string>
+    <string name="activity_filter_all">Усі</string>
+    <string name="activity_filter_received">Отримані</string>
+    <string name="activity_filter_sent">Надіслані</string>
+    <string name="activity_filter_mined">Намайнені</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d транзакція</item>
+        <item quantity="few">%1$d транзакції</item>
+        <item quantity="many">%1$d транзакцій</item>
+        <item quantity="other">%1$d транзакції</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d підтвердження</item>
+        <item quantity="few">%1$d підтвердження</item>
+        <item quantity="many">%1$d підтверджень</item>
+        <item quantity="other">%1$d підтвердження</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Налаштування</string>
+    <string name="settings_section_wallet">Гаманець</string>
+    <string name="settings_section_appearance">Зовнішній вигляд</string>
+    <string name="settings_section_numbers">Числа та валюта</string>
+    <string name="settings_section_dashboard">Головний екран</string>
+    <string name="settings_section_security">Безпека та конфіденційність</string>
+    <string name="settings_section_notifications">Сповіщення</string>
+    <string name="settings_section_network">Мережа</string>
+    <string name="settings_section_backup">Резервна копія</string>
+    <string name="settings_section_about">Про застосунок</string>
+    <string name="settings_section_danger">Небезпечна зона</string>
+    <string name="settings_name">Ім\'я</string>
+    <string name="settings_created">Створено</string>
+    <string name="settings_wallets">Гаманці</string>
+    <string name="settings_wallets_one">Лише цей</string>
+    <string name="settings_wallets_n">%1$d на цьому пристрої</string>
+    <string name="settings_contacts">Контакти</string>
+    <string name="settings_contacts_saved">%1$d збережено</string>
+    <string name="settings_addresses">Адреси</string>
+    <string name="settings_addresses_derived">%1$d виведено</string>
+    <string name="settings_change_password">Змінити пароль</string>
+    <string name="settings_biometric">Біометричне розблокування</string>
+    <string name="settings_biometric_none">Не налаштовано</string>
+    <string name="settings_biometric_sub">Відбиток або обличчя</string>
+    <string name="settings_confirm_send">Підтверджувати перед надсиланням</string>
+    <string name="settings_confirm_send_sub">Запитувати під час кожного платежу</string>
+    <string name="settings_auto_lock">Автоблокування</string>
+    <string name="settings_hide_balances">Приховувати баланси</string>
+    <string name="settings_hide_balances_sub">Маскувати всі суми</string>
+    <string name="settings_start_hidden">Запускати прихованим</string>
+    <string name="settings_start_hidden_sub">Приховувати баланси під час розблокування</string>
+    <string name="settings_secure_all">Блокувати знімки екрана всюди</string>
+    <string name="settings_secure_all_sub">Також захищати головний екран і екран активності</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_accent">Акцентний колір</string>
+    <string name="settings_dynamic_color">Динамічний колір</string>
+    <string name="settings_dynamic_color_sub">Використовувати палітру шпалер системи (Android 12+)</string>
+    <string name="settings_reduced_motion">Зменшити анімацію</string>
+    <string name="settings_reduced_motion_sub">Без прокручування цифр і анімацій екрана</string>
+    <string name="settings_odometer">Анімація одометра</string>
+    <string name="settings_odometer_sub">Прокручування цифр на балансах</string>
+    <string name="settings_odometer_haptics">Тактильний відгук одометра</string>
+    <string name="settings_odometer_haptics_sub">Відгук під час кожного прокручування</string>
+    <string name="settings_odometer_haptics_off">Не діє, поки анімацію вимкнено</string>
+    <string name="settings_show_fiat">Показувати фіатну вартість</string>
+    <string name="settings_fiat_currency">Фіатна валюта</string>
+    <string name="settings_decimals">Десяткові знаки балансу</string>
+    <string name="settings_decimal_sep">Десятковий розділювач</string>
+    <string name="settings_grouping_sep">Розділювач тисяч</string>
+    <string name="settings_hero">Велике число</string>
+    <string name="settings_hero_total">Загальний баланс</string>
+    <string name="settings_hero_spendable">Доступний баланс</string>
+    <string name="settings_show_change">Зміна ціни за 24 год</string>
+    <string name="settings_show_change_sub">Показувати значок добової зміни</string>
+    <string name="settings_show_mining">Картка винагород за майнінг</string>
+    <string name="settings_show_mining_sub">Приховати, якщо ви не майните на цей гаманець</string>
+    <string name="settings_poll_mode">Частота оновлення</string>
+    <string name="settings_poll_live">У реальному часі</string>
+    <string name="settings_poll_balanced">Збалансовано</string>
+    <string name="settings_poll_battery">Економія батареї</string>
+    <string name="settings_notify_incoming">Вхідні платежі</string>
+    <string name="settings_notify_incoming_sub">Перевірка %1$s</string>
+    <string name="settings_price_alerts">Оповіщення про ціну</string>
+    <string name="settings_price_alerts_sub">Сповіщати про великі зміни за 24 год</string>
+    <string name="settings_alert_threshold">Поріг оповіщення</string>
+    <string name="settings_alert_threshold_sub">Зміна %1$s за 24 години</string>
+    <string name="settings_reveal_seed">Показати фразу відновлення</string>
+    <string name="settings_reveal_seed_sub">Потрібен ваш пароль</string>
+    <string name="settings_indexer">Індексатор (Blockbook)</string>
+    <string name="settings_about_version">Версія %1$s</string>
+    <string name="settings_delete">Видалити цей гаманець</string>
+    <string name="settings_password_title">Змінити пароль</string>
+    <string name="settings_password_current">Поточний пароль</string>
+    <string name="settings_password_new">Новий пароль</string>
+    <string name="settings_password_confirm">Підтвердьте новий пароль</string>
+    <string name="settings_password_updated">Пароль змінено.</string>
+    <string name="settings_password_update">Оновити пароль</string>
+    <string name="settings_password_info">Зміна пароля повторно шифрує ключ лише на цьому пристрої. Ваша фраза відновлення залишається незмінною.</string>
+    <string name="settings_password_error_current">Поточний пароль неправильний</string>
+    <string name="settings_password_error_short">Використовуйте щонайменше 8 символів із поєднанням літер, цифр або символів.</string>
+    <string name="settings_seed_title">Фраза відновлення</string>
+    <string name="settings_seed_warning">Ніколи не діліться фразою відновлення. Співробітники PocketPRL або розробники Pearl ніколи її не попросять.</string>
+    <string name="settings_seed_reveal">Показати</string>
+    <string name="settings_seed_hex">Hex-сід</string>
+    <string name="settings_seed_written_hint">Запишіть її на папері. На цьому екрані знімки екрана заблоковано.</string>
+    <string name="settings_rename_title">Перейменувати гаманець</string>
+    <string name="settings_auto_lock_title">Автоблокування через</string>
+    <string name="settings_theme_title">Тема</string>
+    <string name="settings_accent_title">Акцентний колір</string>
+    <string name="settings_delete_title">Видалити «%1$s»?</string>
+    <string name="settings_delete_body">Це видалить зашифровані ключі цього гаманця, кешовану історію, контакти та нотатки з цього телефону. Інші гаманці не постраждають. Переконайтеся, що у вас є фраза відновлення. Введіть DELETE для підтвердження.</string>
+    <string name="settings_threshold_title">Поріг оповіщення про ціну</string>
+    <string name="settings_threshold_intro">Сповіщати, коли зміна за 24 години досягне:</string>
+    <string name="settings_addresses_title">Адреси</string>
+    <string name="settings_addresses_checking">Перевірка…</string>
+    <string name="settings_addresses_derived_sub">Виведено індексів: %1$d</string>
+    <string name="settings_addresses_rescan">Пересканувати всі адреси</string>
+    <string name="settings_addresses_receive">Отримання №%1$d</string>
+    <string name="settings_addresses_change">Решта №%1$d</string>
+    <string name="settings_addresses_pq">%1$s • постквантовий варіант</string>
+    <string name="settings_addresses_used">використано</string>
+    <string name="settings_addresses_info">Торкніться адреси, щоб скопіювати її. Деривація: m/86’/%1$d’/0’/branch/index, ключовий шлях BIP-86, як у настільному гаманці. Кожен індекс також має постквантовий варіант (XMSS-лист із purpose 222’), який відстежується та зазначається тут після використання. Кнопка оновлення перевіряє кожну адресу, обидва варіанти, прямо зараз; головний екран перевіряє лише використовувані.</string>
+    <string name="settings_contacts_title">Контакти</string>
+    <string name="settings_contacts_empty">Контактів ще немає</string>
+    <string name="settings_contacts_empty_body">Зберігайте адреси, за якими часто платите. Імена відображаються у вашій активності та в полі отримувача.</string>
+    <string name="settings_contacts_add">Додати контакт</string>
+    <string name="settings_contacts_info">Контакти зберігаються лише на цьому телефоні та не входять до вашої фрази відновлення.</string>
+    <string name="settings_contacts_new">Новий контакт</string>
+    <string name="settings_contacts_address">Адреса %1$s</string>
+    <string name="settings_contacts_invalid">Неприпустима адреса %1$s</string>
+    <string name="settings_contacts_name_required">Дайте контакту ім\'я</string>
+    <string name="settings_about_title">Про застосунок</string>
+    <string name="settings_about_source">Вихідний код PocketPRL</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Вихідний код Pearl (GitHub)</string>
+    <string name="settings_about_explorer">Оглядач блоків</string>
+    <string name="settings_about_check">Перевірити оновлення</string>
+    <string name="settings_about_checking">Перевірка…</string>
+    <string name="settings_about_latest">У вас остання версія (v%1$s).</string>
+    <string name="settings_about_failed">Не вдалося зв\'язатися з GitHub. Перевірте з\'єднання та спробуйте знову.</string>
+    <string name="settings_about_update_title">Доступне оновлення</string>
+    <string name="settings_about_update_body">Доступна версія %1$s. У вас v%2$s.</string>
+    <string name="settings_about_update">Оновити</string>
+    <string name="settings_about_later">Пізніше</string>
+    <string name="settings_about_version_label">Версія</string>
+    <string name="settings_about_network">Мережа</string>
+    <string name="settings_about_coin_type">Тип монети</string>
+    <string name="settings_about_addresses">Адреси</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Підпис</string>
+    <string name="settings_about_signing_value">BIP-340 Schnorr key path, libsecp256k1</string>
+    <string name="settings_about_pq">PQ-зобов\'язання</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL — незалежний легковагий гаманець із відкритим вихідним кодом для мережі Pearl. Він створює ті самі адреси, що й офіційний настільний гаманець (oyster), і перевірений на відповідність йому за допомогою тестових векторів, згенерованих із вихідного коду Pearl.</string>
+    <string name="settings_about_warranty">Це програмне забезпечення надається «як є», без гарантій. Перевіряйте збірки, зберігайте фразу відновлення офлайн і спочатку тестуйте з невеликими сумами.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Індексатор</string>
+    <string name="indexer_body">PocketPRL читає баланси, історію та оцінки комісії з індексатора Blockbook і транслює через нього. Ключі ніколи не залишають телефон, але індексатор дізнається, які адреси ви запитуєте. Вкажіть власний екземпляр, якщо це для вас важливо.</string>
+    <string name="indexer_label">URL Blockbook (лише https)</string>
+    <string name="indexer_default">За замовчуванням: %1$s</string>
+    <string name="indexer_saved">Збережено. Потягніть вниз на головному екрані, щоб синхронізувати заново.</string>
+    <string name="indexer_save">Зберегти</string>
+    <string name="indexer_reset">Скинути до типового</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Авто (система)</string>
+    <string name="theme_light">Світла</string>
+    <string name="theme_dark">Темна</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Океан</string>
+    <string name="accent_sunset">Захід сонця</string>
+    <string name="accent_violet">Фіолетовий</string>
+    <string name="accent_forest">Ліс</string>
+    <string name="accent_rose">Троянда</string>
+    <string name="accent_mono">Моно</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Вузький пробіл</string>
+    <string name="grouping_space">Пробіл</string>
+    <string name="grouping_comma">Кома</string>
+    <string name="grouping_period">Крапка</string>
+    <string name="grouping_apostrophe">Апостроф</string>
+    <string name="grouping_none">Немає</string>
+    <string name="decimal_period">Крапка (.)</string>
+    <string name="decimal_comma">Кома (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Немає з\'єднання з індексатором</string>
+    <string name="sync_err_not_responding">Індексатор не відповідає</string>
+    <string name="sync_err_no_internet">Немає підключення до інтернету</string>
+    <string name="sync_err_lost_connection">Втрачено з\'єднання з індексатором</string>
+    <string name="wallet_deriving_receive">Виведення адреси для отримання %1$d з %2$d</string>
+    <string name="wallet_deriving_change">Виведення адреси для решти %1$d з %2$d</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">Перевірка %1$d адреси…</item>
+        <item quantity="few">Перевірка %1$d адрес…</item>
+        <item quantity="many">Перевірка %1$d адрес…</item>
+        <item quantity="other">Перевірка %1$d адреси…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">%1$d адресу не вдалося перевірити (%2$s); повторна спроба</item>
+        <item quantity="few">%1$d адреси не вдалося перевірити (%2$s); повторна спроба</item>
+        <item quantity="many">%1$d адрес не вдалося перевірити (%2$s); повторна спроба</item>
+        <item quantity="other">%1$d адреси не вдалося перевірити (%2$s); повторна спроба</item>
+    </plurals>
+    <string name="address_err_enter">Введіть адресу отримувача</string>
+    <string name="address_err_invalid">Неприпустима адреса Pearl</string>
+    <string name="address_err_unknown_prefix">Невідомий префікс адреси «%1$s»</string>
+    <string name="address_err_only_taproot">Підтримуються лише адреси Taproot (%1$s1p…)</string>
+    <string name="address_err_invalid_length">Неприпустима довжина адреси Taproot</string>
+    <string name="address_err_wrong_network">Це адреса %1$s; цей гаманець у мережі %2$s</string>
+    <string name="qr_err_invalid_link">Це посилання не є допустимим платіжним запитом %1$s.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Вхідні платежі</string>
+    <string name="notif_channel_payments_desc">Отримані платежі та винагороди за блок — коли вони з\'являються та коли підтверджуються</string>
+    <string name="notif_channel_price">Оповіщення про ціну</string>
+    <string name="notif_channel_price_desc">Великі зміни ціни PRL за 24 години</string>
+    <string name="notif_block_confirmed">Винагороду за блок підтверджено</string>
+    <string name="notif_block">Винагорода за блок</string>
+    <string name="notif_payment_confirmed">Платіж підтверджено</string>
+    <string name="notif_payment_received">Платіж отримано</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Відкрийте PocketPRL, щоб дізнатися подробиці</string>
+    <string name="notif_mined">+%1$s %2$s • доступно після %3$d підтверджень</string>
+    <string name="notif_waiting">+%1$s %2$s • очікує підтвердження</string>
+    <string name="notif_in_block">+%1$s %2$s • у блоці %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">Оповіщення про ціну PRL</string>
+    <string name="price_dir_up">Вгору</string>
+    <string name="price_dir_down">Вниз</string>
+    <string name="price_alert_body">%1$s %2$s%%: тепер %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Експорт історії</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Зробіть його своїм</string>
+    <string name="personalize_subtitle">Виберіть, як PocketPRL виглядає й читається. Усе це можна змінити пізніше в налаштуваннях.</string>
+    <string name="personalize_preview">Попередній перегляд</string>
+    <string name="personalize_section_look">Зовнішній вигляд</string>
+    <string name="personalize_section_numbers">Числа</string>
+    <string name="personalize_section_currency">Валюта</string>
+    <string name="personalize_section_motion">Рух</string>
+    <string name="personalize_continue">Продовжити</string>
+    <string name="personalize_reset">Скинути до типових</string>
+    <string name="personalize_grouping_toggle">Групувати тисячі</string>
+    <string name="notif_period">приблизно щохвилини</string>
+    <string name="autolock_immediately">Негайно</string>
+    <string name="autolock_1m">1 хвилина</string>
+    <string name="autolock_5m">5 хвилин</string>
+    <string name="autolock_15m">15 хвилин</string>
+    <string name="autolock_1h">1 година</string>
+    <string name="autolock_never">Ніколи</string>
+    <string name="duration_seconds">%1$d секунд</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Змінити гаманець</string>
+    <string name="action_receive">Отримати</string>
+    <string name="action_lock">Заблокувати</string>
+    <string name="action_show_balance">Показати баланс</string>
+    <string name="action_hide_balance">Приховати баланс</string>
+    <string name="pwd_weak">Слабкий</string>
+    <string name="pwd_fair">Середній</string>
+    <string name="pwd_good">Добрий</string>
+    <string name="pwd_strong">Надійний</string>
+    <string name="pwd_strength">Пароль: %1$s</string>
+    <string name="pwd_show">Показати пароль</string>
+    <string name="pwd_hide">Приховати пароль</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d гаманець • %2$s</item>
+        <item quantity="few">%1$d гаманці • %2$s</item>
+        <item quantity="many">%1$d гаманців • %2$s</item>
+        <item quantity="other">%1$d гаманця • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Входи / виходи</string>
+    <string name="activity_size_label">Розмір</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Використати пароль</string>
+    <string name="bio_no_crypto_object">Немає криптооб\'єкта</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Відскануйте адресу Pearl або платіжне посилання</string>
+    <string name="send_open_settings">Відкрити налаштування</string>
+    <string name="send_camera_off">Доступ до камери для PocketPRL вимкнено.</string>
+    <string name="send_camera_needed">Для сканування потрібна камера.</string>
+    <string name="send_for_label">Для: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Збережіть адресу з транзакції або в розділі «Налаштування › Контакти».</string>
+    <string name="receive_optional">Необов\'язково</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Відкрити налаштування</string>
+    <string name="settings_notif_off">Сповіщення вимкнено, тому ця функція недоступна.</string>
+    <string name="settings_notif_blocked">Сповіщення для PocketPRL заблоковано.</string>
+    <string name="settings_keystore_error">Не вдалося створити ключ Keystore</string>
+    <string name="settings_biometric_prompt">Увімкнути біометричне розблокування</string>
+    <string name="settings_seed_password">Пароль гаманця</string>
+    <string name="settings_seed_incorrect">Неправильний пароль</string>
+    <string name="settings_copy_address">Копіювати адресу</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Помилка</string>
+    <string name="vm_biometric_enable_failed">Не вдалося увімкнути біометрію</string>
+    <string name="settings_section_language">Мова</string>
+    <string name="settings_language">Мова</string>
+    <string name="settings_language_system">За замовчуванням у системі</string>
+</resources>

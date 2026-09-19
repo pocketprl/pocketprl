@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Назад</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_delete">Удалить</string>
+    <string name="action_done">Готово</string>
+    <string name="action_edit">Изменить</string>
+    <string name="action_continue">Продолжить</string>
+    <string name="action_close">Закрыть</string>
+    <string name="action_add">Добавить</string>
+    <string name="action_share">Поделиться</string>
+    <string name="action_copy">Копировать</string>
+    <string name="action_retry">Повторить</string>
+    <string name="action_scan">Сканировать</string>
+    <string name="action_paste">Вставить</string>
+    <string name="action_clear">Очистить</string>
+    <string name="action_contacts">Контакты</string>
+    <string name="action_send">Отправить</string>
+    <string name="label_amount">Сумма</string>
+    <string name="label_name">Имя</string>
+    <string name="label_address">Адрес</string>
+    <string name="label_fee">Комиссия</string>
+    <string name="label_date">Дата</string>
+    <string name="label_block">Блок</string>
+    <string name="label_total">Итого</string>
+    <string name="label_to">Кому</string>
+    <string name="label_from">От</string>
+    <string name="label_network">Сеть</string>
+    <string name="copied">Скопировано</string>
+    <string name="clipboard_address">Адрес Pearl</string>
+    <string name="clipboard_txid">ID транзакции</string>
+    <string name="balance_hidden">Баланс скрыт</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Сегодня</string>
+    <string name="day_yesterday">Вчера</string>
+    <string name="time_just_now">только что</string>
+    <string name="time_pending">в ожидании</string>
+    <string name="label_unconfirmed">Неподтверждено</string>
+    <string name="eta_minutes">~%1$d мин</string>
+    <string name="eta_hours">~%1$d ч</string>
+    <string name="eta_hours_half">~%1$d,5 ч</string>
+    <string name="time_ago_s">%1$d с назад</string>
+    <string name="time_ago_m">%1$d мин назад</string>
+    <string name="time_ago_h">%1$d ч назад</string>
+    <string name="time_ago_d">%1$d дн. назад</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Добавить кошелёк</string>
+    <string name="welcome_add_headline">Ещё один кошелёк, полностью отдельный</string>
+    <string name="welcome_add_body">Своя фраза восстановления, пароль, история и контакты. Переключайтесь между кошельками с помощью заголовка на главном экране.</string>
+    <string name="welcome_one_unlocked">Одновременно разблокирован только один кошелёк; при переключении текущий блокируется.</string>
+    <string name="welcome_tagline">Pearl (PRL) в вашем кармане. Те же ключи, что и в кошельке для компьютера, но без лишнего веса.</string>
+    <string name="welcome_feature_selfcustody_title">Самостоятельное хранение</string>
+    <string name="welcome_feature_selfcustody_body">Ключи создаются и остаются на этом телефоне — зашифрованы и защищены биометрией.</string>
+    <string name="welcome_feature_desktop_title">Совместимость с компьютером</string>
+    <string name="welcome_feature_desktop_body">Создаёт точно такие же постквантовые Taproot-адреса, как oyster. Свободно переходите между ними.</string>
+    <string name="welcome_feature_overview_title">Мгновенный обзор</string>
+    <string name="welcome_feature_overview_body">Балансы, история и награды за майнинг из индексатора Pearl. Без загрузки блокчейна.</string>
+    <string name="welcome_feature_phone_title">Создан для телефона</string>
+    <string name="welcome_feature_phone_body">Платёжные ссылки, контакты, заметки, несколько кошельков и уведомления «вам заплатили».</string>
+    <string name="welcome_network">Сеть</string>
+    <string name="welcome_create">Создать новый кошелёк</string>
+    <string name="welcome_restore">Восстановить из фразы восстановления</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Мой кошелёк Pearl</string>
+    <string name="onboard_step">Шаг %1$d из 3 • %2$s</string>
+    <string name="onboard_title_create">Создание кошелька</string>
+    <string name="onboard_title_seed">Ваша фраза восстановления</string>
+    <string name="onboard_title_verify">Проверка фразы</string>
+    <string name="onboard_title_working">Настройка</string>
+    <string name="onboard_name_protect">Назовите и защитите свой кошелёк</string>
+    <string name="onboard_wallet_name">Имя кошелька</string>
+    <string name="onboard_password">Пароль</string>
+    <string name="onboard_confirm_password">Подтвердите пароль</string>
+    <string name="onboard_password_warning">Пароль шифрует ваши ключи на этом устройстве. Сброса нет: если забудете его, восстановите кошелёк из фразы восстановления.</string>
+    <string name="onboard_password_hint">Используйте не менее 8 символов с сочетанием букв, цифр или символов.</string>
+    <string name="onboard_seed_write">Запишите эти 12 слов по порядку и храните их офлайн.</string>
+    <string name="onboard_seed_secret_title">Держите в секрете</string>
+    <string name="onboard_seed_secret_body">Любой, кто знает эти слова, распоряжается вашими средствами. На этом экране скриншоты заблокированы; не храните фразу в цифровом виде.</string>
+    <string name="onboard_written">Я записал(а) их</string>
+    <string name="onboard_creating">Создание кошелька…</string>
+    <string name="onboard_restoring">Восстановление…</string>
+    <string name="onboard_quiz_instruction">Выберите нужное слово для каждой позиции, чтобы подтвердить резервную копию.</string>
+    <string name="onboard_word_n">Слово №%1$d</string>
+    <string name="onboard_quiz_error">Эти слова не совпадают с вашей фразой. Вернитесь и внимательно проверьте её.</string>
+    <string name="onboard_verify_create">Проверить и создать кошелёк</string>
+    <string name="onboard_restore_title">Восстановление кошелька</string>
+    <string name="onboard_restore_progress_body">Каждому адресу нужен постквантовый ключ, поэтому вывод окна поиска занимает некоторое время. Затем кошелёк сканирует индексатор Pearl на предмет вашей истории.</string>
+    <string name="onboard_recovery_label">Фраза восстановления или hex-сид</string>
+    <string name="onboard_recovery_placeholder">12–24 слова, разделённые пробелами</string>
+    <string name="onboard_new_password">Новый пароль</string>
+    <string name="onboard_restore_compatible">Работает с фразами из официального кошелька Pearl для компьютера (oyster) и любого BIP-39-кошелька, использующего деривацию Pearl.</string>
+    <string name="onboard_restore_button">Восстановить кошелёк</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">фраза восстановления из %1$d слов</string>
+    <string name="onboard_check_hex">hex-сид из %1$d байт</string>
+    <string name="onboard_err_enter_phrase">Введите фразу восстановления</string>
+    <string name="onboard_err_hex_even">Hex-сид должен содержать чётное число символов</string>
+    <string name="onboard_err_hex_range">Hex-сид должен быть от 128 до 512 бит</string>
+    <string name="onboard_err_enter_phrase_or_hex">Введите фразу восстановления из 12–24 слов или hex-сид</string>
+    <string name="onboard_err_word_count">Фраза восстановления состоит из 12, 15, 18, 21 или 24 слов (получено %1$d)</string>
+    <string name="onboard_err_unknown_word">«%1$s» не является словом BIP39</string>
+    <string name="onboard_err_checksum">Несовпадение контрольной суммы: проверьте порядок и написание слов</string>
+    <string name="onboard_err_create_failed">Не удалось создать кошелёк</string>
+    <string name="onboard_err_restore_failed">Не удалось восстановить</string>
+    <string name="onboard_preparing">Подготовка кошелька…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">Разблокировать %1$s</string>
+    <string name="unlock_password">Пароль кошелька</string>
+    <string name="unlock_button">Разблокировать</string>
+    <string name="unlock_use_biometrics">Использовать биометрию</string>
+    <string name="unlock_switch_wallet">Сменить кошелёк (%1$d)</string>
+    <string name="unlock_add_another">Добавить ещё кошелёк</string>
+    <string name="unlock_forgot">Забыли пароль? Удалить и восстановить</string>
+    <string name="unlock_erase_title">Удалить «%1$s»?</string>
+    <string name="unlock_erase_body">Ключи этого кошелька и локальная история на этом телефоне будут удалены. Другие кошельки не затронуты. Вернуть средства можно только с помощью фразы восстановления. Введите ERASE для подтверждения.</string>
+    <string name="unlock_erase_confirm">Удалить</string>
+    <string name="unlock_error_biometric">Биометрический ключ недоступен (отпечаток был добавлен или удалён?). Используйте пароль.</string>
+    <string name="unlock_error_incorrect">Неверный пароль</string>
+    <string name="unlock_error_failed">Не удалось разблокировать</string>
+    <string name="unlock_error_biometric_failed">Не удалось разблокировать по биометрии: %1$s. Используйте пароль.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Кошельки</string>
+    <string name="switcher_test_coins">%1$s • тестовые монеты</string>
+    <string name="switcher_current">Текущий кошелёк</string>
+    <string name="switcher_add_title">Добавить кошелёк</string>
+    <string name="switcher_add_body">Создайте новый или восстановите другую фразу. У каждого кошелька свой пароль.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Общий баланс</string>
+    <string name="dash_spendable">Доступно</string>
+    <string name="dash_incoming">Входящие</string>
+    <string name="dash_maturing">Созревает</string>
+    <string name="dash_activity">Активность</string>
+    <string name="dash_view_all">Все (%1$d)</string>
+    <string name="dash_looking">Поиск транзакций…</string>
+    <string name="dash_no_tx">Транзакций пока нет</string>
+    <string name="dash_no_tx_body">Поделитесь адресом для получения или платёжной ссылкой, чтобы начать.</string>
+    <string name="dash_show_address">Показать мой адрес</string>
+    <string name="dash_testnet_warning">Вы в сети %1$s. Монеты здесь не имеют ценности.</string>
+    <string name="dash_sync_syncing">Синхронизация…</string>
+    <string name="dash_sync_failed">Не удалось синхронизировать</string>
+    <string name="dash_sync_synced">Синхронизировано</string>
+    <string name="dash_sync_not_synced">Ещё не синхронизировано</string>
+    <string name="dash_sync_block">Блок %1$s • обновлено %2$s</string>
+    <string name="dash_sync_last">Последняя синхронизация %1$s • блок %2$s</string>
+    <string name="dash_mining_rewards">Награды за майнинг</string>
+    <string name="dash_last_7_days">Последние 7 дней</string>
+    <string name="dash_all_time">За всё время</string>
+    <string name="dash_mining_progress">%1$s созревает • следующая доступная через %2$d блоков (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Награды созревают</string>
+    <string name="dash_price_content_desc">%1$s %2$s процентов за 24 часа</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d блок</item>
+        <item quantity="few">%1$d блока</item>
+        <item quantity="many">%1$d блоков</item>
+        <item quantity="other">%1$d блока</item>
+    </plurals>
+    <string name="tx_received">Получено</string>
+    <string name="tx_sent">Отправлено</string>
+    <string name="tx_self">Перевод себе</string>
+    <string name="tx_mined">Намайнено</string>
+    <string name="tx_to_contact">Кому %1$s</string>
+    <string name="tx_from_contact">От %1$s</string>
+    <string name="tx_pending">В ожидании</string>
+    <string name="tx_pending_seen">В ожидании • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d подтв.</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">Отправить %1$s</string>
+    <string name="send_spendable">Доступно %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Введите корректную сумму (до 8 знаков после запятой)</string>
+    <string name="send_enter_valid_amount_short">Введите корректную сумму</string>
+    <string name="send_enter_in">Введите в %1$s</string>
+    <string name="send_max">Макс.</string>
+    <string name="send_max_selected">Макс. ✓</string>
+    <string name="send_to">Кому</string>
+    <string name="send_to_contact">Кому • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… или контакт</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Комиссия сети</string>
+    <string name="send_use_estimates">Использовать оценки</string>
+    <string name="send_custom_rate">Своя ставка</string>
+    <string name="send_fee_rate_label">Ставка комиссии (grain за vbyte, мин. 1)</string>
+    <string name="send_fee_normal">Обычная</string>
+    <string name="send_fee_fast">Быстрая</string>
+    <string name="send_fee_loading">Не удалось загрузить оценки комиссии: %1$s</string>
+    <string name="send_summary">Итог</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Входы</string>
+    <string name="send_inputs_change">%1$d • сдача %2$s</string>
+    <string name="send_slider">Отправить</string>
+    <string name="send_not_ready">Не готово</string>
+    <string name="send_sending">Отправка</string>
+    <string name="send_confirming">Подтверждение</string>
+    <string name="send_slide">Сдвиньте или дважды коснитесь для отправки</string>
+    <string name="send_why_amount_blank">Введите сумму, чтобы продолжить</string>
+    <string name="send_why_amount_invalid">Введите корректную сумму, чтобы продолжить</string>
+    <string name="send_why_recipient_blank">Введите получателя, чтобы продолжить</string>
+    <string name="send_why_recipient_invalid">Исправьте адрес получателя, чтобы продолжить</string>
+    <string name="send_why_fee_unavailable">Оценка комиссии недоступна</string>
+    <string name="send_why_waiting_fees">Ожидание оценок комиссии…</string>
+    <string name="send_why_preparing">Подготовка платежа…</string>
+    <string name="send_err_no_funds">Нет доступных средств</string>
+    <string name="send_err_insufficient">Недостаточно средств: нужно %1$s %2$s с учётом комиссии, есть %3$s</string>
+    <string name="send_err_changed">Платёж изменился, пока вы его подтверждали. Проверьте детали и попробуйте снова.</string>
+    <string name="send_password_title">Пароль кошелька</string>
+    <string name="send_password_body">Отправляет %1$s %2$s на %3$s.</string>
+    <string name="send_auth_failed">Не удалось аутентифицироваться</string>
+    <string name="send_bio_unavailable">Биометрический ключ недоступен; отключите и снова включите биометрию в настройках.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">Получить %1$s</string>
+    <string name="receive_preparing">Подготовка адреса…</string>
+    <string name="receive_standard">Адрес №%1$d • Taproot, как в кошельке для компьютера</string>
+    <string name="receive_pq">Адрес №%1$d • постквантовый вариант</string>
+    <string name="receive_copy">Копировать</string>
+    <string name="receive_share">Поделиться</string>
+    <string name="receive_share_request">Поделиться запросом</string>
+    <string name="receive_request_amount">Запросить сумму</string>
+    <string name="receive_label">Метка (необязательно)</string>
+    <string name="receive_label_placeholder">Счёт №42</string>
+    <string name="receive_link_hint">С суммой или меткой код и ссылка для отправки становятся платёжной ссылкой, которая подставляет сумму для отправителя.</string>
+    <string name="receive_fresh">Использовать новый адрес</string>
+    <string name="receive_generating">Создание…</string>
+    <string name="receive_show_pq">Показать постквантовый вариант</string>
+    <string name="receive_show_std">Показать стандартный адрес</string>
+    <string name="receive_pq_warning_title">Не виден кошельку для компьютера</string>
+    <string name="receive_pq_warning_body">Этот вариант включает постквантовый ключ XMSS внутрь адреса. Официальный кошелёк для компьютера его не создаёт, поэтому монеты, отправленные сюда, будут видны только в PocketPRL, пока кошелёк Pearl для компьютера не начнёт его поддерживать. Используйте стандартный адрес, если плательщику не нужен именно этот.</string>
+    <string name="receive_reuse_info">Адреса можно использовать повторно, но новый адрес для каждого плательщика сохраняет вашу историю конфиденциальной. Входящие платежи появляются в разделе «Активность», как только отправитель транслирует транзакцию.</string>
+    <string name="receive_only_send">Отправляйте на этот адрес только Pearl (%1$s).</string>
+    <string name="receive_qr_failed">Не удалось нарисовать QR-код. Скопируйте или поделитесь адресом.</string>
+    <string name="receive_qr_desc">QR-код адреса</string>
+    <string name="receive_requesting">Запрос %1$s %2$s</string>
+    <string name="receive_requesting_any">Запрос любой суммы</string>
+    <string name="receive_requesting_for">%1$s для «%2$s»</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Отправлено</string>
+    <string name="sent_to">кому %1$s</string>
+    <string name="sent_confirms">Подтверждается в среднем за %1$s.</string>
+    <string name="sent_txid">ID транзакции</string>
+    <string name="sent_view_explorer">Посмотреть в обозревателе</string>
+    <string name="sent_done">Готово</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Активность</string>
+    <string name="activity_export">Экспорт CSV</string>
+    <string name="activity_loading">Загрузка истории…</string>
+    <string name="activity_none">Активности пока нет</string>
+    <string name="activity_nothing">Здесь ничего нет</string>
+    <string name="activity_none_body">Платежи и награды за майнинг появятся, как только индексатор их увидит.</string>
+    <string name="activity_title_single">Транзакция</string>
+    <string name="activity_not_found">Транзакция не найдена</string>
+    <string name="activity_self">Отправлено себе • только комиссия сети</string>
+    <string name="activity_fiat_today">≈ %1$s сегодня</string>
+    <string name="activity_pending_mempool">В ожидании в мемпуле</string>
+    <string name="activity_conf_of_maturity">%1$d из %2$d подтверждений для траты</string>
+    <string name="activity_confirmed">Подтверждено • %1$s подтверждений</string>
+    <string name="activity_spendable_in">Доступно через %1$d блоков (%2$s)</string>
+    <string name="activity_txid">ID транзакции</string>
+    <string name="activity_from">От</string>
+    <string name="activity_to">Кому</string>
+    <string name="activity_from_your">С вашего адреса</string>
+    <string name="activity_to_your">На ваш адрес</string>
+    <string name="activity_save_contact">Сохранить как контакт</string>
+    <string name="activity_view_explorer">Посмотреть в обозревателе</string>
+    <string name="activity_maturity_info">Награды за блок становятся доступными после %1$d подтверждений, как и в любой сети на базе Bitcoin.</string>
+    <string name="activity_note">Заметка</string>
+    <string name="activity_note_placeholder">Для чего это было?</string>
+    <string name="activity_note_hint">Заметки хранятся только на этом телефоне.</string>
+    <string name="activity_contact_new">Новый контакт</string>
+    <string name="activity_contact_edit">Изменить контакт</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Всего исходящих</string>
+    <string name="activity_filter_all">Все</string>
+    <string name="activity_filter_received">Полученные</string>
+    <string name="activity_filter_sent">Отправленные</string>
+    <string name="activity_filter_mined">Намайненные</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d транзакция</item>
+        <item quantity="few">%1$d транзакции</item>
+        <item quantity="many">%1$d транзакций</item>
+        <item quantity="other">%1$d транзакции</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d подтверждение</item>
+        <item quantity="few">%1$d подтверждения</item>
+        <item quantity="many">%1$d подтверждений</item>
+        <item quantity="other">%1$d подтверждения</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_section_wallet">Кошелёк</string>
+    <string name="settings_section_appearance">Внешний вид</string>
+    <string name="settings_section_numbers">Числа и валюта</string>
+    <string name="settings_section_dashboard">Главный экран</string>
+    <string name="settings_section_security">Безопасность и приватность</string>
+    <string name="settings_section_notifications">Уведомления</string>
+    <string name="settings_section_network">Сеть</string>
+    <string name="settings_section_backup">Резервная копия</string>
+    <string name="settings_section_about">О приложении</string>
+    <string name="settings_section_danger">Опасная зона</string>
+    <string name="settings_name">Имя</string>
+    <string name="settings_created">Создан</string>
+    <string name="settings_wallets">Кошельки</string>
+    <string name="settings_wallets_one">Только этот</string>
+    <string name="settings_wallets_n">%1$d на этом устройстве</string>
+    <string name="settings_contacts">Контакты</string>
+    <string name="settings_contacts_saved">%1$d сохранено</string>
+    <string name="settings_addresses">Адреса</string>
+    <string name="settings_addresses_derived">%1$d выведено</string>
+    <string name="settings_change_password">Изменить пароль</string>
+    <string name="settings_biometric">Биометрическая разблокировка</string>
+    <string name="settings_biometric_none">Не настроено</string>
+    <string name="settings_biometric_sub">Отпечаток или лицо</string>
+    <string name="settings_confirm_send">Подтверждать перед отправкой</string>
+    <string name="settings_confirm_send_sub">Спрашивать при каждом платеже</string>
+    <string name="settings_auto_lock">Автоблокировка</string>
+    <string name="settings_hide_balances">Скрывать балансы</string>
+    <string name="settings_hide_balances_sub">Маскировать все суммы</string>
+    <string name="settings_start_hidden">Запускать скрытым</string>
+    <string name="settings_start_hidden_sub">Скрывать балансы при разблокировке</string>
+    <string name="settings_secure_all">Блокировать скриншоты везде</string>
+    <string name="settings_secure_all_sub">Также защищать главный экран и экран активности</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_accent">Акцентный цвет</string>
+    <string name="settings_dynamic_color">Динамический цвет</string>
+    <string name="settings_dynamic_color_sub">Использовать палитру обоев системы (Android 12+)</string>
+    <string name="settings_reduced_motion">Уменьшить анимацию</string>
+    <string name="settings_reduced_motion_sub">Без прокрутки цифр и анимаций экрана</string>
+    <string name="settings_odometer">Анимация одометра</string>
+    <string name="settings_odometer_sub">Прокрутка цифр на балансах</string>
+    <string name="settings_odometer_haptics">Тактильная отдача одометра</string>
+    <string name="settings_odometer_haptics_sub">Отклик при каждой прокрутке</string>
+    <string name="settings_odometer_haptics_off">Не действует, пока анимация выключена</string>
+    <string name="settings_show_fiat">Показывать фиатную стоимость</string>
+    <string name="settings_fiat_currency">Фиатная валюта</string>
+    <string name="settings_decimals">Десятичные знаки баланса</string>
+    <string name="settings_decimal_sep">Десятичный разделитель</string>
+    <string name="settings_grouping_sep">Разделитель тысяч</string>
+    <string name="settings_hero">Большое число</string>
+    <string name="settings_hero_total">Общий баланс</string>
+    <string name="settings_hero_spendable">Доступный баланс</string>
+    <string name="settings_show_change">Изменение цены за 24 ч</string>
+    <string name="settings_show_change_sub">Показывать значок суточного изменения</string>
+    <string name="settings_show_mining">Карточка наград за майнинг</string>
+    <string name="settings_show_mining_sub">Скрыть, если вы не майните на этот кошелёк</string>
+    <string name="settings_poll_mode">Частота обновления</string>
+    <string name="settings_poll_live">В реальном времени</string>
+    <string name="settings_poll_balanced">Сбалансированно</string>
+    <string name="settings_poll_battery">Экономия батареи</string>
+    <string name="settings_notify_incoming">Входящие платежи</string>
+    <string name="settings_notify_incoming_sub">Проверка %1$s</string>
+    <string name="settings_price_alerts">Оповещения о цене</string>
+    <string name="settings_price_alerts_sub">Уведомлять о крупных изменениях за 24 ч</string>
+    <string name="settings_alert_threshold">Порог оповещения</string>
+    <string name="settings_alert_threshold_sub">Изменение %1$s за 24 часа</string>
+    <string name="settings_reveal_seed">Показать фразу восстановления</string>
+    <string name="settings_reveal_seed_sub">Требуется ваш пароль</string>
+    <string name="settings_indexer">Индексатор (Blockbook)</string>
+    <string name="settings_about_version">Версия %1$s</string>
+    <string name="settings_delete">Удалить этот кошелёк</string>
+    <string name="settings_password_title">Изменить пароль</string>
+    <string name="settings_password_current">Текущий пароль</string>
+    <string name="settings_password_new">Новый пароль</string>
+    <string name="settings_password_confirm">Подтвердите новый пароль</string>
+    <string name="settings_password_updated">Пароль изменён.</string>
+    <string name="settings_password_update">Обновить пароль</string>
+    <string name="settings_password_info">Смена пароля повторно шифрует ключ только на этом устройстве. Ваша фраза восстановления остаётся прежней.</string>
+    <string name="settings_password_error_current">Текущий пароль неверен</string>
+    <string name="settings_password_error_short">Используйте не менее 8 символов с сочетанием букв, цифр или символов.</string>
+    <string name="settings_seed_title">Фраза восстановления</string>
+    <string name="settings_seed_warning">Никогда не делитесь фразой восстановления. Сотрудники PocketPRL или разработчики Pearl никогда её не запросят.</string>
+    <string name="settings_seed_reveal">Показать</string>
+    <string name="settings_seed_hex">Hex-сид</string>
+    <string name="settings_seed_written_hint">Запишите её на бумаге. На этом экране скриншоты заблокированы.</string>
+    <string name="settings_rename_title">Переименовать кошелёк</string>
+    <string name="settings_auto_lock_title">Автоблокировка через</string>
+    <string name="settings_theme_title">Тема</string>
+    <string name="settings_accent_title">Акцентный цвет</string>
+    <string name="settings_delete_title">Удалить «%1$s»?</string>
+    <string name="settings_delete_body">Это удалит зашифрованные ключи этого кошелька, кэшированную историю, контакты и заметки с этого телефона. Другие кошельки не затронуты. Убедитесь, что у вас есть фраза восстановления. Введите DELETE для подтверждения.</string>
+    <string name="settings_threshold_title">Порог оповещения о цене</string>
+    <string name="settings_threshold_intro">Оповещать, когда изменение за 24 часа достигнет:</string>
+    <string name="settings_addresses_title">Адреса</string>
+    <string name="settings_addresses_checking">Проверка…</string>
+    <string name="settings_addresses_derived_sub">Выведено индексов: %1$d</string>
+    <string name="settings_addresses_rescan">Пересканировать все адреса</string>
+    <string name="settings_addresses_receive">Получение №%1$d</string>
+    <string name="settings_addresses_change">Сдача №%1$d</string>
+    <string name="settings_addresses_pq">%1$s • постквантовый вариант</string>
+    <string name="settings_addresses_used">использован</string>
+    <string name="settings_addresses_info">Нажмите на адрес, чтобы скопировать его. Деривация: m/86’/%1$d’/0’/branch/index, ключевой путь BIP-86, как в кошельке для компьютера. У каждого индекса также есть постквантовый вариант (XMSS-лист из purpose 222’), который отслеживается и указывается здесь после использования. Кнопка обновления проверяет каждый адрес, оба варианта, прямо сейчас; главный экран проверяет только используемые.</string>
+    <string name="settings_contacts_title">Контакты</string>
+    <string name="settings_contacts_empty">Контактов пока нет</string>
+    <string name="settings_contacts_empty_body">Сохраняйте адреса, по которым часто платите. Имена отображаются в вашей активности и в поле получателя.</string>
+    <string name="settings_contacts_add">Добавить контакт</string>
+    <string name="settings_contacts_info">Контакты хранятся только на этом телефоне и не входят в вашу фразу восстановления.</string>
+    <string name="settings_contacts_new">Новый контакт</string>
+    <string name="settings_contacts_address">Адрес %1$s</string>
+    <string name="settings_contacts_invalid">Недопустимый адрес %1$s</string>
+    <string name="settings_contacts_name_required">Дайте контакту имя</string>
+    <string name="settings_about_title">О приложении</string>
+    <string name="settings_about_source">Исходный код PocketPRL</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Исходный код Pearl (GitHub)</string>
+    <string name="settings_about_explorer">Обозреватель блоков</string>
+    <string name="settings_about_check">Проверить обновления</string>
+    <string name="settings_about_checking">Проверка…</string>
+    <string name="settings_about_latest">У вас последняя версия (v%1$s).</string>
+    <string name="settings_about_failed">Не удалось связаться с GitHub. Проверьте подключение и попробуйте снова.</string>
+    <string name="settings_about_update_title">Доступно обновление</string>
+    <string name="settings_about_update_body">Доступна версия %1$s. У вас v%2$s.</string>
+    <string name="settings_about_update">Обновить</string>
+    <string name="settings_about_later">Позже</string>
+    <string name="settings_about_version_label">Версия</string>
+    <string name="settings_about_network">Сеть</string>
+    <string name="settings_about_coin_type">Тип монеты</string>
+    <string name="settings_about_addresses">Адреса</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Подпись</string>
+    <string name="settings_about_signing_value">BIP-340 Schnorr key path, libsecp256k1</string>
+    <string name="settings_about_pq">PQ-обязательство</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL — независимый легковесный кошелёк с открытым исходным кодом для сети Pearl. Он создаёт те же адреса, что и официальный кошелёк для компьютера (oyster), и проверен на соответствие ему с помощью тестовых векторов, сгенерированных из исходного кода Pearl.</string>
+    <string name="settings_about_warranty">Это программное обеспечение предоставляется «как есть», без гарантий. Проверяйте сборки, храните фразу восстановления офлайн и сначала тестируйте с небольшими суммами.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Индексатор</string>
+    <string name="indexer_body">PocketPRL читает балансы, историю и оценки комиссии из индексатора Blockbook и транслирует через него. Ключи никогда не покидают телефон, но индексатор узнаёт, какие адреса вы запрашиваете. Укажите свой экземпляр, если это для вас важно.</string>
+    <string name="indexer_label">URL Blockbook (только https)</string>
+    <string name="indexer_default">По умолчанию: %1$s</string>
+    <string name="indexer_saved">Сохранено. Потяните вниз на главном экране, чтобы синхронизировать заново.</string>
+    <string name="indexer_save">Сохранить</string>
+    <string name="indexer_reset">Сбросить по умолчанию</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Авто (система)</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Океан</string>
+    <string name="accent_sunset">Закат</string>
+    <string name="accent_violet">Фиолетовый</string>
+    <string name="accent_forest">Лес</string>
+    <string name="accent_rose">Роза</string>
+    <string name="accent_mono">Моно</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Узкий пробел</string>
+    <string name="grouping_space">Пробел</string>
+    <string name="grouping_comma">Запятая</string>
+    <string name="grouping_period">Точка</string>
+    <string name="grouping_apostrophe">Апостроф</string>
+    <string name="grouping_none">Нет</string>
+    <string name="decimal_period">Точка (.)</string>
+    <string name="decimal_comma">Запятая (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Нет соединения с индексатором</string>
+    <string name="sync_err_not_responding">Индексатор не отвечает</string>
+    <string name="sync_err_no_internet">Нет подключения к интернету</string>
+    <string name="sync_err_lost_connection">Потеряно соединение с индексатором</string>
+    <string name="wallet_deriving_receive">Вывод адреса для получения %1$d из %2$d</string>
+    <string name="wallet_deriving_change">Вывод адреса для сдачи %1$d из %2$d</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">Проверка %1$d адреса…</item>
+        <item quantity="few">Проверка %1$d адресов…</item>
+        <item quantity="many">Проверка %1$d адресов…</item>
+        <item quantity="other">Проверка %1$d адреса…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">%1$d адрес не удалось проверить (%2$s); повторная попытка</item>
+        <item quantity="few">%1$d адреса не удалось проверить (%2$s); повторная попытка</item>
+        <item quantity="many">%1$d адресов не удалось проверить (%2$s); повторная попытка</item>
+        <item quantity="other">%1$d адреса не удалось проверить (%2$s); повторная попытка</item>
+    </plurals>
+    <string name="address_err_enter">Введите адрес получателя</string>
+    <string name="address_err_invalid">Недопустимый адрес Pearl</string>
+    <string name="address_err_unknown_prefix">Неизвестный префикс адреса «%1$s»</string>
+    <string name="address_err_only_taproot">Поддерживаются только адреса Taproot (%1$s1p…)</string>
+    <string name="address_err_invalid_length">Недопустимая длина адреса Taproot</string>
+    <string name="address_err_wrong_network">Это адрес %1$s; этот кошелёк в сети %2$s</string>
+    <string name="qr_err_invalid_link">Эта ссылка не является допустимым платёжным запросом %1$s.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Входящие платежи</string>
+    <string name="notif_channel_payments_desc">Полученные платежи и награды за блок — при появлении и подтверждении</string>
+    <string name="notif_channel_price">Оповещения о цене</string>
+    <string name="notif_channel_price_desc">Крупные изменения цены PRL за 24 часа</string>
+    <string name="notif_block_confirmed">Награда за блок подтверждена</string>
+    <string name="notif_block">Награда за блок</string>
+    <string name="notif_payment_confirmed">Платёж подтверждён</string>
+    <string name="notif_payment_received">Платёж получен</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Откройте PocketPRL, чтобы узнать подробности</string>
+    <string name="notif_mined">+%1$s %2$s • доступно после %3$d подтверждений</string>
+    <string name="notif_waiting">+%1$s %2$s • ожидает подтверждения</string>
+    <string name="notif_in_block">+%1$s %2$s • в блоке %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">Оповещение о цене PRL</string>
+    <string name="price_dir_up">Вверх</string>
+    <string name="price_dir_down">Вниз</string>
+    <string name="price_alert_body">%1$s %2$s%%: теперь %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Экспорт истории</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Сделайте его своим</string>
+    <string name="personalize_subtitle">Выберите, как PocketPRL выглядит и читается. Всё это можно изменить позже в настройках.</string>
+    <string name="personalize_preview">Предпросмотр</string>
+    <string name="personalize_section_look">Внешний вид</string>
+    <string name="personalize_section_numbers">Числа</string>
+    <string name="personalize_section_currency">Валюта</string>
+    <string name="personalize_section_motion">Движение</string>
+    <string name="personalize_continue">Продолжить</string>
+    <string name="personalize_reset">Сбросить настройки по умолчанию</string>
+    <string name="personalize_grouping_toggle">Группировать тысячи</string>
+    <string name="notif_period">примерно раз в минуту</string>
+    <string name="autolock_immediately">Сразу</string>
+    <string name="autolock_1m">1 минута</string>
+    <string name="autolock_5m">5 минут</string>
+    <string name="autolock_15m">15 минут</string>
+    <string name="autolock_1h">1 час</string>
+    <string name="autolock_never">Никогда</string>
+    <string name="duration_seconds">%1$d секунд</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Сменить кошелёк</string>
+    <string name="action_receive">Получить</string>
+    <string name="action_lock">Заблокировать</string>
+    <string name="action_show_balance">Показать баланс</string>
+    <string name="action_hide_balance">Скрыть баланс</string>
+    <string name="pwd_weak">Слабый</string>
+    <string name="pwd_fair">Средний</string>
+    <string name="pwd_good">Хороший</string>
+    <string name="pwd_strong">Надёжный</string>
+    <string name="pwd_strength">Пароль: %1$s</string>
+    <string name="pwd_show">Показать пароль</string>
+    <string name="pwd_hide">Скрыть пароль</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d кошелёк • %2$s</item>
+        <item quantity="few">%1$d кошелька • %2$s</item>
+        <item quantity="many">%1$d кошельков • %2$s</item>
+        <item quantity="other">%1$d кошелька • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Входы / выходы</string>
+    <string name="activity_size_label">Размер</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Использовать пароль</string>
+    <string name="bio_no_crypto_object">Нет криптообъекта</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Отсканируйте адрес Pearl или платёжную ссылку</string>
+    <string name="send_open_settings">Открыть настройки</string>
+    <string name="send_camera_off">Доступ к камере для PocketPRL отключён.</string>
+    <string name="send_camera_needed">Для сканирования нужна камера.</string>
+    <string name="send_for_label">Для: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Сохраните адрес из транзакции или в разделе «Настройки › Контакты».</string>
+    <string name="receive_optional">Необязательно</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Открыть настройки</string>
+    <string name="settings_notif_off">Уведомления отключены, поэтому эта функция недоступна.</string>
+    <string name="settings_notif_blocked">Уведомления для PocketPRL заблокированы.</string>
+    <string name="settings_keystore_error">Не удалось создать ключ Keystore</string>
+    <string name="settings_biometric_prompt">Включить биометрическую разблокировку</string>
+    <string name="settings_seed_password">Пароль кошелька</string>
+    <string name="settings_seed_incorrect">Неверный пароль</string>
+    <string name="settings_copy_address">Копировать адрес</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Ошибка</string>
+    <string name="vm_biometric_enable_failed">Не удалось включить биометрию</string>
+    <string name="settings_section_language">Язык</string>
+    <string name="settings_language">Язык</string>
+    <string name="settings_language_system">По умолчанию в системе</string>
+</resources>

@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.input.ImeAction
@@ -46,6 +47,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.pocketprl.R
+import dev.pocketprl.core.format.Format
 import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.theme.Mono
 import dev.pocketprl.ui.theme.TabularNumbers
@@ -96,11 +99,11 @@ fun AmountHero(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         if (!compact) {
-            Text("Amount", style = t.labelLarge, color = muted)
+            Text(stringResource(R.string.label_amount), style = t.labelLarge, color = muted)
             Spacer(Modifier.height(6.dp))
         }
         Row(verticalAlignment = Alignment.Bottom) {
-            if (fiatMode) Text("$", style = style.copy(fontSize = size * 0.6f, color = muted), modifier = Modifier.alignByBaseline().padding(end = 2.dp))
+            if (fiatMode) Text(Format.config.fiat.symbol, style = style.copy(fontSize = size * 0.6f, color = muted), modifier = Modifier.alignByBaseline().padding(end = 2.dp))
             BasicTextField(
                 value = text,
                 onValueChange = { onTextChange(sanitizeAmount(it, maxDecimals)) },
@@ -112,7 +115,7 @@ fun AmountHero(
                 modifier = Modifier.alignByBaseline().width(fieldWidth).focusRequester(focus),
                 decorationBox = { inner ->
                     Box(contentAlignment = Alignment.CenterStart) {
-                        if (text.isEmpty()) Text("0", style = style.copy(color = muted.copy(alpha = 0.4f)))
+                        if (text.isEmpty()) Text(stringResource(R.string.send_amount_placeholder), style = style.copy(color = muted.copy(alpha = 0.4f)))
                         inner()
                     }
                 },
@@ -131,8 +134,11 @@ fun AmountHero(
         if (onSwap != null || onMax != null) {
             Spacer(Modifier.height(12.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (onSwap != null) SmallPill(if (fiatMode) "Enter in $ticker" else "Enter in USD", onClick = { haptics.tick(); onSwap() }, icon = AppIcons.Swap)
-                if (onMax != null) SmallPill(if (maxSelected) "Max ✓" else "Max", onClick = { haptics.tick(); onMax() }, selected = maxSelected, enabled = maxEnabled)
+                if (onSwap != null) {
+                    val enterIn = if (fiatMode) stringResource(R.string.send_enter_in, ticker) else stringResource(R.string.send_enter_in, Format.config.fiat.code.uppercase())
+                    SmallPill(enterIn, onClick = { haptics.tick(); onSwap() }, icon = AppIcons.Swap)
+                }
+                if (onMax != null) SmallPill(if (maxSelected) stringResource(R.string.send_max_selected) else stringResource(R.string.send_max), onClick = { haptics.tick(); onMax() }, selected = maxSelected, enabled = maxEnabled)
             }
         }
     }
@@ -208,7 +214,7 @@ fun RecipientField(
             Spacer(Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    if (contactName != null) "To • $contactName" else "To",
+                    if (contactName != null) stringResource(R.string.send_to_contact, contactName) else stringResource(R.string.send_to),
                     style = MaterialTheme.typography.labelSmall, color = if (contactName != null) cs.primary else cs.onSurfaceVariant, maxLines = 1,
                 )
                 Spacer(Modifier.height(2.dp))
@@ -223,18 +229,18 @@ fun RecipientField(
                     modifier = Modifier.fillMaxWidth(),
                     decorationBox = { inner ->
                         Box {
-                            if (address.isEmpty()) Text("${hrp}1p… or a contact", style = MaterialTheme.typography.bodyMedium, color = cs.onSurfaceVariant.copy(alpha = 0.7f))
+                            if (address.isEmpty()) Text(stringResource(R.string.send_address_placeholder, hrp), style = MaterialTheme.typography.bodyMedium, color = cs.onSurfaceVariant.copy(alpha = 0.7f))
                             inner()
                         }
                     },
                 )
             }
             if (address.isEmpty()) {
-                FieldIcon(Icons.Filled.Person, "Contacts", onContacts)
-                FieldIcon(AppIcons.Paste, "Paste", onPaste)
-                FieldIcon(AppIcons.Scan, "Scan", onScan)
+                FieldIcon(Icons.Filled.Person, stringResource(R.string.action_contacts), onContacts)
+                FieldIcon(AppIcons.Paste, stringResource(R.string.action_paste), onPaste)
+                FieldIcon(AppIcons.Scan, stringResource(R.string.action_scan), onScan)
             } else {
-                FieldIcon(Icons.Filled.Close, "Clear") { onAddressChange("") }
+                FieldIcon(Icons.Filled.Close, stringResource(R.string.action_clear)) { onAddressChange("") }
             }
         }
         if (error != null) Text(error, style = MaterialTheme.typography.bodySmall, color = cs.error, modifier = Modifier.padding(start = 16.dp, top = 4.dp))

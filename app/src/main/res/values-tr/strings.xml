@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Geri</string>
+    <string name="action_cancel">İptal</string>
+    <string name="action_save">Kaydet</string>
+    <string name="action_delete">Sil</string>
+    <string name="action_done">Bitti</string>
+    <string name="action_edit">Düzenle</string>
+    <string name="action_continue">Devam</string>
+    <string name="action_close">Kapat</string>
+    <string name="action_add">Ekle</string>
+    <string name="action_share">Paylaş</string>
+    <string name="action_copy">Kopyala</string>
+    <string name="action_retry">Yeniden dene</string>
+    <string name="action_scan">Tara</string>
+    <string name="action_paste">Yapıştır</string>
+    <string name="action_clear">Temizle</string>
+    <string name="action_contacts">Kişiler</string>
+    <string name="action_send">Gönder</string>
+    <string name="label_amount">Tutar</string>
+    <string name="label_name">Ad</string>
+    <string name="label_address">Adres</string>
+    <string name="label_fee">Ücret</string>
+    <string name="label_date">Tarih</string>
+    <string name="label_block">Blok</string>
+    <string name="label_total">Toplam</string>
+    <string name="label_to">Alıcı</string>
+    <string name="label_from">Gönderen</string>
+    <string name="label_network">Ağ</string>
+    <string name="copied">Kopyalandı</string>
+    <string name="clipboard_address">Pearl adresi</string>
+    <string name="clipboard_txid">İşlem kimliği</string>
+    <string name="balance_hidden">Bakiye gizli</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Bugün</string>
+    <string name="day_yesterday">Dün</string>
+    <string name="time_just_now">az önce</string>
+    <string name="time_pending">beklemede</string>
+    <string name="label_unconfirmed">Onaylanmamış</string>
+    <string name="eta_minutes">~%1$d dk</string>
+    <string name="eta_hours">~%1$d sa</string>
+    <string name="eta_hours_half">~%1$d,5 sa</string>
+    <string name="time_ago_s">%1$d sn önce</string>
+    <string name="time_ago_m">%1$d dk önce</string>
+    <string name="time_ago_h">%1$d sa önce</string>
+    <string name="time_ago_d">%1$d gün önce</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Cüzdan ekle</string>
+    <string name="welcome_add_headline">Başka bir cüzdan, tamamen ayrı</string>
+    <string name="welcome_add_body">Kendi kurtarma ifadesi, parolası, geçmişi ve kişileri. Ana ekran başlığından cüzdanlar arasında geçiş yapın.</string>
+    <string name="welcome_one_unlocked">Aynı anda yalnızca bir cüzdanın kilidi açık olur; geçiş yapmak mevcut olanı kilitler.</string>
+    <string name="welcome_tagline">Pearl (PRL) cebinizde. Masaüstü cüzdanla aynı anahtarlar, ağırlığı yok.</string>
+    <string name="welcome_feature_selfcustody_title">Kendi saklaman</string>
+    <string name="welcome_feature_selfcustody_body">Anahtarlar bu telefonda oluşturulur ve kalır; şifrelenir ve biyometriyle korunur.</string>
+    <string name="welcome_feature_desktop_title">Masaüstüyle uyumlu</string>
+    <string name="welcome_feature_desktop_body">oyster ile tamamen aynı kuantum sonrası Taproot adreslerini üretir. Aralarında serbestçe geçiş yapın.</string>
+    <string name="welcome_feature_overview_title">Anında görünüm</string>
+    <string name="welcome_feature_overview_body">Bakiyeler, geçmiş ve madencilik ödülleri Pearl indeksleyicisinden. Zincir indirme yok.</string>
+    <string name="welcome_feature_phone_title">Telefon için tasarlandı</string>
+    <string name="welcome_feature_phone_body">Ödeme bağlantıları, kişiler, notlar, birden çok cüzdan ve “ödeme aldınız” bildirimleri.</string>
+    <string name="welcome_network">Ağ</string>
+    <string name="welcome_create">Yeni cüzdan oluştur</string>
+    <string name="welcome_restore">Kurtarma ifadesinden geri yükle</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Pearl Cüzdanım</string>
+    <string name="onboard_step">Adım %1$d / 3 • %2$s</string>
+    <string name="onboard_title_create">Cüzdan oluştur</string>
+    <string name="onboard_title_seed">Kurtarma ifadeniz</string>
+    <string name="onboard_title_verify">İfadeyi doğrula</string>
+    <string name="onboard_title_working">Kuruluyor</string>
+    <string name="onboard_name_protect">Cüzdanınızı adlandırın ve koruyun</string>
+    <string name="onboard_wallet_name">Cüzdan adı</string>
+    <string name="onboard_password">Parola</string>
+    <string name="onboard_confirm_password">Parolayı doğrula</string>
+    <string name="onboard_password_warning">Parola, anahtarlarınızı bu cihazda şifreler. Sıfırlama yoktur: unutursanız kurtarma ifadenizden geri yükleyin.</string>
+    <string name="onboard_password_hint">Harf, sayı veya simge karışımıyla en az 8 karakter kullanın.</string>
+    <string name="onboard_seed_write">Bu 12 kelimeyi sırayla yazın ve çevrimdışı saklayın.</string>
+    <string name="onboard_seed_secret_title">Gizli tutun</string>
+    <string name="onboard_seed_secret_body">Bu kelimelere sahip olan herkes paranızı kontrol eder. Bu ekranda ekran görüntüleri engellenir; ifadeyi dijital olarak saklamayın.</string>
+    <string name="onboard_written">Yazdım</string>
+    <string name="onboard_creating">Cüzdan oluşturuluyor…</string>
+    <string name="onboard_restoring">Geri yükleniyor…</string>
+    <string name="onboard_quiz_instruction">Yedeğinizi doğrulamak için her konum için doğru kelimeyi seçin.</string>
+    <string name="onboard_word_n">Kelime #%1$d</string>
+    <string name="onboard_quiz_error">Bu kelimeler ifadenizle eşleşmiyor. Geri dönüp dikkatlice kontrol edin.</string>
+    <string name="onboard_verify_create">Doğrula &amp; cüzdan oluştur</string>
+    <string name="onboard_restore_title">Cüzdanı geri yükle</string>
+    <string name="onboard_restore_progress_body">Her adres bir kuantum sonrası anahtar gerektirir, bu yüzden keşif aralığını türetmek biraz zaman alır. Ardından cüzdan geçmişiniz için Pearl indeksleyicisini tarar.</string>
+    <string name="onboard_recovery_label">Kurtarma ifadesi veya hex seed</string>
+    <string name="onboard_recovery_placeholder">Boşluklarla ayrılmış 12–24 kelime</string>
+    <string name="onboard_new_password">Yeni parola</string>
+    <string name="onboard_restore_compatible">Resmî Pearl masaüstü cüzdanındaki (oyster) ifadelerle ve Pearl’ün türetimini kullanan tüm BIP-39 cüzdanlarıyla çalışır.</string>
+    <string name="onboard_restore_button">Cüzdanı geri yükle</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">%1$d kelimelik kurtarma ifadesi</string>
+    <string name="onboard_check_hex">%1$d baytlık hex seed</string>
+    <string name="onboard_err_enter_phrase">Kurtarma ifadenizi girin</string>
+    <string name="onboard_err_hex_even">Hex seed çift sayıda karakter içermelidir</string>
+    <string name="onboard_err_hex_range">Hex seed 128 ile 512 bit arasında olmalıdır</string>
+    <string name="onboard_err_enter_phrase_or_hex">12–24 kelimelik bir kurtarma ifadesi veya hex seed girin</string>
+    <string name="onboard_err_word_count">Bir kurtarma ifadesi 12, 15, 18, 21 veya 24 kelime içerir (%1$d bulundu)</string>
+    <string name="onboard_err_unknown_word">“%1$s” bir BIP39 kelimesi değil</string>
+    <string name="onboard_err_checksum">Sağlama toplamı uyuşmuyor: kelime sırasını ve yazımını kontrol edin</string>
+    <string name="onboard_err_create_failed">Cüzdan oluşturulamadı</string>
+    <string name="onboard_err_restore_failed">Geri yükleme başarısız</string>
+    <string name="onboard_preparing">Cüzdan hazırlanıyor…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">%1$s kilidini aç</string>
+    <string name="unlock_password">Cüzdan parolası</string>
+    <string name="unlock_button">Kilidi aç</string>
+    <string name="unlock_use_biometrics">Biyometri kullan</string>
+    <string name="unlock_switch_wallet">Cüzdan değiştir (%1$d)</string>
+    <string name="unlock_add_another">Başka cüzdan ekle</string>
+    <string name="unlock_forgot">Parolayı mı unuttunuz? Sil ve geri yükle</string>
+    <string name="unlock_erase_title">“%1$s” silinsin mi?</string>
+    <string name="unlock_erase_body">Bu cüzdanın anahtarları ve bu telefondaki yerel geçmişi silinecek. Diğer cüzdanlar etkilenmez. Parayı yalnızca kurtarma ifadesiyle geri alabilirsiniz. Onaylamak için ERASE yazın.</string>
+    <string name="unlock_erase_confirm">Sil</string>
+    <string name="unlock_error_biometric">Biyometrik anahtar kullanılamıyor (parmak izi eklendi mi ya da kaldırıldı mı?). Parolanızı kullanın.</string>
+    <string name="unlock_error_incorrect">Yanlış parola</string>
+    <string name="unlock_error_failed">Kilit açma başarısız</string>
+    <string name="unlock_error_biometric_failed">Biyometrik kilit açma başarısız: %1$s. Parolanızı kullanın.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Cüzdanlar</string>
+    <string name="switcher_test_coins">%1$s • test parası</string>
+    <string name="switcher_current">Geçerli cüzdan</string>
+    <string name="switcher_add_title">Cüzdan ekle</string>
+    <string name="switcher_add_body">Yeni bir tane oluşturun veya başka bir ifadeyi geri yükleyin. Her cüzdanın kendi parolası vardır.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Toplam bakiye</string>
+    <string name="dash_spendable">Harcanabilir</string>
+    <string name="dash_incoming">Gelen</string>
+    <string name="dash_maturing">Olgunlaşıyor</string>
+    <string name="dash_activity">Etkinlik</string>
+    <string name="dash_view_all">Tümünü gör (%1$d)</string>
+    <string name="dash_looking">İşlemler aranıyor…</string>
+    <string name="dash_no_tx">Henüz işlem yok</string>
+    <string name="dash_no_tx_body">Başlamak için alım adresinizi veya bir ödeme bağlantısı paylaşın.</string>
+    <string name="dash_show_address">Adresimi göster</string>
+    <string name="dash_testnet_warning">%1$s üzerindesiniz. Buradaki paraların değeri yoktur.</string>
+    <string name="dash_sync_syncing">Eşitleniyor…</string>
+    <string name="dash_sync_failed">Eşitleme başarısız</string>
+    <string name="dash_sync_synced">Eşitlendi</string>
+    <string name="dash_sync_not_synced">Henüz eşitlenmedi</string>
+    <string name="dash_sync_block">Blok %1$s • %2$s güncellendi</string>
+    <string name="dash_sync_last">Son eşitleme %1$s • blok %2$s</string>
+    <string name="dash_mining_rewards">Madencilik ödülleri</string>
+    <string name="dash_last_7_days">Son 7 gün</string>
+    <string name="dash_all_time">Tüm zamanlar</string>
+    <string name="dash_mining_progress">%1$s olgunlaşıyor • sonraki harcanabilir %2$d blok sonra (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Ödüller olgunlaşıyor</string>
+    <string name="dash_price_content_desc">%1$s %2$s oranında, 24 saatte</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d blok</item>
+        <item quantity="other">%1$d blok</item>
+    </plurals>
+    <string name="tx_received">Alındı</string>
+    <string name="tx_sent">Gönderildi</string>
+    <string name="tx_self">Kendine transfer</string>
+    <string name="tx_mined">Kazıldı</string>
+    <string name="tx_to_contact">%1$s kişisine</string>
+    <string name="tx_from_contact">%1$s kişisinden</string>
+    <string name="tx_pending">Beklemede</string>
+    <string name="tx_pending_seen">Beklemede • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d onay</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">%1$s gönder</string>
+    <string name="send_spendable">Harcanabilir %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Geçerli bir tutar girin (8 ondalık basamağa kadar)</string>
+    <string name="send_enter_valid_amount_short">Geçerli bir tutar girin</string>
+    <string name="send_enter_in">%1$s olarak girin</string>
+    <string name="send_max">Maks</string>
+    <string name="send_max_selected">Maks ✓</string>
+    <string name="send_to">Alıcı</string>
+    <string name="send_to_contact">Alıcı • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… veya bir kişi</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Ağ ücreti</string>
+    <string name="send_use_estimates">Tahminleri kullan</string>
+    <string name="send_custom_rate">Özel oran</string>
+    <string name="send_fee_rate_label">Ücret oranı (vbyte başına grain, en az 1)</string>
+    <string name="send_fee_normal">Normal</string>
+    <string name="send_fee_fast">Hızlı</string>
+    <string name="send_fee_loading">Ücret tahminleri yüklenemedi: %1$s</string>
+    <string name="send_summary">Özet</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Girdiler</string>
+    <string name="send_inputs_change">%1$d • para üstü %2$s</string>
+    <string name="send_slider">Gönder</string>
+    <string name="send_not_ready">Hazır değil</string>
+    <string name="send_sending">Gönderiliyor</string>
+    <string name="send_confirming">Onaylanıyor</string>
+    <string name="send_slide">Göndermek için kaydırın veya çift dokunun</string>
+    <string name="send_why_amount_blank">Devam etmek için bir tutar girin</string>
+    <string name="send_why_amount_invalid">Devam etmek için geçerli bir tutar girin</string>
+    <string name="send_why_recipient_blank">Devam etmek için bir alıcı girin</string>
+    <string name="send_why_recipient_invalid">Devam etmek için alıcı adresini düzeltin</string>
+    <string name="send_why_fee_unavailable">Ücret tahmini kullanılamıyor</string>
+    <string name="send_why_waiting_fees">Ücret tahminleri bekleniyor…</string>
+    <string name="send_why_preparing">Ödeme hazırlanıyor…</string>
+    <string name="send_err_no_funds">Harcanabilir para yok</string>
+    <string name="send_err_insufficient">Yetersiz bakiye: ücret dahil %1$s %2$s gerekiyor, %3$s var</string>
+    <string name="send_err_changed">Siz onaylarken ödeme değişti. Ayrıntıları kontrol edip yeniden deneyin.</string>
+    <string name="send_password_title">Cüzdan parolası</string>
+    <string name="send_password_body">%1$s %2$s tutarını %3$s adresine gönderir.</string>
+    <string name="send_auth_failed">Kimlik doğrulama başarısız</string>
+    <string name="send_bio_unavailable">Biyometrik anahtar kullanılamıyor; Ayarlar’dan biyometriyi kapatıp yeniden açın.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">%1$s al</string>
+    <string name="receive_preparing">Adres hazırlanıyor…</string>
+    <string name="receive_standard">Adres #%1$d • Taproot, masaüstü cüzdanla aynı</string>
+    <string name="receive_pq">Adres #%1$d • kuantum sonrası varyant</string>
+    <string name="receive_copy">Kopyala</string>
+    <string name="receive_share">Paylaş</string>
+    <string name="receive_share_request">İsteği paylaş</string>
+    <string name="receive_request_amount">Tutar iste</string>
+    <string name="receive_label">Etiket (isteğe bağlı)</string>
+    <string name="receive_label_placeholder">Fatura #42</string>
+    <string name="receive_link_hint">Bir tutar veya etiketle, kod ve paylaşım bağlantısı, gönderen için tutarı dolduran bir ödeme bağlantısına dönüşür.</string>
+    <string name="receive_fresh">Yeni bir adres kullan</string>
+    <string name="receive_generating">Oluşturuluyor…</string>
+    <string name="receive_show_pq">Kuantum sonrası varyantı göster</string>
+    <string name="receive_show_std">Standart adresi göster</string>
+    <string name="receive_pq_warning_title">Masaüstü cüzdanda görünmez</string>
+    <string name="receive_pq_warning_body">Bu varyant, adresin içine bir XMSS kuantum sonrası anahtarı yerleştirir. Resmî masaüstü cüzdan bunu türetmez, bu yüzden buraya gönderilen paralar Pearl’ün masaüstü cüzdanı destekleyene kadar yalnızca PocketPRL’de görünür. Ödeyen kişi özellikle bunu istemiyorsa standart adresi kullanın.</string>
+    <string name="receive_reuse_info">Adresler yeniden kullanılabilir, ancak ödeyici başına yeni bir adres geçmişinizi gizli tutar. Gelen ödemeler, gönderen işlemi yayınlar yayınlamaz Etkinlik’te görünür.</string>
+    <string name="receive_only_send">Bu adrese yalnızca Pearl (%1$s) gönderin.</string>
+    <string name="receive_qr_failed">QR kodu çizilemedi. Bunun yerine adresi kopyalayın veya paylaşın.</string>
+    <string name="receive_qr_desc">Adres QR kodu</string>
+    <string name="receive_requesting">%1$s %2$s isteniyor</string>
+    <string name="receive_requesting_any">Herhangi bir tutar isteniyor</string>
+    <string name="receive_requesting_for">%1$s, “%2$s” için</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Gönderildi</string>
+    <string name="sent_to">%1$s kişisine</string>
+    <string name="sent_confirms">Ortalama %1$s içinde onaylanır.</string>
+    <string name="sent_txid">İşlem kimliği</string>
+    <string name="sent_view_explorer">Gezgin’de görüntüle</string>
+    <string name="sent_done">Bitti</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Etkinlik</string>
+    <string name="activity_export">CSV dışa aktar</string>
+    <string name="activity_loading">Geçmiş yükleniyor…</string>
+    <string name="activity_none">Henüz etkinlik yok</string>
+    <string name="activity_nothing">Burada bir şey yok</string>
+    <string name="activity_none_body">Ödemeler ve madencilik ödülleri, indeksleyici onları görür görmez görünecek.</string>
+    <string name="activity_title_single">İşlem</string>
+    <string name="activity_not_found">İşlem bulunamadı</string>
+    <string name="activity_self">Kendinize gönderildi • yalnızca ağ ücreti</string>
+    <string name="activity_fiat_today">≈ bugün %1$s</string>
+    <string name="activity_pending_mempool">Mempool’da beklemede</string>
+    <string name="activity_conf_of_maturity">%1$d / %2$d onay, harcamak için</string>
+    <string name="activity_confirmed">Onaylandı • %1$s onay</string>
+    <string name="activity_spendable_in">%1$d blok sonra harcanabilir (%2$s)</string>
+    <string name="activity_txid">İşlem kimliği</string>
+    <string name="activity_from">Gönderen</string>
+    <string name="activity_to">Alıcı</string>
+    <string name="activity_from_your">Adresinizden</string>
+    <string name="activity_to_your">Adresinize</string>
+    <string name="activity_save_contact">Kişi olarak kaydet</string>
+    <string name="activity_view_explorer">Gezgin’de görüntüle</string>
+    <string name="activity_maturity_info">Blok ödülleri, Bitcoin’den türeyen her zincirde olduğu gibi %1$d onaydan sonra harcanabilir hale gelir.</string>
+    <string name="activity_note">Not</string>
+    <string name="activity_note_placeholder">Bu ne içindi?</string>
+    <string name="activity_note_hint">Notlar yalnızca bu telefonda kalır.</string>
+    <string name="activity_contact_new">Yeni kişi</string>
+    <string name="activity_contact_edit">Kişiyi düzenle</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Toplam çıkış</string>
+    <string name="activity_filter_all">Tümü</string>
+    <string name="activity_filter_received">Alınan</string>
+    <string name="activity_filter_sent">Gönderilen</string>
+    <string name="activity_filter_mined">Kazılan</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d işlem</item>
+        <item quantity="other">%1$d işlem</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d onay</item>
+        <item quantity="other">%1$d onay</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_section_wallet">Cüzdan</string>
+    <string name="settings_section_appearance">Görünüm</string>
+    <string name="settings_section_numbers">Sayılar &amp; para birimi</string>
+    <string name="settings_section_dashboard">Panel</string>
+    <string name="settings_section_security">Güvenlik &amp; gizlilik</string>
+    <string name="settings_section_notifications">Bildirimler</string>
+    <string name="settings_section_network">Ağ</string>
+    <string name="settings_section_backup">Yedekleme</string>
+    <string name="settings_section_about">Hakkında</string>
+    <string name="settings_section_danger">Tehlike bölgesi</string>
+    <string name="settings_name">Ad</string>
+    <string name="settings_created">Oluşturulma</string>
+    <string name="settings_wallets">Cüzdanlar</string>
+    <string name="settings_wallets_one">Yalnızca bu</string>
+    <string name="settings_wallets_n">Bu cihazda %1$d</string>
+    <string name="settings_contacts">Kişiler</string>
+    <string name="settings_contacts_saved">%1$d kayıtlı</string>
+    <string name="settings_addresses">Adresler</string>
+    <string name="settings_addresses_derived">%1$d türetildi</string>
+    <string name="settings_change_password">Parolayı değiştir</string>
+    <string name="settings_biometric">Biyometrik kilit açma</string>
+    <string name="settings_biometric_none">Kayıtlı yok</string>
+    <string name="settings_biometric_sub">Parmak izi veya yüz</string>
+    <string name="settings_confirm_send">Göndermeden önce onayla</string>
+    <string name="settings_confirm_send_sub">Her ödemede sor</string>
+    <string name="settings_auto_lock">Otomatik kilitle</string>
+    <string name="settings_hide_balances">Bakiyeleri gizle</string>
+    <string name="settings_hide_balances_sub">Her tutarı maskele</string>
+    <string name="settings_start_hidden">Gizli başlat</string>
+    <string name="settings_start_hidden_sub">Kilit açıldığında bakiyeleri gizle</string>
+    <string name="settings_secure_all">Her yerde ekran görüntülerini engelle</string>
+    <string name="settings_secure_all_sub">Ana ekranı ve etkinlik ekranlarını da koru</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_accent">Vurgu rengi</string>
+    <string name="settings_dynamic_color">Dinamik renk</string>
+    <string name="settings_dynamic_color_sub">Sistem duvar kağıdı paletini kullan (Android 12+)</string>
+    <string name="settings_reduced_motion">Hareketi azalt</string>
+    <string name="settings_reduced_motion_sub">Dönen rakamlar veya ekran animasyonları yok</string>
+    <string name="settings_odometer">Kilometre sayacı animasyonu</string>
+    <string name="settings_odometer_sub">Bakiyelerde dönen rakamlar</string>
+    <string name="settings_odometer_haptics">Kilometre sayacı dokunsal geri bildirimi</string>
+    <string name="settings_odometer_haptics_sub">Her dönüşte titreş</string>
+    <string name="settings_odometer_haptics_off">Animasyon kapalıyken etkisizdir</string>
+    <string name="settings_show_fiat">Fiat değerini göster</string>
+    <string name="settings_fiat_currency">Fiat para birimi</string>
+    <string name="settings_decimals">Bakiye ondalıkları</string>
+    <string name="settings_decimal_sep">Ondalık ayırıcı</string>
+    <string name="settings_grouping_sep">Binlik ayırıcı</string>
+    <string name="settings_hero">Büyük sayı</string>
+    <string name="settings_hero_total">Toplam bakiye</string>
+    <string name="settings_hero_spendable">Harcanabilir bakiye</string>
+    <string name="settings_show_change">24s fiyat değişimi</string>
+    <string name="settings_show_change_sub">Günlük değişim rozetini göster</string>
+    <string name="settings_show_mining">Madencilik ödülleri kartı</string>
+    <string name="settings_show_mining_sub">Bu cüzdana madencilik yapmıyorsanız gizleyin</string>
+    <string name="settings_poll_mode">Yenileme hızı</string>
+    <string name="settings_poll_live">Canlı</string>
+    <string name="settings_poll_balanced">Dengeli</string>
+    <string name="settings_poll_battery">Pil tasarrufu</string>
+    <string name="settings_notify_incoming">Gelen ödemeler</string>
+    <string name="settings_notify_incoming_sub">%1$s kontrol edilir</string>
+    <string name="settings_price_alerts">Fiyat uyarıları</string>
+    <string name="settings_price_alerts_sub">Büyük 24s hareketlerinde bildir</string>
+    <string name="settings_alert_threshold">Uyarı eşiği</string>
+    <string name="settings_alert_threshold_sub">24 saatte %1$s hareket</string>
+    <string name="settings_reveal_seed">Kurtarma ifadesini göster</string>
+    <string name="settings_reveal_seed_sub">Parolanızı gerektirir</string>
+    <string name="settings_indexer">İndeksleyici (Blockbook)</string>
+    <string name="settings_about_version">Sürüm %1$s</string>
+    <string name="settings_delete">Bu cüzdanı sil</string>
+    <string name="settings_password_title">Parolayı değiştir</string>
+    <string name="settings_password_current">Mevcut parola</string>
+    <string name="settings_password_new">Yeni parola</string>
+    <string name="settings_password_confirm">Yeni parolayı doğrula</string>
+    <string name="settings_password_updated">Parola değiştirildi.</string>
+    <string name="settings_password_update">Parolayı güncelle</string>
+    <string name="settings_password_info">Parolayı değiştirmek anahtarı yalnızca bu cihazda yeniden şifreler. Kurtarma ifadeniz aynı kalır.</string>
+    <string name="settings_password_error_current">Mevcut parola yanlış</string>
+    <string name="settings_password_error_short">Harf, sayı veya simge karışımıyla en az 8 karakter kullanın.</string>
+    <string name="settings_seed_title">Kurtarma ifadesi</string>
+    <string name="settings_seed_warning">Kurtarma ifadenizi asla paylaşmayın. PocketPRL personeli veya Pearl geliştiricileri bunu asla istemez.</string>
+    <string name="settings_seed_reveal">Göster</string>
+    <string name="settings_seed_hex">Hex seed</string>
+    <string name="settings_seed_written_hint">Kağıda yazın. Bu ekranda ekran görüntüleri engellenir.</string>
+    <string name="settings_rename_title">Cüzdanı yeniden adlandır</string>
+    <string name="settings_auto_lock_title">Şu süre sonra otomatik kilitle</string>
+    <string name="settings_theme_title">Tema</string>
+    <string name="settings_accent_title">Vurgu rengi</string>
+    <string name="settings_delete_title">“%1$s” silinsin mi?</string>
+    <string name="settings_delete_body">Bu, bu cüzdanın şifrelenmiş anahtarlarını, önbelleğe alınmış geçmişini, kişilerini ve notlarını bu telefondan kaldırır. Diğer cüzdanlar etkilenmez. Kurtarma ifadeniz olduğundan emin olun. Onaylamak için DELETE yazın.</string>
+    <string name="settings_threshold_title">Fiyat uyarı eşiği</string>
+    <string name="settings_threshold_intro">24 saatlik değişim şu değere ulaştığında uyar:</string>
+    <string name="settings_addresses_title">Adresler</string>
+    <string name="settings_addresses_checking">Kontrol ediliyor…</string>
+    <string name="settings_addresses_derived_sub">%1$d dizin türetildi</string>
+    <string name="settings_addresses_rescan">Her adresi yeniden tara</string>
+    <string name="settings_addresses_receive">Alım #%1$d</string>
+    <string name="settings_addresses_change">Para üstü #%1$d</string>
+    <string name="settings_addresses_pq">%1$s • kuantum sonrası varyant</string>
+    <string name="settings_addresses_used">kullanıldı</string>
+    <string name="settings_addresses_info">Kopyalamak için bir adrese dokunun. Türetim: m/86’/%1$d’/0’/branch/index, masaüstü cüzdan gibi BIP-86 anahtar yolu. Her dizinin ayrıca izlenen ve kullanıldığında burada listelenen bir kuantum sonrası varyantı vardır (purpose 222’den XMSS tapleaf). Yenile düğmesi şu anda her adresi, her iki varyantı kontrol eder; ana ekran yalnızca kullanımda olanları kontrol eder.</string>
+    <string name="settings_contacts_title">Kişiler</string>
+    <string name="settings_contacts_empty">Henüz kişi yok</string>
+    <string name="settings_contacts_empty_body">Sık ödeme yaptığınız adresleri kaydedin. Adlar etkinliğinizde ve alıcı alanında görünür.</string>
+    <string name="settings_contacts_add">Kişi ekle</string>
+    <string name="settings_contacts_info">Kişiler yalnızca bu telefonda saklanır ve kurtarma ifadenizin bir parçası değildir.</string>
+    <string name="settings_contacts_new">Yeni kişi</string>
+    <string name="settings_contacts_address">%1$s adresi</string>
+    <string name="settings_contacts_invalid">Geçerli bir %1$s adresi değil</string>
+    <string name="settings_contacts_name_required">Kişiye bir ad verin</string>
+    <string name="settings_about_title">Hakkında</string>
+    <string name="settings_about_source">PocketPRL kaynak kodu</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Pearl kaynak kodu (GitHub)</string>
+    <string name="settings_about_explorer">Blok gezgini</string>
+    <string name="settings_about_check">Güncellemeleri kontrol et</string>
+    <string name="settings_about_checking">Kontrol ediliyor…</string>
+    <string name="settings_about_latest">En son sürümdesiniz (v%1$s).</string>
+    <string name="settings_about_failed">GitHub’a ulaşılamadı. Bağlantınızı kontrol edip yeniden deneyin.</string>
+    <string name="settings_about_update_title">Güncelleme mevcut</string>
+    <string name="settings_about_update_body">%1$s sürümü mevcut. Siz v%2$s kullanıyorsunuz.</string>
+    <string name="settings_about_update">Güncelle</string>
+    <string name="settings_about_later">Sonra</string>
+    <string name="settings_about_version_label">Sürüm</string>
+    <string name="settings_about_network">Ağ</string>
+    <string name="settings_about_coin_type">Para türü</string>
+    <string name="settings_about_addresses">Adresler</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">İmzalama</string>
+    <string name="settings_about_signing_value">BIP-340 Schnorr anahtar yolu, libsecp256k1</string>
+    <string name="settings_about_pq">PQ taahhüdü</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL, Pearl ağı için bağımsız, açık kaynaklı bir hafif cüzdandır. Resmî masaüstü cüzdanla (oyster) aynı adresleri üretir ve Pearl kaynak kodundan üretilen test vektörleriyle ona karşı doğrulanmıştır.</string>
+    <string name="settings_about_warranty">Bu yazılım, garanti olmaksızın olduğu gibi sunulur. Derlemeleri doğrulayın, kurtarma ifadenizi çevrimdışı tutun ve önce küçük tutarlarla test edin.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">İndeksleyici</string>
+    <string name="indexer_body">PocketPRL, bakiyeleri, geçmişi ve ücret tahminlerini bir Blockbook indeksleyicisinden okur ve onun üzerinden yayınlar. Anahtarlar telefondan asla ayrılmaz, ancak indeksleyici hangi adresleri aradığınızı öğrenir. Bu sizin için önemliyse kendi sunucunuza yönlendirin.</string>
+    <string name="indexer_label">Blockbook URL’si (yalnızca https)</string>
+    <string name="indexer_default">Varsayılan: %1$s</string>
+    <string name="indexer_saved">Kaydedildi. Yeniden eşitlemek için ana ekranda aşağı çekin.</string>
+    <string name="indexer_save">Kaydet</string>
+    <string name="indexer_reset">Varsayılana sıfırla</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Otomatik (sistem)</string>
+    <string name="theme_light">Açık</string>
+    <string name="theme_dark">Koyu</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Okyanus</string>
+    <string name="accent_sunset">Gün batımı</string>
+    <string name="accent_violet">Menekşe</string>
+    <string name="accent_forest">Orman</string>
+    <string name="accent_rose">Gül</string>
+    <string name="accent_mono">Mono</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Dar boşluk</string>
+    <string name="grouping_space">Boşluk</string>
+    <string name="grouping_comma">Virgül</string>
+    <string name="grouping_period">Nokta</string>
+    <string name="grouping_apostrophe">Kesme işareti</string>
+    <string name="grouping_none">Yok</string>
+    <string name="decimal_period">Nokta (.)</string>
+    <string name="decimal_comma">Virgül (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">İndeksleyiciye bağlantı yok</string>
+    <string name="sync_err_not_responding">İndeksleyici yanıt vermiyor</string>
+    <string name="sync_err_no_internet">İnternet bağlantısı yok</string>
+    <string name="sync_err_lost_connection">İndeksleyiciyle bağlantı kesildi</string>
+    <string name="wallet_deriving_receive">%1$d / %2$d alım adresi türetiliyor</string>
+    <string name="wallet_deriving_change">%1$d / %2$d para üstü adresi türetiliyor</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">%1$d adres kontrol ediliyor…</item>
+        <item quantity="other">%1$d adres kontrol ediliyor…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">%1$d adres kontrol edilemedi (%2$s); yeniden deneniyor</item>
+        <item quantity="other">%1$d adres kontrol edilemedi (%2$s); yeniden deneniyor</item>
+    </plurals>
+    <string name="address_err_enter">Bir alıcı adresi girin</string>
+    <string name="address_err_invalid">Geçerli bir Pearl adresi değil</string>
+    <string name="address_err_unknown_prefix">Bilinmeyen adres öneki “%1$s”</string>
+    <string name="address_err_only_taproot">Yalnızca Taproot (%1$s1p…) adresleri desteklenir</string>
+    <string name="address_err_invalid_length">Geçersiz Taproot adres uzunluğu</string>
+    <string name="address_err_wrong_network">Bu bir %1$s adresi; bu cüzdan %2$s üzerinde</string>
+    <string name="qr_err_invalid_link">Bu bağlantı geçerli bir %1$s ödeme isteği değil.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Gelen ödemeler</string>
+    <string name="notif_channel_payments_desc">Alınan ödemeler ve blok ödülleri; göründüklerinde ve onaylandıklarında</string>
+    <string name="notif_channel_price">Fiyat uyarıları</string>
+    <string name="notif_channel_price_desc">24 saatte büyük PRL fiyat hareketleri</string>
+    <string name="notif_block_confirmed">Blok ödülü onaylandı</string>
+    <string name="notif_block">Blok ödülü</string>
+    <string name="notif_payment_confirmed">Ödeme onaylandı</string>
+    <string name="notif_payment_received">Ödeme alındı</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Ayrıntılar için PocketPRL’yi açın</string>
+    <string name="notif_mined">+%1$s %2$s • %3$d onaydan sonra harcanabilir</string>
+    <string name="notif_waiting">+%1$s %2$s • onay bekleniyor</string>
+    <string name="notif_in_block">+%1$s %2$s • %3$s bloğunda</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">PRL fiyat uyarısı</string>
+    <string name="price_dir_up">Yukarı</string>
+    <string name="price_dir_down">Aşağı</string>
+    <string name="price_alert_body">%1$s %2$s%%: şu an %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Geçmişi dışa aktar</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Kendinize göre yapın</string>
+    <string name="personalize_subtitle">PocketPRL’nin nasıl görüneceğini ve okunacağını seçin. Tüm bunları daha sonra Ayarlar’dan değiştirebilirsiniz.</string>
+    <string name="personalize_preview">Önizleme</string>
+    <string name="personalize_section_look">Görünüm</string>
+    <string name="personalize_section_numbers">Sayılar</string>
+    <string name="personalize_section_currency">Para birimi</string>
+    <string name="personalize_section_motion">Hareket</string>
+    <string name="personalize_continue">Devam</string>
+    <string name="personalize_reset">Varsayılanlara sıfırla</string>
+    <string name="personalize_grouping_toggle">Binlikleri grupla</string>
+    <string name="notif_period">yaklaşık her dakika</string>
+    <string name="autolock_immediately">Hemen</string>
+    <string name="autolock_1m">1 dakika</string>
+    <string name="autolock_5m">5 dakika</string>
+    <string name="autolock_15m">15 dakika</string>
+    <string name="autolock_1h">1 saat</string>
+    <string name="autolock_never">Asla</string>
+    <string name="duration_seconds">%1$d saniye</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Cüzdan değiştir</string>
+    <string name="action_receive">Al</string>
+    <string name="action_lock">Kilitle</string>
+    <string name="action_show_balance">Bakiyeyi göster</string>
+    <string name="action_hide_balance">Bakiyeyi gizle</string>
+    <string name="pwd_weak">Zayıf</string>
+    <string name="pwd_fair">Orta</string>
+    <string name="pwd_good">İyi</string>
+    <string name="pwd_strong">Güçlü</string>
+    <string name="pwd_strength">%1$s parola</string>
+    <string name="pwd_show">Parolayı göster</string>
+    <string name="pwd_hide">Parolayı gizle</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d cüzdan • %2$s</item>
+        <item quantity="other">%1$d cüzdan • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Girdiler / çıktılar</string>
+    <string name="activity_size_label">Boyut</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Parola kullan</string>
+    <string name="bio_no_crypto_object">Kripto nesnesi yok</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Bir Pearl adresi veya ödeme bağlantısı tarayın</string>
+    <string name="send_open_settings">Ayarları aç</string>
+    <string name="send_camera_off">PocketPRL için kamera erişimi kapalı.</string>
+    <string name="send_camera_needed">Tarama için kamera gerekir.</string>
+    <string name="send_for_label">Şunun için: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Bir işlemden ya da Ayarlar › Kişiler’den bir adres kaydedin.</string>
+    <string name="receive_optional">İsteğe bağlı</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Ayarları aç</string>
+    <string name="settings_notif_off">Bildirimler kapalı, bu yüzden bu devre dışı kalır.</string>
+    <string name="settings_notif_blocked">PocketPRL için bildirimler engellendi.</string>
+    <string name="settings_keystore_error">Keystore anahtarı oluşturulamadı</string>
+    <string name="settings_biometric_prompt">Biyometrik kilit açmayı etkinleştir</string>
+    <string name="settings_seed_password">Cüzdan parolası</string>
+    <string name="settings_seed_incorrect">Yanlış parola</string>
+    <string name="settings_copy_address">Adresi kopyala</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Başarısız</string>
+    <string name="vm_biometric_enable_failed">Biyometri etkinleştirilemedi</string>
+    <string name="settings_section_language">Dil</string>
+    <string name="settings_language">Dil</string>
+    <string name="settings_language_system">Sistem varsayılanı</string>
+</resources>

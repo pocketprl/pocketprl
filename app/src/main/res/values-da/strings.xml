@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Tilbage</string>
+    <string name="action_cancel">Annuller</string>
+    <string name="action_save">Gem</string>
+    <string name="action_delete">Slet</string>
+    <string name="action_done">Færdig</string>
+    <string name="action_edit">Rediger</string>
+    <string name="action_continue">Fortsæt</string>
+    <string name="action_close">Luk</string>
+    <string name="action_add">Tilføj</string>
+    <string name="action_share">Del</string>
+    <string name="action_copy">Kopier</string>
+    <string name="action_retry">Prøv igen</string>
+    <string name="action_scan">Scan</string>
+    <string name="action_paste">Indsæt</string>
+    <string name="action_clear">Ryd</string>
+    <string name="action_contacts">Kontakter</string>
+    <string name="action_send">Send</string>
+    <string name="label_amount">Beløb</string>
+    <string name="label_name">Navn</string>
+    <string name="label_address">Adresse</string>
+    <string name="label_fee">Gebyr</string>
+    <string name="label_date">Dato</string>
+    <string name="label_block">Blok</string>
+    <string name="label_total">I alt</string>
+    <string name="label_to">Til</string>
+    <string name="label_from">Fra</string>
+    <string name="label_network">Netværk</string>
+    <string name="copied">Kopieret</string>
+    <string name="clipboard_address">Pearl-adresse</string>
+    <string name="clipboard_txid">Transaktions-ID</string>
+    <string name="balance_hidden">Saldo skjult</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">I dag</string>
+    <string name="day_yesterday">I går</string>
+    <string name="time_just_now">lige nu</string>
+    <string name="time_pending">afventer</string>
+    <string name="label_unconfirmed">Ubekræftet</string>
+    <string name="eta_minutes">~%1$d min</string>
+    <string name="eta_hours">~%1$d t</string>
+    <string name="eta_hours_half">~%1$d,5 t</string>
+    <string name="time_ago_s">for %1$d s siden</string>
+    <string name="time_ago_m">for %1$d min siden</string>
+    <string name="time_ago_h">for %1$d t siden</string>
+    <string name="time_ago_d">for %1$d d siden</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Tilføj en tegnebog</string>
+    <string name="welcome_add_headline">Endnu en tegnebog, helt separat</string>
+    <string name="welcome_add_body">Sin egen gendannelsessætning, adgangskode, historik og kontakter. Skift mellem tegnebøger via titlen på startskærmen.</string>
+    <string name="welcome_one_unlocked">Der er kun én tegnebog låst op ad gangen; et skift låser den aktuelle.</string>
+    <string name="welcome_tagline">Pearl (PRL) i lommen. Samme nøgler som skrivebordstegnebogen, uden vægten.</string>
+    <string name="welcome_feature_selfcustody_title">Egen opbevaring</string>
+    <string name="welcome_feature_selfcustody_body">Nøgler oprettes og bliver på denne telefon, krypteret og beskyttet med biometri.</string>
+    <string name="welcome_feature_desktop_title">Kompatibel med skrivebordet</string>
+    <string name="welcome_feature_desktop_body">Udleder nøjagtig de samme post-kvante-Taproot-adresser som oyster. Flyt frit mellem dem.</string>
+    <string name="welcome_feature_overview_title">Øjeblikkeligt overblik</string>
+    <string name="welcome_feature_overview_body">Saldi, historik og mining-belønninger fra Pearl-indekseren. Ingen kædenedlasting.</string>
+    <string name="welcome_feature_phone_title">Bygget til en telefon</string>
+    <string name="welcome_feature_phone_body">Betalingslinks, kontakter, noter, flere tegnebøger og »du blev betalt«-notifikationer.</string>
+    <string name="welcome_network">Netværk</string>
+    <string name="welcome_create">Opret en ny tegnebog</string>
+    <string name="welcome_restore">Gendan fra gendannelsessætning</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Min Pearl-tegnebog</string>
+    <string name="onboard_step">Trin %1$d af 3 • %2$s</string>
+    <string name="onboard_title_create">Opret tegnebog</string>
+    <string name="onboard_title_seed">Din gendannelsessætning</string>
+    <string name="onboard_title_verify">Bekræft sætningen</string>
+    <string name="onboard_title_working">Konfigurerer</string>
+    <string name="onboard_name_protect">Navngiv og beskyt din tegnebog</string>
+    <string name="onboard_wallet_name">Tegnebogens navn</string>
+    <string name="onboard_password">Adgangskode</string>
+    <string name="onboard_confirm_password">Bekræft adgangskode</string>
+    <string name="onboard_password_warning">Adgangskoden krypterer dine nøgler på denne enhed. Der er ingen nulstilling: hvis du glemmer den, skal du gendanne fra din gendannelsessætning.</string>
+    <string name="onboard_password_hint">Brug mindst 8 tegn med en blanding af bogstaver, tal eller symboler.</string>
+    <string name="onboard_seed_write">Skriv disse 12 ord ned i rækkefølge, og opbevar dem offline.</string>
+    <string name="onboard_seed_secret_title">Hold det hemmeligt</string>
+    <string name="onboard_seed_secret_body">Enhver med disse ord kontrollerer dine midler. Skærmbilleder blokeres på denne skærm; opbevar ikke sætningen digitalt.</string>
+    <string name="onboard_written">Jeg har skrevet det ned</string>
+    <string name="onboard_creating">Opretter tegnebog…</string>
+    <string name="onboard_restoring">Gendanner…</string>
+    <string name="onboard_quiz_instruction">Vælg det rigtige ord for hver position for at bekræfte din sikkerhedskopi.</string>
+    <string name="onboard_word_n">Ord nr. %1$d</string>
+    <string name="onboard_quiz_error">De ord matcher ikke din sætning. Gå tilbage og kontroller omhyggeligt.</string>
+    <string name="onboard_verify_create">Bekræft og opret tegnebog</string>
+    <string name="onboard_restore_title">Gendan tegnebog</string>
+    <string name="onboard_restore_progress_body">Hver adresse kræver en post-kvante-nøgle, så det tager lidt tid at udlede søgevinduet. Tegnebogen gennemsøger derefter Pearl-indekseren for din historik.</string>
+    <string name="onboard_recovery_label">Gendannelsessætning eller hex-seed</string>
+    <string name="onboard_recovery_placeholder">12–24 ord adskilt af mellemrum</string>
+    <string name="onboard_new_password">Ny adgangskode</string>
+    <string name="onboard_restore_compatible">Virker med sætninger fra den officielle Pearl-skrivebordstegnebog (oyster) og enhver BIP-39-tegnebog, der bruger Pearls udledning.</string>
+    <string name="onboard_restore_button">Gendan tegnebog</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">gendannelsessætning med %1$d ord</string>
+    <string name="onboard_check_hex">hex-seed på %1$d byte</string>
+    <string name="onboard_err_enter_phrase">Indtast din gendannelsessætning</string>
+    <string name="onboard_err_hex_even">Hex-seed skal have et lige antal tegn</string>
+    <string name="onboard_err_hex_range">Hex-seed skal være mellem 128 og 512 bit</string>
+    <string name="onboard_err_enter_phrase_or_hex">Indtast en gendannelsessætning med 12–24 ord eller en hex-seed</string>
+    <string name="onboard_err_word_count">En gendannelsessætning har 12, 15, 18, 21 eller 24 ord (fik %1$d)</string>
+    <string name="onboard_err_unknown_word">“%1$s” er ikke et BIP39-ord</string>
+    <string name="onboard_err_checksum">Kontrolsummen stemmer ikke: kontroller ordrækkefølgen og stavningen</string>
+    <string name="onboard_err_create_failed">Kunne ikke oprette tegnebog</string>
+    <string name="onboard_err_restore_failed">Gendannelsen mislykkedes</string>
+    <string name="onboard_preparing">Forbereder tegnebog…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">Lås %1$s op</string>
+    <string name="unlock_password">Tegnebogens adgangskode</string>
+    <string name="unlock_button">Lås op</string>
+    <string name="unlock_use_biometrics">Brug biometri</string>
+    <string name="unlock_switch_wallet">Skift tegnebog (%1$d)</string>
+    <string name="unlock_add_another">Tilføj en tegnebog</string>
+    <string name="unlock_forgot">Glemt adgangskode? Slet og gendan</string>
+    <string name="unlock_erase_title">Slet “%1$s”?</string>
+    <string name="unlock_erase_body">Denne tegnebogs nøgler og lokale historik på telefonen slettes. Andre tegnebøger påvirkes ikke. Du kan kun få midlerne tilbage med gendannelsessætningen. Skriv ERASE for at bekræfte.</string>
+    <string name="unlock_erase_confirm">Slet</string>
+    <string name="unlock_error_biometric">Biometrisk nøgle utilgængelig (blev et fingeraftryk tilføjet eller fjernet?). Brug din adgangskode.</string>
+    <string name="unlock_error_incorrect">Forkert adgangskode</string>
+    <string name="unlock_error_failed">Oplåsning mislykkedes</string>
+    <string name="unlock_error_biometric_failed">Biometrisk oplåsning mislykkedes: %1$s. Brug din adgangskode.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Tegnebøger</string>
+    <string name="switcher_test_coins">%1$s • testmønter</string>
+    <string name="switcher_current">Aktuel tegnebog</string>
+    <string name="switcher_add_title">Tilføj en tegnebog</string>
+    <string name="switcher_add_body">Opret en ny eller gendan en anden sætning. Hver tegnebog har sin egen adgangskode.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Samlet saldo</string>
+    <string name="dash_spendable">Disponibel</string>
+    <string name="dash_incoming">Indgående</string>
+    <string name="dash_maturing">Modnes</string>
+    <string name="dash_activity">Aktivitet</string>
+    <string name="dash_view_all">Se alle (%1$d)</string>
+    <string name="dash_looking">Leder efter transaktioner…</string>
+    <string name="dash_no_tx">Ingen transaktioner endnu</string>
+    <string name="dash_no_tx_body">Del din modtagelsesadresse eller et betalingslink for at komme i gang.</string>
+    <string name="dash_show_address">Vis min adresse</string>
+    <string name="dash_testnet_warning">Du er på %1$s. Mønter her har ingen værdi.</string>
+    <string name="dash_sync_syncing">Synkroniserer…</string>
+    <string name="dash_sync_failed">Synkronisering mislykkedes</string>
+    <string name="dash_sync_synced">Synkroniseret</string>
+    <string name="dash_sync_not_synced">Ikke synkroniseret endnu</string>
+    <string name="dash_sync_block">Blok %1$s • opdateret %2$s</string>
+    <string name="dash_sync_last">Sidst synkroniseret %1$s • blok %2$s</string>
+    <string name="dash_mining_rewards">Mining-belønninger</string>
+    <string name="dash_last_7_days">Seneste 7 dage</string>
+    <string name="dash_all_time">Samlet</string>
+    <string name="dash_mining_progress">%1$s modnes • næste disponible om %2$d blokke (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Belønninger, der modnes</string>
+    <string name="dash_price_content_desc">%1$s %2$s procent på 24 timer</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d blok</item>
+        <item quantity="other">%1$d blokke</item>
+    </plurals>
+    <string name="tx_received">Modtaget</string>
+    <string name="tx_sent">Sendt</string>
+    <string name="tx_self">Egen overførsel</string>
+    <string name="tx_mined">Minet</string>
+    <string name="tx_to_contact">Til %1$s</string>
+    <string name="tx_from_contact">Fra %1$s</string>
+    <string name="tx_pending">Afventer</string>
+    <string name="tx_pending_seen">Afventer • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d bekr.</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">Send %1$s</string>
+    <string name="send_spendable">Disponibel %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Indtast et gyldigt beløb (op til 8 decimaler)</string>
+    <string name="send_enter_valid_amount_short">Indtast et gyldigt beløb</string>
+    <string name="send_enter_in">Indtast i %1$s</string>
+    <string name="send_max">Maks</string>
+    <string name="send_max_selected">Maks ✓</string>
+    <string name="send_to">Til</string>
+    <string name="send_to_contact">Til • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… eller en kontakt</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Netværksgebyr</string>
+    <string name="send_use_estimates">Brug estimater</string>
+    <string name="send_custom_rate">Brugerdefineret sats</string>
+    <string name="send_fee_rate_label">Gebyrsats (grain pr. vbyte, min. 1)</string>
+    <string name="send_fee_normal">Normal</string>
+    <string name="send_fee_fast">Hurtig</string>
+    <string name="send_fee_loading">Kunne ikke indlæse gebyrestimater: %1$s</string>
+    <string name="send_summary">Oversigt</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Input</string>
+    <string name="send_inputs_change">%1$d • byttepenge %2$s</string>
+    <string name="send_slider">Send</string>
+    <string name="send_not_ready">Ikke klar</string>
+    <string name="send_sending">Sender</string>
+    <string name="send_confirming">Bekræfter</string>
+    <string name="send_slide">Træk eller dobbelttryk for at sende</string>
+    <string name="send_why_amount_blank">Indtast et beløb for at fortsætte</string>
+    <string name="send_why_amount_invalid">Indtast et gyldigt beløb for at fortsætte</string>
+    <string name="send_why_recipient_blank">Indtast en modtager for at fortsætte</string>
+    <string name="send_why_recipient_invalid">Ret modtageradressen for at fortsætte</string>
+    <string name="send_why_fee_unavailable">Gebyrestimat utilgængeligt</string>
+    <string name="send_why_waiting_fees">Venter på gebyrestimater…</string>
+    <string name="send_why_preparing">Forbereder betalingen…</string>
+    <string name="send_err_no_funds">Ingen disponible midler</string>
+    <string name="send_err_insufficient">Utilstrækkelige midler: har brug for %1$s %2$s inklusive gebyret, har %3$s</string>
+    <string name="send_err_changed">Betalingen ændrede sig, mens du bekræftede den. Kontroller oplysningerne, og prøv igen.</string>
+    <string name="send_password_title">Tegnebogens adgangskode</string>
+    <string name="send_password_body">Sender %1$s %2$s til %3$s.</string>
+    <string name="send_auth_failed">Godkendelse mislykkedes</string>
+    <string name="send_bio_unavailable">Biometrisk nøgle utilgængelig; deaktiver og genaktiver biometri i Indstillinger.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">Modtag %1$s</string>
+    <string name="receive_preparing">Forbereder adresse…</string>
+    <string name="receive_standard">Adresse nr. %1$d • Taproot, samme som skrivebordstegnebogen</string>
+    <string name="receive_pq">Adresse nr. %1$d • post-kvante-variant</string>
+    <string name="receive_copy">Kopier</string>
+    <string name="receive_share">Del</string>
+    <string name="receive_share_request">Del anmodning</string>
+    <string name="receive_request_amount">Anmod om et beløb</string>
+    <string name="receive_label">Mærkat (valgfrit)</string>
+    <string name="receive_label_placeholder">Faktura nr. 42</string>
+    <string name="receive_link_hint">Med et beløb eller en mærkat bliver koden og delingslinket et betalingslink, der udfylder beløbet for afsenderen.</string>
+    <string name="receive_fresh">Brug en ny adresse</string>
+    <string name="receive_generating">Genererer…</string>
+    <string name="receive_show_pq">Vis post-kvante-variant</string>
+    <string name="receive_show_std">Vis standardadresse</string>
+    <string name="receive_pq_warning_title">Ikke synlig for skrivebordstegnebogen</string>
+    <string name="receive_pq_warning_body">Denne variant indlejrer en XMSS-post-kvante-nøgle i adressen. Den officielle skrivebordstegnebog udleder den ikke, så mønter sendt hertil er kun synlige i PocketPRL, indtil Pearls skrivebordstegnebog understøtter det. Brug standardadressen, medmindre betaleren specifikt har brug for denne.</string>
+    <string name="receive_reuse_info">Adresser kan genbruges, men en ny til hver betaler holder din historik privat. Indgående betalinger vises i Aktivitet, så snart afsenderen sender.</string>
+    <string name="receive_only_send">Send kun Pearl (%1$s) til denne adresse.</string>
+    <string name="receive_qr_failed">QR-koden kunne ikke tegnes. Kopier eller del adressen i stedet.</string>
+    <string name="receive_qr_desc">QR-kode for adresse</string>
+    <string name="receive_requesting">Anmoder om %1$s %2$s</string>
+    <string name="receive_requesting_any">Anmoder om et vilkårligt beløb</string>
+    <string name="receive_requesting_for">%1$s for “%2$s”</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Sendt</string>
+    <string name="sent_to">til %1$s</string>
+    <string name="sent_confirms">Bekræftes i gennemsnit om %1$s.</string>
+    <string name="sent_txid">Transaktions-ID</string>
+    <string name="sent_view_explorer">Se i udforsker</string>
+    <string name="sent_done">Færdig</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Aktivitet</string>
+    <string name="activity_export">Eksporter CSV</string>
+    <string name="activity_loading">Indlæser historik…</string>
+    <string name="activity_none">Ingen aktivitet endnu</string>
+    <string name="activity_nothing">Intet her</string>
+    <string name="activity_none_body">Betalinger og mining-belønninger vises, så snart indekseren ser dem.</string>
+    <string name="activity_title_single">Transaktion</string>
+    <string name="activity_not_found">Transaktionen blev ikke fundet</string>
+    <string name="activity_self">Sendt til dig selv • kun netværksgebyr</string>
+    <string name="activity_fiat_today">≈ %1$s i dag</string>
+    <string name="activity_pending_mempool">Afventer i mempool</string>
+    <string name="activity_conf_of_maturity">%1$d af %2$d bekræftelser for at bruge</string>
+    <string name="activity_confirmed">Bekræftet • %1$s bekræftelser</string>
+    <string name="activity_spendable_in">Disponibel om %1$d blokke (%2$s)</string>
+    <string name="activity_txid">Transaktions-ID</string>
+    <string name="activity_from">Fra</string>
+    <string name="activity_to">Til</string>
+    <string name="activity_from_your">Fra din adresse</string>
+    <string name="activity_to_your">Til din adresse</string>
+    <string name="activity_save_contact">Gem som kontakt</string>
+    <string name="activity_view_explorer">Se i udforsker</string>
+    <string name="activity_maturity_info">Blokbelønninger bliver disponible efter %1$d bekræftelser, som på enhver Bitcoin-baseret kæde.</string>
+    <string name="activity_note">Note</string>
+    <string name="activity_note_placeholder">Hvad var dette til?</string>
+    <string name="activity_note_hint">Noter bliver kun på denne telefon.</string>
+    <string name="activity_contact_new">Ny kontakt</string>
+    <string name="activity_contact_edit">Rediger kontakt</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">I alt ud</string>
+    <string name="activity_filter_all">Alle</string>
+    <string name="activity_filter_received">Modtaget</string>
+    <string name="activity_filter_sent">Sendt</string>
+    <string name="activity_filter_mined">Minet</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d transaktion</item>
+        <item quantity="other">%1$d transaktioner</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d bekræftelse</item>
+        <item quantity="other">%1$d bekræftelser</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Indstillinger</string>
+    <string name="settings_section_wallet">Tegnebog</string>
+    <string name="settings_section_appearance">Udseende</string>
+    <string name="settings_section_numbers">Tal og valuta</string>
+    <string name="settings_section_dashboard">Oversigt</string>
+    <string name="settings_section_security">Sikkerhed og privatliv</string>
+    <string name="settings_section_notifications">Notifikationer</string>
+    <string name="settings_section_network">Netværk</string>
+    <string name="settings_section_backup">Sikkerhedskopi</string>
+    <string name="settings_section_about">Om</string>
+    <string name="settings_section_danger">Farezone</string>
+    <string name="settings_name">Navn</string>
+    <string name="settings_created">Oprettet</string>
+    <string name="settings_wallets">Tegnebøger</string>
+    <string name="settings_wallets_one">Kun denne</string>
+    <string name="settings_wallets_n">%1$d på denne enhed</string>
+    <string name="settings_contacts">Kontakter</string>
+    <string name="settings_contacts_saved">%1$d gemte</string>
+    <string name="settings_addresses">Adresser</string>
+    <string name="settings_addresses_derived">%1$d udledte</string>
+    <string name="settings_change_password">Skift adgangskode</string>
+    <string name="settings_biometric">Biometrisk oplåsning</string>
+    <string name="settings_biometric_none">Ingen registreret</string>
+    <string name="settings_biometric_sub">Fingeraftryk eller ansigt</string>
+    <string name="settings_confirm_send">Bekræft før afsendelse</string>
+    <string name="settings_confirm_send_sub">Spørg ved hver betaling</string>
+    <string name="settings_auto_lock">Auto-lås</string>
+    <string name="settings_hide_balances">Skjul saldi</string>
+    <string name="settings_hide_balances_sub">Maskér hvert beløb</string>
+    <string name="settings_start_hidden">Start skjult</string>
+    <string name="settings_start_hidden_sub">Skjul saldi, når du låser op</string>
+    <string name="settings_secure_all">Bloker skærmbilleder overalt</string>
+    <string name="settings_secure_all_sub">Beskyt også start- og aktivitetsskærmene</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_accent">Accentfarve</string>
+    <string name="settings_dynamic_color">Dynamisk farve</string>
+    <string name="settings_dynamic_color_sub">Brug systemets tapetpalet (Android 12+)</string>
+    <string name="settings_reduced_motion">Reducer bevægelse</string>
+    <string name="settings_reduced_motion_sub">Ingen rullende tal eller skærmanimationer</string>
+    <string name="settings_odometer">Kilometertæller-animation</string>
+    <string name="settings_odometer_sub">Rullende tal på saldi</string>
+    <string name="settings_odometer_haptics">Kilometertæller-haptik</string>
+    <string name="settings_odometer_haptics_sub">Et tick ved hver rulning</string>
+    <string name="settings_odometer_haptics_off">Ingen effekt, når animationen er slået fra</string>
+    <string name="settings_show_fiat">Vis fiatværdi</string>
+    <string name="settings_fiat_currency">Fiatvaluta</string>
+    <string name="settings_decimals">Saldodecimaler</string>
+    <string name="settings_decimal_sep">Decimalseparator</string>
+    <string name="settings_grouping_sep">Tusindtalsseparator</string>
+    <string name="settings_hero">Stort tal</string>
+    <string name="settings_hero_total">Samlet saldo</string>
+    <string name="settings_hero_spendable">Disponibel saldo</string>
+    <string name="settings_show_change">24-timers prisændring</string>
+    <string name="settings_show_change_sub">Vis chippen for daglig ændring</string>
+    <string name="settings_show_mining">Kort for mining-belønninger</string>
+    <string name="settings_show_mining_sub">Skjul, hvis du ikke miner til denne tegnebog</string>
+    <string name="settings_poll_mode">Opdateringsfrekvens</string>
+    <string name="settings_poll_live">Live</string>
+    <string name="settings_poll_balanced">Balanceret</string>
+    <string name="settings_poll_battery">Batterisparetilstand</string>
+    <string name="settings_notify_incoming">Indgående betalinger</string>
+    <string name="settings_notify_incoming_sub">Tjekkes %1$s</string>
+    <string name="settings_price_alerts">Prisalarmer</string>
+    <string name="settings_price_alerts_sub">Underret ved store 24-timersbevægelser</string>
+    <string name="settings_alert_threshold">Alarmtærskel</string>
+    <string name="settings_alert_threshold_sub">%1$s bevægelse over 24 timer</string>
+    <string name="settings_reveal_seed">Vis gendannelsessætning</string>
+    <string name="settings_reveal_seed_sub">Kræver din adgangskode</string>
+    <string name="settings_indexer">Indekser (Blockbook)</string>
+    <string name="settings_about_version">Version %1$s</string>
+    <string name="settings_delete">Slet denne tegnebog</string>
+    <string name="settings_password_title">Skift adgangskode</string>
+    <string name="settings_password_current">Nuværende adgangskode</string>
+    <string name="settings_password_new">Ny adgangskode</string>
+    <string name="settings_password_confirm">Bekræft ny adgangskode</string>
+    <string name="settings_password_updated">Adgangskoden er ændret.</string>
+    <string name="settings_password_update">Opdater adgangskode</string>
+    <string name="settings_password_info">Ændring af adgangskoden omkrypterer nøglen på denne enhed. Din gendannelsessætning forbliver den samme.</string>
+    <string name="settings_password_error_current">Nuværende adgangskode er forkert</string>
+    <string name="settings_password_error_short">Brug mindst 8 tegn med en blanding af bogstaver, tal eller symboler.</string>
+    <string name="settings_seed_title">Gendannelsessætning</string>
+    <string name="settings_seed_warning">Del aldrig din gendannelsessætning. Personale fra PocketPRL eller Pearls udviklere vil aldrig bede om den.</string>
+    <string name="settings_seed_reveal">Vis</string>
+    <string name="settings_seed_hex">Hex-seed</string>
+    <string name="settings_seed_written_hint">Skriv den ned på papir. Skærmbilleder blokeres på denne skærm.</string>
+    <string name="settings_rename_title">Omdøb tegnebog</string>
+    <string name="settings_auto_lock_title">Auto-lås efter</string>
+    <string name="settings_theme_title">Tema</string>
+    <string name="settings_accent_title">Accentfarve</string>
+    <string name="settings_delete_title">Slet “%1$s”?</string>
+    <string name="settings_delete_body">Dette fjerner denne tegnebogs krypterede nøgler, cachelagrede historik, kontakter og noter fra denne telefon. Andre tegnebøger påvirkes ikke. Sørg for, at du har gendannelsessætningen. Skriv DELETE for at bekræfte.</string>
+    <string name="settings_threshold_title">Tærskel for prisalarm</string>
+    <string name="settings_threshold_intro">Alarmér, når 24-timersændringen når:</string>
+    <string name="settings_addresses_title">Adresser</string>
+    <string name="settings_addresses_checking">Tjekker…</string>
+    <string name="settings_addresses_derived_sub">%1$d indekser udledt</string>
+    <string name="settings_addresses_rescan">Scan alle adresser igen</string>
+    <string name="settings_addresses_receive">Modtagelse nr. %1$d</string>
+    <string name="settings_addresses_change">Byttepenge nr. %1$d</string>
+    <string name="settings_addresses_pq">%1$s • post-kvante-variant</string>
+    <string name="settings_addresses_used">brugt</string>
+    <string name="settings_addresses_info">Tryk på en adresse for at kopiere den. Udledning: m/86’/%1$d’/0’/branch/index, BIP-86-nøglesti som skrivebordstegnebogen. Hvert indeks har også en post-kvante-variant (XMSS-tapleaf fra purpose 222’), der overvåges og vises her, når den er blevet brugt. Opdateringsknappen tjekker hver adresse, begge varianter, lige nu; startskærmen tjekker kun dem, der er i brug.</string>
+    <string name="settings_contacts_title">Kontakter</string>
+    <string name="settings_contacts_empty">Ingen kontakter endnu</string>
+    <string name="settings_contacts_empty_body">Gem de adresser, du betaler ofte. Navnene vises i din aktivitet og i modtagerfeltet.</string>
+    <string name="settings_contacts_add">Tilføj kontakt</string>
+    <string name="settings_contacts_info">Kontakter gemmes kun på denne telefon og er ikke en del af din gendannelsessætning.</string>
+    <string name="settings_contacts_new">Ny kontakt</string>
+    <string name="settings_contacts_address">%1$s-adresse</string>
+    <string name="settings_contacts_invalid">Ikke en gyldig %1$s-adresse</string>
+    <string name="settings_contacts_name_required">Giv kontakten et navn</string>
+    <string name="settings_about_title">Om</string>
+    <string name="settings_about_source">Kildekode for PocketPRL</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Pearl-kildekode (GitHub)</string>
+    <string name="settings_about_explorer">Blokudforsker</string>
+    <string name="settings_about_check">Søg efter opdateringer</string>
+    <string name="settings_about_checking">Tjekker…</string>
+    <string name="settings_about_latest">Du har den nyeste version (v%1$s).</string>
+    <string name="settings_about_failed">Kunne ikke nå GitHub. Tjek din forbindelse, og prøv igen.</string>
+    <string name="settings_about_update_title">Opdatering tilgængelig</string>
+    <string name="settings_about_update_body">Version %1$s er tilgængelig. Du har v%2$s.</string>
+    <string name="settings_about_update">Opdater</string>
+    <string name="settings_about_later">Senere</string>
+    <string name="settings_about_version_label">Version</string>
+    <string name="settings_about_network">Netværk</string>
+    <string name="settings_about_coin_type">Mønttype</string>
+    <string name="settings_about_addresses">Adresser</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Signering</string>
+    <string name="settings_about_signing_value">BIP-340 Schnorr-nøglesti, libsecp256k1</string>
+    <string name="settings_about_pq">PQ-forpligtelse</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL er en uafhængig letvægtstegnebog med åben kildekode til Pearl-netværket. Den udleder de samme adresser som den officielle skrivebordstegnebog (oyster) og er verificeret mod den med testvektorer genereret fra Pearl-kildekoden.</string>
+    <string name="settings_about_warranty">Denne software leveres, som den er, uden garanti. Verificér builds, opbevar din gendannelsessætning offline, og test med små beløb først.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Indekser</string>
+    <string name="indexer_body">PocketPRL læser saldi, historik og gebyrestimater fra en Blockbook-indekser og sender gennem den. Nøgler forlader aldrig telefonen, men indekseren får at vide, hvilke adresser du slår op. Peg den mod din egen instans, hvis det betyder noget for dig.</string>
+    <string name="indexer_label">Blockbook-URL (kun https)</string>
+    <string name="indexer_default">Standard: %1$s</string>
+    <string name="indexer_saved">Gemt. Træk for at opdatere på startskærmen for at gensynkronisere.</string>
+    <string name="indexer_save">Gem</string>
+    <string name="indexer_reset">Nulstil til standard</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Auto (system)</string>
+    <string name="theme_light">Lyst</string>
+    <string name="theme_dark">Mørkt</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Ocean</string>
+    <string name="accent_sunset">Solnedgang</string>
+    <string name="accent_violet">Violet</string>
+    <string name="accent_forest">Skov</string>
+    <string name="accent_rose">Rose</string>
+    <string name="accent_mono">Mono</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Smalt mellemrum</string>
+    <string name="grouping_space">Mellemrum</string>
+    <string name="grouping_comma">Komma</string>
+    <string name="grouping_period">Punktum</string>
+    <string name="grouping_apostrophe">Apostrof</string>
+    <string name="grouping_none">Ingen</string>
+    <string name="decimal_period">Punktum (.)</string>
+    <string name="decimal_comma">Komma (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Ingen forbindelse til indekseren</string>
+    <string name="sync_err_not_responding">Indekseren svarer ikke</string>
+    <string name="sync_err_no_internet">Ingen internetforbindelse</string>
+    <string name="sync_err_lost_connection">Mistede forbindelsen til indekseren</string>
+    <string name="wallet_deriving_receive">Udleder modtagelsesadresse %1$d af %2$d</string>
+    <string name="wallet_deriving_change">Udleder byttepengeadresse %1$d af %2$d</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">Tjekker %1$d adresse…</item>
+        <item quantity="other">Tjekker %1$d adresser…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">%1$d adresse kunne ikke tjekkes (%2$s); prøver igen</item>
+        <item quantity="other">%1$d adresser kunne ikke tjekkes (%2$s); prøver igen</item>
+    </plurals>
+    <string name="address_err_enter">Indtast en modtageradresse</string>
+    <string name="address_err_invalid">Ikke en gyldig Pearl-adresse</string>
+    <string name="address_err_unknown_prefix">Ukendt adressepræfiks “%1$s”</string>
+    <string name="address_err_only_taproot">Kun Taproot-adresser (%1$s1p…) understøttes</string>
+    <string name="address_err_invalid_length">Ugyldig længde på Taproot-adresse</string>
+    <string name="address_err_wrong_network">Det er en %1$s-adresse; denne tegnebog er på %2$s</string>
+    <string name="qr_err_invalid_link">Det link er ikke en gyldig %1$s-betalingsanmodning.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Indgående betalinger</string>
+    <string name="notif_channel_payments_desc">Modtagne betalinger og blokbelønninger, når de vises, og når de bekræftes</string>
+    <string name="notif_channel_price">Prisalarmer</string>
+    <string name="notif_channel_price_desc">Store PRL-prisbevægelser over 24 timer</string>
+    <string name="notif_block_confirmed">Blokbelønning bekræftet</string>
+    <string name="notif_block">Blokbelønning</string>
+    <string name="notif_payment_confirmed">Betaling bekræftet</string>
+    <string name="notif_payment_received">Betaling modtaget</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Åbn PocketPRL for detaljer</string>
+    <string name="notif_mined">+%1$s %2$s • disponibel efter %3$d bekræftelser</string>
+    <string name="notif_waiting">+%1$s %2$s • venter på bekræftelse</string>
+    <string name="notif_in_block">+%1$s %2$s • i blok %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">PRL-prisalarm</string>
+    <string name="price_dir_up">Op</string>
+    <string name="price_dir_down">Ned</string>
+    <string name="price_alert_body">%1$s %2$s%%: nu på %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Eksporter historik</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Gør det til dit</string>
+    <string name="personalize_subtitle">Vælg, hvordan PocketPRL ser ud og læser. Du kan ændre alt dette senere i Indstillinger.</string>
+    <string name="personalize_preview">Forhåndsvisning</string>
+    <string name="personalize_section_look">Udseende</string>
+    <string name="personalize_section_numbers">Tal</string>
+    <string name="personalize_section_currency">Valuta</string>
+    <string name="personalize_section_motion">Bevægelse</string>
+    <string name="personalize_continue">Fortsæt</string>
+    <string name="personalize_reset">Nulstil til standard</string>
+    <string name="personalize_grouping_toggle">Gruppér tusinder</string>
+    <string name="notif_period">cirka hvert minut</string>
+    <string name="autolock_immediately">Straks</string>
+    <string name="autolock_1m">1 minut</string>
+    <string name="autolock_5m">5 minutter</string>
+    <string name="autolock_15m">15 minutter</string>
+    <string name="autolock_1h">1 time</string>
+    <string name="autolock_never">Aldrig</string>
+    <string name="duration_seconds">%1$d sekunder</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Skift tegnebog</string>
+    <string name="action_receive">Modtag</string>
+    <string name="action_lock">Lås</string>
+    <string name="action_show_balance">Vis saldo</string>
+    <string name="action_hide_balance">Skjul saldo</string>
+    <string name="pwd_weak">Svag</string>
+    <string name="pwd_fair">Rimelig</string>
+    <string name="pwd_good">God</string>
+    <string name="pwd_strong">Stærk</string>
+    <string name="pwd_strength">%1$s adgangskode</string>
+    <string name="pwd_show">Vis adgangskode</string>
+    <string name="pwd_hide">Skjul adgangskode</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d tegnebog • %2$s</item>
+        <item quantity="other">%1$d tegnebøger • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Input / output</string>
+    <string name="activity_size_label">Størrelse</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Brug adgangskode</string>
+    <string name="bio_no_crypto_object">Intet kryptoobjekt</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Scan en Pearl-adresse eller et betalingslink</string>
+    <string name="send_open_settings">Åbn indstillinger</string>
+    <string name="send_camera_off">Kameraadgang er slået fra for PocketPRL.</string>
+    <string name="send_camera_needed">Scanning kræver kameraet.</string>
+    <string name="send_for_label">Til: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Gem en adresse fra en transaktion eller i Indstillinger › Kontakter.</string>
+    <string name="receive_optional">Valgfrit</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Åbn indstillinger</string>
+    <string name="settings_notif_off">Notifikationer er slået fra, så dette forbliver deaktiveret.</string>
+    <string name="settings_notif_blocked">Notifikationer er blokeret for PocketPRL.</string>
+    <string name="settings_keystore_error">Kunne ikke oprette en Keystore-nøgle</string>
+    <string name="settings_biometric_prompt">Aktivér biometrisk oplåsning</string>
+    <string name="settings_seed_password">Tegnebogens adgangskode</string>
+    <string name="settings_seed_incorrect">Forkert adgangskode</string>
+    <string name="settings_copy_address">Kopier adresse</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Mislykkedes</string>
+    <string name="vm_biometric_enable_failed">Kunne ikke aktivere biometri</string>
+    <string name="settings_section_language">Sprog</string>
+    <string name="settings_language">Sprog</string>
+    <string name="settings_language_system">Systemstandard</string>
+</resources>

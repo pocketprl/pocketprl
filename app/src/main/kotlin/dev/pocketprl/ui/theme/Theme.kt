@@ -1,16 +1,22 @@
 package dev.pocketprl.ui.theme
 
+import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -19,6 +25,7 @@ import androidx.compose.ui.text.font.FontVariation
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import dev.pocketprl.R
+import dev.pocketprl.data.AccentTheme
 import dev.pocketprl.data.ThemeMode
 
 object PearlColors {
@@ -191,20 +198,64 @@ fun isDarkTheme(mode: ThemeMode, systemDark: Boolean): Boolean = when (mode) {
     ThemeMode.AUTO -> systemDark
 }
 
-@Composable
-fun PocketPrlTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    CompositionLocalProvider(LocalPearlPalette provides if (darkTheme) DarkPalette else LightPalette) {
-        MaterialTheme(
-            colorScheme = if (darkTheme) DarkScheme else LightScheme,
-            typography = AppTypography,
-            content = content,
-        )
-    }
+/** True when the user asked for as little motion as possible; components should snap instead of animate. */
+val LocalReducedMotion = staticCompositionLocalOf { false }
+
+/** Primary colour each accent theme uses, per light/dark. */
+fun accentPrimary(theme: AccentTheme, dark: Boolean): Color = when (theme) {
+    AccentTheme.PEARL -> if (dark) PearlColors.Mint else PearlColors.Teal
+    AccentTheme.OCEAN -> if (dark) Color(0xFF7CC4FF) else Color(0xFF1D6FB8)
+    AccentTheme.SUNSET -> if (dark) Color(0xFFFDBA74) else Color(0xFFC2410C)
+    AccentTheme.VIOLET -> if (dark) Color(0xFFC4B5FD) else Color(0xFF6D28D9)
+    AccentTheme.FOREST -> if (dark) Color(0xFF86EFAC) else Color(0xFF15803D)
+    AccentTheme.ROSE -> if (dark) Color(0xFFFDA4AF) else Color(0xFFBE185D)
+    AccentTheme.MONO -> if (dark) Color(0xFFCBD5E1) else Color(0xFF334155)
+}
+
+/** Rebuilds a scheme with the accent family swapped in, leaving the Pearl neutrals in place. */
+fun withAccent(base: ColorScheme, accent: Color, dark: Boolean): ColorScheme {
+    val container = accent.copy(alpha = if (dark) 0.24f else 0.16f).compositeOver(base.surface)
+    val onContainer = lerp(accent, if (dark) Color.White else Color.Black, 0.25f)
+    val onAccent = if (dark) Color(0xFF0E1413) else Color.White
+    return base.copy(
+        primary = accent,
+        onPrimary = onAccent,
+        primaryContainer = container,
+        onPrimaryContainer = onContainer,
+        tertiary = lerp(accent, if (dark) Color(0xFFC9B3E6) else PearlColors.Violet, 0.4f),
+        onTertiary = onAccent,
+        tertiaryContainer = container,
+        onTertiaryContainer = onContainer,
+    )
 }
 
 @Composable
-fun PocketPrlTheme(themeMode: ThemeMode, content: @Composable () -> Unit) {
-    PocketPrlTheme(darkTheme = isDarkTheme(themeMode, isSystemInDarkTheme()), content = content)
+fun PocketPrlTheme(
+    themeMode: ThemeMode = ThemeMode.AUTO,
+    accentTheme: AccentTheme = AccentTheme.PEARL,
+    dynamicColor: Boolean = false,
+    reducedMotion: Boolean = false,
+    content: @Composable () -> Unit,
+) {
+    val dark = isDarkTheme(themeMode, isSystemInDarkTheme())
+    val context = LocalContext.current
+    val scheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
+            if (dark) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        else -> withAccent(if (dark) DarkScheme else LightScheme, accentPrimary(accentTheme, dark), dark)
+    }
+    CompositionLocalProvider(
+        LocalPearlPalette provides if (dark) DarkPalette else LightPalette,
+        LocalReducedMotion provides reducedMotion,
+    ) {
+        MaterialTheme(colorScheme = scheme, typography = AppTypography, content = content)
+    }
+}
+
+/** Preview/test helper that follows the system theme with the default accent. */
+@Composable
+fun PocketPrlTheme(darkTheme: Boolean, content: @Composable () -> Unit) {
+    PocketPrlTheme(themeMode = if (darkTheme) ThemeMode.DARK else ThemeMode.LIGHT, content = content)
 }
 
 @Composable

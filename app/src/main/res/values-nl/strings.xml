@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PocketPRL</string>
+
+    <!-- ===================== common ===================== -->
+    <string name="action_back">Terug</string>
+    <string name="action_cancel">Annuleren</string>
+    <string name="action_save">Opslaan</string>
+    <string name="action_delete">Verwijderen</string>
+    <string name="action_done">Gereed</string>
+    <string name="action_edit">Bewerken</string>
+    <string name="action_continue">Doorgaan</string>
+    <string name="action_close">Sluiten</string>
+    <string name="action_add">Toevoegen</string>
+    <string name="action_share">Delen</string>
+    <string name="action_copy">Kopiëren</string>
+    <string name="action_retry">Opnieuw proberen</string>
+    <string name="action_scan">Scannen</string>
+    <string name="action_paste">Plakken</string>
+    <string name="action_clear">Wissen</string>
+    <string name="action_contacts">Contacten</string>
+    <string name="action_send">Verzenden</string>
+    <string name="label_amount">Bedrag</string>
+    <string name="label_name">Naam</string>
+    <string name="label_address">Adres</string>
+    <string name="label_fee">Kosten</string>
+    <string name="label_date">Datum</string>
+    <string name="label_block">Blok</string>
+    <string name="label_total">Totaal</string>
+    <string name="label_to">Aan</string>
+    <string name="label_from">Van</string>
+    <string name="label_network">Netwerk</string>
+    <string name="copied">Gekopieerd</string>
+    <string name="clipboard_address">Pearl-adres</string>
+    <string name="clipboard_txid">Transactie-ID</string>
+    <string name="balance_hidden">Saldo verborgen</string>
+    <string name="hidden_placeholder">•••••</string>
+    <string name="day_today">Vandaag</string>
+    <string name="day_yesterday">Gisteren</string>
+    <string name="time_just_now">zojuist</string>
+    <string name="time_pending">in behandeling</string>
+    <string name="label_unconfirmed">Onbevestigd</string>
+    <string name="eta_minutes">~%1$d min</string>
+    <string name="eta_hours">~%1$d u</string>
+    <string name="eta_hours_half">~%1$d,5 u</string>
+    <string name="time_ago_s">%1$ds geleden</string>
+    <string name="time_ago_m">%1$dm geleden</string>
+    <string name="time_ago_h">%1$dh geleden</string>
+    <string name="time_ago_d">%1$dd geleden</string>
+
+    <!-- ===================== welcome ===================== -->
+    <string name="welcome_add_title">Een wallet toevoegen</string>
+    <string name="welcome_add_headline">Nog een wallet, volledig apart</string>
+    <string name="welcome_add_body">Een eigen herstelzin, wachtwoord, geschiedenis en contacten. Wissel tussen wallets via de titel op het beginscherm.</string>
+    <string name="welcome_one_unlocked">Er is altijd maar één wallet tegelijk ontgrendeld; bij het wisselen wordt de huidige vergrendeld.</string>
+    <string name="welcome_tagline">Pearl (PRL) in je zak. Dezelfde sleutels als de desktopwallet, zonder de ballast.</string>
+    <string name="welcome_feature_selfcustody_title">Zelfbeheer</string>
+    <string name="welcome_feature_selfcustody_body">Sleutels worden aangemaakt en blijven op deze telefoon, versleuteld en met biometrie beveiligd.</string>
+    <string name="welcome_feature_desktop_title">Desktop-compatibel</string>
+    <string name="welcome_feature_desktop_body">Leidt exact dezelfde post-quantum Taproot-adressen af als oyster. Wissel vrij tussen beide.</string>
+    <string name="welcome_feature_overview_title">Direct overzicht</string>
+    <string name="welcome_feature_overview_body">Saldo\'s, geschiedenis en mijnbeloningen van de Pearl-indexer. Geen chain-download.</string>
+    <string name="welcome_feature_phone_title">Gebouwd voor een telefoon</string>
+    <string name="welcome_feature_phone_body">Betaallinks, contacten, notities, meerdere wallets en “je bent betaald”-meldingen.</string>
+    <string name="welcome_network">Netwerk</string>
+    <string name="welcome_create">Een nieuwe wallet aanmaken</string>
+    <string name="welcome_restore">Herstellen vanuit herstelzin</string>
+
+    <!-- ===================== onboarding ===================== -->
+    <string name="onboard_default_wallet_name">Mijn Pearl-wallet</string>
+    <string name="onboard_step">Stap %1$d van 3 • %2$s</string>
+    <string name="onboard_title_create">Wallet aanmaken</string>
+    <string name="onboard_title_seed">Je herstelzin</string>
+    <string name="onboard_title_verify">Herstelzin verifiëren</string>
+    <string name="onboard_title_working">Instellen</string>
+    <string name="onboard_name_protect">Geef je wallet een naam en bescherm hem</string>
+    <string name="onboard_wallet_name">Walletnaam</string>
+    <string name="onboard_password">Wachtwoord</string>
+    <string name="onboard_confirm_password">Wachtwoord bevestigen</string>
+    <string name="onboard_password_warning">Het wachtwoord versleutelt je sleutels op dit apparaat. Er is geen reset: als je het vergeet, herstel dan vanuit je herstelzin.</string>
+    <string name="onboard_password_hint">Gebruik minstens 8 tekens met een mix van letters, cijfers of symbolen.</string>
+    <string name="onboard_seed_write">Schrijf deze 12 woorden in de juiste volgorde op en bewaar ze offline.</string>
+    <string name="onboard_seed_secret_title">Houd het geheim</string>
+    <string name="onboard_seed_secret_body">Iedereen met deze woorden heeft controle over je geld. Schermafbeeldingen zijn op dit scherm geblokkeerd; bewaar de zin niet digitaal.</string>
+    <string name="onboard_written">Ik heb ze opgeschreven</string>
+    <string name="onboard_creating">Wallet aanmaken…</string>
+    <string name="onboard_restoring">Herstellen…</string>
+    <string name="onboard_quiz_instruction">Kies het juiste woord voor elke positie om je back-up te bevestigen.</string>
+    <string name="onboard_word_n">Woord #%1$d</string>
+    <string name="onboard_quiz_error">Die woorden komen niet overeen met je zin. Ga terug en controleer zorgvuldig.</string>
+    <string name="onboard_verify_create">Verifiëren &amp; wallet aanmaken</string>
+    <string name="onboard_restore_title">Wallet herstellen</string>
+    <string name="onboard_restore_progress_body">Elk adres heeft een post-quantum sleutel nodig, dus het afleiden van het zoekvenster duurt even. De wallet scant daarna de Pearl-indexer op je geschiedenis.</string>
+    <string name="onboard_recovery_label">Herstelzin of hex-seed</string>
+    <string name="onboard_recovery_placeholder">12–24 woorden gescheiden door spaties</string>
+    <string name="onboard_new_password">Nieuw wachtwoord</string>
+    <string name="onboard_restore_compatible">Werkt met zinnen uit de officiële Pearl-desktopwallet (oyster) en elke BIP-39-wallet die Pearls afleiding gebruikt.</string>
+    <string name="onboard_restore_button">Wallet herstellen</string>
+    <string name="onboard_check_ok">✓ %1$s</string>
+    <string name="onboard_check_phrase">herstelzin van %1$d woorden</string>
+    <string name="onboard_check_hex">hex-seed van %1$d bytes</string>
+    <string name="onboard_err_enter_phrase">Voer je herstelzin in</string>
+    <string name="onboard_err_hex_even">De hex-seed moet een even aantal tekens hebben</string>
+    <string name="onboard_err_hex_range">De hex-seed moet tussen 128 en 512 bits lang zijn</string>
+    <string name="onboard_err_enter_phrase_or_hex">Voer een herstelzin van 12–24 woorden of een hex-seed in</string>
+    <string name="onboard_err_word_count">Een herstelzin heeft 12, 15, 18, 21 of 24 woorden (gekregen: %1$d)</string>
+    <string name="onboard_err_unknown_word">“%1$s” is geen BIP39-woord</string>
+    <string name="onboard_err_checksum">Controlesom komt niet overeen: controleer de woordvolgorde en spelling</string>
+    <string name="onboard_err_create_failed">Wallet aanmaken mislukt</string>
+    <string name="onboard_err_restore_failed">Herstellen mislukt</string>
+    <string name="onboard_preparing">Wallet voorbereiden…</string>
+
+    <!-- ===================== unlock ===================== -->
+    <string name="unlock_title">%1$s ontgrendelen</string>
+    <string name="unlock_password">Walletwachtwoord</string>
+    <string name="unlock_button">Ontgrendelen</string>
+    <string name="unlock_use_biometrics">Biometrie gebruiken</string>
+    <string name="unlock_switch_wallet">Wallet wisselen (%1$d)</string>
+    <string name="unlock_add_another">Nog een wallet toevoegen</string>
+    <string name="unlock_forgot">Wachtwoord vergeten? Wissen en herstellen</string>
+    <string name="unlock_erase_title">“%1$s” wissen?</string>
+    <string name="unlock_erase_body">De sleutels en lokale geschiedenis van deze wallet op deze telefoon worden verwijderd. Andere wallets blijven ongewijzigd. Je kunt het geld alleen terugkrijgen met de herstelzin. Typ ERASE om te bevestigen.</string>
+    <string name="unlock_erase_confirm">Wissen</string>
+    <string name="unlock_error_biometric">Biometrische sleutel niet beschikbaar (is er een vingerafdruk toegevoegd of verwijderd?). Gebruik je wachtwoord.</string>
+    <string name="unlock_error_incorrect">Onjuist wachtwoord</string>
+    <string name="unlock_error_failed">Ontgrendelen mislukt</string>
+    <string name="unlock_error_biometric_failed">Biometrisch ontgrendelen mislukt: %1$s. Gebruik je wachtwoord.</string>
+
+    <!-- ===================== wallet switcher ===================== -->
+    <string name="switcher_title">Wallets</string>
+    <string name="switcher_test_coins">%1$s • testmunten</string>
+    <string name="switcher_current">Huidige wallet</string>
+    <string name="switcher_add_title">Een wallet toevoegen</string>
+    <string name="switcher_add_body">Maak een nieuwe aan of herstel een andere zin. Elke wallet heeft zijn eigen wachtwoord.</string>
+
+    <!-- ===================== dashboard ===================== -->
+    <string name="dash_total_balance">Totaal saldo</string>
+    <string name="dash_spendable">Besteedbaar</string>
+    <string name="dash_incoming">Inkomend</string>
+    <string name="dash_maturing">In rijping</string>
+    <string name="dash_activity">Activiteit</string>
+    <string name="dash_view_all">Alles bekijken (%1$d)</string>
+    <string name="dash_looking">Zoeken naar transacties…</string>
+    <string name="dash_no_tx">Nog geen transacties</string>
+    <string name="dash_no_tx_body">Deel je ontvangstadres of een betaallink om te beginnen.</string>
+    <string name="dash_show_address">Mijn adres tonen</string>
+    <string name="dash_testnet_warning">Je bevindt je op %1$s. Munten hier hebben geen waarde.</string>
+    <string name="dash_sync_syncing">Synchroniseren…</string>
+    <string name="dash_sync_failed">Synchroniseren mislukt</string>
+    <string name="dash_sync_synced">Gesynchroniseerd</string>
+    <string name="dash_sync_not_synced">Nog niet gesynchroniseerd</string>
+    <string name="dash_sync_block">Blok %1$s • bijgewerkt %2$s</string>
+    <string name="dash_sync_last">Laatst gesynchroniseerd %1$s • blok %2$s</string>
+    <string name="dash_mining_rewards">Mijnbeloningen</string>
+    <string name="dash_last_7_days">Afgelopen 7 dagen</string>
+    <string name="dash_all_time">Alle tijd</string>
+    <string name="dash_mining_progress">%1$s in rijping • volgende besteedbaar over %2$d blokken (%3$s)</string>
+    <string name="dash_mining_rewards_maturing">Beloningen in rijping</string>
+    <string name="dash_price_content_desc">%1$s %2$s procent in 24 uur</string>
+    <plurals name="dash_blocks">
+        <item quantity="one">%1$d blok</item>
+        <item quantity="other">%1$d blokken</item>
+    </plurals>
+    <string name="tx_received">Ontvangen</string>
+    <string name="tx_sent">Verzonden</string>
+    <string name="tx_self">Eigen overdracht</string>
+    <string name="tx_mined">Gedolven</string>
+    <string name="tx_to_contact">Aan %1$s</string>
+    <string name="tx_from_contact">Van %1$s</string>
+    <string name="tx_pending">In behandeling</string>
+    <string name="tx_pending_seen">In behandeling • %1$s</string>
+    <string name="tx_conf">%1$s • %2$d bevest.</string>
+
+    <!-- ===================== send ===================== -->
+    <string name="send_title">%1$s verzenden</string>
+    <string name="send_spendable">Besteedbaar %1$s %2$s</string>
+    <string name="send_enter_valid_amount">Voer een geldig bedrag in (maximaal 8 decimalen)</string>
+    <string name="send_enter_valid_amount_short">Voer een geldig bedrag in</string>
+    <string name="send_enter_in">Voer in %1$s in</string>
+    <string name="send_max">Max</string>
+    <string name="send_max_selected">Max ✓</string>
+    <string name="send_to">Aan</string>
+    <string name="send_to_contact">Aan • %1$s</string>
+    <string name="send_address_placeholder">%1$s1p… of een contact</string>
+    <string name="send_amount_placeholder">0</string>
+    <string name="send_network_fee">Netwerkkosten</string>
+    <string name="send_use_estimates">Schattingen gebruiken</string>
+    <string name="send_custom_rate">Aangepast tarief</string>
+    <string name="send_fee_rate_label">Kostentarief (grain per vbyte, min. 1)</string>
+    <string name="send_fee_normal">Normaal</string>
+    <string name="send_fee_fast">Snel</string>
+    <string name="send_fee_loading">Kostenschattingen konden niet worden geladen: %1$s</string>
+    <string name="send_summary">Samenvatting</string>
+    <string name="send_summary_fee">%1$s %2$s (%3$d vB)</string>
+    <string name="send_inputs">Invoer</string>
+    <string name="send_inputs_change">%1$d • wisselgeld %2$s</string>
+    <string name="send_slider">Verzenden</string>
+    <string name="send_not_ready">Niet gereed</string>
+    <string name="send_sending">Verzenden</string>
+    <string name="send_confirming">Bevestigen</string>
+    <string name="send_slide">Schuif of dubbeltik om te verzenden</string>
+    <string name="send_why_amount_blank">Voer een bedrag in om door te gaan</string>
+    <string name="send_why_amount_invalid">Voer een geldig bedrag in om door te gaan</string>
+    <string name="send_why_recipient_blank">Voer een ontvanger in om door te gaan</string>
+    <string name="send_why_recipient_invalid">Corrigeer het adres van de ontvanger om door te gaan</string>
+    <string name="send_why_fee_unavailable">Kostenschatting niet beschikbaar</string>
+    <string name="send_why_waiting_fees">Wachten op kostenschattingen…</string>
+    <string name="send_why_preparing">Betaling voorbereiden…</string>
+    <string name="send_err_no_funds">Geen besteedbaar saldo</string>
+    <string name="send_err_insufficient">Onvoldoende saldo: %1$s %2$s nodig inclusief kosten, beschikbaar %3$s</string>
+    <string name="send_err_changed">De betaling is gewijzigd terwijl je die aan het bevestigen was. Controleer de gegevens en probeer het opnieuw.</string>
+    <string name="send_password_title">Walletwachtwoord</string>
+    <string name="send_password_body">Verzendt %1$s %2$s naar %3$s.</string>
+    <string name="send_auth_failed">Verificatie mislukt</string>
+    <string name="send_bio_unavailable">Biometrische sleutel niet beschikbaar; schakel biometrie uit en weer in bij Instellingen.</string>
+
+    <!-- ===================== receive ===================== -->
+    <string name="receive_title">%1$s ontvangen</string>
+    <string name="receive_preparing">Adres voorbereiden…</string>
+    <string name="receive_standard">Adres #%1$d • Taproot, hetzelfde als de desktopwallet</string>
+    <string name="receive_pq">Adres #%1$d • post-quantum variant</string>
+    <string name="receive_copy">Kopiëren</string>
+    <string name="receive_share">Delen</string>
+    <string name="receive_share_request">Verzoek delen</string>
+    <string name="receive_request_amount">Een bedrag aanvragen</string>
+    <string name="receive_label">Label (optioneel)</string>
+    <string name="receive_label_placeholder">Factuur #42</string>
+    <string name="receive_link_hint">Met een bedrag of label worden de code en de deellink een betaallink die het bedrag voor de afzender invult.</string>
+    <string name="receive_fresh">Een nieuw adres gebruiken</string>
+    <string name="receive_generating">Genereren…</string>
+    <string name="receive_show_pq">Post-quantum variant tonen</string>
+    <string name="receive_show_std">Standaardadres tonen</string>
+    <string name="receive_pq_warning_title">Niet zichtbaar voor de desktopwallet</string>
+    <string name="receive_pq_warning_body">Deze variant verankert een XMSS post-quantum sleutel in het adres. De officiële desktopwallet leidt die niet af, dus munten die hierheen worden gestuurd zijn alleen zichtbaar in PocketPRL totdat Pearls desktopwallet dit ondersteunt. Gebruik het standaardadres, tenzij de betaler specifiek dit adres nodig heeft.</string>
+    <string name="receive_reuse_info">Adressen kunnen opnieuw worden gebruikt, maar een nieuw adres per betaler houdt je geschiedenis privé. Inkomende betalingen verschijnen in Activiteit zodra de afzender ze uitzendt.</string>
+    <string name="receive_only_send">Stuur alleen Pearl (%1$s) naar dit adres.</string>
+    <string name="receive_qr_failed">De QR-code kon niet worden getekend. Kopieer of deel het adres in plaats daarvan.</string>
+    <string name="receive_qr_desc">QR-code van adres</string>
+    <string name="receive_requesting">%1$s %2$s aanvragen</string>
+    <string name="receive_requesting_any">Een willekeurig bedrag aanvragen</string>
+    <string name="receive_requesting_for">%1$s voor “%2$s”</string>
+
+    <!-- ===================== sent ===================== -->
+    <string name="sent_title">Verzonden</string>
+    <string name="sent_to">naar %1$s</string>
+    <string name="sent_confirms">Wordt gemiddeld binnen %1$s bevestigd.</string>
+    <string name="sent_txid">Transactie-ID</string>
+    <string name="sent_view_explorer">Bekijken in explorer</string>
+    <string name="sent_done">Gereed</string>
+
+    <!-- ===================== activity ===================== -->
+    <string name="activity_title">Activiteit</string>
+    <string name="activity_export">CSV exporteren</string>
+    <string name="activity_loading">Geschiedenis laden…</string>
+    <string name="activity_none">Nog geen activiteit</string>
+    <string name="activity_nothing">Niets hier</string>
+    <string name="activity_none_body">Betalingen en mijnbeloningen verschijnen zodra de indexer ze ziet.</string>
+    <string name="activity_title_single">Transactie</string>
+    <string name="activity_not_found">Transactie niet gevonden</string>
+    <string name="activity_self">Naar jezelf verzonden • alleen netwerkkosten</string>
+    <string name="activity_fiat_today">≈ %1$s vandaag</string>
+    <string name="activity_pending_mempool">In behandeling in mempool</string>
+    <string name="activity_conf_of_maturity">%1$d van %2$d bevestigingen om te besteden</string>
+    <string name="activity_confirmed">Bevestigd • %1$s bevestigingen</string>
+    <string name="activity_spendable_in">Besteedbaar over %1$d blokken (%2$s)</string>
+    <string name="activity_txid">Transactie-ID</string>
+    <string name="activity_from">Van</string>
+    <string name="activity_to">Aan</string>
+    <string name="activity_from_your">Van je adres</string>
+    <string name="activity_to_your">Naar je adres</string>
+    <string name="activity_save_contact">Opslaan als contact</string>
+    <string name="activity_view_explorer">Bekijken in explorer</string>
+    <string name="activity_maturity_info">Blokbeloningen worden besteedbaar na %1$d bevestigingen, zoals op elke van Bitcoin afgeleide chain.</string>
+    <string name="activity_note">Notitie</string>
+    <string name="activity_note_placeholder">Waar was dit voor?</string>
+    <string name="activity_note_hint">Notities blijven alleen op deze telefoon.</string>
+    <string name="activity_contact_new">Nieuw contact</string>
+    <string name="activity_contact_edit">Contact bewerken</string>
+    <string name="activity_fee_vsize">%1$s (%2$s grain/vB)</string>
+    <string name="activity_size">%1$d vB</string>
+    <string name="activity_inouts">%1$d / %2$d</string>
+    <string name="activity_total_out">Totaal uit</string>
+    <string name="activity_filter_all">Alle</string>
+    <string name="activity_filter_received">Ontvangen</string>
+    <string name="activity_filter_sent">Verzonden</string>
+    <string name="activity_filter_mined">Gedolven</string>
+    <plurals name="activity_tx_count">
+        <item quantity="one">%1$d transactie</item>
+        <item quantity="other">%1$d transacties</item>
+    </plurals>
+    <plurals name="activity_confirmations">
+        <item quantity="one">%1$d bevestiging</item>
+        <item quantity="other">%1$d bevestigingen</item>
+    </plurals>
+
+    <!-- ===================== settings ===================== -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_section_wallet">Wallet</string>
+    <string name="settings_section_appearance">Weergave</string>
+    <string name="settings_section_numbers">Getallen &amp; valuta</string>
+    <string name="settings_section_dashboard">Dashboard</string>
+    <string name="settings_section_security">Beveiliging &amp; privacy</string>
+    <string name="settings_section_notifications">Meldingen</string>
+    <string name="settings_section_network">Netwerk</string>
+    <string name="settings_section_backup">Back-up</string>
+    <string name="settings_section_about">Over</string>
+    <string name="settings_section_danger">Gevarenzone</string>
+    <string name="settings_name">Naam</string>
+    <string name="settings_created">Aangemaakt</string>
+    <string name="settings_wallets">Wallets</string>
+    <string name="settings_wallets_one">Alleen deze</string>
+    <string name="settings_wallets_n">%1$d op dit apparaat</string>
+    <string name="settings_contacts">Contacten</string>
+    <string name="settings_contacts_saved">%1$d opgeslagen</string>
+    <string name="settings_addresses">Adressen</string>
+    <string name="settings_addresses_derived">%1$d afgeleid</string>
+    <string name="settings_change_password">Wachtwoord wijzigen</string>
+    <string name="settings_biometric">Biometrisch ontgrendelen</string>
+    <string name="settings_biometric_none">Geen geregistreerd</string>
+    <string name="settings_biometric_sub">Vingerafdruk of gezicht</string>
+    <string name="settings_confirm_send">Bevestigen voor verzenden</string>
+    <string name="settings_confirm_send_sub">Vraag bij elke betaling</string>
+    <string name="settings_auto_lock">Automatisch vergrendelen</string>
+    <string name="settings_hide_balances">Saldo\'s verbergen</string>
+    <string name="settings_hide_balances_sub">Elk bedrag maskeren</string>
+    <string name="settings_start_hidden">Verborgen starten</string>
+    <string name="settings_start_hidden_sub">Saldo\'s verbergen wanneer je ontgrendelt</string>
+    <string name="settings_secure_all">Schermafbeeldingen overal blokkeren</string>
+    <string name="settings_secure_all_sub">Ook het begin- en activiteitenscherm beschermen</string>
+    <string name="settings_theme">Thema</string>
+    <string name="settings_accent">Accentkleur</string>
+    <string name="settings_dynamic_color">Dynamische kleur</string>
+    <string name="settings_dynamic_color_sub">Gebruik het systeemachtergrondpalet (Android 12+)</string>
+    <string name="settings_reduced_motion">Beweging verminderen</string>
+    <string name="settings_reduced_motion_sub">Geen rollende cijfers of schermanimaties</string>
+    <string name="settings_odometer">Kilometerteller-animatie</string>
+    <string name="settings_odometer_sub">Rollende cijfers op saldo\'s</string>
+    <string name="settings_odometer_haptics">Kilometerteller-trilfeedback</string>
+    <string name="settings_odometer_haptics_sub">Trilt bij elke rol</string>
+    <string name="settings_odometer_haptics_off">Geen effect terwijl de animatie uit staat</string>
+    <string name="settings_show_fiat">Fiatwaarde tonen</string>
+    <string name="settings_fiat_currency">Fiatvaluta</string>
+    <string name="settings_decimals">Decimalen voor saldo</string>
+    <string name="settings_decimal_sep">Decimaalteken</string>
+    <string name="settings_grouping_sep">Duizendtalteken</string>
+    <string name="settings_hero">Groot getal</string>
+    <string name="settings_hero_total">Totaal saldo</string>
+    <string name="settings_hero_spendable">Besteedbaar saldo</string>
+    <string name="settings_show_change">24u-prijsverandering</string>
+    <string name="settings_show_change_sub">Toon de dagelijkse verandering-chip</string>
+    <string name="settings_show_mining">Kaart Mijnbeloningen</string>
+    <string name="settings_show_mining_sub">Verberg als je niet naar deze wallet mijnbouwt</string>
+    <string name="settings_poll_mode">Verversingsfrequentie</string>
+    <string name="settings_poll_live">Live</string>
+    <string name="settings_poll_balanced">Gebalanceerd</string>
+    <string name="settings_poll_battery">Batterijbesparing</string>
+    <string name="settings_notify_incoming">Inkomende betalingen</string>
+    <string name="settings_notify_incoming_sub">Gecontroleerd %1$s</string>
+    <string name="settings_price_alerts">Prijsalerts</string>
+    <string name="settings_price_alerts_sub">Melding bij grote 24u-bewegingen</string>
+    <string name="settings_alert_threshold">Alertdrempel</string>
+    <string name="settings_alert_threshold_sub">%1$s beweging over 24 uur</string>
+    <string name="settings_reveal_seed">Herstelzin tonen</string>
+    <string name="settings_reveal_seed_sub">Vereist je wachtwoord</string>
+    <string name="settings_indexer">Indexer (Blockbook)</string>
+    <string name="settings_about_version">Versie %1$s</string>
+    <string name="settings_delete">Deze wallet verwijderen</string>
+    <string name="settings_password_title">Wachtwoord wijzigen</string>
+    <string name="settings_password_current">Huidig wachtwoord</string>
+    <string name="settings_password_new">Nieuw wachtwoord</string>
+    <string name="settings_password_confirm">Nieuw wachtwoord bevestigen</string>
+    <string name="settings_password_updated">Wachtwoord gewijzigd.</string>
+    <string name="settings_password_update">Wachtwoord bijwerken</string>
+    <string name="settings_password_info">Het wijzigen van het wachtwoord versleutelt de sleutel alleen op dit apparaat opnieuw. Je herstelzin blijft hetzelfde.</string>
+    <string name="settings_password_error_current">Huidig wachtwoord is onjuist</string>
+    <string name="settings_password_error_short">Gebruik minstens 8 tekens met een mix van letters, cijfers of symbolen.</string>
+    <string name="settings_seed_title">Herstelzin</string>
+    <string name="settings_seed_warning">Deel je herstelzin nooit. PocketPRL-medewerkers of Pearl-ontwikkelaars zullen er nooit naar vragen.</string>
+    <string name="settings_seed_reveal">Tonen</string>
+    <string name="settings_seed_hex">Hex-seed</string>
+    <string name="settings_seed_written_hint">Schrijf het op papier. Schermafbeeldingen zijn op dit scherm geblokkeerd.</string>
+    <string name="settings_rename_title">Wallet hernoemen</string>
+    <string name="settings_auto_lock_title">Automatisch vergrendelen na</string>
+    <string name="settings_theme_title">Thema</string>
+    <string name="settings_accent_title">Accentkleur</string>
+    <string name="settings_delete_title">“%1$s” verwijderen?</string>
+    <string name="settings_delete_body">Hiermee worden de versleutelde sleutels, de cache-geschiedenis, contacten en notities van deze wallet van deze telefoon verwijderd. Andere wallets blijven ongewijzigd. Zorg dat je de herstelzin hebt. Typ DELETE om te bevestigen.</string>
+    <string name="settings_threshold_title">Drempel voor prijsalert</string>
+    <string name="settings_threshold_intro">Alert wanneer de 24-uursverandering bereikt:</string>
+    <string name="settings_addresses_title">Adressen</string>
+    <string name="settings_addresses_checking">Controleren…</string>
+    <string name="settings_addresses_derived_sub">%1$d indexen afgeleid</string>
+    <string name="settings_addresses_rescan">Elk adres opnieuw scannen</string>
+    <string name="settings_addresses_receive">Ontvangst #%1$d</string>
+    <string name="settings_addresses_change">Wisselgeld #%1$d</string>
+    <string name="settings_addresses_pq">%1$s • post-quantum variant</string>
+    <string name="settings_addresses_used">gebruikt</string>
+    <string name="settings_addresses_info">Tik op een adres om het te kopiëren. Afleiding: m/86’/%1$d’/0’/branch/index, BIP-86-sleutelpad zoals de desktopwallet. Elke index heeft ook een post-quantum variant (XMSS-tapleaf uit purpose 222’) die wordt gevolgd en hier wordt vermeld zodra die is gebruikt. De verversknop controleert nu elk adres, beide varianten; het beginscherm controleert alleen de gebruikte.</string>
+    <string name="settings_contacts_title">Contacten</string>
+    <string name="settings_contacts_empty">Nog geen contacten</string>
+    <string name="settings_contacts_empty_body">Sla de adressen op die je vaak betaalt. Namen verschijnen in je activiteit en in het veld voor de ontvanger.</string>
+    <string name="settings_contacts_add">Contact toevoegen</string>
+    <string name="settings_contacts_info">Contacten worden alleen op deze telefoon opgeslagen en maken geen deel uit van je herstelzin.</string>
+    <string name="settings_contacts_new">Nieuw contact</string>
+    <string name="settings_contacts_address">%1$s-adres</string>
+    <string name="settings_contacts_invalid">Geen geldig %1$s-adres</string>
+    <string name="settings_contacts_name_required">Geef het contact een naam</string>
+    <string name="settings_about_title">Over</string>
+    <string name="settings_about_source">PocketPRL-broncode</string>
+    <string name="settings_about_pearl">Pearl Research Labs</string>
+    <string name="settings_about_pearl_source">Pearl-broncode (GitHub)</string>
+    <string name="settings_about_explorer">Blokverkenner</string>
+    <string name="settings_about_check">Controleren op updates</string>
+    <string name="settings_about_checking">Controleren…</string>
+    <string name="settings_about_latest">Je hebt de nieuwste versie (v%1$s).</string>
+    <string name="settings_about_failed">Kon GitHub niet bereiken. Controleer je verbinding en probeer het opnieuw.</string>
+    <string name="settings_about_update_title">Update beschikbaar</string>
+    <string name="settings_about_update_body">Versie %1$s is beschikbaar. Je hebt v%2$s.</string>
+    <string name="settings_about_update">Bijwerken</string>
+    <string name="settings_about_later">Later</string>
+    <string name="settings_about_version_label">Versie</string>
+    <string name="settings_about_network">Netwerk</string>
+    <string name="settings_about_coin_type">Munttype</string>
+    <string name="settings_about_addresses">Adressen</string>
+    <string name="settings_about_addresses_value">Taproot (bech32m, %1$s1p…)</string>
+    <string name="settings_about_signing">Ondertekening</string>
+    <string name="settings_about_signing_value">BIP-340 Schnorr-sleutelpad, libsecp256k1</string>
+    <string name="settings_about_pq">PQ-verankering</string>
+    <string name="settings_about_pq_value">XMSS-SHAKE256_5_256 tapleaf</string>
+    <string name="settings_about_blurb">PocketPRL is een onafhankelijke, opensource lichtgewicht wallet voor het Pearl-netwerk. Hij leidt dezelfde adressen af als de officiële desktopwallet (oyster) en is daarmee geverifieerd met testvectoren die uit de Pearl-broncode zijn gegenereerd.</string>
+    <string name="settings_about_warranty">Deze software wordt geleverd zoals ze is, zonder garantie. Verifieer builds, bewaar je herstelzin offline en test eerst met kleine bedragen.</string>
+
+    <!-- ===================== indexer ===================== -->
+    <string name="indexer_title">Indexer</string>
+    <string name="indexer_body">PocketPRL leest saldo\'s, geschiedenis en kostenschattingen van een Blockbook-indexer en verzendt erdoorheen. Sleutels verlaten de telefoon nooit, maar de indexer leert welke adressen je opzoekt. Richt hem op je eigen instantie als dat belangrijk voor je is.</string>
+    <string name="indexer_label">Blockbook-URL (alleen https)</string>
+    <string name="indexer_default">Standaard: %1$s</string>
+    <string name="indexer_saved">Opgeslagen. Trek omlaag op het beginscherm om opnieuw te synchroniseren.</string>
+    <string name="indexer_save">Opslaan</string>
+    <string name="indexer_reset">Terugzetten naar standaard</string>
+
+    <!-- ===================== theme / accents / number options ===================== -->
+    <string name="theme_auto">Automatisch (systeem)</string>
+    <string name="theme_light">Licht</string>
+    <string name="theme_dark">Donker</string>
+    <string name="accent_pearl">Pearl</string>
+    <string name="accent_ocean">Oceaan</string>
+    <string name="accent_sunset">Zonsondergang</string>
+    <string name="accent_violet">Violet</string>
+    <string name="accent_forest">Bos</string>
+    <string name="accent_rose">Roze</string>
+    <string name="accent_mono">Mono</string>
+    <string name="option_value">%1$d</string>
+    <string name="fiat_label">%1$s (%2$s)</string>
+    <string name="grouping_narrow_space">Smalle spatie</string>
+    <string name="grouping_space">Spatie</string>
+    <string name="grouping_comma">Komma</string>
+    <string name="grouping_period">Punt</string>
+    <string name="grouping_apostrophe">Apostrof</string>
+    <string name="grouping_none">Geen</string>
+    <string name="decimal_period">Punt (.)</string>
+    <string name="decimal_comma">Komma (,)</string>
+
+    <!-- ===================== sync / address errors ===================== -->
+    <string name="sync_err_no_connection">Geen verbinding met de indexer</string>
+    <string name="sync_err_not_responding">De indexer reageert niet</string>
+    <string name="sync_err_no_internet">Geen internetverbinding</string>
+    <string name="sync_err_lost_connection">Verbinding met de indexer verloren</string>
+    <string name="wallet_deriving_receive">Ontvangstadres %1$d van %2$d afleiden</string>
+    <string name="wallet_deriving_change">Wisselgeldadres %1$d van %2$d afleiden</string>
+    <plurals name="wallet_checking">
+        <item quantity="one">%1$d adres controleren…</item>
+        <item quantity="other">%1$d adressen controleren…</item>
+    </plurals>
+    <plurals name="wallet_check_failed">
+        <item quantity="one">%1$d adres kon niet worden gecontroleerd (%2$s); opnieuw proberen</item>
+        <item quantity="other">%1$d adressen konden niet worden gecontroleerd (%2$s); opnieuw proberen</item>
+    </plurals>
+    <string name="address_err_enter">Voer een adres van de ontvanger in</string>
+    <string name="address_err_invalid">Geen geldig Pearl-adres</string>
+    <string name="address_err_unknown_prefix">Onbekend adresvoorvoegsel “%1$s”</string>
+    <string name="address_err_only_taproot">Alleen Taproot-adressen (%1$s1p…) worden ondersteund</string>
+    <string name="address_err_invalid_length">Ongeldige lengte van Taproot-adres</string>
+    <string name="address_err_wrong_network">Dat is een %1$s-adres; deze wallet staat op %2$s</string>
+    <string name="qr_err_invalid_link">Die link is geen geldig %1$s-betaalverzoek.</string>
+
+    <!-- ===================== notifications ===================== -->
+    <string name="notif_channel_payments">Inkomende betalingen</string>
+    <string name="notif_channel_payments_desc">Ontvangen betalingen en blokbeloningen, wanneer ze verschijnen en wanneer ze worden bevestigd</string>
+    <string name="notif_channel_price">Prijsalerts</string>
+    <string name="notif_channel_price_desc">Grote PRL-prijsbewegingen over 24 uur</string>
+    <string name="notif_block_confirmed">Blokbeloning bevestigd</string>
+    <string name="notif_block">Blokbeloning</string>
+    <string name="notif_payment_confirmed">Betaling bevestigd</string>
+    <string name="notif_payment_received">Betaling ontvangen</string>
+    <string name="notif_title_wallet">%1$s • %2$s</string>
+    <string name="notif_hidden">Open PocketPRL voor details</string>
+    <string name="notif_mined">+%1$s %2$s • besteedbaar na %3$d bevestigingen</string>
+    <string name="notif_waiting">+%1$s %2$s • wachten op bevestiging</string>
+    <string name="notif_in_block">+%1$s %2$s • in blok %3$s</string>
+    <string name="notif_amount">+%1$s %2$s</string>
+    <string name="notif_price_title">PRL-prijsalert</string>
+    <string name="price_dir_up">Omhoog</string>
+    <string name="price_dir_down">Omlaag</string>
+    <string name="price_alert_body">%1$s %2$s%%: nu op %3$s</string>
+
+    <!-- ===================== export ===================== -->
+    <string name="export_chooser">Geschiedenis exporteren</string>
+
+    <!-- ===================== options ===================== -->
+    <string name="personalize_title">Maak het van jou</string>
+    <string name="personalize_subtitle">Kies hoe PocketPRL eruitziet en leest. Je kunt dit later allemaal aanpassen in Instellingen.</string>
+    <string name="personalize_preview">Voorbeeld</string>
+    <string name="personalize_section_look">Uiterlijk</string>
+    <string name="personalize_section_numbers">Getallen</string>
+    <string name="personalize_section_currency">Valuta</string>
+    <string name="personalize_section_motion">Beweging</string>
+    <string name="personalize_continue">Doorgaan</string>
+    <string name="personalize_reset">Terugzetten naar standaard</string>
+    <string name="personalize_grouping_toggle">Duizenden groeperen</string>
+    <string name="notif_period">ongeveer elke minuut</string>
+    <string name="autolock_immediately">Onmiddellijk</string>
+    <string name="autolock_1m">1 minuut</string>
+    <string name="autolock_5m">5 minuten</string>
+    <string name="autolock_15m">15 minuten</string>
+    <string name="autolock_1h">1 uur</string>
+    <string name="autolock_never">Nooit</string>
+    <string name="duration_seconds">%1$d seconden</string>
+    <string name="settings_threshold_custom">%1$s%%</string>
+
+    <!-- merged from strings_gen_dashboard.xml -->
+    <!-- Generated for the dashboard/activity/sent screens and shared UI helpers; keys not present in values/strings.xml. -->
+
+    <!-- shared helpers (Common.kt) -->
+    <string name="action_switch_wallet">Wallet wisselen</string>
+    <string name="action_receive">Ontvangen</string>
+    <string name="action_lock">Vergrendelen</string>
+    <string name="action_show_balance">Saldo tonen</string>
+    <string name="action_hide_balance">Saldo verbergen</string>
+    <string name="pwd_weak">Zwak</string>
+    <string name="pwd_fair">Matig</string>
+    <string name="pwd_good">Goed</string>
+    <string name="pwd_strong">Sterk</string>
+    <string name="pwd_strength">%1$s wachtwoord</string>
+    <string name="pwd_show">Wachtwoord tonen</string>
+    <string name="pwd_hide">Wachtwoord verbergen</string>
+
+    <!-- dashboard -->
+    <plurals name="dash_wallets">
+        <item quantity="one">%1$d wallet • %2$s</item>
+        <item quantity="other">%1$d wallets • %2$s</item>
+    </plurals>
+
+    <!-- activity -->
+    <string name="activity_inputs_outputs">Invoer / uitvoer</string>
+    <string name="activity_size_label">Grootte</string>
+
+    <!-- biometrics -->
+    <string name="bio_use_password">Wachtwoord gebruiken</string>
+    <string name="bio_no_crypto_object">Geen crypto-object</string>
+
+    <!-- merged from strings_gen_send.xml -->
+    <!-- Generated for the send/receive flows; keys not present in values/strings.xml. -->
+    <string name="send_scan_prompt">Scan een Pearl-adres of betaallink</string>
+    <string name="send_open_settings">Instellingen openen</string>
+    <string name="send_camera_off">Cameratoegang staat uit voor PocketPRL.</string>
+    <string name="send_camera_needed">Scannen heeft de camera nodig.</string>
+    <string name="send_for_label">Voor: %1$s</string>
+    <string name="send_grain_per_vbyte">%1$s grain/vB</string>
+    <string name="send_fiat_approx">≈ %1$s</string>
+    <string name="send_contacts_empty_body">Sla een adres op uit een transactie of bij Instellingen › Contacten.</string>
+    <string name="receive_optional">Optioneel</string>
+
+    <!-- merged from strings_gen_settings.xml -->
+    <!-- ===================== settings (generated) ===================== -->
+    <string name="settings_open_settings">Instellingen openen</string>
+    <string name="settings_notif_off">Meldingen staan uit, dus dit blijft uitgeschakeld.</string>
+    <string name="settings_notif_blocked">Meldingen zijn geblokkeerd voor PocketPRL.</string>
+    <string name="settings_keystore_error">Keystore-sleutel kon niet worden aangemaakt</string>
+    <string name="settings_biometric_prompt">Biometrisch ontgrendelen inschakelen</string>
+    <string name="settings_seed_password">Walletwachtwoord</string>
+    <string name="settings_seed_incorrect">Onjuist wachtwoord</string>
+    <string name="settings_copy_address">Adres kopiëren</string>
+
+    <!-- ===================== view models (generated) ===================== -->
+    <string name="vm_error_failed">Mislukt</string>
+    <string name="vm_biometric_enable_failed">Biometrie inschakelen mislukt</string>
+    <string name="settings_section_language">Taal</string>
+    <string name="settings_language">Taal</string>
+    <string name="settings_language_system">Systeemstandaard</string>
+</resources>

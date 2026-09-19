@@ -1,5 +1,29 @@
 # Changelog
 
+## 2.0.0
+
+* **Localization.** Every user-facing string moved to resources; the app follows the
+  system language. 18 European locales: German, Dutch, French, Italian, Spanish,
+  Portuguese, Polish, Czech, Russian, Ukrainian, Swedish, Danish, Norwegian
+  (Bokmål), Finnish, Greek, Turkish, Romanian, Hungarian. A per-app language
+  picker is in Settings and in the first-run personalization step, and the
+  languages are exposed to Android's per-app language settings.
+* **Configurable numbers and currency.** Balance decimals (2/4/6/8), decimal
+  separator, thousands grouping, and a fiat currency picker (21 currencies) that
+  drives the price feed and every amount on screen. Defaults follow the system
+  locale.
+* **Appearance.** Seven accent themes plus Material You dynamic colour (Android
+  12+), on top of the light/dark/auto modes, and a global Reduce motion switch.
+* **First-run personalization.** A new onboarding step with a live, animated
+  preview of the theme, accent, number format and currency.
+* **Dashboard controls.** Choose total vs spendable as the big number, show or
+  hide the 24h change chip, the mining rewards card, and the start-hidden
+  behaviour, and pick the refresh rate (Live/Balanced/Battery saver).
+* **Privacy.** Optional app-wide screenshot blocking.
+* **Settings** reorganized into clear categories (Appearance, Numbers & currency,
+  Dashboard, Security & privacy, Notifications, Network, Backup, About).
+* Price feed, sync progress, notifications and validation errors are localized.
+
 ## 1.1.1
 
 * **Price alerts.** Off by default. When enabled, PocketPRL checks the price in the background and notifies you when the 24 hour change reaches your threshold (5% by default, adjustable from 1% up). One alert per threshold crossed, in either direction.

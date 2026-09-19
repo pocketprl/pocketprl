@@ -36,6 +36,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.onClick
@@ -44,6 +45,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import dev.pocketprl.R
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
@@ -64,11 +66,15 @@ fun SlideToSend(
     held: Boolean = false,
     /** Shows a spinner in the thumb. */
     busy: Boolean = false,
-    label: String = "Send",
+    label: String = stringResource(R.string.send_slider),
 ) {
     val density = LocalDensity.current
     val haptics = LocalHapticFeedback.current
     val scope = rememberCoroutineScope()
+    val notReady = stringResource(R.string.send_not_ready)
+    val sending = stringResource(R.string.send_sending)
+    val confirming = stringResource(R.string.send_confirming)
+    val slideHint = stringResource(R.string.send_slide)
     val trackHeight = 60.dp
     val inset = 5.dp
     val thumb = trackHeight - inset * 2
@@ -118,10 +124,10 @@ fun SlideToSend(
             .semantics(mergeDescendants = true) {
                 role = Role.Button
                 stateDescription = when {
-                    !enabled -> "Not ready"
-                    busy -> "Sending"
-                    completed -> "Confirming"
-                    else -> "Slide or double-tap to send"
+                    !enabled -> notReady
+                    busy -> sending
+                    completed -> confirming
+                    else -> slideHint
                 }
                 if (enabled && !completed) onClick(label = label) { commit(); true }
             }
