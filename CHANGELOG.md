@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+* **Odometer haptics.** Every digit that rolls fires a tick, with a settle guard so the landing clicks once as the rollers stop left to right instead of buzzing through the correction wobble.
+* **Odometer settings.** Turn the rolling digits off entirely, or keep the animation and silence the haptics. The haptics toggle grays out when the animation is off.
+* **Check for updates.** About now checks the latest GitHub release and offers an Update button that opens the release page.
+* **Source code link.** The About screen links straight to the PocketPRL repository.
+
 ## 1.0.0
 
 First release.

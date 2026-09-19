@@ -61,6 +61,8 @@ import dev.pocketprl.core.crypto.toHex
 import dev.pocketprl.core.wallet.AddressVariant
 import dev.pocketprl.data.ThemeMode
 import dev.pocketprl.data.notify.PaymentCheckJob
+import dev.pocketprl.data.update.ReleaseInfo
+import dev.pocketprl.data.update.UpdateChecker
 import dev.pocketprl.data.vault.SeedMaterial
 import dev.pocketprl.ui.Biometrics
 import dev.pocketprl.ui.PermissionOutcome
@@ -516,9 +518,47 @@ fun ContactsScreen(vm: SettingsViewModel, onBack: () -> Unit) {
 fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
     val context = LocalContext.current
     val leavingApp = rememberLeaveAppMarker()
+    val scope = rememberCoroutineScope()
+    val haptics = rememberHaptics()
     fun open(url: String) = runCatching { leavingApp(); context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri())) }
+
+    var checking by remember { mutableStateOf(false) }
+    var pending by remember { mutableStateOf<ReleaseInfo?>(null) }
+    var upToDate by remember { mutableStateOf(false) }
+    var failed by remember { mutableStateOf(false) }
+
     ScreenScaffold(title = "About", onBack = onBack) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+            PrimaryButton(
+                text = if (checking) "Checking…" else "Check for updates",
+                loading = checking,
+                onClick = {
+                    haptics.click()
+                    upToDate = false
+                    failed = false
+                    checking = true
+                    scope.launch {
+                        val release = UpdateChecker.latest()
+                        checking = false
+                        when {
+                            release == null -> failed = true
+                            UpdateChecker.compare(release.version, BuildConfig.VERSION_NAME) > 0 -> { haptics.confirm(); pending = release }
+                            else -> { haptics.tick(); upToDate = true }
+                        }
+                    }
+                },
+            )
+            if (upToDate) InfoBanner("You are on the latest version (v${BuildConfig.VERSION_NAME}).", BannerKind.SUCCESS)
+            if (failed) InfoBanner("Could not reach GitHub. Check your connection and try again.", BannerKind.ERROR)
+
+            SecondaryButton("PocketPRL source code", onClick = { haptics.click(); open(UpdateChecker.REPO_URL) })
+
+            Spacer(Modifier.height(6.dp))
+
+            SecondaryButton("Pearl Research Labs", onClick = { open("https://pearlresearch.ai") })
+            SecondaryButton("Pearl source code (GitHub)", onClick = { open("https://github.com/pearl-research-labs/pearl") })
+            SecondaryButton("Block explorer", icon = AppIcons.OpenInNew, onClick = { open(vm.explorerUrl()) })
+
             SectionCard {
                 KeyValueRow("Version", BuildConfig.VERSION_NAME)
                 KeyValueRow("Network", vm.network.displayName)
@@ -528,10 +568,19 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
                 KeyValueRow("PQ commitment", "XMSS-SHAKE256_5_256 tapleaf")
             }
             Text("PocketPRL is an independent, open-source light wallet for the Pearl network. It derives the same addresses as the official desktop wallet (oyster) and is verified against it with test vectors generated from the Pearl source code.", style = MaterialTheme.typography.bodyMedium)
-            SecondaryButton("Pearl Research Labs", onClick = { open("https://pearlresearch.ai") })
-            SecondaryButton("Pearl source code (GitHub)", onClick = { open("https://github.com/pearl-research-labs/pearl") })
-            SecondaryButton("Block explorer", icon = AppIcons.OpenInNew, onClick = { open(vm.explorerUrl()) })
             InfoBanner("This software is provided as-is without warranty. Verify builds, keep your recovery phrase offline, and test with small amounts first.", BannerKind.INFO)
         }
+    }
+
+    pending?.let { release ->
+        AlertDialog(
+            onDismissRequest = { pending = null },
+            title = { Text("Update available") },
+            text = { Text("Version ${release.version} is available. You are on v${BuildConfig.VERSION_NAME}.") },
+            confirmButton = {
+                TextButton(onClick = { pending = null; haptics.confirm(); open(release.htmlUrl) }) { Text("Update") }
+            },
+            dismissButton = { TextButton(onClick = { pending = null }) { Text("Later") } },
+        )
     }
 }
