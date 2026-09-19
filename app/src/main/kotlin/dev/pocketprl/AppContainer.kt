@@ -10,6 +10,8 @@ import dev.pocketprl.data.WalletContext
 import dev.pocketprl.data.WalletRegistry
 import dev.pocketprl.data.notify.PaymentCheckJob
 import dev.pocketprl.data.notify.PaymentNotifier
+import dev.pocketprl.data.notify.PriceAlertJob
+import dev.pocketprl.data.notify.PriceAlertNotifier
 import dev.pocketprl.data.price.PriceApi
 import dev.pocketprl.data.vault.SeedMaterial
 import kotlinx.coroutines.CoroutineScope
@@ -96,6 +98,12 @@ class AppContainer(val appContext: Context) {
         if (settings.notifyIncoming && registry.wallets.isNotEmpty()) {
             runCatching { PaymentNotifier.ensureChannel(appContext) }
             runCatching { PaymentCheckJob.schedule(appContext) }
+        }
+
+        // Same for price alerts; these do not depend on a wallet existing.
+        if (settings.priceAlert) {
+            runCatching { PriceAlertNotifier.ensureChannel(appContext) }
+            runCatching { PriceAlertJob.schedule(appContext) }
         }
     }
 

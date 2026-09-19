@@ -27,6 +27,8 @@ class Settings(context: Context) {
         val odometer: Boolean,
         val odometerHaptics: Boolean,
         val notifyIncoming: Boolean,
+        val priceAlert: Boolean,
+        val priceAlertPercent: Double,
         val themeMode: ThemeMode,
         val preferredNetwork: Network,
     )
@@ -44,6 +46,8 @@ class Settings(context: Context) {
         odometer = prefs.getBoolean(KEY_ODOMETER, true),
         odometerHaptics = prefs.getBoolean(KEY_ODOMETER_HAPTICS, true),
         notifyIncoming = prefs.getBoolean(KEY_NOTIFY_INCOMING, false),
+        priceAlert = prefs.getBoolean(KEY_PRICE_ALERT, false),
+        priceAlertPercent = prefs.getFloat(KEY_PRICE_ALERT_PERCENT, 5f).toDouble(),
         themeMode = ThemeMode.fromId(prefs.getString(KEY_THEME_MODE, ThemeMode.AUTO.id)),
         preferredNetwork = Network.fromId(prefs.getString(KEY_PREF_NETWORK, null)),
     )
@@ -89,6 +93,16 @@ class Settings(context: Context) {
         get() = _state.value.notifyIncoming
         set(v) = edit { putBoolean(KEY_NOTIFY_INCOMING, v) }
 
+    /** Background check for large 24h PRL price moves, with a system notification. */
+    var priceAlert: Boolean
+        get() = _state.value.priceAlert
+        set(v) = edit { putBoolean(KEY_PRICE_ALERT, v) }
+
+    /** Percentage move over 24 h that trips [priceAlert]. */
+    var priceAlertPercent: Double
+        get() = _state.value.priceAlertPercent
+        set(v) = edit { putFloat(KEY_PRICE_ALERT_PERCENT, v.toFloat()) }
+
     var themeMode: ThemeMode
         get() = _state.value.themeMode
         set(v) = edit { putString(KEY_THEME_MODE, v.id) }
@@ -115,6 +129,8 @@ class Settings(context: Context) {
         private const val KEY_ODOMETER = "odometer"
         private const val KEY_ODOMETER_HAPTICS = "odometer_haptics"
         private const val KEY_NOTIFY_INCOMING = "notify_incoming"
+        private const val KEY_PRICE_ALERT = "price_alert"
+        private const val KEY_PRICE_ALERT_PERCENT = "price_alert_percent"
         private const val KEY_PREF_NETWORK = "preferred_network"
         private const val KEY_THEME_MODE = "theme_mode"
     }

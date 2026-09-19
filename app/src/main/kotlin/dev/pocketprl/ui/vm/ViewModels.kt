@@ -29,6 +29,8 @@ import dev.pocketprl.data.db.AddressRow
 import dev.pocketprl.data.db.Contact
 import dev.pocketprl.data.notify.PaymentCheckJob
 import dev.pocketprl.data.notify.PaymentNotifier
+import dev.pocketprl.data.notify.PriceAlertJob
+import dev.pocketprl.data.notify.PriceAlertNotifier
 import dev.pocketprl.data.vault.SeedMaterial
 import dev.pocketprl.data.vault.WrongPasswordException
 import dev.pocketprl.ui.Export
@@ -503,6 +505,20 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
             runCatching { PaymentCheckJob.cancel(c.appContext) }
         }
     }
+
+    /** Only call once POST_NOTIFICATIONS has been granted (or is not required). */
+    fun setPriceAlert(v: Boolean) {
+        c.settings.priceAlert = v
+        if (v) {
+            runCatching { PriceAlertNotifier.ensureChannel(c.appContext) }
+            runCatching { PriceAlertNotifier.reset(c.appContext) }
+            runCatching { PriceAlertJob.schedule(c.appContext) }
+        } else {
+            runCatching { PriceAlertJob.cancel(c.appContext) }
+        }
+    }
+
+    fun setPriceAlertPercent(p: Double) { c.settings.priceAlertPercent = p }
 
     fun blockbookUrl(): String = c.settings.blockbookUrl(network)
     fun defaultBlockbookUrl(): String = network.defaultBlockbookUrl

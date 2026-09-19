@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+* **Price alerts.** Off by default. When enabled, PocketPRL checks the price in the background and notifies you when the 24 hour change reaches your threshold (5% by default, adjustable from 1% up). One alert per threshold crossed, in either direction.
+
 ## 1.1.0
 
 * **Odometer haptics.** Every digit that rolls fires a tick, with a settle guard so the landing clicks once as the rollers stop left to right instead of buzzing through the correction wobble.

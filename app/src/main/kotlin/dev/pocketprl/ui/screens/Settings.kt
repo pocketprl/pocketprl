@@ -117,6 +117,9 @@ fun SettingsScreen(
     var bioEnabled by remember { mutableStateOf(vm.biometricEnabled) }
     var bioError by remember { mutableStateOf<String?>(null) }
     var notifyError by remember { mutableStateOf<String?>(null) }
+    var priceAlertError by remember { mutableStateOf<String?>(null) }
+    var priceAlertBlocked by remember { mutableStateOf(false) }
+    var showPriceThreshold by remember { mutableStateOf(false) }
     var showAutoLock by remember { mutableStateOf(false) }
     var showTheme by remember { mutableStateOf(false) }
     var showDelete by remember { mutableStateOf(false) }
@@ -141,6 +144,22 @@ fun SettingsScreen(
             notifBlocked = false
             notifyError = null
             vm.setNotifyIncoming(true)
+        }
+        onPauseOrDispose {}
+    }
+
+    val askPriceAlertNotifications = rememberPermissionRequest(Manifest.permission.POST_NOTIFICATIONS) { outcome ->
+        when (outcome) {
+            PermissionOutcome.GRANTED -> { priceAlertBlocked = false; vm.setPriceAlert(true) }
+            PermissionOutcome.DENIED -> { priceAlertBlocked = false; priceAlertError = "Notifications are off, so this stays disabled." }
+            PermissionOutcome.DENIED_PERMANENTLY -> { priceAlertBlocked = true; priceAlertError = "Notifications are blocked for PocketPRL." }
+        }
+    }
+    LifecycleResumeEffect(priceAlertBlocked) {
+        if (priceAlertBlocked && Permissions.notificationsGranted(context)) {
+            priceAlertBlocked = false
+            priceAlertError = null
+            vm.setPriceAlert(true)
         }
         onPauseOrDispose {}
     }
@@ -211,6 +230,29 @@ fun SettingsScreen(
                         if (notifBlocked) TextButton(onClick = { leavingApp(); Permissions.openAppSettings(context) }) { Text("Open settings") }
                     }
                 }
+                HorizontalDivider()
+                SettingRow("Price alerts", "Notify on big 24h moves", icon = AppIcons.TrendingUp) {
+                    Switch(checked = settings.priceAlert, onCheckedChange = { want ->
+                        haptics.toggle(want)
+                        priceAlertError = null
+                        if (!want) { vm.setPriceAlert(false); return@Switch }
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) askPriceAlertNotifications() else vm.setPriceAlert(true)
+                    })
+                }
+                priceAlertError?.let {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+                        if (priceAlertBlocked) TextButton(onClick = { leavingApp(); Permissions.openAppSettings(context) }) { Text("Open settings") }
+                    }
+                }
+                HorizontalDivider()
+                SettingRow(
+                    "Alert threshold",
+                    "${priceAlertLabel(settings.priceAlertPercent)} move over 24 hours",
+                    onClick = { showPriceThreshold = true },
+                    icon = AppIcons.Dollar,
+                    enabled = settings.priceAlert,
+                )
             }
 
             SectionTitle("Display")
@@ -326,9 +368,38 @@ fun SettingsScreen(
             dismissButton = { TextButton(onClick = { showDelete = false }) { Text("Cancel") } },
         )
     }
+
+    if (showPriceThreshold) {
+        AlertDialog(
+            onDismissRequest = { showPriceThreshold = false },
+            title = { Text("Price alert threshold") },
+            text = {
+                Column {
+                    Text("Alert when the 24 hour change reaches:", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Spacer(Modifier.height(4.dp))
+                    for (p in PRICE_ALERT_OPTIONS) {
+                        Row(modifier = Modifier.fillMaxWidth().clickable { haptics.tick(); vm.setPriceAlertPercent(p); showPriceThreshold = false }.heightIn(min = 48.dp).padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(selected = settings.priceAlertPercent == p, onClick = { haptics.tick(); vm.setPriceAlertPercent(p); showPriceThreshold = false })
+                            Spacer(Modifier.width(8.dp)); Text(priceAlertLabel(p))
+                        }
+                    }
+                }
+            },
+            confirmButton = { TextButton(onClick = { showPriceThreshold = false }) { Text("Close") } },
+        )
+    }
 }
 
 private val AUTO_LOCK_OPTIONS = listOf(0 to "Immediately", 60 to "1 minute", 300 to "5 minutes", 900 to "15 minutes", 3600 to "1 hour", -1 to "Never")
+
+/** Threshold choices for price alerts, in percent over 24 hours. */
+private val PRICE_ALERT_OPTIONS = listOf(1.0, 2.0, 5.0, 10.0, 15.0, 20.0, 25.0)
+
+/** "5%" / "2.5%": trims a trailing .0 so whole percentages read cleanly. */
+private fun priceAlertLabel(p: Double): String {
+    val s = if (p % 1.0 == 0.0) p.toInt().toString() else p.toString()
+    return "$s%"
+}
 
 private fun autoLockLabel(sec: Int) = AUTO_LOCK_OPTIONS.firstOrNull { it.first == sec }?.second ?: "$sec seconds"
 
@@ -529,6 +600,16 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
 
     ScreenScaffold(title = "About", onBack = onBack) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+            SectionCard {
+                KeyValueRow("Version", BuildConfig.VERSION_NAME)
+                KeyValueRow("Network", vm.network.displayName)
+                KeyValueRow("Coin type", vm.network.coinType.toString())
+                KeyValueRow("Addresses", "Taproot (bech32m, ${vm.network.hrp}1p…)")
+                KeyValueRow("Signing", "BIP-340 Schnorr key path, libsecp256k1")
+                KeyValueRow("PQ commitment", "XMSS-SHAKE256_5_256 tapleaf")
+            }
+            Text("PocketPRL is an independent, open-source light wallet for the Pearl network. It derives the same addresses as the official desktop wallet (oyster) and is verified against it with test vectors generated from the Pearl source code.", style = MaterialTheme.typography.bodyMedium)
+
             PrimaryButton(
                 text = if (checking) "Checking…" else "Check for updates",
                 loading = checking,
@@ -559,15 +640,6 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
             SecondaryButton("Pearl source code (GitHub)", onClick = { open("https://github.com/pearl-research-labs/pearl") })
             SecondaryButton("Block explorer", icon = AppIcons.OpenInNew, onClick = { open(vm.explorerUrl()) })
 
-            SectionCard {
-                KeyValueRow("Version", BuildConfig.VERSION_NAME)
-                KeyValueRow("Network", vm.network.displayName)
-                KeyValueRow("Coin type", vm.network.coinType.toString())
-                KeyValueRow("Addresses", "Taproot (bech32m, ${vm.network.hrp}1p…)")
-                KeyValueRow("Signing", "BIP-340 Schnorr key path, libsecp256k1")
-                KeyValueRow("PQ commitment", "XMSS-SHAKE256_5_256 tapleaf")
-            }
-            Text("PocketPRL is an independent, open-source light wallet for the Pearl network. It derives the same addresses as the official desktop wallet (oyster) and is verified against it with test vectors generated from the Pearl source code.", style = MaterialTheme.typography.bodyMedium)
             InfoBanner("This software is provided as-is without warranty. Verify builds, keep your recovery phrase offline, and test with small amounts first.", BannerKind.INFO)
         }
     }
