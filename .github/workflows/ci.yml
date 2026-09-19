@@ -34,10 +34,15 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          # The action's default package list includes "tools", which no longer
+          # exists in the SDK repository. Install only platform-tools here; the
+          # platform and build-tools are pinned in the next step.
+          packages: 'platform-tools'
 
       - name: Install SDK packages
         run: |
-          yes | sdkmanager --licenses > /dev/null
+          yes | sdkmanager --licenses > /dev/null || true
           sdkmanager --install "platforms;android-37.0" "build-tools;37.0.0" "platform-tools"
 
       - name: Set up Gradle
