@@ -644,4 +644,8 @@
         <item quantity="few">%1$d tranzacții</item>
         <item quantity="other">%1$d de tranzacții</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Fișierul de chei al acestui portofel nu poate fi citit. Restaurează-l cu fraza de recuperare.</string>
+    <string name="send_err_auth_required">Este necesară autentificarea înainte de a trimite această plată.</string>
+    <string name="send_external_warning_title">Cerere de plată externă</string>
+    <string name="send_external_warning">Această adresă, suma și eticheta provin dintr-un link sau cod QR, nu de la tine. Verifică adresa completă de mai jos înainte de a trimite.</string>
 </resources>

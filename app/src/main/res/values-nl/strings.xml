@@ -393,7 +393,7 @@
     <string name="settings_addresses_rescan">Elk adres opnieuw scannen</string>
     <string name="settings_addresses_receive">Ontvangst #%1$d</string>
     <string name="settings_addresses_change">Wisselgeld #%1$d</string>
-    <string name="settings_addresses_pq">%1$s • post-quantum variant</string>
+    <string name="settings_addresses_pq">%1$s • post-kwantumvariant</string>
     <string name="settings_addresses_used">gebruikt</string>
     <string name="settings_addresses_info">Tik op een adres om het te kopiëren. Afleiding: m/86’/%1$d’/0’/branch/index, BIP-86-sleutelpad zoals de desktopwallet. Elke index heeft ook een post-quantum variant (XMSS-tapleaf uit purpose 222’) die wordt gevolgd en hier wordt vermeld zodra die is gebruikt. De verversknop controleert nu elk adres, beide varianten; het beginscherm controleert alleen de gebruikte.</string>
     <string name="settings_contacts_title">Contacten</string>
@@ -638,4 +638,8 @@
         <item quantity="one">%1$d transactie</item>
         <item quantity="other">%1$d transacties</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Het sleutelbestand van deze wallet is onleesbaar. Herstel hem met je herstelzin.</string>
+    <string name="send_err_auth_required">Authenticatie is vereist voordat deze betaling kan worden verzonden.</string>
+    <string name="send_external_warning_title">Extern betalingsverzoek</string>
+    <string name="send_external_warning">Dit adres, bedrag en label komen uit een link of QR-code, niet van jou. Controleer het volledige adres hieronder voordat je verzendt.</string>
 </resources>

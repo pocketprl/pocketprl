@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.2
+
+* Localized the strings added for the external payment-request warning, the
+  send-auth requirement and the unreadable-vault error into all 18 supported
+  languages, and translated the Dutch post-quantum address label.
+
 ## 2.1.1
 
 * **Fix:** sync no longer fails on a very busy address with "response exceeds

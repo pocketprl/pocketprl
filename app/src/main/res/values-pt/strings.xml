@@ -638,4 +638,8 @@
         <item quantity="one">%1$d transação</item>
         <item quantity="other">%1$d transações</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">O ficheiro de chaves desta carteira não pode ser lido. Restaure-a com a frase de recuperação.</string>
+    <string name="send_err_auth_required">É necessária autenticação antes de enviar este pagamento.</string>
+    <string name="send_external_warning_title">Pedido de pagamento externo</string>
+    <string name="send_external_warning">Este endereço, montante e etiqueta vieram de uma ligação ou código QR, não de si. Verifique o endereço completo abaixo antes de enviar.</string>
 </resources>

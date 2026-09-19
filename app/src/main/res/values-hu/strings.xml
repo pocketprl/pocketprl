@@ -637,4 +637,8 @@
         <item quantity="one">%1$d tranzakció</item>
         <item quantity="other">%1$d tranzakció</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">A pénztárca kulcsfájlja nem olvasható. Állítsd helyre a helyreállítási frázissal.</string>
+    <string name="send_err_auth_required">A fizetés elküldése előtt hitelesítés szükséges.</string>
+    <string name="send_external_warning_title">Külső fizetési kérés</string>
+    <string name="send_external_warning">Ez a cím, összeg és címke egy hivatkozásból vagy QR-kódból származik, nem tőled. Küldés előtt ellenőrizd a teljes címet lent.</string>
 </resources>

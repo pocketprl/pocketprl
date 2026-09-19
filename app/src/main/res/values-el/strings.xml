@@ -637,4 +637,8 @@
         <item quantity="one">%1$d συναλλαγή</item>
         <item quantity="other">%1$d συναλλαγές</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Το αρχείο κλειδιού αυτού του πορτοφολιού δεν είναι αναγνώσιμο. Κάντε επαναφορά με τη φράση ανάκτησης.</string>
+    <string name="send_err_auth_required">Απαιτείται έλεγχος ταυτότητας πριν από την αποστολή αυτής της πληρωμής.</string>
+    <string name="send_external_warning_title">Εξωτερικό αίτημα πληρωμής</string>
+    <string name="send_external_warning">Αυτή η διεύθυνση, το ποσό και η ετικέτα προήλθαν από σύνδεσμο ή κωδικό QR, όχι από εσάς. Ελέγξτε την πλήρη διεύθυνση παρακάτω πριν από την αποστολή.</string>
 </resources>

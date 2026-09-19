@@ -652,4 +652,8 @@
         <item quantity="many">%1$d транзакцій</item>
         <item quantity="other">%1$d транзакції</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Файл ключів цього гаманця не читається. Відновіть його за допомогою фрази відновлення.</string>
+    <string name="send_err_auth_required">Перед надсиланням цього платежу потрібна автентифікація.</string>
+    <string name="send_external_warning_title">Зовнішній запит на платіж</string>
+    <string name="send_external_warning">Ця адреса, сума та мітка надійшли з посилання або QR-коду, а не від вас. Перед надсиланням перевірте повну адресу нижче.</string>
 </resources>

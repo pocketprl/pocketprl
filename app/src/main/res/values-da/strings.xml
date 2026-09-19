@@ -638,4 +638,8 @@
         <item quantity="one">%1$d transaktion</item>
         <item quantity="other">%1$d transaktioner</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Denne tegnebogs nøglefil kan ikke læses. Gendan den med din gendannelsessætning.</string>
+    <string name="send_err_auth_required">Der kræves godkendelse, før denne betaling kan sendes.</string>
+    <string name="send_external_warning_title">Ekstern betalingsanmodning</string>
+    <string name="send_external_warning">Denne adresse, beløb og etiket kom fra et link eller en QR-kode, ikke fra dig. Kontroller hele adressen nedenfor, før du sender.</string>
 </resources>

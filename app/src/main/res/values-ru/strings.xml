@@ -652,4 +652,8 @@
         <item quantity="many">%1$d транзакций</item>
         <item quantity="other">%1$d транзакции</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Файл ключей этого кошелька не читается. Восстановите кошелёк с помощью фразы восстановления.</string>
+    <string name="send_err_auth_required">Перед отправкой этого платежа требуется аутентификация.</string>
+    <string name="send_external_warning_title">Внешний запрос на платёж</string>
+    <string name="send_external_warning">Этот адрес, сумма и метка получены из ссылки или QR-кода, а не от вас. Перед отправкой проверьте полный адрес ниже.</string>
 </resources>

@@ -638,4 +638,8 @@
         <item quantity="one">%1$d Transaktion</item>
         <item quantity="other">%1$d Transaktionen</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Die Schlüsseldatei dieses Wallets ist nicht lesbar. Stelle es mit deiner Wiederherstellungsphrase wieder her.</string>
+    <string name="send_err_auth_required">Vor dem Senden dieser Zahlung ist eine Authentifizierung erforderlich.</string>
+    <string name="send_external_warning_title">Externe Zahlungsanforderung</string>
+    <string name="send_external_warning">Diese Adresse, der Betrag und die Bezeichnung stammen aus einem Link oder QR-Code, nicht von dir. Prüfe vor dem Senden die vollständige Adresse unten.</string>
 </resources>

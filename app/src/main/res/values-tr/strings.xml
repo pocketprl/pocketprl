@@ -637,4 +637,8 @@
         <item quantity="one">%1$d işlem</item>
         <item quantity="other">%1$d işlem</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Bu cüzdanın anahtar dosyası okunamıyor. Kurtarma ifadenizle geri yükleyin.</string>
+    <string name="send_err_auth_required">Bu ödeme gönderilmeden önce kimlik doğrulama gerekir.</string>
+    <string name="send_external_warning_title">Harici ödeme isteği</string>
+    <string name="send_external_warning">Bu adres, tutar ve etiket bir bağlantıdan veya QR koddan geldi, sizden değil. Göndermeden önce aşağıdaki tam adresi kontrol edin.</string>
 </resources>

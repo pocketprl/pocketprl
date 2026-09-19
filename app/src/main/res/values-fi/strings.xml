@@ -637,4 +637,8 @@
         <item quantity="one">%1$d tapahtuma</item>
         <item quantity="other">%1$d tapahtumaa</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Tämän lompakon avaintiedostoa ei voi lukea. Palauta se palautuslauseella.</string>
+    <string name="send_err_auth_required">Tämä maksu edellyttää todennusta ennen lähettämistä.</string>
+    <string name="send_external_warning_title">Ulkoinen maksupyyntö</string>
+    <string name="send_external_warning">Tämä osoite, summa ja tunniste tulivat linkistä tai QR-koodista, eivät sinulta. Tarkista koko osoite alta ennen lähettämistä.</string>
 </resources>

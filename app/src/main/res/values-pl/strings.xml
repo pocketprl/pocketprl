@@ -652,4 +652,8 @@
         <item quantity="many">%1$d transakcji</item>
         <item quantity="other">%1$d transakcji</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Plik klucza tego portfela jest nieczytelny. Odtwórz go za pomocą frazy odzyskiwania.</string>
+    <string name="send_err_auth_required">Przed wysłaniem tej płatności wymagane jest uwierzytelnienie.</string>
+    <string name="send_external_warning_title">Zewnętrzne żądanie płatności</string>
+    <string name="send_external_warning">Ten adres, kwota i etykieta pochodzą z linku lub kodu QR, a nie od Ciebie. Przed wysłaniem sprawdź pełny adres poniżej.</string>
 </resources>

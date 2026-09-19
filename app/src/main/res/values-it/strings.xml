@@ -638,4 +638,8 @@
         <item quantity="one">%1$d transazione</item>
         <item quantity="other">%1$d transazioni</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Il file delle chiavi di questo portafoglio non è leggibile. Ripristinalo con la frase di recupero.</string>
+    <string name="send_err_auth_required">È necessaria l’autenticazione prima di poter inviare questo pagamento.</string>
+    <string name="send_external_warning_title">Richiesta di pagamento esterna</string>
+    <string name="send_external_warning">Questo indirizzo, l’importo e l’etichetta provengono da un link o da un codice QR, non da te. Controlla l’indirizzo completo qui sotto prima di inviare.</string>
 </resources>

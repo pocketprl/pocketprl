@@ -652,4 +652,8 @@
         <item quantity="many">%1$d transakce</item>
         <item quantity="other">%1$d transakcí</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Klíčový soubor této peněženky nelze přečíst. Obnovte ji pomocí fráze pro obnovení.</string>
+    <string name="send_err_auth_required">Před odesláním této platby je nutné ověření.</string>
+    <string name="send_external_warning_title">Externí žádost o platbu</string>
+    <string name="send_external_warning">Tato adresa, částka a štítek pocházejí z odkazu nebo QR kódu, ne od vás. Před odesláním zkontrolujte celou adresu níže.</string>
 </resources>

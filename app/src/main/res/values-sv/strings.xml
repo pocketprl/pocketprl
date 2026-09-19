@@ -638,4 +638,8 @@
         <item quantity="one">%1$d transaktion</item>
         <item quantity="other">%1$d transaktioner</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Den här plånbokens nyckelfil kan inte läsas. Återställ den med din återställningsfras.</string>
+    <string name="send_err_auth_required">Autentisering krävs innan denna betalning kan skickas.</string>
+    <string name="send_external_warning_title">Extern betalningsbegäran</string>
+    <string name="send_external_warning">Denna adress, summa och etikett kom från en länk eller QR-kod, inte från dig. Kontrollera hela adressen nedan innan du skickar.</string>
 </resources>

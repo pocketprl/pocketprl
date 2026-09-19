@@ -638,4 +638,8 @@
         <item quantity="one">%1$d transaction</item>
         <item quantity="other">%1$d transactions</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Le fichier de clés de ce portefeuille est illisible. Restaurez-le avec votre phrase de récupération.</string>
+    <string name="send_err_auth_required">Une authentification est requise avant de pouvoir envoyer ce paiement.</string>
+    <string name="send_external_warning_title">Demande de paiement externe</string>
+    <string name="send_external_warning">Cette adresse, ce montant et ce libellé proviennent d’un lien ou d’un QR code, pas de vous. Vérifiez l’adresse complète ci-dessous avant d’envoyer.</string>
 </resources>

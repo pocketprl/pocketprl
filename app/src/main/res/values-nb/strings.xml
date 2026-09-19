@@ -637,4 +637,8 @@
         <item quantity="one">%1$d transaksjon</item>
         <item quantity="other">%1$d transaksjoner</item>
     </plurals>
+    <string name="unlock_error_vault_corrupt">Nøkkelfilen til denne lommeboken kan ikke leses. Gjenopprett den med gjenopprettingsfrasen.</string>
+    <string name="send_err_auth_required">Autentisering kreves før denne betalingen kan sendes.</string>
+    <string name="send_external_warning_title">Ekstern betalingsforespørsel</string>
+    <string name="send_external_warning">Denne adressen, beløpet og etiketten kom fra en lenke eller QR-kode, ikke fra deg. Sjekk hele adressen nedenfor før du sender.</string>
 </resources>
