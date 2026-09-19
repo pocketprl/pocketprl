@@ -1,10 +1,10 @@
 # Reproducible builds
 
-> **Status: in progress.** The toolchain and inputs are pinned (Tier 1 below),
-> but the APK has **not** yet been proven byte-for-byte reproducible across two
-> independent machines. Do not advertise reproducibility until that check
-> passes. This file records what is pinned, what is verified, and the exact
-> procedure to check a release.
+> **Status: byte-for-byte reproducible on one machine.**
+> Two clean builds produce identical APKs (matching SHA-256). This was achieved
+> by identifying and disabling a release-only, randomized APK signing-block
+> payload that AGP injects (ID `SDKP`, the encrypted "SDK dependency info"
+> block). What remains is cross-machine reproducibility (see below).
 
 Building the same source twice should ideally produce the same bytes. For a
 self-custody wallet that matters: it lets anyone confirm that the APK they
@@ -22,10 +22,10 @@ maintainer's build machine.
 | Build tools | `build-tools;37.0.0` | CI install step |
 | Dependencies | SHA-256 per artifact | `gradle/verification-metadata.xml` |
 | Archive entry order/timestamps | fixed | `AbstractArchiveTask` config in root `build.gradle.kts` |
+| Play dependency-info block | disabled | `android.includeDependencyInfoInApks=false` in `gradle.properties` |
 
 Notably there is **no NDK compilation**: `secp256k1-kmp-jni-android` ships
-prebuilt `.so` files, so the native toolchain is not an input. That removes one
-of the usual reproducibility headaches.
+prebuilt `.so` files, so the native toolchain is not an input.
 
 ## Building
 
@@ -34,9 +34,60 @@ of the usual reproducibility headaches.
 export JAVA_HOME=/path/to/jdk-17
 
 ./gradlew :app:assembleRelease
+# app/build/outputs/apk/release/app-release.apk
 ```
 
-The release APK lands at `app/build/outputs/apk/release/app-release.apk`.
+## Checking reproducibility
+
+`tools/check-reproducibility.sh` builds the release APK twice from clean with the
+Gradle build cache disabled, compares them, and — when they differ — isolates the
+difference to the signing block and names the blocks that vary:
+
+```bash
+tools/check-reproducibility.sh
+```
+
+This only tests the current machine. The real target is two independent machines
+(or CI) producing the same hash; a green run here is necessary, not sufficient.
+
+## Reproducibility findings
+
+Measured on one machine, Gradle build cache disabled, two clean
+`assembleRelease` runs: **byte-for-byte identical APKs** (matching SHA-256).
+
+Previously the two APKs differed in exactly one APK signing-block pair. The
+signing block now contains two pairs, both deterministic:
+
+* `0x7109871a` — APK Signature Scheme v2 — **identical**
+* `0x42726577` — verity padding — **identical**
+
+### What the differing block was
+
+The varying pair had ID `0x504b4453` (its bytes read as `SDKP`), and it was not a
+signature at all: it is the **SDK dependency-info block** that Android Gradle
+Plugin injects into the APK signing block. It is written by
+`com.android.build.gradle.internal.tasks.SdkDependencyDataGeneratorTask`, carries
+the app's dependency list serialized as
+`com.android.tools.build.libraries.metadata.AppDependencies`, and is encrypted
+with `com.google.crypto.tink.HybridEncrypt`. Tink hybrid encryption derives a
+random ephemeral key and nonce per encryption, so the ciphertext — and with it
+the whole APK — changed on every build while every other byte stayed identical.
+That matches every observation: high entropy, release-only (the packaging task
+gates it on `isDebuggable`), and independent of the signing key and R8. See
+https://d.android.com/r/tools/dependency-metadata.
+
+### Disabling it
+
+Set in `gradle.properties`:
+
+```properties
+android.includeDependencyInfoInApks=false
+```
+
+This removes the block, leaving the APK fully reproducible. Trade-off: Google
+Play reads this block for dependency/SBOM reporting, so disabling it drops that
+metadata. Reproducibility is preferred here, and the dependency set is already
+cryptographically pinned in `gradle/verification-metadata.xml`.
 
 ## Verifying a release APK
 
@@ -48,10 +99,8 @@ and (b) that the APK's contents match a build you made yourself.
 released APK onto your locally built one so the two are comparable:
 
 ```bash
-# 1. Your own unsigned-ish build (CI uses an ephemeral key; see ci.yml).
-./gradlew :app:assembleRelease
+./gradlew :app:assembleRelease   # your own build
 
-# 2. Compare: the released APK must equal your build plus the signature.
 pip install apksigcopier
 apksigcopier compare \
   app/build/outputs/apk/release/app-release.apk \
@@ -66,23 +115,10 @@ Expected signing certificate (SHA-256):
 5D:FF:D4:A7:05:13:5B:0E:85:A9:D3:C6:03:70:E8:27:BB:A4:AA:5B:5A:2E:C2:0F:A9:07:44:EC:67:2C:C8:55
 ```
 
-## Known gaps (to close before claiming reproducibility)
-
-1. **APK packaging is done by AGP, not `AbstractArchiveTask`.** ZIP entry
-   timestamps/order in the APK are not yet proven stable. This is the most
-   likely source of a mismatch.
-2. **`SOURCE_DATE_EPOCH` is not wired into the Android packaging pipeline.**
-   Gradle consumes it for some tasks, but not for the APK.
-3. **No second-machine check yet.** The procedure above has not been run from a
-   clean environment and compared.
-4. **Dependency verification is new.** CI has not yet exercised
-   `gradle/verification-metadata.xml` on a cold cache; a missing entry would
-   fail the build. Add entries with
-   `./gradlew --write-verification-metadata sha256 <tasks>` as needed.
-
 ## Signing policy
 
 - The release keystore lives offline. It is never committed and never placed in
   GitHub Actions secrets.
-- CI (`ci.yml`) generates a **throwaway** key just to exercise the release
-  signing path. CI artifacts are for verification and must not be distributed.
+- CI (`.github/workflows/ci.yml`) generates a **throwaway** key just to exercise
+  the release signing path. CI artifacts are for verification and must not be
+  distributed.
