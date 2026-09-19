@@ -65,12 +65,21 @@ android {
         buildConfig = true
     }
 
+
     packaging {
         resources.excludes += setOf("/META-INF/{AL2.0,LGPL2.1}", "/META-INF/versions/9/OSGI-INF/MANIFEST.MF")
     }
 
     testOptions {
         unitTests.isReturnDefaultValues = true
+    }
+}
+
+// Pin the bytecode target explicitly. Without this the Kotlin plugin's default
+// can change between versions, which would move the APK hash between builds.
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
 }
 
