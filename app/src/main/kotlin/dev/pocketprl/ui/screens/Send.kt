@@ -85,7 +85,6 @@ import dev.pocketprl.ui.components.RecipientField
 import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SectionCard
 import dev.pocketprl.ui.components.SectionTitle
-import dev.pocketprl.ui.components.SecureWindow
 import dev.pocketprl.ui.components.SlideToSend
 import dev.pocketprl.ui.components.addressErrorText
 import dev.pocketprl.ui.components.etaBlocks
@@ -120,7 +119,6 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     var authError by remember { mutableStateOf<String?>(null) }
     val leavingApp = rememberLeaveAppMarker()
     val reduced = LocalReducedMotion.current
-    SecureWindow()
 
     LaunchedEffect(pending) {
         pending?.let { uri ->

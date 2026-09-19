@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.1
+
+* **Fix:** sync no longer fails on a very busy address with "response exceeds
+  8388608 bytes". The indexer response ceiling is raised to 32 MiB and the
+  history backfill walk now shrinks its page size instead of giving up when a
+  single page is too large.
+* Send is no longer screenshot-blocked; Unlock still is.
+
 ## 2.1.0
 
 * **Security hardening** (unaudited wallet, pre-release review):

@@ -17,6 +17,10 @@ import java.util.concurrent.TimeUnit
 
 class BlockbookException(message: String, val httpCode: Int = 0) : IOException(message)
 
+/** A response was larger than the client is willing to buffer in memory. */
+class ResponseTooLargeException(limit: Long, path: String = "") :
+    IOException("response${if (path.isEmpty()) "" else " from $path"} exceeds $limit bytes")
+
 /** Minimal Blockbook client. Only HTTPS endpoints are accepted. */
 class BlockbookApi(baseUrlProvider: () -> String, private val userAgent: String) {
     private val baseUrl = baseUrlProvider
@@ -41,19 +45,21 @@ class BlockbookApi(baseUrlProvider: () -> String, private val userAgent: String)
     }
 
     /**
-     * Reads a response body with a hard size cap. A hostile or broken indexer
-     * cannot make the app allocate an unbounded string and OOM.
+     * Reads a response body with a hard size cap so a hostile or broken indexer
+     * cannot make the app allocate an unbounded string and OOM. The caller can
+     * catch [ResponseTooLargeException] and retry with a smaller page.
      */
     private fun readBody(resp: okhttp3.Response): String {
+        val path = resp.request.url.encodedPath
         val source = resp.body.source()
         val buffer = okio.Buffer()
         while (true) {
             val remaining = (MAX_RESPONSE_BYTES + 1) - buffer.size
-            if (remaining <= 0) throw BlockbookException("response exceeds $MAX_RESPONSE_BYTES bytes")
+            if (remaining <= 0) throw ResponseTooLargeException(MAX_RESPONSE_BYTES, path)
             val read = source.read(buffer, remaining)
             if (read == -1L) break
         }
-        if (buffer.size > MAX_RESPONSE_BYTES) throw BlockbookException("response exceeds $MAX_RESPONSE_BYTES bytes")
+        if (buffer.size > MAX_RESPONSE_BYTES) throw ResponseTooLargeException(MAX_RESPONSE_BYTES, path)
         return buffer.readString(Charsets.UTF_8)
     }
 
@@ -114,7 +120,11 @@ class BlockbookApi(baseUrlProvider: () -> String, private val userAgent: String)
     }
 
     companion object {
-        /** Generous ceiling for a page of 500 Blockbook transactions; anything larger is hostile. */
-        private const val MAX_RESPONSE_BYTES = 8L * 1024 * 1024
+        /**
+         * Ceiling on a single response. Generous enough for a page of 500 busy
+         * transactions or a large UTXO set, while still bounding memory; callers
+         * that can page should catch [ResponseTooLargeException] and retry smaller.
+         */
+        private const val MAX_RESPONSE_BYTES = 32L * 1024 * 1024
     }
 }

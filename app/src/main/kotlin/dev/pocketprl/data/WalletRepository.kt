@@ -17,6 +17,7 @@ import dev.pocketprl.core.wallet.BRANCH_EXTERNAL
 import dev.pocketprl.core.wallet.BRANCH_INTERNAL
 import dev.pocketprl.data.blockbook.BbTx
 import dev.pocketprl.data.blockbook.BlockbookApi
+import dev.pocketprl.data.blockbook.ResponseTooLargeException
 import dev.pocketprl.data.db.AddressRow
 import dev.pocketprl.data.db.Contact
 import dev.pocketprl.data.db.TxKind
@@ -547,11 +548,22 @@ class WalletRepository(
             var pageNo = 1
             var processed = 0
             var pages = 0
+            // A single page can be too large for a very busy address. Shrink the
+            // page size and restart the walk (Blockbook paginates by page x
+            // pageSize, so one size must be used for the whole walk).
+            var pageSize = BACKFILL_PAGE_SIZE
             while (true) {
                 // Bound the walk: the page count is server-controlled, so a hostile
                 // indexer must not be able to keep the loop running forever.
                 if (++pages > MAX_BACKFILL_PAGES) { backfilled = false; break }
-                val page = api.address(row.address, page = pageNo, pageSize = BACKFILL_PAGE_SIZE)
+                val page = try {
+                    api.address(row.address, page = pageNo, pageSize = pageSize)
+                } catch (e: ResponseTooLargeException) {
+                    if (pageSize <= MIN_BACKFILL_PAGE_SIZE) throw e
+                    pageSize = (pageSize / 4).coerceAtLeast(MIN_BACKFILL_PAGE_SIZE)
+                    pageNo = 1; processed = 0; pages = 0
+                    continue
+                }
                 for (t in page.transactions) {
                     if (t.isConfirmed) processed++
                     if (pageNo > 1 || t.txid !in seen) upsertFromBlockbook(t, own)
@@ -782,6 +794,8 @@ class WalletRepository(
         private const val CONCURRENCY = 4
         private const val PAGE_SIZE = 50
         private const val BACKFILL_PAGE_SIZE = 500
+        /** Smallest history page the walk will shrink to before giving up on a too-large response. */
+        private const val MIN_BACKFILL_PAGE_SIZE = 50
         /** Hard cap on history pages walked per address (500 each) so a hostile indexer cannot loop forever. */
         private const val MAX_BACKFILL_PAGES = 40
         private const val MAX_DISCOVERY_ROUNDS = 12
