@@ -130,9 +130,10 @@ fun SlideToConfirm(
             labelColor = scheme.onSurfaceVariant
         }
         danger -> {
+            // Same contrast as the send track: a lighter thumb disc on the solid track.
             track = scheme.error
-            thumbColor = scheme.error
-            glyph = scheme.onError
+            thumbColor = scheme.errorContainer
+            glyph = scheme.onErrorContainer
             labelColor = scheme.onError
         }
         else -> {
