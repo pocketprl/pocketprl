@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.5.1
+
+* **Odometer reverted to the 1.0.0 motion.** The balance roll is the original
+  implementation again — a constant free-run pace per roller and the left-to-right
+  settle — which reads smoother than the tuned version. The slot-machine digit
+  haptics that had been layered on top are removed with it, as is the odometer
+  haptics setting. Everything else is unchanged from 2.5.0.
+
 ## 2.5.0
 
 * **Version switching.** Each release now ships up to three builds in three

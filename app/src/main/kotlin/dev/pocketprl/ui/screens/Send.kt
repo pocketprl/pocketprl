@@ -171,7 +171,6 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
             onDone = { vm.reset(); onBack() },
             animate = !reduced,
             odometer = walletSettings.odometer && !reduced,
-            odometerHaptics = walletSettings.odometerHaptics,
             secondsPerBlock = secondsPerBlock,
         )
     } else {

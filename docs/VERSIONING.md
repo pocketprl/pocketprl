@@ -15,10 +15,11 @@ the lanes cannot express.
 | **B** back | `300000 + e` | Above the rollback lane, so a downgraded install can climb back up. |
 
 `e` is a monotonic per-version index assigned at release (`1.0.0 = 1`, …, `2.4.1 = 14`,
-`2.5.0 = 15`). Every code is fixed when its build is published and never rebuilt.
+`2.5.0 = 15`, `2.5.1 = 16`). Every code is fixed when its build is published and never
+rebuilt.
 
-Examples: `2.5.0` is `P 100041`, `R 249985`, `B 300015`; `2.3.2` is `R 249988`,
-`B 300012`; `2.4.1` is `R 249986`, `B 300014`.
+Examples: `2.5.1` is `P 100042`, `R 249984`, `B 300016`; `2.5.0` is `P 100041`,
+`R 249985`, `B 300015`; `2.3.2` is `R 249988`, `B 300012`.
 
 ## What the lanes buy
 

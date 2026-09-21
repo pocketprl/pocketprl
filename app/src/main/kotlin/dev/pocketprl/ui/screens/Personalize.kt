@@ -98,7 +98,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
         Text(stringResource(R.string.personalize_subtitle), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
 
         Spacer(Modifier.height(22.dp))
-        PreviewCard(accent = accent, preview = preview, fiat = previewFiat, fiatCode = settings.fiatCurrency.code.uppercase(), reducedMotion = settings.reducedMotion, haptics = settings.odometerHaptics)
+        PreviewCard(accent = accent, preview = preview, fiat = previewFiat, fiatCode = settings.fiatCurrency.code.uppercase(), reducedMotion = settings.reducedMotion)
 
         Spacer(Modifier.height(SectionGap))
         SectionTitle(stringResource(R.string.settings_section_language))
@@ -244,7 +244,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
 
 /** Animated card that previews the chosen accent and the live number format. */
 @Composable
-private fun PreviewCard(accent: Color, preview: String, fiat: String?, fiatCode: String, reducedMotion: Boolean, haptics: Boolean) {
+private fun PreviewCard(accent: Color, preview: String, fiat: String?, fiatCode: String, reducedMotion: Boolean) {
     val cs = MaterialTheme.colorScheme
     val bg by animateColorAsState(accent.copy(alpha = 0.16f).compositeOver(cs.surface), label = "previewBg")
     val border by animateColorAsState(accent.copy(alpha = 0.45f), label = "previewBorder")
@@ -258,12 +258,11 @@ private fun PreviewCard(accent: Color, preview: String, fiat: String?, fiatCode:
             style = MaterialTheme.typography.headlineLarge,
             color = cs.onSurface,
             animate = !reducedMotion,
-            haptics = haptics,
             extraTurns = 1,
         )
         if (fiat != null) {
             Spacer(Modifier.height(2.dp))
-            OdometerText(text = "≈ $fiat $fiatCode", style = MaterialTheme.typography.titleMedium, color = cs.onSurfaceVariant, animate = !reducedMotion, haptics = haptics)
+            OdometerText(text = "≈ $fiat $fiatCode", style = MaterialTheme.typography.titleMedium, color = cs.onSurfaceVariant, animate = !reducedMotion)
         }
     }
 }

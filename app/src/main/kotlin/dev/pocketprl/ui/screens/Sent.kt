@@ -75,7 +75,6 @@ fun SentContent(
     onDone: () -> Unit,
     animate: Boolean = true,
     odometer: Boolean = true,
-    odometerHaptics: Boolean = true,
     secondsPerBlock: Long = Network.TARGET_BLOCK_SECONDS,
 ) {
     val context = LocalContext.current
@@ -147,7 +146,7 @@ fun SentContent(
             }
             Spacer(Modifier.height(6.dp))
             // Always in the tree so the odometer has a starting value to roll from.
-            AmountText(shownGrain, network, style = MaterialTheme.typography.displaySmall, odometer = true, animate = odometer && !reduce, haptics = odometerHaptics, modifier = Modifier.graphicsLayer { alpha = amountAlpha })
+            AmountText(shownGrain, network, style = MaterialTheme.typography.displaySmall, odometer = true, animate = odometer && !reduce, modifier = Modifier.graphicsLayer { alpha = amountAlpha })
             AnimatedVisibility(visible = stage >= 3, enter = fadeIn(tween(350)) + slideInVertically(tween(350)) { it / 4 }) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Spacer(Modifier.height(4.dp))
