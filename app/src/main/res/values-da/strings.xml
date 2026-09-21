@@ -789,4 +789,6 @@
     <string name="switch_cant_here">Kan ikke installere denne version her</string>
     <string name="downgrade_manual_update_warning">Denne build kan tjekke for opdateringer, men kan ikke selv installere dem. For at komme videre skal du hente udgivelsen fra GitHub og installere den manuelt.</string>
     <string name="downgrade_no_switcher_warning">Denne build har ingen versionsskifter. Når du først er her, kan du ikke se, hvilken build du er på, og du kan ikke skifte i appen, før du er tilbage på 2.4.0 eller nyere.</string>
+    <string name="alternate_notice_rollback">Bemærk: du er på et alternativt nedgraderings-build. Herfra kan du kun gå ned, indtil du går op igen — og derefter kun op.</string>
+    <string name="alternate_notice_back">Bemærk: du er på et alternativt retur-build. Herfra er der kun op — til nyere retur-builds.</string>
 </resources>

@@ -199,10 +199,6 @@ fun SettingsScreen(
 
     ScreenScaffold(title = stringResource(R.string.settings_title), onBack = onBack) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 2.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            if (!BuildInfo.isPrimary) {
-                // Yellow: off the regular line is a state to be aware of, not an error.
-                InfoBanner(stringResource(if (BuildInfo.lane == VersionLane.ROLLBACK) R.string.settings_alt_rollback else R.string.settings_alt_back), BannerKind.WARNING)
-            }
             SectionTitle(stringResource(R.string.settings_section_wallet))
             SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_name), vm.walletName, onClick = { showRename = true }, icon = Icons.Filled.Edit)

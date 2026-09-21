@@ -5,8 +5,11 @@
 * **Odometer reverted to the 1.0.0 motion.** The balance roll is the original
   implementation again — the random free-run pace per roller and the left-to-right
   settle — which reads smoother than the tuned version. The slot-machine digit
-  haptics and the odometer haptics setting are kept as they were. Everything else
-  is unchanged from 2.5.0.
+  haptics and the odometer haptics setting are kept as they were.
+* The alternate-build notice on first launch is now a plain heads-up (no repair
+  prompt) that says whether that build can only go down or only go up.
+* Removed the alternate-build banner from the top of Settings; the build type is
+  still shown under About.
 
 ## 2.5.0
 

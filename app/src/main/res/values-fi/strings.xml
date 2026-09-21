@@ -789,4 +789,6 @@
     <string name="switch_cant_here">Tätä versiota ei voi asentaa tähän</string>
     <string name="downgrade_manual_update_warning">Tämä koontiversio voi tarkistaa päivityksiä, mutta ei voi asentaa niitä itse. Edetäksesi sinun on ladattava julkaisu GitHubista ja asennettava se käsin.</string>
     <string name="downgrade_no_switcher_warning">Tässä koontiversiossa ei ole versionvaihtajaa. Tänne jouduttuasi et näe, millä koontiversiolla olet, etkä voi vaihtaa sovelluksessa, ennen kuin olet taas versiossa 2.4.0 tai uudemmassa.</string>
+    <string name="alternate_notice_rollback">Huomio: olet vaihtoehtoisella peruutuskoontiversiolla. Täältä voit mennä vain alas, kunnes menet takaisin ylös — ja sen jälkeen vain ylös.</string>
+    <string name="alternate_notice_back">Huomio: olet vaihtoehtoisella paluukoontiversiolla. Täältä on vain ylös, uudempiin paluukoontiversioihin.</string>
 </resources>

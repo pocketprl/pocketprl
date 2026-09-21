@@ -787,4 +787,6 @@
     <string name="switch_cant_here">Ez a verzió itt nem telepíthető</string>
     <string name="downgrade_manual_update_warning">Ez a build képes frissítéseket keresni, de önmaga nem tudja telepíteni azokat. A továbblépéshez le kell töltened a kiadást a GitHubból, és kézzel kell telepítened.</string>
     <string name="downgrade_no_switcher_warning">Ez a build nem tartalmaz verzióváltót. Ha egyszer itt vagy, nem látod, melyik builden vagy, és nem tudsz az alkalmazásban váltani, amíg vissza nem térsz a 2.4.0-s vagy újabb verzióra.</string>
+    <string name="alternate_notice_rollback">Figyelem: alternatív visszalépési builden vagy. Innen csak lefelé mehetsz, amíg újra fel nem mész — és utána már csak felfelé.</string>
+    <string name="alternate_notice_back">Figyelem: alternatív visszatérési builden vagy. Innen csak felfelé van, újabb visszatérési buildekre.</string>
 </resources>

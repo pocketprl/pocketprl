@@ -517,6 +517,8 @@
     <string name="switch_blocked_back">You’re on an alternate return build, which only installs newer return builds. This version can’t be installed over it. Reset to go back to the regular line.</string>
     <string name="switch_blocked">This version can’t be installed over your build in place. Reset to switch to it.</string>
     <string name="switch_cant_here">Can’t install this version here</string>
+    <string name="alternate_notice_rollback">Heads up: you’re on an alternate rollback build. From here you can only go down, until you go back up — and then only up.</string>
+    <string name="alternate_notice_back">Heads up: you’re on an alternate return build. From here there’s only up, to newer return builds.</string>
     <string name="return_build_title">Return build</string>
     <string name="return_build_hero">You’re on a return build</string>
     <string name="return_build_body">This build was made to climb out of an older version, so its package version is higher than the releases you could go back to. Downgrading is off until you switch to the regular build.</string>

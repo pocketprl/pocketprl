@@ -793,4 +793,6 @@
     <string name="switch_cant_here">Această versiune nu poate fi instalată aici</string>
     <string name="downgrade_manual_update_warning">Această versiune poate verifica actualizările, dar nu le poate instala singură. Pentru a merge mai departe va trebui să descarci versiunea de pe GitHub și să o instalezi manual.</string>
     <string name="downgrade_no_switcher_warning">Această versiune nu are comutator de versiuni. Odată ajuns aici, nu vei vedea pe ce versiune ești și nu vei putea comuta din aplicație până când revii la 2.4.0 sau mai nou.</string>
+    <string name="alternate_notice_rollback">Atenție: ești pe o versiune alternativă de retrogradare. De aici poți merge doar în jos, până când urci din nou — iar apoi doar în sus.</string>
+    <string name="alternate_notice_back">Atenție: ești pe o versiune alternativă de revenire. De aici există doar în sus, spre versiuni de revenire mai noi.</string>
 </resources>

@@ -789,4 +789,6 @@
     <string name="switch_cant_here">Kan deze versie hier niet installeren</string>
     <string name="downgrade_manual_update_warning">Deze build kan op updates controleren, maar kan ze niet zelf installeren. Om verder te komen, moet je de release van GitHub downloaden en handmatig installeren.</string>
     <string name="downgrade_no_switcher_warning">Deze build heeft geen versiewisselaar. Eenmaal hier zie je niet welke build je gebruikt en kun je niet in de app wisselen tot je weer op 2.4.0 of nieuwer staat.</string>
+    <string name="alternate_notice_rollback">Let op: je gebruikt een alternatieve downgrade-build. Vanaf hier kun je alleen naar beneden, tot je weer naar boven gaat — en dan alleen nog maar naar boven.</string>
+    <string name="alternate_notice_back">Let op: je gebruikt een alternatieve terugkeerbuild. Vanaf hier gaat het alleen nog maar naar boven — naar nieuwere terugkeerbuilds.</string>
 </resources>

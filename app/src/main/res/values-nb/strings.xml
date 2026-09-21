@@ -785,4 +785,6 @@
     <string name="switch_cant_here">Kan ikke installere denne versjonen her</string>
     <string name="downgrade_manual_update_warning">Dette bygget kan sjekke etter oppdateringer, men kan ikke installere dem selv. For å komme videre må du laste ned utgivelsen fra GitHub og installere den manuelt.</string>
     <string name="downgrade_no_switcher_warning">Dette bygget har ingen versjonsvelger. Når du først er her, ser du ikke hvilket bygg du er på, og du kan ikke bytte i appen før du er tilbake på 2.4.0 eller nyere.</string>
+    <string name="alternate_notice_rollback">Obs: du er på et alternativt nedgraderingsbygg. Herfra kan du bare gå ned, helt til du går opp igjen — og deretter bare opp.</string>
+    <string name="alternate_notice_back">Obs: du er på et alternativt returbygg. Herfra er det bare opp, til nyere returbygg.</string>
 </resources>

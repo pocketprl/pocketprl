@@ -793,4 +793,6 @@
     <string name="switch_cant_here">Impossible d’installer cette version ici</string>
     <string name="downgrade_manual_update_warning">Cette compilation peut vérifier les mises à jour mais ne peut pas les installer elle-même. Pour avancer, vous devrez télécharger la version depuis GitHub et l’installer manuellement.</string>
     <string name="downgrade_no_switcher_warning">Cette compilation n’a pas de sélecteur de version. Une fois ici, vous ne verrez plus sur quelle compilation vous êtes et ne pourrez pas changer de version dans l’application tant que vous ne serez pas revenu à la version 2.4.0 ou plus récente.</string>
+    <string name="alternate_notice_rollback">Attention : vous utilisez un build de rétrogradation alternatif. D’ici, vous ne pouvez que descendre, jusqu’à ce que vous remontiez — et ensuite, seulement vers le haut.</string>
+    <string name="alternate_notice_back">Attention : vous utilisez une compilation de retour alternative. D’ici, il n’y a que vers le haut — vers des compilations de retour plus récentes.</string>
 </resources>

@@ -807,4 +807,6 @@
     <string name="switch_cant_here">Tuto verzi zde nelze nainstalovat</string>
     <string name="downgrade_manual_update_warning">Toto sestavení umí kontrolovat aktualizace, ale nedokáže je samo nainstalovat. Abyste mohli jít dál, budete si muset stáhnout vydání z GitHubu a nainstalovat je ručně.</string>
     <string name="downgrade_no_switcher_warning">Toto sestavení nemá přepínač verzí. Jakmile se sem dostanete, neuvidíte, na kterém sestavení jste, ani nebudete moci v aplikaci přepnout, dokud se nevrátíte na 2.4.0 nebo novější.</string>
+    <string name="alternate_notice_rollback">Pozor: jste na alternativním sestavení pro rollback. Odtud můžete jen klesat, dokud nejdete znovu nahoru — a pak už jen nahoru.</string>
+    <string name="alternate_notice_back">Pozor: jste na alternativním sestavení pro návrat. Odtud vede už jen nahoru — k novějším sestavením pro návrat.</string>
 </resources>

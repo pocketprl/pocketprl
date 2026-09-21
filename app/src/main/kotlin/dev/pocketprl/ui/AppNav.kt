@@ -284,7 +284,7 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
     // build is installed.
     LaunchedEffect(unlocked, settings.returnBuildNoticeShown, route) {
         if (unlocked && route != null && route !in Routes.PUBLIC && route != Routes.RETURN_BUILD &&
-            !settings.returnBuildNoticeShown && BuildInfo.lane == VersionLane.BACK
+            !settings.returnBuildNoticeShown && BuildInfo.lane != VersionLane.PRIMARY
         ) {
             container.settings.returnBuildNoticeShown = true
             nav.navigate(Routes.RETURN_BUILD) { launchSingleTop = true }
@@ -369,10 +369,7 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
             )
         }
         composable(Routes.RETURN_BUILD) {
-            ReturnBuildScreen(
-                onBack = { nav.popBackStack() },
-                onFix = { nav.navigate(Routes.resetBuild(BuildConfig.VERSION_NAME)) },
-            )
+            ReturnBuildScreen(onDismiss = { nav.popBackStack() })
         }
         composable(Routes.RESET_BUILD) { entry ->
             ResetBuildScreen(

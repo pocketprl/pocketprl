@@ -793,4 +793,6 @@
     <string name="switch_cant_here">Impossibile installare questa versione qui</string>
     <string name="downgrade_manual_update_warning">Questa build può controllare gli aggiornamenti ma non può installarli da sola. Per andare avanti dovrai scaricare la versione da GitHub e installarla manualmente.</string>
     <string name="downgrade_no_switcher_warning">Questa build non ha un selettore di versione. Una volta qui non vedrai su quale build ti trovi né potrai cambiare versione nell’app finché non sarai di nuovo sulla 2.4.0 o successiva.</string>
+    <string name="alternate_notice_rollback">Attenzione: stai usando una build di downgrade alternativa. Da qui puoi solo scendere, finché non risali — e poi solo salire.</string>
+    <string name="alternate_notice_back">Attenzione: stai usando una build di ritorno alternativa. Da qui si può solo salire — verso build di ritorno più recenti.</string>
 </resources>

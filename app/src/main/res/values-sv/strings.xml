@@ -791,4 +791,6 @@
     <string name="switch_cant_here">Kan inte installera den här versionen här</string>
     <string name="downgrade_manual_update_warning">Den här versionen kan söka efter uppdateringar men kan inte installera dem själv. För att gå vidare måste du ladda ner utgåvan från GitHub och installera den manuellt.</string>
     <string name="downgrade_no_switcher_warning">Den här versionen har ingen versionsväxlare. När du väl är här ser du inte vilken version du är på och kan inte byta i appen förrän du är tillbaka på 2.4.0 eller nyare.</string>
+    <string name="alternate_notice_rollback">OBS: du är på ett alternativt nedgraderingsbygge. Härifrån kan du bara gå ned, tills du går upp igen — och sedan bara upp.</string>
+    <string name="alternate_notice_back">OBS: du är på ett alternativt returbygge. Härifrån finns bara upp — till nyare returbyggen.</string>
 </resources>

@@ -29,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.pocketprl.BuildConfig
 import dev.pocketprl.R
+import dev.pocketprl.data.BuildInfo
+import dev.pocketprl.data.VersionLane
 import dev.pocketprl.data.update.AppUpdater
 import dev.pocketprl.data.update.UpdateChecker
 import dev.pocketprl.ui.PermissionOutcome
@@ -50,8 +52,13 @@ import kotlinx.coroutines.launch
  * build of the same version is installed.
  */
 @Composable
-fun ReturnBuildScreen(onBack: () -> Unit, onFix: () -> Unit) {
-    ScreenScaffold(title = stringResource(R.string.return_build_title), onBack = onBack) {
+fun ReturnBuildScreen(onDismiss: () -> Unit) {
+    val (titleRes, bodyRes) = when (BuildInfo.lane) {
+        VersionLane.ROLLBACK -> R.string.build_lane_rollback to R.string.alternate_notice_rollback
+        VersionLane.BACK -> R.string.build_lane_back to R.string.alternate_notice_back
+        VersionLane.PRIMARY -> R.string.build_lane_primary to R.string.alternate_notice_back
+    }
+    ScreenScaffold(title = stringResource(titleRes), onBack = onDismiss) {
         Column(
             modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp, vertical = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -60,20 +67,13 @@ fun ReturnBuildScreen(onBack: () -> Unit, onFix: () -> Unit) {
             Spacer(Modifier.height(8.dp))
             HeroIcon(AppIcons.Downgrade)
             Text(
-                stringResource(R.string.return_build_hero),
-                style = MaterialTheme.typography.headlineSmall,
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-            Text(
-                stringResource(R.string.return_build_body),
-                style = MaterialTheme.typography.bodyMedium,
+                stringResource(bodyRes),
+                style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Spacer(Modifier.weight(1f))
-            PrimaryButton(stringResource(R.string.return_build_fix), onClick = onFix)
-            SecondaryButton(stringResource(R.string.return_build_keep), onClick = onBack)
+            PrimaryButton(stringResource(R.string.action_done), onClick = onDismiss)
             Spacer(Modifier.height(8.dp))
         }
     }

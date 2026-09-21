@@ -788,4 +788,6 @@
     <string name="switch_cant_here">Bu sürüm buraya kurulamaz</string>
     <string name="downgrade_manual_update_warning">Bu derleme güncellemeleri denetleyebilir ama kendisi kuramaz. İlerlemek için sürümü GitHub’dan indirip elle kurmanız gerekir.</string>
     <string name="downgrade_no_switcher_warning">Bu derlemede sürüm değiştiricisi yok. Buraya geldikten sonra 2.4.0 veya daha yenisine dönene kadar hangi derlemede olduğunuzu göremez ve uygulama içinden değiştiremezsiniz.</string>
+    <string name="alternate_notice_rollback">Dikkat: alternatif sürüm düşürme derlemesindesiniz. Buradan yalnızca aşağı inebilirsiniz, tekrar yukarı çıkana kadar — ve sonrasında yalnızca yukarı.</string>
+    <string name="alternate_notice_back">Dikkat: alternatif geri dönüş derlemesindesiniz. Buradan yalnızca yukarı vardır — daha yeni geri dönüş derlemelerine.</string>
 </resources>
