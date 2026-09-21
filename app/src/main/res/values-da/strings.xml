@@ -723,4 +723,31 @@
     <string name="icon_mono">Monokrom (lys/mørk)</string>
     <string name="icon_light">Lys</string>
     <string name="icon_dark">Mørk</string>
+
+    <!-- ===================== historik / nedgradering ===================== -->
+    <string name="settings_about_downgrade">Nedgrader</string>
+    <string name="downgrade_title">Versionshistorik</string>
+    <string name="downgrade_hero_title">Gå en version tilbage</string>
+    <string name="downgrade_hero_body">Vælg en tidligere udgivelse, der installeres oven i denne. Dine tegnebøger og din historik bevares.</string>
+    <string name="downgrade_loading">Indlæser udgivelser…</string>
+    <string name="downgrade_failed">Kunne ikke indlæse udgivelser fra GitHub. Tjek din forbindelse, og prøv igen.</string>
+    <string name="downgrade_current">Aktuel</string>
+    <string name="downgrade_published">Udgivet %1$s</string>
+    <string name="downgrade_view">Se</string>
+    <string name="downgrade_detail_title">Udgivelse %1$s</string>
+    <string name="downgrade_install_version">Installér v%1$s</string>
+    <string name="downgrade_install_title">Installér v%1$s</string>
+    <string name="downgrade_install_slide">Installér v%1$s</string>
+    <string name="downgrade_install_slide_hint">Træk eller dobbelttryk for at installere denne version</string>
+    <string name="downgrade_back_to_list">Tilbage til versionslisten</string>
+    <string name="downgrade_no_updater_warning">Denne build har ingen opdateringstjek. Når du har nedgraderet, skal du installere nyere versioner manuelt fra GitHubs udgivelsesside.</string>
+    <string name="downgrade_data_ok">Tegnebogsdata er kompatible med denne version og bevares.</string>
+    <string name="downgrade_incompatible_data">Denne version kan ikke læse dataene på denne enhed. Sikkerhedskopier din gendannelsessætning, før du fortsætter.</string>
+    <string name="downgrade_no_apk">Denne udgivelse har ingen vedhæftet APK, så den kan ikke installeres fra appen.</string>
+    <string name="downgrade_not_installable">Android installerer ikke denne build på plads: dens pakkeversion er lavere end den installerede, og denne udgivelse har endnu ingen nedgraderingsversion. Installation ville kræve en manuel afinstallation.</string>
+    <string name="downgrade_notes_title">Udgivelsesnoter</string>
+    <string name="downgrade_notes_empty">Ingen udgivelsesnoter til denne version.</string>
+    <string name="downgrade_warning">Nedgradering er envejs i appen. For at vende tilbage til v%1$s senere skal du muligvis geninstallere eller installere en nyere udgivelse. Dine tegnebøger og midler påvirkes ikke.</string>
+    <string name="downgrade_slide">Træk for at nedgradere til v%1$s</string>
+    <string name="downgrade_slide_hint">Træk eller dobbelttryk for at nedgradere</string>
 </resources>

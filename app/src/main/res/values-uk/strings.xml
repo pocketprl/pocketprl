@@ -743,4 +743,31 @@
     <string name="icon_mono">Монохромний (світлий/темний)</string>
     <string name="icon_light">Світлий</string>
     <string name="icon_dark">Темний</string>
+
+    <!-- ===================== історія / відкат версії ===================== -->
+    <string name="settings_about_downgrade">Відкат версії</string>
+    <string name="downgrade_title">Історія версій</string>
+    <string name="downgrade_hero_title">Повернутися до попередньої версії</string>
+    <string name="downgrade_hero_body">Виберіть раніший випуск, щоб установити його поверх поточного. Ваші гаманці та історія збережуться.</string>
+    <string name="downgrade_loading">Завантаження випусків…</string>
+    <string name="downgrade_failed">Не вдалося завантажити випуски з GitHub. Перевірте з\'єднання та спробуйте знову.</string>
+    <string name="downgrade_current">Поточна</string>
+    <string name="downgrade_published">Випущено %1$s</string>
+    <string name="downgrade_view">Переглянути</string>
+    <string name="downgrade_detail_title">Випуск %1$s</string>
+    <string name="downgrade_install_version">Встановити v%1$s</string>
+    <string name="downgrade_install_title">Встановити v%1$s</string>
+    <string name="downgrade_install_slide">Встановити v%1$s</string>
+    <string name="downgrade_install_slide_hint">Суньте або двічі торкніться, щоб установити цю версію</string>
+    <string name="downgrade_back_to_list">Назад до списку версій</string>
+    <string name="downgrade_no_updater_warning">У цій збірці немає перевірки оновлень. Після відкату новіші версії доведеться встановлювати вручну зі сторінки випусків GitHub.</string>
+    <string name="downgrade_data_ok">Дані гаманця сумісні з цією версією та збережуться.</string>
+    <string name="downgrade_incompatible_data">Ця версія не може прочитати дані на цьому пристрої. Перед продовженням зробіть резервну копію фрази відновлення.</string>
+    <string name="downgrade_no_apk">У цього випуску немає доданого APK, тому його не можна встановити із застосунку.</string>
+    <string name="downgrade_not_installable">Android не встановить цю збірку поверх: її версія пакета нижча за встановлену, а для цього випуску ще немає збірки для відкату. Для встановлення доведеться вручну видалити застосунок.</string>
+    <string name="downgrade_notes_title">Примітки до випуску</string>
+    <string name="downgrade_notes_empty">Для цієї версії немає приміток до випуску.</string>
+    <string name="downgrade_warning">Відкат у застосунку незворотний. Щоб згодом повернутися до v%1$s, можливо, доведеться переінсталювати застосунок або встановити новіший випуск. Ваші гаманці та кошти не постраждають.</string>
+    <string name="downgrade_slide">Суньте, щоб відкотитися до v%1$s</string>
+    <string name="downgrade_slide_hint">Суньте або двічі торкніться, щоб відкотитися</string>
 </resources>

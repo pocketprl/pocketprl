@@ -725,4 +725,31 @@
     <string name="icon_mono">Monokrom (ljust/mörkt)</string>
     <string name="icon_light">Ljust</string>
     <string name="icon_dark">Mörkt</string>
+
+    <!-- ===================== historik / nedgradering ===================== -->
+    <string name="settings_about_downgrade">Nedgradera</string>
+    <string name="downgrade_title">Versionshistorik</string>
+    <string name="downgrade_hero_title">Gå tillbaka en version</string>
+    <string name="downgrade_hero_body">Välj en tidigare version att installera över den här. Dina plånböcker och din historik behålls.</string>
+    <string name="downgrade_loading">Laddar versioner…</string>
+    <string name="downgrade_failed">Kunde inte ladda versioner från GitHub. Kontrollera anslutningen och försök igen.</string>
+    <string name="downgrade_current">Nuvarande</string>
+    <string name="downgrade_published">Utgiven %1$s</string>
+    <string name="downgrade_view">Visa</string>
+    <string name="downgrade_detail_title">Version %1$s</string>
+    <string name="downgrade_install_version">Installera v%1$s</string>
+    <string name="downgrade_install_title">Installera v%1$s</string>
+    <string name="downgrade_install_slide">Installera v%1$s</string>
+    <string name="downgrade_install_slide_hint">Dra eller dubbeltryck för att installera den här versionen</string>
+    <string name="downgrade_back_to_list">Tillbaka till versionslistan</string>
+    <string name="downgrade_no_updater_warning">Den här versionen har ingen uppdateringskontroll. Efter nedgraderingen måste du installera nyare versioner manuellt från GitHubs utgivningssida.</string>
+    <string name="downgrade_data_ok">Plånboksdata är kompatibel med den här versionen och behålls.</string>
+    <string name="downgrade_incompatible_data">Den här versionen kan inte läsa data på den här enheten. Säkerhetskopiera din återställningsfras innan du fortsätter.</string>
+    <string name="downgrade_no_apk">Den här versionen har ingen bifogad APK, så den kan inte installeras från appen.</string>
+    <string name="downgrade_not_installable">Android installerar inte den här versionen på plats: dess paketversion är lägre än den installerade och den här utgåvan har ingen nedgraderingsversion ännu. Att installera den skulle kräva en manuell avinstallation.</string>
+    <string name="downgrade_notes_title">Versionsanteckningar</string>
+    <string name="downgrade_notes_empty">Inga versionsanteckningar för den här versionen.</string>
+    <string name="downgrade_warning">Nedgradering är enkelriktad i appen. För att senare återgå till v%1$s kan du behöva installera om eller installera en nyare version. Dina plånböcker och tillgångar påverkas inte.</string>
+    <string name="downgrade_slide">Dra för att nedgradera till v%1$s</string>
+    <string name="downgrade_slide_hint">Dra eller dubbeltryck för att nedgradera</string>
 </resources>

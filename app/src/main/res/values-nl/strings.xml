@@ -722,4 +722,31 @@
     <string name="icon_mono">Monochroom (licht/donker)</string>
     <string name="icon_light">Licht</string>
     <string name="icon_dark">Donker</string>
+
+    <!-- ===================== version history / downgrade ===================== -->
+    <string name="settings_about_downgrade">Downgraden</string>
+    <string name="downgrade_title">Versiegeschiedenis</string>
+    <string name="downgrade_hero_title">Terug naar een eerdere versie</string>
+    <string name="downgrade_hero_body">Kies een eerdere release om over deze versie te installeren. Je wallets en geschiedenis blijven behouden.</string>
+    <string name="downgrade_loading">Releases laden…</string>
+    <string name="downgrade_failed">Kon geen releases van GitHub laden. Controleer je verbinding en probeer het opnieuw.</string>
+    <string name="downgrade_current">Huidig</string>
+    <string name="downgrade_published">Uitgebracht %1$s</string>
+    <string name="downgrade_view">Bekijken</string>
+    <string name="downgrade_detail_title">Release %1$s</string>
+    <string name="downgrade_install_version">v%1$s installeren</string>
+    <string name="downgrade_install_title">v%1$s installeren</string>
+    <string name="downgrade_install_slide">v%1$s installeren</string>
+    <string name="downgrade_install_slide_hint">Schuif of dubbeltik om deze versie te installeren</string>
+    <string name="downgrade_back_to_list">Terug naar versielijst</string>
+    <string name="downgrade_no_updater_warning">Deze build heeft geen updatecontrole. Na het downgraden moet je nieuwere versies handmatig vanaf de GitHub-releasespagina installeren.</string>
+    <string name="downgrade_data_ok">De walletgegevens zijn compatibel met deze versie en blijven behouden.</string>
+    <string name="downgrade_incompatible_data">Deze versie kan de gegevens op dit apparaat niet lezen. Maak een back-up van je herstelzin voordat je doorgaat.</string>
+    <string name="downgrade_no_apk">Deze release heeft geen bijgevoegde APK, dus kan niet vanuit de app worden geïnstalleerd.</string>
+    <string name="downgrade_not_installable">Android installeert deze build niet ter plaatse: de pakketversie is lager dan de geïnstalleerde versie en deze release heeft nog geen downgrade-build. Installatie zou handmatig verwijderen vereisen.</string>
+    <string name="downgrade_notes_title">Release-opmerkingen</string>
+    <string name="downgrade_notes_empty">Geen release-opmerkingen voor deze versie.</string>
+    <string name="downgrade_warning">Downgraden in de app is eenrichtingsverkeer. Om later terug te keren naar v%1$s moet je mogelijk opnieuw installeren of een nieuwere release installeren. Je wallets en geld blijven onaangetast.</string>
+    <string name="downgrade_slide">Schuif om te downgraden naar v%1$s</string>
+    <string name="downgrade_slide_hint">Schuif of dubbeltik om te downgraden</string>
 </resources>

@@ -86,16 +86,27 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
             val dir = File(context.cacheDir, DIR).apply { mkdirs() }
             // Never let a previous, possibly stale, APK be installed.
             dir.listFiles()?.forEach { runCatching { it.delete() } }
-            val file = File(dir, info.apkName ?: DEFAULT_APK_NAME)
+
+            val installed = installedVersionCode()
+            val assets = info.apkAssets.ifEmpty {
+                if (info.apkUrl != null) listOf(ApkAsset(info.apkName, info.apkUrl, info.apkSize, info.sha256)) else emptyList()
+            }
+            // Pick the lowest asset whose encoded code is above the installed one
+            // (a return build), else the plain build. Lets a rolled-back install
+            // update forward to a build published above its code.
+            val chosen = assets.filter { it.versionCode != null && it.versionCode > installed }.minByOrNull { it.versionCode!! }
+                ?: assets.firstOrNull { it.versionCode == null }
+                ?: assets.firstOrNull()
+            val file = File(dir, chosen?.name ?: DEFAULT_APK_NAME)
             try {
-                val url = info.apkUrl ?: throw DownloadException(Failure.NO_APK)
-                _state.value = State.Downloading(file.name, 0, info.apkSize)
+                val url = chosen?.url ?: throw DownloadException(Failure.NO_APK)
+                _state.value = State.Downloading(file.name, 0, chosen.size)
                 val digest = MessageDigest.getInstance("SHA-256")
                 val request = Request.Builder().url(url).header("User-Agent", USER_AGENT).build()
                 client.newCall(request).execute().use { response ->
                     if (!response.isSuccessful) throw DownloadException(Failure.NETWORK)
                     val body = response.body
-                    val total = if (info.apkSize > 0) info.apkSize else body.contentLength()
+                    val total = if (chosen.size > 0) chosen.size else body.contentLength()
                     if (total > MAX_BYTES) throw DownloadException(Failure.TOO_LARGE)
                     var read = 0L
                     val buffer = ByteArray(64 * 1024)
@@ -117,13 +128,12 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
                 }
                 _state.value = State.Verifying
                 val actual = digest.digest().toHex()
-                if (info.sha256 != null && !actual.equals(info.sha256, ignoreCase = true)) {
+                if (chosen.sha256 != null && !actual.equals(chosen.sha256, ignoreCase = true)) {
                     throw DownloadException(Failure.CHECKSUM)
                 }
                 if (!signerMatches(file)) throw DownloadException(Failure.SIGNATURE)
                 val code = archiveVersionCode(file)
-                val installed = installedVersionCode()
-                _state.value = State.Ready(file, actual, info.sha256, info, code, code == null || code > installed)
+                _state.value = State.Ready(file, actual, chosen.sha256, info, code, code == null || code > installed)
             } catch (e: CancellationException) {
                 file.delete()
                 _state.value = State.Idle

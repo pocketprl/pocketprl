@@ -725,4 +725,30 @@
     <string name="icon_mono">Μονόχρωμο (φωτεινό/σκοτεινό)</string>
     <string name="icon_light">Φωτεινό</string>
     <string name="icon_dark">Σκοτεινό</string>
+    <!-- ===================== downgrade ===================== -->
+    <string name="settings_about_downgrade">Υποβάθμιση</string>
+    <string name="downgrade_title">Ιστορικό εκδόσεων</string>
+    <string name="downgrade_hero_title">Επιστροφή σε προηγούμενη έκδοση</string>
+    <string name="downgrade_hero_body">Διαλέξτε μια προηγούμενη έκδοση για εγκατάσταση πάνω από αυτήν. Τα πορτοφόλια και το ιστορικό σας διατηρούνται.</string>
+    <string name="downgrade_loading">Φόρτωση εκδόσεων…</string>
+    <string name="downgrade_failed">Δεν ήταν δυνατή η φόρτωση εκδόσεων από το GitHub. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.</string>
+    <string name="downgrade_current">Τρέχουσα</string>
+    <string name="downgrade_published">Δημοσιεύτηκε %1$s</string>
+    <string name="downgrade_view">Προβολή</string>
+    <string name="downgrade_detail_title">Έκδοση %1$s</string>
+    <string name="downgrade_install_version">Εγκατάσταση v%1$s</string>
+    <string name="downgrade_install_title">Εγκατάσταση v%1$s</string>
+    <string name="downgrade_install_slide">Εγκατάσταση v%1$s</string>
+    <string name="downgrade_install_slide_hint">Σύρετε ή πατήστε διπλά για εγκατάσταση αυτής της έκδοσης</string>
+    <string name="downgrade_back_to_list">Πίσω στη λίστα εκδόσεων</string>
+    <string name="downgrade_no_updater_warning">Αυτή η έκδοση δεν έχει έλεγχο ενημερώσεων. Αφού υποβαθμίσετε, θα πρέπει να εγκαταστήσετε νεότερες εκδόσεις χειροκίνητα από τη σελίδα εκδόσεων του GitHub.</string>
+    <string name="downgrade_data_ok">Τα δεδομένα του πορτοφολιού είναι συμβατά με αυτή την έκδοση και μεταφέρονται.</string>
+    <string name="downgrade_incompatible_data">Αυτή η έκδοση δεν μπορεί να διαβάσει τα δεδομένα αυτής της συσκευής. Δημιουργήστε αντίγραφο ασφαλείας της φράσης ανάκτησης πριν συνεχίσετε.</string>
+    <string name="downgrade_no_apk">Αυτή η έκδοση δεν έχει συνημμένο APK, επομένως δεν μπορεί να εγκατασταθεί από την εφαρμογή.</string>
+    <string name="downgrade_not_installable">Το Android δεν θα εγκαταστήσει αυτή τη δομή από πάνω: η έκδοση του πακέτου είναι χαμηλότερη από την εγκατεστημένη και αυτή η έκδοση δεν έχει ακόμη δομή υποβάθμισης. Η εγκατάσταση θα απαιτούσε χειροκίνητη απεγκατάσταση.</string>
+    <string name="downgrade_notes_title">Σημειώσεις έκδοσης</string>
+    <string name="downgrade_notes_empty">Δεν υπάρχουν σημειώσεις έκδοσης για αυτή την έκδοση.</string>
+    <string name="downgrade_warning">Η υποβάθμιση είναι μονόδρομη στην εφαρμογή. Για να επιστρέψετε στην v%1$s αργότερα, ίσως χρειαστεί να επανεγκαταστήσετε ή να εγκαταστήσετε μια νεότερη έκδοση. Τα πορτοφόλια και τα χρήματά σας δεν επηρεάζονται.</string>
+    <string name="downgrade_slide">Σύρετε για υποβάθμιση στην v%1$s</string>
+    <string name="downgrade_slide_hint">Σύρετε ή πατήστε διπλά για υποβάθμιση</string>
 </resources>

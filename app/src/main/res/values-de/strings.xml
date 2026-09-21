@@ -723,4 +723,31 @@
     <string name="icon_mono">Monochrom (hell/dunkel)</string>
     <string name="icon_light">Hell</string>
     <string name="icon_dark">Dunkel</string>
+
+    <!-- ===================== version history / downgrade ===================== -->
+    <string name="settings_about_downgrade">Downgrade</string>
+    <string name="downgrade_title">Versionsverlauf</string>
+    <string name="downgrade_hero_title">Zu einer älteren Version zurück</string>
+    <string name="downgrade_hero_body">Wähle ein früheres Release, um es über diese Version zu installieren. Deine Wallets und deine Historie bleiben erhalten.</string>
+    <string name="downgrade_loading">Releases werden geladen…</string>
+    <string name="downgrade_failed">Releases konnten nicht von GitHub geladen werden. Prüfe deine Verbindung und versuche es erneut.</string>
+    <string name="downgrade_current">Aktuell</string>
+    <string name="downgrade_published">Veröffentlicht %1$s</string>
+    <string name="downgrade_view">Ansehen</string>
+    <string name="downgrade_detail_title">Release %1$s</string>
+    <string name="downgrade_install_version">v%1$s installieren</string>
+    <string name="downgrade_install_title">v%1$s installieren</string>
+    <string name="downgrade_install_slide">v%1$s installieren</string>
+    <string name="downgrade_install_slide_hint">Zum Installieren dieser Version schieben oder doppelt tippen</string>
+    <string name="downgrade_back_to_list">Zurück zur Versionsliste</string>
+    <string name="downgrade_no_updater_warning">Dieser Build hat keine Update-Prüfung. Nach dem Downgrade musst du neuere Versionen manuell von der GitHub-Release-Seite installieren.</string>
+    <string name="downgrade_data_ok">Die Wallet-Daten sind mit dieser Version kompatibel und bleiben erhalten.</string>
+    <string name="downgrade_incompatible_data">Diese Version kann die Daten auf diesem Gerät nicht lesen. Sichere deine Wiederherstellungsphrase, bevor du fortfährst.</string>
+    <string name="downgrade_no_apk">Für dieses Release ist kein APK angehängt, daher kann es nicht aus der App installiert werden.</string>
+    <string name="downgrade_not_installable">Android installiert diesen Build nicht direkt: Seine Paketversion ist niedriger als die installierte und dieses Release hat noch keinen Downgrade-Build. Eine Installation würde eine manuelle Deinstallation erfordern.</string>
+    <string name="downgrade_notes_title">Versionshinweise</string>
+    <string name="downgrade_notes_empty">Keine Versionshinweise für diese Version.</string>
+    <string name="downgrade_warning">Ein Downgrade in der App ist einseitig. Um später zu v%1$s zurückzukehren, musst du möglicherweise neu installieren oder ein neueres Release installieren. Deine Wallets und dein Guthaben sind nicht betroffen.</string>
+    <string name="downgrade_slide">Zum Downgrade auf v%1$s schieben</string>
+    <string name="downgrade_slide_hint">Zum Downgrade schieben oder doppelt tippen</string>
 </resources>

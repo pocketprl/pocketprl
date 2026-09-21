@@ -726,4 +726,31 @@
     <string name="icon_mono">Monocromatica (chiaro/scuro)</string>
     <string name="icon_light">Chiaro</string>
     <string name="icon_dark">Scuro</string>
+
+    <!-- ===================== version history / downgrade ===================== -->
+    <string name="settings_about_downgrade">Downgrade</string>
+    <string name="downgrade_title">Cronologia versioni</string>
+    <string name="downgrade_hero_title">Torna a una versione precedente</string>
+    <string name="downgrade_hero_body">Scegli una versione precedente da installare sopra questa. I tuoi portafogli e la cronologia vengono conservati.</string>
+    <string name="downgrade_loading">Caricamento delle versioni…</string>
+    <string name="downgrade_failed">Impossibile caricare le versioni da GitHub. Controlla la connessione e riprova.</string>
+    <string name="downgrade_current">Attuale</string>
+    <string name="downgrade_published">Pubblicata il %1$s</string>
+    <string name="downgrade_view">Visualizza</string>
+    <string name="downgrade_detail_title">Versione %1$s</string>
+    <string name="downgrade_install_version">Installa la v%1$s</string>
+    <string name="downgrade_install_title">Installa la v%1$s</string>
+    <string name="downgrade_install_slide">Installa la v%1$s</string>
+    <string name="downgrade_install_slide_hint">Scorri o tocca due volte per installare questa versione</string>
+    <string name="downgrade_back_to_list">Torna all’elenco delle versioni</string>
+    <string name="downgrade_no_updater_warning">Questa build non ha un controllo aggiornamenti. Dopo il downgrade dovrai installare manualmente le versioni più recenti dalla pagina delle versioni di GitHub.</string>
+    <string name="downgrade_data_ok">I dati del portafoglio sono compatibili con questa versione e vengono conservati.</string>
+    <string name="downgrade_incompatible_data">Questa versione non può leggere i dati su questo dispositivo. Esegui il backup della frase di recupero prima di continuare.</string>
+    <string name="downgrade_no_apk">Questa versione non ha un APK allegato, quindi non può essere installata dall’app.</string>
+    <string name="downgrade_not_installable">Android non installerà questa build in-place: la versione del pacchetto è inferiore a quella installata e questa versione non ha ancora una build che permetta il downgrade. Installarla richiederebbe una disinstallazione manuale.</string>
+    <string name="downgrade_notes_title">Note di rilascio</string>
+    <string name="downgrade_notes_empty">Nessuna nota di rilascio per questa versione.</string>
+    <string name="downgrade_warning">Il downgrade nell’app è a senso unico. Per tornare alla v%1$s in seguito potresti dover reinstallare o installare una versione più recente. I tuoi portafogli e i fondi non sono interessati.</string>
+    <string name="downgrade_slide">Scorri per eseguire il downgrade alla v%1$s</string>
+    <string name="downgrade_slide_hint">Scorri o tocca due volte per eseguire il downgrade</string>
 </resources>

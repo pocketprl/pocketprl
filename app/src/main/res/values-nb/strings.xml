@@ -721,4 +721,30 @@
     <string name="icon_mono">Monokrom (lys/mørk)</string>
     <string name="icon_light">Lys</string>
     <string name="icon_dark">Mørk</string>
+    <!-- ===================== downgrade ===================== -->
+    <string name="settings_about_downgrade">Nedgradering</string>
+    <string name="downgrade_title">Versjonshistorikk</string>
+    <string name="downgrade_hero_title">Gå tilbake en versjon</string>
+    <string name="downgrade_hero_body">Velg en tidligere utgivelse for å installere over denne. Lommebøkene og historikken din beholdes.</string>
+    <string name="downgrade_loading">Laster inn utgivelser…</string>
+    <string name="downgrade_failed">Kunne ikke laste inn utgivelser fra GitHub. Sjekk tilkoblingen og prøv igjen.</string>
+    <string name="downgrade_current">Gjeldende</string>
+    <string name="downgrade_published">Utgitt %1$s</string>
+    <string name="downgrade_view">Vis</string>
+    <string name="downgrade_detail_title">Utgivelse %1$s</string>
+    <string name="downgrade_install_version">Installer v%1$s</string>
+    <string name="downgrade_install_title">Installer v%1$s</string>
+    <string name="downgrade_install_slide">Installer v%1$s</string>
+    <string name="downgrade_install_slide_hint">Skyv eller dobbelttrykk for å installere denne versjonen</string>
+    <string name="downgrade_back_to_list">Tilbake til versjonslisten</string>
+    <string name="downgrade_no_updater_warning">Dette bygget har ingen oppdateringssjekk. Etter nedgradering må du installere nyere versjoner manuelt fra GitHub-utgivelsessiden.</string>
+    <string name="downgrade_data_ok">Lommebokdataene er kompatible med denne versjonen og videreføres.</string>
+    <string name="downgrade_incompatible_data">Denne versjonen kan ikke lese dataene på denne enheten. Sikkerhetskopier gjenopprettingsfrasen din før du fortsetter.</string>
+    <string name="downgrade_no_apk">Denne utgivelsen har ingen vedlagt APK, så den kan ikke installeres fra appen.</string>
+    <string name="downgrade_not_installable">Android vil ikke installere dette bygget på plass: pakkeversjonen er lavere enn den installerte, og denne utgivelsen har ennå ingen nedgraderingsbygg. Å installere den vil kreve en manuell avinstallering.</string>
+    <string name="downgrade_notes_title">Utgivelsesnotater</string>
+    <string name="downgrade_notes_empty">Ingen utgivelsesnotater for denne versjonen.</string>
+    <string name="downgrade_warning">Nedgradering er enveis i appen. For å gå tilbake til v%1$s senere må du kanskje installere på nytt eller installere en nyere utgivelse. Lommebøkene og midlene dine påvirkes ikke.</string>
+    <string name="downgrade_slide">Skyv for å nedgradere til v%1$s</string>
+    <string name="downgrade_slide_hint">Skyv eller dobbelttrykk for å nedgradere</string>
 </resources>

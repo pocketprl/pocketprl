@@ -33,6 +33,21 @@ data class ReleaseInfo(
     val publishedAt: String? = null,
     /** True for a GitHub pre-release; shown differently in the version history. */
     val prerelease: Boolean = false,
+    /** Every APK attached to the release; a release may carry more than one build. */
+    val apkAssets: List<ApkAsset> = emptyList(),
+)
+
+/**
+ * One APK asset of a release. A build that must be installed over a newer one
+ * carries its version code as a numeric suffix in the file name, e.g.
+ * `PocketPRL-2.4.0-return-100026.apk`; a plain asset has a null [versionCode].
+ */
+data class ApkAsset(
+    val name: String?,
+    val url: String?,
+    val size: Long,
+    val sha256: String?,
+    val versionCode: Long? = null,
 )
 
 /**
@@ -108,42 +123,49 @@ object UpdateChecker {
     private fun parseRelease(obj: kotlinx.serialization.json.JsonObject): ReleaseInfo? {
         val tag = obj["tag_name"]?.jsonPrimitive?.content ?: return null
         val url = obj["html_url"]?.jsonPrimitive?.content ?: "$REPO_URL/releases/tag/$tag"
-        // Pick the release's APK asset, preferring one named after the wallet.
-        var apkName: String? = null
-        var apkUrl: String? = null
-        var apkSize = 0L
-        var sha256: String? = null
+        // Every APK asset, each remembering the version code encoded in its name.
         val assets = obj["assets"]?.jsonArray
-        if (assets != null) {
-            val apks = assets.mapNotNull { it.jsonObject }.filter {
-                it["name"]?.jsonPrimitive?.contentOrNull?.endsWith(".apk", ignoreCase = true) == true
-            }
-            val asset = apks.firstOrNull { it["name"]?.jsonPrimitive?.contentOrNull?.contains("PocketPRL", ignoreCase = true) == true } ?: apks.firstOrNull()
-            if (asset != null) {
-                apkName = asset["name"]?.jsonPrimitive?.contentOrNull
-                apkUrl = asset["browser_download_url"]?.jsonPrimitive?.contentOrNull
-                apkSize = asset["size"]?.jsonPrimitive?.contentOrNull?.toLongOrNull() ?: 0L
-                sha256 = asset["digest"]?.jsonPrimitive?.contentOrNull
-                    ?.removePrefix("sha256:")
-                    ?.lowercase()
-                    ?.takeIf { it.length == 64 }
-            }
-        }
+        val apkAssets = assets?.mapNotNull { it.jsonObject }
+            ?.filter { it["name"]?.jsonPrimitive?.contentOrNull?.endsWith(".apk", ignoreCase = true) == true }
+            ?.map { a ->
+                val name = a["name"]?.jsonPrimitive?.contentOrNull
+                ApkAsset(
+                    name = name,
+                    url = a["browser_download_url"]?.jsonPrimitive?.contentOrNull,
+                    size = a["size"]?.jsonPrimitive?.contentOrNull?.toLongOrNull() ?: 0L,
+                    sha256 = a["digest"]?.jsonPrimitive?.contentOrNull?.removePrefix("sha256:")?.lowercase()?.takeIf { it.length == 64 },
+                    versionCode = parseAssetCode(name),
+                )
+            } ?: emptyList()
+
+        // The primary asset is the plain one (no code suffix), preferring the
+        // wallet-named file, so the update path never accidentally picks a
+        // higher-coded return build.
+        val primary = apkAssets.firstOrNull { it.versionCode == null && it.name?.contains("PocketPRL", ignoreCase = true) == true }
+            ?: apkAssets.firstOrNull { it.name?.contains("PocketPRL", ignoreCase = true) == true }
+            ?: apkAssets.firstOrNull()
+
         val notes = obj["body"]?.jsonPrimitive?.contentOrNull
         val prerelease = obj["prerelease"]?.jsonPrimitive?.contentOrNull?.toBooleanStrictOrNull() ?: false
         return ReleaseInfo(
             tagName = tag,
             version = tag.removePrefix("v").removePrefix("V"),
             htmlUrl = url,
-            apkName = apkName,
-            apkUrl = apkUrl,
-            apkSize = apkSize,
-            sha256 = sha256,
+            apkName = primary?.name,
+            apkUrl = primary?.url,
+            apkSize = primary?.size ?: 0L,
+            sha256 = primary?.sha256,
             body = notes?.ifBlank { null },
             publishedAt = obj["published_at"]?.jsonPrimitive?.contentOrNull,
             prerelease = prerelease,
+            apkAssets = apkAssets,
         )
     }
+
+    /** Version code encoded as a numeric suffix in an asset name, e.g. `...-return-100026.apk`. */
+    private val ASSET_CODE = Regex("""-(\d{5,})\.apk$""", RegexOption.IGNORE_CASE)
+
+    private fun parseAssetCode(name: String?): Long? = name?.let { ASSET_CODE.find(it)?.groupValues?.get(1)?.toLongOrNull() }
 
     /**
      * Compares dotted numeric versions, tolerating a leading "v" and differing

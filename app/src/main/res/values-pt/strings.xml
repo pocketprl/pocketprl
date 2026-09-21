@@ -721,4 +721,31 @@
     <string name="icon_mono">Monocromático (claro/escuro)</string>
     <string name="icon_light">Claro</string>
     <string name="icon_dark">Escuro</string>
+
+    <!-- ===================== version history / downgrade ===================== -->
+    <string name="settings_about_downgrade">Downgrade</string>
+    <string name="downgrade_title">Histórico de versões</string>
+    <string name="downgrade_hero_title">Voltar a uma versão anterior</string>
+    <string name="downgrade_hero_body">Escolha uma versão anterior para instalar sobre esta. As suas carteiras e o seu histórico são mantidos.</string>
+    <string name="downgrade_loading">A carregar versões…</string>
+    <string name="downgrade_failed">Não foi possível carregar as versões do GitHub. Verifique a sua ligação e tente novamente.</string>
+    <string name="downgrade_current">Atual</string>
+    <string name="downgrade_published">Publicada a %1$s</string>
+    <string name="downgrade_view">Ver</string>
+    <string name="downgrade_detail_title">Versão %1$s</string>
+    <string name="downgrade_install_version">Instalar a v%1$s</string>
+    <string name="downgrade_install_title">Instalar a v%1$s</string>
+    <string name="downgrade_install_slide">Instalar a v%1$s</string>
+    <string name="downgrade_install_slide_hint">Deslize ou toque duas vezes para instalar esta versão</string>
+    <string name="downgrade_back_to_list">Voltar à lista de versões</string>
+    <string name="downgrade_no_updater_warning">Esta compilação não tem verificador de atualizações. Após reverter, terá de instalar manualmente as versões mais recentes a partir da página de versões do GitHub.</string>
+    <string name="downgrade_data_ok">Os dados da carteira são compatíveis com esta versão e são mantidos.</string>
+    <string name="downgrade_incompatible_data">Esta versão não consegue ler os dados neste dispositivo. Faça uma cópia de segurança da sua frase de recuperação antes de continuar.</string>
+    <string name="downgrade_no_apk">Esta versão não tem um APK anexado, por isso não pode ser instalada a partir da aplicação.</string>
+    <string name="downgrade_not_installable">O Android não instalará esta compilação por cima: a versão do pacote é inferior à instalada e esta versão ainda não tem uma compilação que permita reverter. Instalá-la exigiria uma desinstalação manual.</string>
+    <string name="downgrade_notes_title">Notas de versão</string>
+    <string name="downgrade_notes_empty">Não há notas de versão para esta versão.</string>
+    <string name="downgrade_warning">Reverter na aplicação é unidirecional. Para voltar à v%1$s mais tarde, poderá ter de reinstalar ou instalar uma versão mais recente. As suas carteiras e os seus fundos não são afetados.</string>
+    <string name="downgrade_slide">Deslize para reverter para a v%1$s</string>
+    <string name="downgrade_slide_hint">Deslize ou toque duas vezes para reverter</string>
 </resources>

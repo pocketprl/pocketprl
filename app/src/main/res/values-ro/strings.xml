@@ -729,4 +729,30 @@
     <string name="icon_mono">Monocrom (deschis/închis)</string>
     <string name="icon_light">Deschis</string>
     <string name="icon_dark">Închis</string>
+    <!-- ===================== downgrade ===================== -->
+    <string name="settings_about_downgrade">Retrogradare</string>
+    <string name="downgrade_title">Istoricul versiunilor</string>
+    <string name="downgrade_hero_title">Revino la o versiune anterioară</string>
+    <string name="downgrade_hero_body">Alege o versiune anterioară pentru a o instala peste aceasta. Portofelele și istoricul tău se păstrează.</string>
+    <string name="downgrade_loading">Se încarcă versiunile…</string>
+    <string name="downgrade_failed">Nu s-au putut încărca versiunile de pe GitHub. Verifică conexiunea și încearcă din nou.</string>
+    <string name="downgrade_current">Actual</string>
+    <string name="downgrade_published">Publicat %1$s</string>
+    <string name="downgrade_view">Vezi</string>
+    <string name="downgrade_detail_title">Versiunea %1$s</string>
+    <string name="downgrade_install_version">Instalează v%1$s</string>
+    <string name="downgrade_install_title">Instalează v%1$s</string>
+    <string name="downgrade_install_slide">Instalează v%1$s</string>
+    <string name="downgrade_install_slide_hint">Glisează sau atinge de două ori pentru a instala această versiune</string>
+    <string name="downgrade_back_to_list">Înapoi la lista de versiuni</string>
+    <string name="downgrade_no_updater_warning">Această versiune nu are verificator de actualizări. După retrogradare va trebui să instalezi manual versiunile mai noi de pe pagina de versiuni GitHub.</string>
+    <string name="downgrade_data_ok">Datele portofelului sunt compatibile cu această versiune și se păstrează.</string>
+    <string name="downgrade_incompatible_data">Această versiune nu poate citi datele de pe acest dispozitiv. Fă un backup al frazei de recuperare înainte de a continua.</string>
+    <string name="downgrade_no_apk">Această versiune nu are niciun APK atașat, așa că nu poate fi instalată din aplicație.</string>
+    <string name="downgrade_not_installable">Android nu va instala această versiune peste cea existentă: versiunea pachetului este mai mică decât cea instalată, iar această versiune nu are încă o versiune de retrogradare. Instalarea ar necesita o dezinstalare manuală.</string>
+    <string name="downgrade_notes_title">Note de versiune</string>
+    <string name="downgrade_notes_empty">Nu există note de versiune pentru această versiune.</string>
+    <string name="downgrade_warning">Retrogradarea este unidirecțională în aplicație. Pentru a reveni la v%1$s mai târziu, s-ar putea să fie nevoie să reinstalezi sau să instalezi o versiune mai nouă. Portofelele și fondurile tale nu sunt afectate.</string>
+    <string name="downgrade_slide">Glisează pentru a retrograda la v%1$s</string>
+    <string name="downgrade_slide_hint">Glisează sau atinge de două ori pentru a retrograda</string>
 </resources>

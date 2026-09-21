@@ -726,4 +726,31 @@
     <string name="icon_mono">Monocromo (claro/oscuro)</string>
     <string name="icon_light">Claro</string>
     <string name="icon_dark">Oscuro</string>
+
+    <!-- ===================== version history / downgrade ===================== -->
+    <string name="settings_about_downgrade">Downgrade</string>
+    <string name="downgrade_title">Historial de versiones</string>
+    <string name="downgrade_hero_title">Volver a una versión anterior</string>
+    <string name="downgrade_hero_body">Elige una versión anterior para instalarla sobre esta. Tus carteras y tu historial se conservan.</string>
+    <string name="downgrade_loading">Cargando versiones…</string>
+    <string name="downgrade_failed">No se pudieron cargar las versiones desde GitHub. Comprueba tu conexión e inténtalo de nuevo.</string>
+    <string name="downgrade_current">Actual</string>
+    <string name="downgrade_published">Publicada el %1$s</string>
+    <string name="downgrade_view">Ver</string>
+    <string name="downgrade_detail_title">Versión %1$s</string>
+    <string name="downgrade_install_version">Instalar la v%1$s</string>
+    <string name="downgrade_install_title">Instalar la v%1$s</string>
+    <string name="downgrade_install_slide">Instalar la v%1$s</string>
+    <string name="downgrade_install_slide_hint">Desliza o toca dos veces para instalar esta versión</string>
+    <string name="downgrade_back_to_list">Volver a la lista de versiones</string>
+    <string name="downgrade_no_updater_warning">Esta compilación no tiene comprobador de actualizaciones. Después de revertir, tendrás que instalar manualmente las versiones más recientes desde la página de versiones de GitHub.</string>
+    <string name="downgrade_data_ok">Los datos de la cartera son compatibles con esta versión y se conservan.</string>
+    <string name="downgrade_incompatible_data">Esta versión no puede leer los datos de este dispositivo. Haz una copia de seguridad de tu frase de recuperación antes de continuar.</string>
+    <string name="downgrade_no_apk">Esta versión no tiene ningún APK adjunto, por lo que no se puede instalar desde la aplicación.</string>
+    <string name="downgrade_not_installable">Android no instalará esta compilación sobre la actual: su versión de paquete es inferior a la instalada y esta versión aún no tiene una compilación que permita revertir. Instalarla requeriría una desinstalación manual.</string>
+    <string name="downgrade_notes_title">Notas de la versión</string>
+    <string name="downgrade_notes_empty">No hay notas de la versión para esta versión.</string>
+    <string name="downgrade_warning">Revertir en la aplicación es unidireccional. Para volver a la v%1$s más adelante, es posible que tengas que reinstalar o instalar una versión más reciente. Tus carteras y tus fondos no se ven afectados.</string>
+    <string name="downgrade_slide">Desliza para revertir a la v%1$s</string>
+    <string name="downgrade_slide_hint">Desliza o toca dos veces para revertir</string>
 </resources>

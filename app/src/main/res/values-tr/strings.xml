@@ -724,4 +724,30 @@
     <string name="icon_mono">Tek renkli (açık/koyu)</string>
     <string name="icon_light">Açık</string>
     <string name="icon_dark">Koyu</string>
+    <!-- ===================== downgrade ===================== -->
+    <string name="settings_about_downgrade">Sürüm düşürme</string>
+    <string name="downgrade_title">Sürüm geçmişi</string>
+    <string name="downgrade_hero_title">Bir sürüm geri dön</string>
+    <string name="downgrade_hero_body">Bu sürümün üzerine kurmak için önceki bir sürümü seçin. Cüzdanlarınız ve geçmişiniz korunur.</string>
+    <string name="downgrade_loading">Sürümler yükleniyor…</string>
+    <string name="downgrade_failed">Sürümler GitHub’dan yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</string>
+    <string name="downgrade_current">Geçerli</string>
+    <string name="downgrade_published">Yayımlandı: %1$s</string>
+    <string name="downgrade_view">Görüntüle</string>
+    <string name="downgrade_detail_title">Sürüm %1$s</string>
+    <string name="downgrade_install_version">v%1$s sürümünü kur</string>
+    <string name="downgrade_install_title">v%1$s sürümünü kur</string>
+    <string name="downgrade_install_slide">v%1$s sürümünü kur</string>
+    <string name="downgrade_install_slide_hint">Bu sürümü kurmak için kaydırın veya çift dokunun</string>
+    <string name="downgrade_back_to_list">Sürüm listesine dön</string>
+    <string name="downgrade_no_updater_warning">Bu derlemede güncelleme denetleyicisi yok. Sürümü düşürdükten sonra daha yeni sürümleri GitHub sürüm sayfasından elle kurmanız gerekir.</string>
+    <string name="downgrade_data_ok">Cüzdan verileri bu sürümle uyumludur ve korunur.</string>
+    <string name="downgrade_incompatible_data">Bu sürüm bu cihazdaki verileri okuyamaz. Devam etmeden önce kurtarma ifadenizi yedekleyin.</string>
+    <string name="downgrade_no_apk">Bu sürümde ekli APK yok, bu yüzden uygulamadan kurulamaz.</string>
+    <string name="downgrade_not_installable">Android bu derlemeyi üzerine kurmaz: paket sürümü yüklü olandan düşük ve bu sürümde henüz bir sürüm düşürme derlemesi yok. Kurmak için elle kaldırma gerekir.</string>
+    <string name="downgrade_notes_title">Sürüm notları</string>
+    <string name="downgrade_notes_empty">Bu sürüm için sürüm notu yok.</string>
+    <string name="downgrade_warning">Sürüm düşürme uygulamada tek yönlüdür. Daha sonra v%1$s sürümüne dönmek için yeniden kurmanız veya daha yeni bir sürüm kurmanız gerekebilir. Cüzdanlarınız ve paranız etkilenmez.</string>
+    <string name="downgrade_slide">v%1$s sürümüne düşürmek için kaydırın</string>
+    <string name="downgrade_slide_hint">Sürümü düşürmek için kaydırın veya çift dokunun</string>
 </resources>

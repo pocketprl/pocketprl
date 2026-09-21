@@ -926,7 +926,7 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> U
             if (upToDate) InfoBanner(stringResource(R.string.settings_about_latest, BuildConfig.VERSION_NAME), BannerKind.SUCCESS)
             if (failed) InfoBanner(stringResource(R.string.settings_about_failed), BannerKind.ERROR)
 
-            SecondaryButton(stringResource(R.string.settings_about_downgrade), icon = AppIcons.Downgrade, onClick = { haptics.click(); onOpenDowngrade() })
+            SecondaryButton(stringResource(R.string.settings_about_downgrade), onClick = { haptics.click(); onOpenDowngrade() })
 
             SecondaryButton(stringResource(R.string.settings_about_source), onClick = { haptics.click(); open(UpdateChecker.REPO_URL) })
 

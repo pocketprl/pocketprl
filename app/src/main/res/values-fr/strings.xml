@@ -726,4 +726,31 @@
     <string name="icon_mono">Monochrome (clair/sombre)</string>
     <string name="icon_light">Clair</string>
     <string name="icon_dark">Sombre</string>
+
+    <!-- ===================== version history / downgrade ===================== -->
+    <string name="settings_about_downgrade">Rétrograder</string>
+    <string name="downgrade_title">Historique des versions</string>
+    <string name="downgrade_hero_title">Revenir à une version précédente</string>
+    <string name="downgrade_hero_body">Choisissez une version antérieure à installer par-dessus celle-ci. Vos portefeuilles et votre historique sont conservés.</string>
+    <string name="downgrade_loading">Chargement des versions…</string>
+    <string name="downgrade_failed">Impossible de charger les versions depuis GitHub. Vérifiez votre connexion et réessayez.</string>
+    <string name="downgrade_current">Actuelle</string>
+    <string name="downgrade_published">Publiée le %1$s</string>
+    <string name="downgrade_view">Afficher</string>
+    <string name="downgrade_detail_title">Version %1$s</string>
+    <string name="downgrade_install_version">Installer la v%1$s</string>
+    <string name="downgrade_install_title">Installer la v%1$s</string>
+    <string name="downgrade_install_slide">Installer la v%1$s</string>
+    <string name="downgrade_install_slide_hint">Glissez ou touchez deux fois pour installer cette version</string>
+    <string name="downgrade_back_to_list">Retour à la liste des versions</string>
+    <string name="downgrade_no_updater_warning">Cette compilation n’a pas de vérificateur de mise à jour. Après la rétrogradation, vous devrez installer les versions plus récentes manuellement depuis la page des versions GitHub.</string>
+    <string name="downgrade_data_ok">Les données du portefeuille sont compatibles avec cette version et sont conservées.</string>
+    <string name="downgrade_incompatible_data">Cette version ne peut pas lire les données sur cet appareil. Sauvegardez votre phrase de récupération avant de continuer.</string>
+    <string name="downgrade_no_apk">Cette version n’a aucun APK joint, elle ne peut donc pas être installée depuis l’application.</string>
+    <string name="downgrade_not_installable">Android n’installera pas cette compilation par-dessus : sa version de package est inférieure à celle installée et cette version n’a pas encore de build de rétrogradation. L’installer nécessiterait une désinstallation manuelle.</string>
+    <string name="downgrade_notes_title">Notes de version</string>
+    <string name="downgrade_notes_empty">Aucune note de version pour cette version.</string>
+    <string name="downgrade_warning">La rétrogradation dans l’application est à sens unique. Pour revenir à la v%1$s plus tard, vous devrez peut-être réinstaller ou installer une version plus récente. Vos portefeuilles et vos fonds ne sont pas affectés.</string>
+    <string name="downgrade_slide">Glissez pour rétrograder vers la v%1$s</string>
+    <string name="downgrade_slide_hint">Glissez ou touchez deux fois pour rétrograder</string>
 </resources>

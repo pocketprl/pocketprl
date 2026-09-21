@@ -740,4 +740,31 @@
     <string name="icon_mono">Monochromatyczna (jasna/ciemna)</string>
     <string name="icon_light">Jasna</string>
     <string name="icon_dark">Ciemna</string>
+
+    <!-- ===================== history / przywracanie starszej wersji ===================== -->
+    <string name="settings_about_downgrade">Przywróć starszą wersję</string>
+    <string name="downgrade_title">Historia wersji</string>
+    <string name="downgrade_hero_title">Wróć do starszej wersji</string>
+    <string name="downgrade_hero_body">Wybierz wcześniejsze wydanie, aby zainstalować je w miejsce bieżącego. Twoje portfele i historia zostaną zachowane.</string>
+    <string name="downgrade_loading">Wczytywanie wydań…</string>
+    <string name="downgrade_failed">Nie udało się wczytać wydań z GitHub. Sprawdź połączenie i spróbuj ponownie.</string>
+    <string name="downgrade_current">Bieżąca</string>
+    <string name="downgrade_published">Wydano %1$s</string>
+    <string name="downgrade_view">Zobacz</string>
+    <string name="downgrade_detail_title">Wydanie %1$s</string>
+    <string name="downgrade_install_version">Zainstaluj v%1$s</string>
+    <string name="downgrade_install_title">Zainstaluj v%1$s</string>
+    <string name="downgrade_install_slide">Zainstaluj v%1$s</string>
+    <string name="downgrade_install_slide_hint">Przesuń lub dotknij dwukrotnie, aby zainstalować tę wersję</string>
+    <string name="downgrade_back_to_list">Powrót do listy wersji</string>
+    <string name="downgrade_no_updater_warning">Ta kompilacja nie ma modułu sprawdzania aktualizacji. Po przywróceniu starszej wersji nowsze wersje będziesz musiał instalować ręcznie ze strony wydań GitHub.</string>
+    <string name="downgrade_data_ok">Dane portfela są zgodne z tą wersją i zostaną zachowane.</string>
+    <string name="downgrade_incompatible_data">Ta wersja nie potrafi odczytać danych na tym urządzeniu. Przed kontynuowaniem wykonaj kopię zapasową frazy odzyskiwania.</string>
+    <string name="downgrade_no_apk">To wydanie nie ma załączonego pliku APK, więc nie można go zainstalować z aplikacji.</string>
+    <string name="downgrade_not_installable">Android nie zainstaluje tej kompilacji w miejscu: jej wersja pakietu jest niższa niż zainstalowana, a to wydanie nie ma jeszcze kompilacji do przywrócenia starszej wersji. Aby ją zainstalować, trzeba ręcznie odinstalować aplikację.</string>
+    <string name="downgrade_notes_title">Lista zmian</string>
+    <string name="downgrade_notes_empty">Brak listy zmian dla tej wersji.</string>
+    <string name="downgrade_warning">Przywrócenie starszej wersji w aplikacji jest jednokierunkowe. Aby później wrócić do v%1$s, może być konieczne ponowne zainstalowanie lub zainstalowanie nowszego wydania. Nie wpływa to na Twoje portfele ani środki.</string>
+    <string name="downgrade_slide">Przesuń, aby przywrócić wersję v%1$s</string>
+    <string name="downgrade_slide_hint">Przesuń lub dotknij dwukrotnie, aby przywrócić starszą wersję</string>
 </resources>

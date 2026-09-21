@@ -18,8 +18,11 @@
   code in the `100000` range so Android will install them in place over a newer
   build; from 2.4.0 any earlier release installs, with wallets and history kept.
   See `docs/VERSIONING.md` and `tools/reissue-downgrade.sh`.
-* New strings are English-only for now; the other locales fall back until
-  translated.
+* **Downgrade warning and return build.** The version history now warns, with a
+  red danger slide, that a downgrade is one-way inside the app. The v2.4.0
+  release also carries `PocketPRL-2.4.0-return-100026.apk`, a build above the
+  rollbacks for getting back; the updater picks the right asset for the installed
+  version automatically.
 
 ## 2.3.2
 

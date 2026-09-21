@@ -725,4 +725,30 @@
     <string name="icon_mono">Yksivärinen (vaalea/tumma)</string>
     <string name="icon_light">Vaalea</string>
     <string name="icon_dark">Tumma</string>
+    <!-- ===================== downgrade ===================== -->
+    <string name="settings_about_downgrade">Asenna vanhempi versio</string>
+    <string name="downgrade_title">Versiohistoria</string>
+    <string name="downgrade_hero_title">Palaa aiempaan versioon</string>
+    <string name="downgrade_hero_body">Valitse aiempi julkaisu asennettavaksi tämän päälle. Lompakkosi ja historiansa säilyvät.</string>
+    <string name="downgrade_loading">Ladataan julkaisuja…</string>
+    <string name="downgrade_failed">Julkaisuja ei voitu ladata GitHubista. Tarkista yhteytesi ja yritä uudelleen.</string>
+    <string name="downgrade_current">Nykyinen</string>
+    <string name="downgrade_published">Julkaistu %1$s</string>
+    <string name="downgrade_view">Näytä</string>
+    <string name="downgrade_detail_title">Julkaisu %1$s</string>
+    <string name="downgrade_install_version">Asenna v%1$s</string>
+    <string name="downgrade_install_title">Asenna v%1$s</string>
+    <string name="downgrade_install_slide">Asenna v%1$s</string>
+    <string name="downgrade_install_slide_hint">Liu’uta tai kaksoisnapauta asentaaksesi tämän version</string>
+    <string name="downgrade_back_to_list">Takaisin versioluetteloon</string>
+    <string name="downgrade_no_updater_warning">Tässä koontiversiossa ei ole päivitystarkistinta. Kun olet asentanut vanhemman version, sinun on asennettava uudemmat versiot käsin GitHubin julkaisusivulta.</string>
+    <string name="downgrade_data_ok">Lompakon tiedot ovat yhteensopivia tämän version kanssa ja säilyvät.</string>
+    <string name="downgrade_incompatible_data">Tämä versio ei voi lukea tämän laitteen tietoja. Varmuuskopioi palautuslauseesi ennen jatkamista.</string>
+    <string name="downgrade_no_apk">Tässä julkaisussa ei ole liitettyä APK:ta, joten sitä ei voi asentaa sovelluksesta.</string>
+    <string name="downgrade_not_installable">Android ei asenna tätä koontiversiota päälle: sen pakkausversio on asennettua pienempi, eikä tässä julkaisussa ole vielä vanhemman version koontiversiota. Asennus vaatisi manuaalisen poistamisen.</string>
+    <string name="downgrade_notes_title">Julkaisumuistiinpanot</string>
+    <string name="downgrade_notes_empty">Ei julkaisumuistiinpanoja tälle versiolle.</string>
+    <string name="downgrade_warning">Vanhempaan versioon palaaminen on sovelluksessa yksisuuntaista. Jos haluat palata versioon v%1$s myöhemmin, saatat joutua asentamaan sovelluksen uudelleen tai asentamaan uudemman julkaisun. Lompakkoihisi ja varoihisi tämä ei vaikuta.</string>
+    <string name="downgrade_slide">Liu’uta palataksesi versioon v%1$s</string>
+    <string name="downgrade_slide_hint">Liu’uta tai kaksoisnapauta palataksesi vanhempaan versioon</string>
 </resources>

@@ -48,6 +48,7 @@ import dev.pocketprl.ui.components.PrimaryButton
 import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.components.SectionCard
+import dev.pocketprl.ui.components.SlideToConfirm
 import dev.pocketprl.ui.rememberLeaveAppMarker
 import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.vm.appContainer
@@ -163,6 +164,7 @@ fun VersionHistoryScreen(onBack: () -> Unit) {
         selected != null -> {
             val release = selected!!
             val isCurrent = UpdateChecker.compare(release.version, current) == 0
+            val isDowngrade = UpdateChecker.compare(release.version, current) < 0
             ScreenScaffold(title = stringResource(R.string.downgrade_detail_title, release.version), onBack = { selected = null }) {
                 Column(
                     modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 16.dp),
@@ -201,14 +203,32 @@ fun VersionHistoryScreen(onBack: () -> Unit) {
                     }
 
                     Spacer(Modifier.height(2.dp))
-                    PrimaryButton(
-                        text = stringResource(R.string.downgrade_install_version, release.version),
-                        enabled = release.apkUrl != null && !isCurrent,
-                        onClick = {
-                            installError = null
-                            updater.download(release)
-                        },
-                    )
+                    if (isDowngrade) {
+                        // A downgrade is one-way in the app: warn before, and arm a
+                        // danger slide instead of a plain button.
+                        InfoBanner(stringResource(R.string.downgrade_warning, current), BannerKind.ERROR)
+                        SlideToConfirm(
+                            onComplete = {
+                                installError = null
+                                updater.download(release)
+                            },
+                            label = stringResource(R.string.downgrade_slide, release.version),
+                            icon = AppIcons.Downgrade,
+                            enabled = release.apkUrl != null,
+                            danger = true,
+                            slideHint = stringResource(R.string.downgrade_slide_hint),
+                            notReady = stringResource(R.string.update_install_not_ready),
+                        )
+                    } else {
+                        PrimaryButton(
+                            text = stringResource(R.string.downgrade_install_version, release.version),
+                            enabled = release.apkUrl != null && !isCurrent,
+                            onClick = {
+                                installError = null
+                                updater.download(release)
+                            },
+                        )
+                    }
                     SecondaryButton(stringResource(R.string.downgrade_back_to_list), onClick = { selected = null })
                     Spacer(Modifier.height(8.dp))
                 }

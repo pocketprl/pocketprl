@@ -54,10 +54,27 @@ install.
 
 ## What is not supported
 
-* **Returning to 2.4.0 from a rollback.** The 2.4.0 asset (100013) is below the
-  rollback codes, so Android refuses it. To get back: install a later release
-  (assign it above 100025), or uninstall/reinstall. This is the deliberate
-  one-directional trade-off.
+* **Returning to 2.4.0 automatically from a rollback.** The normal 2.4.0 asset
+  (100013) is below the rollback codes, so Android refuses it, and a rollback
+  build predates the app-side asset picker. This is the deliberate
+  one-directional trade-off; the version history screen warns before it happens.
+
+## Getting back to 2.4.0 (escape hatch)
+
+The v2.4.0 release also carries **`PocketPRL-2.4.0-return-100026.apk`**, a build
+of 2.4.0 above every rollback. Install it to leave a rollback:
+
+```
+adb install -r PocketPRL-2.4.0-return-100026.apk
+```
+
+or open the v2.4.0 release page and install that asset by hand. The in-app
+updater prefers the plain `PocketPRL-2.4.0.apk` for normal installs, so a fresh
+install stays at 100013 and keeps the ability to downgrade.
+
+For the future, a normal release published with a code above 100025 (e.g. the
+next version at 100026+) also lets rollback users update forward through the
+in-app updater, no manual step.
 
 ## Invariants
 
