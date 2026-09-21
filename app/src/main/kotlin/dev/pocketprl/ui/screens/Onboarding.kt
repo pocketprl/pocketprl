@@ -47,8 +47,10 @@ import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.components.SectionCard
 import dev.pocketprl.ui.components.SecureWindow
+import dev.pocketprl.ui.components.SlideToConfirm
 import dev.pocketprl.ui.components.WordChip
 import dev.pocketprl.ui.components.passwordScore
+import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.vm.OnboardingViewModel
 import java.security.SecureRandom
 
@@ -227,10 +229,15 @@ fun RestoreWalletScreen(vm: OnboardingViewModel, onDone: () -> Unit, onBack: () 
             PasswordField(confirm, { confirm = it }, stringResource(R.string.onboard_confirm_password), imeAction = ImeAction.Done, isError = confirm.isNotEmpty() && confirm != password)
             state.error?.let { InfoBanner(it, BannerKind.ERROR) }
             InfoBanner(stringResource(R.string.onboard_restore_compatible), BannerKind.INFO)
-            PrimaryButton(
-                stringResource(R.string.onboard_restore_button),
-                enabled = name.isNotBlank() && check is OnboardingViewModel.SeedCheck.Ok && password.length >= 8 && password == confirm && passwordScore(password) >= 2,
-                onClick = { (check as? OnboardingViewModel.SeedCheck.Ok)?.let { vm.restore(name, it.material, password) } },
+            val canRestore = name.isNotBlank() && check is OnboardingViewModel.SeedCheck.Ok &&
+                password.length >= 8 && password == confirm && passwordScore(password) >= 2
+            SlideToConfirm(
+                onComplete = { (check as? OnboardingViewModel.SeedCheck.Ok)?.let { vm.restore(name, it.material, password) } },
+                label = stringResource(R.string.onboard_restore_button),
+                icon = AppIcons.Key,
+                enabled = canRestore,
+                slideHint = stringResource(R.string.onboard_restore_slide_hint),
+                notReady = stringResource(R.string.onboard_restore_not_ready),
             )
         }
     }

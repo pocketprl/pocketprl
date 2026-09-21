@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.pocketprl.BuildConfig
 import dev.pocketprl.R
+import dev.pocketprl.data.ReturnBuild
 import dev.pocketprl.data.SchemaCompat
 import dev.pocketprl.data.update.AppUpdater
 import dev.pocketprl.data.update.ReleaseInfo
@@ -67,7 +68,7 @@ import kotlinx.coroutines.launch
  * refuse it.
  */
 @Composable
-fun VersionHistoryScreen(onBack: () -> Unit) {
+fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: () -> Unit) {
     val container = appContainer()
     val updater = container.updater
     val state by updater.state.collectAsStateWithLifecycle()
@@ -126,6 +127,10 @@ fun VersionHistoryScreen(onBack: () -> Unit) {
                     Spacer(Modifier.weight(1f))
 
                     if (ready != null && !ready.installableInPlace) {
+                        if (ReturnBuild.isReturn) {
+                            InfoBanner(stringResource(R.string.return_build_in_menu), BannerKind.WARNING)
+                            PrimaryButton(stringResource(R.string.return_build_fix), onClick = onOpenReset)
+                        }
                         SecondaryButton(
                             stringResource(R.string.downgrade_back_to_list),
                             onClick = { updater.reset(); installError = null },

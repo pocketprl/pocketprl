@@ -26,38 +26,41 @@ is **100026**.
 
 | Release | Code | Role |
 |---|---|---|
-| 2.4.0 | 100013 | Fresh / normal release. |
-| 2.3.2 | 100014 | Rollback |
-| 2.3.1 | 100015 | Rollback |
-| 2.3.0 | 100016 | Rollback |
-| 2.2.1 | 100017 | Rollback |
-| 2.2.0 | 100018 | Rollback |
-| 2.1.2 | 100019 | Rollback |
-| 2.1.1 | 100020 | Rollback |
-| 2.1.0 | 100021 | Rollback |
-| 2.0.0 | 100022 | Rollback |
-| 1.1.1 | 100023 | Rollback |
-| 1.1.0 | 100024 | Rollback |
-| 1.0.0 | 100025 | Rollback |
+| 2.4.1 | 100027 | Current regular release |
+| 1.0.0 … 2.3.2 | 100028 … 100039 | Rollbacks (above 2.4.1) |
+| 2.4.1 return | 100040 | Return build for 2.4.1 |
+| 2.4.0 | 100013 | Previous regular release |
+| 2.4.0 return | 100026 | Return build for 2.4.0 |
 
-Every rollback is above 2.4.0, so from 2.4.0 each one installs. The rollbacks are
-also ordered so that, from any rollback, the *older* ones (higher codes) still
-install.
+Every rollback is above the current regular release, so from 2.4.1 each one
+installs; they are ordered so older versions have higher codes, letting a rollback
+go further down. **Rollbacks must be reissued above every new regular release**,
+or that release loses its downgrade targets — that is the recurring cost of
+in-place downgrade.
 
 ## What works
 
-* From **2.4.0 (100013)**: install **any** rollback (100014 … 100025) in place,
+* From **2.4.1 (100027)**: install **any** rollback (100028 … 100039) in place,
   data preserved.
-* From a legacy install (1 … 15): normal upgrade to 2.4.0 or to any rollback.
+* From a legacy install (1 … 15): normal upgrade to 2.4.1 or to any rollback.
 * From a rollback: install any *older* rollback (a higher code), but not a newer
   one.
 
+## Return builds
+
+A return build is the regular release rebuilt with a code above the rollbacks
+(`100040` for 2.4.1) so it can be installed over one. Because it then sits above
+every downgrade target, it cannot downgrade in place. The app detects this
+(`BuildConfig.VERSION_CODE > BuildConfig.NORMAL_VERSION_CODE`), explains it once
+on first launch, and offers to switch to the regular build. The switch saves the
+regular build to Downloads and uninstalls, since Android refuses a lower package
+version in place.
+
 ## What is not supported
 
-* **Returning to 2.4.0 automatically from a rollback.** The normal 2.4.0 asset
-  (100013) is below the rollback codes, so Android refuses it, and a rollback
-  build predates the app-side asset picker. This is the deliberate
-  one-directional trade-off; the version history screen warns before it happens.
+* **Returning to the regular build in place from a return build.** The regular
+  code is lower, so Android refuses it; the app offers the save-then-uninstall
+  reset flow instead. A later regular release above the rollbacks also works.
 
 ## Getting back to 2.4.0 (escape hatch)
 

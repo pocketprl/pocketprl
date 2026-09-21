@@ -749,4 +749,21 @@
     <string name="downgrade_warning">A visszalépés az alkalmazásban egyirányú. Ha később vissza szeretnél térni a(z) v%1$s verzióra, előfordulhat, hogy újra kell telepítened vagy egy újabb kiadást kell telepítened. A pénztárcáidat és az összegeidet ez nem érinti.</string>
     <string name="downgrade_slide">Csúsztasd a(z) v%1$s verzióra való visszalépéshez</string>
     <string name="downgrade_slide_hint">Csúsztasd vagy koppints duplán a visszalépéshez</string>
+    <string name="personalize_section_security">Biztonság</string>
+    <string name="personalize_biometric_sub">Állíts be ujjlenyomat- vagy arcfeloldást, miután létrejött a pénztárcád</string>
+    <string name="onboard_restore_slide_hint">Csúsztasd vagy koppints duplán a visszaállításhoz</string>
+    <string name="onboard_restore_not_ready">Töltsd ki a mezőket a visszaállítás engedélyezéséhez</string>
+    <string name="return_build_title">Visszatérési build</string>
+    <string name="return_build_hero">Egy visszatérési builden vagy</string>
+    <string name="return_build_body">Ez a build abból készült, hogy kilépj egy régebbi verzióból, ezért a csomag verziója magasabb, mint a kiadások, amelyekre visszaléphetnél. A visszalépés ki van kapcsolva, amíg át nem váltasz a normál buildre.</string>
+    <string name="return_build_fix">Szerezd be a normál buildet</string>
+    <string name="return_build_keep">Tartsd meg ezt a buildet</string>
+    <string name="return_build_reset_title">Normál build</string>
+    <string name="return_build_reset_body">Az Android nem telepít alacsonyabb csomag verziót erre, ezért a PocketPRL-t először el kell távolítani. A pénzed biztonságban van, ha megvan a helyreállítási frázisod; a pénztárcanevek, a névjegyek és a jegyzetek elvesznek. A normál build a Downloads mappába kerül mentésre, így újra telepítheted.</string>
+    <string name="return_build_reset_prepare">Mentsd el a normál buildet</string>
+    <string name="return_build_reset_saved">Mentve ide: Downloads/%1$s. Távolítsd el a PocketPRL-t, majd telepítsd azt a fájlt.</string>
+    <string name="return_build_reset_uninstall">PocketPRL eltávolítása</string>
+    <string name="return_build_reset_save_failed">Nem sikerült a fájlt a Downloads mappába menteni. Az eltávolítás után telepítsd a GitHub kiadási oldaláról.</string>
+    <string name="return_build_in_menu">Egy visszatérési builden vagy, amely minden visszalépési cél fölött áll. A visszalépéshez telepítsd a normál buildet.</string>
+    <string name="return_build_error">Nem található a normál build ehhez a verzióhoz a GitHubon.</string>
 </resources>

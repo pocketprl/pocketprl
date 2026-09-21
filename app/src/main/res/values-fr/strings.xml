@@ -753,4 +753,21 @@
     <string name="downgrade_warning">La rétrogradation dans l’application est à sens unique. Pour revenir à la v%1$s plus tard, vous devrez peut-être réinstaller ou installer une version plus récente. Vos portefeuilles et vos fonds ne sont pas affectés.</string>
     <string name="downgrade_slide">Glissez pour rétrograder vers la v%1$s</string>
     <string name="downgrade_slide_hint">Glissez ou touchez deux fois pour rétrograder</string>
+    <string name="personalize_section_security">Sécurité</string>
+    <string name="personalize_biometric_sub">Configurez le déverrouillage par empreinte ou visage après la création de votre portefeuille</string>
+    <string name="onboard_restore_slide_hint">Glissez ou touchez deux fois pour restaurer</string>
+    <string name="onboard_restore_not_ready">Remplissez les champs pour activer la restauration</string>
+    <string name="return_build_title">Compilation de retour</string>
+    <string name="return_build_hero">Vous utilisez une compilation de retour</string>
+    <string name="return_build_body">Cette compilation a été faite pour sortir d’une version plus ancienne, sa version de package est donc supérieure aux versions vers lesquelles vous pourriez revenir. La rétrogradation est désactivée jusqu’à ce que vous passiez à la compilation standard.</string>
+    <string name="return_build_fix">Obtenir la compilation standard</string>
+    <string name="return_build_keep">Conserver cette compilation</string>
+    <string name="return_build_reset_title">Compilation standard</string>
+    <string name="return_build_reset_body">Android n’installera pas une version de package inférieure par-dessus celle-ci, PocketPRL doit donc d’abord être désinstallé. Vos fonds sont en sécurité si vous avez votre phrase de récupération ; les noms de portefeuille, contacts et notes sont perdus. La compilation standard est enregistrée dans Downloads pour que vous puissiez l’installer à nouveau.</string>
+    <string name="return_build_reset_prepare">Enregistrer la compilation standard</string>
+    <string name="return_build_reset_saved">Enregistré dans Downloads/%1$s. Désinstallez PocketPRL, puis installez ce fichier.</string>
+    <string name="return_build_reset_uninstall">Désinstaller PocketPRL</string>
+    <string name="return_build_reset_save_failed">Impossible d’enregistrer le fichier dans Downloads. Installez-le depuis la page des versions GitHub après la désinstallation.</string>
+    <string name="return_build_in_menu">Vous utilisez une compilation de retour, qui est au-dessus de toute cible de rétrogradation. Installez la compilation standard pour pouvoir à nouveau rétrograder.</string>
+    <string name="return_build_error">Impossible de trouver la compilation standard de cette version sur GitHub.</string>
 </resources>

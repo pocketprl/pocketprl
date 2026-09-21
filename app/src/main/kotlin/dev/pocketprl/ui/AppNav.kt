@@ -1,5 +1,6 @@
 package dev.pocketprl.ui
 
+import androidx.activity.compose.LocalActivity
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -24,10 +25,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.fragment.app.FragmentActivity
 import dev.pocketprl.AppContainer
 import dev.pocketprl.BuildConfig
+import dev.pocketprl.R
 import dev.pocketprl.Shortcut
+import dev.pocketprl.data.ReturnBuild
 import dev.pocketprl.data.WalletContext
+import dev.pocketprl.ui.Biometrics
 import dev.pocketprl.ui.screens.AboutScreen
 import dev.pocketprl.ui.screens.ActivityScreen
 import dev.pocketprl.ui.screens.AddressesScreen
@@ -39,7 +44,9 @@ import dev.pocketprl.ui.screens.EraseWalletScreen
 import dev.pocketprl.ui.screens.NetworkSettingsScreen
 import dev.pocketprl.ui.screens.PersonalizeScreen
 import dev.pocketprl.ui.screens.ReceiveScreen
+import dev.pocketprl.ui.screens.ResetBuildScreen
 import dev.pocketprl.ui.screens.RestoreWalletScreen
+import dev.pocketprl.ui.screens.ReturnBuildScreen
 import dev.pocketprl.ui.screens.RevealSeedScreen
 import dev.pocketprl.ui.screens.SendScreen
 import dev.pocketprl.ui.screens.SettingsScreen
@@ -79,6 +86,8 @@ object Routes {
     const val ABOUT = "settings/about"
     const val UPDATE = "update"
     const val DOWNGRADE = "settings/downgrade"
+    const val RETURN_BUILD = "returnbuild"
+    const val RESET_BUILD = "resetbuild"
     const val ERASE = "erase"
     const val WHATS_NEW = "whatsnew"
 
@@ -253,6 +262,32 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
         }
     }
 
+    // Onboarding asked for biometric unlock: run the system prompt once, now that
+    // the wallet exists and is unlocked.
+    val activity = LocalActivity.current
+    LaunchedEffect(unlocked, settings.pendingBiometricSetup) {
+        if (!unlocked || !settings.pendingBiometricSetup) return@LaunchedEffect
+        container.settings.pendingBiometricSetup = false
+        val act = activity as? FragmentActivity ?: return@LaunchedEffect
+        if (!Biometrics.available(act) || ctx.vault.biometricEnabled) return@LaunchedEffect
+        val cipher = runCatching { ctx.vault.biometricEncryptCipher() }.getOrNull() ?: return@LaunchedEffect
+        when (val r = Biometrics.authenticate(act, act.getString(R.string.settings_biometric_prompt), act.getString(R.string.app_name), cipher, negative = act.getString(R.string.action_cancel))) {
+            is Biometrics.Outcome.Success -> runCatching { ctx.session.withDek { dek -> ctx.vault.enableBiometric(dek, r.cipher) } }
+            else -> Unit
+        }
+    }
+
+    // On a return build, explain once that downgrading is off until the regular
+    // build is installed.
+    LaunchedEffect(unlocked, settings.returnBuildNoticeShown, route) {
+        if (unlocked && route != null && route !in Routes.PUBLIC && route != Routes.RETURN_BUILD &&
+            !settings.returnBuildNoticeShown && ReturnBuild.isReturn
+        ) {
+            container.settings.returnBuildNoticeShown = true
+            nav.navigate(Routes.RETURN_BUILD) { launchSingleTop = true }
+        }
+    }
+
     // The post-update "what's new", once, after unlock, on the version that was installed.
     LaunchedEffect(unlocked, route, settings.whatsNewVersion) {
         if (unlocked && route != null && route !in Routes.PUBLIC && route != Routes.WHATS_NEW &&
@@ -324,7 +359,16 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
             )
         }
         composable(Routes.UPDATE) { UpdateScreen(onBack = { nav.popBackStack() }) }
-        composable(Routes.DOWNGRADE) { VersionHistoryScreen(onBack = { nav.popBackStack() }) }
+        composable(Routes.DOWNGRADE) {
+            VersionHistoryScreen(
+                onBack = { nav.popBackStack() },
+                onOpenReset = { nav.navigate(Routes.RESET_BUILD) },
+            )
+        }
+        composable(Routes.RETURN_BUILD) {
+            ReturnBuildScreen(onBack = { nav.popBackStack() }, onFix = { nav.navigate(Routes.RESET_BUILD) })
+        }
+        composable(Routes.RESET_BUILD) { ResetBuildScreen(onBack = { nav.popBackStack() }) }
         composable(Routes.WHATS_NEW) {
             WhatsNewScreen(
                 version = settings.whatsNewVersion,

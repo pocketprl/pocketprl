@@ -753,4 +753,21 @@
     <string name="downgrade_warning">Revertir en la aplicación es unidireccional. Para volver a la v%1$s más adelante, es posible que tengas que reinstalar o instalar una versión más reciente. Tus carteras y tus fondos no se ven afectados.</string>
     <string name="downgrade_slide">Desliza para revertir a la v%1$s</string>
     <string name="downgrade_slide_hint">Desliza o toca dos veces para revertir</string>
+    <string name="personalize_section_security">Seguridad</string>
+    <string name="personalize_biometric_sub">Configura el desbloqueo por huella o rostro después de crear tu cartera</string>
+    <string name="onboard_restore_slide_hint">Desliza o toca dos veces para restaurar</string>
+    <string name="onboard_restore_not_ready">Rellena los campos para activar la restauración</string>
+    <string name="return_build_title">Compilación de retorno</string>
+    <string name="return_build_hero">Estás usando una compilación de retorno</string>
+    <string name="return_build_body">Esta compilación se creó para salir de una versión anterior, por lo que su versión de paquete es superior a las versiones a las que podrías volver. Revertir está desactivado hasta que cambies a la compilación estándar.</string>
+    <string name="return_build_fix">Obtener la compilación estándar</string>
+    <string name="return_build_keep">Conservar esta compilación</string>
+    <string name="return_build_reset_title">Compilación estándar</string>
+    <string name="return_build_reset_body">Android no instalará una versión de paquete inferior sobre esta, así que PocketPRL debe desinstalarse primero. Tus fondos están a salvo si tienes tu frase de recuperación; los nombres de carteras, contactos y notas se pierden. La compilación estándar se guarda en Downloads para que puedas instalarla de nuevo.</string>
+    <string name="return_build_reset_prepare">Guardar la compilación estándar</string>
+    <string name="return_build_reset_saved">Guardada en Downloads/%1$s. Desinstala PocketPRL y luego instala ese archivo.</string>
+    <string name="return_build_reset_uninstall">Desinstalar PocketPRL</string>
+    <string name="return_build_reset_save_failed">No se pudo guardar el archivo en Downloads. Instálalo desde la página de versiones de GitHub después de desinstalar.</string>
+    <string name="return_build_in_menu">Estás usando una compilación de retorno, que está por encima de todos los objetivos de reversión. Instala la compilación estándar para poder revertir de nuevo.</string>
+    <string name="return_build_error">No se encontró la compilación estándar de esta versión en GitHub.</string>
 </resources>

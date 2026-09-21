@@ -752,4 +752,21 @@
     <string name="downgrade_warning">Nedgradering är enkelriktad i appen. För att senare återgå till v%1$s kan du behöva installera om eller installera en nyare version. Dina plånböcker och tillgångar påverkas inte.</string>
     <string name="downgrade_slide">Dra för att nedgradera till v%1$s</string>
     <string name="downgrade_slide_hint">Dra eller dubbeltryck för att nedgradera</string>
+    <string name="personalize_section_security">Säkerhet</string>
+    <string name="personalize_biometric_sub">Ställ in fingeravtryck eller ansiktsupplåsning efter att plånboken har skapats</string>
+    <string name="onboard_restore_slide_hint">Dra eller dubbeltryck för att återställa</string>
+    <string name="onboard_restore_not_ready">Fyll i fälten för att aktivera återställning</string>
+    <string name="return_build_title">Returversion</string>
+    <string name="return_build_hero">Du är på en returversion</string>
+    <string name="return_build_body">Den här versionen skapades för att ta sig ur en äldre version, så dess paketversion är högre än de versioner du kan gå tillbaka till. Nedgradering är avstängt tills du byter till den vanliga versionen.</string>
+    <string name="return_build_fix">Hämta den vanliga versionen</string>
+    <string name="return_build_keep">Behåll den här versionen</string>
+    <string name="return_build_reset_title">Vanlig version</string>
+    <string name="return_build_reset_body">Android installerar inte en lägre paketversion över den här, så PocketPRL måste avinstalleras först. Dina tillgångar är säkra om du har din återställningsfras; plånboksnamn, kontakter och anteckningar går förlorade. Den vanliga versionen sparas i Downloads så att du kan installera den igen.</string>
+    <string name="return_build_reset_prepare">Spara den vanliga versionen</string>
+    <string name="return_build_reset_saved">Sparat i Downloads/%1$s. Avinstallera PocketPRL och installera sedan filen.</string>
+    <string name="return_build_reset_uninstall">Avinstallera PocketPRL</string>
+    <string name="return_build_reset_save_failed">Kunde inte spara filen i Downloads. Installera den från GitHubs utgivningssida efter avinstallationen.</string>
+    <string name="return_build_in_menu">Du är på en returversion, som ligger över varje nedgraderingsmål. Installera den vanliga versionen för att kunna nedgradera igen.</string>
+    <string name="return_build_error">Kunde inte hitta den vanliga versionen för den här versionen på GitHub.</string>
 </resources>

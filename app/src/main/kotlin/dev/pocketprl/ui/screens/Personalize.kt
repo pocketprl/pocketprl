@@ -27,7 +27,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -40,7 +39,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -52,6 +50,7 @@ import dev.pocketprl.core.format.FiatCurrency
 import dev.pocketprl.core.format.GroupingSeparator
 import dev.pocketprl.data.AccentTheme
 import dev.pocketprl.data.ThemeMode
+import dev.pocketprl.ui.Biometrics
 import dev.pocketprl.ui.components.OdometerText
 import dev.pocketprl.ui.components.LanguageDialog
 import dev.pocketprl.ui.components.languageLabel
@@ -62,6 +61,7 @@ import dev.pocketprl.ui.components.SectionTitle
 import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SettingRow
 import dev.pocketprl.ui.components.rememberHaptics
+import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.theme.PearlTheme
 import dev.pocketprl.ui.theme.accentPrimary
 import dev.pocketprl.ui.theme.isDarkTheme
@@ -70,6 +70,9 @@ import dev.pocketprl.ui.vm.appContainer
 /** A sample balance used only to preview the number formatting live. */
 private const val DEMO_GRAIN = 1_263_800_000_000L
 private const val DEMO_PRICE = 0.55
+
+/** Gap between sections, so the list breathes instead of running together. */
+private val SectionGap = 20.dp
 
 /**
  * First-run personalization: theme, accent, number format, currency and motion,
@@ -85,32 +88,40 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
     var showLanguage by remember { mutableStateOf(false) }
     val dark = isDarkTheme(settings.themeMode, isSystemInDarkTheme())
     val accent = accentPrimary(settings.accentTheme, dark)
+    val bioAvailable = activity != null && Biometrics.available(activity)
 
     val preview = Amount.pretty(DEMO_GRAIN)
     val previewFiat = Amount.fiat(DEMO_GRAIN, DEMO_PRICE)
 
     ScreenScaffold(title = stringResource(R.string.personalize_title), onBack = onBack) {
-    Column(modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 8.dp)) {
+    Column(modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 12.dp)) {
         Text(stringResource(R.string.personalize_subtitle), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(22.dp))
         PreviewCard(accent = accent, preview = preview, fiat = previewFiat, fiatCode = settings.fiatCurrency.code.uppercase(), reducedMotion = settings.reducedMotion, haptics = settings.odometerHaptics)
 
+        Spacer(Modifier.height(SectionGap))
         SectionTitle(stringResource(R.string.settings_section_language))
+        Spacer(Modifier.height(8.dp))
         SectionCard {
             SettingRow(stringResource(R.string.settings_language), languageLabel(settings.appLanguage), onClick = { showLanguage = true })
         }
 
+        Spacer(Modifier.height(SectionGap))
         SectionTitle(stringResource(R.string.personalize_section_look))
+        Spacer(Modifier.height(8.dp))
         SectionCard {
-            Segmented(
+            // A 2×2 grid instead of one row of four: the theme names are long and
+            // were the tightest thing on the screen.
+            SegmentedGrid(
                 options = listOf(ThemeMode.AUTO, ThemeMode.LIGHT, ThemeMode.DARK, ThemeMode.OLED),
                 selected = settings.themeMode,
+                columns = 2,
                 label = { stringResource(themeLabelRes(it)) },
                 onSelect = { haptics.tick(); container.settings.themeMode = it },
             )
-            Spacer(Modifier.height(16.dp))
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Spacer(Modifier.height(18.dp))
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                 AccentTheme.entries.forEach { theme ->
                     AccentSwatch(
                         color = accentPrimary(theme, dark),
@@ -119,13 +130,33 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
                     )
                 }
             }
-            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(14.dp))
             SettingRow(stringResource(R.string.settings_dynamic_color), stringResource(R.string.settings_dynamic_color_sub)) {
                 Switch(checked = settings.dynamicColor, onCheckedChange = { haptics.toggle(it); container.settings.dynamicColor = it })
             }
         }
 
+        Spacer(Modifier.height(SectionGap))
+        SectionTitle(stringResource(R.string.personalize_section_security))
+        Spacer(Modifier.height(8.dp))
+        SectionCard {
+            SettingRow(
+                stringResource(R.string.settings_biometric),
+                stringResource(R.string.personalize_biometric_sub),
+                icon = AppIcons.Fingerprint,
+                enabled = bioAvailable,
+            ) {
+                Switch(
+                    checked = settings.pendingBiometricSetup,
+                    enabled = bioAvailable,
+                    onCheckedChange = { haptics.toggle(it); container.settings.pendingBiometricSetup = it },
+                )
+            }
+        }
+
+        Spacer(Modifier.height(SectionGap))
         SectionTitle(stringResource(R.string.personalize_section_numbers))
+        Spacer(Modifier.height(8.dp))
         SectionCard {
             Text(stringResource(R.string.settings_decimals), style = MaterialTheme.typography.bodyLarge)
             Spacer(Modifier.height(8.dp))
@@ -135,7 +166,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
                 label = { stringResource(R.string.option_value, it) },
                 onSelect = { haptics.tick(); container.settings.decimals = it },
             )
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(18.dp))
             Text(stringResource(R.string.settings_decimal_sep), style = MaterialTheme.typography.bodyLarge)
             Spacer(Modifier.height(8.dp))
             Segmented(
@@ -144,7 +175,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
                 label = { stringResource(if (it == DecimalSeparator.COMMA) R.string.decimal_comma else R.string.decimal_period) },
                 onSelect = { haptics.tick(); container.settings.decimalSeparator = it },
             )
-            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(14.dp))
             SettingRow(stringResource(R.string.personalize_grouping_toggle)) {
                 Switch(
                     checked = settings.groupingSeparator != GroupingSeparator.NONE,
@@ -156,7 +187,9 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
             }
         }
 
+        Spacer(Modifier.height(SectionGap))
         SectionTitle(stringResource(R.string.personalize_section_currency))
+        Spacer(Modifier.height(8.dp))
         SectionCard(padding = 12.dp) {
             LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp), contentPadding = PaddingValues(horizontal = 4.dp)) {
                 items(FiatCurrency.entries.toList()) { fiat ->
@@ -169,7 +202,9 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
             }
         }
 
+        Spacer(Modifier.height(SectionGap))
         SectionTitle(stringResource(R.string.personalize_section_motion))
+        Spacer(Modifier.height(8.dp))
         SectionCard {
             SettingRow(stringResource(R.string.settings_reduced_motion), stringResource(R.string.settings_reduced_motion_sub)) {
                 Switch(checked = settings.reducedMotion, onCheckedChange = { haptics.toggle(it); container.settings.reducedMotion = it })
@@ -179,7 +214,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
             }
         }
 
-        Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(28.dp))
         PrimaryButton(
             text = stringResource(if (next == "restore") R.string.welcome_restore else R.string.personalize_continue),
             onClick = { haptics.confirm(); if (next == "restore") onRestore() else onCreate() },
@@ -189,7 +224,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
             text = stringResource(if (next == "restore") R.string.welcome_create else R.string.welcome_restore),
             onClick = { haptics.click(); if (next == "restore") onCreate() else onRestore() },
         )
-        Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(28.dp))
     }
     }
 
@@ -214,7 +249,7 @@ private fun PreviewCard(accent: Color, preview: String, fiat: String?, fiatCode:
     val bg by animateColorAsState(accent.copy(alpha = 0.16f).compositeOver(cs.surface), label = "previewBg")
     val border by animateColorAsState(accent.copy(alpha = 0.45f), label = "previewBorder")
     Column(
-        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp)).background(bg).border(1.dp, border, RoundedCornerShape(20.dp)).padding(18.dp),
+        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp)).background(bg).border(1.dp, border, RoundedCornerShape(20.dp)).padding(20.dp),
     ) {
         Text(stringResource(R.string.personalize_preview), style = MaterialTheme.typography.labelMedium, color = cs.onSurfaceVariant)
         Spacer(Modifier.height(8.dp))
@@ -233,6 +268,7 @@ private fun PreviewCard(accent: Color, preview: String, fiat: String?, fiatCode:
     }
 }
 
+/** One row of equal-width segmented choices. */
 @Composable
 private fun <T> Segmented(options: List<T>, selected: T, label: @Composable (T) -> String, onSelect: (T) -> Unit) {
     Row(
@@ -240,25 +276,47 @@ private fun <T> Segmented(options: List<T>, selected: T, label: @Composable (T) 
         horizontalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         options.forEach { option ->
-            val isSelected = option == selected
-            val bg by animateColorAsState(if (isSelected) MaterialTheme.colorScheme.primary else Color.Transparent, label = "segBg")
-            val fg by animateColorAsState(if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant, label = "segFg")
-            Box(
-                modifier = Modifier.weight(1f).clip(RoundedCornerShape(10.dp)).background(bg)
-                    .clickable { onSelect(option) }.padding(vertical = 10.dp),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(label(option), color = fg, style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            SegmentedCell(option, option == selected, label, onSelect, Modifier.weight(1f))
+        }
+    }
+}
+
+/** A wrapped grid of segmented choices, so long labels get a whole cell each. */
+@Composable
+private fun <T> SegmentedGrid(options: List<T>, selected: T, columns: Int = 2, label: @Composable (T) -> String, onSelect: (T) -> Unit) {
+    Column(
+        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(MaterialTheme.colorScheme.surfaceVariant).padding(4.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        options.chunked(columns).forEach { row ->
+            Row(horizontalArrangement = Arrangement.spacedBy(4.dp), modifier = Modifier.fillMaxWidth()) {
+                row.forEach { option ->
+                    SegmentedCell(option, option == selected, label, onSelect, Modifier.weight(1f))
+                }
+                repeat(columns - row.size) { Spacer(Modifier.weight(1f)) }
             }
         }
     }
 }
 
 @Composable
-private fun AccentSwatch(color: Color, selected: Boolean, onClick: () -> Unit) {
-    val scale by animateFloatAsState(if (selected) 1.15f else 1f, animationSpec = spring(dampingRatio = 0.5f), label = "swatchScale")
+private fun <T> SegmentedCell(option: T, isSelected: Boolean, label: @Composable (T) -> String, onSelect: (T) -> Unit, modifier: Modifier = Modifier) {
+    val bg by animateColorAsState(if (isSelected) MaterialTheme.colorScheme.primary else Color.Transparent, label = "segBg")
+    val fg by animateColorAsState(if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant, label = "segFg")
     Box(
-        modifier = Modifier.size(44.dp).graphicsLayer { scaleX = scale; scaleY = scale }.clip(CircleShape).background(color)
+        modifier = modifier.clip(RoundedCornerShape(10.dp)).background(bg)
+            .clickable { onSelect(option) }.padding(vertical = 11.dp, horizontal = 6.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(label(option), color = fg, style = MaterialTheme.typography.labelMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+    }
+}
+
+@Composable
+private fun AccentSwatch(color: Color, selected: Boolean, onClick: () -> Unit) {
+    val scale by animateFloatAsState(if (selected) 1.12f else 1f, animationSpec = spring(dampingRatio = 0.5f), label = "swatchScale")
+    Box(
+        modifier = Modifier.size(36.dp).graphicsLayer { scaleX = scale; scaleY = scale }.clip(CircleShape).background(color)
             .then(if (selected) Modifier.border(3.dp, MaterialTheme.colorScheme.onBackground, CircleShape) else Modifier)
             .clickable(onClick = onClick),
     )

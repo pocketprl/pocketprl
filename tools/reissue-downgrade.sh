@@ -44,6 +44,14 @@ echo "== $TAG (versionCode $CODE) =="
 git worktree add --detach "$WT" "$TAG" >/dev/null
 cp "$ROOT/local.properties" "$WT/local.properties" 2>/dev/null || true
 
+# The code a regular build of this tag carries: the property if the tag has it,
+# else the literal. Read before patching. A return build keeps this so the app can
+# tell it is above the regular one.
+NORMAL="$(grep -oE '^pocketprl\.versionCode=[0-9]+' "$WT/gradle.properties" 2>/dev/null | cut -d= -f2)"
+if [ -z "$NORMAL" ]; then
+  NORMAL="$(grep -oE 'versionCode[[:space:]]*=[[:space:]]*[0-9]+' "$WT/app/build.gradle.kts" | grep -oE '[0-9]+' | head -1)"
+fi
+
 # These tags predate the pocketprl.versionCode build property, so set the code directly.
 if ! grep -qE '^[[:space:]]*versionCode[[:space:]]*=' "$WT/app/build.gradle.kts"; then
   echo "error: no versionCode line found in $TAG/app/build.gradle.kts" >&2
@@ -52,8 +60,9 @@ fi
 sed -i -E "s/^([[:space:]]*)versionCode[[:space:]]*=[[:space:]]*[0-9]+/\1versionCode = ${CODE}/" "$WT/app/build.gradle.kts"
 
 # Tags with the pocketprl.versionCode hook read the property; older tags ignore
-# it and use the literal patched above. Passing both covers every tag.
-( cd "$WT" && ./gradlew :app:assembleRelease --no-configuration-cache -q -Ppocketprl.versionCode="$CODE" )
+# it and use the literal patched above. normalVersionCode is what makes the app
+# recognise the result as a return build.
+( cd "$WT" && ./gradlew :app:assembleRelease --no-configuration-cache -q -Ppocketprl.versionCode="$CODE" ${NORMAL:+-Ppocketprl.normalVersionCode="$NORMAL"} )
 
 APK="$WT/app/build/outputs/apk/release/app-release.apk"
 [ -f "$APK" ] || { echo "error: $TAG produced no APK" >&2; exit 1; }

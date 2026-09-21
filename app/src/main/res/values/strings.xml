@@ -512,6 +512,23 @@
     <string name="downgrade_warning">Downgrading is one-way in the app. To return to v%1$s later you may need to reinstall or install a newer release. Your wallets and funds are unaffected.</string>
     <string name="downgrade_slide">Slide to downgrade to v%1$s</string>
     <string name="downgrade_slide_hint">Slide or double-tap to downgrade</string>
+    <string name="return_build_title">Return build</string>
+    <string name="return_build_hero">You’re on a return build</string>
+    <string name="return_build_body">This build was made to climb out of an older version, so its package version is higher than the releases you could go back to. Downgrading is off until you switch to the regular build.</string>
+    <string name="return_build_fix">Get the regular build</string>
+    <string name="return_build_keep">Keep this build</string>
+    <string name="return_build_reset_title">Regular build</string>
+    <string name="return_build_reset_body">Android will not install a lower package version over this one, so PocketPRL has to be uninstalled first. Your funds are safe if you have your recovery phrase; wallet names, contacts and notes are lost. The regular build is saved to Downloads so you can install it again.</string>
+    <string name="return_build_reset_prepare">Save the regular build</string>
+    <string name="return_build_reset_saved">Saved to Downloads/%1$s. Uninstall PocketPRL, then install that file.</string>
+    <string name="return_build_reset_uninstall">Uninstall PocketPRL</string>
+    <string name="return_build_reset_save_failed">Could not save the file to Downloads. Install it from the GitHub release page after uninstalling.</string>
+    <string name="return_build_in_menu">You’re on a return build, which is above every downgrade target. Install the regular build to downgrade again.</string>
+    <string name="return_build_error">Could not find the regular build for this version on GitHub.</string>
+    <string name="personalize_section_security">Security</string>
+    <string name="personalize_biometric_sub">Set up fingerprint or face unlock after your wallet is created</string>
+    <string name="onboard_restore_slide_hint">Slide or double-tap to restore</string>
+    <string name="onboard_restore_not_ready">Fill in the fields to enable restore</string>
 
     <!-- ===================== what's new ===================== -->
     <string name="whatsnew_title">What’s new</string>

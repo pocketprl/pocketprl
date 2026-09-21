@@ -750,4 +750,21 @@
     <string name="downgrade_warning">Ein Downgrade in der App ist einseitig. Um später zu v%1$s zurückzukehren, musst du möglicherweise neu installieren oder ein neueres Release installieren. Deine Wallets und dein Guthaben sind nicht betroffen.</string>
     <string name="downgrade_slide">Zum Downgrade auf v%1$s schieben</string>
     <string name="downgrade_slide_hint">Zum Downgrade schieben oder doppelt tippen</string>
+    <string name="personalize_section_security">Sicherheit</string>
+    <string name="personalize_biometric_sub">Richte das Entsperren per Fingerabdruck oder Gesicht ein, nachdem dein Wallet erstellt wurde</string>
+    <string name="onboard_restore_slide_hint">Zum Wiederherstellen schieben oder doppelt tippen</string>
+    <string name="onboard_restore_not_ready">Felder ausfüllen, um die Wiederherstellung zu aktivieren</string>
+    <string name="return_build_title">Rückkehr-Build</string>
+    <string name="return_build_hero">Du bist auf einem Rückkehr-Build</string>
+    <string name="return_build_body">Dieser Build wurde erstellt, um aus einer älteren Version herauszukommen, daher ist seine Paketversion höher als die Releases, zu denen du zurückkehren könntest. Ein Downgrade ist deaktiviert, bis du zum regulären Build wechselst.</string>
+    <string name="return_build_fix">Regulären Build holen</string>
+    <string name="return_build_keep">Diesen Build behalten</string>
+    <string name="return_build_reset_title">Regulärer Build</string>
+    <string name="return_build_reset_body">Android installiert keine niedrigere Paketversion über diese, daher muss PocketPRL zuerst deinstalliert werden. Dein Guthaben ist sicher, wenn du deine Wiederherstellungsphrase hast; Wallet-Namen, Kontakte und Notizen gehen verloren. Der reguläre Build wird in Downloads gespeichert, damit du ihn erneut installieren kannst.</string>
+    <string name="return_build_reset_prepare">Regulären Build speichern</string>
+    <string name="return_build_reset_saved">In Downloads/%1$s gespeichert. Deinstalliere PocketPRL und installiere dann diese Datei.</string>
+    <string name="return_build_reset_uninstall">PocketPRL deinstallieren</string>
+    <string name="return_build_reset_save_failed">Die Datei konnte nicht in Downloads gespeichert werden. Installiere sie nach der Deinstallation über die GitHub-Release-Seite.</string>
+    <string name="return_build_in_menu">Du bist auf einem Rückkehr-Build, der über jedem Downgrade-Ziel liegt. Installiere den regulären Build, um wieder ein Downgrade durchzuführen.</string>
+    <string name="return_build_error">Der reguläre Build für diese Version wurde auf GitHub nicht gefunden.</string>
 </resources>

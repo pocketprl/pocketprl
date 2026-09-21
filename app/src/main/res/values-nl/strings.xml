@@ -749,4 +749,21 @@
     <string name="downgrade_warning">Downgraden in de app is eenrichtingsverkeer. Om later terug te keren naar v%1$s moet je mogelijk opnieuw installeren of een nieuwere release installeren. Je wallets en geld blijven onaangetast.</string>
     <string name="downgrade_slide">Schuif om te downgraden naar v%1$s</string>
     <string name="downgrade_slide_hint">Schuif of dubbeltik om te downgraden</string>
+    <string name="personalize_section_security">Beveiliging</string>
+    <string name="personalize_biometric_sub">Stel ontgrendelen met vingerafdruk of gezicht in nadat je wallet is aangemaakt</string>
+    <string name="onboard_restore_slide_hint">Schuif of dubbeltik om te herstellen</string>
+    <string name="onboard_restore_not_ready">Vul de velden in om herstellen in te schakelen</string>
+    <string name="return_build_title">Terugkeerbuild</string>
+    <string name="return_build_hero">Je gebruikt een terugkeerbuild</string>
+    <string name="return_build_body">Deze build is gemaakt om uit een oudere versie te komen, dus de pakketversie is hoger dan de releases waarnaar je zou kunnen terugkeren. Downgraden is uitgeschakeld tot je overstapt op de gewone build.</string>
+    <string name="return_build_fix">Gewone build ophalen</string>
+    <string name="return_build_keep">Deze build behouden</string>
+    <string name="return_build_reset_title">Gewone build</string>
+    <string name="return_build_reset_body">Android installeert geen lagere pakketversie over deze heen, dus PocketPRL moet eerst worden verwijderd. Je geld is veilig als je je herstelzin hebt; walletnamen, contacten en notities gaan verloren. De gewone build wordt opgeslagen in Downloads zodat je hem opnieuw kunt installeren.</string>
+    <string name="return_build_reset_prepare">Gewone build opslaan</string>
+    <string name="return_build_reset_saved">Opgeslagen in Downloads/%1$s. Verwijder PocketPRL en installeer daarna dat bestand.</string>
+    <string name="return_build_reset_uninstall">PocketPRL verwijderen</string>
+    <string name="return_build_reset_save_failed">Het bestand kon niet in Downloads worden opgeslagen. Installeer het na het verwijderen vanaf de GitHub-releasespagina.</string>
+    <string name="return_build_in_menu">Je gebruikt een terugkeerbuild, die boven elk downgrade-doel staat. Installeer de gewone build om weer te kunnen downgraden.</string>
+    <string name="return_build_error">De gewone build voor deze versie is niet op GitHub gevonden.</string>
 </resources>

@@ -747,4 +747,21 @@
     <string name="downgrade_warning">Nedgradering er enveis i appen. For å gå tilbake til v%1$s senere må du kanskje installere på nytt eller installere en nyere utgivelse. Lommebøkene og midlene dine påvirkes ikke.</string>
     <string name="downgrade_slide">Skyv for å nedgradere til v%1$s</string>
     <string name="downgrade_slide_hint">Skyv eller dobbelttrykk for å nedgradere</string>
+    <string name="personalize_section_security">Sikkerhet</string>
+    <string name="personalize_biometric_sub">Sett opp fingeravtrykk eller ansiktslås etter at lommeboken er opprettet</string>
+    <string name="onboard_restore_slide_hint">Skyv eller dobbelttrykk for å gjenopprette</string>
+    <string name="onboard_restore_not_ready">Fyll ut feltene for å aktivere gjenoppretting</string>
+    <string name="return_build_title">Returbygg</string>
+    <string name="return_build_hero">Du er på et returbygg</string>
+    <string name="return_build_body">Dette bygget er laget for å komme ut av en eldre versjon, så pakkeversjonen er høyere enn utgivelsene du kunne gått tilbake til. Nedgradering er slått av til du bytter til det vanlige bygget.</string>
+    <string name="return_build_fix">Hent det vanlige bygget</string>
+    <string name="return_build_keep">Behold dette bygget</string>
+    <string name="return_build_reset_title">Vanlig bygg</string>
+    <string name="return_build_reset_body">Android vil ikke installere en lavere pakkeversjon over denne, så PocketPRL må avinstalleres først. Midlene dine er trygge hvis du har gjenopprettingsfrasen; lommeboknavn, kontakter og notater går tapt. Det vanlige bygget lagres i Downloads, så du kan installere det igjen.</string>
+    <string name="return_build_reset_prepare">Lagre det vanlige bygget</string>
+    <string name="return_build_reset_saved">Lagret i Downloads/%1$s. Avinstaller PocketPRL, og installer deretter den filen.</string>
+    <string name="return_build_reset_uninstall">Avinstaller PocketPRL</string>
+    <string name="return_build_reset_save_failed">Kunne ikke lagre filen i Downloads. Installer den fra GitHub-utgivelsessiden etter avinstallering.</string>
+    <string name="return_build_in_menu">Du er på et returbygg, som ligger over alle nedgraderingsmål. Installer det vanlige bygget for å kunne nedgradere igjen.</string>
+    <string name="return_build_error">Fant ikke det vanlige bygget for denne versjonen på GitHub.</string>
 </resources>

@@ -87,7 +87,7 @@ tools/vectors/   Go generator that produces the vectors from the Pearl source tr
 
 ## Status
 
-Version 2.4.0. Key derivation and signing are verified byte-for-byte against the
+Version 2.4.1. Key derivation and signing are verified byte-for-byte against the
 Pearl reference code; sync and sending are exercised against the public Blockbook
 indexer. Not independently audited (yet). Not affiliated with Pearl Research Labs.
 

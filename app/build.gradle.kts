@@ -4,6 +4,13 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
+// The version code a *regular* build of this release carries. A return build
+// (reissued above the rollback band so it can climb out of one) ships a higher
+// versionCode than this, which is how the app detects it at runtime.
+val pocketprlNormalVersionCode: Long =
+    (project.findProperty("pocketprl.normalVersionCode") as String?)?.toLongOrNull()
+        ?: ((project.findProperty("pocketprl.versionCode") as String?)?.toIntOrNull() ?: 15).toLong()
+
 android {
     namespace = "dev.pocketprl"
     compileSdk = 37
@@ -17,7 +24,8 @@ android {
         // one. See docs/VERSIONING.md. The literal is only a fallback for builds
         // that do not resolve the property.
         versionCode = (project.findProperty("pocketprl.versionCode") as String?)?.toIntOrNull() ?: 15
-        versionName = "2.4.0"
+        versionName = "2.4.1"
+        buildConfigField("long", "NORMAL_VERSION_CODE", "${pocketprlNormalVersionCode}L")
         ndk {
             abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
         }

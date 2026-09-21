@@ -1,10 +1,13 @@
 package dev.pocketprl.data.update
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
+import android.os.Environment
+import android.provider.MediaStore
 import android.provider.Settings
 import androidx.core.content.FileProvider
 import dev.pocketprl.core.crypto.toHex
@@ -15,6 +18,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.File
@@ -193,6 +197,34 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
         val md = MessageDigest.getInstance("SHA-256")
         md.digest(installed).contentEquals(md.digest(downloaded))
     }.getOrDefault(false)
+
+    /**
+     * Copies a verified APK into the public Downloads folder so it survives
+     * uninstalling this app. Returns the saved display name, or null on failure.
+     */
+    suspend fun exportToDownloads(file: File, name: String): String? = withContext(Dispatchers.IO) {
+        runCatching {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                val resolver = context.contentResolver
+                val values = ContentValues().apply {
+                    put(MediaStore.Downloads.DISPLAY_NAME, name)
+                    put(MediaStore.Downloads.MIME_TYPE, APK_MIME)
+                    put(MediaStore.Downloads.IS_PENDING, 1)
+                }
+                val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values) ?: return@runCatching null
+                resolver.openOutputStream(uri)?.use { out -> file.inputStream().use { it.copyTo(out) } }
+                values.clear()
+                values.put(MediaStore.Downloads.IS_PENDING, 0)
+                resolver.update(uri, values, null, null)
+                name
+            } else {
+                @Suppress("DEPRECATION")
+                val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).apply { mkdirs() }
+                file.copyTo(File(dir, name), overwrite = true)
+                name
+            }
+        }.getOrNull()
+    }
 
     /** Version code of the installed app; 0 when it cannot be read. */
     fun installedVersionCode(): Long = runCatching {

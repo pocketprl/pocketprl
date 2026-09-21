@@ -770,4 +770,21 @@
     <string name="downgrade_warning">Відкат у застосунку незворотний. Щоб згодом повернутися до v%1$s, можливо, доведеться переінсталювати застосунок або встановити новіший випуск. Ваші гаманці та кошти не постраждають.</string>
     <string name="downgrade_slide">Суньте, щоб відкотитися до v%1$s</string>
     <string name="downgrade_slide_hint">Суньте або двічі торкніться, щоб відкотитися</string>
+    <string name="personalize_section_security">Безпека</string>
+    <string name="personalize_biometric_sub">Налаштуйте відбиток пальця або розблокування обличчям після створення гаманця</string>
+    <string name="onboard_restore_slide_hint">Суньте або двічі торкніться, щоб відновити</string>
+    <string name="onboard_restore_not_ready">Заповніть поля, щоб увімкнути відновлення</string>
+    <string name="return_build_title">Збірка повернення</string>
+    <string name="return_build_hero">У вас збірка повернення</string>
+    <string name="return_build_body">Цю збірку створено, щоб вибратися зі старішої версії, тому її версія пакета вища за випуски, до яких можна повернутися. Відкат версії вимкнено, доки ви не перейдете на звичайну збірку.</string>
+    <string name="return_build_fix">Отримати звичайну збірку</string>
+    <string name="return_build_keep">Залишити цю збірку</string>
+    <string name="return_build_reset_title">Звичайна збірка</string>
+    <string name="return_build_reset_body">Android не встановить нижчу версію пакета поверх цієї, тому спершу потрібно видалити PocketPRL. Ваші кошти в безпеці, якщо у вас є фраза відновлення; назви гаманців, контакти та нотатки буде втрачено. Звичайну збірку збережено в Downloads, щоб ви могли встановити її знову.</string>
+    <string name="return_build_reset_prepare">Зберегти звичайну збірку</string>
+    <string name="return_build_reset_saved">Збережено в Downloads/%1$s. Видаліть PocketPRL, а потім установіть цей файл.</string>
+    <string name="return_build_reset_uninstall">Видалити PocketPRL</string>
+    <string name="return_build_reset_save_failed">Не вдалося зберегти файл у Downloads. Після видалення встановіть його зі сторінки випусків GitHub.</string>
+    <string name="return_build_in_menu">У вас збірка повернення, яка вища за будь-яку ціль відкату. Установіть звичайну збірку, щоб знову відкотитися.</string>
+    <string name="return_build_error">Не вдалося знайти звичайну збірку для цієї версії на GitHub.</string>
 </resources>

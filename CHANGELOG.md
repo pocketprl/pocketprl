@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.4.1
+
+* **Roomier onboarding.** The first-run personalization screen has more breathing
+  room, a two-column theme picker so long names fit, smaller accent swatches, and
+  a Security section with a biometric-unlock option that is set up once the wallet
+  is created.
+* **Slide to restore.** Restoring a wallet now uses the same slide-to-confirm
+  control as sending, instead of a plain button.
+* **Return-build handling.** A build installed above the downgrade band (a return
+  build) cannot downgrade in place. The app now notices, explains it once on first
+  launch, and offers to switch to the regular build; the same offer appears in the
+  downgrade screen when a target will not install. Switching saves the regular
+  build to Downloads first, because Android refuses a lower package version over
+  this one and PocketPRL has to be uninstalled before reinstalling it.
+* New strings localized into all 18 supported languages.
+
 ## 2.4.0
 
 * **Version history and in-app downgrade.** About gains a Downgrade button under

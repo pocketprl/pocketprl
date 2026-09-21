@@ -77,6 +77,10 @@ class Settings(context: Context) {
         val whatsNewNotes: String,
         /** Which launcher icon alias is enabled. */
         val appIcon: AppIcon,
+        /** One-shot: onboarding asked for biometric unlock; consumed once the wallet exists. */
+        val pendingBiometricSetup: Boolean,
+        /** One-shot: the first-launch notice for a return build has been shown. */
+        val returnBuildNoticeShown: Boolean,
     )
 
     private val _state = MutableStateFlow(read())
@@ -133,6 +137,8 @@ class Settings(context: Context) {
             whatsNewVersion = prefs.getString(KEY_WHATS_NEW_VERSION, "") ?: "",
             whatsNewNotes = prefs.getString(KEY_WHATS_NEW_NOTES, "") ?: "",
             appIcon = AppIcon.fromId(prefs.getString(KEY_APP_ICON, null)),
+            pendingBiometricSetup = prefs.getBoolean(KEY_PENDING_BIOMETRIC, false),
+            returnBuildNoticeShown = prefs.getBoolean(KEY_RETURN_BUILD_NOTICE, false),
         )
         applyFormat(snap)
         return snap
@@ -289,6 +295,20 @@ class Settings(context: Context) {
         set(v) = edit { putString(KEY_APP_ICON, v.id) }
 
     /**
+     * Onboarding option: the user asked for biometric unlock before the wallet
+     * existed. The wallet area consumes this once, right after unlock, to run the
+     * system prompt.
+     */
+    var pendingBiometricSetup: Boolean
+        get() = _state.value.pendingBiometricSetup
+        set(v) = edit { putBoolean(KEY_PENDING_BIOMETRIC, v) }
+
+    /** One-shot: the first-launch "you're on a return build" notice has been shown. */
+    var returnBuildNoticeShown: Boolean
+        get() = _state.value.returnBuildNoticeShown
+        set(v) = edit { putBoolean(KEY_RETURN_BUILD_NOTICE, v) }
+
+    /**
      * Records the version and notes to show in the "what's new" popup once the
      * update is actually installed. Called just before handing the APK to the
      * installer, so a cancelled install leaves it pointing at a version that is
@@ -339,5 +359,7 @@ class Settings(context: Context) {
         private const val KEY_WHATS_NEW_VERSION = "whats_new_version"
         private const val KEY_WHATS_NEW_NOTES = "whats_new_notes"
         private const val KEY_APP_ICON = "app_icon"
+        private const val KEY_PENDING_BIOMETRIC = "pending_biometric_setup"
+        private const val KEY_RETURN_BUILD_NOTICE = "return_build_notice_shown"
     }
 }
