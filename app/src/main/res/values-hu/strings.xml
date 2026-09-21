@@ -746,7 +746,7 @@
     <string name="downgrade_not_installable">Az Android nem telepíti ezt a buildet a meglévő fölé: a csomag verziója alacsonyabb a telepítettnél, és ehhez a kiadáshoz még nincs visszalépési build. A telepítéshez kézi eltávolításra lenne szükség.</string>
     <string name="downgrade_notes_title">Kiadási megjegyzések</string>
     <string name="downgrade_notes_empty">Ehhez a verzióhoz nincsenek kiadási megjegyzések.</string>
-    <string name="downgrade_warning">A visszalépés az alkalmazásban egyirányú. Ha később vissza szeretnél térni a(z) v%1$s verzióra, előfordulhat, hogy újra kell telepítened vagy egy újabb kiadást kell telepítened. A pénztárcáidat és az összegeidet ez nem érinti.</string>
+    <string name="downgrade_warning">Ez egy alternatív buildet telepít, és elhagyja a normál kiadási vonalat. A normál frissítések többé nem települnek; csak egy visszaállítás (eltávolítás és a helyreállítási frázis visszaállítása) hoz vissza. A pénztárcáidat és az összegeidet ez nem érinti.</string>
     <string name="downgrade_slide">Csúsztasd a(z) v%1$s verzióra való visszalépéshez</string>
     <string name="downgrade_slide_hint">Csúsztasd vagy koppints duplán a visszalépéshez</string>
     <string name="personalize_section_security">Biztonság</string>
@@ -769,11 +769,12 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Ezen a builden vagy:</string>
     <string name="build_lane_primary">Normál build</string>
-    <string name="build_lane_primary_body">A normál build. Bármely régebbi verzió rátelepíthető a helyére, a pénztárcáid megmaradnak.</string>
-    <string name="build_lane_rollback">Visszalépési build</string>
-    <string name="build_lane_rollback_body">Egy visszalépési build. Bármely régebbi verziót rátelepíthetsz a helyére; hogy ismét előre lépj, állítsd vissza, vagy telepíts egy visszatérési buildet.</string>
-    <string name="build_lane_back">Visszatérési build</string>
-    <string name="build_lane_back_body">Egy visszatérési build, amely arra készült, hogy kilépj egy visszalépésből. Csak újabb verziókat tud a helyére telepíteni; régebbihez állítsd vissza.</string>
+    <string name="build_lane_primary_body">A normál kiadási vonalon vagy. A normál frissítések ide települnek. Egy alternatív build telepítése végleg elhagyja ezt.</string>
+    <string name="build_lane_rollback">Alternatív visszalépési build</string>
+    <string name="build_lane_rollback_body">Egy alternatív build: elhagytad a normál kiadási vonalat, így a normál frissítések többé nem települnek. A visszatéréshez állítsd vissza (eltávolítás és a helyreállítási frázis visszaállítása).</string>
+    <string name="build_lane_back">Alternatív visszatérési build</string>
+    <string name="build_lane_back_body">Egy alternatív build: elhagytad a normál kiadási vonalat, így a normál frissítések többé nem települnek. A visszatéréshez állítsd vissza (eltávolítás és a helyreállítási frázis visszaállítása).</string>
     <string name="downgrade_switch_body">Az Android nem telepíti ezt a builded fölé. A váltás a Downloads mappába menti, eltávolítja a PocketPRL-t, és az újratelepítés után a helyreállítási frázisodból állítod vissza.</string>
     <string name="downgrade_switch_button">Váltás erre a verzióra</string>
+    <string name="settings_about_off_primary">Egy alternatív builden vagy, nem a normál kiadási vonalon. A normál frissítések nem telepíthetők ide; a visszatéréshez állítsd vissza.</string>
 </resources>

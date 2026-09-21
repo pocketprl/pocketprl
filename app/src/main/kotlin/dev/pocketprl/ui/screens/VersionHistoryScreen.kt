@@ -213,7 +213,7 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
                     if (isDowngrade) {
                         // A downgrade is one-way in the app: warn before, and arm a
                         // danger slide instead of a plain button.
-                        InfoBanner(stringResource(R.string.downgrade_warning, current), BannerKind.ERROR)
+                        InfoBanner(stringResource(R.string.downgrade_warning), BannerKind.ERROR)
                         SlideToConfirm(
                             onComplete = {
                                 installError = null
@@ -335,7 +335,10 @@ private fun ReleaseRow(release: ReleaseInfo, isCurrent: Boolean, onClick: () -> 
     }
 }
 
-/** "You're on …": which lane this build is and what it can install. */
+/**
+ * "You're on …": which lane this build is and what it can install. Once off the
+ * primary lane it is shown as a warning, because normal updates stop installing.
+ */
 @Composable
 private fun CurrentBuildCard(version: String) {
     val (titleRes, bodyRes) = when (BuildInfo.lane) {
@@ -343,15 +346,20 @@ private fun CurrentBuildCard(version: String) {
         VersionLane.ROLLBACK -> R.string.build_lane_rollback to R.string.build_lane_rollback_body
         VersionLane.BACK -> R.string.build_lane_back to R.string.build_lane_back_body
     }
-    SectionCard(padding = 14.dp) {
-        Text(stringResource(R.string.build_lane_you_are_on), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(stringResource(titleRes), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
-            Spacer(Modifier.width(8.dp))
-            MonoText("v$version", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    val heading = stringResource(R.string.build_lane_you_are_on) + ": " + stringResource(titleRes) + " v$version"
+    if (BuildInfo.isPrimary) {
+        SectionCard(padding = 14.dp) {
+            Text(stringResource(R.string.build_lane_you_are_on), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(stringResource(titleRes), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
+                Spacer(Modifier.width(8.dp))
+                MonoText("v$version", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            Spacer(Modifier.height(6.dp))
+            Text(stringResource(bodyRes), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        Spacer(Modifier.height(6.dp))
-        Text(stringResource(bodyRes), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    } else {
+        InfoBanner(stringResource(bodyRes), BannerKind.ERROR, title = heading)
     }
 }
 

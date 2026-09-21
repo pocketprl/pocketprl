@@ -747,7 +747,7 @@
     <string name="downgrade_not_installable">Android installiert diesen Build nicht direkt: Seine Paketversion ist niedriger als die installierte und dieses Release hat noch keinen Downgrade-Build. Eine Installation würde eine manuelle Deinstallation erfordern.</string>
     <string name="downgrade_notes_title">Versionshinweise</string>
     <string name="downgrade_notes_empty">Keine Versionshinweise für diese Version.</string>
-    <string name="downgrade_warning">Ein Downgrade in der App ist einseitig. Um später zu v%1$s zurückzukehren, musst du möglicherweise neu installieren oder ein neueres Release installieren. Deine Wallets und dein Guthaben sind nicht betroffen.</string>
+    <string name="downgrade_warning">Dies installiert einen alternativen Build und verlässt die reguläre Release-Linie. Normale Updates werden nicht mehr installiert; nur ein Zurücksetzen (Deinstallieren und Wiederherstellen deiner Wiederherstellungsphrase) bringt dich zurück. Deine Wallets und dein Guthaben sind nicht betroffen.</string>
     <string name="downgrade_slide">Zum Downgrade auf v%1$s schieben</string>
     <string name="downgrade_slide_hint">Zum Downgrade schieben oder doppelt tippen</string>
     <string name="personalize_section_security">Sicherheit</string>
@@ -772,11 +772,12 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Du bist auf</string>
     <string name="build_lane_primary">Regulärer Build</string>
-    <string name="build_lane_primary_body">Der reguläre Build. Jede ältere Version kann direkt darüber installiert werden, deine Wallets bleiben erhalten.</string>
-    <string name="build_lane_rollback">Downgrade-Build</string>
-    <string name="build_lane_rollback_body">Ein Downgrade-Build. Du kannst jede ältere Version direkt darüber installieren; um wieder voranzukommen, setze zurück oder installiere einen Rückkehr-Build.</string>
-    <string name="build_lane_back">Rückkehr-Build</string>
-    <string name="build_lane_back_body">Ein Rückkehr-Build, gemacht, um aus einem Downgrade herauszukommen. Er kann nur neuere Versionen direkt darüber installieren; um älter zu gehen, setze zurück.</string>
+    <string name="build_lane_primary_body">Du bist auf der regulären Release-Linie. Normale Updates werden hier installiert. Einen alternativen Build zu installieren verlässt sie endgültig.</string>
+    <string name="build_lane_rollback">Alternativer Downgrade-Build</string>
+    <string name="build_lane_rollback_body">Ein alternativer Build: Du hast die reguläre Release-Linie verlassen, daher werden normale Updates nicht mehr installiert. Setze zurück (deinstallieren und Wiederherstellungsphrase wiederherstellen), um zurückzukehren.</string>
+    <string name="build_lane_back">Alternativer Rückkehr-Build</string>
+    <string name="build_lane_back_body">Ein alternativer Build: Du hast die reguläre Release-Linie verlassen, daher werden normale Updates nicht mehr installiert. Setze zurück (deinstallieren und Wiederherstellungsphrase wiederherstellen), um zurückzukehren.</string>
     <string name="downgrade_switch_body">Android installiert dies nicht direkt über deinen Build. Beim Wechseln wird es in Downloads gespeichert, PocketPRL deinstalliert, und nach der Neuinstallation stellst du aus deiner Wiederherstellungsphrase wieder her.</string>
     <string name="downgrade_switch_button">Zu dieser Version wechseln</string>
+    <string name="settings_about_off_primary">Du bist auf einem alternativen Build, nicht auf der regulären Release-Linie. Normale Updates können hier nicht installiert werden; setze zurück, um zurückzukehren.</string>
 </resources>

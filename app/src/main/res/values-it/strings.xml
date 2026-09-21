@@ -750,7 +750,7 @@
     <string name="downgrade_not_installable">Android non installerà questa build in-place: la versione del pacchetto è inferiore a quella installata e questa versione non ha ancora una build che permetta il downgrade. Installarla richiederebbe una disinstallazione manuale.</string>
     <string name="downgrade_notes_title">Note di rilascio</string>
     <string name="downgrade_notes_empty">Nessuna nota di rilascio per questa versione.</string>
-    <string name="downgrade_warning">Il downgrade nell’app è a senso unico. Per tornare alla v%1$s in seguito potresti dover reinstallare o installare una versione più recente. I tuoi portafogli e i fondi non sono interessati.</string>
+    <string name="downgrade_warning">Questa operazione installa una build alternativa e abbandona la linea di rilascio standard. I normali aggiornamenti non verranno più installati; solo un ripristino (disinstallare e ripristinare la frase di recupero) ti riporta indietro. I tuoi portafogli e i fondi non sono interessati.</string>
     <string name="downgrade_slide">Scorri per eseguire il downgrade alla v%1$s</string>
     <string name="downgrade_slide_hint">Scorri o tocca due volte per eseguire il downgrade</string>
     <string name="personalize_section_security">Sicurezza</string>
@@ -775,11 +775,12 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Stai usando</string>
     <string name="build_lane_primary">Build standard</string>
-    <string name="build_lane_primary_body">La build standard. Qualsiasi versione precedente può essere installata sopra, in-place, mantenendo i tuoi portafogli.</string>
-    <string name="build_lane_rollback">Build di downgrade</string>
-    <string name="build_lane_rollback_body">Una build di downgrade. Puoi installare qualsiasi versione precedente in-place; per tornare avanti, ripristina o installa una build di ritorno.</string>
-    <string name="build_lane_back">Build di ritorno</string>
-    <string name="build_lane_back_body">Una build di ritorno, creata per uscire da un downgrade. Può installare solo versioni più recenti in-place; per andare su una più vecchia, ripristina.</string>
+    <string name="build_lane_primary_body">Sei sulla linea di rilascio standard. Qui si installano i normali aggiornamenti. Installare una build alternativa la abbandona per sempre.</string>
+    <string name="build_lane_rollback">Build di downgrade alternativa</string>
+    <string name="build_lane_rollback_body">Una build alternativa: hai abbandonato la linea di rilascio standard, quindi i normali aggiornamenti non vengono più installati. Ripristina (disinstalla e ripristina la frase di recupero) per tornare.</string>
+    <string name="build_lane_back">Build di ritorno alternativa</string>
+    <string name="build_lane_back_body">Una build alternativa: hai abbandonato la linea di rilascio standard, quindi i normali aggiornamenti non vengono più installati. Ripristina (disinstalla e ripristina la frase di recupero) per tornare.</string>
     <string name="downgrade_switch_body">Android non installerà questa versione sopra la tua, in-place. Il passaggio la salva in Downloads, disinstalla PocketPRL e, dopo la reinstallazione, ripristini dalla tua frase di recupero.</string>
     <string name="downgrade_switch_button">Passa a questa versione</string>
+    <string name="settings_about_off_primary">Sei su una build alternativa, non sulla linea di rilascio standard. I normali aggiornamenti non possono essere installati qui; ripristina per tornare.</string>
 </resources>

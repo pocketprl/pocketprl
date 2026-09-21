@@ -747,7 +747,7 @@
     <string name="downgrade_not_installable">Android bu derlemeyi üzerine kurmaz: paket sürümü yüklü olandan düşük ve bu sürümde henüz bir sürüm düşürme derlemesi yok. Kurmak için elle kaldırma gerekir.</string>
     <string name="downgrade_notes_title">Sürüm notları</string>
     <string name="downgrade_notes_empty">Bu sürüm için sürüm notu yok.</string>
-    <string name="downgrade_warning">Sürüm düşürme uygulamada tek yönlüdür. Daha sonra v%1$s sürümüne dönmek için yeniden kurmanız veya daha yeni bir sürüm kurmanız gerekebilir. Cüzdanlarınız ve paranız etkilenmez.</string>
+    <string name="downgrade_warning">Bu, alternatif bir derleme kurar ve normal sürüm hattından ayrılır. Normal güncellemeler artık kurulmaz; sizi geri yalnızca bir sıfırlama (kaldır ve kurtarma ifadeni geri yükle) döndürür. Cüzdanlarınız ve paranız etkilenmez.</string>
     <string name="downgrade_slide">v%1$s sürümüne düşürmek için kaydırın</string>
     <string name="downgrade_slide_hint">Sürümü düşürmek için kaydırın veya çift dokunun</string>
     <string name="personalize_section_security">Güvenlik</string>
@@ -770,11 +770,12 @@
     <string name="settings_about_build">Derleme</string>
     <string name="build_lane_you_are_on">Üzerinde olduğunuz derleme</string>
     <string name="build_lane_primary">Normal derleme</string>
-    <string name="build_lane_primary_body">Normal derleme. Herhangi bir eski sürüm, cüzdanlarınız korunarak üzerine kurulabilir.</string>
-    <string name="build_lane_rollback">Sürüm düşürme derlemesi</string>
-    <string name="build_lane_rollback_body">Bir sürüm düşürme derlemesi. Herhangi bir eski sürümü üzerine kurabilirsiniz; yeniden ileri gitmek için sıfırlayın veya bir geri dönüş derlemesi kurun.</string>
-    <string name="build_lane_back">Geri dönüş derlemesi</string>
-    <string name="build_lane_back_body">Bir sürüm düşürmeden çıkmak için hazırlanmış bir geri dönüş derlemesi. Yalnızca daha yeni sürümleri üzerine kurabilir; daha eskiye gitmek için sıfırlayın.</string>
+    <string name="build_lane_primary_body">Normal sürüm hattındasınız. Normal güncellemeler buraya kurulur. Alternatif bir derleme kurmak bu hattan kalıcı olarak ayrılır.</string>
+    <string name="build_lane_rollback">Alternatif sürüm düşürme derlemesi</string>
+    <string name="build_lane_rollback_body">Alternatif bir derleme: normal sürüm hattından ayrıldınız, bu yüzden normal güncellemeler artık kurulmaz. Geri dönmek için sıfırlayın (kaldırın ve kurtarma ifadenizi geri yükleyin).</string>
+    <string name="build_lane_back">Alternatif geri dönüş derlemesi</string>
+    <string name="build_lane_back_body">Alternatif bir derleme: normal sürüm hattından ayrıldınız, bu yüzden normal güncellemeler artık kurulmaz. Geri dönmek için sıfırlayın (kaldırın ve kurtarma ifadenizi geri yükleyin).</string>
     <string name="downgrade_switch_body">Android bunu derlemenizin üzerine kurmaz. Geçiş yapmak bunu Downloads’a kaydeder, PocketPRL’i kaldırır ve yeniden kurduktan sonra kurtarma ifadenizden geri yüklersiniz.</string>
     <string name="downgrade_switch_button">Bu sürüme geç</string>
+    <string name="settings_about_off_primary">Normal sürüm hattında değil, alternatif bir derlemedesiniz. Normal güncellemeler buraya kurulamaz; geri dönmek için sıfırlayın.</string>
 </resources>

@@ -747,7 +747,7 @@
     <string name="downgrade_not_installable">Android installerer ikke denne build på plads: dens pakkeversion er lavere end den installerede, og denne udgivelse har endnu ingen nedgraderingsversion. Installation ville kræve en manuel afinstallation.</string>
     <string name="downgrade_notes_title">Udgivelsesnoter</string>
     <string name="downgrade_notes_empty">Ingen udgivelsesnoter til denne version.</string>
-    <string name="downgrade_warning">Nedgradering er envejs i appen. For at vende tilbage til v%1$s senere skal du muligvis geninstallere eller installere en nyere udgivelse. Dine tegnebøger og midler påvirkes ikke.</string>
+    <string name="downgrade_warning">Dette installerer et alternativt build og forlader den almindelige udgivelseslinje. Normale opdateringer installeres ikke længere; kun en nulstilling (afinstaller og gendan din gendannelsessætning) bringer dig tilbage. Dine tegnebøger og midler påvirkes ikke.</string>
     <string name="downgrade_slide">Træk for at nedgradere til v%1$s</string>
     <string name="downgrade_slide_hint">Træk eller dobbelttryk for at nedgradere</string>
     <string name="personalize_section_security">Sikkerhed</string>
@@ -771,11 +771,12 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Du er på</string>
     <string name="build_lane_primary">Almindeligt build</string>
-    <string name="build_lane_primary_body">Det almindelige build. Enhver ældre version kan installeres oven i det på plads, og dine tegnebøger bevares.</string>
-    <string name="build_lane_rollback">Nedgraderings-build</string>
-    <string name="build_lane_rollback_body">Et nedgraderings-build. Du kan installere enhver ældre version på plads; for at komme fremad igen, nulstil eller installér et retur-build.</string>
-    <string name="build_lane_back">Retur-build</string>
-    <string name="build_lane_back_body">Et retur-build, lavet til at komme ud af en nedgradering. Det kan kun installere nyere versioner på plads; for at gå til en ældre, nulstil.</string>
+    <string name="build_lane_primary_body">Du er på den almindelige udgivelseslinje. Normale opdateringer installeres her. Installation af et alternativt build forlader den for altid.</string>
+    <string name="build_lane_rollback">Alternativt nedgraderings-build</string>
+    <string name="build_lane_rollback_body">Et alternativt build: du har forladt den almindelige udgivelseslinje, så normale opdateringer installeres ikke længere. Nulstil (afinstaller og gendan din gendannelsessætning) for at vende tilbage.</string>
+    <string name="build_lane_back">Alternativt retur-build</string>
+    <string name="build_lane_back_body">Et alternativt build: du har forladt den almindelige udgivelseslinje, så normale opdateringer installeres ikke længere. Nulstil (afinstaller og gendan din gendannelsessætning) for at vende tilbage.</string>
     <string name="downgrade_switch_body">Android installerer ikke dette oven i dit build på plads. Et skift gemmer det i Downloads, afinstallerer PocketPRL, og du gendanner fra din gendannelsessætning efter geninstallation.</string>
     <string name="downgrade_switch_button">Skift til denne version</string>
+    <string name="settings_about_off_primary">Du er på et alternativt build, ikke den almindelige udgivelseslinje. Normale opdateringer kan ikke installeres her; nulstil for at vende tilbage.</string>
 </resources>

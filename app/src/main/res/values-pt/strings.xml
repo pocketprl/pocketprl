@@ -745,7 +745,7 @@
     <string name="downgrade_not_installable">O Android não instalará esta compilação por cima: a versão do pacote é inferior à instalada e esta versão ainda não tem uma compilação que permita reverter. Instalá-la exigiria uma desinstalação manual.</string>
     <string name="downgrade_notes_title">Notas de versão</string>
     <string name="downgrade_notes_empty">Não há notas de versão para esta versão.</string>
-    <string name="downgrade_warning">Reverter na aplicação é unidirecional. Para voltar à v%1$s mais tarde, poderá ter de reinstalar ou instalar uma versão mais recente. As suas carteiras e os seus fundos não são afetados.</string>
+    <string name="downgrade_warning">Isto instala uma compilação alternativa e abandona a linha de lançamento normal. As atualizações normais deixam de ser instaladas; só uma reposição (desinstalar e restaurar a sua frase de recuperação) permite voltar. As suas carteiras e os seus fundos não são afetados.</string>
     <string name="downgrade_slide">Deslize para reverter para a v%1$s</string>
     <string name="downgrade_slide_hint">Deslize ou toque duas vezes para reverter</string>
     <string name="personalize_section_security">Segurança</string>
@@ -770,11 +770,12 @@
     <string name="settings_about_build">Compilação</string>
     <string name="build_lane_you_are_on">Está a usar</string>
     <string name="build_lane_primary">Compilação normal</string>
-    <string name="build_lane_primary_body">A compilação normal. Qualquer versão mais antiga pode ser instalada por cima, sem desinstalar, mantendo as suas carteiras.</string>
-    <string name="build_lane_rollback">Compilação de reversão</string>
-    <string name="build_lane_rollback_body">Uma compilação de reversão. Pode instalar qualquer versão mais antiga por cima, sem desinstalar; para voltar a avançar, reponha ou instale uma compilação de regresso.</string>
-    <string name="build_lane_back">Compilação de regresso</string>
-    <string name="build_lane_back_body">Uma compilação de regresso, feita para sair de uma reversão. Só pode instalar versões mais recentes por cima, sem desinstalar; para ir a uma mais antiga, reponha.</string>
+    <string name="build_lane_primary_body">Está na linha de lançamento normal. As atualizações normais são instaladas aqui. Instalar uma compilação alternativa deixa-a para sempre.</string>
+    <string name="build_lane_rollback">Compilação de reversão alternativa</string>
+    <string name="build_lane_rollback_body">Uma compilação alternativa: abandonou a linha de lançamento normal, por isso as atualizações normais já não são instaladas. Reponha (desinstale e restaure a sua frase de recuperação) para voltar.</string>
+    <string name="build_lane_back">Compilação de regresso alternativa</string>
+    <string name="build_lane_back_body">Uma compilação alternativa: abandonou a linha de lançamento normal, por isso as atualizações normais já não são instaladas. Reponha (desinstale e restaure a sua frase de recuperação) para voltar.</string>
     <string name="downgrade_switch_body">O Android não instalará isto por cima da sua compilação. Ao mudar, a compilação é guardada em Downloads, o PocketPRL é desinstalado e, após reinstalar, restaura a partir da sua frase de recuperação.</string>
     <string name="downgrade_switch_button">Mudar para esta versão</string>
+    <string name="settings_about_off_primary">Está numa compilação alternativa, não na linha de lançamento normal. As atualizações normais não podem ser instaladas aqui; reponha para voltar.</string>
 </resources>

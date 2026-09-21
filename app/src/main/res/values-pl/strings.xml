@@ -764,7 +764,7 @@
     <string name="downgrade_not_installable">Android nie zainstaluje tej kompilacji w miejscu: jej wersja pakietu jest niższa niż zainstalowana, a to wydanie nie ma jeszcze kompilacji do przywrócenia starszej wersji. Aby ją zainstalować, trzeba ręcznie odinstalować aplikację.</string>
     <string name="downgrade_notes_title">Lista zmian</string>
     <string name="downgrade_notes_empty">Brak listy zmian dla tej wersji.</string>
-    <string name="downgrade_warning">Przywrócenie starszej wersji w aplikacji jest jednokierunkowe. Aby później wrócić do v%1$s, może być konieczne ponowne zainstalowanie lub zainstalowanie nowszego wydania. Nie wpływa to na Twoje portfele ani środki.</string>
+    <string name="downgrade_warning">Spowoduje to zainstalowanie alternatywnej kompilacji i opuszczenie zwykłej linii wydań. Normalne aktualizacje nie będą już instalowane; tylko reset (odinstalowanie i przywrócenie frazy odzyskiwania) przywróci Cię z powrotem. Twoje portfele i środki pozostają nienaruszone.</string>
     <string name="downgrade_slide">Przesuń, aby przywrócić wersję v%1$s</string>
     <string name="downgrade_slide_hint">Przesuń lub dotknij dwukrotnie, aby przywrócić starszą wersję</string>
     <string name="personalize_section_security">Bezpieczeństwo</string>
@@ -788,11 +788,12 @@
     <string name="settings_about_build">Kompilacja</string>
     <string name="build_lane_you_are_on">Korzystasz z</string>
     <string name="build_lane_primary">Zwykła kompilacja</string>
-    <string name="build_lane_primary_body">Zwykła kompilacja. Każdą starszą wersję można zainstalować na jej miejscu, zachowując Twoje portfele.</string>
-    <string name="build_lane_rollback">Kompilacja wycofania</string>
-    <string name="build_lane_rollback_body">Kompilacja wycofania. Każdą starszą wersję możesz zainstalować na miejscu; aby ponownie przejść do nowszej wersji, zresetuj lub zainstaluj kompilację powrotną.</string>
-    <string name="build_lane_back">Kompilacja powrotna</string>
-    <string name="build_lane_back_body">Kompilacja powrotna, stworzona, aby wyjść z wycofania. Może instalować na miejscu tylko nowsze wersje; aby przejść do starszej, zresetuj.</string>
+    <string name="build_lane_primary_body">Masz zwykłą linię wydań. Tutaj instalują się normalne aktualizacje. Zainstalowanie alternatywnej kompilacji opuszcza ją na dobre.</string>
+    <string name="build_lane_rollback">Alternatywna kompilacja wycofania</string>
+    <string name="build_lane_rollback_body">Alternatywna kompilacja: znajdujesz się poza zwykłą linią wydań, więc normalne aktualizacje nie są już instalowane. Zresetuj (odinstaluj i przywróć frazę odzyskiwania), aby wrócić.</string>
+    <string name="build_lane_back">Alternatywna kompilacja powrotna</string>
+    <string name="build_lane_back_body">Alternatywna kompilacja: znajdujesz się poza zwykłą linią wydań, więc normalne aktualizacje nie są już instalowane. Zresetuj (odinstaluj i przywróć frazę odzyskiwania), aby wrócić.</string>
     <string name="downgrade_switch_body">Android nie zainstaluje tej wersji w miejsce Twojej kompilacji. Przełączenie zapisze ją w Downloads, odinstaluje PocketPRL, a po ponownej instalacji przywrócisz portfel z frazy odzyskiwania.</string>
     <string name="downgrade_switch_button">Przełącz na tę wersję</string>
+    <string name="settings_about_off_primary">Korzystasz z alternatywnej kompilacji, a nie ze zwykłej linii wydań. Normalne aktualizacje nie mogą się tu zainstalować; zresetuj, aby wrócić.</string>
 </resources>

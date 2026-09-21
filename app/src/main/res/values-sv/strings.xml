@@ -749,7 +749,7 @@
     <string name="downgrade_not_installable">Android installerar inte den här versionen på plats: dess paketversion är lägre än den installerade och den här utgåvan har ingen nedgraderingsversion ännu. Att installera den skulle kräva en manuell avinstallation.</string>
     <string name="downgrade_notes_title">Versionsanteckningar</string>
     <string name="downgrade_notes_empty">Inga versionsanteckningar för den här versionen.</string>
-    <string name="downgrade_warning">Nedgradering är enkelriktad i appen. För att senare återgå till v%1$s kan du behöva installera om eller installera en nyare version. Dina plånböcker och tillgångar påverkas inte.</string>
+    <string name="downgrade_warning">Detta installerar ett alternativt bygge och lämnar den vanliga utgivningslinjen. Normala uppdateringar installeras inte längre; bara en återställning (avinstallera och återställ din återställningsfras) tar dig tillbaka. Dina plånböcker och tillgångar påverkas inte.</string>
     <string name="downgrade_slide">Dra för att nedgradera till v%1$s</string>
     <string name="downgrade_slide_hint">Dra eller dubbeltryck för att nedgradera</string>
     <string name="personalize_section_security">Säkerhet</string>
@@ -773,11 +773,12 @@
     <string name="settings_about_build">Bygge</string>
     <string name="build_lane_you_are_on">Du är på</string>
     <string name="build_lane_primary">Vanlig version</string>
-    <string name="build_lane_primary_body">Den vanliga versionen. Alla äldre versioner kan installeras över den på plats, och dina plånböcker behålls.</string>
-    <string name="build_lane_rollback">Nedgraderingsversion</string>
-    <string name="build_lane_rollback_body">En nedgraderingsversion. Du kan installera vilken äldre version som helst på plats; för att gå framåt igen, återställ eller installera en returversion.</string>
-    <string name="build_lane_back">Returversion</string>
-    <string name="build_lane_back_body">En returversion, gjord för att ta sig ur en nedgradering. Den kan bara installera nyare versioner på plats; för att gå till en äldre, återställ.</string>
+    <string name="build_lane_primary_body">Du är på den vanliga utgivningslinjen. Normala uppdateringar installeras här. Att installera ett alternativt bygge lämnar den för gott.</string>
+    <string name="build_lane_rollback">Alternativt nedgraderingsbygge</string>
+    <string name="build_lane_rollback_body">Ett alternativt bygge: du har lämnat den vanliga utgivningslinjen, så normala uppdateringar installeras inte längre. Återställ (avinstallera och återställ din återställningsfras) för att komma tillbaka.</string>
+    <string name="build_lane_back">Alternativt returbygge</string>
+    <string name="build_lane_back_body">Ett alternativt bygge: du har lämnat den vanliga utgivningslinjen, så normala uppdateringar installeras inte längre. Återställ (avinstallera och återställ din återställningsfras) för att komma tillbaka.</string>
     <string name="downgrade_switch_body">Android installerar inte detta över din version på plats. Att byta sparar det i Downloads, avinstallerar PocketPRL, och du återställer från din återställningsfras efter ominstallationen.</string>
     <string name="downgrade_switch_button">Byt till den här versionen</string>
+    <string name="settings_about_off_primary">Du är på ett alternativt bygge, inte den vanliga utgivningslinjen. Normala uppdateringar kan inte installeras här; återställ för att komma tillbaka.</string>
 </resources>

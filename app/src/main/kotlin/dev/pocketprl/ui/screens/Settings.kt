@@ -898,6 +898,7 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> U
     var pending by remember { mutableStateOf<ReleaseInfo?>(null) }
     var upToDate by remember { mutableStateOf(false) }
     var failed by remember { mutableStateOf(false) }
+    var offPrimary by remember { mutableStateOf(false) }
     val updater = appContainer().updater
 
     ScreenScaffold(title = stringResource(R.string.settings_about_title), onBack = onBack) {
@@ -920,12 +921,16 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> U
                     haptics.click()
                     upToDate = false
                     failed = false
+                    offPrimary = false
                     checking = true
                     scope.launch {
                         val release = UpdateChecker.latest()
                         checking = false
                         when {
                             release == null -> failed = true
+                            // Normal updates are primary builds; they cannot install over
+                            // an alternate build, so say so instead of offering a dead end.
+                            !BuildInfo.isPrimary -> { haptics.tick(); offPrimary = true }
                             UpdateChecker.compare(release.version, BuildConfig.VERSION_NAME) > 0 -> { haptics.confirm(); pending = release }
                             else -> { haptics.tick(); upToDate = true }
                         }
@@ -934,6 +939,7 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> U
             )
             if (upToDate) InfoBanner(stringResource(R.string.settings_about_latest, BuildConfig.VERSION_NAME), BannerKind.SUCCESS)
             if (failed) InfoBanner(stringResource(R.string.settings_about_failed), BannerKind.ERROR)
+            if (offPrimary) InfoBanner(stringResource(R.string.settings_about_off_primary), BannerKind.ERROR)
 
             SecondaryButton(stringResource(R.string.settings_about_downgrade), onClick = { haptics.click(); onOpenDowngrade() })
 

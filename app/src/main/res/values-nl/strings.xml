@@ -746,7 +746,7 @@
     <string name="downgrade_not_installable">Android installeert deze build niet ter plaatse: de pakketversie is lager dan de geïnstalleerde versie en deze release heeft nog geen downgrade-build. Installatie zou handmatig verwijderen vereisen.</string>
     <string name="downgrade_notes_title">Release-opmerkingen</string>
     <string name="downgrade_notes_empty">Geen release-opmerkingen voor deze versie.</string>
-    <string name="downgrade_warning">Downgraden in de app is eenrichtingsverkeer. Om later terug te keren naar v%1$s moet je mogelijk opnieuw installeren of een nieuwere release installeren. Je wallets en geld blijven onaangetast.</string>
+    <string name="downgrade_warning">Dit installeert een alternatieve build en verlaat de gewone release-lijn. Normale updates worden niet meer geïnstalleerd; alleen een reset (verwijderen en je herstelzin herstellen) brengt je terug. Je wallets en geld blijven onaangetast.</string>
     <string name="downgrade_slide">Schuif om te downgraden naar v%1$s</string>
     <string name="downgrade_slide_hint">Schuif of dubbeltik om te downgraden</string>
     <string name="personalize_section_security">Beveiliging</string>
@@ -771,11 +771,12 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Je gebruikt</string>
     <string name="build_lane_primary">Gewone build</string>
-    <string name="build_lane_primary_body">De gewone build. Elke oudere versie kan er ter plaatse overheen worden geïnstalleerd, je wallets blijven behouden.</string>
-    <string name="build_lane_rollback">Downgrade-build</string>
-    <string name="build_lane_rollback_body">Een downgrade-build. Je kunt elke oudere versie er ter plaatse overheen installeren; om weer vooruit te gaan, zet terug of installeer een terugkeerbuild.</string>
-    <string name="build_lane_back">Terugkeerbuild</string>
-    <string name="build_lane_back_body">Een terugkeerbuild, gemaakt om uit een downgrade te komen. Er kunnen alleen nieuwere versies ter plaatse overheen worden geïnstalleerd; om ouder te gaan, zet terug.</string>
+    <string name="build_lane_primary_body">Je gebruikt de gewone release-lijn. Hier worden normale updates geïnstalleerd. Een alternatieve build installeren verlaat die voorgoed.</string>
+    <string name="build_lane_rollback">Alternatieve downgrade-build</string>
+    <string name="build_lane_rollback_body">Een alternatieve build: je hebt de gewone release-lijn verlaten, dus normale updates worden niet meer geïnstalleerd. Reset (verwijderen en je herstelzin herstellen) om terug te keren.</string>
+    <string name="build_lane_back">Alternatieve terugkeerbuild</string>
+    <string name="build_lane_back_body">Een alternatieve build: je hebt de gewone release-lijn verlaten, dus normale updates worden niet meer geïnstalleerd. Reset (verwijderen en je herstelzin herstellen) om terug te keren.</string>
     <string name="downgrade_switch_body">Android installeert dit niet ter plaatse over je build heen. Bij het wisselen wordt het opgeslagen in Downloads, wordt PocketPRL verwijderd en herstel je na het opnieuw installeren vanuit je herstelzin.</string>
     <string name="downgrade_switch_button">Naar deze versie wisselen</string>
+    <string name="settings_about_off_primary">Je gebruikt een alternatieve build, niet de gewone release-lijn. Normale updates kunnen hier niet worden geïnstalleerd; reset om terug te keren.</string>
 </resources>

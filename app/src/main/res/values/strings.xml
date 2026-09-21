@@ -509,7 +509,7 @@
     <string name="downgrade_not_installable">Android will not install this build in place: its package version is lower than the installed one and this release has no downgrade build yet. Installing it would need a manual uninstall.</string>
     <string name="downgrade_notes_title">Release notes</string>
     <string name="downgrade_notes_empty">No release notes for this version.</string>
-    <string name="downgrade_warning">Downgrading is one-way in the app. To return to v%1$s later you may need to reinstall or install a newer release. Your wallets and funds are unaffected.</string>
+    <string name="downgrade_warning">This installs an alternate build and leaves the regular release line. Normal updates will no longer install; only a reset (uninstall and restore your recovery phrase) brings you back. Your wallets and funds are unaffected.</string>
     <string name="downgrade_slide">Slide to downgrade to v%1$s</string>
     <string name="downgrade_slide_hint">Slide or double-tap to downgrade</string>
     <string name="return_build_title">Return build</string>
@@ -523,11 +523,12 @@
     <string name="return_build_reset_saved">Saved to Downloads/%1$s. Uninstall PocketPRL, install that file, then restore from your recovery phrase.</string>
     <string name="build_lane_you_are_on">You’re on</string>
     <string name="build_lane_primary">Regular build</string>
-    <string name="build_lane_primary_body">The regular build. Any older version can be installed over it in place, keeping your wallets.</string>
-    <string name="build_lane_rollback">Rollback build</string>
-    <string name="build_lane_rollback_body">A rollback build. You can install any older version in place; to move forward again, reset or install a return build.</string>
-    <string name="build_lane_back">Return build</string>
-    <string name="build_lane_back_body">A return build, made to climb out of a rollback. It can only install newer versions in place; to go older, reset.</string>
+    <string name="build_lane_primary_body">You’re on the regular release line. Normal updates install here. Installing an alternate build leaves it for good.</string>
+    <string name="build_lane_rollback">Alternate rollback build</string>
+    <string name="build_lane_rollback_body">An alternate build: you’ve left the regular release line, so normal updates no longer install. Reset (uninstall and restore your recovery phrase) to return.</string>
+    <string name="build_lane_back">Alternate return build</string>
+    <string name="build_lane_back_body">An alternate build: you’ve left the regular release line, so normal updates no longer install. Reset (uninstall and restore your recovery phrase) to return.</string>
+    <string name="settings_about_off_primary">You’re on an alternate build, not the regular release line. Normal updates can’t install here; reset to return.</string>
     <string name="downgrade_switch_body">Android will not install this over your build in place. Switching saves it to Downloads, uninstalls PocketPRL, and you restore from your recovery phrase after reinstalling.</string>
     <string name="downgrade_switch_button">Switch to this version</string>
     <string name="return_build_reset_uninstall">Uninstall PocketPRL</string>

@@ -31,8 +31,13 @@ From an installed code, the reachable builds are exactly those with a higher cod
   (keep going down).
 * **From a B build**: only newer B builds. A B build cannot go down in place.
 
-So: a fresh install can jump to any version in one hop; a rollback can keep going
-down or climb to any version; a back build is forward-only.
+**Leaving the primary lane is permanent.** Every P code is below every R and B code,
+so once an R or B build is installed, no primary build can ever install over it
+again — not even a newer release. Normal updates stop working at that point. From an
+alternate build you can move around the alternate lanes all you like, but the only
+way back to the primary line is the reset (uninstall, reinstall, restore phrase).
+The app warns before any downgrade for exactly this reason, and the update check
+says so instead of offering an install that would fail.
 
 ## What the lanes cannot do, and the reset edge
 

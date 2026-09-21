@@ -744,7 +744,7 @@
     <string name="downgrade_not_installable">Android vil ikke installere dette bygget på plass: pakkeversjonen er lavere enn den installerte, og denne utgivelsen har ennå ingen nedgraderingsbygg. Å installere den vil kreve en manuell avinstallering.</string>
     <string name="downgrade_notes_title">Utgivelsesnotater</string>
     <string name="downgrade_notes_empty">Ingen utgivelsesnotater for denne versjonen.</string>
-    <string name="downgrade_warning">Nedgradering er enveis i appen. For å gå tilbake til v%1$s senere må du kanskje installere på nytt eller installere en nyere utgivelse. Lommebøkene og midlene dine påvirkes ikke.</string>
+    <string name="downgrade_warning">Dette installerer et alternativt bygg og forlater den vanlige utgivelseslinjen. Vanlige oppdateringer installeres ikke lenger; bare en tilbakestilling (avinstaller og gjenopprett gjenopprettingsfrasen) bringer deg tilbake. Lommebøkene og midlene dine påvirkes ikke.</string>
     <string name="downgrade_slide">Skyv for å nedgradere til v%1$s</string>
     <string name="downgrade_slide_hint">Skyv eller dobbelttrykk for å nedgradere</string>
     <string name="personalize_section_security">Sikkerhet</string>
@@ -767,11 +767,12 @@
     <string name="settings_about_build">Bygg</string>
     <string name="build_lane_you_are_on">Du er på</string>
     <string name="build_lane_primary">Vanlig bygg</string>
-    <string name="build_lane_primary_body">Det vanlige bygget. Enhver eldre versjon kan installeres på plass over det, og lommebøkene dine beholdes.</string>
-    <string name="build_lane_rollback">Nedgraderingsbygg</string>
-    <string name="build_lane_rollback_body">Et nedgraderingsbygg. Du kan installere enhver eldre versjon på plass; for å gå fremover igjen, tilbakestill eller installer et returbygg.</string>
-    <string name="build_lane_back">Returbygg</string>
-    <string name="build_lane_back_body">Et returbygg, laget for å komme ut av en nedgradering. Det kan bare installere nyere versjoner på plass; for å gå til eldre, tilbakestill.</string>
+    <string name="build_lane_primary_body">Du er på den vanlige utgivelseslinjen. Vanlige oppdateringer installeres her. Å installere et alternativt bygg forlater den for godt.</string>
+    <string name="build_lane_rollback">Alternativt nedgraderingsbygg</string>
+    <string name="build_lane_rollback_body">Et alternativt bygg: du har forlatt den vanlige utgivelseslinjen, så vanlige oppdateringer installeres ikke lenger. Tilbakestill (avinstaller og gjenopprett gjenopprettingsfrasen) for å komme tilbake.</string>
+    <string name="build_lane_back">Alternativt returbygg</string>
+    <string name="build_lane_back_body">Et alternativt bygg: du har forlatt den vanlige utgivelseslinjen, så vanlige oppdateringer installeres ikke lenger. Tilbakestill (avinstaller og gjenopprett gjenopprettingsfrasen) for å komme tilbake.</string>
     <string name="downgrade_switch_body">Android vil ikke installere dette over bygget ditt på plass. Å bytte lagrer det i Downloads, avinstallerer PocketPRL, og du gjenoppretter fra gjenopprettingsfrasen din etter å ha installert på nytt.</string>
     <string name="downgrade_switch_button">Bytt til denne versjonen</string>
+    <string name="settings_about_off_primary">Du er på et alternativt bygg, ikke den vanlige utgivelseslinjen. Vanlige oppdateringer kan ikke installeres her; tilbakestill for å komme tilbake.</string>
 </resources>

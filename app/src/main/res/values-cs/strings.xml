@@ -765,7 +765,7 @@
     <string name="downgrade_not_installable">Android toto sestavení nenainstaluje na místo: jeho verze balíčku je nižší než nainstalovaná a toto vydání zatím nemá sestavení pro návrat ke starší verzi. Instalace by vyžadovala ruční odinstalaci.</string>
     <string name="downgrade_notes_title">Poznámky k vydání</string>
     <string name="downgrade_notes_empty">Pro tuto verzi nejsou k dispozici žádné poznámky k vydání.</string>
-    <string name="downgrade_warning">Návrat ke starší verzi je v aplikaci jednosměrný. Abyste se později mohli vrátit k v%1$s, možná budete muset aplikaci přeinstalovat nebo nainstalovat novější vydání. Vaše peněženky a prostředky tím nejsou dotčeny.</string>
+    <string name="downgrade_warning">Tímto nainstalujete alternativní sestavení a opustíte běžnou řadu vydání. Normální aktualizace se už nebudou instalovat; vrátí vás zpět pouze reset (odinstalace a obnovení fráze pro obnovení). Vaše peněženky a prostředky zůstávají nedotčeny.</string>
     <string name="downgrade_slide">Posunutím se vrátíte k v%1$s</string>
     <string name="downgrade_slide_hint">Posunutím nebo dvojitým klepnutím se vrátíte ke starší verzi</string>
     <string name="personalize_section_security">Zabezpečení</string>
@@ -789,11 +789,12 @@
     <string name="settings_about_build">Sestavení</string>
     <string name="build_lane_you_are_on">Jste na</string>
     <string name="build_lane_primary">Běžné sestavení</string>
-    <string name="build_lane_primary_body">Běžné sestavení. Lze přes něj nainstalovat libovolnou starší verzi, vaše peněženky zůstanou zachovány.</string>
-    <string name="build_lane_rollback">Sestavení pro rollback</string>
-    <string name="build_lane_rollback_body">Sestavení pro rollback. Můžete přes něj nainstalovat libovolnou starší verzi; pro opětovný postup vpřed proveďte reset nebo nainstalujte sestavení pro návrat.</string>
-    <string name="build_lane_back">Sestavení pro návrat</string>
-    <string name="build_lane_back_body">Sestavení pro návrat, vytvořené pro cestu z rollbacku. Přes něj lze nainstalovat pouze novější verze; pro starší verzi proveďte reset.</string>
+    <string name="build_lane_primary_body">Nacházíte se na běžné řadě vydání. Zde se instalují normální aktualizace. Instalací alternativního sestavení ji natrvalo opustíte.</string>
+    <string name="build_lane_rollback">Alternativní sestavení pro rollback</string>
+    <string name="build_lane_rollback_body">Alternativní sestavení: opustili jste běžnou řadu vydání, takže se normální aktualizace už neinstalují. Pro návrat proveďte reset (odinstalujte a obnovte frázi pro obnovení).</string>
+    <string name="build_lane_back">Alternativní sestavení pro návrat</string>
+    <string name="build_lane_back_body">Alternativní sestavení: opustili jste běžnou řadu vydání, takže se normální aktualizace už neinstalují. Pro návrat proveďte reset (odinstalujte a obnovte frázi pro obnovení).</string>
     <string name="downgrade_switch_body">Android toto nenainstaluje přes vaše sestavení na místo. Přepnutím se uloží do Downloads, PocketPRL se odinstaluje a po opětovné instalaci obnovíte peněženku z fráze pro obnovení.</string>
     <string name="downgrade_switch_button">Přepnout na tuto verzi</string>
+    <string name="settings_about_off_primary">Nacházíte se na alternativním sestavení, nikoli na běžné řadě vydání. Normální aktualizace se sem nemohou nainstalovat; pro návrat proveďte reset.</string>
 </resources>

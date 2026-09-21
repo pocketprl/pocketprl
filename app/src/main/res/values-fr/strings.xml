@@ -750,7 +750,7 @@
     <string name="downgrade_not_installable">Android n’installera pas cette compilation par-dessus : sa version de package est inférieure à celle installée et cette version n’a pas encore de build de rétrogradation. L’installer nécessiterait une désinstallation manuelle.</string>
     <string name="downgrade_notes_title">Notes de version</string>
     <string name="downgrade_notes_empty">Aucune note de version pour cette version.</string>
-    <string name="downgrade_warning">La rétrogradation dans l’application est à sens unique. Pour revenir à la v%1$s plus tard, vous devrez peut-être réinstaller ou installer une version plus récente. Vos portefeuilles et vos fonds ne sont pas affectés.</string>
+    <string name="downgrade_warning">Cette opération installe une compilation alternative et quitte la ligne de publication standard. Les mises à jour normales ne s’installeront plus ; seule une réinitialisation (désinstaller et restaurer votre phrase de récupération) vous ramène. Vos portefeuilles et vos fonds ne sont pas affectés.</string>
     <string name="downgrade_slide">Glissez pour rétrograder vers la v%1$s</string>
     <string name="downgrade_slide_hint">Glissez ou touchez deux fois pour rétrograder</string>
     <string name="personalize_section_security">Sécurité</string>
@@ -775,11 +775,12 @@
     <string name="settings_about_build">Compilation</string>
     <string name="build_lane_you_are_on">Vous utilisez</string>
     <string name="build_lane_primary">Compilation standard</string>
-    <string name="build_lane_primary_body">La compilation standard. Toute version plus ancienne peut être installée par-dessus, sur place, en conservant vos portefeuilles.</string>
-    <string name="build_lane_rollback">Build de rétrogradation</string>
-    <string name="build_lane_rollback_body">Un build de rétrogradation. Vous pouvez installer n’importe quelle version plus ancienne par-dessus, sur place ; pour revenir en avant, rétablissez ou installez une compilation de retour.</string>
-    <string name="build_lane_back">Compilation de retour</string>
-    <string name="build_lane_back_body">Une compilation de retour, conçue pour sortir d’une rétrogradation. Elle ne peut installer que des versions plus récentes par-dessus, sur place ; pour aller vers une plus ancienne, rétablissez.</string>
+    <string name="build_lane_primary_body">Vous êtes sur la ligne de publication standard. Les mises à jour normales s’installent ici. Installer une compilation alternative la quitte définitivement.</string>
+    <string name="build_lane_rollback">Build de rétrogradation alternatif</string>
+    <string name="build_lane_rollback_body">Une compilation alternative : vous avez quitté la ligne de publication standard, donc les mises à jour normales ne s’installent plus. Réinitialisez (désinstallez et restaurez votre phrase de récupération) pour revenir.</string>
+    <string name="build_lane_back">Compilation de retour alternative</string>
+    <string name="build_lane_back_body">Une compilation alternative : vous avez quitté la ligne de publication standard, donc les mises à jour normales ne s’installent plus. Réinitialisez (désinstallez et restaurez votre phrase de récupération) pour revenir.</string>
     <string name="downgrade_switch_body">Android n’installera pas ceci par-dessus votre compilation, sur place. Le changement l’enregistre dans Downloads, désinstalle PocketPRL, et vous restaurez à partir de votre phrase de récupération après réinstallation.</string>
     <string name="downgrade_switch_button">Passer à cette version</string>
+    <string name="settings_about_off_primary">Vous êtes sur une compilation alternative, pas sur la ligne de publication standard. Les mises à jour normales ne peuvent pas s’installer ici ; réinitialisez pour revenir.</string>
 </resources>

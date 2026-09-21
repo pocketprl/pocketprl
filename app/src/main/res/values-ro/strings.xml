@@ -752,7 +752,7 @@
     <string name="downgrade_not_installable">Android nu va instala această versiune peste cea existentă: versiunea pachetului este mai mică decât cea instalată, iar această versiune nu are încă o versiune de retrogradare. Instalarea ar necesita o dezinstalare manuală.</string>
     <string name="downgrade_notes_title">Note de versiune</string>
     <string name="downgrade_notes_empty">Nu există note de versiune pentru această versiune.</string>
-    <string name="downgrade_warning">Retrogradarea este unidirecțională în aplicație. Pentru a reveni la v%1$s mai târziu, s-ar putea să fie nevoie să reinstalezi sau să instalezi o versiune mai nouă. Portofelele și fondurile tale nu sunt afectate.</string>
+    <string name="downgrade_warning">Aceasta instalează o versiune alternativă și părăsește linia obișnuită de lansare. Actualizările normale nu se mai instalează; doar o resetare (dezinstalează și restaurează-ți fraza de recuperare) te readuce înapoi. Portofelele și fondurile tale nu sunt afectate.</string>
     <string name="downgrade_slide">Glisează pentru a retrograda la v%1$s</string>
     <string name="downgrade_slide_hint">Glisează sau atinge de două ori pentru a retrograda</string>
     <string name="personalize_section_security">Securitate</string>
@@ -775,11 +775,12 @@
     <string name="settings_about_build">Versiune</string>
     <string name="build_lane_you_are_on">Folosești</string>
     <string name="build_lane_primary">Versiunea obișnuită</string>
-    <string name="build_lane_primary_body">Versiunea obișnuită. Orice versiune mai veche poate fi instalată peste ea pe loc, păstrându-ți portofelele.</string>
-    <string name="build_lane_rollback">Versiune de retrogradare</string>
-    <string name="build_lane_rollback_body">O versiune de retrogradare. Poți instala orice versiune mai veche pe loc; pentru a merge din nou înainte, resetează sau instalează o versiune de revenire.</string>
-    <string name="build_lane_back">Versiune de revenire</string>
-    <string name="build_lane_back_body">O versiune de revenire, făcută pentru a ieși dintr-o retrogradare. Poate instala pe loc doar versiuni mai noi; pentru a merge la una mai veche, resetează.</string>
+    <string name="build_lane_primary_body">Ești pe linia obișnuită de lansare. Actualizările normale se instalează aici. Instalarea unei versiuni alternative o părăsește definitiv.</string>
+    <string name="build_lane_rollback">Versiune alternativă de retrogradare</string>
+    <string name="build_lane_rollback_body">O versiune alternativă: ai părăsit linia obișnuită de lansare, așa că actualizările normale nu se mai instalează. Resetează (dezinstalează și restaurează-ți fraza de recuperare) pentru a reveni.</string>
+    <string name="build_lane_back">Versiune alternativă de revenire</string>
+    <string name="build_lane_back_body">O versiune alternativă: ai părăsit linia obișnuită de lansare, așa că actualizările normale nu se mai instalează. Resetează (dezinstalează și restaurează-ți fraza de recuperare) pentru a reveni.</string>
     <string name="downgrade_switch_body">Android nu va instala asta peste versiunea ta pe loc. Comutarea o salvează în Downloads, dezinstalează PocketPRL, iar tu restaurezi din fraza de recuperare după reinstalare.</string>
     <string name="downgrade_switch_button">Comută la această versiune</string>
+    <string name="settings_about_off_primary">Ești pe o versiune alternativă, nu pe linia obișnuită de lansare. Actualizările normale nu se pot instala aici; resetează pentru a reveni.</string>
 </resources>
