@@ -39,7 +39,35 @@ sealed class SeedMaterial {
     }
 }
 
-class WrongPasswordException : Exception("wrong password")
+/**
+ * A password check failed. [lockoutUntilMs] is the earliest wall-clock time the
+ * next attempt is allowed; zero when still within the free allowance.
+ * [remainingBeforeWipe] is non-null only when the user opted into erasing the
+ * wallet after [AttemptPolicy.WIPE_AFTER_ATTEMPTS] failures.
+ */
+class WrongPasswordException(
+    val attempts: Int = 0,
+    val lockoutUntilMs: Long = 0,
+    val remainingBeforeWipe: Int? = null,
+) : Exception("wrong password")
+
+/** The password was correct, but too many failures happened just before it; try again after [retryAfterMs]. */
+class TooManyAttemptsException(val retryAfterMs: Long) : Exception("too many attempts")
+
+/**
+ * The failure that just happened reached the configured erase threshold. The
+ * vault file counted it; the caller must now delete the wallet (keys, database,
+ * Keystore alias and registry entry) because only this layer knows the policy.
+ */
+class WalletWipeException : Exception("password attempt limit reached")
+
+/** Outcome of [KeyVault.verifyPassword] for screens that do not need the DEK. */
+sealed class PasswordCheck {
+    object Ok : PasswordCheck()
+    data class Wrong(val remainingBeforeWipe: Int?, val lockoutUntilMs: Long) : PasswordCheck()
+    data class Locked(val retryAfterMs: Long) : PasswordCheck()
+    object WipeTriggered : PasswordCheck()
+}
 
 /** The vault file exists but cannot be decoded (corruption, truncation or a bad restore). */
 class VaultUnreadableException : Exception("vault is unreadable (corrupt or truncated)")
@@ -73,6 +101,10 @@ class KeyVault(context: Context, fileName: String = "vault.json", private val ke
         val passwordWrappedDek: Blob,
         val biometricWrappedDek: Blob? = null,
         val seed: Blob,
+        // Brute-force pacing, persisted so restarting the app does not clear it. Defaulted
+        // so vault files written before these fields existed still decode.
+        val failedAttempts: Int = 0,
+        val lockoutUntil: Long = 0,
     )
 
     @Volatile
@@ -161,22 +193,61 @@ class KeyVault(context: Context, fileName: String = "vault.json", private val ke
         }
     }
 
-    /** Returns the DEK. Slow (PBKDF2); call off the main thread. */
-    fun unlockWithPassword(password: CharArray): ByteArray {
+    /**
+     * Returns the DEK. Slow (PBKDF2); call off the main thread.
+     *
+     * Every wrong guess is counted in the vault and paced with an exponential
+     * lockout. When [wipeAfter] is set (the user enabled "erase after 10 failed
+     * attempts") the failure that reaches it throws [WalletWipeException] instead
+     * of [WrongPasswordException]; the caller owns the actual deletion.
+     */
+    fun unlockWithPassword(password: CharArray, wipeAfter: Int? = null): ByteArray {
         val v = load() ?: error("no vault")
+        val now = System.currentTimeMillis()
+        if (v.lockoutUntil > now) throw TooManyAttemptsException(v.lockoutUntil - now)
         val pwKey = deriveKey(password, v.kdfSalt.hexToBytes(), v.kdfIterations)
         try {
-            return decrypt(pwKey, v.passwordWrappedDek, AAD_PW) ?: throw WrongPasswordException()
+            val dek = decrypt(pwKey, v.passwordWrappedDek, AAD_PW)
+            if (dek != null) {
+                // A correct password clears the pacing for the next time.
+                if (v.failedAttempts != 0 || v.lockoutUntil != 0L) save(v.copy(failedAttempts = 0, lockoutUntil = 0L))
+                return dek
+            }
+            val attempts = v.failedAttempts + 1
+            save(v.copy(failedAttempts = attempts, lockoutUntil = now + AttemptPolicy.lockoutMs(attempts)))
+            if (AttemptPolicy.isWipeThreshold(v.failedAttempts, wipeAfter)) throw WalletWipeException()
+            throw WrongPasswordException(
+                attempts = attempts,
+                lockoutUntilMs = now + AttemptPolicy.lockoutMs(attempts),
+                remainingBeforeWipe = AttemptPolicy.remainingBeforeWipe(attempts, wipeAfter),
+            )
         } finally {
             pwKey.wipe()
         }
     }
 
-    fun verifyPassword(password: CharArray): Boolean = try {
-        unlockWithPassword(password).wipe()
-        true
-    } catch (_: WrongPasswordException) {
-        false
+    /** Non-throwing check for screens that only need a yes/no (send auth, reveal seed). */
+    fun verifyPassword(password: CharArray, wipeAfter: Int? = null): PasswordCheck = try {
+        unlockWithPassword(password, wipeAfter).wipe()
+        PasswordCheck.Ok
+    } catch (e: WrongPasswordException) {
+        PasswordCheck.Wrong(e.remainingBeforeWipe, e.lockoutUntilMs)
+    } catch (e: TooManyAttemptsException) {
+        PasswordCheck.Locked(e.retryAfterMs)
+    } catch (_: WalletWipeException) {
+        PasswordCheck.WipeTriggered
+    }
+
+    /** Number of wrong guesses currently counted against this vault. */
+    fun failedAttempts(): Int = loadOrNull()?.failedAttempts ?: 0
+
+    /** Wall-clock time the current lockout expires; zero when not locked. */
+    fun lockoutUntil(): Long = loadOrNull()?.lockoutUntil ?: 0L
+
+    /** Clears the attempt counter, e.g. after the user re-enables biometrics or changes the password. */
+    fun clearFailedAttempts() {
+        val v = loadOrNull() ?: return
+        if (v.failedAttempts != 0 || v.lockoutUntil != 0L) save(v.copy(failedAttempts = 0, lockoutUntil = 0L))
     }
 
     fun openSeed(dek: ByteArray): SeedMaterial {
@@ -197,7 +268,8 @@ class KeyVault(context: Context, fileName: String = "vault.json", private val ke
         val salt = ByteArray(16).also { random.nextBytes(it) }
         val pwKey = deriveKey(newPassword, salt, KDF_ITERATIONS)
         try {
-            save(v.copy(kdfSalt = salt.toHex(), kdfIterations = KDF_ITERATIONS, passwordWrappedDek = encrypt(pwKey, dek, AAD_PW)))
+            // A fresh password starts the brute-force pacing from zero.
+            save(v.copy(kdfSalt = salt.toHex(), kdfIterations = KDF_ITERATIONS, passwordWrappedDek = encrypt(pwKey, dek, AAD_PW), failedAttempts = 0, lockoutUntil = 0L))
         } finally {
             pwKey.wipe()
         }

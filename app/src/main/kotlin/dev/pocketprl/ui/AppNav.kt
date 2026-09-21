@@ -33,6 +33,7 @@ import dev.pocketprl.ui.screens.ChangePasswordScreen
 import dev.pocketprl.ui.screens.ContactsScreen
 import dev.pocketprl.ui.screens.CreateWalletScreen
 import dev.pocketprl.ui.screens.DashboardScreen
+import dev.pocketprl.ui.screens.EraseWalletScreen
 import dev.pocketprl.ui.screens.NetworkSettingsScreen
 import dev.pocketprl.ui.screens.PersonalizeScreen
 import dev.pocketprl.ui.screens.ReceiveScreen
@@ -71,10 +72,14 @@ object Routes {
     const val CONTACTS = "settings/contacts"
     const val STATS = "settings/stats"
     const val ABOUT = "settings/about"
+    const val ERASE = "erase"
 
     fun personalize(next: String) = "personalize/$next"
 
     val PUBLIC = setOf(WELCOME, PERSONALIZE, CREATE, RESTORE, UNLOCK)
+
+    /** Screens reachable without an unlocked wallet: the onboarding set plus the locked-screen erase flow. */
+    val REACHABLE_LOCKED = PUBLIC + ERASE
 }
 
 private fun NavHostController.resetTo(route: String) = navigate(route) { popUpTo(0) { inclusive = true }; launchSingleTop = true }
@@ -205,7 +210,7 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
 
     // Locking anywhere in the private area returns to the unlock screen.
     LaunchedEffect(unlocked, route) {
-        if (!unlocked && route != null && route !in Routes.PUBLIC) nav.resetTo(Routes.UNLOCK)
+        if (!unlocked && route != null && route !in Routes.REACHABLE_LOCKED) nav.resetTo(Routes.UNLOCK)
     }
 
     // A pending pearl: link opens Send once unlocked; SendScreen consumes it.
@@ -230,7 +235,7 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
         onboardingRoutes(nav, addMode = true)
         composable(Routes.UNLOCK) {
             val vm: UnlockViewModel = appViewModel()
-            UnlockScreen(vm, onUnlocked = { nav.resetTo(Routes.HOME) }, onAddWallet = addWallet)
+            UnlockScreen(vm, onUnlocked = { nav.resetTo(Routes.HOME) }, onAddWallet = addWallet, onErase = { nav.navigate(Routes.ERASE) })
         }
         composable(Routes.HOME) {
             DashboardScreen(
@@ -266,6 +271,14 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
                 onStats = { nav.navigate(Routes.STATS) },
                 onAbout = { nav.navigate(Routes.ABOUT) },
                 onAddWallet = addWallet,
+                onErase = { nav.navigate(Routes.ERASE) },
+            )
+        }
+        composable(Routes.ERASE) {
+            EraseWalletScreen(
+                walletName = ctx.vault.walletName ?: ctx.entry.name,
+                onBack = { nav.popBackStack() },
+                onErased = { container.deleteWallet(ctx.id) },
             )
         }
         composable(Routes.PASSWORD) { val vm: SettingsViewModel = appViewModel(); ChangePasswordScreen(vm, onBack = { nav.popBackStack() }) }

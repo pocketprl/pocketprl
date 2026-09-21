@@ -1,5 +1,32 @@
 # Changelog
 
+## 2.2.0
+
+* **Brute-force pacing.** Wrong passwords are now rate-limited with a
+  persisted, exponential lockout: three free tries, then a delay that starts at
+  5 seconds and doubles per further failure, capped at 30 minutes. The counter
+  lives in the wallet's vault file, so closing and reopening the app does not
+  reset it. The unlock screen shows a live countdown and re-enables the field
+  when it expires. Every password prompt is covered, not just unlock.
+* **Optional wipe after 10 failed attempts.** Off by default; when enabled in
+  Settings › Security, the tenth consecutive wrong password erases that wallet's
+  keys and local history (other wallets are untouched, and the recovery phrase
+  still restores it). When 3 or fewer attempts remain, the incorrect-password
+  message warns how many are left.
+* **Erase is now a fullscreen confirmation.** The old type-the-word dialog is
+  replaced by a dedicated screen with a red trash mark, the warning, a field to
+  type `ERASE`, and a red slide-to-erase control that arms only once the word
+  matches. Reached from both the unlock screen ("forgot password") and Settings ›
+  Danger zone.
+* **Slide-to-confirm for other big actions.** Changing the wallet password now
+  uses the same slide control as sending, instead of a plain button.
+* **Fix:** the custom fee rate and the "pay in fiat" field now decide their
+  decimal separator the same careful way the amount field does. A comma typed as
+  a thousands separator (en-US `1,000`) was being read as `1.0` PRL/kB, a 1000x
+  fee underpay, and a grouped fiat entry silently became empty.
+* **Fix:** a failed or cancelled biometric/password confirmation on Send no
+  longer leaves the slider parked at the end; it springs back.
+
 ## 2.1.2
 
 * Localized the strings added for the external payment-request warning, the

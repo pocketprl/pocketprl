@@ -43,8 +43,12 @@ import dev.pocketprl.data.notify.PriceAlertNotifier
 import dev.pocketprl.data.price.PriceHistory
 import dev.pocketprl.data.price.PriceStats
 import dev.pocketprl.data.price.PriceStatsCalculator
+import dev.pocketprl.data.vault.AttemptPolicy
+import dev.pocketprl.data.vault.PasswordCheck
 import dev.pocketprl.data.vault.SeedMaterial
+import dev.pocketprl.data.vault.TooManyAttemptsException
 import dev.pocketprl.data.vault.VaultUnreadableException
+import dev.pocketprl.data.vault.WalletWipeException
 import dev.pocketprl.data.vault.WrongPasswordException
 import dev.pocketprl.ui.Export
 import dev.pocketprl.ui.Qr
@@ -90,6 +94,21 @@ inline fun <reified T : ViewModel> appViewModel(): T {
     val activeId by c.activeId.collectAsStateWithLifecycle()
     val ctx = activeId?.let { c.context(it) }
     return viewModel(key = T::class.java.name + "#" + (activeId ?: "none"), factory = VmFactory(c, ctx))
+}
+
+/** The erase threshold when the user opted in, else null (pacing still applies either way). */
+private fun wipeAfterFor(c: AppContainer): Int? =
+    if (c.settings.wipeAfterFailedAttempts) AttemptPolicy.WIPE_AFTER_ATTEMPTS else null
+
+/** "45 seconds" / "12 minutes" for a lockout, localized and pluralized. */
+private fun waitLabel(context: Context, ms: Long): String {
+    val seconds = ((ms + 999) / 1000).coerceAtLeast(1).toInt()
+    return if (seconds < 60) {
+        context.resources.getQuantityString(R.plurals.duration_secs, seconds, seconds)
+    } else {
+        val minutes = (seconds + 59) / 60
+        context.resources.getQuantityString(R.plurals.duration_mins, minutes, minutes)
+    }
 }
 
 // ---------------------------------------------------------------- wallet
@@ -289,7 +308,15 @@ class OnboardingViewModel(private val c: AppContainer) : ViewModel() {
 // ---------------------------------------------------------------- unlock
 
 class UnlockViewModel(private val c: AppContainer, private val ctx: WalletContext) : ViewModel() {
-    data class State(val busy: Boolean = false, val error: String? = null, val unlocked: Boolean = false)
+    data class State(
+        val busy: Boolean = false,
+        val error: String? = null,
+        val unlocked: Boolean = false,
+        /** Wall-clock millis the current lockout ends at; 0 when not locked out. */
+        val lockedUntilMs: Long = 0,
+        /** True once the wipe policy has fired; the wallet is being removed. */
+        val wiped: Boolean = false,
+    )
 
     private val _state = MutableStateFlow(State())
     val state: StateFlow<State> = _state
@@ -300,15 +327,28 @@ class UnlockViewModel(private val c: AppContainer, private val ctx: WalletContex
     val wallets: StateFlow<WalletList> = c.registry.state
 
     fun unlockWithPassword(password: String) {
+        if (System.currentTimeMillis() < _state.value.lockedUntilMs) return
         _state.update { it.copy(busy = true, error = null) }
         viewModelScope.launch {
             try {
-                val dek = withContext(Dispatchers.Default) { ctx.vault.unlockWithPassword(password.toCharArray()) }
+                val dek = withContext(Dispatchers.Default) { ctx.vault.unlockWithPassword(password.toCharArray(), wipeAfterFor(c)) }
                 ctx.session.unlock(dek)
                 afterUnlock()
-                _state.update { it.copy(busy = false, unlocked = true) }
-            } catch (_: WrongPasswordException) {
-                _state.update { it.copy(busy = false, error = c.appContext.getString(R.string.unlock_error_incorrect)) }
+                _state.update { it.copy(busy = false, unlocked = true, lockedUntilMs = 0) }
+            } catch (e: TooManyAttemptsException) {
+                _state.update { it.copy(busy = false, error = lockoutMessage(e.retryAfterMs), lockedUntilMs = System.currentTimeMillis() + e.retryAfterMs) }
+            } catch (_: WalletWipeException) {
+                // The last allowed attempt failed: erase this wallet's keys and local history.
+                _state.update { it.copy(busy = false, error = c.appContext.getString(R.string.unlock_error_wiped), lockedUntilMs = 0, wiped = true) }
+                c.deleteWallet(ctx.id)
+            } catch (e: WrongPasswordException) {
+                val warning = if (AttemptPolicy.shouldWarn(e.remainingBeforeWipe)) {
+                    c.appContext.getString(R.string.unlock_error_incorrect_left, e.remainingBeforeWipe)
+                } else {
+                    c.appContext.getString(R.string.unlock_error_incorrect)
+                }
+                val lockedUntil = if (e.lockoutUntilMs > System.currentTimeMillis()) e.lockoutUntilMs else 0
+                _state.update { it.copy(busy = false, error = warning, lockedUntilMs = lockedUntil) }
             } catch (_: VaultUnreadableException) {
                 _state.update { it.copy(busy = false, error = c.appContext.getString(R.string.unlock_error_vault_corrupt)) }
             } catch (e: Exception) {
@@ -316,6 +356,11 @@ class UnlockViewModel(private val c: AppContainer, private val ctx: WalletContex
             }
         }
     }
+
+    /** Wall-clock millis left before the next attempt; 0 when not locked out. */
+    fun lockoutRemainingMs(): Long = (_state.value.lockedUntilMs - System.currentTimeMillis()).coerceAtLeast(0)
+
+    private fun lockoutMessage(ms: Long): String = c.appContext.getString(R.string.unlock_error_locked, waitLabel(c.appContext, ms))
 
     fun biometricCipher(): Cipher? = runCatching { ctx.vault.biometricDecryptCipher() }.getOrNull()
 
@@ -370,7 +415,7 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
             get() = when (tier) {
                 FeeTier.FAST -> fees?.fastPerKb
                 FeeTier.MEDIUM -> fees?.mediumPerKb
-                FeeTier.CUSTOM -> customRateText.replace(',', '.').toDoubleOrNull()?.let { (it * 1000).toLong() }?.takeIf { it >= TxBuilder.MIN_RELAY_FEE_PER_KB }
+                FeeTier.CUSTOM -> Amount.ratePerKbToGrainPerKb(customRateText)?.takeIf { it >= TxBuilder.MIN_RELAY_FEE_PER_KB }
             }
     }
 
@@ -515,7 +560,16 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
         }
     }
 
-    fun verifyPassword(pw: String): Boolean = runCatching { ctx.vault.verifyPassword(pw.toCharArray()) }.getOrDefault(false)
+    /** Password check honoring the wipe policy: null on success, else an error message. Wipes the wallet when the policy fires. */
+    suspend fun verifyPassword(pw: String): String? = withContext(Dispatchers.Default) {
+        when (val r = ctx.vault.verifyPassword(pw.toCharArray(), wipeAfterFor(c))) {
+            is PasswordCheck.Ok -> null
+            is PasswordCheck.Wrong -> if (AttemptPolicy.shouldWarn(r.remainingBeforeWipe)) c.appContext.getString(R.string.send_auth_left, r.remainingBeforeWipe) else c.appContext.getString(R.string.unlock_error_incorrect)
+            is PasswordCheck.Locked -> c.appContext.getString(R.string.unlock_error_locked, waitLabel(c.appContext, r.retryAfterMs))
+            is PasswordCheck.WipeTriggered -> { c.deleteWallet(ctx.id); c.appContext.getString(R.string.unlock_error_wiped) }
+        }
+    }
+
     fun biometricCipher(): Cipher? = runCatching { ctx.vault.biometricDecryptCipher() }.getOrNull()
     fun confirmBiometric(cipher: Cipher): Boolean = runCatching { ctx.vault.unlockWithBiometric(cipher).fill(0); true }.getOrDefault(false)
 
@@ -570,6 +624,7 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
 
     fun setAutoLock(seconds: Int) { c.settings.autoLockSeconds = seconds }
     fun setRequireAuthToSend(v: Boolean) { c.settings.requireAuthToSend = v }
+    fun setWipeAfterFailedAttempts(v: Boolean) { c.settings.wipeAfterFailedAttempts = v }
     fun setHideBalance(v: Boolean) { c.settings.hideBalance = v }
     fun setThemeMode(mode: ThemeMode) { c.settings.themeMode = mode }
     fun setAppLanguage(tag: String) { c.settings.appLanguage = tag }
@@ -625,14 +680,31 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
     fun defaultBlockbookUrl(): String = network.defaultBlockbookUrl
     fun setBlockbookUrl(url: String?) = c.settings.setBlockbookUrl(network, url)
 
-    fun verifyPassword(pw: String): Boolean = runCatching { ctx.vault.verifyPassword(pw.toCharArray()) }.getOrDefault(false)
+    /** Password check honoring the wipe policy: null on success, else a user-facing error. Wipes the wallet when the policy fires. */
+    suspend fun checkPassword(pw: String): String? = withContext(Dispatchers.Default) {
+        when (val r = ctx.vault.verifyPassword(pw.toCharArray(), wipeAfterFor(c))) {
+            is PasswordCheck.Ok -> null
+            is PasswordCheck.Wrong -> if (AttemptPolicy.shouldWarn(r.remainingBeforeWipe)) c.appContext.getString(R.string.settings_password_error_left, r.remainingBeforeWipe) else c.appContext.getString(R.string.settings_password_error_current)
+            is PasswordCheck.Locked -> c.appContext.getString(R.string.unlock_error_locked, waitLabel(c.appContext, r.retryAfterMs))
+            is PasswordCheck.WipeTriggered -> { c.deleteWallet(ctx.id); c.appContext.getString(R.string.unlock_error_wiped) }
+        }
+    }
 
     suspend fun changePassword(current: String, new: String): String? = withContext(Dispatchers.Default) {
         try {
-            val dek = ctx.vault.unlockWithPassword(current.toCharArray())
+            val dek = ctx.vault.unlockWithPassword(current.toCharArray(), wipeAfterFor(c))
             try { ctx.vault.changePassword(dek, new.toCharArray()) } finally { dek.fill(0) }
             null
-        } catch (_: WrongPasswordException) { c.appContext.getString(R.string.settings_password_error_current) } catch (e: Exception) { e.message ?: c.appContext.getString(R.string.vm_error_failed) }
+        } catch (e: TooManyAttemptsException) {
+            c.appContext.getString(R.string.unlock_error_locked, waitLabel(c.appContext, e.retryAfterMs))
+        } catch (_: WalletWipeException) {
+            c.deleteWallet(ctx.id)
+            c.appContext.getString(R.string.unlock_error_wiped)
+        } catch (e: WrongPasswordException) {
+            if (AttemptPolicy.shouldWarn(e.remainingBeforeWipe)) c.appContext.getString(R.string.settings_password_error_left, e.remainingBeforeWipe) else c.appContext.getString(R.string.settings_password_error_current)
+        } catch (e: Exception) {
+            e.message ?: c.appContext.getString(R.string.vm_error_failed)
+        }
     }
 
     fun biometricEncryptCipher(): Cipher? = runCatching { ctx.vault.biometricEncryptCipher() }.getOrNull()

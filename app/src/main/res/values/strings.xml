@@ -123,6 +123,9 @@
     <string name="unlock_erase_confirm">Erase</string>
     <string name="unlock_error_biometric">Biometric key unavailable (was a fingerprint added or removed?). Use your password.</string>
     <string name="unlock_error_incorrect">Incorrect password</string>
+    <string name="unlock_error_incorrect_left">Incorrect password. %1$d attempts left before this wallet is erased.</string>
+    <string name="unlock_error_locked">Too many attempts. Try again in %1$s.</string>
+    <string name="unlock_error_wiped">Too many failed attempts. This wallet has been erased.</string>
     <string name="unlock_error_failed">Unlock failed</string>
     <string name="unlock_error_vault_corrupt">This wallet\'s key file is unreadable. Restore from your recovery phrase.</string>
     <string name="unlock_error_biometric_failed">Biometric unlock failed: %1$s. Use your password.</string>
@@ -216,6 +219,7 @@
     <string name="send_password_title">Wallet password</string>
     <string name="send_password_body">Sends %1$s %2$s to %3$s.</string>
     <string name="send_auth_failed">Authentication failed</string>
+    <string name="send_auth_left">Incorrect password. %1$d attempts left before this wallet is erased.</string>
     <string name="send_bio_unavailable">Biometric key unavailable; disable and re-enable biometrics in Settings.</string>
 
     <!-- ===================== receive ===================== -->
@@ -327,6 +331,8 @@
     <string name="settings_biometric_sub">Fingerprint or face</string>
     <string name="settings_confirm_send">Confirm before sending</string>
     <string name="settings_confirm_send_sub">Ask on every payment</string>
+    <string name="settings_wipe_attempts">Erase after failed attempts</string>
+    <string name="settings_wipe_attempts_sub">Erase this wallet after 10 wrong passwords</string>
     <string name="settings_auto_lock">Auto-lock</string>
     <string name="settings_hide_balances">Hide balances</string>
     <string name="settings_hide_balances_sub">Mask every amount</string>
@@ -380,7 +386,22 @@
     <string name="settings_password_update">Update password</string>
     <string name="settings_password_info">Changing the password re-encrypts the key on this device only. Your recovery phrase stays the same.</string>
     <string name="settings_password_error_current">Current password is incorrect</string>
+    <string name="settings_password_error_left">Current password is incorrect. %1$d attempts left before this wallet is erased.</string>
+    <string name="settings_password_slide">Update password</string>
+    <string name="settings_password_slide_hint">Slide or double-tap to update the password</string>
+    <string name="settings_password_updating">Updating</string>
+    <string name="settings_password_not_ready">Fill in both passwords first</string>
     <string name="settings_password_error_short">Use at least 8 characters with a mix of letters, numbers or symbols.</string>
+
+    <!-- ===================== erase wallet ===================== -->
+    <string name="erase_title">Erase wallet</string>
+    <string name="erase_heading">Erase “%1$s”?</string>
+    <string name="erase_body">This wallet’s keys, cached history, contacts and notes on this phone will be deleted. Other wallets are not affected. You can only get the funds back with the recovery phrase.</string>
+    <string name="erase_type_label">Type ERASE to confirm</string>
+    <string name="erase_slider">Erase</string>
+    <string name="erase_slider_hint">Slide or double-tap to erase this wallet</string>
+    <string name="erase_slider_locked">Type ERASE first</string>
+    <string name="erase_working">Erasing…</string>
     <string name="settings_seed_title">Recovery phrase</string>
     <string name="settings_seed_warning">Never share your recovery phrase. PocketPRL staff or Pearl developers will never ask for it.</string>
     <string name="settings_seed_reveal">Reveal</string>
@@ -583,6 +604,14 @@
     <string name="autolock_1h">1 hour</string>
     <string name="autolock_never">Never</string>
     <string name="duration_seconds">%1$d seconds</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d second</item>
+        <item quantity="other">%1$d seconds</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
     <string name="settings_threshold_custom">%1$s%%</string>
 
     <!-- merged from strings_gen_dashboard.xml -->

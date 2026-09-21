@@ -108,14 +108,17 @@ object Amount {
     }
 
     /**
-     * Parses a decimal amount, tolerating the configured separators and both '.'/','.
+     * Canonical, machine-readable decimal string ("1234.56") from free-form user
+     * input, or null when it is not a number. The decimal separator is decided
+     * *before* any grouping separator is stripped. Otherwise a comma typed as a
+     * decimal on a comma-grouping locale (en-US "1,5") is deleted as grouping and
+     * the amount inflates 10x, 100x or 1000x with no warning.
      *
-     * The decimal separator is decided *before* any grouping separator is
-     * stripped. Otherwise a comma typed as a decimal on a comma-grouping locale
-     * (en-US "1,5") is deleted as grouping and the amount inflates 10x, 100x or
-     * 1000x with no warning.
+     * Every entry point that accepts a typed number goes through here, so the
+     * custom fee rate and the fiat amount obeys exactly the same rules as the PRL
+     * amount field.
      */
-    fun parse(text: String): Long? {
+    fun normalizeDecimal(text: String): String? {
         val c = Format.config
         var t = text.trim()
         t = t.replace('\u202F'.toString(), "").replace("\u00A0", "").replace(" ", "")
@@ -155,6 +158,12 @@ object Amount {
         }
         if (t.isEmpty() || t == ".") return null
         if (!AMOUNT_RE.matches(t)) return null
+        return t
+    }
+
+    /** Parses a decimal amount, tolerating the configured separators and both '.'/','. */
+    fun parse(text: String): Long? {
+        val t = normalizeDecimal(text) ?: return null
         val bd = try { BigDecimal(t).stripTrailingZeros() } catch (_: NumberFormatException) { return null }
         if (bd.scale() > 8) return null
         val grain = bd.multiply(PRL_SCALE)
@@ -162,11 +171,20 @@ object Amount {
         return grain.longValueExact()
     }
 
+    /** A separator-tolerant decimal with no total-supply ceiling, for rates and prices. */
+    fun parseDecimal(text: String): BigDecimal? =
+        normalizeDecimal(text)?.let { runCatching { BigDecimal(it).stripTrailingZeros() }.getOrNull() }
+
+    /** User-typed PRL-per-kB fee rate to grain per kB, deciding separators like every other number field. */
+    fun ratePerKbToGrainPerKb(text: String): Long? = runCatching {
+        parseDecimal(text)?.multiply(BigDecimal(1000))?.setScale(0, RoundingMode.DOWN)?.longValueExact()
+    }.getOrNull()?.takeIf { it >= 0 }
+
     /** Inverse of [fiat] for amount entry: how many grain does [fiat] buy at [pricePerPrl]? */
     fun grainForFiat(fiat: String, pricePerPrl: Double?): Long? {
         if (pricePerPrl == null || !pricePerPrl.isFinite() || pricePerPrl <= 0) return null
-        val t = fiat.trim().replace(",", ".").removePrefix(Format.config.fiat.symbol).removePrefix("$").trim()
-        if (t.isEmpty() || !AMOUNT_RE.matches(t)) return null
+        val cleaned = fiat.trim().removePrefix(Format.config.fiat.symbol).removePrefix("$").trim()
+        val t = normalizeDecimal(cleaned) ?: return null
         val bd = try { BigDecimal(t) } catch (_: NumberFormatException) { return null }
         val grain = bd.divide(BigDecimal(pricePerPrl), 8, RoundingMode.DOWN).multiply(PRL_SCALE).setScale(0, RoundingMode.DOWN)
         if (grain.signum() < 0 || grain > BigDecimal(MAX_SUPPLY_GRAIN)) return null

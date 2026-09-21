@@ -1,6 +1,10 @@
 package dev.pocketprl.core.chain
 
 import dev.pocketprl.core.crypto.Bech32
+import dev.pocketprl.core.format.DecimalSeparator
+import dev.pocketprl.core.format.Format
+import dev.pocketprl.core.format.FormatConfig
+import dev.pocketprl.core.format.GroupingSeparator
 import dev.pocketprl.ui.Qr
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -46,6 +50,36 @@ class AmountAndUriTest {
         assertNull(Amount.parse("1.000000001"))
         assertNull(Amount.parse("1e5"))
         assertNull(Amount.parse("2100000001"))
+    }
+
+    @Test
+    fun customFeeRateUsesTheSameSeparatorRules() {
+        val saved = Format.config
+        try {
+            // en-US style: comma groups thousands, '.' is the decimal.
+            Format.config = FormatConfig(decimalSeparator = DecimalSeparator.PERIOD, groupingSeparator = GroupingSeparator.COMMA)
+            assertEquals(1_000L, Amount.ratePerKbToGrainPerKb("1"))
+            assertEquals(1_500L, Amount.ratePerKbToGrainPerKb("1.5"))
+            // Before the fix a comma was blindly turned into a dot: 1,000 became 1.0 PRL/kB (1000x underpay).
+            assertEquals(1_000_000L, Amount.ratePerKbToGrainPerKb("1,000"))
+            // A lone comma with one trailing digit is a decimal typed with the "wrong" character.
+            assertEquals(2_500L, Amount.ratePerKbToGrainPerKb("2,5"))
+            assertNull(Amount.ratePerKbToGrainPerKb("1e5"))
+        } finally {
+            Format.config = saved
+        }
+    }
+
+    @Test
+    fun fiatEntryHonorsGroupingSeparators() {
+        val saved = Format.config
+        try {
+            Format.config = FormatConfig(decimalSeparator = DecimalSeparator.PERIOD, groupingSeparator = GroupingSeparator.COMMA)
+            assertEquals(123_456_000_000L, Amount.grainForFiat("1,234.56", 1.0))
+            assertEquals(100_000_000_000L, Amount.grainForFiat("$1,000", 1.0))
+        } finally {
+            Format.config = saved
+        }
     }
 
     @Test

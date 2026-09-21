@@ -43,6 +43,8 @@ class Settings(context: Context) {
     data class Snapshot(
         val autoLockSeconds: Int,
         val requireAuthToSend: Boolean,
+        /** Off by default: erase this wallet's keys after 10 wrong password attempts. */
+        val wipeAfterFailedAttempts: Boolean,
         val customBlockbookUrl: Map<String, String>,
         val feeTier: String,
         val hideBalance: Boolean,
@@ -95,6 +97,7 @@ class Settings(context: Context) {
         val snap = Snapshot(
             autoLockSeconds = prefs.getInt(KEY_AUTOLOCK, 300),
             requireAuthToSend = prefs.getBoolean(KEY_REQUIRE_AUTH_SEND, true),
+            wipeAfterFailedAttempts = prefs.getBoolean(KEY_WIPE_AFTER_FAILED, false),
             customBlockbookUrl = Network.entries.mapNotNull { n -> prefs.getString(KEY_BLOCKBOOK_PREFIX + n.id, null)?.let { n.id to it } }.toMap(),
             feeTier = prefs.getString(KEY_FEE_TIER, "medium") ?: "medium",
             hideBalance = prefs.getBoolean(KEY_HIDE_BALANCE, false),
@@ -147,6 +150,11 @@ class Settings(context: Context) {
     var requireAuthToSend: Boolean
         get() = _state.value.requireAuthToSend
         set(v) = edit { putBoolean(KEY_REQUIRE_AUTH_SEND, v) }
+
+    /** Off by default. When on, 10 consecutive wrong passwords erase this wallet's keys and local history. */
+    var wipeAfterFailedAttempts: Boolean
+        get() = _state.value.wipeAfterFailedAttempts
+        set(v) = edit { putBoolean(KEY_WIPE_AFTER_FAILED, v) }
 
     var feeTier: String
         get() = _state.value.feeTier
@@ -270,6 +278,7 @@ class Settings(context: Context) {
         const val KEY_APP_LANGUAGE = "app_language"
         private const val KEY_AUTOLOCK = "auto_lock_seconds"
         private const val KEY_REQUIRE_AUTH_SEND = "require_auth_send"
+        private const val KEY_WIPE_AFTER_FAILED = "wipe_after_failed_attempts"
         private const val KEY_BLOCKBOOK_PREFIX = "blockbook_url_"
         private const val KEY_FEE_TIER = "fee_tier"
         private const val KEY_HIDE_BALANCE = "hide_balance"

@@ -97,6 +97,7 @@ import dev.pocketprl.ui.components.SectionCard
 import dev.pocketprl.ui.components.SectionTitle
 import dev.pocketprl.ui.components.SecureWindow
 import dev.pocketprl.ui.components.SettingRow
+import dev.pocketprl.ui.components.SlideToConfirm
 import dev.pocketprl.ui.components.copyToClipboard
 import dev.pocketprl.ui.components.formatDateTime
 import dev.pocketprl.ui.components.passwordScore
@@ -118,6 +119,7 @@ fun SettingsScreen(
     onStats: () -> Unit,
     onAbout: () -> Unit,
     onAddWallet: () -> Unit,
+    onErase: () -> Unit,
 ) {
     val settings by vm.settings.collectAsStateWithLifecycle()
     val snap by vm.snapshot.collectAsStateWithLifecycle()
@@ -140,7 +142,6 @@ fun SettingsScreen(
     var showFiatCurrency by remember { mutableStateOf(false) }
     var showHero by remember { mutableStateOf(false) }
     var showPoll by remember { mutableStateOf(false) }
-    var showDelete by remember { mutableStateOf(false) }
     var showRename by remember { mutableStateOf(false) }
     var showSwitcher by remember { mutableStateOf(false) }
     val bioAvailable = activity != null && Biometrics.available(activity)
@@ -302,6 +303,10 @@ fun SettingsScreen(
                     Switch(checked = settings.requireAuthToSend, onCheckedChange = { haptics.toggle(it); vm.setRequireAuthToSend(it) })
                 }
                 HorizontalDivider()
+                SettingRow(stringResource(R.string.settings_wipe_attempts), stringResource(R.string.settings_wipe_attempts_sub), icon = AppIcons.Shield) {
+                    Switch(checked = settings.wipeAfterFailedAttempts, onCheckedChange = { haptics.toggle(it); vm.setWipeAfterFailedAttempts(it) })
+                }
+                HorizontalDivider()
                 SettingRow(stringResource(R.string.settings_auto_lock), autoLockLabel(settings.autoLockSeconds), onClick = { showAutoLock = true }, icon = AppIcons.Clock)
                 HorizontalDivider()
                 SettingRow(stringResource(R.string.settings_secure_all), stringResource(R.string.settings_secure_all_sub), icon = AppIcons.ShieldCheck) {
@@ -366,7 +371,7 @@ fun SettingsScreen(
             }
 
             SectionTitle(stringResource(R.string.settings_section_danger), color = MaterialTheme.colorScheme.error)
-            SecondaryButton(stringResource(R.string.settings_delete), danger = true, onClick = { showDelete = true })
+            SecondaryButton(stringResource(R.string.settings_delete), danger = true, onClick = onErase)
             Spacer(Modifier.height(24.dp))
         }
     }
@@ -495,22 +500,6 @@ fun SettingsScreen(
             label = { pollLabel(it) },
             onPick = { haptics.tick(); vm.setPollMode(it); showPoll = false },
             onDismiss = { showPoll = false },
-        )
-    }
-
-    if (showDelete) {
-        var typed by remember { mutableStateOf("") }
-        AlertDialog(
-            onDismissRequest = { showDelete = false },
-            title = { Text(stringResource(R.string.settings_delete_title, vm.walletName)) },
-            text = {
-                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Text(stringResource(R.string.settings_delete_body))
-                    OutlinedTextField(value = typed, onValueChange = { typed = it }, singleLine = true, modifier = Modifier.fillMaxWidth(), shape = FieldShape)
-                }
-            },
-            confirmButton = { TextButton(enabled = typed == "DELETE", onClick = { scope.launch { vm.deleteWallet(); showDelete = false } }) { Text(stringResource(R.string.action_delete), color = MaterialTheme.colorScheme.error) } },
-            dismissButton = { TextButton(onClick = { showDelete = false }) { Text(stringResource(R.string.action_cancel)) } },
         )
     }
 
@@ -658,14 +647,27 @@ fun ChangePasswordScreen(vm: SettingsViewModel, onBack: () -> Unit) {
             PasswordField(confirm, { confirm = it; error = null }, stringResource(R.string.settings_password_confirm), imeAction = ImeAction.Done, isError = confirm.isNotEmpty() && confirm != new)
             error?.let { InfoBanner(it, BannerKind.ERROR) }
             if (success) InfoBanner(stringResource(R.string.settings_password_updated), BannerKind.SUCCESS)
-            PrimaryButton(stringResource(R.string.settings_password_update), loading = busy, enabled = current.isNotEmpty() && new.length >= 8 && new == confirm && new != current && passwordScore(new) >= 2, onClick = {
-                busy = true; success = false
-                scope.launch {
-                    val err = vm.changePassword(current, new)
-                    busy = false
-                    if (err == null) { success = true; current = ""; new = ""; confirm = "" } else error = err
-                }
-            })
+            val ready = current.isNotEmpty() && new.length >= 8 && new == confirm && new != current && passwordScore(new) >= 2
+            SlideToConfirm(
+                onComplete = {
+                    if (!ready || busy) return@SlideToConfirm
+                    busy = true; success = false
+                    scope.launch {
+                        val err = vm.changePassword(current, new)
+                        busy = false
+                        if (err == null) { success = true; current = ""; new = ""; confirm = "" } else error = err
+                    }
+                },
+                label = stringResource(R.string.settings_password_slide),
+                enabled = ready && !busy,
+                held = busy,
+                busy = busy,
+                icon = Icons.Filled.Lock,
+                notReady = stringResource(R.string.settings_password_not_ready),
+                sending = stringResource(R.string.settings_password_updating),
+                confirming = stringResource(R.string.settings_password_updating),
+                slideHint = stringResource(R.string.settings_password_slide_hint),
+            )
             InfoBanner(stringResource(R.string.settings_password_info), BannerKind.INFO)
         }
     }
@@ -690,9 +692,9 @@ fun RevealSeedScreen(vm: SettingsViewModel, onBack: () -> Unit) {
                 PrimaryButton(stringResource(R.string.settings_seed_reveal), loading = busy, enabled = password.isNotEmpty(), onClick = {
                     busy = true
                     scope.launch {
-                        val ok = withContext(Dispatchers.Default) { vm.verifyPassword(password) }
+                        val err = vm.checkPassword(password)
                         busy = false
-                        if (ok) material = runCatching { vm.revealSeed() }.getOrElse { error = it.message; null } else error = context.getString(R.string.settings_seed_incorrect)
+                        if (err == null) material = runCatching { vm.revealSeed() }.getOrElse { error = it.message; null } else error = err
                     }
                 })
             } else {

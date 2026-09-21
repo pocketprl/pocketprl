@@ -94,9 +94,7 @@ import dev.pocketprl.ui.vm.FeeTier
 import dev.pocketprl.ui.vm.SendViewModel
 import dev.pocketprl.ui.vm.WalletViewModel
 import dev.pocketprl.ui.vm.appContainer
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -117,6 +115,13 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     var showContacts by remember { mutableStateOf(false) }
     var authPassword by remember { mutableStateOf("") }
     var authError by remember { mutableStateOf<String?>(null) }
+    // Bumped on every failed or cancelled confirmation so the slider always springs back.
+    var sliderReset by remember { mutableStateOf(0) }
+    fun failAuth(message: String?) {
+        authError = message
+        authBusy = false
+        sliderReset += 1
+    }
     val leavingApp = rememberLeaveAppMarker()
     val reduced = LocalReducedMotion.current
 
@@ -293,22 +298,23 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                 enabled = s.prepared != null && !s.sending,
                 held = authBusy || s.sending,
                 busy = s.sending,
+                resetKey = sliderReset,
                 onComplete = {
                     val p = s.prepared
-                    if (p == null || !vm.validateAddressNow()) return@SlideToSend
+                    if (p == null || !vm.validateAddressNow()) { sliderReset++; return@SlideToSend }
                     authError = null
                     when {
                         needBio -> {
                             val cipher = vm.biometricCipher()
-                            if (cipher == null) { authError = context.getString(R.string.send_bio_unavailable); return@SlideToSend }
+                            if (cipher == null) { failAuth(context.getString(R.string.send_bio_unavailable)); return@SlideToSend }
                             authBusy = true
                             scope.launch {
                                 val title = context.getString(R.string.send_title, "${Amount.pretty(p.build.amount, 8)} $ticker")
                                 val to = context.getString(R.string.sent_to, s.contactName ?: Address.short(p.toAddress, 14, 10))
                                 when (val r = Biometrics.authenticate(activity!!, title, to, cipher, negative = context.getString(R.string.action_cancel))) {
-                                    is Biometrics.Outcome.Success -> if (vm.confirmBiometric(r.cipher)) { authBusy = false; vm.authorizeSend(p); vm.send(p) } else { authError = context.getString(R.string.send_auth_failed); authBusy = false }
-                                    is Biometrics.Outcome.Error -> { authError = r.message; authBusy = false }
-                                    is Biometrics.Outcome.Cancelled -> authBusy = false
+                                    is Biometrics.Outcome.Success -> if (vm.confirmBiometric(r.cipher)) { authBusy = false; vm.authorizeSend(p); vm.send(p) } else failAuth(context.getString(R.string.send_auth_failed))
+                                    is Biometrics.Outcome.Error -> failAuth(r.message)
+                                    is Biometrics.Outcome.Cancelled -> failAuth(null)
                                 }
                             }
                         }
@@ -344,14 +350,15 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     val p = s.prepared
     if (askPassword && p != null) {
         var checking by remember { mutableStateOf(false) }
-        val cancel = { askPassword = false; authBusy = false }
+        // Keep the dialog open on a wrong password (so the next try is one field away) but free the slider.
+        val cancel: () -> Unit = { askPassword = false; authBusy = false; sliderReset += 1 }
         val submit = {
             if (authPassword.isNotEmpty() && !checking) {
                 checking = true
                 scope.launch {
-                    val ok = withContext(Dispatchers.Default) { vm.verifyPassword(authPassword) }
+                    val err = vm.verifyPassword(authPassword)
                     checking = false
-                    if (ok) { askPassword = false; authBusy = false; vm.authorizeSend(p); vm.send(p) } else authError = context.getString(R.string.unlock_error_incorrect)
+                    if (err == null) { askPassword = false; authBusy = false; vm.authorizeSend(p); vm.send(p) } else failAuth(err)
                 }
             }
         }
