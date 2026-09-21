@@ -735,4 +735,12 @@
     <string name="shortcut_receive_long">Показати мою адресу для отримання</string>
     <string name="shortcut_scan">Сканувати</string>
     <string name="shortcut_scan_long">Сканувати QR-код платежу</string>
+
+    <!-- ===================== app icon ===================== -->
+    <string name="settings_icon">Значок застосунку</string>
+    <string name="settings_icon_title">Значок застосунку</string>
+    <string name="icon_default">Типовий</string>
+    <string name="icon_mono">Монохромний (світлий/темний)</string>
+    <string name="icon_light">Світлий</string>
+    <string name="icon_dark">Темний</string>
 </resources>

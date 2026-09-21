@@ -734,4 +734,11 @@
     <string name="shortcut_receive_long">Zobrazit mou přijímací adresu</string>
     <string name="shortcut_scan">Skenovat</string>
     <string name="shortcut_scan_long">Naskenovat platební QR kód</string>
+    <!-- ===================== app icon ===================== -->
+    <string name="settings_icon">Ikona aplikace</string>
+    <string name="settings_icon_title">Ikona aplikace</string>
+    <string name="icon_default">Výchozí</string>
+    <string name="icon_mono">Monochromatická (světlá/tmavá)</string>
+    <string name="icon_light">Světlá</string>
+    <string name="icon_dark">Tmavá</string>
 </resources>

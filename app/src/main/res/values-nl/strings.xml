@@ -716,4 +716,10 @@
     <string name="shortcut_receive_long">Mijn ontvangstadres tonen</string>
     <string name="shortcut_scan">Scannen</string>
     <string name="shortcut_scan_long">Een betalings-QR-code scannen</string>
+    <string name="settings_icon">App-pictogram</string>
+    <string name="settings_icon_title">App-pictogram</string>
+    <string name="icon_default">Standaard</string>
+    <string name="icon_mono">Monochroom (licht/donker)</string>
+    <string name="icon_light">Licht</string>
+    <string name="icon_dark">Donker</string>
 </resources>

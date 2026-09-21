@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="window_background">#FF0E1413</color>
+    <!-- The monochrome icon flips: light mark on the ink background. -->
+    <color name="ic_launcher_mono_fg">#FFF7FAF9</color>
+    <color name="ic_launcher_mono_bg">#FF0E1413</color>
 </resources>

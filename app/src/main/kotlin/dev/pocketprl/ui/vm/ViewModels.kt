@@ -26,7 +26,9 @@ import dev.pocketprl.core.format.DecimalSeparator
 import dev.pocketprl.core.format.FiatCurrency
 import dev.pocketprl.core.format.GroupingSeparator
 import dev.pocketprl.data.AccentTheme
+import dev.pocketprl.data.AppIcon
 import dev.pocketprl.data.FeeRates
+import dev.pocketprl.data.LauncherIconManager
 import dev.pocketprl.data.PollMode
 import dev.pocketprl.data.PreparedSend
 import dev.pocketprl.data.ThemeMode
@@ -637,6 +639,12 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
     fun setOdometer(v: Boolean) { c.settings.odometer = v }
     fun setOdometerHaptics(v: Boolean) { c.settings.odometerHaptics = v }
     fun setAccentTheme(v: AccentTheme) { c.settings.accentTheme = v }
+
+    /** Switches the launcher icon by toggling the activity-alias entries. */
+    fun setAppIcon(v: AppIcon) {
+        c.settings.appIcon = v
+        LauncherIconManager.apply(c.appContext, v)
+    }
     fun setDynamicColor(v: Boolean) { c.settings.dynamicColor = v }
     fun setReducedMotion(v: Boolean) { c.settings.reducedMotion = v }
     fun setDecimals(v: Int) { c.settings.decimals = v }

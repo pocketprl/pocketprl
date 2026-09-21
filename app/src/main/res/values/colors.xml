@@ -2,4 +2,9 @@
 <resources>
     <color name="window_background">#FFF7FAF9</color>
     <color name="ic_launcher_background">#FF0B3D3A</color>
+    <!-- Selectable launcher icons (Settings › App icon). The mono pair flips with the system theme. -->
+    <color name="ic_launcher_bg_light">#FFF7FAF9</color>
+    <color name="ic_launcher_bg_dark">#FF0E1413</color>
+    <color name="ic_launcher_mono_fg">#FF0E1413</color>
+    <color name="ic_launcher_mono_bg">#FFF7FAF9</color>
 </resources>

@@ -734,4 +734,10 @@
     <string name="shortcut_receive_long">Pokaż mój adres odbiorczy</string>
     <string name="shortcut_scan">Skanuj</string>
     <string name="shortcut_scan_long">Zeskanuj kod QR płatności</string>
+    <string name="settings_icon">Ikona aplikacji</string>
+    <string name="settings_icon_title">Ikona aplikacji</string>
+    <string name="icon_default">Domyślna</string>
+    <string name="icon_mono">Monochromatyczna (jasna/ciemna)</string>
+    <string name="icon_light">Jasna</string>
+    <string name="icon_dark">Ciemna</string>
 </resources>

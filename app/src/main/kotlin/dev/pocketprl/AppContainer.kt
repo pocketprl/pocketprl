@@ -5,6 +5,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import dev.pocketprl.core.chain.Network
+import dev.pocketprl.data.LauncherIconManager
 import dev.pocketprl.data.Settings
 import dev.pocketprl.data.WalletContext
 import dev.pocketprl.data.WalletRegistry
@@ -155,6 +156,9 @@ class AppContainer(val appContext: Context) {
 
         // Background check so the update dot can appear without opening About.
         checkForUpdate()
+
+        // Make sure the enabled launcher alias matches the saved icon choice.
+        runCatching { LauncherIconManager.applyIfNeeded(appContext, settings.appIcon) }
     }
 
     /** Opens (or returns the already open) context for a registered wallet. */

@@ -716,4 +716,11 @@
     <string name="shortcut_receive_long">Vis min modtagelsesadresse</string>
     <string name="shortcut_scan">Scan</string>
     <string name="shortcut_scan_long">Scan en betalings-QR-kode</string>
+    <!-- ===================== app icon ===================== -->
+    <string name="settings_icon">App-ikon</string>
+    <string name="settings_icon_title">App-ikon</string>
+    <string name="icon_default">Standard</string>
+    <string name="icon_mono">Monokrom (lys/mørk)</string>
+    <string name="icon_light">Lys</string>
+    <string name="icon_dark">Mørk</string>
 </resources>

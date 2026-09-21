@@ -717,4 +717,12 @@
     <string name="shortcut_receive_long">Εμφάνιση της διεύθυνσης λήψης μου</string>
     <string name="shortcut_scan">Σάρωση</string>
     <string name="shortcut_scan_long">Σάρωση κωδικού QR πληρωμής</string>
+
+    <!-- ===================== app icon ===================== -->
+    <string name="settings_icon">Εικονίδιο εφαρμογής</string>
+    <string name="settings_icon_title">Εικονίδιο εφαρμογής</string>
+    <string name="icon_default">Προεπιλογή</string>
+    <string name="icon_mono">Μονόχρωμο (φωτεινό/σκοτεινό)</string>
+    <string name="icon_light">Φωτεινό</string>
+    <string name="icon_dark">Σκοτεινό</string>
 </resources>

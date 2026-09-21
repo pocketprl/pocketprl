@@ -716,4 +716,12 @@
     <string name="shortcut_receive_long">Alım adresimi göster</string>
     <string name="shortcut_scan">Tara</string>
     <string name="shortcut_scan_long">Ödeme QR kodunu tara</string>
+
+    <!-- ===================== app icon ===================== -->
+    <string name="settings_icon">Uygulama simgesi</string>
+    <string name="settings_icon_title">Uygulama simgesi</string>
+    <string name="icon_default">Varsayılan</string>
+    <string name="icon_mono">Tek renkli (açık/koyu)</string>
+    <string name="icon_light">Açık</string>
+    <string name="icon_dark">Koyu</string>
 </resources>

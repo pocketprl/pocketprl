@@ -70,6 +70,7 @@ import dev.pocketprl.core.format.FiatCurrency
 import dev.pocketprl.core.format.GroupingSeparator
 import dev.pocketprl.core.wallet.AddressVariant
 import dev.pocketprl.data.AccentTheme
+import dev.pocketprl.data.AppIcon
 import dev.pocketprl.data.PollMode
 import dev.pocketprl.data.ThemeMode
 import dev.pocketprl.data.update.ReleaseInfo
@@ -145,6 +146,7 @@ fun SettingsScreen(
     var showTheme by remember { mutableStateOf(false) }
     var showLanguage by remember { mutableStateOf(false) }
     var showAccent by remember { mutableStateOf(false) }
+    var showIcon by remember { mutableStateOf(false) }
     var showDecimals by remember { mutableStateOf(false) }
     var showDecimalSep by remember { mutableStateOf(false) }
     var showGrouping by remember { mutableStateOf(false) }
@@ -193,7 +195,7 @@ fun SettingsScreen(
     }
 
     ScreenScaffold(title = stringResource(R.string.settings_title), onBack = onBack) {
-        Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 6.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 2.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             SectionTitle(stringResource(R.string.settings_section_wallet))
             SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_name), vm.walletName, onClick = { showRename = true }, icon = Icons.Filled.Edit)
@@ -221,6 +223,8 @@ fun SettingsScreen(
                 SettingRow(stringResource(R.string.settings_theme), themeLabel(settings.themeMode), onClick = { showTheme = true }, icon = AppIcons.Palette)
                 HorizontalDivider()
                 SettingRow(stringResource(R.string.settings_accent), accentLabel(settings.accentTheme), onClick = { showAccent = true }, icon = AppIcons.Palette)
+                HorizontalDivider()
+                SettingRow(stringResource(R.string.settings_icon), appIconLabel(settings.appIcon), onClick = { showIcon = true }, icon = AppIcons.Palette)
                 HorizontalDivider()
                 SettingRow(stringResource(R.string.settings_dynamic_color), stringResource(R.string.settings_dynamic_color_sub), icon = AppIcons.Palette) {
                     Switch(checked = settings.dynamicColor, onCheckedChange = { haptics.toggle(it); vm.setDynamicColor(it) })
@@ -459,6 +463,17 @@ fun SettingsScreen(
         )
     }
 
+    if (showIcon) {
+        OptionDialog(
+            title = stringResource(R.string.settings_icon_title),
+            options = AppIcon.entries,
+            selected = settings.appIcon,
+            label = { appIconLabel(it) },
+            onPick = { haptics.tick(); vm.setAppIcon(it); showIcon = false },
+            onDismiss = { showIcon = false },
+        )
+    }
+
     if (showDecimals) {
         OptionDialog(
             title = stringResource(R.string.settings_decimals),
@@ -565,6 +580,14 @@ private fun themeLabel(mode: ThemeMode): String = when (mode) {
     ThemeMode.DARK -> stringResource(R.string.theme_dark)
     ThemeMode.OLED -> stringResource(R.string.theme_oled)
 }
+
+@Composable
+private fun appIconLabel(icon: AppIcon): String = stringResource(when (icon) {
+    AppIcon.DEFAULT -> R.string.icon_default
+    AppIcon.MONO -> R.string.icon_mono
+    AppIcon.LIGHT -> R.string.icon_light
+    AppIcon.DARK -> R.string.icon_dark
+})
 
 @Composable
 private fun accentLabel(accent: AccentTheme): String = when (accent) {

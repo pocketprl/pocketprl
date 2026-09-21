@@ -723,4 +723,10 @@
     <string name="shortcut_receive_long">Arată adresa mea de primire</string>
     <string name="shortcut_scan">Scanează</string>
     <string name="shortcut_scan_long">Scanează un cod QR de plată</string>
+    <string name="settings_icon">Pictogramă aplicație</string>
+    <string name="settings_icon_title">Pictogramă aplicație</string>
+    <string name="icon_default">Implicit</string>
+    <string name="icon_mono">Monocrom (deschis/închis)</string>
+    <string name="icon_light">Deschis</string>
+    <string name="icon_dark">Închis</string>
 </resources>

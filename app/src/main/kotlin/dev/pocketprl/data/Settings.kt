@@ -75,6 +75,8 @@ class Settings(context: Context) {
         /** Version staged for the post-install "what's new" popup; empty when there is none. */
         val whatsNewVersion: String,
         val whatsNewNotes: String,
+        /** Which launcher icon alias is enabled. */
+        val appIcon: AppIcon,
     )
 
     private val _state = MutableStateFlow(read())
@@ -130,6 +132,7 @@ class Settings(context: Context) {
             preferredNetwork = Network.fromId(prefs.getString(KEY_PREF_NETWORK, null)),
             whatsNewVersion = prefs.getString(KEY_WHATS_NEW_VERSION, "") ?: "",
             whatsNewNotes = prefs.getString(KEY_WHATS_NEW_NOTES, "") ?: "",
+            appIcon = AppIcon.fromId(prefs.getString(KEY_APP_ICON, null)),
         )
         applyFormat(snap)
         return snap
@@ -280,6 +283,11 @@ class Settings(context: Context) {
         get() = _state.value.preferredNetwork
         set(v) = edit { putString(KEY_PREF_NETWORK, v.id) }
 
+    /** Launcher icon to show (Settings › App icon). Applied via [LauncherIconManager]. */
+    var appIcon: AppIcon
+        get() = _state.value.appIcon
+        set(v) = edit { putString(KEY_APP_ICON, v.id) }
+
     /**
      * Records the version and notes to show in the "what's new" popup once the
      * update is actually installed. Called just before handing the APK to the
@@ -330,5 +338,6 @@ class Settings(context: Context) {
         private const val KEY_POLL_MODE = "poll_mode"
         private const val KEY_WHATS_NEW_VERSION = "whats_new_version"
         private const val KEY_WHATS_NEW_NOTES = "whats_new_notes"
+        private const val KEY_APP_ICON = "app_icon"
     }
 }

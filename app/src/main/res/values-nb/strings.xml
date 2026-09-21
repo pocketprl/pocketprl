@@ -715,4 +715,10 @@
     <string name="shortcut_receive_long">Vis mottaksadressen min</string>
     <string name="shortcut_scan">Skann</string>
     <string name="shortcut_scan_long">Skann en betalings-QR-kode</string>
+    <string name="settings_icon">Appikon</string>
+    <string name="settings_icon_title">Appikon</string>
+    <string name="icon_default">Standard</string>
+    <string name="icon_mono">Monokrom (lys/mørk)</string>
+    <string name="icon_light">Lys</string>
+    <string name="icon_dark">Mørk</string>
 </resources>

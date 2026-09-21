@@ -716,4 +716,11 @@
     <string name="shortcut_receive_long">Fogadási címem megjelenítése</string>
     <string name="shortcut_scan">Beolvasás</string>
     <string name="shortcut_scan_long">Fizetési QR-kód beolvasása</string>
+    <!-- ===================== app icon ===================== -->
+    <string name="settings_icon">Alkalmazásikon</string>
+    <string name="settings_icon_title">Alkalmazásikon</string>
+    <string name="icon_default">Alapértelmezett</string>
+    <string name="icon_mono">Monokróm (világos/sötét)</string>
+    <string name="icon_light">Világos</string>
+    <string name="icon_dark">Sötét</string>
 </resources>

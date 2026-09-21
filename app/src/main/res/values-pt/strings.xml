@@ -715,4 +715,10 @@
     <string name="shortcut_receive_long">Mostrar o meu endereço de receção</string>
     <string name="shortcut_scan">Digitalizar</string>
     <string name="shortcut_scan_long">Digitalizar um código QR de pagamento</string>
+    <string name="settings_icon">Ícone da aplicação</string>
+    <string name="settings_icon_title">Ícone da aplicação</string>
+    <string name="icon_default">Predefinido</string>
+    <string name="icon_mono">Monocromático (claro/escuro)</string>
+    <string name="icon_light">Claro</string>
+    <string name="icon_dark">Escuro</string>
 </resources>

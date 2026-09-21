@@ -719,4 +719,11 @@
     <string name="shortcut_receive_long">Afficher mon adresse de réception</string>
     <string name="shortcut_scan">Scanner</string>
     <string name="shortcut_scan_long">Scanner un code QR de paiement</string>
+    <!-- ===================== app icon ===================== -->
+    <string name="settings_icon">Icône de l’application</string>
+    <string name="settings_icon_title">Icône de l’application</string>
+    <string name="icon_default">Par défaut</string>
+    <string name="icon_mono">Monochrome (clair/sombre)</string>
+    <string name="icon_light">Clair</string>
+    <string name="icon_dark">Sombre</string>
 </resources>

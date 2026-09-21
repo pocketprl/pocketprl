@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.3.1
+
+* **Selectable app icon.** Settings › Appearance › App icon switches the launcher
+  icon between the default, a monochrome mark that follows the system theme, and
+  fixed light and dark variants. The choice is applied through activity-aliases
+  and survives app updates.
+* Settings spacing retuned: tighter category headers, a little more room between
+  rows.
+
 ## 2.3.0
 
 * **Transaction search.** Activity has a search field that matches an address,

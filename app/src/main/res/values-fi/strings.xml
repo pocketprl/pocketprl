@@ -717,4 +717,12 @@
     <string name="shortcut_receive_long">Näytä vastaanotto-osoitteeni</string>
     <string name="shortcut_scan">Skannaa</string>
     <string name="shortcut_scan_long">Skannaa maksun QR-koodi</string>
+
+    <!-- ===================== app icon ===================== -->
+    <string name="settings_icon">Sovelluskuvake</string>
+    <string name="settings_icon_title">Sovelluskuvake</string>
+    <string name="icon_default">Oletus</string>
+    <string name="icon_mono">Yksivärinen (vaalea/tumma)</string>
+    <string name="icon_light">Vaalea</string>
+    <string name="icon_dark">Tumma</string>
 </resources>

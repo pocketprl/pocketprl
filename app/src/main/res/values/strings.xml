@@ -346,6 +346,12 @@
     <string name="settings_secure_all_sub">Also protect the home and activity screens</string>
     <string name="settings_theme">Theme</string>
     <string name="settings_accent">Accent colour</string>
+    <string name="settings_icon">App icon</string>
+    <string name="settings_icon_title">App icon</string>
+    <string name="icon_default">Default</string>
+    <string name="icon_mono">Monochrome (light/dark)</string>
+    <string name="icon_light">Light</string>
+    <string name="icon_dark">Dark</string>
     <string name="settings_dynamic_color">Dynamic colour</string>
     <string name="settings_dynamic_color_sub">Use the system wallpaper palette (Android 12+)</string>
     <string name="settings_reduced_motion">Reduce motion</string>

@@ -733,4 +733,10 @@
     <string name="shortcut_receive_long">Показать адрес для получения</string>
     <string name="shortcut_scan">Сканировать</string>
     <string name="shortcut_scan_long">Сканировать QR-код платежа</string>
+    <string name="settings_icon">Значок приложения</string>
+    <string name="settings_icon_title">Значок приложения</string>
+    <string name="icon_default">По умолчанию</string>
+    <string name="icon_mono">Монохромный (светлый/тёмный)</string>
+    <string name="icon_light">Светлый</string>
+    <string name="icon_dark">Тёмный</string>
 </resources>
