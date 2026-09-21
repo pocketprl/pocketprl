@@ -728,10 +728,10 @@
     <string name="icon_dark">Scuro</string>
 
     <!-- ===================== version history / downgrade ===================== -->
-    <string name="settings_about_downgrade">Downgrade</string>
-    <string name="downgrade_title">Cronologia versioni</string>
-    <string name="downgrade_hero_title">Torna a una versione precedente</string>
-    <string name="downgrade_hero_body">Scegli una versione precedente da installare sopra questa. I tuoi portafogli e la cronologia vengono conservati.</string>
+    <string name="settings_about_downgrade">Cambia versione</string>
+    <string name="downgrade_title">Cambia versione</string>
+    <string name="downgrade_hero_title">Cambia versione</string>
+    <string name="downgrade_hero_body">Scegli una versione da installare. I tuoi portafogli e la cronologia vengono conservati.</string>
     <string name="downgrade_loading">Caricamento delle versioni…</string>
     <string name="downgrade_failed">Impossibile caricare le versioni da GitHub. Controlla la connessione e riprova.</string>
     <string name="downgrade_current">Attuale</string>
@@ -751,8 +751,8 @@
     <string name="downgrade_notes_title">Note di rilascio</string>
     <string name="downgrade_notes_empty">Nessuna nota di rilascio per questa versione.</string>
     <string name="downgrade_warning">Questa operazione installa una build alternativa e abbandona la linea di rilascio standard. Da qui puoi solo scendere, finché non risali — e da quel momento puoi solo salire. I normali aggiornamenti smettono di installarsi. I tuoi portafogli e i fondi non sono interessati.</string>
-    <string name="downgrade_slide">Scorri per eseguire il downgrade alla v%1$s</string>
-    <string name="downgrade_slide_hint">Scorri o tocca due volte per eseguire il downgrade</string>
+    <string name="downgrade_slide">Scorri per passare alla v%1$s</string>
+    <string name="downgrade_slide_hint">Scorri o tocca due volte per cambiare versione</string>
     <string name="personalize_section_security">Sicurezza</string>
     <string name="personalize_biometric_sub">Configura lo sblocco con impronta o volto dopo aver creato il portafoglio</string>
     <string name="onboard_restore_slide_hint">Scorri o tocca due volte per ripristinare</string>
@@ -788,4 +788,7 @@
     <string name="settings_about_forward_title">Vai avanti</string>
     <string name="settings_about_forward_body">Questa operazione installa la build di ritorno di %1$s e ti mantiene sulla corsia alternativa, solo in avanti. Per scendere di nuovo dovresti ripristinare.</string>
     <string name="settings_about_alt_latest">Sei sull’ultima build alternativa.</string>
+    <string name="switch_blocked_back">Stai usando una build di ritorno alternativa, che installa solo build di ritorno più recenti. Questa versione non può essere installata sopra di essa. Ripristina per tornare alla linea standard.</string>
+    <string name="switch_blocked">Questa versione non può essere installata direttamente sopra la tua build. Ripristina per passare a questa versione.</string>
+    <string name="switch_cant_here">Impossibile installare questa versione qui</string>
 </resources>

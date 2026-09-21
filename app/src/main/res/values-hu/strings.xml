@@ -724,10 +724,10 @@
     <string name="icon_light">Világos</string>
     <string name="icon_dark">Sötét</string>
     <!-- ===================== downgrade ===================== -->
-    <string name="settings_about_downgrade">Visszalépés</string>
-    <string name="downgrade_title">Verziótörténet</string>
-    <string name="downgrade_hero_title">Lépj vissza egy verziót</string>
-    <string name="downgrade_hero_body">Válassz egy korábbi kiadást, hogy erre rátelepítsd. A pénztárcáid és az előzményeid megmaradnak.</string>
+    <string name="settings_about_downgrade">Verzióváltás</string>
+    <string name="downgrade_title">Verzióváltás</string>
+    <string name="downgrade_hero_title">Válts verziót</string>
+    <string name="downgrade_hero_body">Válassz egy telepítendő verziót. A pénztárcáid és az előzményeid megmaradnak.</string>
     <string name="downgrade_loading">Kiadások betöltése…</string>
     <string name="downgrade_failed">Nem sikerült betölteni a kiadásokat a GitHubból. Ellenőrizd a kapcsolatot, és próbáld újra.</string>
     <string name="downgrade_current">Jelenlegi</string>
@@ -747,8 +747,8 @@
     <string name="downgrade_notes_title">Kiadási megjegyzések</string>
     <string name="downgrade_notes_empty">Ehhez a verzióhoz nincsenek kiadási megjegyzések.</string>
     <string name="downgrade_warning">Ez egy alternatív buildet telepít, és elhagyja a normál kiadási vonalat. Innen csak lefelé mehetsz, amíg vissza nem mész fel — és onnantól csak felfelé. A normál frissítések többé nem települnek. A pénztárcáidat és az összegeidet ez nem érinti.</string>
-    <string name="downgrade_slide">Csúsztasd a(z) v%1$s verzióra való visszalépéshez</string>
-    <string name="downgrade_slide_hint">Csúsztasd vagy koppints duplán a visszalépéshez</string>
+    <string name="downgrade_slide">Csúsztasd a(z) v%1$s verzióra való váltáshoz</string>
+    <string name="downgrade_slide_hint">Csúsztasd vagy koppints duplán a váltáshoz</string>
     <string name="personalize_section_security">Biztonság</string>
     <string name="personalize_biometric_sub">Állíts be ujjlenyomat- vagy arcfeloldást, miután létrejött a pénztárcád</string>
     <string name="onboard_restore_slide_hint">Csúsztasd vagy koppints duplán a visszaállításhoz</string>
@@ -782,4 +782,7 @@
     <string name="settings_about_forward_title">Lépj előre</string>
     <string name="settings_about_forward_body">Ez a(z) %1$s visszatérési buildjét telepíti, és az alternatív sávon tart, csak előre. Ha újra lefelé akarnál menni, vissza kellene állítanod.</string>
     <string name="settings_about_alt_latest">A legújabb alternatív builden vagy.</string>
+    <string name="switch_blocked_back">Egy alternatív visszatérési builden vagy, amely csak újabb visszatérési buildeket telepít. Ez a verzió nem telepíthető rá. A normál kiadási vonalra való visszatéréshez állítsd vissza.</string>
+    <string name="switch_blocked">Ez a verzió nem telepíthető a builded fölé helyben. A rá váltáshoz állítsd vissza.</string>
+    <string name="switch_cant_here">Ez a verzió itt nem telepíthető</string>
 </resources>

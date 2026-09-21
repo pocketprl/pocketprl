@@ -487,10 +487,10 @@
     <string name="update_install_not_ready">Preparing the update…</string>
 
     <!-- ===================== version history / downgrade ===================== -->
-    <string name="settings_about_downgrade">Downgrade</string>
-    <string name="downgrade_title">Version history</string>
-    <string name="downgrade_hero_title">Go back a version</string>
-    <string name="downgrade_hero_body">Pick an earlier release to install over this one. Your wallets and history are kept.</string>
+    <string name="settings_about_downgrade">Switch versions</string>
+    <string name="downgrade_title">Switch versions</string>
+    <string name="downgrade_hero_title">Switch version</string>
+    <string name="downgrade_hero_body">Pick a version to install. Your wallets and history are kept.</string>
     <string name="downgrade_loading">Loading releases…</string>
     <string name="downgrade_failed">Could not load releases from GitHub. Check your connection and try again.</string>
     <string name="downgrade_current">Current</string>
@@ -510,8 +510,11 @@
     <string name="downgrade_notes_title">Release notes</string>
     <string name="downgrade_notes_empty">No release notes for this version.</string>
     <string name="downgrade_warning">This installs an alternate build and leaves the regular release line. From here you can only go down, until you go back up — and then only up. Normal updates stop installing. Your wallets and funds are unaffected.</string>
-    <string name="downgrade_slide">Slide to downgrade to v%1$s</string>
-    <string name="downgrade_slide_hint">Slide or double-tap to downgrade</string>
+    <string name="downgrade_slide">Slide to switch to v%1$s</string>
+    <string name="downgrade_slide_hint">Slide or double-tap to switch</string>
+    <string name="switch_blocked_back">You’re on an alternate return build, which only installs newer return builds. This version can’t be installed over it. Reset to go back to the regular line.</string>
+    <string name="switch_blocked">This version can’t be installed over your build in place. Reset to switch to it.</string>
+    <string name="switch_cant_here">Can’t install this version here</string>
     <string name="return_build_title">Return build</string>
     <string name="return_build_hero">You’re on a return build</string>
     <string name="return_build_body">This build was made to climb out of an older version, so its package version is higher than the releases you could go back to. Downgrading is off until you switch to the regular build.</string>

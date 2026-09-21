@@ -723,10 +723,10 @@
     <string name="icon_dark">Escuro</string>
 
     <!-- ===================== version history / downgrade ===================== -->
-    <string name="settings_about_downgrade">Downgrade</string>
-    <string name="downgrade_title">Histórico de versões</string>
-    <string name="downgrade_hero_title">Voltar a uma versão anterior</string>
-    <string name="downgrade_hero_body">Escolha uma versão anterior para instalar sobre esta. As suas carteiras e o seu histórico são mantidos.</string>
+    <string name="settings_about_downgrade">Mudar de versão</string>
+    <string name="downgrade_title">Mudar de versão</string>
+    <string name="downgrade_hero_title">Mudar de versão</string>
+    <string name="downgrade_hero_body">Escolha uma versão para instalar. As suas carteiras e o seu histórico são mantidos.</string>
     <string name="downgrade_loading">A carregar versões…</string>
     <string name="downgrade_failed">Não foi possível carregar as versões do GitHub. Verifique a sua ligação e tente novamente.</string>
     <string name="downgrade_current">Atual</string>
@@ -746,8 +746,8 @@
     <string name="downgrade_notes_title">Notas de versão</string>
     <string name="downgrade_notes_empty">Não há notas de versão para esta versão.</string>
     <string name="downgrade_warning">Isto instala uma compilação alternativa e abandona a linha de lançamento normal. A partir daqui só pode descer, até voltar a subir — e a partir daí só pode subir. As atualizações normais deixam de ser instaladas. As suas carteiras e os seus fundos não são afetados.</string>
-    <string name="downgrade_slide">Deslize para reverter para a v%1$s</string>
-    <string name="downgrade_slide_hint">Deslize ou toque duas vezes para reverter</string>
+    <string name="downgrade_slide">Deslize para mudar para a v%1$s</string>
+    <string name="downgrade_slide_hint">Deslize ou toque duas vezes para mudar de versão</string>
     <string name="personalize_section_security">Segurança</string>
     <string name="personalize_biometric_sub">Configure o desbloqueio por impressão digital ou rosto depois de criar a sua carteira</string>
     <string name="onboard_restore_slide_hint">Deslize ou toque duas vezes para restaurar</string>
@@ -783,4 +783,7 @@
     <string name="settings_about_forward_title">Avançar</string>
     <string name="settings_about_forward_body">Isto instala a compilação de regresso de %1$s e mantém-no na via alternativa, só em frente. Para voltar a descer, teria de repor.</string>
     <string name="settings_about_alt_latest">Está na compilação alternativa mais recente.</string>
+    <string name="switch_blocked_back">Está numa compilação de regresso alternativa, que só instala compilações de regresso mais recentes. Esta versão não pode ser instalada por cima. Reponha para voltar à linha normal.</string>
+    <string name="switch_blocked">Esta versão não pode ser instalada por cima da sua compilação. Reponha para mudar para ela.</string>
+    <string name="switch_cant_here">Não é possível instalar esta versão aqui</string>
 </resources>

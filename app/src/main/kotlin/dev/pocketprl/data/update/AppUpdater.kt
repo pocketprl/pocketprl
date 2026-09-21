@@ -11,6 +11,7 @@ import android.provider.MediaStore
 import android.provider.Settings
 import androidx.core.content.FileProvider
 import dev.pocketprl.core.crypto.toHex
+import dev.pocketprl.data.VersionCodes
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -84,7 +85,16 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
         _state.value = State.Idle
     }
 
-    fun download(info: ReleaseInfo) {
+    /** Downloads the build of [info] appropriate for the current lane. */
+    fun download(info: ReleaseInfo) = start(info, preferPrimary = false)
+
+    /**
+     * Downloads the plain primary build of [info], for the reset flow: after a
+     * reinstall the user must land on the regular line, not an alternate build.
+     */
+    fun downloadPrimary(info: ReleaseInfo) = start(info, preferPrimary = true)
+
+    private fun start(info: ReleaseInfo, preferPrimary: Boolean) {
         if (job?.isActive == true) return
         job = scope.launch(Dispatchers.IO) {
             val dir = File(context.cacheDir, DIR).apply { mkdirs() }
@@ -92,15 +102,17 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
             dir.listFiles()?.forEach { runCatching { it.delete() } }
 
             val installed = installedVersionCode()
+            val installedName = installedVersionName()
             val assets = info.apkAssets.ifEmpty {
                 if (info.apkUrl != null) listOf(ApkAsset(info.apkName, info.apkUrl, info.apkSize, info.sha256)) else emptyList()
             }
-            // Pick the lowest asset whose encoded code is above the installed one
-            // (a return build), else the plain build. Lets a rolled-back install
-            // update forward to a build published above its code.
-            val chosen = assets.filter { it.versionCode != null && it.versionCode > installed }.minByOrNull { it.versionCode!! }
-                ?: assets.firstOrNull { it.versionCode == null }
-                ?: assets.firstOrNull()
+            val chosen = if (preferPrimary) {
+                assets.firstOrNull { it.versionCode == null } ?: assets.firstOrNull()
+            } else {
+                info.assetFor(installed, installedName, VersionCodes.laneOf(installed))
+                    ?: assets.firstOrNull { it.versionCode == null }
+                    ?: assets.firstOrNull()
+            }
             val file = File(dir, chosen?.name ?: DEFAULT_APK_NAME)
             try {
                 val url = chosen?.url ?: throw DownloadException(Failure.NO_APK)
@@ -230,6 +242,11 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
     fun installedVersionCode(): Long = runCatching {
         context.packageManager.getPackageInfo(context.packageName, 0).longVersionCode
     }.getOrDefault(0L)
+
+    /** Version name of the installed app; empty when it cannot be read. */
+    fun installedVersionName(): String = runCatching {
+        context.packageManager.getPackageInfo(context.packageName, 0).versionName ?: ""
+    }.getOrDefault("")
 
     /** Version code stored in an APK on disk, or null when it cannot be read. */
     fun archiveVersionCode(file: File): Long? = runCatching {

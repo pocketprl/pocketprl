@@ -725,10 +725,10 @@
     <string name="icon_dark">Dunkel</string>
 
     <!-- ===================== version history / downgrade ===================== -->
-    <string name="settings_about_downgrade">Downgrade</string>
-    <string name="downgrade_title">Versionsverlauf</string>
-    <string name="downgrade_hero_title">Zu einer älteren Version zurück</string>
-    <string name="downgrade_hero_body">Wähle ein früheres Release, um es über diese Version zu installieren. Deine Wallets und deine Historie bleiben erhalten.</string>
+    <string name="settings_about_downgrade">Versionen wechseln</string>
+    <string name="downgrade_title">Versionen wechseln</string>
+    <string name="downgrade_hero_title">Version wechseln</string>
+    <string name="downgrade_hero_body">Wähle eine Version zum Installieren. Deine Wallets und deine Historie bleiben erhalten.</string>
     <string name="downgrade_loading">Releases werden geladen…</string>
     <string name="downgrade_failed">Releases konnten nicht von GitHub geladen werden. Prüfe deine Verbindung und versuche es erneut.</string>
     <string name="downgrade_current">Aktuell</string>
@@ -748,8 +748,8 @@
     <string name="downgrade_notes_title">Versionshinweise</string>
     <string name="downgrade_notes_empty">Keine Versionshinweise für diese Version.</string>
     <string name="downgrade_warning">Dies installiert einen alternativen Build und verlässt die reguläre Release-Linie. Von hier aus geht es nur nach unten, bis du wieder nach oben gehst — und dann nur noch nach oben. Normale Updates werden nicht mehr installiert. Deine Wallets und dein Guthaben sind nicht betroffen.</string>
-    <string name="downgrade_slide">Zum Downgrade auf v%1$s schieben</string>
-    <string name="downgrade_slide_hint">Zum Downgrade schieben oder doppelt tippen</string>
+    <string name="downgrade_slide">Zum Wechseln auf v%1$s schieben</string>
+    <string name="downgrade_slide_hint">Zum Wechseln schieben oder doppelt tippen</string>
     <string name="personalize_section_security">Sicherheit</string>
     <string name="personalize_biometric_sub">Richte das Entsperren per Fingerabdruck oder Gesicht ein, nachdem dein Wallet erstellt wurde</string>
     <string name="onboard_restore_slide_hint">Zum Wiederherstellen schieben oder doppelt tippen</string>
@@ -785,4 +785,7 @@
     <string name="settings_about_forward_title">Vorwärts wechseln</string>
     <string name="settings_about_forward_body">Dies installiert den Rückkehr-Build von %1$s und hält dich auf der alternativen Spur, nur vorwärts. Um wieder nach unten zu gehen, müsstest du zurücksetzen.</string>
     <string name="settings_about_alt_latest">Du bist auf dem neuesten alternativen Build.</string>
+    <string name="switch_blocked_back">Du bist auf einem alternativen Rückkehr-Build, der nur neuere Rückkehr-Builds installiert. Diese Version kann nicht darüber installiert werden. Setze zurück, um zur regulären Linie zurückzukehren.</string>
+    <string name="switch_blocked">Diese Version kann nicht direkt über deinen Build installiert werden. Setze zurück, um zu ihr zu wechseln.</string>
+    <string name="switch_cant_here">Diese Version kann hier nicht installiert werden</string>
 </resources>

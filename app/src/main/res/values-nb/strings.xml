@@ -722,10 +722,10 @@
     <string name="icon_light">Lys</string>
     <string name="icon_dark">Mørk</string>
     <!-- ===================== downgrade ===================== -->
-    <string name="settings_about_downgrade">Nedgradering</string>
-    <string name="downgrade_title">Versjonshistorikk</string>
-    <string name="downgrade_hero_title">Gå tilbake en versjon</string>
-    <string name="downgrade_hero_body">Velg en tidligere utgivelse for å installere over denne. Lommebøkene og historikken din beholdes.</string>
+    <string name="settings_about_downgrade">Bytt versjon</string>
+    <string name="downgrade_title">Bytt versjon</string>
+    <string name="downgrade_hero_title">Bytt versjon</string>
+    <string name="downgrade_hero_body">Velg en versjon å installere. Lommebøkene og historikken din beholdes.</string>
     <string name="downgrade_loading">Laster inn utgivelser…</string>
     <string name="downgrade_failed">Kunne ikke laste inn utgivelser fra GitHub. Sjekk tilkoblingen og prøv igjen.</string>
     <string name="downgrade_current">Gjeldende</string>
@@ -745,8 +745,8 @@
     <string name="downgrade_notes_title">Utgivelsesnotater</string>
     <string name="downgrade_notes_empty">Ingen utgivelsesnotater for denne versjonen.</string>
     <string name="downgrade_warning">Dette installerer et alternativt bygg og forlater den vanlige utgivelseslinjen. Herfra kan du bare gå ned, helt til du går opp igjen — og da bare opp. Vanlige oppdateringer slutter å installeres. Lommebøkene og midlene dine påvirkes ikke.</string>
-    <string name="downgrade_slide">Skyv for å nedgradere til v%1$s</string>
-    <string name="downgrade_slide_hint">Skyv eller dobbelttrykk for å nedgradere</string>
+    <string name="downgrade_slide">Skyv for å bytte til v%1$s</string>
+    <string name="downgrade_slide_hint">Skyv eller dobbelttrykk for å bytte</string>
     <string name="personalize_section_security">Sikkerhet</string>
     <string name="personalize_biometric_sub">Sett opp fingeravtrykk eller ansiktslås etter at lommeboken er opprettet</string>
     <string name="onboard_restore_slide_hint">Skyv eller dobbelttrykk for å gjenopprette</string>
@@ -780,4 +780,7 @@
     <string name="settings_about_forward_title">Gå fremover</string>
     <string name="settings_about_forward_body">Dette installerer returbygget til %1$s og holder deg på det alternative sporet, bare fremover. For å gå ned igjen må du tilbakestille.</string>
     <string name="settings_about_alt_latest">Du er på det nyeste alternative bygget.</string>
+    <string name="switch_blocked_back">Du er på et alternativt returbygg, som bare installerer nyere returbygg. Denne versjonen kan ikke installeres over det. Tilbakestill for å gå tilbake til den vanlige utgivelseslinjen.</string>
+    <string name="switch_blocked">Denne versjonen kan ikke installeres over bygget ditt på plass. Tilbakestill for å bytte til den.</string>
+    <string name="switch_cant_here">Kan ikke installere denne versjonen her</string>
 </resources>

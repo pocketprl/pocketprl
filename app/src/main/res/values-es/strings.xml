@@ -728,10 +728,10 @@
     <string name="icon_dark">Oscuro</string>
 
     <!-- ===================== version history / downgrade ===================== -->
-    <string name="settings_about_downgrade">Downgrade</string>
-    <string name="downgrade_title">Historial de versiones</string>
-    <string name="downgrade_hero_title">Volver a una versión anterior</string>
-    <string name="downgrade_hero_body">Elige una versión anterior para instalarla sobre esta. Tus carteras y tu historial se conservan.</string>
+    <string name="settings_about_downgrade">Cambiar de versión</string>
+    <string name="downgrade_title">Cambiar de versión</string>
+    <string name="downgrade_hero_title">Cambiar de versión</string>
+    <string name="downgrade_hero_body">Elige una versión para instalar. Tus carteras y tu historial se conservan.</string>
     <string name="downgrade_loading">Cargando versiones…</string>
     <string name="downgrade_failed">No se pudieron cargar las versiones desde GitHub. Comprueba tu conexión e inténtalo de nuevo.</string>
     <string name="downgrade_current">Actual</string>
@@ -751,8 +751,8 @@
     <string name="downgrade_notes_title">Notas de la versión</string>
     <string name="downgrade_notes_empty">No hay notas de la versión para esta versión.</string>
     <string name="downgrade_warning">Esto instala una compilación alternativa y abandona la línea de publicación estándar. Desde aquí solo puedes bajar, hasta que vuelvas a subir — y a partir de ahí solo puedes subir. Las actualizaciones normales dejan de instalarse. Tus carteras y tus fondos no se ven afectados.</string>
-    <string name="downgrade_slide">Desliza para revertir a la v%1$s</string>
-    <string name="downgrade_slide_hint">Desliza o toca dos veces para revertir</string>
+    <string name="downgrade_slide">Desliza para cambiar a la v%1$s</string>
+    <string name="downgrade_slide_hint">Desliza o toca dos veces para cambiar de versión</string>
     <string name="personalize_section_security">Seguridad</string>
     <string name="personalize_biometric_sub">Configura el desbloqueo por huella o rostro después de crear tu cartera</string>
     <string name="onboard_restore_slide_hint">Desliza o toca dos veces para restaurar</string>
@@ -788,4 +788,7 @@
     <string name="settings_about_forward_title">Avanzar</string>
     <string name="settings_about_forward_body">Esto instala la compilación de retorno de %1$s y te mantiene en la vía alternativa, solo hacia adelante. Para volver a bajar, tendrías que restablecer.</string>
     <string name="settings_about_alt_latest">Estás en la última compilación alternativa.</string>
+    <string name="switch_blocked_back">Estás en una compilación de retorno alternativa, que solo instala compilaciones de retorno más recientes. Esta versión no se puede instalar encima. Restablece para volver a la línea estándar.</string>
+    <string name="switch_blocked">Esta versión no se puede instalar encima de tu compilación. Restablece para cambiar a ella.</string>
+    <string name="switch_cant_here">No se puede instalar esta versión aquí</string>
 </resources>

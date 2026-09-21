@@ -741,10 +741,10 @@
     <string name="icon_dark">Тёмный</string>
 
     <!-- ===================== история / откат версии ===================== -->
-    <string name="settings_about_downgrade">Откат версии</string>
-    <string name="downgrade_title">История версий</string>
-    <string name="downgrade_hero_title">Вернуться к предыдущей версии</string>
-    <string name="downgrade_hero_body">Выберите более ранний выпуск, чтобы установить его поверх текущего. Ваши кошельки и история сохранятся.</string>
+    <string name="settings_about_downgrade">Переключить версию</string>
+    <string name="downgrade_title">Переключить версию</string>
+    <string name="downgrade_hero_title">Переключить версию</string>
+    <string name="downgrade_hero_body">Выберите версию для установки. Ваши кошельки и история сохранятся.</string>
     <string name="downgrade_loading">Загрузка выпусков…</string>
     <string name="downgrade_failed">Не удалось загрузить выпуски с GitHub. Проверьте подключение и попробуйте снова.</string>
     <string name="downgrade_current">Текущая</string>
@@ -764,8 +764,8 @@
     <string name="downgrade_notes_title">Примечания к выпуску</string>
     <string name="downgrade_notes_empty">Для этой версии нет примечаний к выпуску.</string>
     <string name="downgrade_warning">Это установит альтернативную сборку и выведет вас из обычной линии выпусков. Отсюда можно идти только вниз, пока вы не подниметесь наверх — а после этого только наверх. Обычные обновления перестанут устанавливаться. Ваши кошельки и средства не пострадают.</string>
-    <string name="downgrade_slide">Сдвиньте, чтобы откатиться к v%1$s</string>
-    <string name="downgrade_slide_hint">Сдвиньте или дважды коснитесь, чтобы откатиться</string>
+    <string name="downgrade_slide">Сдвиньте, чтобы переключиться на v%1$s</string>
+    <string name="downgrade_slide_hint">Сдвиньте или дважды коснитесь, чтобы переключиться</string>
     <string name="personalize_section_security">Безопасность</string>
     <string name="personalize_biometric_sub">Настройте отпечаток пальца или разблокировку по лицу после создания кошелька</string>
     <string name="onboard_restore_slide_hint">Сдвиньте или дважды коснитесь, чтобы восстановить</string>
@@ -800,4 +800,7 @@
     <string name="settings_about_forward_title">Двигаться вперёд</string>
     <string name="settings_about_forward_body">Это установит возвратную сборку версии %1$s и оставит вас на альтернативном пути, только вперёд. Чтобы снова спуститься, потребовался бы сброс.</string>
     <string name="settings_about_alt_latest">Вы на последней альтернативной сборке.</string>
+    <string name="switch_blocked_back">У вас альтернативная возвратная сборка, которая устанавливает только более новые возвратные сборки. Эту версию поверх неё установить нельзя. Выполните сброс, чтобы вернуться к обычной линии выпусков.</string>
+    <string name="switch_blocked">Эту версию нельзя установить поверх вашей сборки на месте. Чтобы переключиться на неё, выполните сброс.</string>
+    <string name="switch_cant_here">Эту версию здесь установить нельзя</string>
 </resources>

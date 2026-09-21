@@ -728,10 +728,10 @@
     <string name="icon_dark">Sombre</string>
 
     <!-- ===================== version history / downgrade ===================== -->
-    <string name="settings_about_downgrade">Rétrograder</string>
-    <string name="downgrade_title">Historique des versions</string>
-    <string name="downgrade_hero_title">Revenir à une version précédente</string>
-    <string name="downgrade_hero_body">Choisissez une version antérieure à installer par-dessus celle-ci. Vos portefeuilles et votre historique sont conservés.</string>
+    <string name="settings_about_downgrade">Changer de version</string>
+    <string name="downgrade_title">Changer de version</string>
+    <string name="downgrade_hero_title">Changer de version</string>
+    <string name="downgrade_hero_body">Choisissez une version à installer. Vos portefeuilles et votre historique sont conservés.</string>
     <string name="downgrade_loading">Chargement des versions…</string>
     <string name="downgrade_failed">Impossible de charger les versions depuis GitHub. Vérifiez votre connexion et réessayez.</string>
     <string name="downgrade_current">Actuelle</string>
@@ -751,8 +751,8 @@
     <string name="downgrade_notes_title">Notes de version</string>
     <string name="downgrade_notes_empty">Aucune note de version pour cette version.</string>
     <string name="downgrade_warning">Cette opération installe une compilation alternative et quitte la ligne de publication standard. D’ici, vous ne pouvez que descendre, jusqu’à ce que vous remontiez — et ensuite, uniquement vers le haut. Les mises à jour normales cessent de s’installer. Vos portefeuilles et vos fonds ne sont pas affectés.</string>
-    <string name="downgrade_slide">Glissez pour rétrograder vers la v%1$s</string>
-    <string name="downgrade_slide_hint">Glissez ou touchez deux fois pour rétrograder</string>
+    <string name="downgrade_slide">Glissez pour passer à la v%1$s</string>
+    <string name="downgrade_slide_hint">Glissez ou touchez deux fois pour changer de version</string>
     <string name="personalize_section_security">Sécurité</string>
     <string name="personalize_biometric_sub">Configurez le déverrouillage par empreinte ou visage après la création de votre portefeuille</string>
     <string name="onboard_restore_slide_hint">Glissez ou touchez deux fois pour restaurer</string>
@@ -788,4 +788,7 @@
     <string name="settings_about_forward_title">Avancer</string>
     <string name="settings_about_forward_body">Cette opération installe la compilation de retour de %1$s et vous garde sur la voie alternative, en avant uniquement. Pour redescendre, il faudrait réinitialiser.</string>
     <string name="settings_about_alt_latest">Vous êtes sur la dernière compilation alternative.</string>
+    <string name="switch_blocked_back">Vous utilisez une compilation de retour alternative, qui n’installe que des compilations de retour plus récentes. Cette version ne peut pas être installée par-dessus. Réinitialisez pour revenir à la ligne standard.</string>
+    <string name="switch_blocked">Cette version ne peut pas être installée par-dessus votre compilation, sur place. Réinitialisez pour y passer.</string>
+    <string name="switch_cant_here">Impossible d’installer cette version ici</string>
 </resources>

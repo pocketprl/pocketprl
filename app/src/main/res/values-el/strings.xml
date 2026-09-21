@@ -726,10 +726,10 @@
     <string name="icon_light">Φωτεινό</string>
     <string name="icon_dark">Σκοτεινό</string>
     <!-- ===================== downgrade ===================== -->
-    <string name="settings_about_downgrade">Υποβάθμιση</string>
-    <string name="downgrade_title">Ιστορικό εκδόσεων</string>
-    <string name="downgrade_hero_title">Επιστροφή σε προηγούμενη έκδοση</string>
-    <string name="downgrade_hero_body">Διαλέξτε μια προηγούμενη έκδοση για εγκατάσταση πάνω από αυτήν. Τα πορτοφόλια και το ιστορικό σας διατηρούνται.</string>
+    <string name="settings_about_downgrade">Αλλαγή έκδοσης</string>
+    <string name="downgrade_title">Αλλαγή έκδοσης</string>
+    <string name="downgrade_hero_title">Αλλαγή έκδοσης</string>
+    <string name="downgrade_hero_body">Διαλέξτε μια έκδοση για εγκατάσταση. Τα πορτοφόλια και το ιστορικό σας διατηρούνται.</string>
     <string name="downgrade_loading">Φόρτωση εκδόσεων…</string>
     <string name="downgrade_failed">Δεν ήταν δυνατή η φόρτωση εκδόσεων από το GitHub. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.</string>
     <string name="downgrade_current">Τρέχουσα</string>
@@ -749,8 +749,8 @@
     <string name="downgrade_notes_title">Σημειώσεις έκδοσης</string>
     <string name="downgrade_notes_empty">Δεν υπάρχουν σημειώσεις έκδοσης για αυτή την έκδοση.</string>
     <string name="downgrade_warning">Αυτό εγκαθιστά μια εναλλακτική δομή και εγκαταλείπει την κανονική γραμμή έκδοσης. Από εδώ μπορείτε μόνο να κατεβείτε, μέχρι να ξανανεβείτε — και μετά μόνο προς τα πάνω. Οι κανονικές ενημερώσεις σταματούν να εγκαθίστανται. Τα πορτοφόλια και τα χρήματά σας δεν επηρεάζονται.</string>
-    <string name="downgrade_slide">Σύρετε για υποβάθμιση στην v%1$s</string>
-    <string name="downgrade_slide_hint">Σύρετε ή πατήστε διπλά για υποβάθμιση</string>
+    <string name="downgrade_slide">Σύρετε για εναλλαγή στην v%1$s</string>
+    <string name="downgrade_slide_hint">Σύρετε ή πατήστε διπλά για εναλλαγή</string>
     <string name="personalize_section_security">Ασφάλεια</string>
     <string name="personalize_biometric_sub">Ρυθμίστε δακτυλικό αποτύπωμα ή ξεκλείδωμα προσώπου αφού δημιουργηθεί το πορτοφόλι σας</string>
     <string name="onboard_restore_slide_hint">Σύρετε ή πατήστε διπλά για επαναφορά</string>
@@ -784,4 +784,7 @@
     <string name="settings_about_forward_title">Προχωρήστε μπροστά</string>
     <string name="settings_about_forward_body">Αυτό εγκαθιστά τη δομή επιστροφής της %1$s και σας κρατά στην εναλλακτική διαδρομή, μόνο προς τα εμπρός. Για να ξανακατεβείτε, θα κάνατε επαναφορά.</string>
     <string name="settings_about_alt_latest">Βρίσκεστε στην πιο πρόσφατη εναλλακτική δομή.</string>
+    <string name="switch_blocked_back">Βρίσκεστε σε μια εναλλακτική δομή επιστροφής, η οποία εγκαθιστά μόνο νεότερες δομές επιστροφής. Αυτή η έκδοση δεν μπορεί να εγκατασταθεί πάνω της. Κάντε επαναφορά για να επιστρέψετε στην κανονική γραμμή.</string>
+    <string name="switch_blocked">Αυτή η έκδοση δεν μπορεί να εγκατασταθεί πάνω από τη δομή σας επιτόπου. Κάντε επαναφορά για να μεταβείτε σε αυτήν.</string>
+    <string name="switch_cant_here">Δεν είναι δυνατή η εγκατάσταση αυτής της έκδοσης εδώ</string>
 </resources>

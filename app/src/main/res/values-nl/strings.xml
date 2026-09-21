@@ -724,10 +724,10 @@
     <string name="icon_dark">Donker</string>
 
     <!-- ===================== version history / downgrade ===================== -->
-    <string name="settings_about_downgrade">Downgraden</string>
-    <string name="downgrade_title">Versiegeschiedenis</string>
-    <string name="downgrade_hero_title">Terug naar een eerdere versie</string>
-    <string name="downgrade_hero_body">Kies een eerdere release om over deze versie te installeren. Je wallets en geschiedenis blijven behouden.</string>
+    <string name="settings_about_downgrade">Versies wisselen</string>
+    <string name="downgrade_title">Versies wisselen</string>
+    <string name="downgrade_hero_title">Van versie wisselen</string>
+    <string name="downgrade_hero_body">Kies een versie om te installeren. Je wallets en geschiedenis blijven behouden.</string>
     <string name="downgrade_loading">Releases laden…</string>
     <string name="downgrade_failed">Kon geen releases van GitHub laden. Controleer je verbinding en probeer het opnieuw.</string>
     <string name="downgrade_current">Huidig</string>
@@ -747,8 +747,8 @@
     <string name="downgrade_notes_title">Release-opmerkingen</string>
     <string name="downgrade_notes_empty">Geen release-opmerkingen voor deze versie.</string>
     <string name="downgrade_warning">Dit installeert een alternatieve build en verlaat de gewone release-lijn. Vanaf hier kun je alleen naar beneden, tot je weer naar boven gaat — en dan alleen nog naar boven. Normale updates worden niet meer geïnstalleerd. Je wallets en geld blijven onaangetast.</string>
-    <string name="downgrade_slide">Schuif om te downgraden naar v%1$s</string>
-    <string name="downgrade_slide_hint">Schuif of dubbeltik om te downgraden</string>
+    <string name="downgrade_slide">Schuif om te wisselen naar v%1$s</string>
+    <string name="downgrade_slide_hint">Schuif of dubbeltik om te wisselen</string>
     <string name="personalize_section_security">Beveiliging</string>
     <string name="personalize_biometric_sub">Stel ontgrendelen met vingerafdruk of gezicht in nadat je wallet is aangemaakt</string>
     <string name="onboard_restore_slide_hint">Schuif of dubbeltik om te herstellen</string>
@@ -784,4 +784,7 @@
     <string name="settings_about_forward_title">Vooruitgaan</string>
     <string name="settings_about_forward_body">Dit installeert de terugkeerbuild van %1$s en houdt je op het alternatieve spoor, alleen vooruit. Om weer naar beneden te gaan, zou je een reset moeten doen.</string>
     <string name="settings_about_alt_latest">Je gebruikt de nieuwste alternatieve build.</string>
+    <string name="switch_blocked_back">Je gebruikt een alternatieve terugkeerbuild, die alleen nieuwere terugkeerbuilds installeert. Deze versie kan er niet overheen worden geïnstalleerd. Reset om terug te gaan naar de gewone lijn.</string>
+    <string name="switch_blocked">Deze versie kan niet ter plaatse over je build heen worden geïnstalleerd. Reset om ernaar te wisselen.</string>
+    <string name="switch_cant_here">Kan deze versie hier niet installeren</string>
 </resources>

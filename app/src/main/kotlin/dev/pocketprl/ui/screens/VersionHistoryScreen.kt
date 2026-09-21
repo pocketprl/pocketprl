@@ -39,6 +39,7 @@ import dev.pocketprl.data.VersionLane
 import dev.pocketprl.data.update.AppUpdater
 import dev.pocketprl.data.update.ReleaseInfo
 import dev.pocketprl.data.update.UpdateChecker
+import dev.pocketprl.data.update.assetFor
 import dev.pocketprl.ui.components.BannerKind
 import dev.pocketprl.ui.components.EmptyState
 import dev.pocketprl.ui.components.HeroIcon
@@ -172,6 +173,14 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
             val release = selected!!
             val isCurrent = UpdateChecker.compare(release.version, current) == 0
             val isDowngrade = UpdateChecker.compare(release.version, current) < 0
+            // Decided up front, on the release page: if nothing of this version can
+            // install over the running build, say so and gray the control instead of
+            // letting the user download and then fail.
+            val blocked = !isCurrent && release.assetFor(BuildInfo.code, BuildConfig.VERSION_NAME, BuildInfo.lane) == null
+            val blockedReason = when (BuildInfo.lane) {
+                VersionLane.BACK -> stringResource(R.string.switch_blocked_back)
+                else -> stringResource(R.string.switch_blocked)
+            }
             ScreenScaffold(title = stringResource(R.string.downgrade_detail_title, release.version), onBack = { selected = null }) {
                 Column(
                     modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 16.dp),
@@ -210,9 +219,22 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
                     }
 
                     Spacer(Modifier.height(2.dp))
-                    if (isDowngrade) {
-                        // A downgrade is one-way in the app: warn before, and arm a
-                        // danger slide instead of a plain button.
+                    if (blocked) {
+                        // Red reason, gray slider: this version cannot install over the
+                        // running build at all.
+                        InfoBanner(blockedReason, BannerKind.ERROR)
+                        SlideToConfirm(
+                            onComplete = {},
+                            label = stringResource(R.string.downgrade_switch_button),
+                            icon = AppIcons.Downgrade,
+                            enabled = false,
+                            danger = true,
+                            slideHint = stringResource(R.string.downgrade_slide_hint),
+                            notReady = stringResource(R.string.switch_cant_here),
+                        )
+                    } else if (isDowngrade) {
+                        // Going off the regular line is consequential: warn before, and
+                        // arm a danger slide instead of a plain button.
                         InfoBanner(stringResource(R.string.downgrade_warning), BannerKind.ERROR)
                         SlideToConfirm(
                             onComplete = {

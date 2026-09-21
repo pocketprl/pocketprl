@@ -727,10 +727,10 @@
     <string name="icon_dark">Mörkt</string>
 
     <!-- ===================== historik / nedgradering ===================== -->
-    <string name="settings_about_downgrade">Nedgradera</string>
-    <string name="downgrade_title">Versionshistorik</string>
-    <string name="downgrade_hero_title">Gå tillbaka en version</string>
-    <string name="downgrade_hero_body">Välj en tidigare version att installera över den här. Dina plånböcker och din historik behålls.</string>
+    <string name="settings_about_downgrade">Byt version</string>
+    <string name="downgrade_title">Byt version</string>
+    <string name="downgrade_hero_title">Byt version</string>
+    <string name="downgrade_hero_body">Välj en version att installera. Dina plånböcker och din historik behålls.</string>
     <string name="downgrade_loading">Laddar versioner…</string>
     <string name="downgrade_failed">Kunde inte ladda versioner från GitHub. Kontrollera anslutningen och försök igen.</string>
     <string name="downgrade_current">Nuvarande</string>
@@ -750,8 +750,8 @@
     <string name="downgrade_notes_title">Versionsanteckningar</string>
     <string name="downgrade_notes_empty">Inga versionsanteckningar för den här versionen.</string>
     <string name="downgrade_warning">Detta installerar ett alternativt bygge och lämnar den vanliga utgivningslinjen. Härifrån kan du bara gå ned, tills du går upp igen — och då bara upp. Normala uppdateringar slutar installeras. Dina plånböcker och tillgångar påverkas inte.</string>
-    <string name="downgrade_slide">Dra för att nedgradera till v%1$s</string>
-    <string name="downgrade_slide_hint">Dra eller dubbeltryck för att nedgradera</string>
+    <string name="downgrade_slide">Dra för att byta till v%1$s</string>
+    <string name="downgrade_slide_hint">Dra eller dubbeltryck för att byta</string>
     <string name="personalize_section_security">Säkerhet</string>
     <string name="personalize_biometric_sub">Ställ in fingeravtryck eller ansiktsupplåsning efter att plånboken har skapats</string>
     <string name="onboard_restore_slide_hint">Dra eller dubbeltryck för att återställa</string>
@@ -786,4 +786,7 @@
     <string name="settings_about_forward_title">Gå framåt</string>
     <string name="settings_about_forward_body">Detta installerar returbygget för %1$s och håller dig på det alternativa spåret, bara framåt. För att gå ned igen skulle du återställa.</string>
     <string name="settings_about_alt_latest">Du är på det senaste alternativa bygget.</string>
+    <string name="switch_blocked_back">Du är på ett alternativt returbygge, som bara installerar nyare returbyggen. Den här versionen kan inte installeras över det. Återställ för att gå tillbaka till den vanliga utgivningslinjen.</string>
+    <string name="switch_blocked">Den här versionen kan inte installeras över ditt bygge på plats. Återställ för att byta till den.</string>
+    <string name="switch_cant_here">Kan inte installera den här versionen här</string>
 </resources>

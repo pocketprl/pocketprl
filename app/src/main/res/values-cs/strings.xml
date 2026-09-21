@@ -743,10 +743,10 @@
     <string name="icon_dark">Tmavá</string>
 
     <!-- ===================== historie / návrat ke starší verzi ===================== -->
-    <string name="settings_about_downgrade">Návrat ke starší verzi</string>
-    <string name="downgrade_title">Historie verzí</string>
-    <string name="downgrade_hero_title">Vrátit se o verzi zpět</string>
-    <string name="downgrade_hero_body">Vyberte dřívější vydání, které se nainstaluje přes toto. Vaše peněženky a historie zůstanou zachovány.</string>
+    <string name="settings_about_downgrade">Přepnout verzi</string>
+    <string name="downgrade_title">Přepnout verzi</string>
+    <string name="downgrade_hero_title">Přepnout verzi</string>
+    <string name="downgrade_hero_body">Vyberte verzi k instalaci. Vaše peněženky a historie zůstanou zachovány.</string>
     <string name="downgrade_loading">Načítání vydání…</string>
     <string name="downgrade_failed">Nepodařilo se načíst vydání z GitHubu. Zkontrolujte připojení a zkuste to znovu.</string>
     <string name="downgrade_current">Aktuální</string>
@@ -766,8 +766,8 @@
     <string name="downgrade_notes_title">Poznámky k vydání</string>
     <string name="downgrade_notes_empty">Pro tuto verzi nejsou k dispozici žádné poznámky k vydání.</string>
     <string name="downgrade_warning">Tímto nainstalujete alternativní sestavení a opustíte běžnou řadu vydání. Odtud můžete jít jen níž, dokud nepůjdete nahoru — a pak už jen nahoru. Normální aktualizace se přestanou instalovat. Vaše peněženky a prostředky zůstávají nedotčeny.</string>
-    <string name="downgrade_slide">Posunutím se vrátíte k v%1$s</string>
-    <string name="downgrade_slide_hint">Posunutím nebo dvojitým klepnutím se vrátíte ke starší verzi</string>
+    <string name="downgrade_slide">Posunutím přepnete na v%1$s</string>
+    <string name="downgrade_slide_hint">Posunutím nebo dvojitým klepnutím přepnete</string>
     <string name="personalize_section_security">Zabezpečení</string>
     <string name="personalize_biometric_sub">Nastavte otisk prstu nebo odemknutí obličejem po vytvoření peněženky</string>
     <string name="onboard_restore_slide_hint">Posunutím nebo dvojitým klepnutím obnovíte</string>
@@ -802,4 +802,7 @@
     <string name="settings_about_forward_title">Přejít vpřed</string>
     <string name="settings_about_forward_body">Tímto se nainstaluje sestavení pro návrat verze %1$s a zůstanete na alternativní dráze, pouze vpřed. Chcete-li znovu klesnout, museli byste provést reset.</string>
     <string name="settings_about_alt_latest">Nacházíte se na nejnovějším alternativním sestavení.</string>
+    <string name="switch_blocked_back">Nacházíte se na alternativním sestavení pro návrat, které instaluje jen novější sestavení pro návrat. Tuto verzi přes něj nainstalovat nelze. Proveďte reset, chcete-li se vrátit k běžné řadě vydání.</string>
+    <string name="switch_blocked">Tuto verzi nelze nainstalovat přes vaše sestavení na místo. Pro přepnutí na ni proveďte reset.</string>
+    <string name="switch_cant_here">Tuto verzi zde nelze nainstalovat</string>
 </resources>

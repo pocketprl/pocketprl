@@ -730,10 +730,10 @@
     <string name="icon_light">Deschis</string>
     <string name="icon_dark">Închis</string>
     <!-- ===================== downgrade ===================== -->
-    <string name="settings_about_downgrade">Retrogradare</string>
-    <string name="downgrade_title">Istoricul versiunilor</string>
-    <string name="downgrade_hero_title">Revino la o versiune anterioară</string>
-    <string name="downgrade_hero_body">Alege o versiune anterioară pentru a o instala peste aceasta. Portofelele și istoricul tău se păstrează.</string>
+    <string name="settings_about_downgrade">Comută versiunea</string>
+    <string name="downgrade_title">Comută versiunea</string>
+    <string name="downgrade_hero_title">Comută versiunea</string>
+    <string name="downgrade_hero_body">Alege o versiune de instalat. Portofelele și istoricul tău se păstrează.</string>
     <string name="downgrade_loading">Se încarcă versiunile…</string>
     <string name="downgrade_failed">Nu s-au putut încărca versiunile de pe GitHub. Verifică conexiunea și încearcă din nou.</string>
     <string name="downgrade_current">Actual</string>
@@ -753,8 +753,8 @@
     <string name="downgrade_notes_title">Note de versiune</string>
     <string name="downgrade_notes_empty">Nu există note de versiune pentru această versiune.</string>
     <string name="downgrade_warning">Aceasta instalează o versiune alternativă și părăsește linia obișnuită de lansare. De aici poți doar să cobori, până când urci înapoi — iar apoi doar în sus. Actualizările normale nu se mai instalează. Portofelele și fondurile tale nu sunt afectate.</string>
-    <string name="downgrade_slide">Glisează pentru a retrograda la v%1$s</string>
-    <string name="downgrade_slide_hint">Glisează sau atinge de două ori pentru a retrograda</string>
+    <string name="downgrade_slide">Glisează pentru a comuta la v%1$s</string>
+    <string name="downgrade_slide_hint">Glisează sau atinge de două ori pentru a comuta</string>
     <string name="personalize_section_security">Securitate</string>
     <string name="personalize_biometric_sub">Configurează amprenta sau deblocarea facială după ce portofelul tău este creat</string>
     <string name="onboard_restore_slide_hint">Glisează sau atinge de două ori pentru a restaura</string>
@@ -788,4 +788,7 @@
     <string name="settings_about_forward_title">Mergi înainte</string>
     <string name="settings_about_forward_body">Aceasta instalează versiunea de revenire a %1$s și te menține pe traseul alternativ, doar înainte. Ca să cobori din nou, ar trebui să resetezi.</string>
     <string name="settings_about_alt_latest">Ești pe cea mai recentă versiune alternativă.</string>
+    <string name="switch_blocked_back">Folosești o versiune alternativă de revenire, care instalează doar versiuni de revenire mai noi. Această versiune nu poate fi instalată peste ea. Resetează pentru a reveni la linia obișnuită.</string>
+    <string name="switch_blocked">Această versiune nu poate fi instalată peste versiunea ta pe loc. Resetează pentru a comuta la ea.</string>
+    <string name="switch_cant_here">Această versiune nu poate fi instalată aici</string>
 </resources>

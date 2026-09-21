@@ -12,6 +12,9 @@
   history show whether you are on the regular, rollback or return build and what it
   can do, and every release in the list says whether it installs in place or needs
   the reset.
+* The version screen is now called **Switch versions**, and it blocks a switch that
+  cannot install over the running build *before* you commit: a red reason with a
+  grayed control, instead of downloading and then failing.
 * New strings localized into all 18 supported languages.
 
 ## 2.4.1

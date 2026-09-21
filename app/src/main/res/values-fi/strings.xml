@@ -726,10 +726,10 @@
     <string name="icon_light">Vaalea</string>
     <string name="icon_dark">Tumma</string>
     <!-- ===================== downgrade ===================== -->
-    <string name="settings_about_downgrade">Asenna vanhempi versio</string>
-    <string name="downgrade_title">Versiohistoria</string>
-    <string name="downgrade_hero_title">Palaa aiempaan versioon</string>
-    <string name="downgrade_hero_body">Valitse aiempi julkaisu asennettavaksi tämän päälle. Lompakkosi ja historiansa säilyvät.</string>
+    <string name="settings_about_downgrade">Vaihda versiota</string>
+    <string name="downgrade_title">Vaihda versiota</string>
+    <string name="downgrade_hero_title">Vaihda versio</string>
+    <string name="downgrade_hero_body">Valitse asennettava versio. Lompakkosi ja historiansa säilyvät.</string>
     <string name="downgrade_loading">Ladataan julkaisuja…</string>
     <string name="downgrade_failed">Julkaisuja ei voitu ladata GitHubista. Tarkista yhteytesi ja yritä uudelleen.</string>
     <string name="downgrade_current">Nykyinen</string>
@@ -749,8 +749,8 @@
     <string name="downgrade_notes_title">Julkaisumuistiinpanot</string>
     <string name="downgrade_notes_empty">Ei julkaisumuistiinpanoja tälle versiolle.</string>
     <string name="downgrade_warning">Tämä asentaa vaihtoehtoisen koontiversion ja jättää tavallisen julkaisulinjan. Täältä voit vain mennä alas, kunnes menet takaisin ylös — ja sen jälkeen vain ylös. Normaalit päivitykset lakkaavat asentumasta. Lompakkoihisi ja varoihisi tämä ei vaikuta.</string>
-    <string name="downgrade_slide">Liu’uta palataksesi versioon v%1$s</string>
-    <string name="downgrade_slide_hint">Liu’uta tai kaksoisnapauta palataksesi vanhempaan versioon</string>
+    <string name="downgrade_slide">Liu’uta vaihtaaksesi versioon v%1$s</string>
+    <string name="downgrade_slide_hint">Liu’uta tai kaksoisnapauta vaihtaaksesi</string>
     <string name="personalize_section_security">Turvallisuus</string>
     <string name="personalize_biometric_sub">Määritä sormenjälki tai kasvolukitus, kun lompakkosi on luotu</string>
     <string name="onboard_restore_slide_hint">Liu’uta tai kaksoisnapauta palauttaaksesi</string>
@@ -784,4 +784,7 @@
     <string name="settings_about_forward_title">Siirry eteenpäin</string>
     <string name="settings_about_forward_body">Tämä asentaa version %1$s paluukoontiversion ja pitää sinut vaihtoehtoisella radalla, vain eteenpäin. Jos haluat taas mennä alas, sinun olisi palautettava.</string>
     <string name="settings_about_alt_latest">Käytössäsi on uusin vaihtoehtoinen koontiversio.</string>
+    <string name="switch_blocked_back">Käytössäsi on vaihtoehtoinen paluukoontiversio, joka asentaa vain uudempia paluukoontiversioita. Tätä versiota ei voi asentaa sen päälle. Palauta päästäksesi takaisin tavalliselle linjalle.</string>
+    <string name="switch_blocked">Tätä versiota ei voi asentaa koontiversiosi päälle. Palauta vaihtaaksesi siihen.</string>
+    <string name="switch_cant_here">Tätä versiota ei voi asentaa tähän</string>
 </resources>

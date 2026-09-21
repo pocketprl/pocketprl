@@ -108,7 +108,8 @@ fun ResetBuildScreen(version: String, onBack: () -> Unit) {
         val r = list.firstOrNull { it.version == version }
         if (r == null) loadFailed = true else {
             release = r
-            updater.download(r)
+            // Reset must restore a regular (primary) build, not an alternate one.
+            updater.downloadPrimary(r)
         }
     }
 

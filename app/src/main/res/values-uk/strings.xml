@@ -745,10 +745,10 @@
     <string name="icon_dark">Темний</string>
 
     <!-- ===================== історія / відкат версії ===================== -->
-    <string name="settings_about_downgrade">Відкат версії</string>
-    <string name="downgrade_title">Історія версій</string>
-    <string name="downgrade_hero_title">Повернутися до попередньої версії</string>
-    <string name="downgrade_hero_body">Виберіть раніший випуск, щоб установити його поверх поточного. Ваші гаманці та історія збережуться.</string>
+    <string name="settings_about_downgrade">Перемкнути версію</string>
+    <string name="downgrade_title">Перемкнути версію</string>
+    <string name="downgrade_hero_title">Перемкнути версію</string>
+    <string name="downgrade_hero_body">Виберіть версію для встановлення. Ваші гаманці та історія збережуться.</string>
     <string name="downgrade_loading">Завантаження випусків…</string>
     <string name="downgrade_failed">Не вдалося завантажити випуски з GitHub. Перевірте з\'єднання та спробуйте знову.</string>
     <string name="downgrade_current">Поточна</string>
@@ -768,8 +768,8 @@
     <string name="downgrade_notes_title">Примітки до випуску</string>
     <string name="downgrade_notes_empty">Для цієї версії немає приміток до випуску.</string>
     <string name="downgrade_warning">Це встановить альтернативну збірку та виведе вас зі звичайної лінії випусків. Звідси можна йти лише вниз, доки ви не підніметеся вгору — а тоді вже лише вгору. Звичайні оновлення перестануть встановлюватися. Ваші гаманці та кошти не постраждають.</string>
-    <string name="downgrade_slide">Суньте, щоб відкотитися до v%1$s</string>
-    <string name="downgrade_slide_hint">Суньте або двічі торкніться, щоб відкотитися</string>
+    <string name="downgrade_slide">Суньте, щоб перемкнути на v%1$s</string>
+    <string name="downgrade_slide_hint">Суньте або двічі торкніться, щоб перемкнути</string>
     <string name="personalize_section_security">Безпека</string>
     <string name="personalize_biometric_sub">Налаштуйте відбиток пальця або розблокування обличчям після створення гаманця</string>
     <string name="onboard_restore_slide_hint">Суньте або двічі торкніться, щоб відновити</string>
@@ -804,4 +804,7 @@
     <string name="settings_about_forward_title">Рухатися вперед</string>
     <string name="settings_about_forward_body">Це встановить збірку повернення версії %1$s і залишить вас на альтернативному шляху, лише вперед. Щоб знову спуститися, потрібно було б виконати скидання.</string>
     <string name="settings_about_alt_latest">Ви на останній альтернативній збірці.</string>
+    <string name="switch_blocked_back">У вас альтернативна збірка повернення, яка встановлює лише новіші збірки повернення. Цю версію поверх неї встановити не можна. Виконайте скидання, щоб повернутися до звичайної лінії випусків.</string>
+    <string name="switch_blocked">Цю версію не можна встановити поверх вашої збірки на місці. Щоб перемкнути на неї, виконайте скидання.</string>
+    <string name="switch_cant_here">Цю версію тут встановити не можна</string>
 </resources>

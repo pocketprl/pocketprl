@@ -725,10 +725,10 @@
     <string name="icon_light">Açık</string>
     <string name="icon_dark">Koyu</string>
     <!-- ===================== downgrade ===================== -->
-    <string name="settings_about_downgrade">Sürüm düşürme</string>
-    <string name="downgrade_title">Sürüm geçmişi</string>
-    <string name="downgrade_hero_title">Bir sürüm geri dön</string>
-    <string name="downgrade_hero_body">Bu sürümün üzerine kurmak için önceki bir sürümü seçin. Cüzdanlarınız ve geçmişiniz korunur.</string>
+    <string name="settings_about_downgrade">Sürüm değiştir</string>
+    <string name="downgrade_title">Sürüm değiştir</string>
+    <string name="downgrade_hero_title">Sürüm değiştir</string>
+    <string name="downgrade_hero_body">Kurulacak bir sürüm seçin. Cüzdanlarınız ve geçmişiniz korunur.</string>
     <string name="downgrade_loading">Sürümler yükleniyor…</string>
     <string name="downgrade_failed">Sürümler GitHub’dan yüklenemedi. Bağlantınızı kontrol edip yeniden deneyin.</string>
     <string name="downgrade_current">Geçerli</string>
@@ -748,8 +748,8 @@
     <string name="downgrade_notes_title">Sürüm notları</string>
     <string name="downgrade_notes_empty">Bu sürüm için sürüm notu yok.</string>
     <string name="downgrade_warning">Bu, alternatif bir derleme kurar ve normal sürüm hattından ayrılır. Buradan yalnızca aşağı inebilirsiniz, ta ki tekrar yukarı çıkana kadar — ve sonrasında yalnızca yukarı. Normal güncellemeler kurulmayı bırakır. Cüzdanlarınız ve paranız etkilenmez.</string>
-    <string name="downgrade_slide">v%1$s sürümüne düşürmek için kaydırın</string>
-    <string name="downgrade_slide_hint">Sürümü düşürmek için kaydırın veya çift dokunun</string>
+    <string name="downgrade_slide">v%1$s sürümüne geçmek için kaydırın</string>
+    <string name="downgrade_slide_hint">Geçmek için kaydırın veya çift dokunun</string>
     <string name="personalize_section_security">Güvenlik</string>
     <string name="personalize_biometric_sub">Cüzdanınız oluşturulduktan sonra parmak izi veya yüz kilidini ayarlayın</string>
     <string name="onboard_restore_slide_hint">Geri yüklemek için kaydırın veya çift dokunun</string>
@@ -783,4 +783,7 @@
     <string name="settings_about_forward_title">İleri git</string>
     <string name="settings_about_forward_body">Bu, %1$s sürümünün geri dönüş derlemesini kurar ve sizi alternatif yolda tutar, yalnızca ileri. Tekrar aşağı inmek için sıfırlardınız.</string>
     <string name="settings_about_alt_latest">En son alternatif derlemedesiniz.</string>
+    <string name="switch_blocked_back">Yalnızca daha yeni geri dönüş derlemelerini kuran bir alternatif geri dönüş derlemesindesiniz. Bu sürüm onun üzerine kurulamaz. Normal sürüm hattına dönmek için sıfırlayın.</string>
+    <string name="switch_blocked">Bu sürüm derlemenizin üzerine yerinde kurulamaz. Ona geçmek için sıfırlayın.</string>
+    <string name="switch_cant_here">Bu sürüm buraya kurulamaz</string>
 </resources>

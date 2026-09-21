@@ -742,10 +742,10 @@
     <string name="icon_dark">Ciemna</string>
 
     <!-- ===================== history / przywracanie starszej wersji ===================== -->
-    <string name="settings_about_downgrade">Przywróć starszą wersję</string>
-    <string name="downgrade_title">Historia wersji</string>
-    <string name="downgrade_hero_title">Wróć do starszej wersji</string>
-    <string name="downgrade_hero_body">Wybierz wcześniejsze wydanie, aby zainstalować je w miejsce bieżącego. Twoje portfele i historia zostaną zachowane.</string>
+    <string name="settings_about_downgrade">Przełącz wersję</string>
+    <string name="downgrade_title">Przełącz wersję</string>
+    <string name="downgrade_hero_title">Przełącz wersję</string>
+    <string name="downgrade_hero_body">Wybierz wersję do zainstalowania. Twoje portfele i historia zostaną zachowane.</string>
     <string name="downgrade_loading">Wczytywanie wydań…</string>
     <string name="downgrade_failed">Nie udało się wczytać wydań z GitHub. Sprawdź połączenie i spróbuj ponownie.</string>
     <string name="downgrade_current">Bieżąca</string>
@@ -765,8 +765,8 @@
     <string name="downgrade_notes_title">Lista zmian</string>
     <string name="downgrade_notes_empty">Brak listy zmian dla tej wersji.</string>
     <string name="downgrade_warning">Spowoduje to zainstalowanie alternatywnej kompilacji i opuszczenie zwykłej linii wydań. Stąd możesz iść tylko w dół, dopóki nie pójdziesz w górę — a wtedy już tylko w górę. Normalne aktualizacje przestaną się instalować. Twoje portfele i środki pozostają nienaruszone.</string>
-    <string name="downgrade_slide">Przesuń, aby przywrócić wersję v%1$s</string>
-    <string name="downgrade_slide_hint">Przesuń lub dotknij dwukrotnie, aby przywrócić starszą wersję</string>
+    <string name="downgrade_slide">Przesuń, aby przełączyć na v%1$s</string>
+    <string name="downgrade_slide_hint">Przesuń lub dotknij dwukrotnie, aby przełączyć</string>
     <string name="personalize_section_security">Bezpieczeństwo</string>
     <string name="personalize_biometric_sub">Skonfiguruj odcisk palca lub odblokowanie twarzą po utworzeniu portfela</string>
     <string name="onboard_restore_slide_hint">Przesuń lub dotknij dwukrotnie, aby przywrócić</string>
@@ -801,4 +801,7 @@
     <string name="settings_about_forward_title">Przejdź do przodu</string>
     <string name="settings_about_forward_body">To zainstaluje kompilację powrotną wersji %1$s i pozostawi Cię na alternatywnej ścieżce, tylko do przodu. Aby znowu zejść, potrzebny byłby reset.</string>
     <string name="settings_about_alt_latest">Korzystasz z najnowszej alternatywnej kompilacji.</string>
+    <string name="switch_blocked_back">Masz alternatywną kompilację powrotną, która instaluje tylko nowsze kompilacje powrotne. Tej wersji nie można zainstalować na nią. Zresetuj, aby wrócić do zwykłej linii wydań.</string>
+    <string name="switch_blocked">Tej wersji nie można zainstalować w miejsce Twojej kompilacji. Zresetuj, aby na nią przełączyć.</string>
+    <string name="switch_cant_here">Nie można zainstalować tej wersji tutaj</string>
 </resources>

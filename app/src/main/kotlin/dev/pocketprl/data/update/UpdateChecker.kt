@@ -64,6 +64,23 @@ fun ReleaseInfo.bestAssetFor(installedCode: Long): ApkAsset? =
     apkAssets.filter { it.versionCode != null && it.versionCode > installedCode }.minByOrNull { it.versionCode!! }
 
 /**
+ * The build of this release to install from the current state, or null when nothing
+ * of this release can install in place and the caller must offer the reset.
+ *
+ * On the regular line a newer release installs its primary build; an older one
+ * installs its rollback. Off the regular line only a higher-coded build installs:
+ * the back lane to move forward, the rollback lane to go further down.
+ */
+fun ReleaseInfo.assetFor(installedCode: Long, installedVersion: String, lane: VersionLane): ApkAsset? {
+    val primary = apkAssets.firstOrNull { it.versionCode == null }
+    val higher = bestAssetFor(installedCode)
+    return when (lane) {
+        VersionLane.PRIMARY -> if (UpdateChecker.compare(version, installedVersion) >= 0) (primary ?: higher) else higher
+        VersionLane.ROLLBACK, VersionLane.BACK -> higher
+    }
+}
+
+/**
  * Reads the newest release from the public PocketPRL repo. Anonymous, read-only,
  * no address or wallet data is ever sent; this only ever sees the GitHub API.
  */

@@ -725,10 +725,10 @@
     <string name="icon_dark">Mørk</string>
 
     <!-- ===================== historik / nedgradering ===================== -->
-    <string name="settings_about_downgrade">Nedgrader</string>
-    <string name="downgrade_title">Versionshistorik</string>
-    <string name="downgrade_hero_title">Gå en version tilbage</string>
-    <string name="downgrade_hero_body">Vælg en tidligere udgivelse, der installeres oven i denne. Dine tegnebøger og din historik bevares.</string>
+    <string name="settings_about_downgrade">Skift version</string>
+    <string name="downgrade_title">Skift version</string>
+    <string name="downgrade_hero_title">Skift version</string>
+    <string name="downgrade_hero_body">Vælg en version, der skal installeres. Dine tegnebøger og din historik bevares.</string>
     <string name="downgrade_loading">Indlæser udgivelser…</string>
     <string name="downgrade_failed">Kunne ikke indlæse udgivelser fra GitHub. Tjek din forbindelse, og prøv igen.</string>
     <string name="downgrade_current">Aktuel</string>
@@ -748,8 +748,8 @@
     <string name="downgrade_notes_title">Udgivelsesnoter</string>
     <string name="downgrade_notes_empty">Ingen udgivelsesnoter til denne version.</string>
     <string name="downgrade_warning">Dette installerer et alternativt build og forlader den almindelige udgivelseslinje. Herfra kan du kun gå ned, indtil du går op igen — og derefter kun op. Normale opdateringer holder op med at installere. Dine tegnebøger og midler påvirkes ikke.</string>
-    <string name="downgrade_slide">Træk for at nedgradere til v%1$s</string>
-    <string name="downgrade_slide_hint">Træk eller dobbelttryk for at nedgradere</string>
+    <string name="downgrade_slide">Træk for at skifte til v%1$s</string>
+    <string name="downgrade_slide_hint">Træk eller dobbelttryk for at skifte</string>
     <string name="personalize_section_security">Sikkerhed</string>
     <string name="personalize_biometric_sub">Opsæt fingeraftryk eller ansigtsoplåsning, når din tegnebog er oprettet</string>
     <string name="onboard_restore_slide_hint">Træk eller dobbelttryk for at gendanne</string>
@@ -784,4 +784,7 @@
     <string name="settings_about_forward_title">Gå fremad</string>
     <string name="settings_about_forward_body">Dette installerer retur-buildet til %1$s og holder dig på det alternative spor, kun fremad. For at gå ned igen skulle du nulstille.</string>
     <string name="settings_about_alt_latest">Du er på det nyeste alternative build.</string>
+    <string name="switch_blocked_back">Du er på et alternativt retur-build, som kun installerer nyere retur-builds. Denne version kan ikke installeres oven i det. Nulstil for at vende tilbage til den almindelige udgivelseslinje.</string>
+    <string name="switch_blocked">Denne version kan ikke installeres oven i dit build på plads. Nulstil for at skifte til den.</string>
+    <string name="switch_cant_here">Kan ikke installere denne version her</string>
 </resources>
