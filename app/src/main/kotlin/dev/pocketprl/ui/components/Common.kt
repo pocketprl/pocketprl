@@ -355,6 +355,8 @@ fun AmountText(
     spinning: Boolean = false,
     /** Master switch for the roll animation itself; false snaps to the new value. */
     animate: Boolean = true,
+    /** Slot-machine tick on every digit roll; needs [animate] to have any effect. */
+    haptics: Boolean = true,
 ) {
     val sign = if (signed && grain > 0) "+" else ""
     val hiddenText = stringResource(R.string.hidden_placeholder)
@@ -362,7 +364,7 @@ fun AmountText(
     val body = if (hidden) hiddenText else "$sign${Amount.pretty(grain)}"
     val full = "$body ${network.ticker}"
     if (odometer && !hidden) {
-        OdometerText(full, modifier = modifier, style = style.merge(TextStyle(fontWeight = FontWeight.Bold)), color = color, spinning = spinning, animate = animate)
+        OdometerText(full, modifier = modifier, style = style.merge(TextStyle(fontWeight = FontWeight.Bold)), color = color, spinning = spinning, animate = animate, haptics = haptics)
     } else {
         // Screen readers announce the bullets literally; say what they mean instead.
         val m = if (hidden) modifier.semantics { contentDescription = hiddenDesc } else modifier

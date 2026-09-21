@@ -244,6 +244,19 @@ fun SettingsScreen(
                 SettingRow(stringResource(R.string.settings_odometer), stringResource(R.string.settings_odometer_sub), icon = AppIcons.Odometer) {
                     Switch(checked = settings.odometer, onCheckedChange = { haptics.toggle(it); vm.setOdometer(it) })
                 }
+                HorizontalDivider()
+                SettingRow(
+                    stringResource(R.string.settings_odometer_haptics),
+                    if (settings.odometer) stringResource(R.string.settings_odometer_haptics_sub) else stringResource(R.string.settings_odometer_haptics_off),
+                    icon = AppIcons.Haptics,
+                    enabled = settings.odometer,
+                ) {
+                    Switch(
+                        checked = settings.odometerHaptics,
+                        enabled = settings.odometer,
+                        onCheckedChange = { haptics.toggle(it); vm.setOdometerHaptics(it) },
+                    )
+                }
             }
 
             SectionTitle(stringResource(R.string.settings_section_numbers))
