@@ -468,9 +468,9 @@
     <string name="sync_err_lost_connection">Mistede forbindelsen til indekseren</string>
     <string name="wallet_deriving_receive">Udleder modtagelsesadresse %1$d af %2$d</string>
     <string name="wallet_deriving_change">Udleder byttepengeadresse %1$d af %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Tjekker %1$d adresse…</item>
-        <item quantity="other">Tjekker %1$d adresser…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Tjekker %1$d af %2$d adresse…</item>
+        <item quantity="other">Tjekker %1$d af %2$d adresser…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d adresse kunne ikke tjekkes (%2$s); prøver igen</item>
@@ -747,7 +747,7 @@
     <string name="downgrade_not_installable">Android installerer ikke denne build på plads: dens pakkeversion er lavere end den installerede, og denne udgivelse har endnu ingen nedgraderingsversion. Installation ville kræve en manuel afinstallation.</string>
     <string name="downgrade_notes_title">Udgivelsesnoter</string>
     <string name="downgrade_notes_empty">Ingen udgivelsesnoter til denne version.</string>
-    <string name="downgrade_warning">Dette installerer et alternativt build og forlader den almindelige udgivelseslinje. Herfra kan du kun gå ned, indtil du går op igen — og derefter kun op. Normale opdateringer holder op med at installere. Dine tegnebøger og midler påvirkes ikke.</string>
+    <string name="downgrade_warning">Dette installerer et alternativt build og forlader den almindelige udgivelseslinje. Herfra kan du kun gå ned, indtil du går op igen, og derefter kun op. Normale opdateringer holder op med at installere. Dine tegnebøger og midler påvirkes ikke.</string>
     <string name="downgrade_slide">Træk for at skifte til v%1$s</string>
     <string name="downgrade_slide_hint">Træk eller dobbelttryk for at skifte</string>
     <string name="personalize_section_security">Sikkerhed</string>
@@ -771,11 +771,11 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Du er på</string>
     <string name="build_lane_primary">Almindeligt build</string>
-    <string name="build_lane_primary_body">Almindelig udgivelseslinje: normale opdateringer installeres her. Herfra kan du kun gå ned. At gå ned bringer dig over på alternative builds, hvor du fra da af kun kan fortsætte med at gå ned — indtil du går op igen, og derefter kun op.</string>
+    <string name="build_lane_primary_body">Almindelig udgivelseslinje: normale opdateringer installeres her. Herfra kan du frit gå hvorhen du vil. Enhver ældre version installeres på plads, og nyere udgivelser kommer som normale opdateringer.</string>
     <string name="build_lane_rollback">Alternativt nedgraderings-build</string>
     <string name="build_lane_rollback_body">Alternativt build: normale opdateringer installeres ikke. Du kan fortsætte med at gå ned til ældre versioner eller gå op til en hvilken som helst version med dens retur-build. Når du først går op, er der kun op.</string>
     <string name="build_lane_back">Alternativt retur-build</string>
-    <string name="build_lane_back_body">Alternativt build: normale opdateringer installeres ikke, og herfra er der kun op — nyere retur-builds. For at gå ned igen skal du nulstille.</string>
+    <string name="build_lane_back_body">Alternativt build: normale opdateringer installeres ikke, og herfra er der kun op: nyere retur-builds. For at gå ned igen skal du nulstille.</string>
     <string name="downgrade_switch_body">Android installerer ikke dette oven i dit build på plads. Et skift gemmer det i Downloads, afinstallerer PocketPRL, og du gendanner fra din gendannelsessætning efter geninstallation.</string>
     <string name="downgrade_switch_button">Skift til denne version</string>
     <string name="settings_about_off_primary">Du er på et alternativt build, ikke den almindelige udgivelseslinje.</string>
@@ -789,6 +789,6 @@
     <string name="switch_cant_here">Kan ikke installere denne version her</string>
     <string name="downgrade_manual_update_warning">Denne build kan tjekke for opdateringer, men kan ikke selv installere dem. For at komme videre skal du hente udgivelsen fra GitHub og installere den manuelt.</string>
     <string name="downgrade_no_switcher_warning">Denne build har ingen versionsskifter. Når du først er her, kan du ikke se, hvilken build du er på, og du kan ikke skifte i appen, før du er tilbage på 2.4.0 eller nyere.</string>
-    <string name="alternate_notice_rollback">Bemærk: du er på et alternativt nedgraderings-build. Herfra kan du kun gå ned, indtil du går op igen — og derefter kun op.</string>
+    <string name="alternate_notice_rollback">Bemærk: du er på et alternativt nedgraderings-build. Herfra kan du kun gå ned, indtil du går op igen, og derefter kun op.</string>
     <string name="alternate_notice_back">Bemærk: du er på et alternativt retur-build. Herfra er der kun op — til nyere retur-builds.</string>
 </resources>

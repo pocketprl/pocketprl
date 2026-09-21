@@ -511,13 +511,13 @@
     <string name="downgrade_not_installable">Android will not install this build in place: its package version is lower than the installed one and this release has no downgrade build yet. Installing it would need a manual uninstall.</string>
     <string name="downgrade_notes_title">Release notes</string>
     <string name="downgrade_notes_empty">No release notes for this version.</string>
-    <string name="downgrade_warning">This installs an alternate build and leaves the regular release line. From here you can only go down, until you go back up — and then only up. Normal updates stop installing. Your wallets and funds are unaffected.</string>
+    <string name="downgrade_warning">This installs an alternate build and leaves the regular release line. From here you can only go down, until you go back up, and then only up. Normal updates stop installing. Your wallets and funds are unaffected.</string>
     <string name="downgrade_slide">Slide to switch to v%1$s</string>
     <string name="downgrade_slide_hint">Slide or double-tap to switch</string>
     <string name="switch_blocked_back">You’re on an alternate return build, which only installs newer return builds. This version can’t be installed over it. Reset to go back to the regular line.</string>
     <string name="switch_blocked">This version can’t be installed over your build in place. Reset to switch to it.</string>
     <string name="switch_cant_here">Can’t install this version here</string>
-    <string name="alternate_notice_rollback">Heads up: you’re on an alternate rollback build. From here you can only go down, until you go back up — and then only up.</string>
+    <string name="alternate_notice_rollback">Heads up: you’re on an alternate rollback build. From here you can only go down, until you go back up, and then only up.</string>
     <string name="alternate_notice_back">Heads up: you’re on an alternate return build. From here there’s only up, to newer return builds.</string>
     <string name="return_build_title">Return build</string>
     <string name="return_build_hero">You’re on a return build</string>
@@ -530,11 +530,11 @@
     <string name="return_build_reset_saved">Saved to Downloads/%1$s. Uninstall PocketPRL, install that file, then restore from your recovery phrase.</string>
     <string name="build_lane_you_are_on">You’re on</string>
     <string name="build_lane_primary">Regular build</string>
-    <string name="build_lane_primary_body">Regular release line: normal updates install here. From here you can only go down. Going down puts you on alternate builds, where from then on you can only keep going down — until you go back up, and then only up.</string>
+    <string name="build_lane_primary_body">Regular release line: normal updates install here. From here you can go anywhere freely. Any older version installs in place, and newer releases arrive as normal updates.</string>
     <string name="build_lane_rollback">Alternate rollback build</string>
     <string name="build_lane_rollback_body">Alternate build: normal updates don’t install. You can keep going down to older versions, or go up to any version with its return build. Once you go up, there’s only up.</string>
     <string name="build_lane_back">Alternate return build</string>
-    <string name="build_lane_back_body">Alternate build: normal updates don’t install, and from here there’s only up — newer return builds. To go down again, reset.</string>
+    <string name="build_lane_back_body">Alternate build: normal updates don’t install, and from here there’s only up: newer return builds. To go down again, reset.</string>
     <string name="settings_alt_rollback">Alternate rollback build. Normal updates don’t install. Downgrades still work; going up puts you on the forward-only return lane.</string>
     <string name="settings_alt_back">Alternate return build. Normal updates don’t install. From here there’s only forward; going down again needs a reset.</string>
     <string name="settings_about_forward_title">Move forward</string>
@@ -668,9 +668,9 @@
     <string name="sync_err_lost_connection">Lost the connection to the indexer</string>
     <string name="wallet_deriving_receive">Deriving receive address %1$d of %2$d</string>
     <string name="wallet_deriving_change">Deriving change address %1$d of %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Checking %1$d address…</item>
-        <item quantity="other">Checking %1$d addresses…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Checking %1$d of %2$d address…</item>
+        <item quantity="other">Checking %1$d of %2$d addresses…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d address could not be checked (%2$s); retrying</item>

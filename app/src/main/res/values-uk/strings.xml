@@ -474,11 +474,11 @@
     <string name="sync_err_lost_connection">Втрачено з\'єднання з індексатором</string>
     <string name="wallet_deriving_receive">Виведення адреси для отримання %1$d з %2$d</string>
     <string name="wallet_deriving_change">Виведення адреси для решти %1$d з %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Перевірка %1$d адреси…</item>
-        <item quantity="few">Перевірка %1$d адрес…</item>
-        <item quantity="many">Перевірка %1$d адрес…</item>
-        <item quantity="other">Перевірка %1$d адреси…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Перевірка %1$d з %2$d адреси…</item>
+        <item quantity="few">Перевірка %1$d з %2$d адрес…</item>
+        <item quantity="many">Перевірка %1$d з %2$d адрес…</item>
+        <item quantity="other">Перевірка %1$d з %2$d адреси…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d адресу не вдалося перевірити (%2$s); повторна спроба</item>
@@ -767,7 +767,7 @@
     <string name="downgrade_not_installable">Android не встановить цю збірку поверх: її версія пакета нижча за встановлену, а для цього випуску ще немає збірки для відкату. Для встановлення доведеться вручну видалити застосунок.</string>
     <string name="downgrade_notes_title">Примітки до випуску</string>
     <string name="downgrade_notes_empty">Для цієї версії немає приміток до випуску.</string>
-    <string name="downgrade_warning">Це встановить альтернативну збірку та виведе вас зі звичайної лінії випусків. Звідси можна йти лише вниз, доки ви не підніметеся вгору — а тоді вже лише вгору. Звичайні оновлення перестануть встановлюватися. Ваші гаманці та кошти не постраждають.</string>
+    <string name="downgrade_warning">Це встановить альтернативну збірку та виведе вас зі звичайної лінії випусків. Звідси можна йти лише вниз, доки ви не підніметеся вгору, а тоді вже лише вгору. Звичайні оновлення перестануть встановлюватися. Ваші гаманці та кошти не постраждають.</string>
     <string name="downgrade_slide">Суньте, щоб перемкнути на v%1$s</string>
     <string name="downgrade_slide_hint">Суньте або двічі торкніться, щоб перемкнути</string>
     <string name="personalize_section_security">Безпека</string>
@@ -791,11 +791,11 @@
     <string name="settings_about_build">Збірка</string>
     <string name="build_lane_you_are_on">У вас</string>
     <string name="build_lane_primary">Звичайна збірка</string>
-    <string name="build_lane_primary_body">Звичайна лінія випусків: тут встановлюються звичайні оновлення. Звідси можна йти лише вниз. Спуск униз переводить вас на альтернативні збірки, де відтоді можна лише далі спускатися — доки ви не підніметеся вгору, а тоді вже лише вгору.</string>
+    <string name="build_lane_primary_body">Звичайна лінія випусків: тут встановлюються звичайні оновлення. Звідси можна вільно йти куди завгодно. Будь-яка старіша версія встановлюється на місці, а новіші випуски надходять як звичайні оновлення.</string>
     <string name="build_lane_rollback">Альтернативна збірка відкату</string>
     <string name="build_lane_rollback_body">Альтернативна збірка: звичайні оновлення не встановлюються. Можна спускатися до старіших версій або піднятися на будь-яку версію разом із її збіркою повернення. Щойно ви підніметеся, залишиться лише вгору.</string>
     <string name="build_lane_back">Альтернативна збірка повернення</string>
-    <string name="build_lane_back_body">Альтернативна збірка: звичайні оновлення не встановлюються, і звідси можна лише вгору — до новіших збірок повернення. Щоб знову спуститися, виконайте скидання.</string>
+    <string name="build_lane_back_body">Альтернативна збірка: звичайні оновлення не встановлюються, і звідси можна лише вгору: до новіших збірок повернення. Щоб знову спуститися, виконайте скидання.</string>
     <string name="downgrade_switch_body">Android не встановить це поверх вашої збірки на місці. Перемикання збереже її в Downloads, видалить PocketPRL, і після повторного встановлення ви відновите гаманець із фрази відновлення.</string>
     <string name="downgrade_switch_button">Перемкнутися на цю версію</string>
     <string name="settings_about_off_primary">Ви на альтернативній збірці, а не на звичайній лінії випусків.</string>
@@ -809,6 +809,6 @@
     <string name="switch_cant_here">Цю версію тут встановити не можна</string>
     <string name="downgrade_manual_update_warning">Ця збірка вміє перевіряти оновлення, але не може встановлювати їх самостійно. Щоб рухатися далі, доведеться завантажити випуск із GitHub і встановити його вручну.</string>
     <string name="downgrade_no_switcher_warning">У цій збірці немає перемикача версій. Опинившись тут, ви не побачите, на якій збірці перебуваєте, і не зможете перемикати версії в застосунку, доки не повернетеся на 2.4.0 або новішу.</string>
-    <string name="alternate_notice_rollback">Увага: ви на альтернативній збірці відкату. Звідси можна лише спускатися, доки ви не підніметеся назад — а потім лише вгору.</string>
+    <string name="alternate_notice_rollback">Увага: ви на альтернативній збірці відкату. Звідси можна лише спускатися, доки ви не підніметеся назад, а потім лише вгору.</string>
     <string name="alternate_notice_back">Увага: ви на альтернативній збірці повернення. Звідси можна лише вгору — до новіших збірок повернення.</string>
 </resources>

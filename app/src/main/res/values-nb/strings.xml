@@ -468,9 +468,9 @@
     <string name="sync_err_lost_connection">Mistet forbindelsen til indeksereren</string>
     <string name="wallet_deriving_receive">Utleder mottaksadresse %1$d av %2$d</string>
     <string name="wallet_deriving_change">Utleder vekseladresse %1$d av %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Sjekker %1$d adresse…</item>
-        <item quantity="other">Sjekker %1$d adresser…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Sjekker %1$d av %2$d adresse…</item>
+        <item quantity="other">Sjekker %1$d av %2$d adresser…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d adresse kunne ikke sjekkes (%2$s); prøver igjen</item>
@@ -744,7 +744,7 @@
     <string name="downgrade_not_installable">Android vil ikke installere dette bygget på plass: pakkeversjonen er lavere enn den installerte, og denne utgivelsen har ennå ingen nedgraderingsbygg. Å installere den vil kreve en manuell avinstallering.</string>
     <string name="downgrade_notes_title">Utgivelsesnotater</string>
     <string name="downgrade_notes_empty">Ingen utgivelsesnotater for denne versjonen.</string>
-    <string name="downgrade_warning">Dette installerer et alternativt bygg og forlater den vanlige utgivelseslinjen. Herfra kan du bare gå ned, helt til du går opp igjen — og da bare opp. Vanlige oppdateringer slutter å installeres. Lommebøkene og midlene dine påvirkes ikke.</string>
+    <string name="downgrade_warning">Dette installerer et alternativt bygg og forlater den vanlige utgivelseslinjen. Herfra kan du bare gå ned, helt til du går opp igjen, og da bare opp. Vanlige oppdateringer slutter å installeres. Lommebøkene og midlene dine påvirkes ikke.</string>
     <string name="downgrade_slide">Skyv for å bytte til v%1$s</string>
     <string name="downgrade_slide_hint">Skyv eller dobbelttrykk for å bytte</string>
     <string name="personalize_section_security">Sikkerhet</string>
@@ -767,11 +767,11 @@
     <string name="settings_about_build">Bygg</string>
     <string name="build_lane_you_are_on">Du er på</string>
     <string name="build_lane_primary">Vanlig bygg</string>
-    <string name="build_lane_primary_body">Vanlig utgivelseslinje: vanlige oppdateringer installeres her. Herfra kan du bare gå ned. Å gå ned setter deg på alternative bygg, der du fra da av bare kan fortsette å gå ned — helt til du går opp igjen, og da bare opp.</string>
+    <string name="build_lane_primary_body">Vanlig utgivelseslinje: vanlige oppdateringer installeres her. Herfra kan du gå hvor som helst fritt. Enhver eldre versjon installeres på plass, og nyere utgivelser kommer som vanlige oppdateringer.</string>
     <string name="build_lane_rollback">Alternativt nedgraderingsbygg</string>
     <string name="build_lane_rollback_body">Alternativt bygg: vanlige oppdateringer installeres ikke. Du kan fortsette ned til eldre versjoner, eller gå opp til en hvilken som helst versjon med returbygget sitt. Når du først går opp, er det bare opp.</string>
     <string name="build_lane_back">Alternativt returbygg</string>
-    <string name="build_lane_back_body">Alternativt bygg: vanlige oppdateringer installeres ikke, og herfra er det bare opp — nyere returbygg. For å gå ned igjen må du tilbakestille.</string>
+    <string name="build_lane_back_body">Alternativt bygg: vanlige oppdateringer installeres ikke, og herfra er det bare opp: nyere returbygg. For å gå ned igjen må du tilbakestille.</string>
     <string name="downgrade_switch_body">Android vil ikke installere dette over bygget ditt på plass. Å bytte lagrer det i Downloads, avinstallerer PocketPRL, og du gjenoppretter fra gjenopprettingsfrasen din etter å ha installert på nytt.</string>
     <string name="downgrade_switch_button">Bytt til denne versjonen</string>
     <string name="settings_about_off_primary">Du er på et alternativt bygg, ikke den vanlige utgivelseslinjen.</string>
@@ -785,6 +785,6 @@
     <string name="switch_cant_here">Kan ikke installere denne versjonen her</string>
     <string name="downgrade_manual_update_warning">Dette bygget kan sjekke etter oppdateringer, men kan ikke installere dem selv. For å komme videre må du laste ned utgivelsen fra GitHub og installere den manuelt.</string>
     <string name="downgrade_no_switcher_warning">Dette bygget har ingen versjonsvelger. Når du først er her, ser du ikke hvilket bygg du er på, og du kan ikke bytte i appen før du er tilbake på 2.4.0 eller nyere.</string>
-    <string name="alternate_notice_rollback">Obs: du er på et alternativt nedgraderingsbygg. Herfra kan du bare gå ned, helt til du går opp igjen — og deretter bare opp.</string>
+    <string name="alternate_notice_rollback">Obs: du er på et alternativt nedgraderingsbygg. Herfra kan du bare gå ned, helt til du går opp igjen, og deretter bare opp.</string>
     <string name="alternate_notice_back">Obs: du er på et alternativt returbygg. Herfra er det bare opp, til nyere returbygg.</string>
 </resources>

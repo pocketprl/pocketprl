@@ -468,9 +468,9 @@
     <string name="sync_err_lost_connection">İndeksleyiciyle bağlantı kesildi</string>
     <string name="wallet_deriving_receive">%1$d / %2$d alım adresi türetiliyor</string>
     <string name="wallet_deriving_change">%1$d / %2$d para üstü adresi türetiliyor</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">%1$d adres kontrol ediliyor…</item>
-        <item quantity="other">%1$d adres kontrol ediliyor…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">%1$d / %2$d adres kontrol ediliyor…</item>
+        <item quantity="other">%1$d / %2$d adres kontrol ediliyor…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d adres kontrol edilemedi (%2$s); yeniden deneniyor</item>
@@ -747,7 +747,7 @@
     <string name="downgrade_not_installable">Android bu derlemeyi üzerine kurmaz: paket sürümü yüklü olandan düşük ve bu sürümde henüz bir sürüm düşürme derlemesi yok. Kurmak için elle kaldırma gerekir.</string>
     <string name="downgrade_notes_title">Sürüm notları</string>
     <string name="downgrade_notes_empty">Bu sürüm için sürüm notu yok.</string>
-    <string name="downgrade_warning">Bu, alternatif bir derleme kurar ve normal sürüm hattından ayrılır. Buradan yalnızca aşağı inebilirsiniz, ta ki tekrar yukarı çıkana kadar — ve sonrasında yalnızca yukarı. Normal güncellemeler kurulmayı bırakır. Cüzdanlarınız ve paranız etkilenmez.</string>
+    <string name="downgrade_warning">Bu, alternatif bir derleme kurar ve normal sürüm hattından ayrılır. Buradan yalnızca aşağı inebilirsiniz, ta ki tekrar yukarı çıkana kadar, ve sonrasında yalnızca yukarı. Normal güncellemeler kurulmayı bırakır. Cüzdanlarınız ve paranız etkilenmez.</string>
     <string name="downgrade_slide">v%1$s sürümüne geçmek için kaydırın</string>
     <string name="downgrade_slide_hint">Geçmek için kaydırın veya çift dokunun</string>
     <string name="personalize_section_security">Güvenlik</string>
@@ -770,11 +770,11 @@
     <string name="settings_about_build">Derleme</string>
     <string name="build_lane_you_are_on">Üzerinde olduğunuz derleme</string>
     <string name="build_lane_primary">Normal derleme</string>
-    <string name="build_lane_primary_body">Normal sürüm hattı: normal güncellemeler buraya kurulur. Buradan yalnızca aşağı inebilirsiniz. Aşağı inmek sizi alternatif derlemelere taşır; oradan itibaren yalnızca aşağı inmeye devam edebilirsiniz — ta ki tekrar yukarı çıkana kadar, ve sonrasında yalnızca yukarı.</string>
+    <string name="build_lane_primary_body">Normal sürüm hattı: normal güncellemeler buraya kurulur. Buradan istediğiniz yere serbestçe gidebilirsiniz. Daha eski her sürüm yerinde kurulur, daha yeni sürümler normal güncellemeler olarak gelir.</string>
     <string name="build_lane_rollback">Alternatif sürüm düşürme derlemesi</string>
     <string name="build_lane_rollback_body">Alternatif derleme: normal güncellemeler kurulmaz. Daha eski sürümlere aşağı inmeye devam edebilir veya kendi geri dönüş derlemesi olan herhangi bir sürüme yukarı çıkabilirsiniz. Bir kez yukarı çıktığınızda, yalnızca yukarı vardır.</string>
     <string name="build_lane_back">Alternatif geri dönüş derlemesi</string>
-    <string name="build_lane_back_body">Alternatif derleme: normal güncellemeler kurulmaz ve buradan yalnızca yukarı vardır — daha yeni geri dönüş derlemeleri. Tekrar aşağı inmek için sıfırlayın.</string>
+    <string name="build_lane_back_body">Alternatif derleme: normal güncellemeler kurulmaz ve buradan yalnızca yukarı vardır: daha yeni geri dönüş derlemeleri. Tekrar aşağı inmek için sıfırlayın.</string>
     <string name="downgrade_switch_body">Android bunu derlemenizin üzerine kurmaz. Geçiş yapmak bunu Downloads’a kaydeder, PocketPRL’i kaldırır ve yeniden kurduktan sonra kurtarma ifadenizden geri yüklersiniz.</string>
     <string name="downgrade_switch_button">Bu sürüme geç</string>
     <string name="settings_about_off_primary">Normal sürüm hattında değil, alternatif bir derlemedesiniz.</string>
@@ -788,6 +788,6 @@
     <string name="switch_cant_here">Bu sürüm buraya kurulamaz</string>
     <string name="downgrade_manual_update_warning">Bu derleme güncellemeleri denetleyebilir ama kendisi kuramaz. İlerlemek için sürümü GitHub’dan indirip elle kurmanız gerekir.</string>
     <string name="downgrade_no_switcher_warning">Bu derlemede sürüm değiştiricisi yok. Buraya geldikten sonra 2.4.0 veya daha yenisine dönene kadar hangi derlemede olduğunuzu göremez ve uygulama içinden değiştiremezsiniz.</string>
-    <string name="alternate_notice_rollback">Dikkat: alternatif sürüm düşürme derlemesindesiniz. Buradan yalnızca aşağı inebilirsiniz, tekrar yukarı çıkana kadar — ve sonrasında yalnızca yukarı.</string>
+    <string name="alternate_notice_rollback">Dikkat: alternatif sürüm düşürme derlemesindesiniz. Buradan yalnızca aşağı inebilirsiniz, tekrar yukarı çıkana kadar, ve sonrasında yalnızca yukarı.</string>
     <string name="alternate_notice_back">Dikkat: alternatif geri dönüş derlemesindesiniz. Buradan yalnızca yukarı vardır — daha yeni geri dönüş derlemelerine.</string>
 </resources>

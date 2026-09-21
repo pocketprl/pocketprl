@@ -399,7 +399,12 @@ class WalletRepository(
                 // Ownership is judged against every known address, not just the ones being
                 // checked, or a payment to an unchecked change address is filed as outgoing.
                 val own = db.addresses().map { it.address }.toHashSet()
-                val msg = trPlural(R.plurals.wallet_checking, rows.size)
+                val total = rows.size
+                val checkedNow = AtomicInteger(0)
+                // %1$d finished, %2$d total; the plural follows the total.
+                fun checkMsg(n: Int): String =
+                    context.resources.getQuantityString(R.plurals.wallet_checking_progress, total, n, total)
+                val msg = checkMsg(0)
                 onProgress(msg)
                 _sync.value = _sync.value.copy(progress = msg)
                 val sem = Semaphore(CONCURRENCY)
@@ -412,6 +417,10 @@ class WalletRepository(
                                 } catch (e: IOException) {
                                     failed.incrementAndGet()
                                     lastFailure = e.message
+                                } finally {
+                                    val m = checkMsg(checkedNow.incrementAndGet())
+                                    onProgress(m)
+                                    _sync.value = _sync.value.copy(progress = m)
                                 }
                             }
                         }

@@ -468,9 +468,9 @@
     <string name="sync_err_lost_connection">Yhteys indeksoijaan menetettiin</string>
     <string name="wallet_deriving_receive">Johdetaan vastaanotto-osoitetta %1$d / %2$d</string>
     <string name="wallet_deriving_change">Johdetaan vaihtorahaosoitetta %1$d / %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Tarkistetaan %1$d osoite…</item>
-        <item quantity="other">Tarkistetaan %1$d osoitetta…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Tarkistetaan %1$d / %2$d osoite…</item>
+        <item quantity="other">Tarkistetaan %1$d / %2$d osoitetta…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d osoitetta ei voitu tarkistaa (%2$s); yritetään uudelleen</item>
@@ -748,7 +748,7 @@
     <string name="downgrade_not_installable">Android ei asenna tätä koontiversiota päälle: sen pakkausversio on asennettua pienempi, eikä tässä julkaisussa ole vielä vanhemman version koontiversiota. Asennus vaatisi manuaalisen poistamisen.</string>
     <string name="downgrade_notes_title">Julkaisumuistiinpanot</string>
     <string name="downgrade_notes_empty">Ei julkaisumuistiinpanoja tälle versiolle.</string>
-    <string name="downgrade_warning">Tämä asentaa vaihtoehtoisen koontiversion ja jättää tavallisen julkaisulinjan. Täältä voit vain mennä alas, kunnes menet takaisin ylös — ja sen jälkeen vain ylös. Normaalit päivitykset lakkaavat asentumasta. Lompakkoihisi ja varoihisi tämä ei vaikuta.</string>
+    <string name="downgrade_warning">Tämä asentaa vaihtoehtoisen koontiversion ja jättää tavallisen julkaisulinjan. Täältä voit vain mennä alas, kunnes menet takaisin ylös, ja sen jälkeen vain ylös. Normaalit päivitykset lakkaavat asentumasta. Lompakkoihisi ja varoihisi tämä ei vaikuta.</string>
     <string name="downgrade_slide">Liu’uta vaihtaaksesi versioon v%1$s</string>
     <string name="downgrade_slide_hint">Liu’uta tai kaksoisnapauta vaihtaaksesi</string>
     <string name="personalize_section_security">Turvallisuus</string>
@@ -771,11 +771,11 @@
     <string name="settings_about_build">Koontiversio</string>
     <string name="build_lane_you_are_on">Käytössäsi on</string>
     <string name="build_lane_primary">Tavallinen koontiversio</string>
-    <string name="build_lane_primary_body">Tavallinen julkaisulinja: normaalit päivitykset asentuvat tähän. Täältä voit mennä vain alas. Alas siirtyminen vie sinut vaihtoehtoisiin koontiversioihin, joissa voit siitä lähtien jatkaa vain alas — kunnes menet takaisin ylös, ja sen jälkeen vain ylös.</string>
+    <string name="build_lane_primary_body">Tavallinen julkaisulinja: normaalit päivitykset asentuvat tähän. Täältä voit siirtyä vapaasti minne tahansa. Mikä tahansa vanhempi versio asentuu paikoilleen, ja uudemmat julkaisut saapuvat normaaleina päivityksinä.</string>
     <string name="build_lane_rollback">Vaihtoehtoinen peruutuskoontiversio</string>
     <string name="build_lane_rollback_body">Vaihtoehtoinen koontiversio: normaalit päivitykset eivät asennu. Voit jatkaa alas vanhempiin versioihin tai mennä ylös mihin tahansa versioon, jolla on oma paluukoontiversionsa. Kun menet ylös, edessä on vain ylös.</string>
     <string name="build_lane_back">Vaihtoehtoinen paluukoontiversio</string>
-    <string name="build_lane_back_body">Vaihtoehtoinen koontiversio: normaalit päivitykset eivät asennu, ja täältä on vain ylös — uudempia paluukoontiversioita. Jos haluat taas alas, palauta.</string>
+    <string name="build_lane_back_body">Vaihtoehtoinen koontiversio: normaalit päivitykset eivät asennu, ja täältä on vain ylös: uudempia paluukoontiversioita. Jos haluat taas alas, palauta.</string>
     <string name="downgrade_switch_body">Android ei asenna tätä koontiversiosi päälle. Vaihtaminen tallentaa sen Downloads-kansioon, poistaa PocketPRLin, ja palautat lompakkosi palautuslauseesta uudelleenasennuksen jälkeen.</string>
     <string name="downgrade_switch_button">Vaihda tähän versioon</string>
     <string name="settings_about_off_primary">Käytössäsi on vaihtoehtoinen koontiversio, ei tavallinen julkaisulinja.</string>
@@ -789,6 +789,6 @@
     <string name="switch_cant_here">Tätä versiota ei voi asentaa tähän</string>
     <string name="downgrade_manual_update_warning">Tämä koontiversio voi tarkistaa päivityksiä, mutta ei voi asentaa niitä itse. Edetäksesi sinun on ladattava julkaisu GitHubista ja asennettava se käsin.</string>
     <string name="downgrade_no_switcher_warning">Tässä koontiversiossa ei ole versionvaihtajaa. Tänne jouduttuasi et näe, millä koontiversiolla olet, etkä voi vaihtaa sovelluksessa, ennen kuin olet taas versiossa 2.4.0 tai uudemmassa.</string>
-    <string name="alternate_notice_rollback">Huomio: olet vaihtoehtoisella peruutuskoontiversiolla. Täältä voit mennä vain alas, kunnes menet takaisin ylös — ja sen jälkeen vain ylös.</string>
+    <string name="alternate_notice_rollback">Huomio: olet vaihtoehtoisella peruutuskoontiversiolla. Täältä voit mennä vain alas, kunnes menet takaisin ylös, ja sen jälkeen vain ylös.</string>
     <string name="alternate_notice_back">Huomio: olet vaihtoehtoisella paluukoontiversiolla. Täältä on vain ylös, uudempiin paluukoontiversioihin.</string>
 </resources>

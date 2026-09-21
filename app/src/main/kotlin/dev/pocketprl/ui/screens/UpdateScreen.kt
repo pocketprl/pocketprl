@@ -41,6 +41,8 @@ fun UpdateScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val leaving = rememberLeaveAppMarker()
     var installError by remember { mutableStateOf<String?>(null) }
+    // Bumped whenever the install handoff fails so the slide springs back instead of sticking.
+    var installNonce by remember { mutableStateOf(0) }
 
     ScreenScaffold(title = stringResource(R.string.update_screen_title), onBack = onBack) {
         Column(
@@ -67,6 +69,7 @@ fun UpdateScreen(onBack: () -> Unit) {
                 installLabel = stringResource(R.string.update_install),
                 slideHint = stringResource(R.string.update_install_slide_hint),
                 notReady = stringResource(R.string.update_install_not_ready),
+                resetKey = installNonce,
                 onInstall = {
                     installError = null
                     (state as? AppUpdater.State.Ready)?.let { st ->
@@ -77,10 +80,14 @@ fun UpdateScreen(onBack: () -> Unit) {
                             AppUpdater.Install.LAUNCHED -> leaving()
                             AppUpdater.Install.NEED_PERMISSION -> {
                                 installError = context.getString(R.string.update_install_permission)
+                                installNonce += 1
                                 leaving()
                                 updater.openInstallPermissionSettings()
                             }
-                            AppUpdater.Install.FAILED -> installError = context.getString(R.string.update_install_failed)
+                            AppUpdater.Install.FAILED -> {
+                                installError = context.getString(R.string.update_install_failed)
+                                installNonce += 1
+                            }
                         }
                     }
                 },

@@ -468,9 +468,9 @@
     <string name="sync_err_lost_connection">Se perdió la conexión con el indexador</string>
     <string name="wallet_deriving_receive">Derivando la dirección de recepción %1$d de %2$d</string>
     <string name="wallet_deriving_change">Derivando la dirección de cambio %1$d de %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Comprobando %1$d dirección…</item>
-        <item quantity="other">Comprobando %1$d direcciones…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Comprobando %1$d de %2$d dirección…</item>
+        <item quantity="other">Comprobando %1$d de %2$d direcciones…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">No se pudo comprobar %1$d dirección (%2$s); reintentando</item>
@@ -750,7 +750,7 @@
     <string name="downgrade_not_installable">Android no instalará esta compilación sobre la actual: su versión de paquete es inferior a la instalada y esta versión aún no tiene una compilación que permita revertir. Instalarla requeriría una desinstalación manual.</string>
     <string name="downgrade_notes_title">Notas de la versión</string>
     <string name="downgrade_notes_empty">No hay notas de la versión para esta versión.</string>
-    <string name="downgrade_warning">Esto instala una compilación alternativa y abandona la línea de publicación estándar. Desde aquí solo puedes bajar, hasta que vuelvas a subir — y a partir de ahí solo puedes subir. Las actualizaciones normales dejan de instalarse. Tus carteras y tus fondos no se ven afectados.</string>
+    <string name="downgrade_warning">Esto instala una compilación alternativa y abandona la línea de publicación estándar. Desde aquí solo puedes bajar, hasta que vuelvas a subir, y a partir de ahí solo puedes subir. Las actualizaciones normales dejan de instalarse. Tus carteras y tus fondos no se ven afectados.</string>
     <string name="downgrade_slide">Desliza para cambiar a la v%1$s</string>
     <string name="downgrade_slide_hint">Desliza o toca dos veces para cambiar de versión</string>
     <string name="personalize_section_security">Seguridad</string>
@@ -775,11 +775,11 @@
     <string name="settings_about_build">Compilación</string>
     <string name="build_lane_you_are_on">Estás usando</string>
     <string name="build_lane_primary">Compilación estándar</string>
-    <string name="build_lane_primary_body">Línea de publicación estándar: aquí se instalan las actualizaciones normales. Desde aquí solo puedes bajar. Bajar te lleva a compilaciones alternativas, donde a partir de entonces solo puedes seguir bajando — hasta que vuelvas a subir, y a partir de ahí solo puedes subir.</string>
+    <string name="build_lane_primary_body">Línea de publicación estándar: aquí se instalan las actualizaciones normales. Desde aquí puedes ir a donde quieras libremente. Cualquier versión anterior se instala en su lugar, y las versiones más recientes llegan como actualizaciones normales.</string>
     <string name="build_lane_rollback">Compilación de reversión alternativa</string>
     <string name="build_lane_rollback_body">Compilación alternativa: las actualizaciones normales no se instalan. Puedes seguir bajando a versiones anteriores, o subir a cualquier versión con su compilación de retorno. Una vez que subes, solo se puede subir.</string>
     <string name="build_lane_back">Compilación de retorno alternativa</string>
-    <string name="build_lane_back_body">Compilación alternativa: las actualizaciones normales no se instalan, y desde aquí solo se puede subir — a compilaciones de retorno más recientes. Para volver a bajar, restablece.</string>
+    <string name="build_lane_back_body">Compilación alternativa: las actualizaciones normales no se instalan, y desde aquí solo se puede subir: a compilaciones de retorno más recientes. Para volver a bajar, restablece.</string>
     <string name="downgrade_switch_body">Android no instalará esto sobre tu compilación. Al cambiar se guarda en Downloads, se desinstala PocketPRL y restauras desde tu frase de recuperación tras reinstalar.</string>
     <string name="downgrade_switch_button">Cambiar a esta versión</string>
     <string name="settings_about_off_primary">Estás en una compilación alternativa, no en la línea de publicación estándar.</string>
@@ -793,6 +793,6 @@
     <string name="switch_cant_here">No se puede instalar esta versión aquí</string>
     <string name="downgrade_manual_update_warning">Esta compilación puede buscar actualizaciones, pero no puede instalarlas por sí misma. Para avanzar, tendrás que descargar la versión desde GitHub e instalarla manualmente.</string>
     <string name="downgrade_no_switcher_warning">Esta compilación no tiene selector de versiones. Una vez aquí no verás en qué compilación estás ni podrás cambiar de versión en la aplicación hasta que vuelvas a la 2.4.0 o una posterior.</string>
-    <string name="alternate_notice_rollback">Aviso: estás usando una compilación de reversión alternativa. Desde aquí solo puedes bajar, hasta que vuelvas a subir — y a partir de ahí solo puedes subir.</string>
+    <string name="alternate_notice_rollback">Aviso: estás usando una compilación de reversión alternativa. Desde aquí solo puedes bajar, hasta que vuelvas a subir, y a partir de ahí solo puedes subir.</string>
     <string name="alternate_notice_back">Aviso: estás usando una compilación de retorno alternativa. Desde aquí solo se puede subir — a compilaciones de retorno más recientes.</string>
 </resources>

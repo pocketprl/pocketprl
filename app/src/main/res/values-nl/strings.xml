@@ -468,9 +468,9 @@
     <string name="sync_err_lost_connection">Verbinding met de indexer verloren</string>
     <string name="wallet_deriving_receive">Ontvangstadres %1$d van %2$d afleiden</string>
     <string name="wallet_deriving_change">Wisselgeldadres %1$d van %2$d afleiden</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">%1$d adres controleren…</item>
-        <item quantity="other">%1$d adressen controleren…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">%1$d van %2$d adres controleren…</item>
+        <item quantity="other">%1$d van %2$d adressen controleren…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d adres kon niet worden gecontroleerd (%2$s); opnieuw proberen</item>
@@ -746,7 +746,7 @@
     <string name="downgrade_not_installable">Android installeert deze build niet ter plaatse: de pakketversie is lager dan de geïnstalleerde versie en deze release heeft nog geen downgrade-build. Installatie zou handmatig verwijderen vereisen.</string>
     <string name="downgrade_notes_title">Release-opmerkingen</string>
     <string name="downgrade_notes_empty">Geen release-opmerkingen voor deze versie.</string>
-    <string name="downgrade_warning">Dit installeert een alternatieve build en verlaat de gewone release-lijn. Vanaf hier kun je alleen naar beneden, tot je weer naar boven gaat — en dan alleen nog naar boven. Normale updates worden niet meer geïnstalleerd. Je wallets en geld blijven onaangetast.</string>
+    <string name="downgrade_warning">Dit installeert een alternatieve build en verlaat de gewone release-lijn. Vanaf hier kun je alleen naar beneden, tot je weer naar boven gaat, en dan alleen nog naar boven. Normale updates worden niet meer geïnstalleerd. Je wallets en geld blijven onaangetast.</string>
     <string name="downgrade_slide">Schuif om te wisselen naar v%1$s</string>
     <string name="downgrade_slide_hint">Schuif of dubbeltik om te wisselen</string>
     <string name="personalize_section_security">Beveiliging</string>
@@ -771,11 +771,11 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Je gebruikt</string>
     <string name="build_lane_primary">Gewone build</string>
-    <string name="build_lane_primary_body">Gewone release-lijn: hier worden normale updates geïnstalleerd. Vanaf hier kun je alleen naar beneden. Naar beneden brengt je op alternatieve builds, waar het vanaf dan alleen nog naar beneden kan — tot je weer naar boven gaat, en dan alleen nog naar boven.</string>
+    <string name="build_lane_primary_body">Gewone release-lijn: hier worden normale updates geïnstalleerd. Vanaf hier kun je vrij overal naartoe. Elke oudere versie wordt ter plaatse geïnstalleerd, en nieuwere releases komen als normale updates.</string>
     <string name="build_lane_rollback">Alternatieve downgrade-build</string>
     <string name="build_lane_rollback_body">Alternatieve build: normale updates worden niet geïnstalleerd. Je kunt naar beneden blijven gaan naar oudere versies, of naar boven gaan naar elke versie met zijn terugkeerbuild. Zodra je naar boven gaat, gaat het alleen nog maar naar boven.</string>
     <string name="build_lane_back">Alternatieve terugkeerbuild</string>
-    <string name="build_lane_back_body">Alternatieve build: normale updates worden niet geïnstalleerd, en vanaf hier gaat het alleen nog naar boven — nieuwere terugkeerbuilds. Om weer naar beneden te gaan, is een reset nodig.</string>
+    <string name="build_lane_back_body">Alternatieve build: normale updates worden niet geïnstalleerd, en vanaf hier gaat het alleen nog naar boven: nieuwere terugkeerbuilds. Om weer naar beneden te gaan, is een reset nodig.</string>
     <string name="downgrade_switch_body">Android installeert dit niet ter plaatse over je build heen. Bij het wisselen wordt het opgeslagen in Downloads, wordt PocketPRL verwijderd en herstel je na het opnieuw installeren vanuit je herstelzin.</string>
     <string name="downgrade_switch_button">Naar deze versie wisselen</string>
     <string name="settings_about_off_primary">Je gebruikt een alternatieve build, niet de gewone release-lijn.</string>
@@ -789,6 +789,6 @@
     <string name="switch_cant_here">Kan deze versie hier niet installeren</string>
     <string name="downgrade_manual_update_warning">Deze build kan op updates controleren, maar kan ze niet zelf installeren. Om verder te komen, moet je de release van GitHub downloaden en handmatig installeren.</string>
     <string name="downgrade_no_switcher_warning">Deze build heeft geen versiewisselaar. Eenmaal hier zie je niet welke build je gebruikt en kun je niet in de app wisselen tot je weer op 2.4.0 of nieuwer staat.</string>
-    <string name="alternate_notice_rollback">Let op: je gebruikt een alternatieve downgrade-build. Vanaf hier kun je alleen naar beneden, tot je weer naar boven gaat — en dan alleen nog maar naar boven.</string>
+    <string name="alternate_notice_rollback">Let op: je gebruikt een alternatieve downgrade-build. Vanaf hier kun je alleen naar beneden, tot je weer naar boven gaat, en dan alleen nog maar naar boven.</string>
     <string name="alternate_notice_back">Let op: je gebruikt een alternatieve terugkeerbuild. Vanaf hier gaat het alleen nog maar naar boven — naar nieuwere terugkeerbuilds.</string>
 </resources>

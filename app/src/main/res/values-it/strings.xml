@@ -468,9 +468,9 @@
     <string name="sync_err_lost_connection">Connessione all’indicizzatore persa</string>
     <string name="wallet_deriving_receive">Derivazione dell’indirizzo di ricezione %1$d di %2$d</string>
     <string name="wallet_deriving_change">Derivazione dell’indirizzo di resto %1$d di %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Verifica di %1$d indirizzo…</item>
-        <item quantity="other">Verifica di %1$d indirizzi…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Verifica di %1$d indirizzo su %2$d…</item>
+        <item quantity="other">Verifica di %1$d indirizzi su %2$d…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">Impossibile verificare %1$d indirizzo (%2$s); nuovo tentativo</item>
@@ -750,7 +750,7 @@
     <string name="downgrade_not_installable">Android non installerà questa build in-place: la versione del pacchetto è inferiore a quella installata e questa versione non ha ancora una build che permetta il downgrade. Installarla richiederebbe una disinstallazione manuale.</string>
     <string name="downgrade_notes_title">Note di rilascio</string>
     <string name="downgrade_notes_empty">Nessuna nota di rilascio per questa versione.</string>
-    <string name="downgrade_warning">Questa operazione installa una build alternativa e abbandona la linea di rilascio standard. Da qui puoi solo scendere, finché non risali — e da quel momento puoi solo salire. I normali aggiornamenti smettono di installarsi. I tuoi portafogli e i fondi non sono interessati.</string>
+    <string name="downgrade_warning">Questa operazione installa una build alternativa e abbandona la linea di rilascio standard. Da qui puoi solo scendere, finché non risali, e da quel momento puoi solo salire. I normali aggiornamenti smettono di installarsi. I tuoi portafogli e i fondi non sono interessati.</string>
     <string name="downgrade_slide">Scorri per passare alla v%1$s</string>
     <string name="downgrade_slide_hint">Scorri o tocca due volte per cambiare versione</string>
     <string name="personalize_section_security">Sicurezza</string>
@@ -775,11 +775,11 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Stai usando</string>
     <string name="build_lane_primary">Build standard</string>
-    <string name="build_lane_primary_body">Linea di rilascio standard: qui si installano i normali aggiornamenti. Da qui puoi solo scendere. Scendendo passi a build alternative, da cui poi puoi solo continuare a scendere — finché non risali, e da quel momento puoi solo salire.</string>
+    <string name="build_lane_primary_body">Linea di rilascio standard: qui si installano i normali aggiornamenti. Da qui puoi andare ovunque liberamente. Qualsiasi versione precedente si installa sul posto, e le versioni più recenti arrivano come normali aggiornamenti.</string>
     <string name="build_lane_rollback">Build di downgrade alternativa</string>
     <string name="build_lane_rollback_body">Build alternativa: i normali aggiornamenti non si installano. Puoi continuare a scendere verso versioni precedenti, o salire a qualsiasi versione con la sua build di ritorno. Una volta che sali, puoi solo salire.</string>
     <string name="build_lane_back">Build di ritorno alternativa</string>
-    <string name="build_lane_back_body">Build alternativa: i normali aggiornamenti non si installano, e da qui puoi solo salire — verso build di ritorno più recenti. Per scendere di nuovo, ripristina.</string>
+    <string name="build_lane_back_body">Build alternativa: i normali aggiornamenti non si installano, e da qui puoi solo salire: build di ritorno più recenti. Per scendere di nuovo, ripristina.</string>
     <string name="downgrade_switch_body">Android non installerà questa versione sopra la tua, in-place. Il passaggio la salva in Downloads, disinstalla PocketPRL e, dopo la reinstallazione, ripristini dalla tua frase di recupero.</string>
     <string name="downgrade_switch_button">Passa a questa versione</string>
     <string name="settings_about_off_primary">Sei su una build alternativa, non sulla linea di rilascio standard.</string>
@@ -793,6 +793,6 @@
     <string name="switch_cant_here">Impossibile installare questa versione qui</string>
     <string name="downgrade_manual_update_warning">Questa build può controllare gli aggiornamenti ma non può installarli da sola. Per andare avanti dovrai scaricare la versione da GitHub e installarla manualmente.</string>
     <string name="downgrade_no_switcher_warning">Questa build non ha un selettore di versione. Una volta qui non vedrai su quale build ti trovi né potrai cambiare versione nell’app finché non sarai di nuovo sulla 2.4.0 o successiva.</string>
-    <string name="alternate_notice_rollback">Attenzione: stai usando una build di downgrade alternativa. Da qui puoi solo scendere, finché non risali — e poi solo salire.</string>
+    <string name="alternate_notice_rollback">Attenzione: stai usando una build di downgrade alternativa. Da qui puoi solo scendere, finché non risali, e poi solo salire.</string>
     <string name="alternate_notice_back">Attenzione: stai usando una build di ritorno alternativa. Da qui si può solo salire — verso build di ritorno più recenti.</string>
 </resources>

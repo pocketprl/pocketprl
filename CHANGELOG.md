@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.5.2
+
+* **Switcher resets on back.** Swiping out of a download or a release's details
+  lands back on the main version list instead of leaving the abandoned state behind.
+* **Install slider springs back.** A failed install handoff (missing install
+  permission, installer error) resets the slide like a failed send confirmation
+  instead of sticking at the end.
+* **Sync shows its work.** Checking addresses now reads "Checking X of Y
+  addresses" live on the dashboard, in Settings and while restoring, so a big
+  gap window no longer looks stuck.
+* The regular-build banner now says what is true: from the regular line you can
+  go anywhere freely.
+* New strings localized into all 18 supported languages.
+
 ## 2.5.1
 
 * **Odometer reverted to the 1.0.0 motion.** The balance roll is the original

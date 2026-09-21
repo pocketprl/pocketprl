@@ -468,9 +468,9 @@
     <string name="sync_err_lost_connection">Tappade anslutningen till indexeraren</string>
     <string name="wallet_deriving_receive">Härleder mottagaradress %1$d av %2$d</string>
     <string name="wallet_deriving_change">Härleder växeladress %1$d av %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Kontrollerar %1$d adress…</item>
-        <item quantity="other">Kontrollerar %1$d adresser…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Kontrollerar %1$d av %2$d adress…</item>
+        <item quantity="other">Kontrollerar %1$d av %2$d adresser…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d adress kunde inte kontrolleras (%2$s); försöker igen</item>
@@ -749,7 +749,7 @@
     <string name="downgrade_not_installable">Android installerar inte den här versionen på plats: dess paketversion är lägre än den installerade och den här utgåvan har ingen nedgraderingsversion ännu. Att installera den skulle kräva en manuell avinstallation.</string>
     <string name="downgrade_notes_title">Versionsanteckningar</string>
     <string name="downgrade_notes_empty">Inga versionsanteckningar för den här versionen.</string>
-    <string name="downgrade_warning">Detta installerar ett alternativt bygge och lämnar den vanliga utgivningslinjen. Härifrån kan du bara gå ned, tills du går upp igen — och då bara upp. Normala uppdateringar slutar installeras. Dina plånböcker och tillgångar påverkas inte.</string>
+    <string name="downgrade_warning">Detta installerar ett alternativt bygge och lämnar den vanliga utgivningslinjen. Härifrån kan du bara gå ned, tills du går upp igen, och då bara upp. Normala uppdateringar slutar installeras. Dina plånböcker och tillgångar påverkas inte.</string>
     <string name="downgrade_slide">Dra för att byta till v%1$s</string>
     <string name="downgrade_slide_hint">Dra eller dubbeltryck för att byta</string>
     <string name="personalize_section_security">Säkerhet</string>
@@ -773,11 +773,11 @@
     <string name="settings_about_build">Bygge</string>
     <string name="build_lane_you_are_on">Du är på</string>
     <string name="build_lane_primary">Vanlig version</string>
-    <string name="build_lane_primary_body">Vanliga utgivningslinjen: normala uppdateringar installeras här. Härifrån kan du bara gå ned. Att gå ned placerar dig på alternativa byggen, där du från och med då bara kan fortsätta gå ned — tills du går upp igen, och då bara upp.</string>
+    <string name="build_lane_primary_body">Vanliga utgivningslinjen: normala uppdateringar installeras här. Härifrån kan du gå vart som helst fritt. Varje äldre version installeras på plats, och nyare utgåvor kommer som normala uppdateringar.</string>
     <string name="build_lane_rollback">Alternativt nedgraderingsbygge</string>
     <string name="build_lane_rollback_body">Alternativt bygge: normala uppdateringar installeras inte. Du kan fortsätta gå ned till äldre versioner, eller gå upp till valfri version med dess returbygge. När du väl går upp finns bara upp.</string>
     <string name="build_lane_back">Alternativt returbygge</string>
-    <string name="build_lane_back_body">Alternativt bygge: normala uppdateringar installeras inte, och härifrån finns bara upp — nyare returbyggen. För att gå ned igen, återställ.</string>
+    <string name="build_lane_back_body">Alternativt bygge: normala uppdateringar installeras inte, och härifrån finns bara upp: nyare returbyggen. För att gå ned igen, återställ.</string>
     <string name="downgrade_switch_body">Android installerar inte detta över din version på plats. Att byta sparar det i Downloads, avinstallerar PocketPRL, och du återställer från din återställningsfras efter ominstallationen.</string>
     <string name="downgrade_switch_button">Byt till den här versionen</string>
     <string name="settings_about_off_primary">Du är på ett alternativt bygge, inte den vanliga utgivningslinjen.</string>
@@ -791,6 +791,6 @@
     <string name="switch_cant_here">Kan inte installera den här versionen här</string>
     <string name="downgrade_manual_update_warning">Den här versionen kan söka efter uppdateringar men kan inte installera dem själv. För att gå vidare måste du ladda ner utgåvan från GitHub och installera den manuellt.</string>
     <string name="downgrade_no_switcher_warning">Den här versionen har ingen versionsväxlare. När du väl är här ser du inte vilken version du är på och kan inte byta i appen förrän du är tillbaka på 2.4.0 eller nyare.</string>
-    <string name="alternate_notice_rollback">OBS: du är på ett alternativt nedgraderingsbygge. Härifrån kan du bara gå ned, tills du går upp igen — och sedan bara upp.</string>
+    <string name="alternate_notice_rollback">OBS: du är på ett alternativt nedgraderingsbygge. Härifrån kan du bara gå ned, tills du går upp igen, och sedan bara upp.</string>
     <string name="alternate_notice_back">OBS: du är på ett alternativt returbygge. Härifrån finns bara upp — till nyare returbyggen.</string>
 </resources>

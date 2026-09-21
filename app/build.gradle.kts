@@ -24,7 +24,7 @@ android {
         // over a newer one. See docs/VERSIONING.md. The literal is only a fallback
         // for builds that do not resolve the property.
         versionCode = (project.findProperty("pocketprl.versionCode") as String?)?.toIntOrNull() ?: 15
-        versionName = "2.5.1"
+        versionName = "2.5.2"
         buildConfigField("long", "NORMAL_VERSION_CODE", "${pocketprlNormalVersionCode}L")
         ndk {
             abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")

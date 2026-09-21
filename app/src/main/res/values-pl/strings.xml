@@ -474,11 +474,11 @@
     <string name="sync_err_lost_connection">Utracono połączenie z indekserem</string>
     <string name="wallet_deriving_receive">Wyprowadzanie adresu odbiorczego %1$d z %2$d</string>
     <string name="wallet_deriving_change">Wyprowadzanie adresu resztowego %1$d z %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Sprawdzanie %1$d adresu…</item>
-        <item quantity="few">Sprawdzanie %1$d adresów…</item>
-        <item quantity="many">Sprawdzanie %1$d adresów…</item>
-        <item quantity="other">Sprawdzanie %1$d adresu…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Sprawdzanie %1$d z %2$d adresu…</item>
+        <item quantity="few">Sprawdzanie %1$d z %2$d adresów…</item>
+        <item quantity="many">Sprawdzanie %1$d z %2$d adresów…</item>
+        <item quantity="other">Sprawdzanie %1$d z %2$d adresu…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">Nie udało się sprawdzić %1$d adresu (%2$s); ponawianie</item>
@@ -764,7 +764,7 @@
     <string name="downgrade_not_installable">Android nie zainstaluje tej kompilacji w miejscu: jej wersja pakietu jest niższa niż zainstalowana, a to wydanie nie ma jeszcze kompilacji do przywrócenia starszej wersji. Aby ją zainstalować, trzeba ręcznie odinstalować aplikację.</string>
     <string name="downgrade_notes_title">Lista zmian</string>
     <string name="downgrade_notes_empty">Brak listy zmian dla tej wersji.</string>
-    <string name="downgrade_warning">Spowoduje to zainstalowanie alternatywnej kompilacji i opuszczenie zwykłej linii wydań. Stąd możesz iść tylko w dół, dopóki nie pójdziesz w górę — a wtedy już tylko w górę. Normalne aktualizacje przestaną się instalować. Twoje portfele i środki pozostają nienaruszone.</string>
+    <string name="downgrade_warning">Spowoduje to zainstalowanie alternatywnej kompilacji i opuszczenie zwykłej linii wydań. Stąd możesz iść tylko w dół, dopóki nie pójdziesz w górę, a wtedy już tylko w górę. Normalne aktualizacje przestaną się instalować. Twoje portfele i środki pozostają nienaruszone.</string>
     <string name="downgrade_slide">Przesuń, aby przełączyć na v%1$s</string>
     <string name="downgrade_slide_hint">Przesuń lub dotknij dwukrotnie, aby przełączyć</string>
     <string name="personalize_section_security">Bezpieczeństwo</string>
@@ -788,11 +788,11 @@
     <string name="settings_about_build">Kompilacja</string>
     <string name="build_lane_you_are_on">Korzystasz z</string>
     <string name="build_lane_primary">Zwykła kompilacja</string>
-    <string name="build_lane_primary_body">Zwykła linia wydań: instalują się tu normalne aktualizacje. Stąd możesz iść tylko w dół. Zejście w dół przenosi Cię na alternatywne kompilacje, gdzie od tego momentu możesz już tylko schodzić w dół — dopóki nie pójdziesz w górę, a wtedy już tylko w górę.</string>
+    <string name="build_lane_primary_body">Zwykła linia wydań: instalują się tu normalne aktualizacje. Stąd możesz swobodnie iść wszędzie. Każda starsza wersja instaluje się w miejscu, a nowsze wydania przychodzą jako normalne aktualizacje.</string>
     <string name="build_lane_rollback">Alternatywna kompilacja wycofania</string>
     <string name="build_lane_rollback_body">Alternatywna kompilacja: normalne aktualizacje się nie instalują. Możesz schodzić do starszych wersji albo pójść w górę do dowolnej wersji wraz z jej kompilacją powrotną. Gdy raz pójdziesz w górę, pozostaje już tylko góra.</string>
     <string name="build_lane_back">Alternatywna kompilacja powrotna</string>
-    <string name="build_lane_back_body">Alternatywna kompilacja: normalne aktualizacje się nie instalują, a stąd jest już tylko w górę — nowsze kompilacje powrotne. Aby znowu zejść, zresetuj.</string>
+    <string name="build_lane_back_body">Alternatywna kompilacja: normalne aktualizacje się nie instalują, a stąd jest już tylko w górę: nowsze kompilacje powrotne. Aby znowu zejść, zresetuj.</string>
     <string name="downgrade_switch_body">Android nie zainstaluje tej wersji w miejsce Twojej kompilacji. Przełączenie zapisze ją w Downloads, odinstaluje PocketPRL, a po ponownej instalacji przywrócisz portfel z frazy odzyskiwania.</string>
     <string name="downgrade_switch_button">Przełącz na tę wersję</string>
     <string name="settings_about_off_primary">Korzystasz z alternatywnej kompilacji, a nie ze zwykłej linii wydań.</string>
@@ -806,6 +806,6 @@
     <string name="switch_cant_here">Nie można zainstalować tej wersji tutaj</string>
     <string name="downgrade_manual_update_warning">Ta kompilacja potrafi sprawdzać aktualizacje, ale nie może ich sama instalować. Aby przejść dalej, będziesz musiał pobrać wydanie z GitHub i zainstalować je ręcznie.</string>
     <string name="downgrade_no_switcher_warning">Ta kompilacja nie ma przełącznika wersji. Gdy już tu trafisz, nie zobaczysz, na której kompilacji jesteś, ani nie będziesz mógł przełączyć wersji w aplikacji, dopóki nie wrócisz na 2.4.0 lub nowszą.</string>
-    <string name="alternate_notice_rollback">Uwaga: korzystasz z alternatywnej kompilacji wycofania. Stąd możesz tylko schodzić, dopóki nie pójdziesz z powrotem w górę — a wtedy już tylko w górę.</string>
+    <string name="alternate_notice_rollback">Uwaga: korzystasz z alternatywnej kompilacji wycofania. Stąd możesz tylko schodzić, dopóki nie pójdziesz z powrotem w górę, a wtedy już tylko w górę.</string>
     <string name="alternate_notice_back">Uwaga: korzystasz z alternatywnej kompilacji powrotnej. Stąd jest już tylko w górę — do nowszych kompilacji powrotnych.</string>
 </resources>

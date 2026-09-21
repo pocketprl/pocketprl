@@ -108,6 +108,7 @@ fun DownloadControls(
     onCancel: () -> Unit,
     onClose: () -> Unit,
     modifier: Modifier = Modifier,
+    resetKey: Any? = Unit,
 ) {
     when (state) {
         is AppUpdater.State.Downloading -> SecondaryButton(stringResource(R.string.action_cancel), onClick = onCancel, modifier = modifier)
@@ -118,6 +119,7 @@ fun DownloadControls(
             slideHint = slideHint,
             notReady = notReady,
             modifier = modifier,
+            resetKey = resetKey,
         )
         is AppUpdater.State.Failed -> PrimaryButton(stringResource(R.string.action_close), onClick = onClose, modifier = modifier)
         AppUpdater.State.Verifying -> Unit

@@ -468,9 +468,9 @@
     <string name="sync_err_lost_connection">Connexion à l’indexeur perdue</string>
     <string name="wallet_deriving_receive">Dérivation de l’adresse de réception %1$d sur %2$d</string>
     <string name="wallet_deriving_change">Dérivation de l’adresse de monnaie %1$d sur %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Vérification de %1$d adresse…</item>
-        <item quantity="other">Vérification de %1$d adresses…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Vérification de %1$d adresse sur %2$d…</item>
+        <item quantity="other">Vérification de %1$d adresses sur %2$d…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d adresse n’a pas pu être vérifiée (%2$s) ; nouvelle tentative</item>
@@ -750,7 +750,7 @@
     <string name="downgrade_not_installable">Android n’installera pas cette compilation par-dessus : sa version de package est inférieure à celle installée et cette version n’a pas encore de build de rétrogradation. L’installer nécessiterait une désinstallation manuelle.</string>
     <string name="downgrade_notes_title">Notes de version</string>
     <string name="downgrade_notes_empty">Aucune note de version pour cette version.</string>
-    <string name="downgrade_warning">Cette opération installe une compilation alternative et quitte la ligne de publication standard. D’ici, vous ne pouvez que descendre, jusqu’à ce que vous remontiez — et ensuite, uniquement vers le haut. Les mises à jour normales cessent de s’installer. Vos portefeuilles et vos fonds ne sont pas affectés.</string>
+    <string name="downgrade_warning">Cette opération installe une compilation alternative et quitte la ligne de publication standard. D’ici, vous ne pouvez que descendre, jusqu’à ce que vous remontiez, et ensuite, uniquement vers le haut. Les mises à jour normales cessent de s’installer. Vos portefeuilles et vos fonds ne sont pas affectés.</string>
     <string name="downgrade_slide">Glissez pour passer à la v%1$s</string>
     <string name="downgrade_slide_hint">Glissez ou touchez deux fois pour changer de version</string>
     <string name="personalize_section_security">Sécurité</string>
@@ -775,11 +775,11 @@
     <string name="settings_about_build">Compilation</string>
     <string name="build_lane_you_are_on">Vous utilisez</string>
     <string name="build_lane_primary">Compilation standard</string>
-    <string name="build_lane_primary_body">Ligne de publication standard : les mises à jour normales s’installent ici. D’ici, vous ne pouvez que descendre. Descendre vous place sur des compilations alternatives, d’où vous ne pouvez ensuite que continuer à descendre — jusqu’à ce que vous remontiez, et ensuite vous ne pouvez plus que remonter.</string>
+    <string name="build_lane_primary_body">Ligne de publication standard : les mises à jour normales s’installent ici. D’ici, vous pouvez aller partout librement. Toute version plus ancienne s’installe sur place, et les versions plus récentes arrivent comme mises à jour normales.</string>
     <string name="build_lane_rollback">Build de rétrogradation alternatif</string>
     <string name="build_lane_rollback_body">Compilation alternative : les mises à jour normales ne s’installent pas. Vous pouvez continuer à descendre vers des versions plus anciennes, ou remonter vers n’importe quelle version avec sa compilation de retour. Une fois que vous remontez, il n’y a plus que vers le haut.</string>
     <string name="build_lane_back">Compilation de retour alternative</string>
-    <string name="build_lane_back_body">Compilation alternative : les mises à jour normales ne s’installent pas, et d’ici il n’y a plus que vers le haut — des compilations de retour plus récentes. Pour redescendre, réinitialisez.</string>
+    <string name="build_lane_back_body">Compilation alternative : les mises à jour normales ne s’installent pas, et d’ici il n’y a que vers le haut : des compilations de retour plus récentes. Pour redescendre, réinitialisez.</string>
     <string name="downgrade_switch_body">Android n’installera pas ceci par-dessus votre compilation, sur place. Le changement l’enregistre dans Downloads, désinstalle PocketPRL, et vous restaurez à partir de votre phrase de récupération après réinstallation.</string>
     <string name="downgrade_switch_button">Passer à cette version</string>
     <string name="settings_about_off_primary">Vous êtes sur une compilation alternative, pas sur la ligne de publication standard.</string>
@@ -793,6 +793,6 @@
     <string name="switch_cant_here">Impossible d’installer cette version ici</string>
     <string name="downgrade_manual_update_warning">Cette compilation peut vérifier les mises à jour mais ne peut pas les installer elle-même. Pour avancer, vous devrez télécharger la version depuis GitHub et l’installer manuellement.</string>
     <string name="downgrade_no_switcher_warning">Cette compilation n’a pas de sélecteur de version. Une fois ici, vous ne verrez plus sur quelle compilation vous êtes et ne pourrez pas changer de version dans l’application tant que vous ne serez pas revenu à la version 2.4.0 ou plus récente.</string>
-    <string name="alternate_notice_rollback">Attention : vous utilisez un build de rétrogradation alternatif. D’ici, vous ne pouvez que descendre, jusqu’à ce que vous remontiez — et ensuite, seulement vers le haut.</string>
+    <string name="alternate_notice_rollback">Attention : vous utilisez un build de rétrogradation alternatif. D’ici, vous ne pouvez que descendre, jusqu’à ce que vous remontiez, et ensuite, seulement vers le haut.</string>
     <string name="alternate_notice_back">Attention : vous utilisez une compilation de retour alternative. D’ici, il n’y a que vers le haut — vers des compilations de retour plus récentes.</string>
 </resources>

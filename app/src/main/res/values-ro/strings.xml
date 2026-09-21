@@ -471,10 +471,10 @@
     <string name="sync_err_lost_connection">S-a pierdut conexiunea la indexer</string>
     <string name="wallet_deriving_receive">Se derivă adresa de primire %1$d din %2$d</string>
     <string name="wallet_deriving_change">Se derivă adresa de rest %1$d din %2$d</string>
-    <plurals name="wallet_checking">
-        <item quantity="one">Se verifică %1$d adresă…</item>
-        <item quantity="few">Se verifică %1$d adrese…</item>
-        <item quantity="other">Se verifică %1$d de adrese…</item>
+    <plurals name="wallet_checking_progress">
+        <item quantity="one">Se verifică %1$d din %2$d adresă…</item>
+        <item quantity="few">Se verifică %1$d din %2$d adrese…</item>
+        <item quantity="other">Se verifică %1$d din %2$d de adrese…</item>
     </plurals>
     <plurals name="wallet_check_failed">
         <item quantity="one">%1$d adresă nu a putut fi verificată (%2$s); se reîncearcă</item>
@@ -752,7 +752,7 @@
     <string name="downgrade_not_installable">Android nu va instala această versiune peste cea existentă: versiunea pachetului este mai mică decât cea instalată, iar această versiune nu are încă o versiune de retrogradare. Instalarea ar necesita o dezinstalare manuală.</string>
     <string name="downgrade_notes_title">Note de versiune</string>
     <string name="downgrade_notes_empty">Nu există note de versiune pentru această versiune.</string>
-    <string name="downgrade_warning">Aceasta instalează o versiune alternativă și părăsește linia obișnuită de lansare. De aici poți doar să cobori, până când urci înapoi — iar apoi doar în sus. Actualizările normale nu se mai instalează. Portofelele și fondurile tale nu sunt afectate.</string>
+    <string name="downgrade_warning">Aceasta instalează o versiune alternativă și părăsește linia obișnuită de lansare. De aici poți doar să cobori, până când urci înapoi, iar apoi doar în sus. Actualizările normale nu se mai instalează. Portofelele și fondurile tale nu sunt afectate.</string>
     <string name="downgrade_slide">Glisează pentru a comuta la v%1$s</string>
     <string name="downgrade_slide_hint">Glisează sau atinge de două ori pentru a comuta</string>
     <string name="personalize_section_security">Securitate</string>
@@ -775,11 +775,11 @@
     <string name="settings_about_build">Versiune</string>
     <string name="build_lane_you_are_on">Folosești</string>
     <string name="build_lane_primary">Versiunea obișnuită</string>
-    <string name="build_lane_primary_body">Linia obișnuită de lansare: actualizările normale se instalează aici. De aici poți doar să cobori. Coborârea te pune pe versiuni alternative, unde de atunci poți doar să continui să cobori — până când urci înapoi, iar apoi doar în sus.</string>
+    <string name="build_lane_primary_body">Linia obișnuită de lansare: actualizările normale se instalează aici. De aici poți merge oriunde liber. Orice versiune mai veche se instalează pe loc, iar versiunile mai noi sosesc ca actualizări normale.</string>
     <string name="build_lane_rollback">Versiune alternativă de retrogradare</string>
     <string name="build_lane_rollback_body">Versiune alternativă: actualizările normale nu se instalează. Poți continua să cobori la versiuni mai vechi sau să urci la orice versiune care are versiunea ei de revenire. Odată ce urci, există doar în sus.</string>
     <string name="build_lane_back">Versiune alternativă de revenire</string>
-    <string name="build_lane_back_body">Versiune alternativă: actualizările normale nu se instalează, iar de aici există doar în sus — versiuni de revenire mai noi. Ca să cobori din nou, resetează.</string>
+    <string name="build_lane_back_body">Versiune alternativă: actualizările normale nu se instalează, iar de aici există doar în sus: versiuni de revenire mai noi. Ca să cobori din nou, resetează.</string>
     <string name="downgrade_switch_body">Android nu va instala asta peste versiunea ta pe loc. Comutarea o salvează în Downloads, dezinstalează PocketPRL, iar tu restaurezi din fraza de recuperare după reinstalare.</string>
     <string name="downgrade_switch_button">Comută la această versiune</string>
     <string name="settings_about_off_primary">Ești pe o versiune alternativă, nu pe linia obișnuită de lansare.</string>
@@ -793,6 +793,6 @@
     <string name="switch_cant_here">Această versiune nu poate fi instalată aici</string>
     <string name="downgrade_manual_update_warning">Această versiune poate verifica actualizările, dar nu le poate instala singură. Pentru a merge mai departe va trebui să descarci versiunea de pe GitHub și să o instalezi manual.</string>
     <string name="downgrade_no_switcher_warning">Această versiune nu are comutator de versiuni. Odată ajuns aici, nu vei vedea pe ce versiune ești și nu vei putea comuta din aplicație până când revii la 2.4.0 sau mai nou.</string>
-    <string name="alternate_notice_rollback">Atenție: ești pe o versiune alternativă de retrogradare. De aici poți merge doar în jos, până când urci din nou — iar apoi doar în sus.</string>
+    <string name="alternate_notice_rollback">Atenție: ești pe o versiune alternativă de retrogradare. De aici poți merge doar în jos, până când urci din nou, iar apoi doar în sus.</string>
     <string name="alternate_notice_back">Atenție: ești pe o versiune alternativă de revenire. De aici există doar în sus, spre versiuni de revenire mai noi.</string>
 </resources>

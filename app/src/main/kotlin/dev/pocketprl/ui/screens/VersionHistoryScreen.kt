@@ -1,5 +1,6 @@
 package dev.pocketprl.ui.screens
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -82,6 +83,8 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
     var failed by remember { mutableStateOf(false) }
     var selected by remember { mutableStateOf<ReleaseInfo?>(null) }
     var installError by remember { mutableStateOf<String?>(null) }
+    // Bumped whenever an install handoff fails so the slide springs back instead of sticking.
+    var installNonce by remember { mutableStateOf(0) }
 
     suspend fun load() {
         failed = false
@@ -101,9 +104,12 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
         // Download / verify / install, once a version has been picked.
         installing -> {
             val target = selected
+            // Swiping out abandons the in-progress switch and lands back on the list,
+            // never on the detail page of a version that is no longer downloading.
+            BackHandler { updater.reset(); installError = null; selected = null }
             ScreenScaffold(
                 title = stringResource(R.string.downgrade_install_title, target?.version ?: current),
-                onBack = { updater.reset(); installError = null },
+                onBack = { updater.reset(); installError = null; selected = null },
             ) {
                 Column(
                     modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp, vertical = 16.dp),
@@ -136,7 +142,7 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
                         PrimaryButton(stringResource(R.string.downgrade_switch_button), onClick = { onOpenReset(target?.version ?: current) })
                         SecondaryButton(
                             stringResource(R.string.downgrade_back_to_list),
-                            onClick = { updater.reset(); installError = null },
+                            onClick = { updater.reset(); installError = null; selected = null },
                         )
                     } else {
                         DownloadControls(
@@ -145,6 +151,7 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
                             installLabel = stringResource(R.string.downgrade_install_slide, target?.version ?: current),
                             slideHint = stringResource(R.string.downgrade_install_slide_hint),
                             notReady = stringResource(R.string.update_install_not_ready),
+                            resetKey = installNonce,
                             onInstall = {
                                 installError = null
                                 (state as? AppUpdater.State.Ready)?.let { st ->
@@ -152,15 +159,19 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
                                         AppUpdater.Install.LAUNCHED -> leaving()
                                         AppUpdater.Install.NEED_PERMISSION -> {
                                             installError = context.getString(R.string.update_install_permission)
+                                            installNonce += 1
                                             leaving()
                                             updater.openInstallPermissionSettings()
                                         }
-                                        AppUpdater.Install.FAILED -> installError = context.getString(R.string.update_install_failed)
+                                        AppUpdater.Install.FAILED -> {
+                                            installError = context.getString(R.string.update_install_failed)
+                                            installNonce += 1
+                                        }
                                     }
                                 }
                             },
-                            onCancel = { updater.reset(); installError = null },
-                            onClose = { updater.reset(); installError = null },
+                            onCancel = { updater.reset(); installError = null; selected = null },
+                            onClose = { updater.reset(); installError = null; selected = null },
                         )
                     }
                     Spacer(Modifier.height(8.dp))
@@ -171,6 +182,7 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
         // One release's details and notes, before committing to the install.
         selected != null -> {
             val release = selected!!
+            BackHandler { selected = null }
             val isCurrent = UpdateChecker.compare(release.version, current) == 0
             val isDowngrade = UpdateChecker.compare(release.version, current) < 0
             // Decided up front, on the release page: if nothing of this version can
