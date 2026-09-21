@@ -33,6 +33,12 @@ object SchemaCompat {
     /** First release that shipped the in-app update checker; older builds must be updated by hand. */
     const val FIRST_SELF_UPDATING = "1.1.0"
 
+    /** First release whose updater can download and install the APK itself (2.2.0). */
+    const val FIRST_SELF_INSTALLING = "2.2.0"
+
+    /** First release with the version switcher; older builds cannot show their build or switch (2.4.0). */
+    const val FIRST_SWITCHER = "2.4.0"
+
     /** True when [targetVersion] can read the on-disk data the current app writes. */
     fun canReadCurrentData(targetVersion: String): Boolean =
         UpdateChecker.compare(targetVersion, OLDEST_COMPATIBLE) >= 0
@@ -40,4 +46,12 @@ object SchemaCompat {
     /** True when [targetVersion] has "Check for updates" built in. */
     fun canSelfUpdate(targetVersion: String): Boolean =
         UpdateChecker.compare(targetVersion, FIRST_SELF_UPDATING) >= 0
+
+    /** True when [targetVersion]'s updater can download and install in place, not just open a page. */
+    fun canSelfInstall(targetVersion: String): Boolean =
+        UpdateChecker.compare(targetVersion, FIRST_SELF_INSTALLING) >= 0
+
+    /** True when [targetVersion] has the version switcher and knows which build it is. */
+    fun hasSwitcher(targetVersion: String): Boolean =
+        UpdateChecker.compare(targetVersion, FIRST_SWITCHER) >= 0
 }

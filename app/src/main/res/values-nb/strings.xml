@@ -737,7 +737,7 @@
     <string name="downgrade_install_slide">Installer v%1$s</string>
     <string name="downgrade_install_slide_hint">Skyv eller dobbelttrykk for å installere denne versjonen</string>
     <string name="downgrade_back_to_list">Tilbake til versjonslisten</string>
-    <string name="downgrade_no_updater_warning">Dette bygget har ingen oppdateringssjekk. Etter nedgradering må du installere nyere versjoner manuelt fra GitHub-utgivelsessiden.</string>
+    <string name="downgrade_no_updater_warning">Dette bygget har ingen oppdateringssjekk i det hele tatt. For å komme videre må du finne utgivelsen på GitHub og installere den manuelt.</string>
     <string name="downgrade_data_ok">Lommebokdataene er kompatible med denne versjonen og videreføres.</string>
     <string name="downgrade_incompatible_data">Denne versjonen kan ikke lese dataene på denne enheten. Sikkerhetskopier gjenopprettingsfrasen din før du fortsetter.</string>
     <string name="downgrade_no_apk">Denne utgivelsen har ingen vedlagt APK, så den kan ikke installeres fra appen.</string>
@@ -783,4 +783,6 @@
     <string name="switch_blocked_back">Du er på et alternativt returbygg, som bare installerer nyere returbygg. Denne versjonen kan ikke installeres over det. Tilbakestill for å gå tilbake til den vanlige utgivelseslinjen.</string>
     <string name="switch_blocked">Denne versjonen kan ikke installeres over bygget ditt på plass. Tilbakestill for å bytte til den.</string>
     <string name="switch_cant_here">Kan ikke installere denne versjonen her</string>
+    <string name="downgrade_manual_update_warning">Dette bygget kan sjekke etter oppdateringer, men kan ikke installere dem selv. For å komme videre må du laste ned utgivelsen fra GitHub og installere den manuelt.</string>
+    <string name="downgrade_no_switcher_warning">Dette bygget har ingen versjonsvelger. Når du først er her, ser du ikke hvilket bygg du er på, og du kan ikke bytte i appen før du er tilbake på 2.4.0 eller nyere.</string>
 </resources>

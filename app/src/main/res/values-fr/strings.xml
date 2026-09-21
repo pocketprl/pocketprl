@@ -743,7 +743,7 @@
     <string name="downgrade_install_slide">Installer la v%1$s</string>
     <string name="downgrade_install_slide_hint">Glissez ou touchez deux fois pour installer cette version</string>
     <string name="downgrade_back_to_list">Retour à la liste des versions</string>
-    <string name="downgrade_no_updater_warning">Cette compilation n’a pas de vérificateur de mise à jour. Après la rétrogradation, vous devrez installer les versions plus récentes manuellement depuis la page des versions GitHub.</string>
+    <string name="downgrade_no_updater_warning">Cette compilation n’a aucun vérificateur de mise à jour. Pour avancer, vous devez trouver la version sur GitHub et l’installer manuellement.</string>
     <string name="downgrade_data_ok">Les données du portefeuille sont compatibles avec cette version et sont conservées.</string>
     <string name="downgrade_incompatible_data">Cette version ne peut pas lire les données sur cet appareil. Sauvegardez votre phrase de récupération avant de continuer.</string>
     <string name="downgrade_no_apk">Cette version n’a aucun APK joint, elle ne peut donc pas être installée depuis l’application.</string>
@@ -791,4 +791,6 @@
     <string name="switch_blocked_back">Vous utilisez une compilation de retour alternative, qui n’installe que des compilations de retour plus récentes. Cette version ne peut pas être installée par-dessus. Réinitialisez pour revenir à la ligne standard.</string>
     <string name="switch_blocked">Cette version ne peut pas être installée par-dessus votre compilation, sur place. Réinitialisez pour y passer.</string>
     <string name="switch_cant_here">Impossible d’installer cette version ici</string>
+    <string name="downgrade_manual_update_warning">Cette compilation peut vérifier les mises à jour mais ne peut pas les installer elle-même. Pour avancer, vous devrez télécharger la version depuis GitHub et l’installer manuellement.</string>
+    <string name="downgrade_no_switcher_warning">Cette compilation n’a pas de sélecteur de version. Une fois ici, vous ne verrez plus sur quelle compilation vous êtes et ne pourrez pas changer de version dans l’application tant que vous ne serez pas revenu à la version 2.4.0 ou plus récente.</string>
 </resources>

@@ -740,7 +740,7 @@
     <string name="downgrade_install_slide">v%1$s installieren</string>
     <string name="downgrade_install_slide_hint">Zum Installieren dieser Version schieben oder doppelt tippen</string>
     <string name="downgrade_back_to_list">Zurück zur Versionsliste</string>
-    <string name="downgrade_no_updater_warning">Dieser Build hat keine Update-Prüfung. Nach dem Downgrade musst du neuere Versionen manuell von der GitHub-Release-Seite installieren.</string>
+    <string name="downgrade_no_updater_warning">Dieser Build hat überhaupt keine Update-Prüfung. Um voranzukommen, musst du das Release auf GitHub finden und manuell installieren.</string>
     <string name="downgrade_data_ok">Die Wallet-Daten sind mit dieser Version kompatibel und bleiben erhalten.</string>
     <string name="downgrade_incompatible_data">Diese Version kann die Daten auf diesem Gerät nicht lesen. Sichere deine Wiederherstellungsphrase, bevor du fortfährst.</string>
     <string name="downgrade_no_apk">Für dieses Release ist kein APK angehängt, daher kann es nicht aus der App installiert werden.</string>
@@ -788,4 +788,6 @@
     <string name="switch_blocked_back">Du bist auf einem alternativen Rückkehr-Build, der nur neuere Rückkehr-Builds installiert. Diese Version kann nicht darüber installiert werden. Setze zurück, um zur regulären Linie zurückzukehren.</string>
     <string name="switch_blocked">Diese Version kann nicht direkt über deinen Build installiert werden. Setze zurück, um zu ihr zu wechseln.</string>
     <string name="switch_cant_here">Diese Version kann hier nicht installiert werden</string>
+    <string name="downgrade_manual_update_warning">Dieser Build kann nach Updates suchen, sie aber nicht selbst installieren. Um voranzukommen, musst du das Release von GitHub herunterladen und manuell installieren.</string>
+    <string name="downgrade_no_switcher_warning">Dieser Build hat keinen Versionswechsler. Sobald du hier bist, siehst du nicht mehr, auf welchem Build du bist, und kannst in der App nicht wechseln, bis du wieder auf 2.4.0 oder neuer bist.</string>
 </resources>

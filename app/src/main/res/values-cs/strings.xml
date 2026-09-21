@@ -758,7 +758,7 @@
     <string name="downgrade_install_slide">Nainstalovat v%1$s</string>
     <string name="downgrade_install_slide_hint">Posunutím nebo dvojitým klepnutím nainstalujte tuto verzi</string>
     <string name="downgrade_back_to_list">Zpět na seznam verzí</string>
-    <string name="downgrade_no_updater_warning">Toto sestavení nemá kontrolu aktualizací. Po návratu ke starší verzi budete muset novější verze instalovat ručně ze stránky vydání na GitHubu.</string>
+    <string name="downgrade_no_updater_warning">Toto sestavení nemá vůbec kontrolu aktualizací. Abyste mohli jít dál, musíte najít vydání na GitHubu a nainstalovat je ručně.</string>
     <string name="downgrade_data_ok">Data peněženky jsou s touto verzí kompatibilní a zůstanou zachována.</string>
     <string name="downgrade_incompatible_data">Tato verze nedokáže přečíst data v tomto zařízení. Než budete pokračovat, zálohujte si frázi pro obnovení.</string>
     <string name="downgrade_no_apk">Toto vydání nemá přiložený soubor APK, takže jej nelze z aplikace nainstalovat.</string>
@@ -805,4 +805,6 @@
     <string name="switch_blocked_back">Nacházíte se na alternativním sestavení pro návrat, které instaluje jen novější sestavení pro návrat. Tuto verzi přes něj nainstalovat nelze. Proveďte reset, chcete-li se vrátit k běžné řadě vydání.</string>
     <string name="switch_blocked">Tuto verzi nelze nainstalovat přes vaše sestavení na místo. Pro přepnutí na ni proveďte reset.</string>
     <string name="switch_cant_here">Tuto verzi zde nelze nainstalovat</string>
+    <string name="downgrade_manual_update_warning">Toto sestavení umí kontrolovat aktualizace, ale nedokáže je samo nainstalovat. Abyste mohli jít dál, budete si muset stáhnout vydání z GitHubu a nainstalovat je ručně.</string>
+    <string name="downgrade_no_switcher_warning">Toto sestavení nemá přepínač verzí. Jakmile se sem dostanete, neuvidíte, na kterém sestavení jste, ani nebudete moci v aplikaci přepnout, dokud se nevrátíte na 2.4.0 nebo novější.</string>
 </resources>

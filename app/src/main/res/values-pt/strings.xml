@@ -738,7 +738,7 @@
     <string name="downgrade_install_slide">Instalar a v%1$s</string>
     <string name="downgrade_install_slide_hint">Deslize ou toque duas vezes para instalar esta versão</string>
     <string name="downgrade_back_to_list">Voltar à lista de versões</string>
-    <string name="downgrade_no_updater_warning">Esta compilação não tem verificador de atualizações. Após reverter, terá de instalar manualmente as versões mais recentes a partir da página de versões do GitHub.</string>
+    <string name="downgrade_no_updater_warning">Esta compilação não tem qualquer verificador de atualizações. Para avançar, tem de encontrar a versão no GitHub e instalá-la manualmente.</string>
     <string name="downgrade_data_ok">Os dados da carteira são compatíveis com esta versão e são mantidos.</string>
     <string name="downgrade_incompatible_data">Esta versão não consegue ler os dados neste dispositivo. Faça uma cópia de segurança da sua frase de recuperação antes de continuar.</string>
     <string name="downgrade_no_apk">Esta versão não tem um APK anexado, por isso não pode ser instalada a partir da aplicação.</string>
@@ -786,4 +786,6 @@
     <string name="switch_blocked_back">Está numa compilação de regresso alternativa, que só instala compilações de regresso mais recentes. Esta versão não pode ser instalada por cima. Reponha para voltar à linha normal.</string>
     <string name="switch_blocked">Esta versão não pode ser instalada por cima da sua compilação. Reponha para mudar para ela.</string>
     <string name="switch_cant_here">Não é possível instalar esta versão aqui</string>
+    <string name="downgrade_manual_update_warning">Esta compilação pode procurar atualizações, mas não as consegue instalar sozinha. Para avançar, terá de descarregar a versão do GitHub e instalá-la manualmente.</string>
+    <string name="downgrade_no_switcher_warning">Esta compilação não tem seletor de versões. Uma vez aqui, não verá em que compilação está nem poderá mudar de versão na aplicação até voltar à 2.4.0 ou mais recente.</string>
 </resources>

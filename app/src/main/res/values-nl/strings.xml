@@ -739,7 +739,7 @@
     <string name="downgrade_install_slide">v%1$s installeren</string>
     <string name="downgrade_install_slide_hint">Schuif of dubbeltik om deze versie te installeren</string>
     <string name="downgrade_back_to_list">Terug naar versielijst</string>
-    <string name="downgrade_no_updater_warning">Deze build heeft geen updatecontrole. Na het downgraden moet je nieuwere versies handmatig vanaf de GitHub-releasespagina installeren.</string>
+    <string name="downgrade_no_updater_warning">Deze build heeft helemaal geen updatecontrole. Om verder te komen, moet je de release op GitHub vinden en handmatig installeren.</string>
     <string name="downgrade_data_ok">De walletgegevens zijn compatibel met deze versie en blijven behouden.</string>
     <string name="downgrade_incompatible_data">Deze versie kan de gegevens op dit apparaat niet lezen. Maak een back-up van je herstelzin voordat je doorgaat.</string>
     <string name="downgrade_no_apk">Deze release heeft geen bijgevoegde APK, dus kan niet vanuit de app worden geïnstalleerd.</string>
@@ -787,4 +787,6 @@
     <string name="switch_blocked_back">Je gebruikt een alternatieve terugkeerbuild, die alleen nieuwere terugkeerbuilds installeert. Deze versie kan er niet overheen worden geïnstalleerd. Reset om terug te gaan naar de gewone lijn.</string>
     <string name="switch_blocked">Deze versie kan niet ter plaatse over je build heen worden geïnstalleerd. Reset om ernaar te wisselen.</string>
     <string name="switch_cant_here">Kan deze versie hier niet installeren</string>
+    <string name="downgrade_manual_update_warning">Deze build kan op updates controleren, maar kan ze niet zelf installeren. Om verder te komen, moet je de release van GitHub downloaden en handmatig installeren.</string>
+    <string name="downgrade_no_switcher_warning">Deze build heeft geen versiewisselaar. Eenmaal hier zie je niet welke build je gebruikt en kun je niet in de app wisselen tot je weer op 2.4.0 of nieuwer staat.</string>
 </resources>

@@ -742,7 +742,7 @@
     <string name="downgrade_install_slide">Installera v%1$s</string>
     <string name="downgrade_install_slide_hint">Dra eller dubbeltryck för att installera den här versionen</string>
     <string name="downgrade_back_to_list">Tillbaka till versionslistan</string>
-    <string name="downgrade_no_updater_warning">Den här versionen har ingen uppdateringskontroll. Efter nedgraderingen måste du installera nyare versioner manuellt från GitHubs utgivningssida.</string>
+    <string name="downgrade_no_updater_warning">Den här versionen har ingen uppdateringskontroll alls. För att gå vidare måste du hitta utgåvan på GitHub och installera den manuellt.</string>
     <string name="downgrade_data_ok">Plånboksdata är kompatibel med den här versionen och behålls.</string>
     <string name="downgrade_incompatible_data">Den här versionen kan inte läsa data på den här enheten. Säkerhetskopiera din återställningsfras innan du fortsätter.</string>
     <string name="downgrade_no_apk">Den här versionen har ingen bifogad APK, så den kan inte installeras från appen.</string>
@@ -789,4 +789,6 @@
     <string name="switch_blocked_back">Du är på ett alternativt returbygge, som bara installerar nyare returbyggen. Den här versionen kan inte installeras över det. Återställ för att gå tillbaka till den vanliga utgivningslinjen.</string>
     <string name="switch_blocked">Den här versionen kan inte installeras över ditt bygge på plats. Återställ för att byta till den.</string>
     <string name="switch_cant_here">Kan inte installera den här versionen här</string>
+    <string name="downgrade_manual_update_warning">Den här versionen kan söka efter uppdateringar men kan inte installera dem själv. För att gå vidare måste du ladda ner utgåvan från GitHub och installera den manuellt.</string>
+    <string name="downgrade_no_switcher_warning">Den här versionen har ingen versionsväxlare. När du väl är här ser du inte vilken version du är på och kan inte byta i appen förrän du är tillbaka på 2.4.0 eller nyare.</string>
 </resources>

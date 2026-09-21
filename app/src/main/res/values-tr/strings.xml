@@ -740,7 +740,7 @@
     <string name="downgrade_install_slide">v%1$s sürümünü kur</string>
     <string name="downgrade_install_slide_hint">Bu sürümü kurmak için kaydırın veya çift dokunun</string>
     <string name="downgrade_back_to_list">Sürüm listesine dön</string>
-    <string name="downgrade_no_updater_warning">Bu derlemede güncelleme denetleyicisi yok. Sürümü düşürdükten sonra daha yeni sürümleri GitHub sürüm sayfasından elle kurmanız gerekir.</string>
+    <string name="downgrade_no_updater_warning">Bu derlemede hiç güncelleme denetleyicisi yok. İlerlemek için sürümü GitHub’da bulup elle kurmanız gerekir.</string>
     <string name="downgrade_data_ok">Cüzdan verileri bu sürümle uyumludur ve korunur.</string>
     <string name="downgrade_incompatible_data">Bu sürüm bu cihazdaki verileri okuyamaz. Devam etmeden önce kurtarma ifadenizi yedekleyin.</string>
     <string name="downgrade_no_apk">Bu sürümde ekli APK yok, bu yüzden uygulamadan kurulamaz.</string>
@@ -786,4 +786,6 @@
     <string name="switch_blocked_back">Yalnızca daha yeni geri dönüş derlemelerini kuran bir alternatif geri dönüş derlemesindesiniz. Bu sürüm onun üzerine kurulamaz. Normal sürüm hattına dönmek için sıfırlayın.</string>
     <string name="switch_blocked">Bu sürüm derlemenizin üzerine yerinde kurulamaz. Ona geçmek için sıfırlayın.</string>
     <string name="switch_cant_here">Bu sürüm buraya kurulamaz</string>
+    <string name="downgrade_manual_update_warning">Bu derleme güncellemeleri denetleyebilir ama kendisi kuramaz. İlerlemek için sürümü GitHub’dan indirip elle kurmanız gerekir.</string>
+    <string name="downgrade_no_switcher_warning">Bu derlemede sürüm değiştiricisi yok. Buraya geldikten sonra 2.4.0 veya daha yenisine dönene kadar hangi derlemede olduğunuzu göremez ve uygulama içinden değiştiremezsiniz.</string>
 </resources>

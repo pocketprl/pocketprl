@@ -740,7 +740,7 @@
     <string name="downgrade_install_slide">Installér v%1$s</string>
     <string name="downgrade_install_slide_hint">Træk eller dobbelttryk for at installere denne version</string>
     <string name="downgrade_back_to_list">Tilbage til versionslisten</string>
-    <string name="downgrade_no_updater_warning">Denne build har ingen opdateringstjek. Når du har nedgraderet, skal du installere nyere versioner manuelt fra GitHubs udgivelsesside.</string>
+    <string name="downgrade_no_updater_warning">Denne build har slet ikke noget opdateringstjek. For at komme videre skal du finde udgivelsen på GitHub og installere den manuelt.</string>
     <string name="downgrade_data_ok">Tegnebogsdata er kompatible med denne version og bevares.</string>
     <string name="downgrade_incompatible_data">Denne version kan ikke læse dataene på denne enhed. Sikkerhedskopier din gendannelsessætning, før du fortsætter.</string>
     <string name="downgrade_no_apk">Denne udgivelse har ingen vedhæftet APK, så den kan ikke installeres fra appen.</string>
@@ -787,4 +787,6 @@
     <string name="switch_blocked_back">Du er på et alternativt retur-build, som kun installerer nyere retur-builds. Denne version kan ikke installeres oven i det. Nulstil for at vende tilbage til den almindelige udgivelseslinje.</string>
     <string name="switch_blocked">Denne version kan ikke installeres oven i dit build på plads. Nulstil for at skifte til den.</string>
     <string name="switch_cant_here">Kan ikke installere denne version her</string>
+    <string name="downgrade_manual_update_warning">Denne build kan tjekke for opdateringer, men kan ikke selv installere dem. For at komme videre skal du hente udgivelsen fra GitHub og installere den manuelt.</string>
+    <string name="downgrade_no_switcher_warning">Denne build har ingen versionsskifter. Når du først er her, kan du ikke se, hvilken build du er på, og du kan ikke skifte i appen, før du er tilbage på 2.4.0 eller nyere.</string>
 </resources>

@@ -741,7 +741,7 @@
     <string name="downgrade_install_slide">Asenna v%1$s</string>
     <string name="downgrade_install_slide_hint">Liu’uta tai kaksoisnapauta asentaaksesi tämän version</string>
     <string name="downgrade_back_to_list">Takaisin versioluetteloon</string>
-    <string name="downgrade_no_updater_warning">Tässä koontiversiossa ei ole päivitystarkistinta. Kun olet asentanut vanhemman version, sinun on asennettava uudemmat versiot käsin GitHubin julkaisusivulta.</string>
+    <string name="downgrade_no_updater_warning">Tässä koontiversiossa ei ole lainkaan päivitystarkistinta. Edetäksesi sinun on löydettävä julkaisu GitHubista ja asennettava se käsin.</string>
     <string name="downgrade_data_ok">Lompakon tiedot ovat yhteensopivia tämän version kanssa ja säilyvät.</string>
     <string name="downgrade_incompatible_data">Tämä versio ei voi lukea tämän laitteen tietoja. Varmuuskopioi palautuslauseesi ennen jatkamista.</string>
     <string name="downgrade_no_apk">Tässä julkaisussa ei ole liitettyä APK:ta, joten sitä ei voi asentaa sovelluksesta.</string>
@@ -787,4 +787,6 @@
     <string name="switch_blocked_back">Käytössäsi on vaihtoehtoinen paluukoontiversio, joka asentaa vain uudempia paluukoontiversioita. Tätä versiota ei voi asentaa sen päälle. Palauta päästäksesi takaisin tavalliselle linjalle.</string>
     <string name="switch_blocked">Tätä versiota ei voi asentaa koontiversiosi päälle. Palauta vaihtaaksesi siihen.</string>
     <string name="switch_cant_here">Tätä versiota ei voi asentaa tähän</string>
+    <string name="downgrade_manual_update_warning">Tämä koontiversio voi tarkistaa päivityksiä, mutta ei voi asentaa niitä itse. Edetäksesi sinun on ladattava julkaisu GitHubista ja asennettava se käsin.</string>
+    <string name="downgrade_no_switcher_warning">Tässä koontiversiossa ei ole versionvaihtajaa. Tänne jouduttuasi et näe, millä koontiversiolla olet, etkä voi vaihtaa sovelluksessa, ennen kuin olet taas versiossa 2.4.0 tai uudemmassa.</string>
 </resources>

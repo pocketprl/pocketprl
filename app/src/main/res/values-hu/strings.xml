@@ -739,7 +739,7 @@
     <string name="downgrade_install_slide">v%1$s telepítése</string>
     <string name="downgrade_install_slide_hint">Csúsztasd vagy koppints duplán a verzió telepítéséhez</string>
     <string name="downgrade_back_to_list">Vissza a verziólistához</string>
-    <string name="downgrade_no_updater_warning">Ez a build nem tartalmaz frissítésellenőrzőt. Visszalépés után az újabb verziókat kézzel kell telepítened a GitHub kiadási oldaláról.</string>
+    <string name="downgrade_no_updater_warning">Ez a build egyáltalán nem tartalmaz frissítésellenőrzőt. A továbblépéshez meg kell keresned a kiadást a GitHubon, és kézzel kell telepítened.</string>
     <string name="downgrade_data_ok">A pénztárcadatai kompatibilisek ezzel a verzióval, és megmaradnak.</string>
     <string name="downgrade_incompatible_data">Ez a verzió nem tudja olvasni az eszközön lévő adatokat. A folytatás előtt készíts biztonsági mentést a helyreállítási frázisodról.</string>
     <string name="downgrade_no_apk">Ehhez a kiadáshoz nincs csatolt APK, ezért nem telepíthető az alkalmazásból.</string>
@@ -785,4 +785,6 @@
     <string name="switch_blocked_back">Egy alternatív visszatérési builden vagy, amely csak újabb visszatérési buildeket telepít. Ez a verzió nem telepíthető rá. A normál kiadási vonalra való visszatéréshez állítsd vissza.</string>
     <string name="switch_blocked">Ez a verzió nem telepíthető a builded fölé helyben. A rá váltáshoz állítsd vissza.</string>
     <string name="switch_cant_here">Ez a verzió itt nem telepíthető</string>
+    <string name="downgrade_manual_update_warning">Ez a build képes frissítéseket keresni, de önmaga nem tudja telepíteni azokat. A továbblépéshez le kell töltened a kiadást a GitHubból, és kézzel kell telepítened.</string>
+    <string name="downgrade_no_switcher_warning">Ez a build nem tartalmaz verzióváltót. Ha egyszer itt vagy, nem látod, melyik builden vagy, és nem tudsz az alkalmazásban váltani, amíg vissza nem térsz a 2.4.0-s vagy újabb verzióra.</string>
 </resources>

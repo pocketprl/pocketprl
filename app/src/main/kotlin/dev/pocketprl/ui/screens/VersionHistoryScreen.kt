@@ -197,7 +197,16 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
                     }
 
                     if (!SchemaCompat.canSelfUpdate(release.version)) {
+                        // 1.0.0: no update checker at all.
                         InfoBanner(stringResource(R.string.downgrade_no_updater_warning), BannerKind.WARNING)
+                    } else if (!SchemaCompat.canSelfInstall(release.version)) {
+                        // 1.1.0 … 2.1.x: can check for updates, but cannot install them.
+                        InfoBanner(stringResource(R.string.downgrade_manual_update_warning), BannerKind.WARNING)
+                    }
+
+                    if (!SchemaCompat.hasSwitcher(release.version)) {
+                        // Older than 2.4.0: no build awareness and no in-app switching.
+                        InfoBanner(stringResource(R.string.downgrade_no_switcher_warning), BannerKind.WARNING)
                     }
 
                     if (release.apkUrl == null) {

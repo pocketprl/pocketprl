@@ -743,7 +743,7 @@
     <string name="downgrade_install_slide">Instalar la v%1$s</string>
     <string name="downgrade_install_slide_hint">Desliza o toca dos veces para instalar esta versión</string>
     <string name="downgrade_back_to_list">Volver a la lista de versiones</string>
-    <string name="downgrade_no_updater_warning">Esta compilación no tiene comprobador de actualizaciones. Después de revertir, tendrás que instalar manualmente las versiones más recientes desde la página de versiones de GitHub.</string>
+    <string name="downgrade_no_updater_warning">Esta compilación no tiene ningún comprobador de actualizaciones. Para avanzar, debes encontrar la versión en GitHub e instalarla manualmente.</string>
     <string name="downgrade_data_ok">Los datos de la cartera son compatibles con esta versión y se conservan.</string>
     <string name="downgrade_incompatible_data">Esta versión no puede leer los datos de este dispositivo. Haz una copia de seguridad de tu frase de recuperación antes de continuar.</string>
     <string name="downgrade_no_apk">Esta versión no tiene ningún APK adjunto, por lo que no se puede instalar desde la aplicación.</string>
@@ -791,4 +791,6 @@
     <string name="switch_blocked_back">Estás en una compilación de retorno alternativa, que solo instala compilaciones de retorno más recientes. Esta versión no se puede instalar encima. Restablece para volver a la línea estándar.</string>
     <string name="switch_blocked">Esta versión no se puede instalar encima de tu compilación. Restablece para cambiar a ella.</string>
     <string name="switch_cant_here">No se puede instalar esta versión aquí</string>
+    <string name="downgrade_manual_update_warning">Esta compilación puede buscar actualizaciones, pero no puede instalarlas por sí misma. Para avanzar, tendrás que descargar la versión desde GitHub e instalarla manualmente.</string>
+    <string name="downgrade_no_switcher_warning">Esta compilación no tiene selector de versiones. Una vez aquí no verás en qué compilación estás ni podrás cambiar de versión en la aplicación hasta que vuelvas a la 2.4.0 o una posterior.</string>
 </resources>

@@ -745,7 +745,7 @@
     <string name="downgrade_install_slide">Instalează v%1$s</string>
     <string name="downgrade_install_slide_hint">Glisează sau atinge de două ori pentru a instala această versiune</string>
     <string name="downgrade_back_to_list">Înapoi la lista de versiuni</string>
-    <string name="downgrade_no_updater_warning">Această versiune nu are verificator de actualizări. După retrogradare va trebui să instalezi manual versiunile mai noi de pe pagina de versiuni GitHub.</string>
+    <string name="downgrade_no_updater_warning">Această versiune nu are deloc verificator de actualizări. Pentru a merge mai departe trebuie să găsești versiunea pe GitHub și să o instalezi manual.</string>
     <string name="downgrade_data_ok">Datele portofelului sunt compatibile cu această versiune și se păstrează.</string>
     <string name="downgrade_incompatible_data">Această versiune nu poate citi datele de pe acest dispozitiv. Fă un backup al frazei de recuperare înainte de a continua.</string>
     <string name="downgrade_no_apk">Această versiune nu are niciun APK atașat, așa că nu poate fi instalată din aplicație.</string>
@@ -791,4 +791,6 @@
     <string name="switch_blocked_back">Folosești o versiune alternativă de revenire, care instalează doar versiuni de revenire mai noi. Această versiune nu poate fi instalată peste ea. Resetează pentru a reveni la linia obișnuită.</string>
     <string name="switch_blocked">Această versiune nu poate fi instalată peste versiunea ta pe loc. Resetează pentru a comuta la ea.</string>
     <string name="switch_cant_here">Această versiune nu poate fi instalată aici</string>
+    <string name="downgrade_manual_update_warning">Această versiune poate verifica actualizările, dar nu le poate instala singură. Pentru a merge mai departe va trebui să descarci versiunea de pe GitHub și să o instalezi manual.</string>
+    <string name="downgrade_no_switcher_warning">Această versiune nu are comutator de versiuni. Odată ajuns aici, nu vei vedea pe ce versiune ești și nu vei putea comuta din aplicație până când revii la 2.4.0 sau mai nou.</string>
 </resources>

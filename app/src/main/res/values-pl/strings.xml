@@ -757,7 +757,7 @@
     <string name="downgrade_install_slide">Zainstaluj v%1$s</string>
     <string name="downgrade_install_slide_hint">Przesuń lub dotknij dwukrotnie, aby zainstalować tę wersję</string>
     <string name="downgrade_back_to_list">Powrót do listy wersji</string>
-    <string name="downgrade_no_updater_warning">Ta kompilacja nie ma modułu sprawdzania aktualizacji. Po przywróceniu starszej wersji nowsze wersje będziesz musiał instalować ręcznie ze strony wydań GitHub.</string>
+    <string name="downgrade_no_updater_warning">Ta kompilacja nie ma w ogóle modułu sprawdzania aktualizacji. Aby przejść dalej, musisz znaleźć wydanie na GitHub i zainstalować je ręcznie.</string>
     <string name="downgrade_data_ok">Dane portfela są zgodne z tą wersją i zostaną zachowane.</string>
     <string name="downgrade_incompatible_data">Ta wersja nie potrafi odczytać danych na tym urządzeniu. Przed kontynuowaniem wykonaj kopię zapasową frazy odzyskiwania.</string>
     <string name="downgrade_no_apk">To wydanie nie ma załączonego pliku APK, więc nie można go zainstalować z aplikacji.</string>
@@ -804,4 +804,6 @@
     <string name="switch_blocked_back">Masz alternatywną kompilację powrotną, która instaluje tylko nowsze kompilacje powrotne. Tej wersji nie można zainstalować na nią. Zresetuj, aby wrócić do zwykłej linii wydań.</string>
     <string name="switch_blocked">Tej wersji nie można zainstalować w miejsce Twojej kompilacji. Zresetuj, aby na nią przełączyć.</string>
     <string name="switch_cant_here">Nie można zainstalować tej wersji tutaj</string>
+    <string name="downgrade_manual_update_warning">Ta kompilacja potrafi sprawdzać aktualizacje, ale nie może ich sama instalować. Aby przejść dalej, będziesz musiał pobrać wydanie z GitHub i zainstalować je ręcznie.</string>
+    <string name="downgrade_no_switcher_warning">Ta kompilacja nie ma przełącznika wersji. Gdy już tu trafisz, nie zobaczysz, na której kompilacji jesteś, ani nie będziesz mógł przełączyć wersji w aplikacji, dopóki nie wrócisz na 2.4.0 lub nowszą.</string>
 </resources>

@@ -15,6 +15,10 @@
 * The version screen is now called **Switch versions**, and it blocks a switch that
   cannot install over the running build *before* you commit: a red reason with a
   grayed control, instead of downloading and then failing.
+* **Older-target warnings.** Switching to a build older than 2.2.0 warns that its
+  updater cannot install, so moving forward is manual, and to anything older than
+  2.4.0 warns that it has no version switcher — you won't see which build you are
+  on or switch in-app until you are back on 2.4.0 or newer.
 * New strings localized into all 18 supported languages.
 
 ## 2.4.1

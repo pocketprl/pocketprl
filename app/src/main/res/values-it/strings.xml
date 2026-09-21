@@ -743,7 +743,7 @@
     <string name="downgrade_install_slide">Installa la v%1$s</string>
     <string name="downgrade_install_slide_hint">Scorri o tocca due volte per installare questa versione</string>
     <string name="downgrade_back_to_list">Torna all’elenco delle versioni</string>
-    <string name="downgrade_no_updater_warning">Questa build non ha un controllo aggiornamenti. Dopo il downgrade dovrai installare manualmente le versioni più recenti dalla pagina delle versioni di GitHub.</string>
+    <string name="downgrade_no_updater_warning">Questa build non ha alcun controllo aggiornamenti. Per andare avanti devi trovare la versione su GitHub e installarla manualmente.</string>
     <string name="downgrade_data_ok">I dati del portafoglio sono compatibili con questa versione e vengono conservati.</string>
     <string name="downgrade_incompatible_data">Questa versione non può leggere i dati su questo dispositivo. Esegui il backup della frase di recupero prima di continuare.</string>
     <string name="downgrade_no_apk">Questa versione non ha un APK allegato, quindi non può essere installata dall’app.</string>
@@ -791,4 +791,6 @@
     <string name="switch_blocked_back">Stai usando una build di ritorno alternativa, che installa solo build di ritorno più recenti. Questa versione non può essere installata sopra di essa. Ripristina per tornare alla linea standard.</string>
     <string name="switch_blocked">Questa versione non può essere installata direttamente sopra la tua build. Ripristina per passare a questa versione.</string>
     <string name="switch_cant_here">Impossibile installare questa versione qui</string>
+    <string name="downgrade_manual_update_warning">Questa build può controllare gli aggiornamenti ma non può installarli da sola. Per andare avanti dovrai scaricare la versione da GitHub e installarla manualmente.</string>
+    <string name="downgrade_no_switcher_warning">Questa build non ha un selettore di versione. Una volta qui non vedrai su quale build ti trovi né potrai cambiare versione nell’app finché non sarai di nuovo sulla 2.4.0 o successiva.</string>
 </resources>

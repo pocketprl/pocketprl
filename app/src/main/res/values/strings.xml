@@ -502,7 +502,9 @@
     <string name="downgrade_install_slide">Install v%1$s</string>
     <string name="downgrade_install_slide_hint">Slide or double-tap to install this version</string>
     <string name="downgrade_back_to_list">Back to version list</string>
-    <string name="downgrade_no_updater_warning">This build has no update checker. After downgrading you will need to install newer versions by hand from the GitHub release page.</string>
+    <string name="downgrade_no_updater_warning">This build has no update checker at all. To move forward you must find the release on GitHub and install it by hand.</string>
+    <string name="downgrade_manual_update_warning">This build can check for updates but can’t install them itself. To move forward you’ll have to download the release from GitHub and install it by hand.</string>
+    <string name="downgrade_no_switcher_warning">This build has no version switcher. Once here you won’t see which build you’re on or be able to switch in-app until you’re back on 2.4.0 or newer.</string>
     <string name="downgrade_data_ok">Wallet data is compatible with this version and carries over.</string>
     <string name="downgrade_incompatible_data">This version cannot read the data on this device. Back up your recovery phrase before continuing.</string>
     <string name="downgrade_no_apk">This release has no APK attached, so it cannot be installed from the app.</string>
