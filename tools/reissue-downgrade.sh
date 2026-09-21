@@ -47,9 +47,9 @@ cp "$ROOT/local.properties" "$WT/local.properties" 2>/dev/null || true
 # The code a regular build of this tag carries: the property if the tag has it,
 # else the literal. Read before patching. A return build keeps this so the app can
 # tell it is above the regular one.
-NORMAL="$(grep -oE '^pocketprl\.versionCode=[0-9]+' "$WT/gradle.properties" 2>/dev/null | cut -d= -f2)"
+NORMAL="$(grep -oE '^pocketprl\.versionCode=[0-9]+' "$WT/gradle.properties" 2>/dev/null | cut -d= -f2 || true)"
 if [ -z "$NORMAL" ]; then
-  NORMAL="$(grep -oE 'versionCode[[:space:]]*=[[:space:]]*[0-9]+' "$WT/app/build.gradle.kts" | grep -oE '[0-9]+' | head -1)"
+  NORMAL="$(grep -oE 'versionCode[[:space:]]*=[[:space:]]*[0-9]+' "$WT/app/build.gradle.kts" | grep -oE '[0-9]+' | head -1 || true)"
 fi
 
 # These tags predate the pocketprl.versionCode build property, so set the code directly.
