@@ -36,13 +36,17 @@ From an installed code, the reachable builds are exactly those with a higher cod
   forward progress continues across releases while off the regular line — but a B
   build can never go down, to a primary, or back to a rollback in place.
 
-**Leaving the primary lane is permanent.** Every P code is below every R and B code,
+**Leaving the primary lane is permanent.\*** Every P code is below every R and B code,
 so once an R or B build is installed, no primary build can ever install over it
 again — not even a newer release. Normal updates stop working at that point. From an
 alternate build you can move around the alternate lanes all you like, but the only
-way back to the primary line is the reset (uninstall, reinstall, restore phrase).
+way back to the primary line is the reset (uninstall, reinstall, restore your recovery phrase).
 The app warns before any downgrade for exactly this reason, and the update check
 says so instead of offering an install that would fail.
+
+> \*In practice the lanes only actually collide around e=75000. Not technically
+> permanent — but unless we ship seventy-five thousand builds, you're probably
+> fine. See you when the sun explodes, at which point I have to rewrite this.
 
 ## What the lanes cannot do, and the reset edge
 
