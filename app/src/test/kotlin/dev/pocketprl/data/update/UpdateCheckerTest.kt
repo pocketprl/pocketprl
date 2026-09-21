@@ -66,11 +66,11 @@ class UpdateCheckerTest {
     }
 
     @Test
-    fun `a return build is a separate asset and is not chosen as the primary`() {
+    fun `a back build is a separate asset and is not chosen as the primary`() {
         val body = """
             [{"tag_name":"v2.4.0","html_url":"u","assets":[
               {"name":"PocketPRL-2.4.0.apk","browser_download_url":"n","size":10},
-              {"name":"PocketPRL-2.4.0-return-100026.apk","browser_download_url":"r","size":11}
+              {"name":"PocketPRL-2.4.0-back-300013.apk","browser_download_url":"r","size":11}
             ]}]
         """.trimIndent()
         val r = UpdateChecker.parseReleasesJson(body).single()
@@ -78,7 +78,7 @@ class UpdateCheckerTest {
         assertEquals("n", r.apkUrl)
         assertEquals(2, r.apkAssets.size)
         assertNull("the plain build carries no encoded code", r.apkAssets[0].versionCode)
-        assertEquals(100026L, r.apkAssets[1].versionCode)
+        assertEquals(300013L, r.apkAssets[1].versionCode)
     }
 
     @Test

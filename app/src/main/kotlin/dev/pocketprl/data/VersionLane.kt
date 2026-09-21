@@ -18,6 +18,9 @@ import dev.pocketprl.BuildConfig
 enum class VersionLane { PRIMARY, ROLLBACK, BACK }
 
 object VersionCodes {
+    // Lane classifier floors — not the asset formulas. Published rollback assets
+    // use 250000 - e (see docs/VERSIONING.md), which all clear the 200k floor;
+    // the floor is deliberately wider so future R codes keep classifying.
     const val PRIMARY_BASE = 100_000L
     const val ROLLBACK_BASE = 200_000L
     const val BACK_BASE = 300_000L

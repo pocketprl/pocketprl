@@ -4,8 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
-// The version code a *regular* build of this release carries. A return build
-// (reissued above the rollback band so it can climb out of one) ships a higher
+// The version code a *regular* build of this release carries. A shifted build
+// (rollback or back, reissued above the primary band) ships a higher
 // versionCode than this, which is how the app detects it at runtime.
 val pocketprlNormalVersionCode: Long =
     (project.findProperty("pocketprl.normalVersionCode") as String?)?.toLongOrNull()
@@ -19,10 +19,10 @@ android {
         applicationId = "dev.pocketprl.wallet"
         minSdk = 28
         targetSdk = 37
-        // In-place-installable builds take their version code from the downgrade
-        // band (100_000 + epoch) so an older release can be installed over a newer
-        // one. See docs/VERSIONING.md. The literal is only a fallback for builds
-        // that do not resolve the property.
+        // Reissued rollback/back builds take their version code from the lane
+        // bands (250000 - e / 300000 + e) so an older release can be installed
+        // over a newer one. See docs/VERSIONING.md. The literal is only a fallback
+        // for builds that do not resolve the property.
         versionCode = (project.findProperty("pocketprl.versionCode") as String?)?.toIntOrNull() ?: 15
         versionName = "2.5.1"
         buildConfigField("long", "NORMAL_VERSION_CODE", "${pocketprlNormalVersionCode}L")

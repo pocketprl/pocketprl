@@ -10,13 +10,15 @@ the lanes cannot express.
 
 | Lane | Code | Role |
 |---|---|---|
-| **P** primary | `100000 + e` | Fresh installs and normal updates land here. |
+| **P** primary | monotonic counter in `gradle.properties` (currently `100042`) | Fresh installs and normal updates land here. Bumped for every published primary build, never reused. |
 | **R** rollback | `250000 - e` | Older versions get a higher code, so they install *down* over a primary in place. |
 | **B** back | `300000 + e` | Above the rollback lane, so a downgraded install can climb back up. |
 
 `e` is a monotonic per-version index assigned at release (`1.0.0 = 1`, …, `2.4.1 = 14`,
-`2.5.0 = 15`, `2.5.1 = 16`). Every code is fixed when its build is published and never
-rebuilt.
+`2.5.0 = 15`, `2.5.1 = 16`). It governs the **R and B** codes only; the P code is an
+independent counter that moves on its own (2.4.0 went out as `100013`, 2.4.1 as
+`100027`, 2.5.0 as `100041`, 2.5.1 as `100042`). Every code is fixed when its build
+is published and never rebuilt.
 
 Examples: `2.5.1` is `P 100042`, `R 249984`, `B 300016`; `2.5.0` is `P 100041`,
 `R 249985`, `B 300015`; `2.3.2` is `R 249988`, `B 300012`.
@@ -58,8 +60,9 @@ attack surface against this project's threat model.
 ## Building the lanes
 
 `tools/reissue-downgrade.sh <tag> <versionCode> [outdir]` builds a tag in a throwaway
-worktree with the given code and signs it. The lane codes come from the `e` table
-above; `tools/publish-lanes.sh` drives a whole batch. Asset names:
+worktree with the given code and signs it. The R/B lane codes come from the `e` table
+above; a batch is just the script run once per version (there is no batch wrapper —
+`tools/` holds only `reissue-downgrade.sh` plus the reproducibility and vector tools). Asset names:
 
 * `PocketPRL-<v>.apk` — primary
 * `PocketPRL-<v>-roll-<code>.apk` — rollback
@@ -73,6 +76,8 @@ picks the lowest code above the installed one, or nothing (reset).
 1. Every published code is unique and never reused.
 2. `P < R ≤ 249999 < 300001 ≤ B < 400000`.
 3. The newest primary release always has a code above every previously published
-   code, or users on an older shifted build cannot update to it.
+   *primary* code. (It is still below every R and B code — that is why leaving
+   the primary lane is permanent, and why alternate builds can never update to
+   a primary in place.)
 4. Signing key never changes, or cross-version installs break.
 5. Replacing an asset changes its SHA-256; update `SHA256SUMS.txt` where one exists.

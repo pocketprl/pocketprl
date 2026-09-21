@@ -42,7 +42,7 @@ data class ReleaseInfo(
 /**
  * One APK asset of a release. A build that must be installed over a newer one
  * carries its version code as a numeric suffix in the file name, e.g.
- * `PocketPRL-2.4.0-return-100026.apk`; a plain asset has a null [versionCode].
+ * `PocketPRL-2.4.0-back-300013.apk`; a plain asset has a null [versionCode].
  */
 data class ApkAsset(
     val name: String?,
