@@ -12,8 +12,12 @@ android {
         applicationId = "dev.pocketprl.wallet"
         minSdk = 28
         targetSdk = 37
-        versionCode = 15
-        versionName = "2.3.2"
+        // In-place-installable builds take their version code from the downgrade
+        // band (100_000 + epoch) so an older release can be installed over a newer
+        // one. See docs/VERSIONING.md. The literal is only a fallback for builds
+        // that do not resolve the property.
+        versionCode = (project.findProperty("pocketprl.versionCode") as String?)?.toIntOrNull() ?: 15
+        versionName = "2.4.0"
         ndk {
             abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
         }

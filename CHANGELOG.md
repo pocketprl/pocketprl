@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.4.0
 
 * **Version history and in-app downgrade.** About gains a Downgrade button under
   Check for updates; it opens a full-screen version history (down-arrow-beside-
@@ -14,6 +14,10 @@
   the update checker (1.0.0), which then has to be moved forward by hand. A
   release whose asset cannot be installed in place is reported instead of being
   handed to a failing installer.
+* **Downgrade band.** 2.4.0 and every older release are rebuilt with a version
+  code in the `100000` range so Android will install them in place over a newer
+  build; from 2.4.0 any earlier release installs, with wallets and history kept.
+  See `docs/VERSIONING.md` and `tools/reissue-downgrade.sh`.
 * New strings are English-only for now; the other locales fall back until
   translated.
 
