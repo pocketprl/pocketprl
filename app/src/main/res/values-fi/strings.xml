@@ -791,4 +791,19 @@
     <string name="downgrade_no_switcher_warning">Tässä koontiversiossa ei ole versionvaihtajaa. Tänne jouduttuasi et näe, millä koontiversiolla olet, etkä voi vaihtaa sovelluksessa, ennen kuin olet taas versiossa 2.4.0 tai uudemmassa.</string>
     <string name="alternate_notice_rollback">Huomio: olet vaihtoehtoisella peruutuskoontiversiolla. Täältä voit mennä vain alas, kunnes menet takaisin ylös, ja sen jälkeen vain ylös.</string>
     <string name="alternate_notice_back">Huomio: olet vaihtoehtoisella paluukoontiversiolla. Täältä on vain ylös, uudempiin paluukoontiversioihin.</string>
+    <string name="settings_addresses_consolidate">Yhdistä tulosteet</string>
+    <string name="settings_addresses_consolidate_hint">Yhdistä kaikki %1$d käytettävissä olevaa tulostetta yhdeksi</string>
+    <string name="consolidate_title">Yhdistä</string>
+    <string name="consolidate_hero_title">Yhdistä tulosteesi</string>
+    <string name="consolidate_hero_body">Tämä siirtää jokaisen käytettävissä olevan tulosteen vastaanotto-osoitteeseesi ja jättää yhden tulosteen käytettäväksi. Se maksaa yhden verkkomaksun.</string>
+    <string name="consolidate_summary_title">Allekirjoitat</string>
+    <string name="consolidate_to_self">Vastaanotto-osoitteesi</string>
+    <string name="consolidate_slide">Liu’uta yhdistääksesi</string>
+    <string name="consolidate_slide_hint">Liu’uta tai kaksoisnapauta yhdistääksesi</string>
+    <string name="consolidate_not_ready">Valmistellaan yhdistämistä</string>
+    <string name="consolidate_sending">Yhdistetään</string>
+    <string name="consolidate_sent_title">Yhdistetty</string>
+    <string name="consolidate_none">Tarvitset vähintään kaksi käytettävissä olevaa tulostetta yhdistämiseen.</string>
+    <string name="consolidate_no_target">Vastaanotto-osoitetta ei ole saatavilla.</string>
+    <string name="consolidate_fee_unavailable">Maksuarviota ei voitu ladata. Yritä uudelleen.</string>
 </resources>

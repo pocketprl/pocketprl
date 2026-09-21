@@ -789,4 +789,19 @@
     <string name="downgrade_no_switcher_warning">Ez a build nem tartalmaz verzióváltót. Ha egyszer itt vagy, nem látod, melyik builden vagy, és nem tudsz az alkalmazásban váltani, amíg vissza nem térsz a 2.4.0-s vagy újabb verzióra.</string>
     <string name="alternate_notice_rollback">Figyelem: alternatív visszalépési builden vagy. Innen csak lefelé mehetsz, amíg újra fel nem mész, és utána már csak felfelé.</string>
     <string name="alternate_notice_back">Figyelem: alternatív visszatérési builden vagy. Innen csak felfelé van, újabb visszatérési buildekre.</string>
+    <string name="settings_addresses_consolidate">Kimenetek összevonása</string>
+    <string name="settings_addresses_consolidate_hint">Az összes %1$d elkölthető kimenet összevonása egybe</string>
+    <string name="consolidate_title">Összevonás</string>
+    <string name="consolidate_hero_title">Vond össze a kimeneteidet</string>
+    <string name="consolidate_hero_body">Ez az összes elkölthető kimenetet a fogadási címedre söpri, így egyetlen elkölthető kimenet marad. Egy hálózati díjba kerül.</string>
+    <string name="consolidate_summary_title">Éppen aláírsz</string>
+    <string name="consolidate_to_self">A fogadási címed</string>
+    <string name="consolidate_slide">Csúsztasd az összevonáshoz</string>
+    <string name="consolidate_slide_hint">Csúsztasd vagy koppints duplán az összevonáshoz</string>
+    <string name="consolidate_not_ready">Az összevonás előkészítése</string>
+    <string name="consolidate_sending">Összevonás folyamatban</string>
+    <string name="consolidate_sent_title">Összevonva</string>
+    <string name="consolidate_none">Legalább két elkölthető kimenet kell az összevonáshoz.</string>
+    <string name="consolidate_no_target">Nem érhető el fogadási cím.</string>
+    <string name="consolidate_fee_unavailable">Nem sikerült betölteni a díjbécslést. Próbáld újra.</string>
 </resources>

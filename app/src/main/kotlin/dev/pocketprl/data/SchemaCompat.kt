@@ -6,7 +6,7 @@ import dev.pocketprl.data.update.UpdateChecker
  * On-disk schema versions and the compatibility floor for switching the app to a
  * different release in place.
  *
- * No release so far has ever changed a persisted format: v1.0.0 through v2.5.2
+ * No release so far has ever changed a persisted format: v1.0.0 through v2.5.3
  * all shipped database version [DB_VERSION], vault version [VAULT_VERSION] and
  * wallet-registry version [REGISTRY_VERSION]. That is exactly why an in-place
  * downgrade can hand the same files to an older build and its wallets, names,

@@ -792,4 +792,19 @@
     <string name="downgrade_no_switcher_warning">Dieser Build hat keinen Versionswechsler. Sobald du hier bist, siehst du nicht mehr, auf welchem Build du bist, und kannst in der App nicht wechseln, bis du wieder auf 2.4.0 oder neuer bist.</string>
     <string name="alternate_notice_rollback">Achtung: Du bist auf einem alternativen Downgrade-Build. Von hier aus geht es nur nach unten, bis du wieder nach oben gehst, und dann nur noch nach oben.</string>
     <string name="alternate_notice_back">Achtung: Du bist auf einem alternativen Rückkehr-Build. Von hier aus geht es nur nach oben — zu neueren Rückkehr-Builds.</string>
+    <string name="settings_addresses_consolidate">Ausgänge zusammenführen</string>
+    <string name="settings_addresses_consolidate_hint">Alle %1$d verfügbaren Ausgänge zu einem zusammenführen</string>
+    <string name="consolidate_title">Zusammenführen</string>
+    <string name="consolidate_hero_title">Führe deine Ausgänge zusammen</string>
+    <string name="consolidate_hero_body">Dies führt jeden verfügbaren Ausgang in deine Empfangsadresse zusammen, sodass ein einziger Ausgang zum Ausgeben übrig bleibt. Es kostet eine Netzwerkgebühr.</string>
+    <string name="consolidate_summary_title">Du signierst</string>
+    <string name="consolidate_to_self">Deine Empfangsadresse</string>
+    <string name="consolidate_slide">Zum Zusammenführen schieben</string>
+    <string name="consolidate_slide_hint">Zum Zusammenführen schieben oder doppelt tippen</string>
+    <string name="consolidate_not_ready">Zusammenführung wird vorbereitet</string>
+    <string name="consolidate_sending">Wird zusammengeführt</string>
+    <string name="consolidate_sent_title">Zusammengeführt</string>
+    <string name="consolidate_none">Du brauchst mindestens zwei verfügbare Ausgänge zum Zusammenführen.</string>
+    <string name="consolidate_no_target">Keine Empfangsadresse verfügbar.</string>
+    <string name="consolidate_fee_unavailable">Die Gebührenschätzung konnte nicht geladen werden. Versuche es erneut.</string>
 </resources>

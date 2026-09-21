@@ -809,4 +809,19 @@
     <string name="downgrade_no_switcher_warning">Toto sestavení nemá přepínač verzí. Jakmile se sem dostanete, neuvidíte, na kterém sestavení jste, ani nebudete moci v aplikaci přepnout, dokud se nevrátíte na 2.4.0 nebo novější.</string>
     <string name="alternate_notice_rollback">Pozor: jste na alternativním sestavení pro rollback. Odtud můžete jen klesat, dokud nejdete znovu nahoru, a pak už jen nahoru.</string>
     <string name="alternate_notice_back">Pozor: jste na alternativním sestavení pro návrat. Odtud vede už jen nahoru — k novějším sestavením pro návrat.</string>
+    <string name="settings_addresses_consolidate">Sloučit výstupy</string>
+    <string name="settings_addresses_consolidate_hint">Sloučit všech %1$d dostupných výstupů do jednoho</string>
+    <string name="consolidate_title">Sloučit</string>
+    <string name="consolidate_hero_title">Sloučte své výstupy</string>
+    <string name="consolidate_hero_body">Tímto se všechny dostupné výstupy přesunou na vaši přijímací adresu a zůstane jediný výstup k utracení. Stojí to jeden poplatek za síť.</string>
+    <string name="consolidate_summary_title">Podepisujete</string>
+    <string name="consolidate_to_self">Vaše přijímací adresa</string>
+    <string name="consolidate_slide">Posunutím sloučíte</string>
+    <string name="consolidate_slide_hint">Posunutím nebo dvojitým klepnutím sloučíte</string>
+    <string name="consolidate_not_ready">Příprava sloučení</string>
+    <string name="consolidate_sending">Sloučování</string>
+    <string name="consolidate_sent_title">Sloučeno</string>
+    <string name="consolidate_none">Ke sloučení potřebujete alespoň dva dostupné výstupy.</string>
+    <string name="consolidate_no_target">Není k dispozici žádná přijímací adresa.</string>
+    <string name="consolidate_fee_unavailable">Odhad poplatku se nepodařilo načíst. Zkuste to znovu.</string>
 </resources>

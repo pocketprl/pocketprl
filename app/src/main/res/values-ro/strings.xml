@@ -795,4 +795,19 @@
     <string name="downgrade_no_switcher_warning">Această versiune nu are comutator de versiuni. Odată ajuns aici, nu vei vedea pe ce versiune ești și nu vei putea comuta din aplicație până când revii la 2.4.0 sau mai nou.</string>
     <string name="alternate_notice_rollback">Atenție: ești pe o versiune alternativă de retrogradare. De aici poți merge doar în jos, până când urci din nou, iar apoi doar în sus.</string>
     <string name="alternate_notice_back">Atenție: ești pe o versiune alternativă de revenire. De aici există doar în sus, spre versiuni de revenire mai noi.</string>
+    <string name="settings_addresses_consolidate">Consolidare ieșiri</string>
+    <string name="settings_addresses_consolidate_hint">Unește toate cele %1$d ieșiri cheltuibile într-una singură</string>
+    <string name="consolidate_title">Consolidare</string>
+    <string name="consolidate_hero_title">Unește-ți ieșirile</string>
+    <string name="consolidate_hero_body">Aceasta adună fiecare ieșire cheltuibilă în adresa ta de primire, lăsând o singură ieșire de cheltuit. Costă un comision de rețea.</string>
+    <string name="consolidate_summary_title">Semnezi</string>
+    <string name="consolidate_to_self">Adresa ta de primire</string>
+    <string name="consolidate_slide">Glisează pentru a consolida</string>
+    <string name="consolidate_slide_hint">Glisează sau atinge de două ori pentru a consolida</string>
+    <string name="consolidate_not_ready">Se pregătește consolidarea</string>
+    <string name="consolidate_sending">Se consolidează</string>
+    <string name="consolidate_sent_title">Consolidat</string>
+    <string name="consolidate_none">Ai nevoie de cel puțin două ieșiri cheltuibile pentru a consolida.</string>
+    <string name="consolidate_no_target">Nu există nicio adresă de primire disponibilă.</string>
+    <string name="consolidate_fee_unavailable">Nu s-a putut încărca estimarea comisionului. Încearcă din nou.</string>
 </resources>

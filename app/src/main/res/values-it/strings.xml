@@ -795,4 +795,19 @@
     <string name="downgrade_no_switcher_warning">Questa build non ha un selettore di versione. Una volta qui non vedrai su quale build ti trovi né potrai cambiare versione nell’app finché non sarai di nuovo sulla 2.4.0 o successiva.</string>
     <string name="alternate_notice_rollback">Attenzione: stai usando una build di downgrade alternativa. Da qui puoi solo scendere, finché non risali, e poi solo salire.</string>
     <string name="alternate_notice_back">Attenzione: stai usando una build di ritorno alternativa. Da qui si può solo salire — verso build di ritorno più recenti.</string>
+    <string name="settings_addresses_consolidate">Consolida output</string>
+    <string name="settings_addresses_consolidate_hint">Unisci tutti i %1$d output spendibili in uno</string>
+    <string name="consolidate_title">Consolida</string>
+    <string name="consolidate_hero_title">Unisci i tuoi output</string>
+    <string name="consolidate_hero_body">Raccoglie tutti gli output spendibili nel tuo indirizzo di ricezione, lasciando un solo output da spendere. Costa una sola commissione di rete.</string>
+    <string name="consolidate_summary_title">Stai firmando</string>
+    <string name="consolidate_to_self">Il tuo indirizzo di ricezione</string>
+    <string name="consolidate_slide">Scorri per consolidare</string>
+    <string name="consolidate_slide_hint">Scorri o tocca due volte per consolidare</string>
+    <string name="consolidate_not_ready">Preparazione del consolidamento</string>
+    <string name="consolidate_sending">Consolidamento</string>
+    <string name="consolidate_sent_title">Consolidato</string>
+    <string name="consolidate_none">Servono almeno due output spendibili per consolidare.</string>
+    <string name="consolidate_no_target">Nessun indirizzo di ricezione disponibile.</string>
+    <string name="consolidate_fee_unavailable">Impossibile caricare la stima delle commissioni. Riprova.</string>
 </resources>

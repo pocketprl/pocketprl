@@ -38,6 +38,7 @@ import dev.pocketprl.ui.screens.AboutScreen
 import dev.pocketprl.ui.screens.ActivityScreen
 import dev.pocketprl.ui.screens.AddressesScreen
 import dev.pocketprl.ui.screens.ChangePasswordScreen
+import dev.pocketprl.ui.screens.ConsolidateScreen
 import dev.pocketprl.ui.screens.ContactsScreen
 import dev.pocketprl.ui.screens.CreateWalletScreen
 import dev.pocketprl.ui.screens.DashboardScreen
@@ -58,6 +59,7 @@ import dev.pocketprl.ui.screens.UpdateScreen
 import dev.pocketprl.ui.screens.VersionHistoryScreen
 import dev.pocketprl.ui.screens.WelcomeScreen
 import dev.pocketprl.ui.screens.WhatsNewScreen
+import dev.pocketprl.ui.vm.ConsolidateViewModel
 import dev.pocketprl.ui.vm.OnboardingViewModel
 import dev.pocketprl.ui.vm.SendViewModel
 import dev.pocketprl.ui.vm.SettingsViewModel
@@ -82,6 +84,7 @@ object Routes {
     const val SEED = "settings/seed"
     const val NETWORK = "settings/network"
     const val ADDRESSES = "settings/addresses"
+    const val CONSOLIDATE = "settings/addresses/consolidate"
     const val CONTACTS = "settings/contacts"
     const val STATS = "settings/stats"
     const val ABOUT = "settings/about"
@@ -387,7 +390,11 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
         composable(Routes.PASSWORD) { val vm: SettingsViewModel = appViewModel(); ChangePasswordScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.SEED) { val vm: SettingsViewModel = appViewModel(); RevealSeedScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.NETWORK) { val vm: SettingsViewModel = appViewModel(); NetworkSettingsScreen(vm, onBack = { nav.popBackStack() }) }
-        composable(Routes.ADDRESSES) { val vm: SettingsViewModel = appViewModel(); AddressesScreen(vm, onBack = { nav.popBackStack() }) }
+        composable(Routes.ADDRESSES) { val vm: SettingsViewModel = appViewModel(); AddressesScreen(vm, onBack = { nav.popBackStack() }, onConsolidate = { nav.navigate(Routes.CONSOLIDATE) }) }
+        composable(Routes.CONSOLIDATE) {
+            val vm: ConsolidateViewModel = appViewModel()
+            ConsolidateScreen(vm, walletVm, onBack = { nav.popBackStack() }, explorerUrl = { walletVm.explorerTxUrl(it) })
+        }
         composable(Routes.CONTACTS) { val vm: SettingsViewModel = appViewModel(); ContactsScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.STATS) { val vm: SettingsViewModel = appViewModel(); StatsScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.ABOUT) {

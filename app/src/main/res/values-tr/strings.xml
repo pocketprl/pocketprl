@@ -790,4 +790,19 @@
     <string name="downgrade_no_switcher_warning">Bu derlemede sürüm değiştiricisi yok. Buraya geldikten sonra 2.4.0 veya daha yenisine dönene kadar hangi derlemede olduğunuzu göremez ve uygulama içinden değiştiremezsiniz.</string>
     <string name="alternate_notice_rollback">Dikkat: alternatif sürüm düşürme derlemesindesiniz. Buradan yalnızca aşağı inebilirsiniz, tekrar yukarı çıkana kadar, ve sonrasında yalnızca yukarı.</string>
     <string name="alternate_notice_back">Dikkat: alternatif geri dönüş derlemesindesiniz. Buradan yalnızca yukarı vardır — daha yeni geri dönüş derlemelerine.</string>
+    <string name="settings_addresses_consolidate">Çıktıları birleştir</string>
+    <string name="settings_addresses_consolidate_hint">Tüm %1$d harcanabilir çıktıyı tek bir çıktıda birleştir</string>
+    <string name="consolidate_title">Birleştir</string>
+    <string name="consolidate_hero_title">Çıktılarınızı birleştirin</string>
+    <string name="consolidate_hero_body">Bu, her harcanabilir çıktıyı alım adresinize aktarır ve harcanacak tek bir çıktı bırakır. Bir ağ ücretine mal olur.</string>
+    <string name="consolidate_summary_title">İmzalıyorsunuz</string>
+    <string name="consolidate_to_self">Alım adresiniz</string>
+    <string name="consolidate_slide">Birleştirmek için kaydırın</string>
+    <string name="consolidate_slide_hint">Birleştirmek için kaydırın veya çift dokunun</string>
+    <string name="consolidate_not_ready">Birleştirme hazırlanıyor</string>
+    <string name="consolidate_sending">Birleştiriliyor</string>
+    <string name="consolidate_sent_title">Birleştirildi</string>
+    <string name="consolidate_none">Birleştirmek için en az iki harcanabilir çıktıya ihtiyacınız var.</string>
+    <string name="consolidate_no_target">Kullanılabilir bir alım adresi yok.</string>
+    <string name="consolidate_fee_unavailable">Ücret tahmini yüklenemedi. Yeniden deneyin.</string>
 </resources>

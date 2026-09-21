@@ -795,4 +795,19 @@
     <string name="downgrade_no_switcher_warning">Cette compilation n’a pas de sélecteur de version. Une fois ici, vous ne verrez plus sur quelle compilation vous êtes et ne pourrez pas changer de version dans l’application tant que vous ne serez pas revenu à la version 2.4.0 ou plus récente.</string>
     <string name="alternate_notice_rollback">Attention : vous utilisez un build de rétrogradation alternatif. D’ici, vous ne pouvez que descendre, jusqu’à ce que vous remontiez, et ensuite, seulement vers le haut.</string>
     <string name="alternate_notice_back">Attention : vous utilisez une compilation de retour alternative. D’ici, il n’y a que vers le haut — vers des compilations de retour plus récentes.</string>
+    <string name="settings_addresses_consolidate">Consolider les sorties</string>
+    <string name="settings_addresses_consolidate_hint">Fusionner toutes les %1$d sorties dépensables en une seule</string>
+    <string name="consolidate_title">Consolider</string>
+    <string name="consolidate_hero_title">Fusionnez vos sorties</string>
+    <string name="consolidate_hero_body">Regroupe toutes les sorties dépensables dans votre adresse de réception, ne laissant qu’une seule sortie à dépenser. Cela coûte une seule fois des frais de réseau.</string>
+    <string name="consolidate_summary_title">Vous signez</string>
+    <string name="consolidate_to_self">Votre adresse de réception</string>
+    <string name="consolidate_slide">Glissez pour consolider</string>
+    <string name="consolidate_slide_hint">Glissez ou touchez deux fois pour consolider</string>
+    <string name="consolidate_not_ready">Préparation de la consolidation</string>
+    <string name="consolidate_sending">Consolidation</string>
+    <string name="consolidate_sent_title">Consolidé</string>
+    <string name="consolidate_none">Vous avez besoin d’au moins deux sorties dépensables pour consolider.</string>
+    <string name="consolidate_no_target">Aucune adresse de réception n’est disponible.</string>
+    <string name="consolidate_fee_unavailable">Impossible de charger l’estimation des frais. Réessayez.</string>
 </resources>

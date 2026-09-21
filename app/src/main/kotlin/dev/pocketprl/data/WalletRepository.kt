@@ -388,6 +388,9 @@ class WalletRepository(
             var lastFailure: String? = null
             var round = 0
             val checked = HashSet<String>()
+            // Snapshot of every address's on-chain stats before this sweep, so the
+            // UTXO refresh below can tell which addresses actually changed.
+            val statsBefore = db.addresses().associate { it.address to Triple(it.balance, it.unconfirmed, it.txCount) }
             do {
                 round++
                 val rows = when {
@@ -441,25 +444,32 @@ class WalletRepository(
                 }
             }
 
-            // UTXOs only for addresses just checked; clearing is skipped unless the address has rows.
+            // UTXOs are refreshed only for addresses whose stats moved since the
+            // snapshot (or that have no cached set yet). Confirmations are derived
+            // from the tip at read time, so an unchanged address needs no refetch:
+            // a quiet wallet makes no per-address UTXO calls at all.
             val withUtxos = db.utxoAddresses()
             val sem = Semaphore(CONCURRENCY)
             coroutineScope {
                 db.addresses().filter { it.address in checked }.map { row ->
                     async(Dispatchers.IO) {
                         sem.withPermit {
-                            if (row.balance != 0L || row.unconfirmed != 0L) {
-                                try {
-                                    val utxos = withRetry { api.utxos(row.address) }.map {
-                                        UtxoRow(it.txid, it.vout, it.value.toLong(), row.address, row.branch, row.index, if (it.height > 0) it.height else 0)
-                                    }
-                                    db.replaceUtxos(row.address, utxos)
-                                } catch (e: IOException) {
-                                    failed.incrementAndGet() // keep the previous UTXO set rather than showing zero
-                                    lastFailure = e.message
+                            val hasCoins = row.balance != 0L || row.unconfirmed != 0L
+                            if (!hasCoins) {
+                                // Drop a stale set only when there was one; no network call.
+                                if (row.address in withUtxos) db.replaceUtxos(row.address, emptyList())
+                                return@withPermit
+                            }
+                            val changed = statsBefore[row.address] != Triple(row.balance, row.unconfirmed, row.txCount)
+                            if (!changed && row.address in withUtxos) return@withPermit
+                            try {
+                                val utxos = withRetry { api.utxos(row.address) }.map {
+                                    UtxoRow(it.txid, it.vout, it.value.toLong(), row.address, row.branch, row.index, if (it.height > 0) it.height else 0)
                                 }
-                            } else if (row.address in withUtxos) {
-                                db.replaceUtxos(row.address, emptyList())
+                                db.replaceUtxos(row.address, utxos)
+                            } catch (e: IOException) {
+                                failed.incrementAndGet() // keep the previous UTXO set rather than showing zero
+                                lastFailure = e.message
                             }
                         }
                     }
@@ -727,6 +737,25 @@ class WalletRepository(
 
     fun maxSendable(feeRatePerKb: Long): Long = TxBuilder.maxSendable(spendableUtxos(), feeRatePerKb)
 
+    /** How many spendable outputs the wallet currently holds; consolidation needs at least two. */
+    fun spendableUtxoCount(): Int = spendableUtxos().size
+
+    /**
+     * Builds a transaction that sweeps every spendable output into the wallet's
+     * own receive address. No change output: the fee comes out of the swept
+     * total, so afterwards a single output remains to spend.
+     */
+    suspend fun prepareConsolidate(to: String, feeRatePerKb: Long): PreparedSend {
+        val parsed = when (val r = Address.parse(to, network)) {
+            is Address.Result.Valid -> r.parsed
+            is Address.Result.Invalid -> throw IllegalArgumentException(r.reason)
+        }
+        val utxos = spendableUtxos()
+        if (utxos.isEmpty()) throw IllegalStateException(tr(R.string.send_err_no_funds))
+        val build = TxBuilder.build(utxos, parsed.scriptPubKey, 0L, utxos.first().script, feeRatePerKb, sendMax = true)
+        return PreparedSend(build, to.trim(), null)
+    }
+
     suspend fun prepareSend(to: String, amount: Long, feeRatePerKb: Long, sendMax: Boolean): PreparedSend {
         val parsed = when (val r = Address.parse(to, network)) {
             is Address.Result.Valid -> r.parsed
@@ -800,7 +829,14 @@ class WalletRepository(
         const val FAST_BLOCKS = 1
         /** The node's estimator sits on the relay floor past about five blocks; a longer target only inflates the ETA. */
         const val MEDIUM_BLOCKS = 5
-        private const val CONCURRENCY = 4
+        /**
+         * Address requests in flight. The indexer speaks HTTP/2, so a handful of
+         * parallel streams multiplex over one connection; measured on the public
+         * indexer, 8 is the knee (4 to 8 roughly halves a 50-address sweep, past 8
+         * the gains flatten). This is the client's own limit: OkHttp's per-host
+         * cap only gates async calls, and these are synchronous `execute()` calls.
+         */
+        private const val CONCURRENCY = 8
         private const val PAGE_SIZE = 50
         private const val BACKFILL_PAGE_SIZE = 500
         /** Smallest history page the walk will shrink to before giving up on a too-large response. */

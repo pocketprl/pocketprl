@@ -795,4 +795,19 @@
     <string name="downgrade_no_switcher_warning">Esta compilación no tiene selector de versiones. Una vez aquí no verás en qué compilación estás ni podrás cambiar de versión en la aplicación hasta que vuelvas a la 2.4.0 o una posterior.</string>
     <string name="alternate_notice_rollback">Aviso: estás usando una compilación de reversión alternativa. Desde aquí solo puedes bajar, hasta que vuelvas a subir, y a partir de ahí solo puedes subir.</string>
     <string name="alternate_notice_back">Aviso: estás usando una compilación de retorno alternativa. Desde aquí solo se puede subir — a compilaciones de retorno más recientes.</string>
+    <string name="settings_addresses_consolidate">Consolidar salidas</string>
+    <string name="settings_addresses_consolidate_hint">Fusiona las %1$d salidas disponibles en una</string>
+    <string name="consolidate_title">Consolidar</string>
+    <string name="consolidate_hero_title">Fusiona tus salidas</string>
+    <string name="consolidate_hero_body">Esto barre cada salida disponible hacia tu dirección de recepción y deja una sola salida para gastar. Cuesta una comisión de red.</string>
+    <string name="consolidate_summary_title">Estás firmando</string>
+    <string name="consolidate_to_self">Tu dirección de recepción</string>
+    <string name="consolidate_slide">Desliza para consolidar</string>
+    <string name="consolidate_slide_hint">Desliza o toca dos veces para consolidar</string>
+    <string name="consolidate_not_ready">Preparando la consolidación</string>
+    <string name="consolidate_sending">Consolidando</string>
+    <string name="consolidate_sent_title">Consolidado</string>
+    <string name="consolidate_none">Necesitas al menos dos salidas disponibles para consolidar.</string>
+    <string name="consolidate_no_target">No hay ninguna dirección de recepción disponible.</string>
+    <string name="consolidate_fee_unavailable">No se pudo cargar la estimación de comisión. Inténtalo de nuevo.</string>
 </resources>

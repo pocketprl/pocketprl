@@ -807,4 +807,19 @@
     <string name="downgrade_no_switcher_warning">В этой сборке нет переключателя версий. Попав сюда, вы не увидите, на какой сборке находитесь, и не сможете переключать версии в приложении, пока не вернётесь на 2.4.0 или новее.</string>
     <string name="alternate_notice_rollback">Внимание: вы на альтернативной сборке отката. Отсюда можно только спускаться, пока вы не подниметесь обратно, а затем только наверх.</string>
     <string name="alternate_notice_back">Внимание: вы на альтернативной возвратной сборке. Отсюда можно только наверх — к более новым возвратным сборкам.</string>
+    <string name="settings_addresses_consolidate">Объединить выходы</string>
+    <string name="settings_addresses_consolidate_hint">Объединить все доступные выходы (%1$d) в один</string>
+    <string name="consolidate_title">Объединить</string>
+    <string name="consolidate_hero_title">Объедините свои выходы</string>
+    <string name="consolidate_hero_body">Он переносит все доступные выходы на ваш адрес для получения, оставляя один выход для траты. Это стоит одной комиссии сети.</string>
+    <string name="consolidate_summary_title">Вы подписываете</string>
+    <string name="consolidate_to_self">Ваш адрес для получения</string>
+    <string name="consolidate_slide">Сдвиньте, чтобы объединить</string>
+    <string name="consolidate_slide_hint">Сдвиньте или дважды коснитесь, чтобы объединить</string>
+    <string name="consolidate_not_ready">Подготовка объединения</string>
+    <string name="consolidate_sending">Объединение</string>
+    <string name="consolidate_sent_title">Объединено</string>
+    <string name="consolidate_none">Чтобы объединить, нужно как минимум два доступных выхода.</string>
+    <string name="consolidate_no_target">Нет доступного адреса для получения.</string>
+    <string name="consolidate_fee_unavailable">Не удалось загрузить оценку комиссии. Попробуйте снова.</string>
 </resources>

@@ -81,6 +81,7 @@ class VmFactory(private val c: AppContainer, private val ctx: WalletContext?) : 
         modelClass.isAssignableFrom(OnboardingViewModel::class.java) -> OnboardingViewModel(c)
         modelClass.isAssignableFrom(UnlockViewModel::class.java) -> UnlockViewModel(c, wallet())
         modelClass.isAssignableFrom(SendViewModel::class.java) -> SendViewModel(c, wallet())
+        modelClass.isAssignableFrom(ConsolidateViewModel::class.java) -> ConsolidateViewModel(c, wallet())
         modelClass.isAssignableFrom(SettingsViewModel::class.java) -> SettingsViewModel(c, wallet())
         else -> throw IllegalArgumentException("unknown ${modelClass.name}")
     } as T
@@ -578,6 +579,129 @@ class SendViewModel(private val c: AppContainer, private val ctx: WalletContext)
     fun reset() { _state.update { State(tier = it.tier, fees = it.fees) } }
 }
 
+// ---------------------------------------------------------------- consolidate
+
+/**
+ * Sweeps every spendable output into the wallet's own receive address, so a
+ * wallet holding many small UTXOs ends up with a single one. Mirrors
+ * [SendViewModel]'s prepare / authorize / send flow, so the same slide-to-confirm
+ * and the same "require authentication to send" guarantee apply.
+ */
+class ConsolidateViewModel(private val c: AppContainer, private val ctx: WalletContext) : ViewModel() {
+    data class State(
+        val loading: Boolean = true,
+        val target: String? = null,
+        val utxoCount: Int = 0,
+        val fees: FeeRates? = null,
+        val tier: FeeTier = FeeTier.MEDIUM,
+        val prepared: PreparedSend? = null,
+        val prepareError: String? = null,
+        val sending: Boolean = false,
+        val sentTxid: String? = null,
+        val error: String? = null,
+    ) {
+        val feeRatePerKb: Long?
+            get() = when (tier) {
+                FeeTier.FAST -> fees?.fastPerKb
+                FeeTier.MEDIUM -> fees?.mediumPerKb
+                FeeTier.CUSTOM -> null
+            }
+    }
+
+    private val repo = ctx.repository
+    private val _state = MutableStateFlow(State())
+    val state: StateFlow<State> = _state
+    val network: Network get() = repo.network
+    val requireAuth: Boolean get() = c.settings.requireAuthToSend
+    val biometricEnabled: Boolean get() = ctx.vault.biometricEnabled
+    val showFiat: Boolean get() = c.settings.showFiat && network.isMainnet
+    val usdPerPrl: Double? get() = repo.priceState.value.usdPerPrl
+
+    private var authFor: PreparedSend? = null
+
+    init { load() }
+
+    fun load() {
+        viewModelScope.launch {
+            _state.update { it.copy(loading = true, error = null, prepareError = null) }
+            val fees = runCatching { repo.feeRates() }.getOrNull()
+            val target = runCatching { withContext(Dispatchers.IO) { repo.receiveAddress() } }.getOrNull()
+            val count = withContext(Dispatchers.Default) { repo.spendableUtxoCount() }
+            _state.update { it.copy(loading = false, fees = fees ?: it.fees, target = target?.address, utxoCount = count) }
+            when {
+                target == null -> _state.update { it.copy(prepareError = c.appContext.getString(R.string.consolidate_no_target)) }
+                count < 2 -> _state.update { it.copy(prepareError = c.appContext.getString(R.string.consolidate_none)) }
+                _state.value.fees == null -> _state.update { it.copy(prepareError = c.appContext.getString(R.string.consolidate_fee_unavailable)) }
+                else -> reprepare()
+            }
+        }
+    }
+
+    fun setTier(t: FeeTier) {
+        _state.update { it.copy(tier = t, error = null) }
+        reprepare()
+    }
+
+    private fun reprepare() {
+        val s = _state.value
+        val target = s.target ?: return
+        val rate = s.feeRatePerKb ?: return
+        viewModelScope.launch {
+            try {
+                val p = withContext(Dispatchers.Default) { repo.prepareConsolidate(target, rate) }
+                _state.update { it.copy(prepared = p, prepareError = null) }
+            } catch (e: Exception) {
+                _state.update { it.copy(prepared = null, prepareError = friendly(e)) }
+            }
+        }
+    }
+
+    private fun friendly(e: Exception): String = when (e) {
+        is InsufficientFundsException ->
+            c.appContext.getString(R.string.send_err_insufficient, Amount.pretty(e.needed, 8), network.ticker, Amount.pretty(e.available, 8))
+        else -> e.message ?: e.javaClass.simpleName
+    }
+
+    /** Records that the user passed auth for [prepared], so [send] can enforce the setting itself. */
+    fun authorizeSend(prepared: PreparedSend) { authFor = prepared }
+
+    fun send(prepared: PreparedSend) {
+        if (requireAuth && authFor !== prepared) {
+            _state.update { it.copy(sending = false, error = c.appContext.getString(R.string.send_err_auth_required)) }
+            return
+        }
+        authFor = null
+        if (_state.value.prepared !== prepared) {
+            _state.update { it.copy(sending = false, error = c.appContext.getString(R.string.send_err_changed)) }
+            return
+        }
+        _state.update { it.copy(sending = true, error = null) }
+        viewModelScope.launch {
+            try {
+                val txid = repo.signAndBroadcast(prepared)
+                _state.update { it.copy(sending = false, sentTxid = txid) }
+            } catch (e: Exception) {
+                _state.update { it.copy(sending = false, error = friendly(e)) }
+            }
+        }
+    }
+
+    /** Password check honoring the wipe policy: null on success, else an error message. */
+    suspend fun verifyPassword(pw: String): String? = withContext(Dispatchers.Default) {
+        when (val r = ctx.vault.verifyPassword(pw.toCharArray(), wipeAfterFor(c))) {
+            is PasswordCheck.Ok -> null
+            is PasswordCheck.Wrong -> if (AttemptPolicy.shouldWarn(r.remainingBeforeWipe)) c.appContext.getString(R.string.send_auth_left, r.remainingBeforeWipe) else c.appContext.getString(R.string.unlock_error_incorrect)
+            is PasswordCheck.Locked -> c.appContext.getString(R.string.unlock_error_locked, waitLabel(c.appContext, r.retryAfterMs))
+            is PasswordCheck.WipeTriggered -> { c.deleteWallet(ctx.id); c.appContext.getString(R.string.unlock_error_wiped) }
+        }
+    }
+
+    fun biometricCipher(): Cipher? = runCatching { ctx.vault.biometricDecryptCipher() }.getOrNull()
+    fun confirmBiometric(cipher: Cipher): Boolean = runCatching { ctx.vault.unlockWithBiometric(cipher).fill(0); true }.getOrDefault(false)
+
+    fun reset() { _state.update { State(fees = it.fees) } }
+}
+
 // ---------------------------------------------------------------- settings
 
 class SettingsViewModel(private val c: AppContainer, private val ctx: WalletContext) : ViewModel() {
@@ -732,6 +856,7 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
     suspend fun deleteWallet() = c.deleteWallet(ctx.id)
 
     fun addresses() = ctx.repository.addresses()
+    fun spendableUtxoCount(): Int = ctx.repository.spendableUtxoCount()
     fun explorerUrl() = network.explorerUrl
 
     fun contacts(): List<Contact> = ctx.repository.contacts()

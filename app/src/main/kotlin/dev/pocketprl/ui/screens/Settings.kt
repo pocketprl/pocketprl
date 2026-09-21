@@ -53,6 +53,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
@@ -794,10 +795,11 @@ fun NetworkSettingsScreen(vm: SettingsViewModel, onBack: () -> Unit) {
 }
 
 @Composable
-fun AddressesScreen(vm: SettingsViewModel, onBack: () -> Unit) {
+fun AddressesScreen(vm: SettingsViewModel, onBack: () -> Unit, onConsolidate: () -> Unit) {
     val snap by vm.snapshot.collectAsStateWithLifecycle()
     // Every index has a plain row and an XMSS-committed twin; the twin is listed only once it has activity.
     val rows = remember(snap.revision) { vm.addresses().filter { it.variant == AddressVariant.PLAIN || it.used || it.balance != 0L || it.unconfirmed != 0L } }
+    val utxoCount = remember(snap.revision) { vm.spendableUtxoCount() }
     val sync by vm.syncState.collectAsStateWithLifecycle()
     val settings by vm.settings.collectAsStateWithLifecycle()
     val context = LocalContext.current
@@ -807,7 +809,7 @@ fun AddressesScreen(vm: SettingsViewModel, onBack: () -> Unit) {
         onBack = onBack,
         actions = { IconButton(onClick = { vm.rescan() }, enabled = !sync.syncing) { Icon(Icons.Filled.Refresh, contentDescription = stringResource(R.string.settings_addresses_rescan)) } },
     ) {
-        LazyColumn(contentPadding = PaddingValues(horizontal = 20.dp, vertical = 8.dp)) {
+        LazyColumn(modifier = Modifier.weight(1f), contentPadding = PaddingValues(horizontal = 20.dp, vertical = 8.dp)) {
             items(rows, key = { it.address }) { r ->
                 val haptics = rememberHaptics()
                 Column(modifier = Modifier.fillMaxWidth().clickable { haptics.confirm(); copyToClipboard(context, context.getString(R.string.clipboard_address), r.address) }.padding(vertical = 10.dp)) {
@@ -822,6 +824,14 @@ fun AddressesScreen(vm: SettingsViewModel, onBack: () -> Unit) {
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
             }
             item { Text(stringResource(R.string.settings_addresses_info, vm.network.coinType), modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+        }
+        Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            PrimaryButton(stringResource(R.string.settings_addresses_consolidate), enabled = utxoCount >= 2, onClick = onConsolidate)
+            if (utxoCount < 2) {
+                Text(stringResource(R.string.consolidate_none), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+            } else {
+                Text(stringResource(R.string.settings_addresses_consolidate_hint, utxoCount), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+            }
         }
     }
 }

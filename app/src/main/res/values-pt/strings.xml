@@ -790,4 +790,19 @@
     <string name="downgrade_no_switcher_warning">Esta compilação não tem seletor de versões. Uma vez aqui, não verá em que compilação está nem poderá mudar de versão na aplicação até voltar à 2.4.0 ou mais recente.</string>
     <string name="alternate_notice_rollback">Atenção: está a usar uma compilação de reversão alternativa. A partir daqui só pode descer, até voltar a subir, e a partir daí só pode subir.</string>
     <string name="alternate_notice_back">Atenção: está a usar uma compilação de regresso alternativa. A partir daqui só se sobe — para compilações de regresso mais recentes.</string>
+    <string name="settings_addresses_consolidate">Consolidar saídas</string>
+    <string name="settings_addresses_consolidate_hint">Juntar todas as %1$d saídas disponíveis numa só</string>
+    <string name="consolidate_title">Consolidar</string>
+    <string name="consolidate_hero_title">Junte as suas saídas</string>
+    <string name="consolidate_hero_body">Isto varre todas as saídas disponíveis para o seu endereço de receção, deixando uma única saída para gastar. Custa uma taxa de rede.</string>
+    <string name="consolidate_summary_title">Está a assinar</string>
+    <string name="consolidate_to_self">O seu endereço de receção</string>
+    <string name="consolidate_slide">Deslize para consolidar</string>
+    <string name="consolidate_slide_hint">Deslize ou toque duas vezes para consolidar</string>
+    <string name="consolidate_not_ready">A preparar a consolidação</string>
+    <string name="consolidate_sending">A consolidar</string>
+    <string name="consolidate_sent_title">Consolidado</string>
+    <string name="consolidate_none">Precisa de pelo menos duas saídas disponíveis para consolidar.</string>
+    <string name="consolidate_no_target">Não há nenhum endereço de receção disponível.</string>
+    <string name="consolidate_fee_unavailable">Não foi possível carregar a estimativa da taxa. Tente novamente.</string>
 </resources>

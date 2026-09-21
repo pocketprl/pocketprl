@@ -793,4 +793,19 @@
     <string name="downgrade_no_switcher_warning">Den här versionen har ingen versionsväxlare. När du väl är här ser du inte vilken version du är på och kan inte byta i appen förrän du är tillbaka på 2.4.0 eller nyare.</string>
     <string name="alternate_notice_rollback">OBS: du är på ett alternativt nedgraderingsbygge. Härifrån kan du bara gå ned, tills du går upp igen, och sedan bara upp.</string>
     <string name="alternate_notice_back">OBS: du är på ett alternativt returbygge. Härifrån finns bara upp — till nyare returbyggen.</string>
+    <string name="settings_addresses_consolidate">Konsolidera utdata</string>
+    <string name="settings_addresses_consolidate_hint">Slå ihop alla %1$d spenderbara utdata till ett</string>
+    <string name="consolidate_title">Konsolidera</string>
+    <string name="consolidate_hero_title">Slå ihop dina utdata</string>
+    <string name="consolidate_hero_body">Detta sveper in alla spenderbara utdata till din mottagaradress och lämnar en enda utdata att spendera. Det kostar en nätverksavgift.</string>
+    <string name="consolidate_summary_title">Du signerar</string>
+    <string name="consolidate_to_self">Din mottagaradress</string>
+    <string name="consolidate_slide">Dra för att konsolidera</string>
+    <string name="consolidate_slide_hint">Dra eller dubbeltryck för att konsolidera</string>
+    <string name="consolidate_not_ready">Förbereder konsolideringen</string>
+    <string name="consolidate_sending">Konsoliderar</string>
+    <string name="consolidate_sent_title">Konsoliderat</string>
+    <string name="consolidate_none">Du behöver minst två spenderbara utdata för att konsolidera.</string>
+    <string name="consolidate_no_target">Ingen mottagaradress är tillgänglig.</string>
+    <string name="consolidate_fee_unavailable">Kunde inte hämta avgiftsuppskattningen. Försök igen.</string>
 </resources>

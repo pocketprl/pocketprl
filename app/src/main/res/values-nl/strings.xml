@@ -791,4 +791,19 @@
     <string name="downgrade_no_switcher_warning">Deze build heeft geen versiewisselaar. Eenmaal hier zie je niet welke build je gebruikt en kun je niet in de app wisselen tot je weer op 2.4.0 of nieuwer staat.</string>
     <string name="alternate_notice_rollback">Let op: je gebruikt een alternatieve downgrade-build. Vanaf hier kun je alleen naar beneden, tot je weer naar boven gaat, en dan alleen nog maar naar boven.</string>
     <string name="alternate_notice_back">Let op: je gebruikt een alternatieve terugkeerbuild. Vanaf hier gaat het alleen nog maar naar boven — naar nieuwere terugkeerbuilds.</string>
+    <string name="settings_addresses_consolidate">Outputs consolideren</string>
+    <string name="settings_addresses_consolidate_hint">Voeg alle %1$d besteedbare outputs samen tot één</string>
+    <string name="consolidate_title">Consolideren</string>
+    <string name="consolidate_hero_title">Voeg je outputs samen</string>
+    <string name="consolidate_hero_body">Dit veegt elke besteedbare output naar je ontvangstadres en laat één enkele output over om te besteden. Het kost één keer netwerkkosten.</string>
+    <string name="consolidate_summary_title">Je ondertekent</string>
+    <string name="consolidate_to_self">Je ontvangstadres</string>
+    <string name="consolidate_slide">Schuif om te consolideren</string>
+    <string name="consolidate_slide_hint">Schuif of dubbeltik om te consolideren</string>
+    <string name="consolidate_not_ready">De consolidatie voorbereiden</string>
+    <string name="consolidate_sending">Consolideren</string>
+    <string name="consolidate_sent_title">Geconsolideerd</string>
+    <string name="consolidate_none">Je hebt minstens twee besteedbare outputs nodig om te consolideren.</string>
+    <string name="consolidate_no_target">Geen ontvangstadres beschikbaar.</string>
+    <string name="consolidate_fee_unavailable">Kon de kostenschatting niet laden. Probeer het opnieuw.</string>
 </resources>

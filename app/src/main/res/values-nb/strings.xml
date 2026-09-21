@@ -787,4 +787,19 @@
     <string name="downgrade_no_switcher_warning">Dette bygget har ingen versjonsvelger. Når du først er her, ser du ikke hvilket bygg du er på, og du kan ikke bytte i appen før du er tilbake på 2.4.0 eller nyere.</string>
     <string name="alternate_notice_rollback">Obs: du er på et alternativt nedgraderingsbygg. Herfra kan du bare gå ned, helt til du går opp igjen, og deretter bare opp.</string>
     <string name="alternate_notice_back">Obs: du er på et alternativt returbygg. Herfra er det bare opp, til nyere returbygg.</string>
+    <string name="settings_addresses_consolidate">Slå sammen utganger</string>
+    <string name="settings_addresses_consolidate_hint">Slå sammen alle %1$d brukbare utganger til én</string>
+    <string name="consolidate_title">Slå sammen</string>
+    <string name="consolidate_hero_title">Slå sammen utgangene dine</string>
+    <string name="consolidate_hero_body">Dette feier alle brukbare utganger inn i mottaksadressen din, og etterlater én enkelt utgang å bruke. Det koster ett nettverksgebyr.</string>
+    <string name="consolidate_summary_title">Du signerer</string>
+    <string name="consolidate_to_self">Mottaksadressen din</string>
+    <string name="consolidate_slide">Skyv for å slå sammen</string>
+    <string name="consolidate_slide_hint">Skyv eller dobbelttrykk for å slå sammen</string>
+    <string name="consolidate_not_ready">Forbereder sammenslåingen</string>
+    <string name="consolidate_sending">Slår sammen</string>
+    <string name="consolidate_sent_title">Slått sammen</string>
+    <string name="consolidate_none">Du trenger minst to brukbare utganger for å slå sammen.</string>
+    <string name="consolidate_no_target">Ingen mottaksadresse er tilgjengelig.</string>
+    <string name="consolidate_fee_unavailable">Kunne ikke laste gebyranslaget. Prøv igjen.</string>
 </resources>

@@ -811,4 +811,19 @@
     <string name="downgrade_no_switcher_warning">У цій збірці немає перемикача версій. Опинившись тут, ви не побачите, на якій збірці перебуваєте, і не зможете перемикати версії в застосунку, доки не повернетеся на 2.4.0 або новішу.</string>
     <string name="alternate_notice_rollback">Увага: ви на альтернативній збірці відкату. Звідси можна лише спускатися, доки ви не підніметеся назад, а потім лише вгору.</string>
     <string name="alternate_notice_back">Увага: ви на альтернативній збірці повернення. Звідси можна лише вгору — до новіших збірок повернення.</string>
+    <string name="settings_addresses_consolidate">Об\'єднати виходи</string>
+    <string name="settings_addresses_consolidate_hint">Об\'єднати всі доступні виходи (%1$d) в один</string>
+    <string name="consolidate_title">Об\'єднати</string>
+    <string name="consolidate_hero_title">Об\'єднайте свої виходи</string>
+    <string name="consolidate_hero_body">Це переносить усі доступні виходи на вашу адресу для отримання, залишаючи один вихід для витрати. Це коштує однієї комісії мережі.</string>
+    <string name="consolidate_summary_title">Ви підписуєте</string>
+    <string name="consolidate_to_self">Ваша адреса для отримання</string>
+    <string name="consolidate_slide">Суньте, щоб об\'єднати</string>
+    <string name="consolidate_slide_hint">Суньте або двічі торкніться, щоб об\'єднати</string>
+    <string name="consolidate_not_ready">Підготовка об\'єднання</string>
+    <string name="consolidate_sending">Об\'єднання</string>
+    <string name="consolidate_sent_title">Об\'єднано</string>
+    <string name="consolidate_none">Щоб об\'єднати, потрібно щонайменше два доступні виходи.</string>
+    <string name="consolidate_no_target">Немає доступної адреси для отримання.</string>
+    <string name="consolidate_fee_unavailable">Не вдалося завантажити оцінку комісії. Спробуйте знову.</string>
 </resources>

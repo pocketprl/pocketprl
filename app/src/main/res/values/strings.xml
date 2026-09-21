@@ -437,6 +437,23 @@
     <string name="settings_addresses_pq">%1$s • post-quantum variant</string>
     <string name="settings_addresses_used">used</string>
     <string name="settings_addresses_info">Tap an address to copy it. Derivation: m/86’/%1$d’/0’/branch/index, BIP-86 key path like the desktop wallet. Each index also has a post-quantum variant (XMSS tapleaf from purpose 222’) that is watched and listed here once it has been used. The refresh button checks every address, both variants, right now; the home screen only checks the ones in use.</string>
+    <string name="settings_addresses_consolidate">Consolidate outputs</string>
+    <string name="settings_addresses_consolidate_hint">Merge all %1$d spendable outputs into one</string>
+
+    <!-- ===================== consolidate ===================== -->
+    <string name="consolidate_title">Consolidate</string>
+    <string name="consolidate_hero_title">Merge your outputs</string>
+    <string name="consolidate_hero_body">This sweeps every spendable output into your receive address, leaving a single output to spend. It costs one network fee.</string>
+    <string name="consolidate_summary_title">You are signing</string>
+    <string name="consolidate_to_self">Your receive address</string>
+    <string name="consolidate_slide">Slide to consolidate</string>
+    <string name="consolidate_slide_hint">Slide or double-tap to consolidate</string>
+    <string name="consolidate_not_ready">Preparing the consolidation</string>
+    <string name="consolidate_sending">Consolidating</string>
+    <string name="consolidate_sent_title">Consolidated</string>
+    <string name="consolidate_none">You need at least two spendable outputs to consolidate.</string>
+    <string name="consolidate_no_target">No receive address is available.</string>
+    <string name="consolidate_fee_unavailable">Could not load the fee estimate. Try again.</string>
     <string name="settings_contacts_title">Contacts</string>
     <string name="settings_contacts_empty">No contacts yet</string>
     <string name="settings_contacts_empty_body">Save the addresses you pay often. Names show up in your activity and in the recipient field.</string>

@@ -77,6 +77,7 @@ fun SentContent(
     odometer: Boolean = true,
     odometerHaptics: Boolean = true,
     secondsPerBlock: Long = Network.TARGET_BLOCK_SECONDS,
+    titleRes: Int = R.string.sent_title,
 ) {
     val context = LocalContext.current
     val haptics = rememberHaptics()
@@ -143,7 +144,7 @@ fun SentContent(
                 }
             }
             AnimatedVisibility(visible = stage >= 1, enter = fadeIn(tween(350)) + slideInVertically(tween(350)) { it / 4 }) {
-                Text(stringResource(R.string.sent_title), style = MaterialTheme.typography.headlineLarge, color = cs.onBackground)
+                Text(stringResource(titleRes), style = MaterialTheme.typography.headlineLarge, color = cs.onBackground)
             }
             Spacer(Modifier.height(6.dp))
             // Always in the tree so the odometer has a starting value to roll from.

@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.5.3
+
+* **Consolidate outputs.** A new button in Settings > Addresses sweeps every
+  spendable output into your receive address, so a wallet scattered across many
+  small outputs ends up with one. It shows exactly what is being signed (the
+  swept total, the fee, the number of inputs and the destination) and uses the
+  same slide-to-confirm and re-authentication as Send. Disabled below two outputs.
+* **Faster syncing on wallets with many addresses.** Address checks now run 8 in
+  flight instead of 4 (the indexer is HTTP/2, so they multiplex over one
+  connection), and UTXO sets are only refetched for addresses whose balance,
+  unconfirmed balance or transaction count actually changed. A quiet wallet now
+  makes no per-address UTXO calls at all.
+* **Animated version switcher.** Moving between the version list, a release's
+  details and its install now slides like the rest of the app instead of snapping.
+* New strings localized into all 18 supported languages.
+
 ## 2.5.2
 
 * **Switcher resets on back.** Swiping out of a download or a release's details

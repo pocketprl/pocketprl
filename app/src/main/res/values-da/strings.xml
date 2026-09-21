@@ -791,4 +791,19 @@
     <string name="downgrade_no_switcher_warning">Denne build har ingen versionsskifter. Når du først er her, kan du ikke se, hvilken build du er på, og du kan ikke skifte i appen, før du er tilbage på 2.4.0 eller nyere.</string>
     <string name="alternate_notice_rollback">Bemærk: du er på et alternativt nedgraderings-build. Herfra kan du kun gå ned, indtil du går op igen, og derefter kun op.</string>
     <string name="alternate_notice_back">Bemærk: du er på et alternativt retur-build. Herfra er der kun op — til nyere retur-builds.</string>
+    <string name="settings_addresses_consolidate">Konsolidér outputs</string>
+    <string name="settings_addresses_consolidate_hint">Flet alle %1$d disponible outputs sammen til én</string>
+    <string name="consolidate_title">Konsolidér</string>
+    <string name="consolidate_hero_title">Flet dine outputs sammen</string>
+    <string name="consolidate_hero_body">Dette fejer hver disponibel output ind i din modtagelsesadresse og efterlader én enkelt output at bruge. Det koster ét netværksgebyr.</string>
+    <string name="consolidate_summary_title">Du underskriver</string>
+    <string name="consolidate_to_self">Din modtagelsesadresse</string>
+    <string name="consolidate_slide">Træk for at konsolidere</string>
+    <string name="consolidate_slide_hint">Træk eller dobbelttryk for at konsolidere</string>
+    <string name="consolidate_not_ready">Forbereder konsolideringen</string>
+    <string name="consolidate_sending">Konsoliderer</string>
+    <string name="consolidate_sent_title">Konsolideret</string>
+    <string name="consolidate_none">Du skal have mindst to disponible outputs for at konsolidere.</string>
+    <string name="consolidate_no_target">Der er ingen modtagelsesadresse tilgængelig.</string>
+    <string name="consolidate_fee_unavailable">Kunne ikke indlæse gebyrestimatet. Prøv igen.</string>
 </resources>

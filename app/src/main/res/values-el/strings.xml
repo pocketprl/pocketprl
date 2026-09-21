@@ -791,4 +791,19 @@
     <string name="downgrade_no_switcher_warning">Αυτή η δομή δεν έχει εναλλαγή έκδοσης. Μόλις βρεθείτε εδώ, δεν θα βλέπετε σε ποια δομή βρίσκεστε ούτε θα μπορείτε να αλλάξετε από την εφαρμογή μέχρι να επιστρέψετε στην 2.4.0 ή νεότερη.</string>
     <string name="alternate_notice_rollback">Προσοχή: βρίσκεστε σε εναλλακτική δομή υποβάθμισης. Από εδώ μπορείτε να πάτε μόνο προς τα κάτω, μέχρι να ξαναπάτε προς τα πάνω, και μετά μόνο προς τα πάνω.</string>
     <string name="alternate_notice_back">Προσοχή: βρίσκεστε σε εναλλακτική δομή επιστροφής. Από εδώ υπάρχει μόνο προς τα πάνω, προς νεότερες δομές επιστροφής.</string>
+    <string name="settings_addresses_consolidate">Ενοποίηση εξόδων</string>
+    <string name="settings_addresses_consolidate_hint">Συγχώνευση όλων των %1$d διαθέσιμων εξόδων σε μία</string>
+    <string name="consolidate_title">Ενοποίηση</string>
+    <string name="consolidate_hero_title">Συγχωνεύστε τις εξόδους σας</string>
+    <string name="consolidate_hero_body">Αυτό σαρώνει κάθε διαθέσιμη έξοδο στη διεύθυνση λήψης σας, αφήνοντας μία μόνο έξοδο για δαπάνη. Κοστίζει μία χρέωση δικτύου.</string>
+    <string name="consolidate_summary_title">Υπογράφετε</string>
+    <string name="consolidate_to_self">Η διεύθυνση λήψης σας</string>
+    <string name="consolidate_slide">Σύρετε για ενοποίηση</string>
+    <string name="consolidate_slide_hint">Σύρετε ή πατήστε διπλά για ενοποίηση</string>
+    <string name="consolidate_not_ready">Προετοιμασία της ενοποίησης</string>
+    <string name="consolidate_sending">Γίνεται ενοποίηση</string>
+    <string name="consolidate_sent_title">Ενοποιήθηκε</string>
+    <string name="consolidate_none">Χρειάζεστε τουλάχιστον δύο διαθέσιμες εξόδους για ενοποίηση.</string>
+    <string name="consolidate_no_target">Δεν υπάρχει διαθέσιμη διεύθυνση λήψης.</string>
+    <string name="consolidate_fee_unavailable">Δεν ήταν δυνατή η φόρτωση της εκτίμησης χρέωσης. Δοκιμάστε ξανά.</string>
 </resources>

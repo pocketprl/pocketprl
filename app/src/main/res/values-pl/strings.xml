@@ -808,4 +808,19 @@
     <string name="downgrade_no_switcher_warning">Ta kompilacja nie ma przełącznika wersji. Gdy już tu trafisz, nie zobaczysz, na której kompilacji jesteś, ani nie będziesz mógł przełączyć wersji w aplikacji, dopóki nie wrócisz na 2.4.0 lub nowszą.</string>
     <string name="alternate_notice_rollback">Uwaga: korzystasz z alternatywnej kompilacji wycofania. Stąd możesz tylko schodzić, dopóki nie pójdziesz z powrotem w górę, a wtedy już tylko w górę.</string>
     <string name="alternate_notice_back">Uwaga: korzystasz z alternatywnej kompilacji powrotnej. Stąd jest już tylko w górę — do nowszych kompilacji powrotnych.</string>
+    <string name="settings_addresses_consolidate">Konsoliduj wyjścia</string>
+    <string name="settings_addresses_consolidate_hint">Połącz wszystkie %1$d dostępnych wyjść w jedno</string>
+    <string name="consolidate_title">Konsoliduj</string>
+    <string name="consolidate_hero_title">Połącz swoje wyjścia</string>
+    <string name="consolidate_hero_body">Przenosi wszystkie dostępne wyjścia na Twój adres odbiorczy, pozostawiając jedno wyjście do wydania. Kosztuje to jedną opłatę sieciową.</string>
+    <string name="consolidate_summary_title">Podpisujesz</string>
+    <string name="consolidate_to_self">Twój adres odbiorczy</string>
+    <string name="consolidate_slide">Przesuń, aby skonsolidować</string>
+    <string name="consolidate_slide_hint">Przesuń lub dotknij dwukrotnie, aby skonsolidować</string>
+    <string name="consolidate_not_ready">Przygotowywanie konsolidacji</string>
+    <string name="consolidate_sending">Konsolidowanie</string>
+    <string name="consolidate_sent_title">Skonsolidowano</string>
+    <string name="consolidate_none">Aby skonsolidować, potrzebujesz co najmniej dwóch dostępnych wyjść.</string>
+    <string name="consolidate_no_target">Brak dostępnego adresu odbiorczego.</string>
+    <string name="consolidate_fee_unavailable">Nie udało się wczytać szacunku opłaty. Spróbuj ponownie.</string>
 </resources>
