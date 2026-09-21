@@ -778,11 +778,22 @@
     <string name="return_build_fix">Získat běžné sestavení</string>
     <string name="return_build_keep">Ponechat toto sestavení</string>
     <string name="return_build_reset_title">Běžné sestavení</string>
-    <string name="return_build_reset_body">Android nenainstaluje nižší verzi balíčku přes tuto, takže je nejprve nutné PocketPRL odinstalovat. Vaše prostředky jsou v bezpečí, pokud máte frázi pro obnovení; názvy peněženek, kontakty a poznámky se ztratí. Běžné sestavení se uloží do Downloads, takže si ho můžete znovu nainstalovat.</string>
-    <string name="return_build_reset_prepare">Uložit běžné sestavení</string>
-    <string name="return_build_reset_saved">Uloženo do Downloads/%1$s. Odinstalujte PocketPRL a poté nainstalujte tento soubor.</string>
+    <string name="return_build_reset_body">Android nenainstaluje toto sestavení přes vaše, takže je nejprve nutné PocketPRL odinstalovat. Uložte sestavení, odinstalujte, nainstalujte jej z Downloads a poté obnovte peněženku z fráze pro obnovení. Názvy peněženek, kontakty a poznámky se nezachovají.</string>
+    <string name="return_build_reset_prepare">Uložit sestavení</string>
+    <string name="return_build_reset_saved">Uloženo do Downloads/%1$s. Odinstalujte PocketPRL, nainstalujte tento soubor a poté obnovte z fráze pro obnovení.</string>
     <string name="return_build_reset_uninstall">Odinstalovat PocketPRL</string>
     <string name="return_build_reset_save_failed">Soubor se nepodařilo uložit do Downloads. Po odinstalaci jej nainstalujte ze stránky vydání na GitHubu.</string>
     <string name="return_build_in_menu">Jste na sestavení pro návrat, které je výše než každý cíl návratu ke starší verzi. Nainstalujte běžné sestavení, abyste mohli znovu přejít na starší verzi.</string>
     <string name="return_build_error">Běžné sestavení pro tuto verzi se na GitHubu nepodařilo najít.</string>
+    <!-- ===================== build lanes / downgrade switch ===================== -->
+    <string name="settings_about_build">Sestavení</string>
+    <string name="build_lane_you_are_on">Jste na</string>
+    <string name="build_lane_primary">Běžné sestavení</string>
+    <string name="build_lane_primary_body">Běžné sestavení. Lze přes něj nainstalovat libovolnou starší verzi, vaše peněženky zůstanou zachovány.</string>
+    <string name="build_lane_rollback">Sestavení pro rollback</string>
+    <string name="build_lane_rollback_body">Sestavení pro rollback. Můžete přes něj nainstalovat libovolnou starší verzi; pro opětovný postup vpřed proveďte reset nebo nainstalujte sestavení pro návrat.</string>
+    <string name="build_lane_back">Sestavení pro návrat</string>
+    <string name="build_lane_back_body">Sestavení pro návrat, vytvořené pro cestu z rollbacku. Přes něj lze nainstalovat pouze novější verze; pro starší verzi proveďte reset.</string>
+    <string name="downgrade_switch_body">Android toto nenainstaluje přes vaše sestavení na místo. Přepnutím se uloží do Downloads, PocketPRL se odinstaluje a po opětovné instalaci obnovíte peněženku z fráze pro obnovení.</string>
+    <string name="downgrade_switch_button">Přepnout na tuto verzi</string>
 </resources>

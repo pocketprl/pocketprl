@@ -759,11 +759,21 @@
     <string name="return_build_fix">Szerezd be a normál buildet</string>
     <string name="return_build_keep">Tartsd meg ezt a buildet</string>
     <string name="return_build_reset_title">Normál build</string>
-    <string name="return_build_reset_body">Az Android nem telepít alacsonyabb csomag verziót erre, ezért a PocketPRL-t először el kell távolítani. A pénzed biztonságban van, ha megvan a helyreállítási frázisod; a pénztárcanevek, a névjegyek és a jegyzetek elvesznek. A normál build a Downloads mappába kerül mentésre, így újra telepítheted.</string>
-    <string name="return_build_reset_prepare">Mentsd el a normál buildet</string>
-    <string name="return_build_reset_saved">Mentve ide: Downloads/%1$s. Távolítsd el a PocketPRL-t, majd telepítsd azt a fájlt.</string>
+    <string name="return_build_reset_body">Az Android nem telepíti ezt a buildet a tiéd fölé, ezért a PocketPRL-t először el kell távolítani. Mentsd el a buildet, távolítsd el, telepítsd a Downloads mappából, majd állítsd vissza a pénztárcádat a helyreállítási frázisból. A pénztárcanevek, a névjegyek és a jegyzetek nem maradnak meg.</string>
+    <string name="return_build_reset_prepare">Mentsd el a buildet</string>
+    <string name="return_build_reset_saved">Mentve ide: Downloads/%1$s. Távolítsd el a PocketPRL-t, telepítsd azt a fájlt, majd állítsd vissza a helyreállítási frázisból.</string>
     <string name="return_build_reset_uninstall">PocketPRL eltávolítása</string>
     <string name="return_build_reset_save_failed">Nem sikerült a fájlt a Downloads mappába menteni. Az eltávolítás után telepítsd a GitHub kiadási oldaláról.</string>
     <string name="return_build_in_menu">Egy visszatérési builden vagy, amely minden visszalépési cél fölött áll. A visszalépéshez telepítsd a normál buildet.</string>
     <string name="return_build_error">Nem található a normál build ehhez a verzióhoz a GitHubon.</string>
+    <string name="settings_about_build">Build</string>
+    <string name="build_lane_you_are_on">Ezen a builden vagy:</string>
+    <string name="build_lane_primary">Normál build</string>
+    <string name="build_lane_primary_body">A normál build. Bármely régebbi verzió rátelepíthető a helyére, a pénztárcáid megmaradnak.</string>
+    <string name="build_lane_rollback">Visszalépési build</string>
+    <string name="build_lane_rollback_body">Egy visszalépési build. Bármely régebbi verziót rátelepíthetsz a helyére; hogy ismét előre lépj, állítsd vissza, vagy telepíts egy visszatérési buildet.</string>
+    <string name="build_lane_back">Visszatérési build</string>
+    <string name="build_lane_back_body">Egy visszatérési build, amely arra készült, hogy kilépj egy visszalépésből. Csak újabb verziókat tud a helyére telepíteni; régebbihez állítsd vissza.</string>
+    <string name="downgrade_switch_body">Az Android nem telepíti ezt a builded fölé. A váltás a Downloads mappába menti, eltávolítja a PocketPRL-t, és az újratelepítés után a helyreállítási frázisodból állítod vissza.</string>
+    <string name="downgrade_switch_button">Váltás erre a verzióra</string>
 </resources>

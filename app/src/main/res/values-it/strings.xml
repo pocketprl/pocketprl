@@ -763,11 +763,23 @@
     <string name="return_build_fix">Ottieni la build standard</string>
     <string name="return_build_keep">Mantieni questa build</string>
     <string name="return_build_reset_title">Build standard</string>
-    <string name="return_build_reset_body">Android non installerà una versione del pacchetto inferiore sopra questa, quindi PocketPRL deve prima essere disinstallato. I tuoi fondi sono al sicuro se hai la frase di recupero; i nomi dei portafogli, i contatti e le note vanno persi. La build standard viene salvata in Downloads così puoi installarla di nuovo.</string>
-    <string name="return_build_reset_prepare">Salva la build standard</string>
-    <string name="return_build_reset_saved">Salvata in Downloads/%1$s. Disinstalla PocketPRL, poi installa quel file.</string>
+    <string name="return_build_reset_body">Android non installerà questa build sopra la tua, in-place, quindi PocketPRL deve prima essere disinstallato. Salva la build, disinstalla, installala da Downloads, poi ripristina il portafoglio dalla tua frase di recupero. I nomi dei portafogli, i contatti e le note non vengono conservati.</string>
+    <string name="return_build_reset_prepare">Salva la build</string>
+    <string name="return_build_reset_saved">Salvata in Downloads/%1$s. Disinstalla PocketPRL, installa quel file, poi ripristina dalla tua frase di recupero.</string>
     <string name="return_build_reset_uninstall">Disinstalla PocketPRL</string>
     <string name="return_build_reset_save_failed">Impossibile salvare il file in Downloads. Installalo dalla pagina delle versioni GitHub dopo la disinstallazione.</string>
     <string name="return_build_in_menu">Stai usando una build di ritorno, che è sopra ogni obiettivo di downgrade. Installa la build standard per poter tornare a eseguire il downgrade.</string>
     <string name="return_build_error">Impossibile trovare la build standard per questa versione su GitHub.</string>
+
+    <!-- ===================== build lanes / switch ===================== -->
+    <string name="settings_about_build">Build</string>
+    <string name="build_lane_you_are_on">Stai usando</string>
+    <string name="build_lane_primary">Build standard</string>
+    <string name="build_lane_primary_body">La build standard. Qualsiasi versione precedente può essere installata sopra, in-place, mantenendo i tuoi portafogli.</string>
+    <string name="build_lane_rollback">Build di downgrade</string>
+    <string name="build_lane_rollback_body">Una build di downgrade. Puoi installare qualsiasi versione precedente in-place; per tornare avanti, ripristina o installa una build di ritorno.</string>
+    <string name="build_lane_back">Build di ritorno</string>
+    <string name="build_lane_back_body">Una build di ritorno, creata per uscire da un downgrade. Può installare solo versioni più recenti in-place; per andare su una più vecchia, ripristina.</string>
+    <string name="downgrade_switch_body">Android non installerà questa versione sopra la tua, in-place. Il passaggio la salva in Downloads, disinstalla PocketPRL e, dopo la reinstallazione, ripristini dalla tua frase di recupero.</string>
+    <string name="downgrade_switch_button">Passa a questa versione</string>
 </resources>

@@ -765,11 +765,21 @@
     <string name="return_build_fix">Obține versiunea obișnuită</string>
     <string name="return_build_keep">Păstrează această versiune</string>
     <string name="return_build_reset_title">Versiunea obișnuită</string>
-    <string name="return_build_reset_body">Android nu va instala o versiune de pachet mai mică peste aceasta, așa că PocketPRL trebuie dezinstalat mai întâi. Fondurile tale sunt în siguranță dacă ai fraza de recuperare; numele portofelelor, contactele și notele se pierd. Versiunea obișnuită este salvată în Downloads, ca să o poți instala din nou.</string>
-    <string name="return_build_reset_prepare">Salvează versiunea obișnuită</string>
-    <string name="return_build_reset_saved">Salvat în Downloads/%1$s. Dezinstalează PocketPRL, apoi instalează acel fișier.</string>
+    <string name="return_build_reset_body">Android nu va instala această versiune peste a ta, așa că PocketPRL trebuie dezinstalat mai întâi. Salvează versiunea, dezinstalează, instaleaz-o din Downloads, apoi restaurează-ți portofelul din fraza de recuperare. Numele portofelelor, contactele și notele nu se păstrează.</string>
+    <string name="return_build_reset_prepare">Salvează versiunea</string>
+    <string name="return_build_reset_saved">Salvat în Downloads/%1$s. Dezinstalează PocketPRL, instalează acel fișier, apoi restaurează din fraza de recuperare.</string>
     <string name="return_build_reset_uninstall">Dezinstalează PocketPRL</string>
     <string name="return_build_reset_save_failed">Fișierul nu a putut fi salvat în Downloads. Instalează-l de pe pagina de versiuni GitHub după dezinstalare.</string>
     <string name="return_build_in_menu">Folosești o versiune de revenire, care este peste fiecare țintă de retrogradare. Instalează versiunea obișnuită pentru a retrograda din nou.</string>
     <string name="return_build_error">Nu s-a găsit versiunea obișnuită pentru această versiune pe GitHub.</string>
+    <string name="settings_about_build">Versiune</string>
+    <string name="build_lane_you_are_on">Folosești</string>
+    <string name="build_lane_primary">Versiunea obișnuită</string>
+    <string name="build_lane_primary_body">Versiunea obișnuită. Orice versiune mai veche poate fi instalată peste ea pe loc, păstrându-ți portofelele.</string>
+    <string name="build_lane_rollback">Versiune de retrogradare</string>
+    <string name="build_lane_rollback_body">O versiune de retrogradare. Poți instala orice versiune mai veche pe loc; pentru a merge din nou înainte, resetează sau instalează o versiune de revenire.</string>
+    <string name="build_lane_back">Versiune de revenire</string>
+    <string name="build_lane_back_body">O versiune de revenire, făcută pentru a ieși dintr-o retrogradare. Poate instala pe loc doar versiuni mai noi; pentru a merge la una mai veche, resetează.</string>
+    <string name="downgrade_switch_body">Android nu va instala asta peste versiunea ta pe loc. Comutarea o salvează în Downloads, dezinstalează PocketPRL, iar tu restaurezi din fraza de recuperare după reinstalare.</string>
+    <string name="downgrade_switch_button">Comută la această versiune</string>
 </resources>

@@ -760,11 +760,21 @@
     <string name="return_build_fix">Normal derlemeyi edinin</string>
     <string name="return_build_keep">Bu derlemeyi koru</string>
     <string name="return_build_reset_title">Normal derleme</string>
-    <string name="return_build_reset_body">Android bu sürümün üzerine daha düşük bir paket sürümü kurmaz; bu yüzden PocketPRL önce kaldırılmalıdır. Kurtarma ifadeniz varsa paranız güvendedir; cüzdan adları, kişiler ve notlar kaybolur. Normal derleme Downloads’a kaydedilir, böylece yeniden kurabilirsiniz.</string>
-    <string name="return_build_reset_prepare">Normal derlemeyi kaydet</string>
-    <string name="return_build_reset_saved">Downloads/%1$s konumuna kaydedildi. PocketPRL’i kaldırın, ardından o dosyayı kurun.</string>
+    <string name="return_build_reset_body">Android bu derlemeyi sizinkinin üzerine kurmaz; bu yüzden PocketPRL önce kaldırılmalıdır. Derlemeyi kaydedin, kaldırın, Downloads’tan kurun ve ardından cüzdanınızı kurtarma ifadenizden geri yükleyin. Cüzdan adları, kişiler ve notlar saklanmaz.</string>
+    <string name="return_build_reset_prepare">Derlemeyi kaydet</string>
+    <string name="return_build_reset_saved">Downloads/%1$s konumuna kaydedildi. PocketPRL’i kaldırın, o dosyayı kurun, ardından kurtarma ifadenizden geri yükleyin.</string>
     <string name="return_build_reset_uninstall">PocketPRL’i kaldır</string>
     <string name="return_build_reset_save_failed">Dosya Downloads’a kaydedilemedi. Kaldırdıktan sonra GitHub sürüm sayfasından kurun.</string>
     <string name="return_build_in_menu">Her sürüm düşürme hedefinin üzerinde olan bir geri dönüş derlemesi kullanıyorsunuz. Yeniden sürüm düşürmek için normal derlemeyi kurun.</string>
     <string name="return_build_error">Bu sürüm için normal derleme GitHub’da bulunamadı.</string>
+    <string name="settings_about_build">Derleme</string>
+    <string name="build_lane_you_are_on">Üzerinde olduğunuz derleme</string>
+    <string name="build_lane_primary">Normal derleme</string>
+    <string name="build_lane_primary_body">Normal derleme. Herhangi bir eski sürüm, cüzdanlarınız korunarak üzerine kurulabilir.</string>
+    <string name="build_lane_rollback">Sürüm düşürme derlemesi</string>
+    <string name="build_lane_rollback_body">Bir sürüm düşürme derlemesi. Herhangi bir eski sürümü üzerine kurabilirsiniz; yeniden ileri gitmek için sıfırlayın veya bir geri dönüş derlemesi kurun.</string>
+    <string name="build_lane_back">Geri dönüş derlemesi</string>
+    <string name="build_lane_back_body">Bir sürüm düşürmeden çıkmak için hazırlanmış bir geri dönüş derlemesi. Yalnızca daha yeni sürümleri üzerine kurabilir; daha eskiye gitmek için sıfırlayın.</string>
+    <string name="downgrade_switch_body">Android bunu derlemenizin üzerine kurmaz. Geçiş yapmak bunu Downloads’a kaydeder, PocketPRL’i kaldırır ve yeniden kurduktan sonra kurtarma ifadenizden geri yüklersiniz.</string>
+    <string name="downgrade_switch_button">Bu sürüme geç</string>
 </resources>

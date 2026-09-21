@@ -33,8 +33,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.pocketprl.BuildConfig
 import dev.pocketprl.R
-import dev.pocketprl.data.ReturnBuild
+import dev.pocketprl.data.BuildInfo
 import dev.pocketprl.data.SchemaCompat
+import dev.pocketprl.data.VersionLane
 import dev.pocketprl.data.update.AppUpdater
 import dev.pocketprl.data.update.ReleaseInfo
 import dev.pocketprl.data.update.UpdateChecker
@@ -68,7 +69,7 @@ import kotlinx.coroutines.launch
  * refuse it.
  */
 @Composable
-fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: () -> Unit) {
+fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: (String) -> Unit) {
     val container = appContainer()
     val updater = container.updater
     val state by updater.state.collectAsStateWithLifecycle()
@@ -127,10 +128,11 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: () -> Unit) {
                     Spacer(Modifier.weight(1f))
 
                     if (ready != null && !ready.installableInPlace) {
-                        if (ReturnBuild.isReturn) {
-                            InfoBanner(stringResource(R.string.return_build_in_menu), BannerKind.WARNING)
-                            PrimaryButton(stringResource(R.string.return_build_fix), onClick = onOpenReset)
-                        }
+                        // Android cannot install this target over the running build in
+                        // place; the reset flow (uninstall, reinstall, restore phrase) is
+                        // the only way, and it works for every version.
+                        InfoBanner(stringResource(R.string.downgrade_switch_body), BannerKind.WARNING)
+                        PrimaryButton(stringResource(R.string.downgrade_switch_button), onClick = { onOpenReset(target?.version ?: current) })
                         SecondaryButton(
                             stringResource(R.string.downgrade_back_to_list),
                             onClick = { updater.reset(); installError = null },
@@ -256,6 +258,7 @@ fun VersionHistoryScreen(onBack: () -> Unit, onOpenReset: () -> Unit) {
                         contentPadding = androidx.compose.foundation.layout.PaddingValues(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 24.dp),
                         verticalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
+                        item { CurrentBuildCard(current) }
                         item {
                             Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp)) {
                                 HeroIcon(AppIcons.Downgrade)
@@ -329,6 +332,26 @@ private fun ReleaseRow(release: ReleaseInfo, isCurrent: Boolean, onClick: () -> 
                 )
             }
         }
+    }
+}
+
+/** "You're on …": which lane this build is and what it can install. */
+@Composable
+private fun CurrentBuildCard(version: String) {
+    val (titleRes, bodyRes) = when (BuildInfo.lane) {
+        VersionLane.PRIMARY -> R.string.build_lane_primary to R.string.build_lane_primary_body
+        VersionLane.ROLLBACK -> R.string.build_lane_rollback to R.string.build_lane_rollback_body
+        VersionLane.BACK -> R.string.build_lane_back to R.string.build_lane_back_body
+    }
+    SectionCard(padding = 14.dp) {
+        Text(stringResource(R.string.build_lane_you_are_on), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(stringResource(titleRes), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
+            Spacer(Modifier.width(8.dp))
+            MonoText("v$version", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        Spacer(Modifier.height(6.dp))
+        Text(stringResource(bodyRes), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 

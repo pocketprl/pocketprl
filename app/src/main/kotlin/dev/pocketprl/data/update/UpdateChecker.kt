@@ -1,5 +1,7 @@
 package dev.pocketprl.data.update
 
+import dev.pocketprl.data.VersionCodes
+import dev.pocketprl.data.VersionLane
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
@@ -48,7 +50,18 @@ data class ApkAsset(
     val size: Long,
     val sha256: String?,
     val versionCode: Long? = null,
-)
+) {
+    /** The lane a build belongs to, derived from its encoded code (null when unnamed). */
+    val lane: VersionLane? get() = versionCode?.let { VersionCodes.laneOf(it) }
+}
+
+/**
+ * The asset that will install over [installedCode]: the lowest code that is still
+ * higher. Null means no asset of this release can be installed in place, so the
+ * caller must offer the reset flow.
+ */
+fun ReleaseInfo.bestAssetFor(installedCode: Long): ApkAsset? =
+    apkAssets.filter { it.versionCode != null && it.versionCode > installedCode }.minByOrNull { it.versionCode!! }
 
 /**
  * Reads the newest release from the public PocketPRL repo. Anonymous, read-only,

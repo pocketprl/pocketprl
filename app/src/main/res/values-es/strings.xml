@@ -763,11 +763,23 @@
     <string name="return_build_fix">Obtener la compilación estándar</string>
     <string name="return_build_keep">Conservar esta compilación</string>
     <string name="return_build_reset_title">Compilación estándar</string>
-    <string name="return_build_reset_body">Android no instalará una versión de paquete inferior sobre esta, así que PocketPRL debe desinstalarse primero. Tus fondos están a salvo si tienes tu frase de recuperación; los nombres de carteras, contactos y notas se pierden. La compilación estándar se guarda en Downloads para que puedas instalarla de nuevo.</string>
-    <string name="return_build_reset_prepare">Guardar la compilación estándar</string>
-    <string name="return_build_reset_saved">Guardada en Downloads/%1$s. Desinstala PocketPRL y luego instala ese archivo.</string>
+    <string name="return_build_reset_body">Android no instalará esta compilación encima de la tuya, así que PocketPRL debe desinstalarse primero. Guarda la compilación, desinstala, instálala desde Downloads y luego restaura tu cartera desde tu frase de recuperación. Los nombres de carteras, contactos y notas no se conservan.</string>
+    <string name="return_build_reset_prepare">Guardar la compilación</string>
+    <string name="return_build_reset_saved">Guardada en Downloads/%1$s. Desinstala PocketPRL, instala ese archivo y luego restaura desde tu frase de recuperación.</string>
     <string name="return_build_reset_uninstall">Desinstalar PocketPRL</string>
     <string name="return_build_reset_save_failed">No se pudo guardar el archivo en Downloads. Instálalo desde la página de versiones de GitHub después de desinstalar.</string>
     <string name="return_build_in_menu">Estás usando una compilación de retorno, que está por encima de todos los objetivos de reversión. Instala la compilación estándar para poder revertir de nuevo.</string>
     <string name="return_build_error">No se encontró la compilación estándar de esta versión en GitHub.</string>
+
+    <!-- ===================== build lanes / switch ===================== -->
+    <string name="settings_about_build">Compilación</string>
+    <string name="build_lane_you_are_on">Estás usando</string>
+    <string name="build_lane_primary">Compilación estándar</string>
+    <string name="build_lane_primary_body">La compilación estándar. Cualquier versión anterior se puede instalar encima, sin desinstalar, conservando tus carteras.</string>
+    <string name="build_lane_rollback">Compilación de reversión</string>
+    <string name="build_lane_rollback_body">Una compilación de reversión. Puedes instalar cualquier versión anterior encima, sin desinstalar; para volver a avanzar, restablece o instala una compilación de retorno.</string>
+    <string name="build_lane_back">Compilación de retorno</string>
+    <string name="build_lane_back_body">Una compilación de retorno, creada para salir de una reversión. Solo puede instalar versiones más recientes encima, sin desinstalar; para ir a una anterior, restablece.</string>
+    <string name="downgrade_switch_body">Android no instalará esto sobre tu compilación. Al cambiar se guarda en Downloads, se desinstala PocketPRL y restauras desde tu frase de recuperación tras reinstalar.</string>
+    <string name="downgrade_switch_button">Cambiar a esta versión</string>
 </resources>

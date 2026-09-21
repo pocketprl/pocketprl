@@ -761,11 +761,21 @@
     <string name="return_build_fix">Hae tavallinen koontiversio</string>
     <string name="return_build_keep">Pidä tämä koontiversio</string>
     <string name="return_build_reset_title">Tavallinen koontiversio</string>
-    <string name="return_build_reset_body">Android ei asenna pienempää pakkausversiota tämän päälle, joten PocketPRL on poistettava ensin. Varasi ovat turvassa, jos sinulla on palautuslause; lompakoiden nimet, yhteystiedot ja muistiinpanot menetetään. Tavallinen koontiversio tallennetaan Downloads-kansioon, jotta voit asentaa sen uudelleen.</string>
-    <string name="return_build_reset_prepare">Tallenna tavallinen koontiversio</string>
-    <string name="return_build_reset_saved">Tallennettu kansioon Downloads/%1$s. Poista PocketPRL ja asenna sitten kyseinen tiedosto.</string>
+    <string name="return_build_reset_body">Android ei asenna tätä koontiversiota sinun päällesi, joten PocketPRL on poistettava ensin. Tallenna koontiversio, poista sovellus, asenna se Downloads-kansiosta ja palauta sitten lompakkosi palautuslauseesta. Lompakoiden nimiä, yhteystietoja ja muistiinpanoja ei säilytetä.</string>
+    <string name="return_build_reset_prepare">Tallenna koontiversio</string>
+    <string name="return_build_reset_saved">Tallennettu kansioon Downloads/%1$s. Poista PocketPRL, asenna kyseinen tiedosto ja palauta sitten palautuslauseestasi.</string>
     <string name="return_build_reset_uninstall">Poista PocketPRL</string>
     <string name="return_build_reset_save_failed">Tiedostoa ei voitu tallentaa Downloads-kansioon. Asenna se GitHubin julkaisusivulta poistamisen jälkeen.</string>
     <string name="return_build_in_menu">Käytössäsi on paluukoontiversio, joka on kaikkien vanhempaan versioon palaamisen kohteiden yläpuolella. Asenna tavallinen koontiversio, jos haluat palata vanhempaan versioon uudelleen.</string>
     <string name="return_build_error">Tälle versiolle ei löytynyt tavallista koontiversiota GitHubista.</string>
+    <string name="settings_about_build">Koontiversio</string>
+    <string name="build_lane_you_are_on">Käytössäsi on</string>
+    <string name="build_lane_primary">Tavallinen koontiversio</string>
+    <string name="build_lane_primary_body">Tavallinen koontiversio. Mikä tahansa vanhempi versio voidaan asentaa sen päälle, ja lompakkosi säilyvät.</string>
+    <string name="build_lane_rollback">Vanhemman version koontiversio</string>
+    <string name="build_lane_rollback_body">Vanhemman version koontiversio. Voit asentaa minkä tahansa vanhemman version sen päälle; palataksesi taas eteenpäin palauta tai asenna paluukoontiversio.</string>
+    <string name="build_lane_back">Paluukoontiversio</string>
+    <string name="build_lane_back_body">Paluukoontiversio, tehty vanhempaan versioon palaamisesta pois pääsemiseksi. Se voi asentaa päälle vain uudempia versioita; vanhempaan palaamiseksi palauta.</string>
+    <string name="downgrade_switch_body">Android ei asenna tätä koontiversiosi päälle. Vaihtaminen tallentaa sen Downloads-kansioon, poistaa PocketPRLin, ja palautat lompakkosi palautuslauseesta uudelleenasennuksen jälkeen.</string>
+    <string name="downgrade_switch_button">Vaihda tähän versioon</string>
 </resources>

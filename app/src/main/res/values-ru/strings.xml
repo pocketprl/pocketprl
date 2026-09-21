@@ -776,11 +776,22 @@
     <string name="return_build_fix">Получить обычную сборку</string>
     <string name="return_build_keep">Оставить эту сборку</string>
     <string name="return_build_reset_title">Обычная сборка</string>
-    <string name="return_build_reset_body">Android не установит более низкую версию пакета поверх этой, поэтому сначала нужно удалить PocketPRL. Ваши средства в безопасности, если у вас есть фраза восстановления; имена кошельков, контакты и заметки будут потеряны. Обычная сборка сохранится в Downloads, чтобы вы могли установить её снова.</string>
-    <string name="return_build_reset_prepare">Сохранить обычную сборку</string>
-    <string name="return_build_reset_saved">Сохранено в Downloads/%1$s. Удалите PocketPRL, затем установите этот файл.</string>
+    <string name="return_build_reset_body">Android не установит эту сборку поверх вашей, поэтому сначала нужно удалить PocketPRL. Сохраните сборку, удалите приложение, установите её из Downloads, затем восстановите кошелёк из фразы восстановления. Имена кошельков, контакты и заметки не сохраняются.</string>
+    <string name="return_build_reset_prepare">Сохранить сборку</string>
+    <string name="return_build_reset_saved">Сохранено в Downloads/%1$s. Удалите PocketPRL, установите этот файл, затем восстановите из фразы восстановления.</string>
     <string name="return_build_reset_uninstall">Удалить PocketPRL</string>
     <string name="return_build_reset_save_failed">Не удалось сохранить файл в Downloads. После удаления установите его со страницы выпусков GitHub.</string>
     <string name="return_build_in_menu">У вас возвратная сборка, которая выше любой цели отката. Установите обычную сборку, чтобы снова откатиться.</string>
     <string name="return_build_error">Не удалось найти обычную сборку для этой версии на GitHub.</string>
+    <!-- ===================== build lanes / downgrade switch ===================== -->
+    <string name="settings_about_build">Сборка</string>
+    <string name="build_lane_you_are_on">У вас</string>
+    <string name="build_lane_primary">Обычная сборка</string>
+    <string name="build_lane_primary_body">Обычная сборка. Любую более старую версию можно установить поверх неё на месте, сохранив кошельки.</string>
+    <string name="build_lane_rollback">Сборка для отката</string>
+    <string name="build_lane_rollback_body">Сборка для отката. Любую более старую версию можно установить на месте; чтобы снова двигаться вперёд, выполните сброс или установите возвратную сборку.</string>
+    <string name="build_lane_back">Возвратная сборка</string>
+    <string name="build_lane_back_body">Возвратная сборка, созданная, чтобы выбраться из отката. Она может устанавливать на месте только более новые версии; чтобы перейти к более старой, выполните сброс.</string>
+    <string name="downgrade_switch_body">Android не установит это поверх вашей сборки на месте. Переключение сохранит её в Downloads, удалит PocketPRL, и после переустановки вы восстановите кошелёк из фразы восстановления.</string>
+    <string name="downgrade_switch_button">Переключиться на эту версию</string>
 </resources>

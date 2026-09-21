@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.5.0
+
+* **Version switching, full circle.** Each release now ships up to three builds in
+  three version-code lanes: primary, rollback and return ("back"). From a fresh
+  install you can drop to any older version in place with your wallets kept; a
+  rollback can keep going down or climb back up to any version. Anything the lanes
+  cannot reach in place offers a reset: save the build, uninstall, reinstall and
+  restore from your recovery phrase.
+* **You always know which build you are on.** Settings › About and the version
+  history show whether you are on the regular, rollback or return build and what it
+  can do, and every release in the list says whether it installs in place or needs
+  the reset.
+* New strings localized into all 18 supported languages.
+
 ## 2.4.1
 
 * **Roomier onboarding.** The first-run personalization screen has more breathing

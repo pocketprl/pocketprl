@@ -71,8 +71,10 @@ import dev.pocketprl.core.format.GroupingSeparator
 import dev.pocketprl.core.wallet.AddressVariant
 import dev.pocketprl.data.AccentTheme
 import dev.pocketprl.data.AppIcon
+import dev.pocketprl.data.BuildInfo
 import dev.pocketprl.data.PollMode
 import dev.pocketprl.data.ThemeMode
+import dev.pocketprl.data.VersionLane
 import dev.pocketprl.data.update.ReleaseInfo
 import dev.pocketprl.data.update.UpdateChecker
 import dev.pocketprl.data.vault.SeedMaterial
@@ -573,6 +575,12 @@ private fun autoLockLabel(sec: Int): String = when (sec) {
     else -> stringResource(R.string.duration_seconds, sec)
 }
 
+private fun laneLabelRes(lane: VersionLane): Int = when (lane) {
+    VersionLane.PRIMARY -> R.string.build_lane_primary
+    VersionLane.ROLLBACK -> R.string.build_lane_rollback
+    VersionLane.BACK -> R.string.build_lane_back
+}
+
 @Composable
 private fun themeLabel(mode: ThemeMode): String = when (mode) {
     ThemeMode.AUTO -> stringResource(R.string.theme_auto)
@@ -896,6 +904,7 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> U
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             SectionCard(padding = 12.dp) {
                 KeyValueRow(stringResource(R.string.settings_about_version_label), BuildConfig.VERSION_NAME)
+                KeyValueRow(stringResource(R.string.settings_about_build), stringResource(laneLabelRes(BuildInfo.lane)))
                 KeyValueRow(stringResource(R.string.settings_about_network), vm.network.displayName)
                 KeyValueRow(stringResource(R.string.settings_about_coin_type), vm.network.coinType.toString())
                 KeyValueRow(stringResource(R.string.settings_about_addresses), stringResource(R.string.settings_about_addresses_value, vm.network.hrp))

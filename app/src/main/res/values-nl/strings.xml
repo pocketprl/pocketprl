@@ -759,11 +759,23 @@
     <string name="return_build_fix">Gewone build ophalen</string>
     <string name="return_build_keep">Deze build behouden</string>
     <string name="return_build_reset_title">Gewone build</string>
-    <string name="return_build_reset_body">Android installeert geen lagere pakketversie over deze heen, dus PocketPRL moet eerst worden verwijderd. Je geld is veilig als je je herstelzin hebt; walletnamen, contacten en notities gaan verloren. De gewone build wordt opgeslagen in Downloads zodat je hem opnieuw kunt installeren.</string>
-    <string name="return_build_reset_prepare">Gewone build opslaan</string>
-    <string name="return_build_reset_saved">Opgeslagen in Downloads/%1$s. Verwijder PocketPRL en installeer daarna dat bestand.</string>
+    <string name="return_build_reset_body">Android installeert deze build niet ter plaatse over de jouwe heen, dus PocketPRL moet eerst worden verwijderd. Sla de build op, verwijder de app, installeer hem vanuit Downloads en herstel daarna je wallet vanuit je herstelzin. Walletnamen, contacten en notities blijven niet behouden.</string>
+    <string name="return_build_reset_prepare">Build opslaan</string>
+    <string name="return_build_reset_saved">Opgeslagen in Downloads/%1$s. Verwijder PocketPRL, installeer dat bestand en herstel daarna vanuit je herstelzin.</string>
     <string name="return_build_reset_uninstall">PocketPRL verwijderen</string>
     <string name="return_build_reset_save_failed">Het bestand kon niet in Downloads worden opgeslagen. Installeer het na het verwijderen vanaf de GitHub-releasespagina.</string>
     <string name="return_build_in_menu">Je gebruikt een terugkeerbuild, die boven elk downgrade-doel staat. Installeer de gewone build om weer te kunnen downgraden.</string>
     <string name="return_build_error">De gewone build voor deze versie is niet op GitHub gevonden.</string>
+
+    <!-- ===================== build lanes / switch ===================== -->
+    <string name="settings_about_build">Build</string>
+    <string name="build_lane_you_are_on">Je gebruikt</string>
+    <string name="build_lane_primary">Gewone build</string>
+    <string name="build_lane_primary_body">De gewone build. Elke oudere versie kan er ter plaatse overheen worden geïnstalleerd, je wallets blijven behouden.</string>
+    <string name="build_lane_rollback">Downgrade-build</string>
+    <string name="build_lane_rollback_body">Een downgrade-build. Je kunt elke oudere versie er ter plaatse overheen installeren; om weer vooruit te gaan, zet terug of installeer een terugkeerbuild.</string>
+    <string name="build_lane_back">Terugkeerbuild</string>
+    <string name="build_lane_back_body">Een terugkeerbuild, gemaakt om uit een downgrade te komen. Er kunnen alleen nieuwere versies ter plaatse overheen worden geïnstalleerd; om ouder te gaan, zet terug.</string>
+    <string name="downgrade_switch_body">Android installeert dit niet ter plaatse over je build heen. Bij het wisselen wordt het opgeslagen in Downloads, wordt PocketPRL verwijderd en herstel je na het opnieuw installeren vanuit je herstelzin.</string>
+    <string name="downgrade_switch_button">Naar deze versie wisselen</string>
 </resources>

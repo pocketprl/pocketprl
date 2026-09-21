@@ -761,11 +761,21 @@
     <string name="return_build_fix">Αποκτήστε την κανονική δομή</string>
     <string name="return_build_keep">Διατηρήστε αυτή τη δομή</string>
     <string name="return_build_reset_title">Κανονική δομή</string>
-    <string name="return_build_reset_body">Το Android δεν θα εγκαταστήσει χαμηλότερη έκδοση πακέτου πάνω από αυτή, οπότε το PocketPRL πρέπει πρώτα να απεγκατασταθεί. Τα χρήματά σας είναι ασφαλή αν έχετε τη φράση ανάκτησης· τα ονόματα πορτοφολιών, οι επαφές και οι σημειώσεις χάνονται. Η κανονική δομή αποθηκεύεται στο Downloads, ώστε να μπορείτε να την εγκαταστήσετε ξανά.</string>
-    <string name="return_build_reset_prepare">Αποθηκεύστε την κανονική δομή</string>
-    <string name="return_build_reset_saved">Αποθηκεύτηκε στο Downloads/%1$s. Απεγκαταστήστε το PocketPRL και μετά εγκαταστήστε αυτό το αρχείο.</string>
+    <string name="return_build_reset_body">Το Android δεν θα εγκαταστήσει αυτή τη δομή πάνω από τη δική σας, οπότε το PocketPRL πρέπει πρώτα να απεγκατασταθεί. Αποθηκεύστε τη δομή, απεγκαταστήστε, εγκαταστήστε την από το Downloads και μετά επαναφέρετε το πορτοφόλι σας από τη φράση ανάκτησης. Τα ονόματα πορτοφολιών, οι επαφές και οι σημειώσεις δεν διατηρούνται.</string>
+    <string name="return_build_reset_prepare">Αποθηκεύστε τη δομή</string>
+    <string name="return_build_reset_saved">Αποθηκεύτηκε στο Downloads/%1$s. Απεγκαταστήστε το PocketPRL, εγκαταστήστε αυτό το αρχείο και μετά επαναφέρετε από τη φράση ανάκτησης.</string>
     <string name="return_build_reset_uninstall">Απεγκατάσταση PocketPRL</string>
     <string name="return_build_reset_save_failed">Δεν ήταν δυνατή η αποθήκευση του αρχείου στο Downloads. Εγκαταστήστε το από τη σελίδα εκδόσεων του GitHub μετά την απεγκατάσταση.</string>
     <string name="return_build_in_menu">Βρίσκεστε σε δομή επιστροφής, η οποία είναι πάνω από κάθε στόχο υποβάθμισης. Εγκαταστήστε την κανονική δομή για να υποβαθμίσετε ξανά.</string>
     <string name="return_build_error">Δεν βρέθηκε η κανονική δομή για αυτή την έκδοση στο GitHub.</string>
+    <string name="settings_about_build">Δομή</string>
+    <string name="build_lane_you_are_on">Βρίσκεστε σε</string>
+    <string name="build_lane_primary">Κανονική δομή</string>
+    <string name="build_lane_primary_body">Η κανονική δομή. Οποιαδήποτε παλαιότερη έκδοση μπορεί να εγκατασταθεί πάνω της επιτόπου, διατηρώντας τα πορτοφόλια σας.</string>
+    <string name="build_lane_rollback">Δομή υποβάθμισης</string>
+    <string name="build_lane_rollback_body">Μια δομή υποβάθμισης. Μπορείτε να εγκαταστήσετε οποιαδήποτε παλαιότερη έκδοση επιτόπου· για να προχωρήσετε ξανά μπροστά, κάντε επαναφορά ή εγκαταστήστε μια δομή επιστροφής.</string>
+    <string name="build_lane_back">Δομή επιστροφής</string>
+    <string name="build_lane_back_body">Μια δομή επιστροφής, φτιαγμένη για να βγείτε από μια υποβάθμιση. Μπορεί να εγκαταστήσει επιτόπου μόνο νεότερες εκδόσεις· για να πάτε σε παλαιότερη, κάντε επαναφορά.</string>
+    <string name="downgrade_switch_body">Το Android δεν θα εγκαταστήσει αυτό πάνω από τη δομή σας επιτόπου. Η εναλλαγή το αποθηκεύει στο Downloads, απεγκαθιστά το PocketPRL και επαναφέρετε από τη φράση ανάκτησης αφού το εγκαταστήσετε ξανά.</string>
+    <string name="downgrade_switch_button">Εναλλαγή σε αυτή την έκδοση</string>
 </resources>

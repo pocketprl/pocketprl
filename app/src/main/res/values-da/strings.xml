@@ -760,11 +760,22 @@
     <string name="return_build_fix">Hent det almindelige build</string>
     <string name="return_build_keep">Behold dette build</string>
     <string name="return_build_reset_title">Almindeligt build</string>
-    <string name="return_build_reset_body">Android installerer ikke en lavere pakkeversion oven i denne, så PocketPRL skal afinstalleres først. Dine midler er sikre, hvis du har din gendannelsessætning; tegnebogsnavne, kontakter og noter går tabt. Det almindelige build gemmes i Downloads, så du kan installere det igen.</string>
-    <string name="return_build_reset_prepare">Gem det almindelige build</string>
-    <string name="return_build_reset_saved">Gemt i Downloads/%1$s. Afinstaller PocketPRL, og installér derefter filen.</string>
+    <string name="return_build_reset_body">Android installerer ikke dette build oven i dit, så PocketPRL skal afinstalleres først. Gem buildet, afinstaller, installér det fra Downloads, og gendan derefter din tegnebog fra din gendannelsessætning. Tegnebogsnavne, kontakter og noter bevares ikke.</string>
+    <string name="return_build_reset_prepare">Gem buildet</string>
+    <string name="return_build_reset_saved">Gemt i Downloads/%1$s. Afinstaller PocketPRL, installér denne fil, og gendan derefter fra din gendannelsesætning.</string>
     <string name="return_build_reset_uninstall">Afinstaller PocketPRL</string>
     <string name="return_build_reset_save_failed">Kunne ikke gemme filen i Downloads. Installér den fra GitHubs udgivelsesside efter afinstallationen.</string>
     <string name="return_build_in_menu">Du er på en retur-build, som ligger over hvert nedgraderingsmål. Installér det almindelige build for at nedgradere igen.</string>
     <string name="return_build_error">Kunne ikke finde det almindelige build til denne version på GitHub.</string>
+    <!-- ===================== build lanes / downgrade switch ===================== -->
+    <string name="settings_about_build">Build</string>
+    <string name="build_lane_you_are_on">Du er på</string>
+    <string name="build_lane_primary">Almindeligt build</string>
+    <string name="build_lane_primary_body">Det almindelige build. Enhver ældre version kan installeres oven i det på plads, og dine tegnebøger bevares.</string>
+    <string name="build_lane_rollback">Nedgraderings-build</string>
+    <string name="build_lane_rollback_body">Et nedgraderings-build. Du kan installere enhver ældre version på plads; for at komme fremad igen, nulstil eller installér et retur-build.</string>
+    <string name="build_lane_back">Retur-build</string>
+    <string name="build_lane_back_body">Et retur-build, lavet til at komme ud af en nedgradering. Det kan kun installere nyere versioner på plads; for at gå til en ældre, nulstil.</string>
+    <string name="downgrade_switch_body">Android installerer ikke dette oven i dit build på plads. Et skift gemmer det i Downloads, afinstallerer PocketPRL, og du gendanner fra din gendannelsessætning efter geninstallation.</string>
+    <string name="downgrade_switch_button">Skift til denne version</string>
 </resources>

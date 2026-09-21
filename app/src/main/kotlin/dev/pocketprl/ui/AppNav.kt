@@ -30,7 +30,8 @@ import dev.pocketprl.AppContainer
 import dev.pocketprl.BuildConfig
 import dev.pocketprl.R
 import dev.pocketprl.Shortcut
-import dev.pocketprl.data.ReturnBuild
+import dev.pocketprl.data.BuildInfo
+import dev.pocketprl.data.VersionLane
 import dev.pocketprl.data.WalletContext
 import dev.pocketprl.ui.Biometrics
 import dev.pocketprl.ui.screens.AboutScreen
@@ -87,7 +88,9 @@ object Routes {
     const val UPDATE = "update"
     const val DOWNGRADE = "settings/downgrade"
     const val RETURN_BUILD = "returnbuild"
-    const val RESET_BUILD = "resetbuild"
+    const val RESET_BUILD = "resetbuild/{version}"
+
+    fun resetBuild(version: String) = "resetbuild/$version"
     const val ERASE = "erase"
     const val WHATS_NEW = "whatsnew"
 
@@ -281,7 +284,7 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
     // build is installed.
     LaunchedEffect(unlocked, settings.returnBuildNoticeShown, route) {
         if (unlocked && route != null && route !in Routes.PUBLIC && route != Routes.RETURN_BUILD &&
-            !settings.returnBuildNoticeShown && ReturnBuild.isReturn
+            !settings.returnBuildNoticeShown && BuildInfo.lane == VersionLane.BACK
         ) {
             container.settings.returnBuildNoticeShown = true
             nav.navigate(Routes.RETURN_BUILD) { launchSingleTop = true }
@@ -362,13 +365,21 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
         composable(Routes.DOWNGRADE) {
             VersionHistoryScreen(
                 onBack = { nav.popBackStack() },
-                onOpenReset = { nav.navigate(Routes.RESET_BUILD) },
+                onOpenReset = { v -> nav.navigate(Routes.resetBuild(v)) },
             )
         }
         composable(Routes.RETURN_BUILD) {
-            ReturnBuildScreen(onBack = { nav.popBackStack() }, onFix = { nav.navigate(Routes.RESET_BUILD) })
+            ReturnBuildScreen(
+                onBack = { nav.popBackStack() },
+                onFix = { nav.navigate(Routes.resetBuild(BuildConfig.VERSION_NAME)) },
+            )
         }
-        composable(Routes.RESET_BUILD) { ResetBuildScreen(onBack = { nav.popBackStack() }) }
+        composable(Routes.RESET_BUILD) { entry ->
+            ResetBuildScreen(
+                version = entry.arguments?.getString("version") ?: BuildConfig.VERSION_NAME,
+                onBack = { nav.popBackStack() },
+            )
+        }
         composable(Routes.WHATS_NEW) {
             WhatsNewScreen(
                 version = settings.whatsNewVersion,

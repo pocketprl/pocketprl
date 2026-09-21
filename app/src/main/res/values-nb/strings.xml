@@ -757,11 +757,21 @@
     <string name="return_build_fix">Hent det vanlige bygget</string>
     <string name="return_build_keep">Behold dette bygget</string>
     <string name="return_build_reset_title">Vanlig bygg</string>
-    <string name="return_build_reset_body">Android vil ikke installere en lavere pakkeversjon over denne, så PocketPRL må avinstalleres først. Midlene dine er trygge hvis du har gjenopprettingsfrasen; lommeboknavn, kontakter og notater går tapt. Det vanlige bygget lagres i Downloads, så du kan installere det igjen.</string>
-    <string name="return_build_reset_prepare">Lagre det vanlige bygget</string>
-    <string name="return_build_reset_saved">Lagret i Downloads/%1$s. Avinstaller PocketPRL, og installer deretter den filen.</string>
+    <string name="return_build_reset_body">Android vil ikke installere dette bygget over ditt på plass, så PocketPRL må avinstalleres først. Lagre bygget, avinstaller, installer det fra Downloads, og gjenopprett deretter lommeboken din fra gjenopprettingsfrasen. Lommeboknavn, kontakter og notater beholdes ikke.</string>
+    <string name="return_build_reset_prepare">Lagre bygget</string>
+    <string name="return_build_reset_saved">Lagret i Downloads/%1$s. Avinstaller PocketPRL, installer den filen, og gjenopprett deretter fra gjenopprettingsfrasen.</string>
     <string name="return_build_reset_uninstall">Avinstaller PocketPRL</string>
     <string name="return_build_reset_save_failed">Kunne ikke lagre filen i Downloads. Installer den fra GitHub-utgivelsessiden etter avinstallering.</string>
     <string name="return_build_in_menu">Du er på et returbygg, som ligger over alle nedgraderingsmål. Installer det vanlige bygget for å kunne nedgradere igjen.</string>
     <string name="return_build_error">Fant ikke det vanlige bygget for denne versjonen på GitHub.</string>
+    <string name="settings_about_build">Bygg</string>
+    <string name="build_lane_you_are_on">Du er på</string>
+    <string name="build_lane_primary">Vanlig bygg</string>
+    <string name="build_lane_primary_body">Det vanlige bygget. Enhver eldre versjon kan installeres på plass over det, og lommebøkene dine beholdes.</string>
+    <string name="build_lane_rollback">Nedgraderingsbygg</string>
+    <string name="build_lane_rollback_body">Et nedgraderingsbygg. Du kan installere enhver eldre versjon på plass; for å gå fremover igjen, tilbakestill eller installer et returbygg.</string>
+    <string name="build_lane_back">Returbygg</string>
+    <string name="build_lane_back_body">Et returbygg, laget for å komme ut av en nedgradering. Det kan bare installere nyere versjoner på plass; for å gå til eldre, tilbakestill.</string>
+    <string name="downgrade_switch_body">Android vil ikke installere dette over bygget ditt på plass. Å bytte lagrer det i Downloads, avinstallerer PocketPRL, og du gjenoppretter fra gjenopprettingsfrasen din etter å ha installert på nytt.</string>
+    <string name="downgrade_switch_button">Bytt til denne versjonen</string>
 </resources>

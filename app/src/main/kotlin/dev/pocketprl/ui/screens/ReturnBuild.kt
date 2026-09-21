@@ -86,7 +86,7 @@ fun ReturnBuildScreen(onBack: () -> Unit, onFix: () -> Unit) {
  * Downloads is how the wallet (recovery phrase restores funds) comes back.
  */
 @Composable
-fun ResetBuildScreen(onBack: () -> Unit) {
+fun ResetBuildScreen(version: String, onBack: () -> Unit) {
     val container = appContainer()
     val updater = container.updater
     val state by updater.state.collectAsStateWithLifecycle()
@@ -105,7 +105,7 @@ fun ResetBuildScreen(onBack: () -> Unit) {
 
     LaunchedEffect(Unit) {
         val list = runCatching { UpdateChecker.releases() }.getOrDefault(emptyList())
-        val r = list.firstOrNull { it.version == BuildConfig.VERSION_NAME }
+        val r = list.firstOrNull { it.version == version }
         if (r == null) loadFailed = true else {
             release = r
             updater.download(r)
