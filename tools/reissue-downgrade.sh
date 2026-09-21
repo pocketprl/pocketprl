@@ -51,7 +51,9 @@ if ! grep -qE '^[[:space:]]*versionCode[[:space:]]*=' "$WT/app/build.gradle.kts"
 fi
 sed -i -E "s/^([[:space:]]*)versionCode[[:space:]]*=[[:space:]]*[0-9]+/\1versionCode = ${CODE}/" "$WT/app/build.gradle.kts"
 
-( cd "$WT" && ./gradlew :app:assembleRelease --no-configuration-cache -q )
+# Tags with the pocketprl.versionCode hook read the property; older tags ignore
+# it and use the literal patched above. Passing both covers every tag.
+( cd "$WT" && ./gradlew :app:assembleRelease --no-configuration-cache -q -Ppocketprl.versionCode="$CODE" )
 
 APK="$WT/app/build/outputs/apk/release/app-release.apk"
 [ -f "$APK" ] || { echo "error: $TAG produced no APK" >&2; exit 1; }
