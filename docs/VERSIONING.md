@@ -29,7 +29,9 @@ From an installed code, the reachable builds are exactly those with a higher cod
   reachable.
 * **From an R build**: any B is higher (any version), and older R builds are higher
   (keep going down).
-* **From a B build**: only newer B builds. A B build cannot go down in place.
+* **From a B build**: only newer B builds (newer versions have higher B codes), so
+  forward progress continues across releases while off the regular line — but a B
+  build can never go down, to a primary, or back to a rollback in place.
 
 **Leaving the primary lane is permanent.** Every P code is below every R and B code,
 so once an R or B build is installed, no primary build can ever install over it
