@@ -38,8 +38,22 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
         /** [total] is 0 when GitHub did not report a size. */
         data class Downloading(val fileName: String, val bytes: Long, val total: Long) : State
         object Verifying : State
-        /** [expected] is null when the release published no checksum. */
-        data class Ready(val file: File, val actualSha256: String, val expected: String?, val release: ReleaseInfo) : State
+        /**
+         * [expected] is null when the release published no checksum. [versionCode]
+         * is read from the downloaded APK, and [installableInPlace] is true when
+         * Android will accept it over the installed build (an equal or higher
+         * version code). Reissued downgrade assets carry a code above the current
+         * one, so a genuine downgrade reports true; the original pre-reissue
+         * assets report false and the UI explains why.
+         */
+        data class Ready(
+            val file: File,
+            val actualSha256: String,
+            val expected: String?,
+            val release: ReleaseInfo,
+            val versionCode: Long? = null,
+            val installableInPlace: Boolean = true,
+        ) : State
         data class Failed(val reason: Failure) : State
     }
 
@@ -107,7 +121,9 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
                     throw DownloadException(Failure.CHECKSUM)
                 }
                 if (!signerMatches(file)) throw DownloadException(Failure.SIGNATURE)
-                _state.value = State.Ready(file, actual, info.sha256, info)
+                val code = archiveVersionCode(file)
+                val installed = installedVersionCode()
+                _state.value = State.Ready(file, actual, info.sha256, info, code, code == null || code > installed)
             } catch (e: CancellationException) {
                 file.delete()
                 _state.value = State.Idle
@@ -167,6 +183,16 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
         val md = MessageDigest.getInstance("SHA-256")
         md.digest(installed).contentEquals(md.digest(downloaded))
     }.getOrDefault(false)
+
+    /** Version code of the installed app; 0 when it cannot be read. */
+    fun installedVersionCode(): Long = runCatching {
+        context.packageManager.getPackageInfo(context.packageName, 0).longVersionCode
+    }.getOrDefault(0L)
+
+    /** Version code stored in an APK on disk, or null when it cannot be read. */
+    fun archiveVersionCode(file: File): Long? = runCatching {
+        context.packageManager.getPackageArchiveInfo(file.absolutePath, 0)?.longVersionCode
+    }.getOrNull()
 
     private class DownloadException(val reason: Failure) : IOException(reason.name)
 

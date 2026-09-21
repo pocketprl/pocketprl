@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased
+
+* **Version history and in-app downgrade.** About gains a Downgrade button under
+  Check for updates; it opens a full-screen version history (down-arrow-beside-
+  up-arrow hero) that lists every published GitHub release, marks the one you are
+  on, and shows a release's notes before you commit to it. Picking a version runs
+  the same verified download (SHA-256 + signature) and slide-to-confirm install as
+  an update.
+* **Per-release compatibility notes.** Each release states whether the on-disk
+  wallets/contacts/notes are compatible (they are across 1.0.0 → 2.3.2, which the
+  new `SchemaCompat` guard and tests pin down) and warns when a target predates
+  the update checker (1.0.0), which then has to be moved forward by hand. A
+  release whose asset cannot be installed in place is reported instead of being
+  handed to a failing installer.
+* New strings are English-only for now; the other locales fall back until
+  translated.
+
 ## 2.3.2
 
 * **Release notes render as Markdown.** The "what's new" screen now formats the

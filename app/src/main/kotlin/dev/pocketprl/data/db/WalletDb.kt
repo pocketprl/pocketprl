@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import dev.pocketprl.core.wallet.DerivedAddress
+import dev.pocketprl.data.SchemaCompat
 
 /**
  * Public wallet data only (addresses, transactions, UTXOs, contacts, notes).
@@ -356,7 +357,7 @@ class WalletDb(context: Context, name: String = "wallet.db") : SQLiteOpenHelper(
     )
 
     companion object {
-        const val VERSION = 3
+        const val VERSION = SchemaCompat.DB_VERSION
     }
 }
 

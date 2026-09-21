@@ -47,6 +47,7 @@ import dev.pocketprl.ui.screens.StatsScreen
 import dev.pocketprl.ui.screens.TxDetailScreen
 import dev.pocketprl.ui.screens.UnlockScreen
 import dev.pocketprl.ui.screens.UpdateScreen
+import dev.pocketprl.ui.screens.VersionHistoryScreen
 import dev.pocketprl.ui.screens.WelcomeScreen
 import dev.pocketprl.ui.screens.WhatsNewScreen
 import dev.pocketprl.ui.vm.OnboardingViewModel
@@ -77,6 +78,7 @@ object Routes {
     const val STATS = "settings/stats"
     const val ABOUT = "settings/about"
     const val UPDATE = "update"
+    const val DOWNGRADE = "settings/downgrade"
     const val ERASE = "erase"
     const val WHATS_NEW = "whatsnew"
 
@@ -322,6 +324,7 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
             )
         }
         composable(Routes.UPDATE) { UpdateScreen(onBack = { nav.popBackStack() }) }
+        composable(Routes.DOWNGRADE) { VersionHistoryScreen(onBack = { nav.popBackStack() }) }
         composable(Routes.WHATS_NEW) {
             WhatsNewScreen(
                 version = settings.whatsNewVersion,
@@ -335,6 +338,14 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
         composable(Routes.ADDRESSES) { val vm: SettingsViewModel = appViewModel(); AddressesScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.CONTACTS) { val vm: SettingsViewModel = appViewModel(); ContactsScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.STATS) { val vm: SettingsViewModel = appViewModel(); StatsScreen(vm, onBack = { nav.popBackStack() }) }
-        composable(Routes.ABOUT) { val vm: SettingsViewModel = appViewModel(); AboutScreen(vm, onBack = { nav.popBackStack() }, onOpenUpdate = { nav.navigate(Routes.UPDATE) }) }
+        composable(Routes.ABOUT) {
+            val vm: SettingsViewModel = appViewModel()
+            AboutScreen(
+                vm,
+                onBack = { nav.popBackStack() },
+                onOpenUpdate = { nav.navigate(Routes.UPDATE) },
+                onOpenDowngrade = { nav.navigate(Routes.DOWNGRADE) },
+            )
+        }
     }
 }
