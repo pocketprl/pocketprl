@@ -691,4 +691,25 @@
         <item quantity="many">%1$d хвилин</item>
         <item quantity="other">%1$d хвилини</item>
     </plurals>
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Завантаження оновлення</string>
+    <string name="update_progress_kb">%1$s / %2$s КБ</string>
+    <string name="update_downloaded_kb">Завантажено %1$s КБ</string>
+    <string name="update_verifying_title">Перевірка завантаження</string>
+    <string name="update_verifying_body">Перевірка контрольної суми SHA-256…</string>
+    <string name="update_ready_title">Готово до встановлення</string>
+    <string name="update_sha_verified">Контрольну суму SHA-256 підтверджено</string>
+    <string name="update_sha_unpublished">У цьому випуску немає опублікованої контрольної суми. Підпис застосунку все одно перевіряється.</string>
+    <string name="update_signature_verified">Підписано тим самим ключем, що й встановлений застосунок</string>
+    <string name="update_install">Встановити</string>
+    <string name="update_install_permission">Дозвольте PocketPRL встановлювати застосунки, потім торкніться «Встановити» ще раз.</string>
+    <string name="update_install_failed">Не вдалося відкрити інсталятор.</string>
+    <string name="update_failed_title">Не вдалося оновити</string>
+    <string name="update_err_checksum">Завантаження не збіглося з опублікованою SHA-256. Файл видалено.</string>
+    <string name="update_err_signature">Завантаження не підписано ключем цього застосунку. Файл видалено.</string>
+    <string name="update_err_network">Не вдалося зв\'язатися з GitHub. Перевірте з\'єднання та спробуйте знову.</string>
+    <string name="update_err_no_apk">У цьому випуску немає доданого APK.</string>
+    <string name="update_err_too_large">Завантаження було більшим, ніж очікувалося, і було зупинено.</string>
+    <string name="update_err_incomplete">Завантаження було неповним і було видалено.</string>
+    <string name="update_err_generic">Під час завантаження оновлення сталася помилка.</string>
 </resources>

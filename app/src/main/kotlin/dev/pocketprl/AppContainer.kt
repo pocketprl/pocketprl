@@ -13,6 +13,7 @@ import dev.pocketprl.data.notify.PaymentNotifier
 import dev.pocketprl.data.notify.PriceAlertJob
 import dev.pocketprl.data.notify.PriceAlertNotifier
 import dev.pocketprl.data.price.PriceApi
+import dev.pocketprl.data.update.AppUpdater
 import dev.pocketprl.data.vault.SeedMaterial
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +40,8 @@ class AppContainer(val appContext: Context) {
     val registry = WalletRegistry(appContext.filesDir)
     private val userAgent = "PocketPRL/${BuildConfig.VERSION_NAME} (Android)"
     val priceApi = PriceApi(userAgent = userAgent)
+    /** In-app self-update: download, checksum/signature check, then the system installer. */
+    val updater = AppUpdater(appContext, scope)
 
     private val contexts = HashMap<String, WalletContext>()
 

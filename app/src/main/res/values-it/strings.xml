@@ -674,4 +674,26 @@
         <item quantity="many">%1$d minuti</item>
         <item quantity="other">%1$d minuti</item>
     </plurals>
+
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Download dell’aggiornamento</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB scaricati</string>
+    <string name="update_verifying_title">Verifica del download</string>
+    <string name="update_verifying_body">Verifica del checksum SHA-256…</string>
+    <string name="update_ready_title">Pronto per l’installazione</string>
+    <string name="update_sha_verified">Checksum SHA-256 verificato</string>
+    <string name="update_sha_unpublished">Questa versione non ha un checksum pubblicato. La firma dell’app viene comunque verificata.</string>
+    <string name="update_signature_verified">Firmato con la stessa chiave dell’app installata</string>
+    <string name="update_install">Installa</string>
+    <string name="update_install_permission">Consenti a PocketPRL di installare app, poi tocca di nuovo Installa.</string>
+    <string name="update_install_failed">Impossibile aprire il programma di installazione.</string>
+    <string name="update_failed_title">Aggiornamento non riuscito</string>
+    <string name="update_err_checksum">Il download non corrisponde allo SHA-256 pubblicato. Il file è stato eliminato.</string>
+    <string name="update_err_signature">Il download non è firmato con la chiave di questa app. Il file è stato eliminato.</string>
+    <string name="update_err_network">Impossibile raggiungere GitHub. Controlla la connessione e riprova.</string>
+    <string name="update_err_no_apk">Questa versione non ha un APK allegato.</string>
+    <string name="update_err_too_large">Il download era più grande del previsto ed è stato interrotto.</string>
+    <string name="update_err_incomplete">Il download era incompleto ed è stato eliminato.</string>
+    <string name="update_err_generic">Qualcosa è andato storto durante il download dell’aggiornamento.</string>
 </resources>

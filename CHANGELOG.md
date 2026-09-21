@@ -2,6 +2,12 @@
 
 ## 2.2.0
 
+* **In-app updates.** "Check for updates" now downloads the release APK itself:
+  it shows the file name and live KB progress, verifies GitHub's published
+  SHA-256 and that the file is signed by the same key as the installed app, then
+  opens the system installer. Installing needs the one-time "install unknown
+  apps" grant, which the app offers to open for you. Releases without an
+  attached APK still open the release page.
 * **Brute-force pacing.** Wrong passwords are now rate-limited with a
   persisted, exponential lockout: three free tries, then a delay that starts at
   5 seconds and doubles per further failure, capped at 30 minutes. The counter

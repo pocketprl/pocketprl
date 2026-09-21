@@ -672,4 +672,26 @@
         <item quantity="one">%1$d minut</item>
         <item quantity="other">%1$d minutter</item>
     </plurals>
+
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Downloader opdatering</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB downloadet</string>
+    <string name="update_verifying_title">Bekræfter download</string>
+    <string name="update_verifying_body">Tjekker SHA-256-kontrolsummen…</string>
+    <string name="update_ready_title">Klar til installation</string>
+    <string name="update_sha_verified">SHA-256-kontrolsum bekræftet</string>
+    <string name="update_sha_unpublished">Denne udgivelse har ingen offentliggjort kontrolsum. Appens signatur tjekkes stadig.</string>
+    <string name="update_signature_verified">Signeret med samme nøgle som den installerede app</string>
+    <string name="update_install">Installér</string>
+    <string name="update_install_permission">Tillad PocketPRL at installere apps, og tryk derefter på Installér igen.</string>
+    <string name="update_install_failed">Kunne ikke åbne installationsprogrammet.</string>
+    <string name="update_failed_title">Opdatering mislykkedes</string>
+    <string name="update_err_checksum">Downloadet matchede ikke den offentliggjorte SHA-256. Filen blev slettet.</string>
+    <string name="update_err_signature">Downloadet er ikke signeret med denne apps nøgle. Filen blev slettet.</string>
+    <string name="update_err_network">Kunne ikke nå GitHub. Tjek din forbindelse, og prøv igen.</string>
+    <string name="update_err_no_apk">Denne udgivelse har ingen vedhæftet APK.</string>
+    <string name="update_err_too_large">Downloadet var større end forventet og blev stoppet.</string>
+    <string name="update_err_incomplete">Downloadet var ufuldstændigt og blev slettet.</string>
+    <string name="update_err_generic">Noget gik galt under download af opdateringen.</string>
 </resources>

@@ -449,6 +449,27 @@
     <string name="settings_about_update_body">Version %1$s is available. You are on v%2$s.</string>
     <string name="settings_about_update">Update</string>
     <string name="settings_about_later">Later</string>
+    <!-- in-app self-update -->
+    <string name="update_downloading_title">Downloading update</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB downloaded</string>
+    <string name="update_verifying_title">Verifying download</string>
+    <string name="update_verifying_body">Checking the SHA-256 checksum…</string>
+    <string name="update_ready_title">Ready to install</string>
+    <string name="update_sha_verified">SHA-256 checksum verified</string>
+    <string name="update_sha_unpublished">This release has no published checksum. The app signature is still checked.</string>
+    <string name="update_signature_verified">Signed with the same key as the installed app</string>
+    <string name="update_install">Install</string>
+    <string name="update_install_permission">Allow PocketPRL to install apps, then tap Install again.</string>
+    <string name="update_install_failed">Could not open the installer.</string>
+    <string name="update_failed_title">Update failed</string>
+    <string name="update_err_checksum">The download did not match the published SHA-256. The file was deleted.</string>
+    <string name="update_err_signature">The download is not signed by this app\'s key. The file was deleted.</string>
+    <string name="update_err_network">Could not reach GitHub. Check your connection and try again.</string>
+    <string name="update_err_no_apk">This release has no APK attached.</string>
+    <string name="update_err_too_large">The download was larger than expected and was stopped.</string>
+    <string name="update_err_incomplete">The download was incomplete and was deleted.</string>
+    <string name="update_err_generic">Something went wrong while downloading the update.</string>
     <string name="settings_about_version_label">Version</string>
     <string name="settings_about_network">Network</string>
     <string name="settings_about_coin_type">Coin type</string>

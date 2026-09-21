@@ -672,4 +672,26 @@
         <item quantity="one">%1$d λεπτό</item>
         <item quantity="other">%1$d λεπτά</item>
     </plurals>
+
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Λήψη ενημέρωσης</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">Έγινε λήψη %1$s KB</string>
+    <string name="update_verifying_title">Επαλήθευση λήψης</string>
+    <string name="update_verifying_body">Έλεγχος του checksum SHA-256…</string>
+    <string name="update_ready_title">Έτοιμο για εγκατάσταση</string>
+    <string name="update_sha_verified">Το checksum SHA-256 επαληθεύτηκε</string>
+    <string name="update_sha_unpublished">Αυτή η έκδοση δεν έχει δημοσιευμένο checksum. Η υπογραφή της εφαρμογής ελέγχεται ακόμη.</string>
+    <string name="update_signature_verified">Υπογεγραμμένο με το ίδιο κλειδί όπως η εγκατεστημένη εφαρμογή</string>
+    <string name="update_install">Εγκατάσταση</string>
+    <string name="update_install_permission">Επιτρέψτε στο PocketPRL να εγκαθιστά εφαρμογές και μετά πατήστε ξανά Εγκατάσταση.</string>
+    <string name="update_install_failed">Δεν ήταν δυνατό το άνοιγμα του προγράμματος εγκατάστασης.</string>
+    <string name="update_failed_title">Η ενημέρωση απέτυχε</string>
+    <string name="update_err_checksum">Η λήψη δεν ταίριαξε με το δημοσιευμένο SHA-256. Το αρχείο διαγράφηκε.</string>
+    <string name="update_err_signature">Η λήψη δεν είναι υπογεγραμμένη με το κλειδί αυτής της εφαρμογής. Το αρχείο διαγράφηκε.</string>
+    <string name="update_err_network">Δεν ήταν δυνατή η πρόσβαση στο GitHub. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.</string>
+    <string name="update_err_no_apk">Αυτή η έκδοση δεν έχει συνημμένο APK.</string>
+    <string name="update_err_too_large">Η λήψη ήταν μεγαλύτερη από το αναμενόμενο και σταμάτησε.</string>
+    <string name="update_err_incomplete">Η λήψη ήταν ελλιπής και διαγράφηκε.</string>
+    <string name="update_err_generic">Κάτι πήγε στραβά κατά τη λήψη της ενημέρωσης.</string>
 </resources>

@@ -674,4 +674,26 @@
         <item quantity="many">%1$d minutes</item>
         <item quantity="other">%1$d minutes</item>
     </plurals>
+
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Téléchargement de la mise à jour</string>
+    <string name="update_progress_kb">%1$s / %2$s Ko</string>
+    <string name="update_downloaded_kb">%1$s Ko téléchargés</string>
+    <string name="update_verifying_title">Vérification du téléchargement</string>
+    <string name="update_verifying_body">Vérification de la somme de contrôle SHA-256…</string>
+    <string name="update_ready_title">Prêt à installer</string>
+    <string name="update_sha_verified">Somme de contrôle SHA-256 vérifiée</string>
+    <string name="update_sha_unpublished">Cette version n’a pas de somme de contrôle publiée. La signature de l’application est tout de même vérifiée.</string>
+    <string name="update_signature_verified">Signé avec la même clé que l’application installée</string>
+    <string name="update_install">Installer</string>
+    <string name="update_install_permission">Autorisez PocketPRL à installer des applications, puis appuyez à nouveau sur Installer.</string>
+    <string name="update_install_failed">Impossible d’ouvrir l’installateur.</string>
+    <string name="update_failed_title">Échec de la mise à jour</string>
+    <string name="update_err_checksum">Le téléchargement ne correspond pas au SHA-256 publié. Le fichier a été supprimé.</string>
+    <string name="update_err_signature">Le téléchargement n’est pas signé par la clé de cette application. Le fichier a été supprimé.</string>
+    <string name="update_err_network">Impossible d’atteindre GitHub. Vérifiez votre connexion et réessayez.</string>
+    <string name="update_err_no_apk">Cette version n’a aucun APK joint.</string>
+    <string name="update_err_too_large">Le téléchargement était plus volumineux que prévu et a été interrompu.</string>
+    <string name="update_err_incomplete">Le téléchargement était incomplet et a été supprimé.</string>
+    <string name="update_err_generic">Une erreur est survenue lors du téléchargement de la mise à jour.</string>
 </resources>

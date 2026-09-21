@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Only the CSV export directory is ever shared; nothing under files/ (where the vault lives). -->
+<!-- Only the CSV export and update directories are ever shared; nothing under files/ (where the vault lives). -->
 <paths>
     <cache-path name="exports" path="exports/" />
+    <cache-path name="updates" path="updates/" />
 </paths>

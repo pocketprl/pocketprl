@@ -673,4 +673,26 @@
         <item quantity="one">%1$d minuto</item>
         <item quantity="other">%1$d minutos</item>
     </plurals>
+
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Descargando actualización</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB descargados</string>
+    <string name="update_verifying_title">Verificando la descarga</string>
+    <string name="update_verifying_body">Comprobando la suma de verificación SHA-256…</string>
+    <string name="update_ready_title">Listo para instalar</string>
+    <string name="update_sha_verified">Suma de verificación SHA-256 verificada</string>
+    <string name="update_sha_unpublished">Esta versión no tiene una suma de verificación publicada. La firma de la aplicación se comprueba de todos modos.</string>
+    <string name="update_signature_verified">Firmada con la misma clave que la aplicación instalada</string>
+    <string name="update_install">Instalar</string>
+    <string name="update_install_permission">Permite que PocketPRL instale aplicaciones y luego toca Instalar de nuevo.</string>
+    <string name="update_install_failed">No se pudo abrir el instalador.</string>
+    <string name="update_failed_title">Error en la actualización</string>
+    <string name="update_err_checksum">La descarga no coincidió con el SHA-256 publicado. El archivo se eliminó.</string>
+    <string name="update_err_signature">La descarga no está firmada con la clave de esta aplicación. El archivo se eliminó.</string>
+    <string name="update_err_network">No se pudo conectar con GitHub. Comprueba tu conexión e inténtalo de nuevo.</string>
+    <string name="update_err_no_apk">Esta versión no tiene ningún APK adjunto.</string>
+    <string name="update_err_too_large">La descarga era más grande de lo esperado y se detuvo.</string>
+    <string name="update_err_incomplete">La descarga quedó incompleta y se eliminó.</string>
+    <string name="update_err_generic">Algo salió mal al descargar la actualización.</string>
 </resources>

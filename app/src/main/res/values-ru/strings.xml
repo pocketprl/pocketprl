@@ -690,4 +690,26 @@
         <item quantity="many">%1$d минут</item>
         <item quantity="other">%1$d минуты</item>
     </plurals>
+
+    <!-- ===================== updates ===================== -->
+    <string name="update_downloading_title">Загрузка обновления</string>
+    <string name="update_progress_kb">%1$s / %2$s КБ</string>
+    <string name="update_downloaded_kb">Загружено %1$s КБ</string>
+    <string name="update_verifying_title">Проверка загрузки</string>
+    <string name="update_verifying_body">Проверка контрольной суммы SHA-256…</string>
+    <string name="update_ready_title">Готово к установке</string>
+    <string name="update_sha_verified">Контрольная сумма SHA-256 подтверждена</string>
+    <string name="update_sha_unpublished">Для этого выпуска контрольная сумма не опубликована. Подпись приложения всё равно проверяется.</string>
+    <string name="update_signature_verified">Подписано тем же ключом, что и установленное приложение</string>
+    <string name="update_install">Установить</string>
+    <string name="update_install_permission">Разрешите PocketPRL устанавливать приложения, затем снова нажмите «Установить».</string>
+    <string name="update_install_failed">Не удалось открыть установщик.</string>
+    <string name="update_failed_title">Не удалось обновить</string>
+    <string name="update_err_checksum">Загрузка не совпала с опубликованной суммой SHA-256. Файл удалён.</string>
+    <string name="update_err_signature">Загрузка не подписана ключом этого приложения. Файл удалён.</string>
+    <string name="update_err_network">Не удалось связаться с GitHub. Проверьте подключение и попробуйте снова.</string>
+    <string name="update_err_no_apk">К этому выпуску не прикреплён APK.</string>
+    <string name="update_err_too_large">Загрузка оказалась больше ожидаемого и была остановлена.</string>
+    <string name="update_err_incomplete">Загрузка была неполной и была удалена.</string>
+    <string name="update_err_generic">Что-то пошло не так при загрузке обновления.</string>
 </resources>

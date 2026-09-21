@@ -671,4 +671,25 @@
         <item quantity="one">%1$d minutt</item>
         <item quantity="other">%1$d minutter</item>
     </plurals>
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Laster ned oppdatering</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB lastet ned</string>
+    <string name="update_verifying_title">Verifiserer nedlasting</string>
+    <string name="update_verifying_body">Sjekker SHA-256-sjekksummen…</string>
+    <string name="update_ready_title">Klar til å installere</string>
+    <string name="update_sha_verified">SHA-256-sjekksummen er bekreftet</string>
+    <string name="update_sha_unpublished">Denne utgivelsen har ingen publisert sjekksum. Appsignaturen sjekkes fortsatt.</string>
+    <string name="update_signature_verified">Signert med samme nøkkel som den installerte appen</string>
+    <string name="update_install">Installer</string>
+    <string name="update_install_permission">Tillat at PocketPRL installerer apper, og trykk på Installer igjen.</string>
+    <string name="update_install_failed">Kunne ikke åpne installasjonsprogrammet.</string>
+    <string name="update_failed_title">Oppdateringen mislyktes</string>
+    <string name="update_err_checksum">Nedlastingen samsvarte ikke med den publiserte SHA-256. Filen ble slettet.</string>
+    <string name="update_err_signature">Nedlastingen er ikke signert med denne appens nøkkel. Filen ble slettet.</string>
+    <string name="update_err_network">Kunne ikke nå GitHub. Sjekk tilkoblingen og prøv igjen.</string>
+    <string name="update_err_no_apk">Denne utgivelsen har ingen vedlagt APK.</string>
+    <string name="update_err_too_large">Nedlastingen var større enn forventet og ble stoppet.</string>
+    <string name="update_err_incomplete">Nedlastingen var ufullstendig og ble slettet.</string>
+    <string name="update_err_generic">Noe gikk galt under nedlastingen av oppdateringen.</string>
 </resources>

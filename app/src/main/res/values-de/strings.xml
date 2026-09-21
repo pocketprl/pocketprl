@@ -672,4 +672,26 @@
         <item quantity="one">%1$d Minute</item>
         <item quantity="other">%1$d Minuten</item>
     </plurals>
+
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Update wird heruntergeladen</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB heruntergeladen</string>
+    <string name="update_verifying_title">Download wird überprüft</string>
+    <string name="update_verifying_body">SHA-256-Prüfsumme wird überprüft…</string>
+    <string name="update_ready_title">Bereit zur Installation</string>
+    <string name="update_sha_verified">SHA-256-Prüfsumme bestätigt</string>
+    <string name="update_sha_unpublished">Für dieses Release ist keine Prüfsumme veröffentlicht. Die App-Signatur wird weiterhin geprüft.</string>
+    <string name="update_signature_verified">Mit demselben Schlüssel wie die installierte App signiert</string>
+    <string name="update_install">Installieren</string>
+    <string name="update_install_permission">Erlaube PocketPRL, Apps zu installieren, und tippe dann erneut auf Installieren.</string>
+    <string name="update_install_failed">Der Installer konnte nicht geöffnet werden.</string>
+    <string name="update_failed_title">Update fehlgeschlagen</string>
+    <string name="update_err_checksum">Der Download stimmte nicht mit der veröffentlichten SHA-256 überein. Die Datei wurde gelöscht.</string>
+    <string name="update_err_signature">Der Download ist nicht mit dem Schlüssel dieser App signiert. Die Datei wurde gelöscht.</string>
+    <string name="update_err_network">GitHub konnte nicht erreicht werden. Prüfe deine Verbindung und versuche es erneut.</string>
+    <string name="update_err_no_apk">Für dieses Release ist kein APK angehängt.</string>
+    <string name="update_err_too_large">Der Download war größer als erwartet und wurde gestoppt.</string>
+    <string name="update_err_incomplete">Der Download war unvollständig und wurde gelöscht.</string>
+    <string name="update_err_generic">Beim Herunterladen des Updates ist etwas schiefgelaufen.</string>
 </resources>

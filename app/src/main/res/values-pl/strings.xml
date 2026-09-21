@@ -690,4 +690,25 @@
         <item quantity="many">%1$d minut</item>
         <item quantity="other">%1$d minuty</item>
     </plurals>
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Pobieranie aktualizacji</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">Pobrano %1$s KB</string>
+    <string name="update_verifying_title">Weryfikowanie pobranego pliku</string>
+    <string name="update_verifying_body">Sprawdzanie sumy kontrolnej SHA-256…</string>
+    <string name="update_ready_title">Gotowe do instalacji</string>
+    <string name="update_sha_verified">Suma kontrolna SHA-256 zweryfikowana</string>
+    <string name="update_sha_unpublished">To wydanie nie ma opublikowanej sumy kontrolnej. Podpis aplikacji jest nadal sprawdzany.</string>
+    <string name="update_signature_verified">Podpisano tym samym kluczem co zainstalowana aplikacja</string>
+    <string name="update_install">Zainstaluj</string>
+    <string name="update_install_permission">Zezwól aplikacji PocketPRL instalować aplikacje, a następnie ponownie dotknij Zainstaluj.</string>
+    <string name="update_install_failed">Nie udało się otworzyć instalatora.</string>
+    <string name="update_failed_title">Aktualizacja nie powiodła się</string>
+    <string name="update_err_checksum">Pobrany plik nie był zgodny z opublikowaną sumą SHA-256. Plik został usunięty.</string>
+    <string name="update_err_signature">Pobrany plik nie jest podpisany kluczem tej aplikacji. Plik został usunięty.</string>
+    <string name="update_err_network">Nie udało się połączyć z GitHub. Sprawdź połączenie i spróbuj ponownie.</string>
+    <string name="update_err_no_apk">To wydanie nie ma załączonego pliku APK.</string>
+    <string name="update_err_too_large">Pobrany plik był większy niż oczekiwano i został zatrzymany.</string>
+    <string name="update_err_incomplete">Pobrany plik był niekompletny i został usunięty.</string>
+    <string name="update_err_generic">Coś poszło nie tak podczas pobierania aktualizacji.</string>
 </resources>

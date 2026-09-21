@@ -672,4 +672,25 @@
         <item quantity="one">%1$d minuut</item>
         <item quantity="other">%1$d minuten</item>
     </plurals>
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Update downloaden</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB gedownload</string>
+    <string name="update_verifying_title">Download verifiëren</string>
+    <string name="update_verifying_body">SHA-256-controlesom controleren…</string>
+    <string name="update_ready_title">Klaar om te installeren</string>
+    <string name="update_sha_verified">SHA-256-controlesom geverifieerd</string>
+    <string name="update_sha_unpublished">Deze release heeft geen gepubliceerde controlesom. De app-handtekening wordt nog steeds gecontroleerd.</string>
+    <string name="update_signature_verified">Ondertekend met dezelfde sleutel als de geïnstalleerde app</string>
+    <string name="update_install">Installeren</string>
+    <string name="update_install_permission">Sta toe dat PocketPRL apps installeert en tik dan opnieuw op Installeren.</string>
+    <string name="update_install_failed">Kon de installer niet openen.</string>
+    <string name="update_failed_title">Update mislukt</string>
+    <string name="update_err_checksum">De download kwam niet overeen met de gepubliceerde SHA-256. Het bestand is verwijderd.</string>
+    <string name="update_err_signature">De download is niet ondertekend met de sleutel van deze app. Het bestand is verwijderd.</string>
+    <string name="update_err_network">Kon GitHub niet bereiken. Controleer je verbinding en probeer het opnieuw.</string>
+    <string name="update_err_no_apk">Deze release heeft geen bijgevoegde APK.</string>
+    <string name="update_err_too_large">De download was groter dan verwacht en is gestopt.</string>
+    <string name="update_err_incomplete">De download was onvolledig en is verwijderd.</string>
+    <string name="update_err_generic">Er is iets misgegaan bij het downloaden van de update.</string>
 </resources>

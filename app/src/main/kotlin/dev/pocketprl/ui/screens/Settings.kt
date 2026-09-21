@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -29,9 +30,11 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -68,6 +71,7 @@ import dev.pocketprl.core.wallet.AddressVariant
 import dev.pocketprl.data.AccentTheme
 import dev.pocketprl.data.PollMode
 import dev.pocketprl.data.ThemeMode
+import dev.pocketprl.data.update.AppUpdater
 import dev.pocketprl.data.update.ReleaseInfo
 import dev.pocketprl.data.update.UpdateChecker
 import dev.pocketprl.data.vault.SeedMaterial
@@ -103,6 +107,7 @@ import dev.pocketprl.ui.components.formatDateTime
 import dev.pocketprl.ui.components.passwordScore
 import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.vm.SettingsViewModel
+import dev.pocketprl.ui.vm.appContainer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -844,6 +849,9 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
     var pending by remember { mutableStateOf<ReleaseInfo?>(null) }
     var upToDate by remember { mutableStateOf(false) }
     var failed by remember { mutableStateOf(false) }
+    val updater = appContainer().updater
+    val installState by updater.state.collectAsStateWithLifecycle()
+    var installError by remember { mutableStateOf<String?>(null) }
 
     ScreenScaffold(title = stringResource(R.string.settings_about_title), onBack = onBack) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
@@ -862,6 +870,8 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
                 loading = checking,
                 onClick = {
                     haptics.click()
+                    updater.reset()
+                    installError = null
                     upToDate = false
                     failed = false
                     checking = true
@@ -897,9 +907,109 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
             title = { Text(stringResource(R.string.settings_about_update_title)) },
             text = { Text(stringResource(R.string.settings_about_update_body, release.version, BuildConfig.VERSION_NAME)) },
             confirmButton = {
-                TextButton(onClick = { pending = null; haptics.confirm(); open(release.htmlUrl) }) { Text(stringResource(R.string.settings_about_update)) }
+                TextButton(onClick = {
+                    pending = null
+                    haptics.confirm()
+                    // Old releases without an attached APK still open the release page.
+                    if (release.apkUrl == null) open(release.htmlUrl) else updater.download(release)
+                }) { Text(stringResource(R.string.settings_about_update)) }
             },
             dismissButton = { TextButton(onClick = { pending = null }) { Text(stringResource(R.string.settings_about_later)) } },
         )
     }
+
+    when (val st = installState) {
+        is AppUpdater.State.Downloading -> AlertDialog(
+            onDismissRequest = { updater.reset() },
+            title = { Text(stringResource(R.string.update_downloading_title)) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    MonoText(st.fileName, style = MaterialTheme.typography.bodySmall)
+                    if (st.total > 0) {
+                        LinearProgressIndicator(progress = { (st.bytes.toFloat() / st.total).coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth())
+                        Text(
+                            stringResource(R.string.update_progress_kb, Amount.group(st.bytes / 1024), Amount.group(st.total / 1024)),
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    } else {
+                        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                        Text(
+                            stringResource(R.string.update_downloaded_kb, Amount.group(st.bytes / 1024)),
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+            },
+            confirmButton = {},
+            dismissButton = { TextButton(onClick = { updater.reset() }) { Text(stringResource(R.string.action_cancel)) } },
+        )
+
+        AppUpdater.State.Verifying -> AlertDialog(
+            onDismissRequest = {},
+            title = { Text(stringResource(R.string.update_verifying_title)) },
+            text = {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
+                    Spacer(Modifier.width(12.dp))
+                    Text(stringResource(R.string.update_verifying_body))
+                }
+            },
+            confirmButton = {},
+        )
+
+        is AppUpdater.State.Ready -> AlertDialog(
+            onDismissRequest = { installError = null; updater.reset() },
+            title = { Text(stringResource(R.string.update_ready_title)) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    MonoText(st.file.name, style = MaterialTheme.typography.bodySmall)
+                    Text(
+                        if (st.expected != null) stringResource(R.string.update_sha_verified) else stringResource(R.string.update_sha_unpublished),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = if (st.expected != null) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Text(stringResource(R.string.update_signature_verified), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+                    installError?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    installError = null
+                    when (updater.install(st.file)) {
+                        AppUpdater.Install.LAUNCHED -> leavingApp()
+                        AppUpdater.Install.NEED_PERMISSION -> {
+                            installError = context.getString(R.string.update_install_permission)
+                            leavingApp()
+                            updater.openInstallPermissionSettings()
+                        }
+                        AppUpdater.Install.FAILED -> installError = context.getString(R.string.update_install_failed)
+                    }
+                }) { Text(stringResource(R.string.update_install)) }
+            },
+            dismissButton = { TextButton(onClick = { installError = null; updater.reset() }) { Text(stringResource(R.string.action_cancel)) } },
+        )
+
+        is AppUpdater.State.Failed -> AlertDialog(
+            onDismissRequest = { updater.reset() },
+            title = { Text(stringResource(R.string.update_failed_title)) },
+            text = { Text(failureMessage(st.reason)) },
+            confirmButton = { TextButton(onClick = { updater.reset() }) { Text(stringResource(R.string.action_close)) } },
+        )
+
+        AppUpdater.State.Idle -> Unit
+    }
 }
+
+/** Localized explanation for a failed download/verification. */
+@Composable
+private fun failureMessage(reason: AppUpdater.Failure): String = stringResource(
+    when (reason) {
+        AppUpdater.Failure.CHECKSUM -> R.string.update_err_checksum
+        AppUpdater.Failure.SIGNATURE -> R.string.update_err_signature
+        AppUpdater.Failure.NETWORK -> R.string.update_err_network
+        AppUpdater.Failure.NO_APK -> R.string.update_err_no_apk
+        AppUpdater.Failure.TOO_LARGE -> R.string.update_err_too_large
+        AppUpdater.Failure.INCOMPLETE -> R.string.update_err_incomplete
+        AppUpdater.Failure.GENERIC -> R.string.update_err_generic
+    },
+)

@@ -690,4 +690,26 @@
         <item quantity="many">%1$d minuty</item>
         <item quantity="other">%1$d minut</item>
     </plurals>
+
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Stahování aktualizace</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">Staženo %1$s KB</string>
+    <string name="update_verifying_title">Ověřování stažení</string>
+    <string name="update_verifying_body">Kontrola kontrolního součtu SHA-256…</string>
+    <string name="update_ready_title">Připraveno k instalaci</string>
+    <string name="update_sha_verified">Kontrolní součet SHA-256 ověřen</string>
+    <string name="update_sha_unpublished">Toto vydání nemá zveřejněný kontrolní součet. Podpis aplikace se stále kontroluje.</string>
+    <string name="update_signature_verified">Podepsáno stejným klíčem jako nainstalovaná aplikace</string>
+    <string name="update_install">Nainstalovat</string>
+    <string name="update_install_permission">Povolte aplikaci PocketPRL instalovat aplikace a klepněte znovu na Nainstalovat.</string>
+    <string name="update_install_failed">Instalátor se nepodařilo otevřít.</string>
+    <string name="update_failed_title">Aktualizace se nezdařila</string>
+    <string name="update_err_checksum">Stažení neodpovídalo zveřejněnému SHA-256. Soubor byl smazán.</string>
+    <string name="update_err_signature">Stažení není podepsáno klíčem této aplikace. Soubor byl smazán.</string>
+    <string name="update_err_network">Nepodařilo se připojit ke GitHubu. Zkontrolujte připojení a zkuste to znovu.</string>
+    <string name="update_err_no_apk">Toto vydání nemá přiložený soubor APK.</string>
+    <string name="update_err_too_large">Stažení bylo větší, než se očekávalo, a bylo zastaveno.</string>
+    <string name="update_err_incomplete">Stažení bylo neúplné a bylo smazáno.</string>
+    <string name="update_err_generic">Při stahování aktualizace se něco pokazilo.</string>
 </resources>

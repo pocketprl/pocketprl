@@ -672,4 +672,26 @@
         <item quantity="one">%1$d minuutti</item>
         <item quantity="other">%1$d minuuttia</item>
     </plurals>
+
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Ladataan päivitystä</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB ladattu</string>
+    <string name="update_verifying_title">Vahvistetaan latausta</string>
+    <string name="update_verifying_body">Tarkistetaan SHA-256-tarkistussummaa…</string>
+    <string name="update_ready_title">Valmis asennettavaksi</string>
+    <string name="update_sha_verified">SHA-256-tarkistussumma vahvistettu</string>
+    <string name="update_sha_unpublished">Tässä julkaisussa ei ole julkaistua tarkistussummaa. Sovelluksen allekirjoitus tarkistetaan silti.</string>
+    <string name="update_signature_verified">Allekirjoitettu samalla avaimella kuin asennettu sovellus</string>
+    <string name="update_install">Asenna</string>
+    <string name="update_install_permission">Salli PocketPRL:n asentaa sovelluksia ja napauta sitten Asenna uudelleen.</string>
+    <string name="update_install_failed">Asennusohjelmaa ei voitu avata.</string>
+    <string name="update_failed_title">Päivitys epäonnistui</string>
+    <string name="update_err_checksum">Lataus ei vastannut julkaistua SHA-256-tarkistussummaa. Tiedosto poistettiin.</string>
+    <string name="update_err_signature">Latausta ei ole allekirjoitettu tämän sovelluksen avaimella. Tiedosto poistettiin.</string>
+    <string name="update_err_network">GitHubiin ei saatu yhteyttä. Tarkista yhteytesi ja yritä uudelleen.</string>
+    <string name="update_err_no_apk">Tässä julkaisussa ei ole liitettyä APK:ta.</string>
+    <string name="update_err_too_large">Lataus oli odotettua suurempi, ja se keskeytettiin.</string>
+    <string name="update_err_incomplete">Lataus jäi kesken, ja se poistettiin.</string>
+    <string name="update_err_generic">Jotain meni pieleen päivitystä ladattaessa.</string>
 </resources>

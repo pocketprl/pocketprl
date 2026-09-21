@@ -672,4 +672,25 @@
         <item quantity="one">%1$d dakika</item>
         <item quantity="other">%1$d dakika</item>
     </plurals>
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Güncelleme indiriliyor</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB indirildi</string>
+    <string name="update_verifying_title">İndirme doğrulanıyor</string>
+    <string name="update_verifying_body">SHA-256 sağlama toplamı kontrol ediliyor…</string>
+    <string name="update_ready_title">Kuruluma hazır</string>
+    <string name="update_sha_verified">SHA-256 sağlama toplamı doğrulandı</string>
+    <string name="update_sha_unpublished">Bu sürümde yayımlanmış sağlama toplamı yok. Uygulama imzası yine de kontrol edilir.</string>
+    <string name="update_signature_verified">Yüklü uygulamayla aynı anahtarla imzalanmış</string>
+    <string name="update_install">Kur</string>
+    <string name="update_install_permission">PocketPRL’nin uygulama yüklemesine izin verin, sonra tekrar Kur’a dokunun.</string>
+    <string name="update_install_failed">Kurulum programı açılamadı.</string>
+    <string name="update_failed_title">Güncelleme başarısız</string>
+    <string name="update_err_checksum">İndirme, yayımlanan SHA-256 ile eşleşmedi. Dosya silindi.</string>
+    <string name="update_err_signature">İndirme, bu uygulamanın anahtarıyla imzalanmamış. Dosya silindi.</string>
+    <string name="update_err_network">GitHub’a ulaşılamadı. Bağlantınızı kontrol edip yeniden deneyin.</string>
+    <string name="update_err_no_apk">Bu sürümde ekli APK yok.</string>
+    <string name="update_err_too_large">İndirme beklenenden büyüktü ve durduruldu.</string>
+    <string name="update_err_incomplete">İndirme tamamlanmadı ve silindi.</string>
+    <string name="update_err_generic">Güncelleme indirilirken bir şeyler ters gitti.</string>
 </resources>

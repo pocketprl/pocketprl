@@ -3,6 +3,8 @@ package dev.pocketprl.data.update
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import okhttp3.OkHttpClient
@@ -17,6 +19,14 @@ data class ReleaseInfo(
     val version: String,
     /** Release page to open in a browser. */
     val htmlUrl: String,
+    /** File name of the attached APK, e.g. "PocketPRL-2.2.0.apk"; null when the release has none. */
+    val apkName: String? = null,
+    /** Direct download URL of the APK. */
+    val apkUrl: String? = null,
+    /** APK size in bytes as reported by GitHub (0 when unknown). */
+    val apkSize: Long = 0,
+    /** Lower-case SHA-256 of the APK from GitHub's asset digest, when present. */
+    val sha256: String? = null,
 )
 
 /**
@@ -52,7 +62,28 @@ object UpdateChecker {
                 val obj = json.parseToJsonElement(body).jsonObject
                 val tag = obj["tag_name"]?.jsonPrimitive?.content ?: return@use null
                 val url = obj["html_url"]?.jsonPrimitive?.content ?: "$REPO_URL/releases/tag/$tag"
-                ReleaseInfo(tagName = tag, version = tag.removePrefix("v").removePrefix("V"), htmlUrl = url)
+                // Pick the release's APK asset, preferring one named after the wallet.
+                var apkName: String? = null
+                var apkUrl: String? = null
+                var apkSize = 0L
+                var sha256: String? = null
+                val assets = obj["assets"]?.jsonArray
+                if (assets != null) {
+                    val apks = assets.mapNotNull { it.jsonObject }.filter {
+                        it["name"]?.jsonPrimitive?.contentOrNull?.endsWith(".apk", ignoreCase = true) == true
+                    }
+                    val asset = apks.firstOrNull { it["name"]?.jsonPrimitive?.contentOrNull?.contains("PocketPRL", ignoreCase = true) == true } ?: apks.firstOrNull()
+                    if (asset != null) {
+                        apkName = asset["name"]?.jsonPrimitive?.contentOrNull
+                        apkUrl = asset["browser_download_url"]?.jsonPrimitive?.contentOrNull
+                        apkSize = asset["size"]?.jsonPrimitive?.contentOrNull?.toLongOrNull() ?: 0L
+                        sha256 = asset["digest"]?.jsonPrimitive?.contentOrNull
+                            ?.removePrefix("sha256:")
+                            ?.lowercase()
+                            ?.takeIf { it.length == 64 }
+                    }
+                }
+                ReleaseInfo(tagName = tag, version = tag.removePrefix("v").removePrefix("V"), htmlUrl = url, apkName = apkName, apkUrl = apkUrl, apkSize = apkSize, sha256 = sha256)
             }
         }.getOrNull()
     }

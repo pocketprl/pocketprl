@@ -680,4 +680,26 @@
         <item quantity="few">%1$d minute</item>
         <item quantity="other">%1$d de minute</item>
     </plurals>
+
+    <!-- ===================== updates ===================== -->
+    <string name="update_downloading_title">Se descarcă actualizarea</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB descărcați</string>
+    <string name="update_verifying_title">Se verifică descărcarea</string>
+    <string name="update_verifying_body">Se verifică suma de control SHA-256…</string>
+    <string name="update_ready_title">Gata de instalare</string>
+    <string name="update_sha_verified">Suma de control SHA-256 verificată</string>
+    <string name="update_sha_unpublished">Această versiune nu are o sumă de control publicată. Semnătura aplicației este verificată totuși.</string>
+    <string name="update_signature_verified">Semnată cu aceeași cheie ca aplicația instalată</string>
+    <string name="update_install">Instalează</string>
+    <string name="update_install_permission">Permite PocketPRL să instaleze aplicații, apoi atinge din nou Instalează.</string>
+    <string name="update_install_failed">Instalatorul nu a putut fi deschis.</string>
+    <string name="update_failed_title">Actualizarea a eșuat</string>
+    <string name="update_err_checksum">Descărcarea nu a corespuns SHA-256 publicat. Fișierul a fost șters.</string>
+    <string name="update_err_signature">Descărcarea nu este semnată cu cheia acestei aplicații. Fișierul a fost șters.</string>
+    <string name="update_err_network">Nu s-a putut conecta la GitHub. Verifică conexiunea și încearcă din nou.</string>
+    <string name="update_err_no_apk">Această versiune nu are niciun APK atașat.</string>
+    <string name="update_err_too_large">Descărcarea a fost mai mare decât era de așteptat și a fost oprită.</string>
+    <string name="update_err_incomplete">Descărcarea a fost incompletă și a fost ștearsă.</string>
+    <string name="update_err_generic">Ceva a mers prost la descărcarea actualizării.</string>
 </resources>

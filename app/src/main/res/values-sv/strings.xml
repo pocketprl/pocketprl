@@ -673,4 +673,25 @@
         <item quantity="one">%1$d minut</item>
         <item quantity="other">%1$d minuter</item>
     </plurals>
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Laddar ner uppdatering</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB nedladdade</string>
+    <string name="update_verifying_title">Verifierar nedladdning</string>
+    <string name="update_verifying_body">Kontrollerar SHA-256-kontrollsumman…</string>
+    <string name="update_ready_title">Redo att installera</string>
+    <string name="update_sha_verified">SHA-256-kontrollsumman verifierad</string>
+    <string name="update_sha_unpublished">Den här versionen har ingen publicerad kontrollsumma. Appens signatur kontrolleras fortfarande.</string>
+    <string name="update_signature_verified">Signerad med samma nyckel som den installerade appen</string>
+    <string name="update_install">Installera</string>
+    <string name="update_install_permission">Tillåt PocketPRL att installera appar och tryck sedan på Installera igen.</string>
+    <string name="update_install_failed">Kunde inte öppna installationsprogrammet.</string>
+    <string name="update_failed_title">Uppdateringen misslyckades</string>
+    <string name="update_err_checksum">Nedladdningen matchade inte den publicerade SHA-256. Filen har raderats.</string>
+    <string name="update_err_signature">Nedladdningen är inte signerad med den här appens nyckel. Filen har raderats.</string>
+    <string name="update_err_network">Kunde inte nå GitHub. Kontrollera anslutningen och försök igen.</string>
+    <string name="update_err_no_apk">Den här versionen har ingen bifogad APK.</string>
+    <string name="update_err_too_large">Nedladdningen var större än väntat och avbröts.</string>
+    <string name="update_err_incomplete">Nedladdningen var ofullständig och raderades.</string>
+    <string name="update_err_generic">Något gick fel när uppdateringen laddades ner.</string>
 </resources>

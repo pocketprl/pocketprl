@@ -671,4 +671,26 @@
         <item quantity="one">%1$d perc</item>
         <item quantity="other">%1$d perc</item>
     </plurals>
+
+    <!-- ===================== update ===================== -->
+    <string name="update_downloading_title">Frissítés letöltése</string>
+    <string name="update_progress_kb">%1$s / %2$s KB</string>
+    <string name="update_downloaded_kb">%1$s KB letöltve</string>
+    <string name="update_verifying_title">Letöltés ellenőrzése</string>
+    <string name="update_verifying_body">SHA-256 ellenőrzőösszeg vizsgálata…</string>
+    <string name="update_ready_title">Telepítésre kész</string>
+    <string name="update_sha_verified">SHA-256 ellenőrzőösszeg ellenőrizve</string>
+    <string name="update_sha_unpublished">Ehhez a kiadáshoz nincs közzétett ellenőrzőösszeg. Az alkalmazás aláírása ettől még ellenőrzésre kerül.</string>
+    <string name="update_signature_verified">Ugyanazzal a kulccsal aláírva, mint a telepített alkalmazás</string>
+    <string name="update_install">Telepítés</string>
+    <string name="update_install_permission">Engedélyezd a PocketPRL számára az alkalmazások telepítését, majd koppints ismét a Telepítés gombra.</string>
+    <string name="update_install_failed">Nem sikerült megnyitni a telepítőt.</string>
+    <string name="update_failed_title">A frissítés sikertelen</string>
+    <string name="update_err_checksum">A letöltés nem egyezik a közzétett SHA-256-tal. A fájl törölve lett.</string>
+    <string name="update_err_signature">A letöltést nem az alkalmazás kulcsa írta alá. A fájl törölve lett.</string>
+    <string name="update_err_network">Nem sikerült elérni a GitHubot. Ellenőrizd a kapcsolatot, és próbáld újra.</string>
+    <string name="update_err_no_apk">Ehhez a kiadáshoz nincs csatolt APK.</string>
+    <string name="update_err_too_large">A letöltés a vártnál nagyobb volt, ezért leállítottuk.</string>
+    <string name="update_err_incomplete">A letöltés hiányos volt, ezért töröltük.</string>
+    <string name="update_err_generic">Hiba történt a frissítés letöltése közben.</string>
 </resources>
