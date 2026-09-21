@@ -747,7 +747,7 @@
     <string name="downgrade_not_installable">Android installiert diesen Build nicht direkt: Seine Paketversion ist niedriger als die installierte und dieses Release hat noch keinen Downgrade-Build. Eine Installation würde eine manuelle Deinstallation erfordern.</string>
     <string name="downgrade_notes_title">Versionshinweise</string>
     <string name="downgrade_notes_empty">Keine Versionshinweise für diese Version.</string>
-    <string name="downgrade_warning">Dies installiert einen alternativen Build und verlässt die reguläre Release-Linie. Normale Updates werden nicht mehr installiert; nur ein Zurücksetzen (Deinstallieren und Wiederherstellen deiner Wiederherstellungsphrase) bringt dich zurück. Deine Wallets und dein Guthaben sind nicht betroffen.</string>
+    <string name="downgrade_warning">Dies installiert einen alternativen Build und verlässt die reguläre Release-Linie. Von hier aus geht es nur nach unten, bis du wieder nach oben gehst — und dann nur noch nach oben. Normale Updates werden nicht mehr installiert. Deine Wallets und dein Guthaben sind nicht betroffen.</string>
     <string name="downgrade_slide">Zum Downgrade auf v%1$s schieben</string>
     <string name="downgrade_slide_hint">Zum Downgrade schieben oder doppelt tippen</string>
     <string name="personalize_section_security">Sicherheit</string>
@@ -772,12 +772,17 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Du bist auf</string>
     <string name="build_lane_primary">Regulärer Build</string>
-    <string name="build_lane_primary_body">Du bist auf der regulären Release-Linie. Normale Updates werden hier installiert. Einen alternativen Build zu installieren verlässt sie endgültig.</string>
+    <string name="build_lane_primary_body">Reguläre Release-Linie: Normale Updates werden hier installiert. Von hier aus geht es nur nach unten. Nach unten gerätst du auf alternative Builds, wo es von da an nur noch nach unten geht — bis du wieder nach oben gehst, und dann nur noch nach oben.</string>
     <string name="build_lane_rollback">Alternativer Downgrade-Build</string>
-    <string name="build_lane_rollback_body">Ein alternativer Build: Du hast die reguläre Release-Linie verlassen, daher werden normale Updates nicht mehr installiert. Setze zurück (deinstallieren und Wiederherstellungsphrase wiederherstellen), um zurückzukehren.</string>
+    <string name="build_lane_rollback_body">Alternativer Build: Normale Updates werden nicht installiert. Du kannst weiter nach unten zu älteren Versionen gehen oder nach oben zu jeder Version mit ihrem Rückkehr-Build. Sobald du nach oben gehst, geht es nur noch nach oben.</string>
     <string name="build_lane_back">Alternativer Rückkehr-Build</string>
-    <string name="build_lane_back_body">Ein alternativer Build: Du hast die reguläre Release-Linie verlassen, daher werden normale Updates nicht mehr installiert. Setze zurück (deinstallieren und Wiederherstellungsphrase wiederherstellen), um zurückzukehren.</string>
+    <string name="build_lane_back_body">Alternativer Build: Normale Updates werden nicht installiert, und von hier aus geht es nur nach oben — zu neueren Rückkehr-Builds. Um wieder nach unten zu gehen, setze zurück.</string>
     <string name="downgrade_switch_body">Android installiert dies nicht direkt über deinen Build. Beim Wechseln wird es in Downloads gespeichert, PocketPRL deinstalliert, und nach der Neuinstallation stellst du aus deiner Wiederherstellungsphrase wieder her.</string>
     <string name="downgrade_switch_button">Zu dieser Version wechseln</string>
-    <string name="settings_about_off_primary">Du bist auf einem alternativen Build, nicht auf der regulären Release-Linie. Normale Updates können hier nicht installiert werden; setze zurück, um zurückzukehren.</string>
+    <string name="settings_about_off_primary">Du bist auf einem alternativen Build, nicht auf der regulären Release-Linie.</string>
+    <string name="settings_alt_rollback">Alternativer Downgrade-Build. Normale Updates werden nicht installiert. Downgrades funktionieren weiterhin; nach oben gelangst du auf die Rückkehr-Spur, auf der es nur vorwärts geht.</string>
+    <string name="settings_alt_back">Alternativer Rückkehr-Build. Normale Updates werden nicht installiert. Von hier aus geht es nur noch vorwärts; um wieder nach unten zu gehen, ist ein Zurücksetzen nötig.</string>
+    <string name="settings_about_forward_title">Vorwärts wechseln</string>
+    <string name="settings_about_forward_body">Dies installiert den Rückkehr-Build von %1$s und hält dich auf der alternativen Spur, nur vorwärts. Um wieder nach unten zu gehen, müsstest du zurücksetzen.</string>
+    <string name="settings_about_alt_latest">Du bist auf dem neuesten alternativen Build.</string>
 </resources>

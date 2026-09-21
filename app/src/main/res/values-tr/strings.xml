@@ -747,7 +747,7 @@
     <string name="downgrade_not_installable">Android bu derlemeyi üzerine kurmaz: paket sürümü yüklü olandan düşük ve bu sürümde henüz bir sürüm düşürme derlemesi yok. Kurmak için elle kaldırma gerekir.</string>
     <string name="downgrade_notes_title">Sürüm notları</string>
     <string name="downgrade_notes_empty">Bu sürüm için sürüm notu yok.</string>
-    <string name="downgrade_warning">Bu, alternatif bir derleme kurar ve normal sürüm hattından ayrılır. Normal güncellemeler artık kurulmaz; sizi geri yalnızca bir sıfırlama (kaldır ve kurtarma ifadeni geri yükle) döndürür. Cüzdanlarınız ve paranız etkilenmez.</string>
+    <string name="downgrade_warning">Bu, alternatif bir derleme kurar ve normal sürüm hattından ayrılır. Buradan yalnızca aşağı inebilirsiniz, ta ki tekrar yukarı çıkana kadar — ve sonrasında yalnızca yukarı. Normal güncellemeler kurulmayı bırakır. Cüzdanlarınız ve paranız etkilenmez.</string>
     <string name="downgrade_slide">v%1$s sürümüne düşürmek için kaydırın</string>
     <string name="downgrade_slide_hint">Sürümü düşürmek için kaydırın veya çift dokunun</string>
     <string name="personalize_section_security">Güvenlik</string>
@@ -770,12 +770,17 @@
     <string name="settings_about_build">Derleme</string>
     <string name="build_lane_you_are_on">Üzerinde olduğunuz derleme</string>
     <string name="build_lane_primary">Normal derleme</string>
-    <string name="build_lane_primary_body">Normal sürüm hattındasınız. Normal güncellemeler buraya kurulur. Alternatif bir derleme kurmak bu hattan kalıcı olarak ayrılır.</string>
+    <string name="build_lane_primary_body">Normal sürüm hattı: normal güncellemeler buraya kurulur. Buradan yalnızca aşağı inebilirsiniz. Aşağı inmek sizi alternatif derlemelere taşır; oradan itibaren yalnızca aşağı inmeye devam edebilirsiniz — ta ki tekrar yukarı çıkana kadar, ve sonrasında yalnızca yukarı.</string>
     <string name="build_lane_rollback">Alternatif sürüm düşürme derlemesi</string>
-    <string name="build_lane_rollback_body">Alternatif bir derleme: normal sürüm hattından ayrıldınız, bu yüzden normal güncellemeler artık kurulmaz. Geri dönmek için sıfırlayın (kaldırın ve kurtarma ifadenizi geri yükleyin).</string>
+    <string name="build_lane_rollback_body">Alternatif derleme: normal güncellemeler kurulmaz. Daha eski sürümlere aşağı inmeye devam edebilir veya kendi geri dönüş derlemesi olan herhangi bir sürüme yukarı çıkabilirsiniz. Bir kez yukarı çıktığınızda, yalnızca yukarı vardır.</string>
     <string name="build_lane_back">Alternatif geri dönüş derlemesi</string>
-    <string name="build_lane_back_body">Alternatif bir derleme: normal sürüm hattından ayrıldınız, bu yüzden normal güncellemeler artık kurulmaz. Geri dönmek için sıfırlayın (kaldırın ve kurtarma ifadenizi geri yükleyin).</string>
+    <string name="build_lane_back_body">Alternatif derleme: normal güncellemeler kurulmaz ve buradan yalnızca yukarı vardır — daha yeni geri dönüş derlemeleri. Tekrar aşağı inmek için sıfırlayın.</string>
     <string name="downgrade_switch_body">Android bunu derlemenizin üzerine kurmaz. Geçiş yapmak bunu Downloads’a kaydeder, PocketPRL’i kaldırır ve yeniden kurduktan sonra kurtarma ifadenizden geri yüklersiniz.</string>
     <string name="downgrade_switch_button">Bu sürüme geç</string>
-    <string name="settings_about_off_primary">Normal sürüm hattında değil, alternatif bir derlemedesiniz. Normal güncellemeler buraya kurulamaz; geri dönmek için sıfırlayın.</string>
+    <string name="settings_about_off_primary">Normal sürüm hattında değil, alternatif bir derlemedesiniz.</string>
+    <string name="settings_alt_rollback">Alternatif sürüm düşürme derlemesi. Normal güncellemeler kurulmaz. Sürüm düşürme hâlâ çalışır; yukarı çıkmak sizi yalnızca ileri giden geri dönüş şeridine koyar.</string>
+    <string name="settings_alt_back">Alternatif geri dönüş derlemesi. Normal güncellemeler kurulmaz. Buradan yalnızca ileri vardır; tekrar aşağı inmek bir sıfırlama gerektirir.</string>
+    <string name="settings_about_forward_title">İleri git</string>
+    <string name="settings_about_forward_body">Bu, %1$s sürümünün geri dönüş derlemesini kurar ve sizi alternatif yolda tutar, yalnızca ileri. Tekrar aşağı inmek için sıfırlardınız.</string>
+    <string name="settings_about_alt_latest">En son alternatif derlemedesiniz.</string>
 </resources>

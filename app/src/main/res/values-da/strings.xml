@@ -747,7 +747,7 @@
     <string name="downgrade_not_installable">Android installerer ikke denne build på plads: dens pakkeversion er lavere end den installerede, og denne udgivelse har endnu ingen nedgraderingsversion. Installation ville kræve en manuel afinstallation.</string>
     <string name="downgrade_notes_title">Udgivelsesnoter</string>
     <string name="downgrade_notes_empty">Ingen udgivelsesnoter til denne version.</string>
-    <string name="downgrade_warning">Dette installerer et alternativt build og forlader den almindelige udgivelseslinje. Normale opdateringer installeres ikke længere; kun en nulstilling (afinstaller og gendan din gendannelsessætning) bringer dig tilbage. Dine tegnebøger og midler påvirkes ikke.</string>
+    <string name="downgrade_warning">Dette installerer et alternativt build og forlader den almindelige udgivelseslinje. Herfra kan du kun gå ned, indtil du går op igen — og derefter kun op. Normale opdateringer holder op med at installere. Dine tegnebøger og midler påvirkes ikke.</string>
     <string name="downgrade_slide">Træk for at nedgradere til v%1$s</string>
     <string name="downgrade_slide_hint">Træk eller dobbelttryk for at nedgradere</string>
     <string name="personalize_section_security">Sikkerhed</string>
@@ -771,12 +771,17 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Du er på</string>
     <string name="build_lane_primary">Almindeligt build</string>
-    <string name="build_lane_primary_body">Du er på den almindelige udgivelseslinje. Normale opdateringer installeres her. Installation af et alternativt build forlader den for altid.</string>
+    <string name="build_lane_primary_body">Almindelig udgivelseslinje: normale opdateringer installeres her. Herfra kan du kun gå ned. At gå ned bringer dig over på alternative builds, hvor du fra da af kun kan fortsætte med at gå ned — indtil du går op igen, og derefter kun op.</string>
     <string name="build_lane_rollback">Alternativt nedgraderings-build</string>
-    <string name="build_lane_rollback_body">Et alternativt build: du har forladt den almindelige udgivelseslinje, så normale opdateringer installeres ikke længere. Nulstil (afinstaller og gendan din gendannelsessætning) for at vende tilbage.</string>
+    <string name="build_lane_rollback_body">Alternativt build: normale opdateringer installeres ikke. Du kan fortsætte med at gå ned til ældre versioner eller gå op til en hvilken som helst version med dens retur-build. Når du først går op, er der kun op.</string>
     <string name="build_lane_back">Alternativt retur-build</string>
-    <string name="build_lane_back_body">Et alternativt build: du har forladt den almindelige udgivelseslinje, så normale opdateringer installeres ikke længere. Nulstil (afinstaller og gendan din gendannelsessætning) for at vende tilbage.</string>
+    <string name="build_lane_back_body">Alternativt build: normale opdateringer installeres ikke, og herfra er der kun op — nyere retur-builds. For at gå ned igen skal du nulstille.</string>
     <string name="downgrade_switch_body">Android installerer ikke dette oven i dit build på plads. Et skift gemmer det i Downloads, afinstallerer PocketPRL, og du gendanner fra din gendannelsessætning efter geninstallation.</string>
     <string name="downgrade_switch_button">Skift til denne version</string>
-    <string name="settings_about_off_primary">Du er på et alternativt build, ikke den almindelige udgivelseslinje. Normale opdateringer kan ikke installeres her; nulstil for at vende tilbage.</string>
+    <string name="settings_about_off_primary">Du er på et alternativt build, ikke den almindelige udgivelseslinje.</string>
+    <string name="settings_alt_rollback">Alternativt nedgraderings-build. Normale opdateringer installeres ikke. Nedgradering virker stadig; at gå op bringer dig over på returlinjen, der kun går fremad.</string>
+    <string name="settings_alt_back">Alternativt retur-build. Normale opdateringer installeres ikke. Herfra er der kun fremad; at gå ned igen kræver en nulstilling.</string>
+    <string name="settings_about_forward_title">Gå fremad</string>
+    <string name="settings_about_forward_body">Dette installerer retur-buildet til %1$s og holder dig på det alternative spor, kun fremad. For at gå ned igen skulle du nulstille.</string>
+    <string name="settings_about_alt_latest">Du er på det nyeste alternative build.</string>
 </resources>

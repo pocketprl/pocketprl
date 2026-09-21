@@ -746,7 +746,7 @@
     <string name="downgrade_not_installable">Az Android nem telepíti ezt a buildet a meglévő fölé: a csomag verziója alacsonyabb a telepítettnél, és ehhez a kiadáshoz még nincs visszalépési build. A telepítéshez kézi eltávolításra lenne szükség.</string>
     <string name="downgrade_notes_title">Kiadási megjegyzések</string>
     <string name="downgrade_notes_empty">Ehhez a verzióhoz nincsenek kiadási megjegyzések.</string>
-    <string name="downgrade_warning">Ez egy alternatív buildet telepít, és elhagyja a normál kiadási vonalat. A normál frissítések többé nem települnek; csak egy visszaállítás (eltávolítás és a helyreállítási frázis visszaállítása) hoz vissza. A pénztárcáidat és az összegeidet ez nem érinti.</string>
+    <string name="downgrade_warning">Ez egy alternatív buildet telepít, és elhagyja a normál kiadási vonalat. Innen csak lefelé mehetsz, amíg vissza nem mész fel — és onnantól csak felfelé. A normál frissítések többé nem települnek. A pénztárcáidat és az összegeidet ez nem érinti.</string>
     <string name="downgrade_slide">Csúsztasd a(z) v%1$s verzióra való visszalépéshez</string>
     <string name="downgrade_slide_hint">Csúsztasd vagy koppints duplán a visszalépéshez</string>
     <string name="personalize_section_security">Biztonság</string>
@@ -769,12 +769,17 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Ezen a builden vagy:</string>
     <string name="build_lane_primary">Normál build</string>
-    <string name="build_lane_primary_body">A normál kiadási vonalon vagy. A normál frissítések ide települnek. Egy alternatív build telepítése végleg elhagyja ezt.</string>
+    <string name="build_lane_primary_body">Normál kiadási vonal: a normál frissítések ide települnek. Innen csak lefelé mehetsz. A lefelé lépés alternatív buildekre visz, ahol onnantól csak tovább lefelé haladhatsz — amíg vissza nem mész fel, és onnantól csak felfelé.</string>
     <string name="build_lane_rollback">Alternatív visszalépési build</string>
-    <string name="build_lane_rollback_body">Egy alternatív build: elhagytad a normál kiadási vonalat, így a normál frissítések többé nem települnek. A visszatéréshez állítsd vissza (eltávolítás és a helyreállítási frázis visszaállítása).</string>
+    <string name="build_lane_rollback_body">Alternatív build: a normál frissítések nem települnek. Tovább haladhatsz lefelé a régebbi verziókra, vagy felmehetsz bármely verzióra a saját visszatérési buildjével. Ha egyszer felmentél, csak felfelé van.</string>
     <string name="build_lane_back">Alternatív visszatérési build</string>
-    <string name="build_lane_back_body">Egy alternatív build: elhagytad a normál kiadási vonalat, így a normál frissítések többé nem települnek. A visszatéréshez állítsd vissza (eltávolítás és a helyreállítási frázis visszaállítása).</string>
+    <string name="build_lane_back_body">Alternatív build: a normál frissítések nem települnek, és innen csak felfelé van — újabb visszatérési buildek. Ha újra lefelé akarsz menni, állítsd vissza.</string>
     <string name="downgrade_switch_body">Az Android nem telepíti ezt a builded fölé. A váltás a Downloads mappába menti, eltávolítja a PocketPRL-t, és az újratelepítés után a helyreállítási frázisodból állítod vissza.</string>
     <string name="downgrade_switch_button">Váltás erre a verzióra</string>
-    <string name="settings_about_off_primary">Egy alternatív builden vagy, nem a normál kiadási vonalon. A normál frissítések nem telepíthetők ide; a visszatéréshez állítsd vissza.</string>
+    <string name="settings_about_off_primary">Egy alternatív builden vagy, nem a normál kiadási vonalon.</string>
+    <string name="settings_alt_rollback">Alternatív visszalépési build. A normál frissítések nem települnek. A visszalépés még működik; a felmenés a csak előre haladó visszatérési sávra tesz.</string>
+    <string name="settings_alt_back">Alternatív visszatérési build. A normál frissítések nem települnek. Innen csak előre van; az újabb lefelé lépéshez visszaállítás kell.</string>
+    <string name="settings_about_forward_title">Lépj előre</string>
+    <string name="settings_about_forward_body">Ez a(z) %1$s visszatérési buildjét telepíti, és az alternatív sávon tart, csak előre. Ha újra lefelé akarnál menni, vissza kellene állítanod.</string>
+    <string name="settings_about_alt_latest">A legújabb alternatív builden vagy.</string>
 </resources>

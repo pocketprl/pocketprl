@@ -746,7 +746,7 @@
     <string name="downgrade_not_installable">Android installeert deze build niet ter plaatse: de pakketversie is lager dan de geïnstalleerde versie en deze release heeft nog geen downgrade-build. Installatie zou handmatig verwijderen vereisen.</string>
     <string name="downgrade_notes_title">Release-opmerkingen</string>
     <string name="downgrade_notes_empty">Geen release-opmerkingen voor deze versie.</string>
-    <string name="downgrade_warning">Dit installeert een alternatieve build en verlaat de gewone release-lijn. Normale updates worden niet meer geïnstalleerd; alleen een reset (verwijderen en je herstelzin herstellen) brengt je terug. Je wallets en geld blijven onaangetast.</string>
+    <string name="downgrade_warning">Dit installeert een alternatieve build en verlaat de gewone release-lijn. Vanaf hier kun je alleen naar beneden, tot je weer naar boven gaat — en dan alleen nog naar boven. Normale updates worden niet meer geïnstalleerd. Je wallets en geld blijven onaangetast.</string>
     <string name="downgrade_slide">Schuif om te downgraden naar v%1$s</string>
     <string name="downgrade_slide_hint">Schuif of dubbeltik om te downgraden</string>
     <string name="personalize_section_security">Beveiliging</string>
@@ -771,12 +771,17 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Je gebruikt</string>
     <string name="build_lane_primary">Gewone build</string>
-    <string name="build_lane_primary_body">Je gebruikt de gewone release-lijn. Hier worden normale updates geïnstalleerd. Een alternatieve build installeren verlaat die voorgoed.</string>
+    <string name="build_lane_primary_body">Gewone release-lijn: hier worden normale updates geïnstalleerd. Vanaf hier kun je alleen naar beneden. Naar beneden brengt je op alternatieve builds, waar het vanaf dan alleen nog naar beneden kan — tot je weer naar boven gaat, en dan alleen nog naar boven.</string>
     <string name="build_lane_rollback">Alternatieve downgrade-build</string>
-    <string name="build_lane_rollback_body">Een alternatieve build: je hebt de gewone release-lijn verlaten, dus normale updates worden niet meer geïnstalleerd. Reset (verwijderen en je herstelzin herstellen) om terug te keren.</string>
+    <string name="build_lane_rollback_body">Alternatieve build: normale updates worden niet geïnstalleerd. Je kunt naar beneden blijven gaan naar oudere versies, of naar boven gaan naar elke versie met zijn terugkeerbuild. Zodra je naar boven gaat, gaat het alleen nog maar naar boven.</string>
     <string name="build_lane_back">Alternatieve terugkeerbuild</string>
-    <string name="build_lane_back_body">Een alternatieve build: je hebt de gewone release-lijn verlaten, dus normale updates worden niet meer geïnstalleerd. Reset (verwijderen en je herstelzin herstellen) om terug te keren.</string>
+    <string name="build_lane_back_body">Alternatieve build: normale updates worden niet geïnstalleerd, en vanaf hier gaat het alleen nog naar boven — nieuwere terugkeerbuilds. Om weer naar beneden te gaan, is een reset nodig.</string>
     <string name="downgrade_switch_body">Android installeert dit niet ter plaatse over je build heen. Bij het wisselen wordt het opgeslagen in Downloads, wordt PocketPRL verwijderd en herstel je na het opnieuw installeren vanuit je herstelzin.</string>
     <string name="downgrade_switch_button">Naar deze versie wisselen</string>
-    <string name="settings_about_off_primary">Je gebruikt een alternatieve build, niet de gewone release-lijn. Normale updates kunnen hier niet worden geïnstalleerd; reset om terug te keren.</string>
+    <string name="settings_about_off_primary">Je gebruikt een alternatieve build, niet de gewone release-lijn.</string>
+    <string name="settings_alt_rollback">Alternatieve downgrade-build. Normale updates worden niet geïnstalleerd. Downgraden blijft werken; naar boven brengt je op de terugkeerbaan waarop je alleen vooruit kunt.</string>
+    <string name="settings_alt_back">Alternatieve terugkeerbuild. Normale updates worden niet geïnstalleerd. Vanaf hier gaat het alleen vooruit; om weer naar beneden te gaan, is een reset nodig.</string>
+    <string name="settings_about_forward_title">Vooruitgaan</string>
+    <string name="settings_about_forward_body">Dit installeert de terugkeerbuild van %1$s en houdt je op het alternatieve spoor, alleen vooruit. Om weer naar beneden te gaan, zou je een reset moeten doen.</string>
+    <string name="settings_about_alt_latest">Je gebruikt de nieuwste alternatieve build.</string>
 </resources>

@@ -764,7 +764,7 @@
     <string name="downgrade_not_installable">Android nie zainstaluje tej kompilacji w miejscu: jej wersja pakietu jest niższa niż zainstalowana, a to wydanie nie ma jeszcze kompilacji do przywrócenia starszej wersji. Aby ją zainstalować, trzeba ręcznie odinstalować aplikację.</string>
     <string name="downgrade_notes_title">Lista zmian</string>
     <string name="downgrade_notes_empty">Brak listy zmian dla tej wersji.</string>
-    <string name="downgrade_warning">Spowoduje to zainstalowanie alternatywnej kompilacji i opuszczenie zwykłej linii wydań. Normalne aktualizacje nie będą już instalowane; tylko reset (odinstalowanie i przywrócenie frazy odzyskiwania) przywróci Cię z powrotem. Twoje portfele i środki pozostają nienaruszone.</string>
+    <string name="downgrade_warning">Spowoduje to zainstalowanie alternatywnej kompilacji i opuszczenie zwykłej linii wydań. Stąd możesz iść tylko w dół, dopóki nie pójdziesz w górę — a wtedy już tylko w górę. Normalne aktualizacje przestaną się instalować. Twoje portfele i środki pozostają nienaruszone.</string>
     <string name="downgrade_slide">Przesuń, aby przywrócić wersję v%1$s</string>
     <string name="downgrade_slide_hint">Przesuń lub dotknij dwukrotnie, aby przywrócić starszą wersję</string>
     <string name="personalize_section_security">Bezpieczeństwo</string>
@@ -788,12 +788,17 @@
     <string name="settings_about_build">Kompilacja</string>
     <string name="build_lane_you_are_on">Korzystasz z</string>
     <string name="build_lane_primary">Zwykła kompilacja</string>
-    <string name="build_lane_primary_body">Masz zwykłą linię wydań. Tutaj instalują się normalne aktualizacje. Zainstalowanie alternatywnej kompilacji opuszcza ją na dobre.</string>
+    <string name="build_lane_primary_body">Zwykła linia wydań: instalują się tu normalne aktualizacje. Stąd możesz iść tylko w dół. Zejście w dół przenosi Cię na alternatywne kompilacje, gdzie od tego momentu możesz już tylko schodzić w dół — dopóki nie pójdziesz w górę, a wtedy już tylko w górę.</string>
     <string name="build_lane_rollback">Alternatywna kompilacja wycofania</string>
-    <string name="build_lane_rollback_body">Alternatywna kompilacja: znajdujesz się poza zwykłą linią wydań, więc normalne aktualizacje nie są już instalowane. Zresetuj (odinstaluj i przywróć frazę odzyskiwania), aby wrócić.</string>
+    <string name="build_lane_rollback_body">Alternatywna kompilacja: normalne aktualizacje się nie instalują. Możesz schodzić do starszych wersji albo pójść w górę do dowolnej wersji wraz z jej kompilacją powrotną. Gdy raz pójdziesz w górę, pozostaje już tylko góra.</string>
     <string name="build_lane_back">Alternatywna kompilacja powrotna</string>
-    <string name="build_lane_back_body">Alternatywna kompilacja: znajdujesz się poza zwykłą linią wydań, więc normalne aktualizacje nie są już instalowane. Zresetuj (odinstaluj i przywróć frazę odzyskiwania), aby wrócić.</string>
+    <string name="build_lane_back_body">Alternatywna kompilacja: normalne aktualizacje się nie instalują, a stąd jest już tylko w górę — nowsze kompilacje powrotne. Aby znowu zejść, zresetuj.</string>
     <string name="downgrade_switch_body">Android nie zainstaluje tej wersji w miejsce Twojej kompilacji. Przełączenie zapisze ją w Downloads, odinstaluje PocketPRL, a po ponownej instalacji przywrócisz portfel z frazy odzyskiwania.</string>
     <string name="downgrade_switch_button">Przełącz na tę wersję</string>
-    <string name="settings_about_off_primary">Korzystasz z alternatywnej kompilacji, a nie ze zwykłej linii wydań. Normalne aktualizacje nie mogą się tu zainstalować; zresetuj, aby wrócić.</string>
+    <string name="settings_about_off_primary">Korzystasz z alternatywnej kompilacji, a nie ze zwykłej linii wydań.</string>
+    <string name="settings_alt_rollback">Alternatywna kompilacja wycofania. Normalne aktualizacje się nie instalują. Przywracanie starszej wersji nadal działa; pójście w górę przenosi Cię na linię powrotną tylko do przodu.</string>
+    <string name="settings_alt_back">Alternatywna kompilacja powrotna. Normalne aktualizacje się nie instalują. Stąd jest już tylko do przodu; ponowne zejście wymaga resetu.</string>
+    <string name="settings_about_forward_title">Przejdź do przodu</string>
+    <string name="settings_about_forward_body">To zainstaluje kompilację powrotną wersji %1$s i pozostawi Cię na alternatywnej ścieżce, tylko do przodu. Aby znowu zejść, potrzebny byłby reset.</string>
+    <string name="settings_about_alt_latest">Korzystasz z najnowszej alternatywnej kompilacji.</string>
 </resources>

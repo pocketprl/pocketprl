@@ -750,7 +750,7 @@
     <string name="downgrade_not_installable">Android n’installera pas cette compilation par-dessus : sa version de package est inférieure à celle installée et cette version n’a pas encore de build de rétrogradation. L’installer nécessiterait une désinstallation manuelle.</string>
     <string name="downgrade_notes_title">Notes de version</string>
     <string name="downgrade_notes_empty">Aucune note de version pour cette version.</string>
-    <string name="downgrade_warning">Cette opération installe une compilation alternative et quitte la ligne de publication standard. Les mises à jour normales ne s’installeront plus ; seule une réinitialisation (désinstaller et restaurer votre phrase de récupération) vous ramène. Vos portefeuilles et vos fonds ne sont pas affectés.</string>
+    <string name="downgrade_warning">Cette opération installe une compilation alternative et quitte la ligne de publication standard. D’ici, vous ne pouvez que descendre, jusqu’à ce que vous remontiez — et ensuite, uniquement vers le haut. Les mises à jour normales cessent de s’installer. Vos portefeuilles et vos fonds ne sont pas affectés.</string>
     <string name="downgrade_slide">Glissez pour rétrograder vers la v%1$s</string>
     <string name="downgrade_slide_hint">Glissez ou touchez deux fois pour rétrograder</string>
     <string name="personalize_section_security">Sécurité</string>
@@ -775,12 +775,17 @@
     <string name="settings_about_build">Compilation</string>
     <string name="build_lane_you_are_on">Vous utilisez</string>
     <string name="build_lane_primary">Compilation standard</string>
-    <string name="build_lane_primary_body">Vous êtes sur la ligne de publication standard. Les mises à jour normales s’installent ici. Installer une compilation alternative la quitte définitivement.</string>
+    <string name="build_lane_primary_body">Ligne de publication standard : les mises à jour normales s’installent ici. D’ici, vous ne pouvez que descendre. Descendre vous place sur des compilations alternatives, d’où vous ne pouvez ensuite que continuer à descendre — jusqu’à ce que vous remontiez, et ensuite vous ne pouvez plus que remonter.</string>
     <string name="build_lane_rollback">Build de rétrogradation alternatif</string>
-    <string name="build_lane_rollback_body">Une compilation alternative : vous avez quitté la ligne de publication standard, donc les mises à jour normales ne s’installent plus. Réinitialisez (désinstallez et restaurez votre phrase de récupération) pour revenir.</string>
+    <string name="build_lane_rollback_body">Compilation alternative : les mises à jour normales ne s’installent pas. Vous pouvez continuer à descendre vers des versions plus anciennes, ou remonter vers n’importe quelle version avec sa compilation de retour. Une fois que vous remontez, il n’y a plus que vers le haut.</string>
     <string name="build_lane_back">Compilation de retour alternative</string>
-    <string name="build_lane_back_body">Une compilation alternative : vous avez quitté la ligne de publication standard, donc les mises à jour normales ne s’installent plus. Réinitialisez (désinstallez et restaurez votre phrase de récupération) pour revenir.</string>
+    <string name="build_lane_back_body">Compilation alternative : les mises à jour normales ne s’installent pas, et d’ici il n’y a plus que vers le haut — des compilations de retour plus récentes. Pour redescendre, réinitialisez.</string>
     <string name="downgrade_switch_body">Android n’installera pas ceci par-dessus votre compilation, sur place. Le changement l’enregistre dans Downloads, désinstalle PocketPRL, et vous restaurez à partir de votre phrase de récupération après réinstallation.</string>
     <string name="downgrade_switch_button">Passer à cette version</string>
-    <string name="settings_about_off_primary">Vous êtes sur une compilation alternative, pas sur la ligne de publication standard. Les mises à jour normales ne peuvent pas s’installer ici ; réinitialisez pour revenir.</string>
+    <string name="settings_about_off_primary">Vous êtes sur une compilation alternative, pas sur la ligne de publication standard.</string>
+    <string name="settings_alt_rollback">Build de rétrogradation alternatif. Les mises à jour normales ne s’installent pas. Les rétrogradations fonctionnent toujours ; remonter vous met sur la voie de retour, en avant uniquement.</string>
+    <string name="settings_alt_back">Compilation de retour alternative. Les mises à jour normales ne s’installent pas. D’ici, il n’y a que l’avant ; redescendre nécessite une réinitialisation.</string>
+    <string name="settings_about_forward_title">Avancer</string>
+    <string name="settings_about_forward_body">Cette opération installe la compilation de retour de %1$s et vous garde sur la voie alternative, en avant uniquement. Pour redescendre, il faudrait réinitialiser.</string>
+    <string name="settings_about_alt_latest">Vous êtes sur la dernière compilation alternative.</string>
 </resources>

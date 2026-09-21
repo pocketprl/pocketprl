@@ -359,7 +359,9 @@ private fun CurrentBuildCard(version: String) {
             Text(stringResource(bodyRes), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     } else {
-        InfoBanner(stringResource(bodyRes), BannerKind.ERROR, title = heading)
+        // Yellow, not red: being off the regular line is a state, not an error.
+        // Red is reserved for the actual downgrade warnings and sliders.
+        InfoBanner(stringResource(bodyRes), BannerKind.WARNING, title = heading)
     }
 }
 

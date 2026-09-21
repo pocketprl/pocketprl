@@ -750,7 +750,7 @@
     <string name="downgrade_not_installable">Android non installerà questa build in-place: la versione del pacchetto è inferiore a quella installata e questa versione non ha ancora una build che permetta il downgrade. Installarla richiederebbe una disinstallazione manuale.</string>
     <string name="downgrade_notes_title">Note di rilascio</string>
     <string name="downgrade_notes_empty">Nessuna nota di rilascio per questa versione.</string>
-    <string name="downgrade_warning">Questa operazione installa una build alternativa e abbandona la linea di rilascio standard. I normali aggiornamenti non verranno più installati; solo un ripristino (disinstallare e ripristinare la frase di recupero) ti riporta indietro. I tuoi portafogli e i fondi non sono interessati.</string>
+    <string name="downgrade_warning">Questa operazione installa una build alternativa e abbandona la linea di rilascio standard. Da qui puoi solo scendere, finché non risali — e da quel momento puoi solo salire. I normali aggiornamenti smettono di installarsi. I tuoi portafogli e i fondi non sono interessati.</string>
     <string name="downgrade_slide">Scorri per eseguire il downgrade alla v%1$s</string>
     <string name="downgrade_slide_hint">Scorri o tocca due volte per eseguire il downgrade</string>
     <string name="personalize_section_security">Sicurezza</string>
@@ -775,12 +775,17 @@
     <string name="settings_about_build">Build</string>
     <string name="build_lane_you_are_on">Stai usando</string>
     <string name="build_lane_primary">Build standard</string>
-    <string name="build_lane_primary_body">Sei sulla linea di rilascio standard. Qui si installano i normali aggiornamenti. Installare una build alternativa la abbandona per sempre.</string>
+    <string name="build_lane_primary_body">Linea di rilascio standard: qui si installano i normali aggiornamenti. Da qui puoi solo scendere. Scendendo passi a build alternative, da cui poi puoi solo continuare a scendere — finché non risali, e da quel momento puoi solo salire.</string>
     <string name="build_lane_rollback">Build di downgrade alternativa</string>
-    <string name="build_lane_rollback_body">Una build alternativa: hai abbandonato la linea di rilascio standard, quindi i normali aggiornamenti non vengono più installati. Ripristina (disinstalla e ripristina la frase di recupero) per tornare.</string>
+    <string name="build_lane_rollback_body">Build alternativa: i normali aggiornamenti non si installano. Puoi continuare a scendere verso versioni precedenti, o salire a qualsiasi versione con la sua build di ritorno. Una volta che sali, puoi solo salire.</string>
     <string name="build_lane_back">Build di ritorno alternativa</string>
-    <string name="build_lane_back_body">Una build alternativa: hai abbandonato la linea di rilascio standard, quindi i normali aggiornamenti non vengono più installati. Ripristina (disinstalla e ripristina la frase di recupero) per tornare.</string>
+    <string name="build_lane_back_body">Build alternativa: i normali aggiornamenti non si installano, e da qui puoi solo salire — verso build di ritorno più recenti. Per scendere di nuovo, ripristina.</string>
     <string name="downgrade_switch_body">Android non installerà questa versione sopra la tua, in-place. Il passaggio la salva in Downloads, disinstalla PocketPRL e, dopo la reinstallazione, ripristini dalla tua frase di recupero.</string>
     <string name="downgrade_switch_button">Passa a questa versione</string>
-    <string name="settings_about_off_primary">Sei su una build alternativa, non sulla linea di rilascio standard. I normali aggiornamenti non possono essere installati qui; ripristina per tornare.</string>
+    <string name="settings_about_off_primary">Sei su una build alternativa, non sulla linea di rilascio standard.</string>
+    <string name="settings_alt_rollback">Build di downgrade alternativa. I normali aggiornamenti non si installano. I downgrade funzionano ancora; salendo passi alla corsia di ritorno, solo in avanti.</string>
+    <string name="settings_alt_back">Build di ritorno alternativa. I normali aggiornamenti non si installano. Da qui si va solo in avanti; per scendere di nuovo serve un ripristino.</string>
+    <string name="settings_about_forward_title">Vai avanti</string>
+    <string name="settings_about_forward_body">Questa operazione installa la build di ritorno di %1$s e ti mantiene sulla corsia alternativa, solo in avanti. Per scendere di nuovo dovresti ripristinare.</string>
+    <string name="settings_about_alt_latest">Sei sull’ultima build alternativa.</string>
 </resources>

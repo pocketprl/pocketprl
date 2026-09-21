@@ -765,7 +765,7 @@
     <string name="downgrade_not_installable">Android toto sestavení nenainstaluje na místo: jeho verze balíčku je nižší než nainstalovaná a toto vydání zatím nemá sestavení pro návrat ke starší verzi. Instalace by vyžadovala ruční odinstalaci.</string>
     <string name="downgrade_notes_title">Poznámky k vydání</string>
     <string name="downgrade_notes_empty">Pro tuto verzi nejsou k dispozici žádné poznámky k vydání.</string>
-    <string name="downgrade_warning">Tímto nainstalujete alternativní sestavení a opustíte běžnou řadu vydání. Normální aktualizace se už nebudou instalovat; vrátí vás zpět pouze reset (odinstalace a obnovení fráze pro obnovení). Vaše peněženky a prostředky zůstávají nedotčeny.</string>
+    <string name="downgrade_warning">Tímto nainstalujete alternativní sestavení a opustíte běžnou řadu vydání. Odtud můžete jít jen níž, dokud nepůjdete nahoru — a pak už jen nahoru. Normální aktualizace se přestanou instalovat. Vaše peněženky a prostředky zůstávají nedotčeny.</string>
     <string name="downgrade_slide">Posunutím se vrátíte k v%1$s</string>
     <string name="downgrade_slide_hint">Posunutím nebo dvojitým klepnutím se vrátíte ke starší verzi</string>
     <string name="personalize_section_security">Zabezpečení</string>
@@ -789,12 +789,17 @@
     <string name="settings_about_build">Sestavení</string>
     <string name="build_lane_you_are_on">Jste na</string>
     <string name="build_lane_primary">Běžné sestavení</string>
-    <string name="build_lane_primary_body">Nacházíte se na běžné řadě vydání. Zde se instalují normální aktualizace. Instalací alternativního sestavení ji natrvalo opustíte.</string>
+    <string name="build_lane_primary_body">Běžná řada vydání: instalují se zde normální aktualizace. Odtud můžete jít jen níž. Když klesnete níž, ocitnete se na alternativních sestaveních, kde od té chvíle můžete jen dál klesat — dokud nepůjdete nahoru, a pak už jen nahoru.</string>
     <string name="build_lane_rollback">Alternativní sestavení pro rollback</string>
-    <string name="build_lane_rollback_body">Alternativní sestavení: opustili jste běžnou řadu vydání, takže se normální aktualizace už neinstalují. Pro návrat proveďte reset (odinstalujte a obnovte frázi pro obnovení).</string>
+    <string name="build_lane_rollback_body">Alternativní sestavení: normální aktualizace se neinstalují. Můžete klesat ke starším verzím, nebo jít nahoru na jakoukoli verzi s jejím sestavením pro návrat. Jakmile jdete nahoru, zbývá už jen nahoru.</string>
     <string name="build_lane_back">Alternativní sestavení pro návrat</string>
-    <string name="build_lane_back_body">Alternativní sestavení: opustili jste běžnou řadu vydání, takže se normální aktualizace už neinstalují. Pro návrat proveďte reset (odinstalujte a obnovte frázi pro obnovení).</string>
+    <string name="build_lane_back_body">Alternativní sestavení: normální aktualizace se neinstalují a odtud vede už jen nahoru — k novějším sestavením pro návrat. Chcete-li znovu klesnout, proveďte reset.</string>
     <string name="downgrade_switch_body">Android toto nenainstaluje přes vaše sestavení na místo. Přepnutím se uloží do Downloads, PocketPRL se odinstaluje a po opětovné instalaci obnovíte peněženku z fráze pro obnovení.</string>
     <string name="downgrade_switch_button">Přepnout na tuto verzi</string>
-    <string name="settings_about_off_primary">Nacházíte se na alternativním sestavení, nikoli na běžné řadě vydání. Normální aktualizace se sem nemohou nainstalovat; pro návrat proveďte reset.</string>
+    <string name="settings_about_off_primary">Nacházíte se na alternativním sestavení, nikoli na běžné řadě vydání.</string>
+    <string name="settings_alt_rollback">Alternativní sestavení pro rollback. Normální aktualizace se neinstalují. Návrat ke starší verzi stále funguje; jít nahoru vás přenese na návratovou dráhu pouze vpřed.</string>
+    <string name="settings_alt_back">Alternativní sestavení pro návrat. Normální aktualizace se neinstalují. Odtud vede už jen vpřed; další klesnutí vyžaduje reset.</string>
+    <string name="settings_about_forward_title">Přejít vpřed</string>
+    <string name="settings_about_forward_body">Tímto se nainstaluje sestavení pro návrat verze %1$s a zůstanete na alternativní dráze, pouze vpřed. Chcete-li znovu klesnout, museli byste provést reset.</string>
+    <string name="settings_about_alt_latest">Nacházíte se na nejnovějším alternativním sestavení.</string>
 </resources>

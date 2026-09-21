@@ -77,6 +77,7 @@ import dev.pocketprl.data.ThemeMode
 import dev.pocketprl.data.VersionLane
 import dev.pocketprl.data.update.ReleaseInfo
 import dev.pocketprl.data.update.UpdateChecker
+import dev.pocketprl.data.update.bestAssetFor
 import dev.pocketprl.data.vault.SeedMaterial
 import dev.pocketprl.ui.Biometrics
 import dev.pocketprl.ui.PermissionOutcome
@@ -198,6 +199,10 @@ fun SettingsScreen(
 
     ScreenScaffold(title = stringResource(R.string.settings_title), onBack = onBack) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 2.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            if (!BuildInfo.isPrimary) {
+                // Yellow: off the regular line is a state to be aware of, not an error.
+                InfoBanner(stringResource(if (BuildInfo.lane == VersionLane.ROLLBACK) R.string.settings_alt_rollback else R.string.settings_alt_back), BannerKind.WARNING)
+            }
             SectionTitle(stringResource(R.string.settings_section_wallet))
             SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_name), vm.walletName, onClick = { showRename = true }, icon = Icons.Filled.Edit)
@@ -899,6 +904,7 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> U
     var upToDate by remember { mutableStateOf(false) }
     var failed by remember { mutableStateOf(false) }
     var offPrimary by remember { mutableStateOf(false) }
+    var forward by remember { mutableStateOf(false) }
     val updater = appContainer().updater
 
     ScreenScaffold(title = stringResource(R.string.settings_about_title), onBack = onBack) {
@@ -922,15 +928,19 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> U
                     upToDate = false
                     failed = false
                     offPrimary = false
+                    forward = false
                     checking = true
                     scope.launch {
                         val release = UpdateChecker.latest()
                         checking = false
                         when {
                             release == null -> failed = true
-                            // Normal updates are primary builds; they cannot install over
-                            // an alternate build, so say so instead of offering a dead end.
-                            !BuildInfo.isPrimary -> { haptics.tick(); offPrimary = true }
+                            // Off the regular line: normal updates cannot install, but a
+                            // return build of a newer version can. Offer that as "forward".
+                            !BuildInfo.isPrimary -> {
+                                if (release.bestAssetFor(BuildInfo.code) != null) { haptics.confirm(); forward = true; pending = release }
+                                else { haptics.tick(); offPrimary = true }
+                            }
                             UpdateChecker.compare(release.version, BuildConfig.VERSION_NAME) > 0 -> { haptics.confirm(); pending = release }
                             else -> { haptics.tick(); upToDate = true }
                         }
@@ -939,7 +949,7 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> U
             )
             if (upToDate) InfoBanner(stringResource(R.string.settings_about_latest, BuildConfig.VERSION_NAME), BannerKind.SUCCESS)
             if (failed) InfoBanner(stringResource(R.string.settings_about_failed), BannerKind.ERROR)
-            if (offPrimary) InfoBanner(stringResource(R.string.settings_about_off_primary), BannerKind.ERROR)
+            if (offPrimary) InfoBanner(stringResource(R.string.settings_about_alt_latest), BannerKind.WARNING)
 
             SecondaryButton(stringResource(R.string.settings_about_downgrade), onClick = { haptics.click(); onOpenDowngrade() })
 
@@ -958,15 +968,20 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> U
     pending?.let { release ->
         AlertDialog(
             onDismissRequest = { pending = null },
-            title = { Text(stringResource(R.string.settings_about_update_title)) },
-            text = { Text(stringResource(R.string.settings_about_update_body, release.version, BuildConfig.VERSION_NAME)) },
+            title = { Text(stringResource(if (forward) R.string.settings_about_forward_title else R.string.settings_about_update_title)) },
+            text = {
+                Text(
+                    if (forward) stringResource(R.string.settings_about_forward_body, release.version)
+                    else stringResource(R.string.settings_about_update_body, release.version, BuildConfig.VERSION_NAME),
+                )
+            },
             confirmButton = {
                 TextButton(onClick = {
                     pending = null
                     haptics.confirm()
                     // Old releases without an attached APK still open the release page.
                     if (release.apkUrl == null) open(release.htmlUrl) else { updater.download(release); onOpenUpdate() }
-                }) { Text(stringResource(R.string.settings_about_update)) }
+                }) { Text(stringResource(if (forward) R.string.settings_about_forward_title else R.string.settings_about_update)) }
             },
             dismissButton = { TextButton(onClick = { pending = null }) { Text(stringResource(R.string.settings_about_later)) } },
         )
