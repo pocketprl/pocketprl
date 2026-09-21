@@ -33,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.pocketprl.R
 import dev.pocketprl.ui.components.FieldShape
+import dev.pocketprl.ui.components.HeroIcon
 import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.components.SecureWindow
@@ -68,12 +69,7 @@ fun EraseWalletScreen(walletName: String, onBack: () -> Unit, onErased: suspend 
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Spacer(Modifier.height(8.dp))
-            Box(
-                modifier = Modifier.size(96.dp).background(MaterialTheme.colorScheme.errorContainer, CircleShape),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(Icons.Filled.Delete, contentDescription = null, tint = MaterialTheme.colorScheme.onErrorContainer, modifier = Modifier.size(44.dp))
-            }
+            HeroIcon(Icons.Filled.Delete, danger = true)
             Text(stringResource(R.string.erase_heading, walletName), style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onBackground)
             Text(stringResource(R.string.erase_body), style = MaterialTheme.typography.bodyMedium, textAlign = TextAlign.Center, color = MaterialTheme.colorScheme.onSurfaceVariant)
 

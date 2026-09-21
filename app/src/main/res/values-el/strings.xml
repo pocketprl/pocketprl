@@ -694,4 +694,27 @@
     <string name="update_err_too_large">Η λήψη ήταν μεγαλύτερη από το αναμενόμενο και σταμάτησε.</string>
     <string name="update_err_incomplete">Η λήψη ήταν ελλιπής και διαγράφηκε.</string>
     <string name="update_err_generic">Κάτι πήγε στραβά κατά τη λήψη της ενημέρωσης.</string>
+
+    <!-- ===================== update / whats new / shortcuts ===================== -->
+    <string name="theme_oled">OLED μαύρο</string>
+    <string name="activity_search">Αναζήτηση συναλλαγών</string>
+    <string name="activity_search_hint">Διεύθυνση, txid, σημείωση ή επαφή</string>
+    <string name="activity_search_clear">Καθαρισμός αναζήτησης</string>
+    <string name="activity_search_no_match">Καμία συναλλαγή δεν ταιριάζει με «%1$s».</string>
+    <string name="update_available">Διαθέσιμη ενημέρωση</string>
+    <string name="update_screen_title">Ενημέρωση</string>
+    <string name="update_hero_title">Ενημέρωση του PocketPRL</string>
+    <string name="update_install_slide_hint">Σύρετε ή πατήστε διπλά για εγκατάσταση της ενημέρωσης</string>
+    <string name="update_install_not_ready">Προετοιμασία της ενημέρωσης…</string>
+    <string name="whatsnew_title">Τι νέο υπάρχει</string>
+    <string name="whatsnew_heading">Ενημερώθηκε σε %1$s</string>
+    <string name="whatsnew_intro">Το PocketPRL ενημερώθηκε. Να τι άλλαξε:</string>
+    <string name="whatsnew_empty">Διορθώσεις σφαλμάτων και βελτιώσεις.</string>
+    <string name="whatsnew_done">Εντάξει</string>
+    <string name="shortcut_send">Αποστολή</string>
+    <string name="shortcut_send_long">Αποστολή πληρωμής</string>
+    <string name="shortcut_receive">Λήψη</string>
+    <string name="shortcut_receive_long">Εμφάνιση της διεύθυνσης λήψης μου</string>
+    <string name="shortcut_scan">Σάρωση</string>
+    <string name="shortcut_scan_long">Σάρωση κωδικού QR πληρωμής</string>
 </resources>

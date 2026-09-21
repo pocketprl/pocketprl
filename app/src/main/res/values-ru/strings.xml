@@ -712,4 +712,25 @@
     <string name="update_err_too_large">Загрузка оказалась больше ожидаемого и была остановлена.</string>
     <string name="update_err_incomplete">Загрузка была неполной и была удалена.</string>
     <string name="update_err_generic">Что-то пошло не так при загрузке обновления.</string>
+    <string name="theme_oled">Чёрный OLED</string>
+    <string name="activity_search">Поиск транзакций</string>
+    <string name="activity_search_hint">Адрес, txid, заметка или контакт</string>
+    <string name="activity_search_clear">Очистить поиск</string>
+    <string name="activity_search_no_match">Нет транзакций, соответствующих «%1$s».</string>
+    <string name="update_available">Доступно обновление</string>
+    <string name="update_screen_title">Обновление</string>
+    <string name="update_hero_title">Обновление PocketPRL</string>
+    <string name="update_install_slide_hint">Сдвиньте или дважды коснитесь, чтобы установить обновление</string>
+    <string name="update_install_not_ready">Подготовка обновления…</string>
+    <string name="whatsnew_title">Что нового</string>
+    <string name="whatsnew_heading">Обновлено до %1$s</string>
+    <string name="whatsnew_intro">PocketPRL был обновлён. Вот что изменилось:</string>
+    <string name="whatsnew_empty">Исправления ошибок и улучшения.</string>
+    <string name="whatsnew_done">Хорошо</string>
+    <string name="shortcut_send">Отправить</string>
+    <string name="shortcut_send_long">Отправить платёж</string>
+    <string name="shortcut_receive">Получить</string>
+    <string name="shortcut_receive_long">Показать адрес для получения</string>
+    <string name="shortcut_scan">Сканировать</string>
+    <string name="shortcut_scan_long">Сканировать QR-код платежа</string>
 </resources>

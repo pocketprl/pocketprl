@@ -694,4 +694,27 @@
     <string name="update_err_too_large">Nedladdningen var större än väntat och avbröts.</string>
     <string name="update_err_incomplete">Nedladdningen var ofullständig och raderades.</string>
     <string name="update_err_generic">Något gick fel när uppdateringen laddades ner.</string>
+
+    <!-- ===================== search / update / whatsnew / shortcuts ===================== -->
+    <string name="theme_oled">OLED svart</string>
+    <string name="activity_search">Sök transaktioner</string>
+    <string name="activity_search_hint">Adress, txid, anteckning eller kontakt</string>
+    <string name="activity_search_clear">Rensa sökning</string>
+    <string name="activity_search_no_match">Inga transaktioner matchar ”%1$s”.</string>
+    <string name="update_available">Uppdatering tillgänglig</string>
+    <string name="update_screen_title">Uppdatering</string>
+    <string name="update_hero_title">Uppdaterar PocketPRL</string>
+    <string name="update_install_slide_hint">Dra eller dubbeltryck för att installera uppdateringen</string>
+    <string name="update_install_not_ready">Förbereder uppdateringen…</string>
+    <string name="whatsnew_title">Nyheter</string>
+    <string name="whatsnew_heading">Uppdaterad till %1$s</string>
+    <string name="whatsnew_intro">PocketPRL uppdaterades. Här är vad som ändrats:</string>
+    <string name="whatsnew_empty">Buggfixar och förbättringar.</string>
+    <string name="whatsnew_done">Okej</string>
+    <string name="shortcut_send">Skicka</string>
+    <string name="shortcut_send_long">Skicka en betalning</string>
+    <string name="shortcut_receive">Ta emot</string>
+    <string name="shortcut_receive_long">Visa min mottagaradress</string>
+    <string name="shortcut_scan">Skanna</string>
+    <string name="shortcut_scan_long">Skanna en QR-betalningskod</string>
 </resources>

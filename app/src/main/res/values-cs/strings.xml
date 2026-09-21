@@ -712,4 +712,26 @@
     <string name="update_err_too_large">Stažení bylo větší, než se očekávalo, a bylo zastaveno.</string>
     <string name="update_err_incomplete">Stažení bylo neúplné a bylo smazáno.</string>
     <string name="update_err_generic">Při stahování aktualizace se něco pokazilo.</string>
+    <!-- ===================== search / update / whats-new ===================== -->
+    <string name="theme_oled">OLED černá</string>
+    <string name="activity_search">Hledat transakce</string>
+    <string name="activity_search_hint">Adresa, txid, poznámka nebo kontakt</string>
+    <string name="activity_search_clear">Vymazat hledání</string>
+    <string name="activity_search_no_match">Žádné transakce neodpovídají „%1$s“.</string>
+    <string name="update_available">Je k dispozici aktualizace</string>
+    <string name="update_screen_title">Aktualizace</string>
+    <string name="update_hero_title">Aktualizace PocketPRL</string>
+    <string name="update_install_slide_hint">Posunutím nebo dvojitým klepnutím nainstalujte aktualizaci</string>
+    <string name="update_install_not_ready">Příprava aktualizace…</string>
+    <string name="whatsnew_title">Co je nového</string>
+    <string name="whatsnew_heading">Aktualizováno na %1$s</string>
+    <string name="whatsnew_intro">PocketPRL byl aktualizován. Co se změnilo:</string>
+    <string name="whatsnew_empty">Opravy chyb a vylepšení.</string>
+    <string name="whatsnew_done">Dobře</string>
+    <string name="shortcut_send">Odeslat</string>
+    <string name="shortcut_send_long">Odeslat platbu</string>
+    <string name="shortcut_receive">Přijmout</string>
+    <string name="shortcut_receive_long">Zobrazit mou přijímací adresu</string>
+    <string name="shortcut_scan">Skenovat</string>
+    <string name="shortcut_scan_long">Naskenovat platební QR kód</string>
 </resources>

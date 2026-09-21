@@ -41,14 +41,20 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- pearl:<address>?amount=… payment links open Send prefilled. -->
+            <!-- pearl:<address>?amount=… payment links open Send prefilled.
+                 pocketprl:// routes app shortcuts and payment-notification taps. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="pearl" />
                 <data android:scheme="prl" />
+                <data android:scheme="pocketprl" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
 
         <!-- zxing scanner, locked to portrait like the rest of the app. -->

@@ -145,6 +145,11 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
         if (cameraDenied != null && Permissions.granted(context, android.Manifest.permission.CAMERA)) cameraDenied = null
         onPauseOrDispose {}
     }
+    // The scan app shortcut lands here with a request to open the scanner.
+    val scanRequested by container.requestScan.collectAsStateWithLifecycle()
+    LaunchedEffect(scanRequested) {
+        if (scanRequested) { container.requestScan.value = false; scan() }
+    }
 
     AnimatedContent(
         targetState = s.sentTxid,

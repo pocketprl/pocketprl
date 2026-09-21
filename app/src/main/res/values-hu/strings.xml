@@ -693,4 +693,27 @@
     <string name="update_err_too_large">A letöltés a vártnál nagyobb volt, ezért leállítottuk.</string>
     <string name="update_err_incomplete">A letöltés hiányos volt, ezért töröltük.</string>
     <string name="update_err_generic">Hiba történt a frissítés letöltése közben.</string>
+
+    <!-- ===================== search / update / what's new ===================== -->
+    <string name="theme_oled">OLED fekete</string>
+    <string name="activity_search">Tranzakciók keresése</string>
+    <string name="activity_search_hint">Cím, txid, jegyzet vagy névjegy</string>
+    <string name="activity_search_clear">Keresés törlése</string>
+    <string name="activity_search_no_match">Egyetlen tranzakció sem egyezik ezzel: „%1$s”.</string>
+    <string name="update_available">Frissítés elérhető</string>
+    <string name="update_screen_title">Frissítés</string>
+    <string name="update_hero_title">A PocketPRL frissítése</string>
+    <string name="update_install_slide_hint">Csúsztasd vagy koppints duplán a frissítés telepítéséhez</string>
+    <string name="update_install_not_ready">A frissítés előkészítése…</string>
+    <string name="whatsnew_title">Újdonságok</string>
+    <string name="whatsnew_heading">Frissítve erre: %1$s</string>
+    <string name="whatsnew_intro">A PocketPRL frissült. Íme, mi változott:</string>
+    <string name="whatsnew_empty">Hibajavítások és fejlesztések.</string>
+    <string name="whatsnew_done">Rendben</string>
+    <string name="shortcut_send">Küldés</string>
+    <string name="shortcut_send_long">Fizetés küldése</string>
+    <string name="shortcut_receive">Fogadás</string>
+    <string name="shortcut_receive_long">Fogadási címem megjelenítése</string>
+    <string name="shortcut_scan">Beolvasás</string>
+    <string name="shortcut_scan_long">Fizetési QR-kód beolvasása</string>
 </resources>

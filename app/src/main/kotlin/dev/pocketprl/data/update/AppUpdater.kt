@@ -39,7 +39,7 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
         data class Downloading(val fileName: String, val bytes: Long, val total: Long) : State
         object Verifying : State
         /** [expected] is null when the release published no checksum. */
-        data class Ready(val file: File, val actualSha256: String, val expected: String?) : State
+        data class Ready(val file: File, val actualSha256: String, val expected: String?, val release: ReleaseInfo) : State
         data class Failed(val reason: Failure) : State
     }
 
@@ -107,7 +107,7 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
                     throw DownloadException(Failure.CHECKSUM)
                 }
                 if (!signerMatches(file)) throw DownloadException(Failure.SIGNATURE)
-                _state.value = State.Ready(file, actual, info.sha256)
+                _state.value = State.Ready(file, actual, info.sha256, info)
             } catch (e: CancellationException) {
                 file.delete()
                 _state.value = State.Idle

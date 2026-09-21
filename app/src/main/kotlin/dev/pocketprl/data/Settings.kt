@@ -15,7 +15,9 @@ import java.util.Locale
 
 /** Non-secret preferences. */
 enum class ThemeMode(val id: String) {
-    AUTO("auto"), LIGHT("light"), DARK("dark");
+    AUTO("auto"), LIGHT("light"), DARK("dark"),
+    /** Dark with true-black surfaces, for OLED panels. */
+    OLED("oled");
     companion object {
         fun fromId(id: String?): ThemeMode = entries.firstOrNull { it.id == id } ?: AUTO
     }
@@ -70,6 +72,9 @@ class Settings(context: Context) {
         val secureAllScreens: Boolean,
         val pollMode: PollMode,
         val preferredNetwork: Network,
+        /** Version staged for the post-install "what's new" popup; empty when there is none. */
+        val whatsNewVersion: String,
+        val whatsNewNotes: String,
     )
 
     private val _state = MutableStateFlow(read())
@@ -123,6 +128,8 @@ class Settings(context: Context) {
             secureAllScreens = prefs.getBoolean(KEY_SECURE_ALL, false),
             pollMode = PollMode.fromId(prefs.getString(KEY_POLL_MODE, PollMode.BALANCED.id)),
             preferredNetwork = Network.fromId(prefs.getString(KEY_PREF_NETWORK, null)),
+            whatsNewVersion = prefs.getString(KEY_WHATS_NEW_VERSION, "") ?: "",
+            whatsNewNotes = prefs.getString(KEY_WHATS_NEW_NOTES, "") ?: "",
         )
         applyFormat(snap)
         return snap
@@ -273,6 +280,24 @@ class Settings(context: Context) {
         get() = _state.value.preferredNetwork
         set(v) = edit { putString(KEY_PREF_NETWORK, v.id) }
 
+    /**
+     * Records the version and notes to show in the "what's new" popup once the
+     * update is actually installed. Called just before handing the APK to the
+     * installer, so a cancelled install leaves it pointing at a version that is
+     * not on the device yet — harmless, it only fires when it matches the running
+     * version.
+     */
+    fun stageWhatsNew(version: String, notes: String?) = edit {
+        putString(KEY_WHATS_NEW_VERSION, version)
+        putString(KEY_WHATS_NEW_NOTES, notes.orEmpty())
+    }
+
+    /** Clears the staged popup after the user dismissed it. */
+    fun clearWhatsNew() = edit {
+        remove(KEY_WHATS_NEW_VERSION)
+        remove(KEY_WHATS_NEW_NOTES)
+    }
+
     companion object {
         const val PREFS_NAME = "pocketprl.settings"
         const val KEY_APP_LANGUAGE = "app_language"
@@ -303,5 +328,7 @@ class Settings(context: Context) {
         private const val KEY_START_HIDDEN = "start_hidden"
         private const val KEY_SECURE_ALL = "secure_all_screens"
         private const val KEY_POLL_MODE = "poll_mode"
+        private const val KEY_WHATS_NEW_VERSION = "whats_new_version"
+        private const val KEY_WHATS_NEW_NOTES = "whats_new_notes"
     }
 }

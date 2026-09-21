@@ -16,6 +16,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -103,23 +105,37 @@ fun ActivityScreen(vm: WalletViewModel, onTx: (String) -> Unit, onBack: () -> Un
     val scope = rememberCoroutineScope()
     val leavingApp = rememberLeaveAppMarker()
     var filter by rememberSaveable { mutableStateOf(TxFilter.ALL) }
+    var query by rememberSaveable { mutableStateOf("") }
+    var searchOpen by rememberSaveable { mutableStateOf(false) }
     // Null until the first load so the empty state does not flash.
     val loaded by produceState<List<TxRow>?>(initialValue = null, snap.revision) {
         value = withContext(Dispatchers.IO) { vm.allTxs() }
     }
     val all = loaded
-    val txs = remember(all, filter) {
-        when (filter) {
+    val q = query.trim().lowercase()
+    val txs = remember(all, filter, q, snap.revision) {
+        val base = when (filter) {
             TxFilter.ALL -> all
             TxFilter.IN -> all?.filter { it.kind == TxKind.RECEIVED }
             TxFilter.OUT -> all?.filter { it.kind == TxKind.SENT || it.kind == TxKind.SELF }
             TxFilter.MINED -> all?.filter { it.kind == TxKind.MINED }
+        } ?: return@remember null
+        if (q.isEmpty()) base else base.filter { tx ->
+            tx.txid.lowercase().contains(q) ||
+                tx.counterparty?.lowercase()?.contains(q) == true ||
+                tx.ownAddress?.lowercase()?.contains(q) == true ||
+                tx.counterparty?.let { snap.contactNames[it]?.lowercase()?.contains(q) } == true ||
+                snap.notes[tx.txid]?.lowercase()?.contains(q) == true
         }
     }
     ScreenScaffold(
         title = stringResource(R.string.activity_title),
         onBack = onBack,
         actions = {
+            if (!all.isNullOrEmpty()) IconButton(onClick = {
+                searchOpen = !searchOpen
+                if (!searchOpen) query = "" // closing search clears it
+            }) { Icon(if (searchOpen) Icons.Filled.Close else Icons.Filled.Search, contentDescription = stringResource(R.string.activity_search)) }
             if (!all.isNullOrEmpty()) IconButton(onClick = {
                 scope.launch {
                     val intent = withContext(Dispatchers.IO) { runCatching { vm.exportCsvIntent(context) }.getOrNull() }
@@ -129,12 +145,35 @@ fun ActivityScreen(vm: WalletViewModel, onTx: (String) -> Unit, onBack: () -> Un
         },
     ) {
         val haptics = rememberHaptics()
+        if (searchOpen) {
+            OutlinedTextField(
+                value = query,
+                onValueChange = { query = it },
+                placeholder = { Text(stringResource(R.string.activity_search_hint)) },
+                leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
+                trailingIcon = {
+                    if (query.isNotEmpty()) IconButton(onClick = { query = "" }) { Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.activity_search_clear)) }
+                },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 4.dp),
+                shape = FieldShape,
+            )
+        }
         Row(modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 20.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             for (f in TxFilter.entries) FilterChip(selected = filter == f, onClick = { if (filter != f) haptics.tick(); filter = f }, label = { Text(f.label()) })
         }
         if (all == null || txs == null) { LoadingBlock(stringResource(R.string.activity_loading)); return@ScreenScaffold }
         if (txs.isEmpty()) {
-            EmptyState(AppIcons.History, if (all.isEmpty()) stringResource(R.string.activity_none) else stringResource(R.string.activity_nothing), text = if (all.isEmpty()) stringResource(R.string.activity_none_body) else null)
+            val searching = q.isNotEmpty()
+            EmptyState(
+                AppIcons.History,
+                if (all.isEmpty()) stringResource(R.string.activity_none) else stringResource(R.string.activity_nothing),
+                text = when {
+                    searching -> stringResource(R.string.activity_search_no_match, query.trim())
+                    all.isEmpty() -> stringResource(R.string.activity_none_body)
+                    else -> null
+                },
+            )
             return@ScreenScaffold
         }
         // The pull indicator only shows for an actual pull, not for background polls.

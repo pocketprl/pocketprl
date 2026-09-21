@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Home-screen long-press shortcuts. Each opens MainActivity with a pocketprl://
+  URI that MainActivity routes (see handleIntent): send/receive navigate, scan
+  opens Send and pops the QR scanner.
+-->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="send"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_send"
+        android:shortcutShortLabel="@string/shortcut_send"
+        android:shortcutLongLabel="@string/shortcut_send_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="pocketprl://send" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="receive"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_receive"
+        android:shortcutShortLabel="@string/shortcut_receive"
+        android:shortcutLongLabel="@string/shortcut_receive_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="pocketprl://receive" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="scan"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_scan"
+        android:shortcutShortLabel="@string/shortcut_scan"
+        android:shortcutLongLabel="@string/shortcut_scan_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="pocketprl://scan" />
+    </shortcut>
+</shortcuts>

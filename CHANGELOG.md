@@ -1,5 +1,26 @@
 # Changelog
 
+## 2.3.0
+
+* **Transaction search.** Activity has a search field that matches an address,
+  txid, contact name or note, on top of the existing filters.
+* **Notification deep links.** Tapping an incoming-payment notification now opens
+  that transaction directly once the wallet is unlocked, instead of the app root.
+* **App shortcuts.** Long-press the launcher icon for Send, Receive and Scan,
+  each with its own monochrome icon; Scan opens Send and pops the QR reader.
+* **Balances in the wallet switcher.** Each wallet shows its balance (respecting
+  Hide balances), so several wallets are easy to tell apart at a glance.
+* **OLED black theme.** A true-black dark theme (pure #000000 surfaces) in both
+  theme pickers, kept separate from the regular dark theme.
+* **Update indicator.** A red dot appears on the dashboard's settings button and
+  on the About row when a newer release is available.
+* **What's new.** After an in-app update installs, the next unlock shows a
+  full-screen summary of the release notes with a single Okay button.
+* **Full-screen update flow.** Tapping Update now opens a full-screen screen in
+  the same style as "what's new", and installing uses slide-to-confirm once the
+  package has been downloaded and verified.
+* New strings localized into all 18 supported languages.
+
 ## 2.2.1
 
 * **Tighter settings.** The settings list rows and section cards use less

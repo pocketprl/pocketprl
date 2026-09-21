@@ -694,4 +694,26 @@
     <string name="update_err_too_large">Downloadet var større end forventet og blev stoppet.</string>
     <string name="update_err_incomplete">Downloadet var ufuldstændigt og blev slettet.</string>
     <string name="update_err_generic">Noget gik galt under download af opdateringen.</string>
+    <!-- ===================== search / update / whats-new ===================== -->
+    <string name="theme_oled">OLED-sort</string>
+    <string name="activity_search">Søg i transaktioner</string>
+    <string name="activity_search_hint">Adresse, txid, note eller kontakt</string>
+    <string name="activity_search_clear">Ryd søgning</string>
+    <string name="activity_search_no_match">Ingen transaktioner matcher “%1$s”.</string>
+    <string name="update_available">Opdatering tilgængelig</string>
+    <string name="update_screen_title">Opdatering</string>
+    <string name="update_hero_title">Opdaterer PocketPRL</string>
+    <string name="update_install_slide_hint">Træk eller dobbelttryk for at installere opdateringen</string>
+    <string name="update_install_not_ready">Forbereder opdateringen…</string>
+    <string name="whatsnew_title">Hvad er nyt</string>
+    <string name="whatsnew_heading">Opdateret til %1$s</string>
+    <string name="whatsnew_intro">PocketPRL blev opdateret. Her er, hvad der er ændret:</string>
+    <string name="whatsnew_empty">Fejlrettelser og forbedringer.</string>
+    <string name="whatsnew_done">Okay</string>
+    <string name="shortcut_send">Send</string>
+    <string name="shortcut_send_long">Send en betaling</string>
+    <string name="shortcut_receive">Modtag</string>
+    <string name="shortcut_receive_long">Vis min modtagelsesadresse</string>
+    <string name="shortcut_scan">Scan</string>
+    <string name="shortcut_scan_long">Scan en betalings-QR-kode</string>
 </resources>

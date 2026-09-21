@@ -422,6 +422,25 @@ fun WordChip(index: Int, word: String, modifier: Modifier = Modifier) {
 }
 
 /** Circle with the contact's initial, used wherever a contact name is shown. */
+/**
+ * The large circled icon used at the top of full-screen confirmations and
+ * "what's new" screens, so they all read as the same kind of screen.
+ */
+@Composable
+fun HeroIcon(icon: ImageVector, modifier: Modifier = Modifier, danger: Boolean = false, size: androidx.compose.ui.unit.Dp = 96.dp) {
+    val bg = if (danger) MaterialTheme.colorScheme.errorContainer else MaterialTheme.colorScheme.primaryContainer
+    val fg = if (danger) MaterialTheme.colorScheme.onErrorContainer else MaterialTheme.colorScheme.onPrimaryContainer
+    Box(modifier.size(size).background(bg, CircleShape), contentAlignment = Alignment.Center) {
+        Icon(icon, contentDescription = null, tint = fg, modifier = Modifier.size(size * 0.46f))
+    }
+}
+
+/** Small red dot marking a settings entry that has an available update. */
+@Composable
+fun UpdateDot(modifier: Modifier = Modifier) {
+    Box(modifier.size(9.dp).background(MaterialTheme.colorScheme.error, CircleShape))
+}
+
 @Composable
 fun ContactAvatar(name: String, modifier: Modifier = Modifier, size: androidx.compose.ui.unit.Dp = 40.dp) {
     val initial = name.trim().firstOrNull()?.uppercaseChar()?.toString() ?: "?"

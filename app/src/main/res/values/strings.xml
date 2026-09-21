@@ -259,6 +259,10 @@
     <!-- ===================== activity ===================== -->
     <string name="activity_title">Activity</string>
     <string name="activity_export">Export CSV</string>
+    <string name="activity_search">Search transactions</string>
+    <string name="activity_search_hint">Address, txid, note or contact</string>
+    <string name="activity_search_clear">Clear search</string>
+    <string name="activity_search_no_match">No transactions match “%1$s”.</string>
     <string name="activity_loading">Loading history…</string>
     <string name="activity_none">No activity yet</string>
     <string name="activity_nothing">Nothing here</string>
@@ -470,6 +474,26 @@
     <string name="update_err_too_large">The download was larger than expected and was stopped.</string>
     <string name="update_err_incomplete">The download was incomplete and was deleted.</string>
     <string name="update_err_generic">Something went wrong while downloading the update.</string>
+    <string name="update_available">Update available</string>
+    <string name="update_screen_title">Update</string>
+    <string name="update_hero_title">Updating PocketPRL</string>
+    <string name="update_install_slide_hint">Slide or double-tap to install the update</string>
+    <string name="update_install_not_ready">Preparing the update…</string>
+
+    <!-- ===================== what's new ===================== -->
+    <string name="whatsnew_title">What’s new</string>
+    <string name="whatsnew_heading">Updated to %1$s</string>
+    <string name="whatsnew_intro">PocketPRL was updated. Here’s what changed:</string>
+    <string name="whatsnew_empty">Bug fixes and improvements.</string>
+    <string name="whatsnew_done">Okay</string>
+
+    <!-- ===================== app shortcuts ===================== -->
+    <string name="shortcut_send">Send</string>
+    <string name="shortcut_send_long">Send a payment</string>
+    <string name="shortcut_receive">Receive</string>
+    <string name="shortcut_receive_long">Show my receive address</string>
+    <string name="shortcut_scan">Scan</string>
+    <string name="shortcut_scan_long">Scan a payment QR code</string>
     <string name="settings_about_version_label">Version</string>
     <string name="settings_about_network">Network</string>
     <string name="settings_about_coin_type">Coin type</string>
@@ -545,6 +569,7 @@
     <string name="theme_auto">Auto (system)</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
+    <string name="theme_oled">OLED black</string>
     <string name="accent_pearl">Pearl</string>
     <string name="accent_ocean">Ocean</string>
     <string name="accent_sunset">Sunset</string>

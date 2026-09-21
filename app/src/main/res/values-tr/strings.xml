@@ -693,4 +693,27 @@
     <string name="update_err_too_large">İndirme beklenenden büyüktü ve durduruldu.</string>
     <string name="update_err_incomplete">İndirme tamamlanmadı ve silindi.</string>
     <string name="update_err_generic">Güncelleme indirilirken bir şeyler ters gitti.</string>
+
+    <!-- ===================== search / update / whatsnew / shortcuts ===================== -->
+    <string name="theme_oled">OLED siyah</string>
+    <string name="activity_search">İşlemlerde ara</string>
+    <string name="activity_search_hint">Adres, txid, not veya kişi</string>
+    <string name="activity_search_clear">Aramayı temizle</string>
+    <string name="activity_search_no_match">“%1$s” ile eşleşen işlem yok.</string>
+    <string name="update_available">Güncelleme mevcut</string>
+    <string name="update_screen_title">Güncelleme</string>
+    <string name="update_hero_title">PocketPRL güncelleniyor</string>
+    <string name="update_install_slide_hint">Güncellemeyi kurmak için kaydırın veya çift dokunun</string>
+    <string name="update_install_not_ready">Güncelleme hazırlanıyor…</string>
+    <string name="whatsnew_title">Yenilikler</string>
+    <string name="whatsnew_heading">%1$s sürümüne güncellendi</string>
+    <string name="whatsnew_intro">PocketPRL güncellendi. İşte değişenler:</string>
+    <string name="whatsnew_empty">Hata düzeltmeleri ve iyileştirmeler.</string>
+    <string name="whatsnew_done">Tamam</string>
+    <string name="shortcut_send">Gönder</string>
+    <string name="shortcut_send_long">Ödeme gönder</string>
+    <string name="shortcut_receive">Al</string>
+    <string name="shortcut_receive_long">Alım adresimi göster</string>
+    <string name="shortcut_scan">Tara</string>
+    <string name="shortcut_scan_long">Ödeme QR kodunu tara</string>
 </resources>

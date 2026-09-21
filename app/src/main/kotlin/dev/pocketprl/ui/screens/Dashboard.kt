@@ -79,7 +79,9 @@ import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.theme.LocalReducedMotion
 import dev.pocketprl.ui.theme.PearlTheme
 import dev.pocketprl.ui.theme.TabularNumbers
+import dev.pocketprl.ui.components.UpdateDot
 import dev.pocketprl.ui.vm.WalletViewModel
+import dev.pocketprl.ui.vm.appContainer
 import java.util.Locale
 import kotlin.math.abs
 
@@ -135,12 +137,18 @@ fun DashboardContent(
     onLock: () -> Unit,
 ) {
     val appName = stringResource(R.string.app_name)
+    val container = appContainer()
+    val updateAvailable by container.updateAvailable.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) { container.checkForUpdate() }
     ScreenScaffold(
         title = snap.walletName.ifBlank { appName },
         subtitle = if (walletCount > 1) pluralStringResource(R.plurals.dash_wallets, walletCount, walletCount, snap.network.displayName) else null,
         onTitleClick = onSwitchWallet,
         actions = {
-            IconButton(onClick = onSettings) { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings_title)) }
+            Box {
+                IconButton(onClick = onSettings) { Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings_title)) }
+                if (updateAvailable) UpdateDot(Modifier.align(Alignment.TopEnd).padding(top = 10.dp, end = 10.dp))
+            }
             IconButton(onClick = onLock) { Icon(Icons.Filled.Lock, contentDescription = stringResource(R.string.action_lock)) }
         },
     ) {

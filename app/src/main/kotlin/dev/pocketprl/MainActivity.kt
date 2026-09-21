@@ -27,7 +27,7 @@ class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        handlePaymentIntent(intent)
+        handleIntent(intent)
         setContent {
             val container = (application as PocketPrlApp).container
             val settings by container.settings.state.collectAsStateWithLifecycle()
@@ -56,14 +56,29 @@ class MainActivity : FragmentActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        handlePaymentIntent(intent)
+        handleIntent(intent)
     }
 
-    private fun handlePaymentIntent(intent: Intent?) {
-        val data = intent?.dataString ?: return
-        if (intent.action == Intent.ACTION_VIEW && Qr.isPaymentUri(data)) {
-            (application as PocketPrlApp).container.pendingPaymentUri.value = data
+    /**
+     * Routes the three ways the app can be opened with a URI: a `pearl:` payment
+     * link (Send prefilled), a `pocketprl://tx/<txid>` deep link from a payment
+     * notification, and the `pocketprl://send|receive|scan` app shortcuts.
+     */
+    private fun handleIntent(intent: Intent?) {
+        if (intent?.action != Intent.ACTION_VIEW) return
+        val uri = intent.data ?: return
+        val container = (application as PocketPrlApp).container
+        if (uri.scheme.equals("pocketprl", ignoreCase = true)) {
+            when (uri.host?.lowercase()) {
+                "send" -> container.pendingShortcut.value = Shortcut.SEND
+                "receive" -> container.pendingShortcut.value = Shortcut.RECEIVE
+                "scan" -> container.pendingShortcut.value = Shortcut.SCAN
+                "tx" -> uri.lastPathSegment?.takeIf { it.isNotBlank() }?.let { container.pendingTxid.value = it }
+            }
+            return
         }
+        val data = intent.dataString ?: return
+        if (Qr.isPaymentUri(data)) container.pendingPaymentUri.value = data
     }
 
     override fun onUserInteraction() {

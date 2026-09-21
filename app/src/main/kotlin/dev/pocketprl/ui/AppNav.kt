@@ -25,6 +25,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dev.pocketprl.AppContainer
+import dev.pocketprl.BuildConfig
+import dev.pocketprl.Shortcut
 import dev.pocketprl.data.WalletContext
 import dev.pocketprl.ui.screens.AboutScreen
 import dev.pocketprl.ui.screens.ActivityScreen
@@ -44,7 +46,9 @@ import dev.pocketprl.ui.screens.SettingsScreen
 import dev.pocketprl.ui.screens.StatsScreen
 import dev.pocketprl.ui.screens.TxDetailScreen
 import dev.pocketprl.ui.screens.UnlockScreen
+import dev.pocketprl.ui.screens.UpdateScreen
 import dev.pocketprl.ui.screens.WelcomeScreen
+import dev.pocketprl.ui.screens.WhatsNewScreen
 import dev.pocketprl.ui.vm.OnboardingViewModel
 import dev.pocketprl.ui.vm.SendViewModel
 import dev.pocketprl.ui.vm.SettingsViewModel
@@ -72,7 +76,9 @@ object Routes {
     const val CONTACTS = "settings/contacts"
     const val STATS = "settings/stats"
     const val ABOUT = "settings/about"
+    const val UPDATE = "update"
     const val ERASE = "erase"
+    const val WHATS_NEW = "whatsnew"
 
     fun personalize(next: String) = "personalize/$next"
 
@@ -196,6 +202,9 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
     val walletVm: WalletViewModel = appViewModel()
     val unlocked by walletVm.unlocked.collectAsStateWithLifecycle()
     val pendingPayment by container.pendingPaymentUri.collectAsStateWithLifecycle()
+    val settings by container.settings.state.collectAsStateWithLifecycle()
+    val pendingTxid by container.pendingTxid.collectAsStateWithLifecycle()
+    val pendingShortcut by container.pendingShortcut.collectAsStateWithLifecycle()
     val backStack by nav.currentBackStackEntryAsState()
     val route = backStack?.destination?.route
 
@@ -217,6 +226,37 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
     LaunchedEffect(pendingPayment, unlocked, route) {
         if (pendingPayment != null && unlocked && route != null && route !in Routes.PUBLIC && route != Routes.SEND) {
             nav.navigate(Routes.SEND) { launchSingleTop = true }
+        }
+    }
+
+    // A tapped payment notification opens its transaction.
+    LaunchedEffect(pendingTxid, unlocked, route) {
+        val txid = pendingTxid ?: return@LaunchedEffect
+        if (unlocked && route != null && route !in Routes.PUBLIC) {
+            nav.navigate("tx/$txid") { launchSingleTop = true }
+            container.pendingTxid.value = null
+        }
+    }
+
+    // A home-screen shortcut.
+    LaunchedEffect(pendingShortcut, unlocked, route) {
+        val shortcut = pendingShortcut ?: return@LaunchedEffect
+        if (unlocked && route != null && route !in Routes.PUBLIC) {
+            when (shortcut) {
+                Shortcut.SEND -> nav.navigate(Routes.SEND) { launchSingleTop = true }
+                Shortcut.RECEIVE -> nav.navigate(Routes.RECEIVE) { launchSingleTop = true }
+                Shortcut.SCAN -> { container.requestScan.value = true; nav.navigate(Routes.SEND) { launchSingleTop = true } }
+            }
+            container.pendingShortcut.value = null
+        }
+    }
+
+    // The post-update "what's new", once, after unlock, on the version that was installed.
+    LaunchedEffect(unlocked, route, settings.whatsNewVersion) {
+        if (unlocked && route != null && route !in Routes.PUBLIC && route != Routes.WHATS_NEW &&
+            settings.whatsNewVersion.isNotEmpty() && settings.whatsNewVersion == BuildConfig.VERSION_NAME
+        ) {
+            nav.navigate(Routes.WHATS_NEW) { launchSingleTop = true }
         }
     }
 
@@ -281,12 +321,20 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
                 onErased = { container.deleteWallet(ctx.id) },
             )
         }
+        composable(Routes.UPDATE) { UpdateScreen(onBack = { nav.popBackStack() }) }
+        composable(Routes.WHATS_NEW) {
+            WhatsNewScreen(
+                version = settings.whatsNewVersion,
+                notes = settings.whatsNewNotes,
+                onDone = { container.settings.clearWhatsNew(); nav.resetTo(Routes.HOME) },
+            )
+        }
         composable(Routes.PASSWORD) { val vm: SettingsViewModel = appViewModel(); ChangePasswordScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.SEED) { val vm: SettingsViewModel = appViewModel(); RevealSeedScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.NETWORK) { val vm: SettingsViewModel = appViewModel(); NetworkSettingsScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.ADDRESSES) { val vm: SettingsViewModel = appViewModel(); AddressesScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.CONTACTS) { val vm: SettingsViewModel = appViewModel(); ContactsScreen(vm, onBack = { nav.popBackStack() }) }
         composable(Routes.STATS) { val vm: SettingsViewModel = appViewModel(); StatsScreen(vm, onBack = { nav.popBackStack() }) }
-        composable(Routes.ABOUT) { val vm: SettingsViewModel = appViewModel(); AboutScreen(vm, onBack = { nav.popBackStack() }) }
+        composable(Routes.ABOUT) { val vm: SettingsViewModel = appViewModel(); AboutScreen(vm, onBack = { nav.popBackStack() }, onOpenUpdate = { nav.navigate(Routes.UPDATE) }) }
     }
 }

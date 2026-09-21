@@ -104,7 +104,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
         SectionTitle(stringResource(R.string.personalize_section_look))
         SectionCard {
             Segmented(
-                options = listOf(ThemeMode.AUTO, ThemeMode.LIGHT, ThemeMode.DARK),
+                options = listOf(ThemeMode.AUTO, ThemeMode.LIGHT, ThemeMode.DARK, ThemeMode.OLED),
                 selected = settings.themeMode,
                 label = { stringResource(themeLabelRes(it)) },
                 onSelect = { haptics.tick(); container.settings.themeMode = it },
@@ -282,4 +282,5 @@ private fun themeLabelRes(mode: ThemeMode) = when (mode) {
     ThemeMode.AUTO -> R.string.theme_auto
     ThemeMode.LIGHT -> R.string.theme_light
     ThemeMode.DARK -> R.string.theme_dark
+    ThemeMode.OLED -> R.string.theme_oled
 }

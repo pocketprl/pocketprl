@@ -702,4 +702,25 @@
     <string name="update_err_too_large">Descărcarea a fost mai mare decât era de așteptat și a fost oprită.</string>
     <string name="update_err_incomplete">Descărcarea a fost incompletă și a fost ștearsă.</string>
     <string name="update_err_generic">Ceva a mers prost la descărcarea actualizării.</string>
+    <string name="theme_oled">OLED negru</string>
+    <string name="activity_search">Caută tranzacții</string>
+    <string name="activity_search_hint">Adresă, txid, notă sau contact</string>
+    <string name="activity_search_clear">Golește căutarea</string>
+    <string name="activity_search_no_match">Nicio tranzacție nu corespunde „%1$s”.</string>
+    <string name="update_available">Actualizare disponibilă</string>
+    <string name="update_screen_title">Actualizare</string>
+    <string name="update_hero_title">Se actualizează PocketPRL</string>
+    <string name="update_install_slide_hint">Glisează sau atinge de două ori pentru a instala actualizarea</string>
+    <string name="update_install_not_ready">Se pregătește actualizarea…</string>
+    <string name="whatsnew_title">Ce este nou</string>
+    <string name="whatsnew_heading">Actualizat la %1$s</string>
+    <string name="whatsnew_intro">PocketPRL a fost actualizat. Iată ce s-a schimbat:</string>
+    <string name="whatsnew_empty">Corectarea erorilor și îmbunătățiri.</string>
+    <string name="whatsnew_done">Bine</string>
+    <string name="shortcut_send">Trimite</string>
+    <string name="shortcut_send_long">Trimite o plată</string>
+    <string name="shortcut_receive">Primește</string>
+    <string name="shortcut_receive_long">Arată adresa mea de primire</string>
+    <string name="shortcut_scan">Scanează</string>
+    <string name="shortcut_scan_long">Scanează un cod QR de plată</string>
 </resources>

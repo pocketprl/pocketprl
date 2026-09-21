@@ -151,6 +151,24 @@ private val DarkScheme: ColorScheme = darkColorScheme(
 )
 
 /**
+ * Dark scheme with true-black surfaces for OLED. Background and surface are pure
+ * #000000 so unlit pixels stay off; the container levels keep just enough
+ * separation to remain visible without lighting up large areas.
+ */
+private val OledScheme: ColorScheme = DarkScheme.copy(
+    background = Color.Black,
+    surface = Color.Black,
+    surfaceVariant = Color(0xFF141414),
+    surfaceContainerLowest = Color.Black,
+    surfaceContainerLow = Color(0xFF0A0A0A),
+    surfaceContainer = Color(0xFF0F0F0F),
+    surfaceContainerHigh = Color(0xFF161616),
+    surfaceContainerHighest = Color(0xFF1E1E1E),
+    outline = Color(0xFF3A3A3A),
+    outlineVariant = Color(0xFF242424),
+)
+
+/**
  * Manrope, one variable TTF. An entry per weight so `fontWeight` resolves through
  * the wght axis instead of faux-bolding a single instance.
  */
@@ -194,7 +212,7 @@ val TabularNumbers = TextStyle(fontFeatureSettings = "tnum, lnum")
 
 fun isDarkTheme(mode: ThemeMode, systemDark: Boolean): Boolean = when (mode) {
     ThemeMode.LIGHT -> false
-    ThemeMode.DARK -> true
+    ThemeMode.DARK, ThemeMode.OLED -> true
     ThemeMode.AUTO -> systemDark
 }
 
@@ -239,10 +257,16 @@ fun PocketPrlTheme(
 ) {
     val dark = isDarkTheme(themeMode, isSystemInDarkTheme())
     val context = LocalContext.current
+    val base = when {
+        themeMode == ThemeMode.OLED -> OledScheme
+        dark -> DarkScheme
+        else -> LightScheme
+    }
     val scheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
+        // Dynamic colour has no OLED variant; an explicit OLED choice wins over it.
+        dynamicColor && themeMode != ThemeMode.OLED && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
             if (dark) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        else -> withAccent(if (dark) DarkScheme else LightScheme, accentPrimary(accentTheme, dark), dark)
+        else -> withAccent(base, accentPrimary(accentTheme, dark), dark)
     }
     CompositionLocalProvider(
         LocalPearlPalette provides if (dark) DarkPalette else LightPalette,

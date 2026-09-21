@@ -693,4 +693,27 @@
     <string name="update_err_too_large">De download was groter dan verwacht en is gestopt.</string>
     <string name="update_err_incomplete">De download was onvolledig en is verwijderd.</string>
     <string name="update_err_generic">Er is iets misgegaan bij het downloaden van de update.</string>
+
+    <!-- ===================== search / update / what's new ===================== -->
+    <string name="theme_oled">OLED-zwart</string>
+    <string name="activity_search">Transacties zoeken</string>
+    <string name="activity_search_hint">Adres, transactie-ID, notitie of contact</string>
+    <string name="activity_search_clear">Zoekopdracht wissen</string>
+    <string name="activity_search_no_match">Geen transacties komen overeen met “%1$s”.</string>
+    <string name="update_available">Update beschikbaar</string>
+    <string name="update_screen_title">Update</string>
+    <string name="update_hero_title">PocketPRL bijwerken</string>
+    <string name="update_install_slide_hint">Schuif of dubbeltik om de update te installeren</string>
+    <string name="update_install_not_ready">Update voorbereiden…</string>
+    <string name="whatsnew_title">Wat is er nieuw</string>
+    <string name="whatsnew_heading">Bijgewerkt naar %1$s</string>
+    <string name="whatsnew_intro">PocketPRL is bijgewerkt. Dit is er veranderd:</string>
+    <string name="whatsnew_empty">Bugfixes en verbeteringen.</string>
+    <string name="whatsnew_done">Oké</string>
+    <string name="shortcut_send">Verzenden</string>
+    <string name="shortcut_send_long">Een betaling verzenden</string>
+    <string name="shortcut_receive">Ontvangen</string>
+    <string name="shortcut_receive_long">Mijn ontvangstadres tonen</string>
+    <string name="shortcut_scan">Scannen</string>
+    <string name="shortcut_scan_long">Een betalings-QR-code scannen</string>
 </resources>

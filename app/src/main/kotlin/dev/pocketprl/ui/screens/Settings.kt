@@ -21,6 +21,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Edit
@@ -30,11 +31,9 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
@@ -42,6 +41,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -72,7 +72,6 @@ import dev.pocketprl.core.wallet.AddressVariant
 import dev.pocketprl.data.AccentTheme
 import dev.pocketprl.data.PollMode
 import dev.pocketprl.data.ThemeMode
-import dev.pocketprl.data.update.AppUpdater
 import dev.pocketprl.data.update.ReleaseInfo
 import dev.pocketprl.data.update.UpdateChecker
 import dev.pocketprl.data.vault.SeedMaterial
@@ -103,6 +102,7 @@ import dev.pocketprl.ui.components.SectionTitle
 import dev.pocketprl.ui.components.SecureWindow
 import dev.pocketprl.ui.components.SettingRow
 import dev.pocketprl.ui.components.SlideToConfirm
+import dev.pocketprl.ui.components.UpdateDot
 import dev.pocketprl.ui.components.copyToClipboard
 import dev.pocketprl.ui.components.formatDateTime
 import dev.pocketprl.ui.components.passwordScore
@@ -130,6 +130,9 @@ fun SettingsScreen(
     val settings by vm.settings.collectAsStateWithLifecycle()
     val snap by vm.snapshot.collectAsStateWithLifecycle()
     val wallets by vm.wallets.collectAsStateWithLifecycle()
+    val container = appContainer()
+    val updateAvailable by container.updateAvailable.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) { container.checkForUpdate() }
     val activity = LocalActivity.current as? FragmentActivity
     val scope = rememberCoroutineScope()
     var bioEnabled by remember { mutableStateOf(vm.biometricEnabled) }
@@ -373,7 +376,20 @@ fun SettingsScreen(
 
             SectionTitle(stringResource(R.string.settings_section_about))
             SectionCard(padding = 12.dp) {
-                SettingRow(stringResource(R.string.app_name), stringResource(R.string.settings_about_version, BuildConfig.VERSION_NAME), onClick = onAbout, icon = Icons.Filled.Info)
+                SettingRow(
+                    stringResource(R.string.app_name),
+                    stringResource(R.string.settings_about_version, BuildConfig.VERSION_NAME),
+                    onClick = onAbout,
+                    icon = Icons.Filled.Info,
+                    trailing = {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            if (updateAvailable) {
+                                UpdateDot(Modifier.padding(end = 6.dp))
+                            }
+                            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                        }
+                    },
+                )
             }
 
             SectionTitle(stringResource(R.string.settings_section_danger), color = MaterialTheme.colorScheme.error)
@@ -547,6 +563,7 @@ private fun themeLabel(mode: ThemeMode): String = when (mode) {
     ThemeMode.AUTO -> stringResource(R.string.theme_auto)
     ThemeMode.LIGHT -> stringResource(R.string.theme_light)
     ThemeMode.DARK -> stringResource(R.string.theme_dark)
+    ThemeMode.OLED -> stringResource(R.string.theme_oled)
 }
 
 @Composable
@@ -839,7 +856,7 @@ fun ContactsScreen(vm: SettingsViewModel, onBack: () -> Unit) {
 }
 
 @Composable
-fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
+fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit, onOpenUpdate: () -> Unit) {
     val context = LocalContext.current
     val leavingApp = rememberLeaveAppMarker()
     val scope = rememberCoroutineScope()
@@ -851,8 +868,6 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
     var upToDate by remember { mutableStateOf(false) }
     var failed by remember { mutableStateOf(false) }
     val updater = appContainer().updater
-    val installState by updater.state.collectAsStateWithLifecycle()
-    var installError by remember { mutableStateOf<String?>(null) }
 
     ScreenScaffold(title = stringResource(R.string.settings_about_title), onBack = onBack) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
@@ -871,8 +886,6 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
                 loading = checking,
                 onClick = {
                     haptics.click()
-                    updater.reset()
-                    installError = null
                     upToDate = false
                     failed = false
                     checking = true
@@ -912,105 +925,11 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
                     pending = null
                     haptics.confirm()
                     // Old releases without an attached APK still open the release page.
-                    if (release.apkUrl == null) open(release.htmlUrl) else updater.download(release)
+                    if (release.apkUrl == null) open(release.htmlUrl) else { updater.download(release); onOpenUpdate() }
                 }) { Text(stringResource(R.string.settings_about_update)) }
             },
             dismissButton = { TextButton(onClick = { pending = null }) { Text(stringResource(R.string.settings_about_later)) } },
         )
     }
 
-    when (val st = installState) {
-        is AppUpdater.State.Downloading -> AlertDialog(
-            onDismissRequest = { updater.reset() },
-            title = { Text(stringResource(R.string.update_downloading_title)) },
-            text = {
-                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    MonoText(st.fileName, style = MaterialTheme.typography.bodySmall)
-                    if (st.total > 0) {
-                        LinearProgressIndicator(progress = { (st.bytes.toFloat() / st.total).coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth())
-                        Text(
-                            stringResource(R.string.update_progress_kb, Amount.group(st.bytes / 1024), Amount.group(st.total / 1024)),
-                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    } else {
-                        LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
-                        Text(
-                            stringResource(R.string.update_downloaded_kb, Amount.group(st.bytes / 1024)),
-                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
-                }
-            },
-            confirmButton = {},
-            dismissButton = { TextButton(onClick = { updater.reset() }) { Text(stringResource(R.string.action_cancel)) } },
-        )
-
-        AppUpdater.State.Verifying -> AlertDialog(
-            onDismissRequest = {},
-            title = { Text(stringResource(R.string.update_verifying_title)) },
-            text = {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
-                    Spacer(Modifier.width(12.dp))
-                    Text(stringResource(R.string.update_verifying_body))
-                }
-            },
-            confirmButton = {},
-        )
-
-        is AppUpdater.State.Ready -> AlertDialog(
-            onDismissRequest = { installError = null; updater.reset() },
-            title = { Text(stringResource(R.string.update_ready_title)) },
-            text = {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    MonoText(st.file.name, style = MaterialTheme.typography.bodySmall)
-                    Text(
-                        if (st.expected != null) stringResource(R.string.update_sha_verified) else stringResource(R.string.update_sha_unpublished),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = if (st.expected != null) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    Text(stringResource(R.string.update_signature_verified), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
-                    installError?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
-                }
-            },
-            confirmButton = {
-                TextButton(onClick = {
-                    installError = null
-                    when (updater.install(st.file)) {
-                        AppUpdater.Install.LAUNCHED -> leavingApp()
-                        AppUpdater.Install.NEED_PERMISSION -> {
-                            installError = context.getString(R.string.update_install_permission)
-                            leavingApp()
-                            updater.openInstallPermissionSettings()
-                        }
-                        AppUpdater.Install.FAILED -> installError = context.getString(R.string.update_install_failed)
-                    }
-                }) { Text(stringResource(R.string.update_install)) }
-            },
-            dismissButton = { TextButton(onClick = { installError = null; updater.reset() }) { Text(stringResource(R.string.action_cancel)) } },
-        )
-
-        is AppUpdater.State.Failed -> AlertDialog(
-            onDismissRequest = { updater.reset() },
-            title = { Text(stringResource(R.string.update_failed_title)) },
-            text = { Text(failureMessage(st.reason)) },
-            confirmButton = { TextButton(onClick = { updater.reset() }) { Text(stringResource(R.string.action_close)) } },
-        )
-
-        AppUpdater.State.Idle -> Unit
-    }
 }
-
-/** Localized explanation for a failed download/verification. */
-@Composable
-private fun failureMessage(reason: AppUpdater.Failure): String = stringResource(
-    when (reason) {
-        AppUpdater.Failure.CHECKSUM -> R.string.update_err_checksum
-        AppUpdater.Failure.SIGNATURE -> R.string.update_err_signature
-        AppUpdater.Failure.NETWORK -> R.string.update_err_network
-        AppUpdater.Failure.NO_APK -> R.string.update_err_no_apk
-        AppUpdater.Failure.TOO_LARGE -> R.string.update_err_too_large
-        AppUpdater.Failure.INCOMPLETE -> R.string.update_err_incomplete
-        AppUpdater.Failure.GENERIC -> R.string.update_err_generic
-    },
-)

@@ -13,6 +13,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.util.Log
 import dev.pocketprl.MainActivity
@@ -61,11 +62,6 @@ object PaymentNotifier {
         Log.i(TAG, "notifying ${txs.size} ${if (confirmed) "confirmed" else "new"} incoming for ${walletName ?: "the wallet"}")
         ensureChannel(context)
         val nm = context.getSystemService(NotificationManager::class.java)
-        val open = PendingIntent.getActivity(
-            context, 0,
-            Intent(context, MainActivity::class.java).apply { flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_NEW_TASK },
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
-        )
         for (tx in txs) {
             val base = when {
                 tx.kind == TxKind.MINED -> context.getString(if (confirmed) R.string.notif_block_confirmed else R.string.notif_block)
@@ -80,6 +76,17 @@ object PaymentNotifier {
                 confirmed -> context.getString(R.string.notif_in_block, Amount.pretty(tx.amount), network.ticker, Amount.group(tx.height))
                 else -> context.getString(R.string.notif_amount, Amount.pretty(tx.amount), network.ticker)
             }
+            // Distinct data per txid so each notification gets its own PendingIntent that
+            // opens straight to that transaction, instead of one shared intent to the root.
+            val open = PendingIntent.getActivity(
+                context, tx.txid.hashCode(),
+                Intent(context, MainActivity::class.java).apply {
+                    action = Intent.ACTION_VIEW
+                    data = Uri.parse("pocketprl://tx/${tx.txid}")
+                    flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                },
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+            )
             val n = Notification.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle(title)

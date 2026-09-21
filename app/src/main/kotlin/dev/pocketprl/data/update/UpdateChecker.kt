@@ -27,6 +27,8 @@ data class ReleaseInfo(
     val apkSize: Long = 0,
     /** Lower-case SHA-256 of the APK from GitHub's asset digest, when present. */
     val sha256: String? = null,
+    /** Release notes (the GitHub release body), shown as "what's new" after an update. */
+    val body: String? = null,
 )
 
 /**
@@ -83,7 +85,8 @@ object UpdateChecker {
                             ?.takeIf { it.length == 64 }
                     }
                 }
-                ReleaseInfo(tagName = tag, version = tag.removePrefix("v").removePrefix("V"), htmlUrl = url, apkName = apkName, apkUrl = apkUrl, apkSize = apkSize, sha256 = sha256)
+                val notes = obj["body"]?.jsonPrimitive?.contentOrNull
+                ReleaseInfo(tagName = tag, version = tag.removePrefix("v").removePrefix("V"), htmlUrl = url, apkName = apkName, apkUrl = apkUrl, apkSize = apkSize, sha256 = sha256, body = notes?.ifBlank { null })
             }
         }.getOrNull()
     }

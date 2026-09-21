@@ -694,4 +694,27 @@
     <string name="update_err_too_large">Lataus oli odotettua suurempi, ja se keskeytettiin.</string>
     <string name="update_err_incomplete">Lataus jäi kesken, ja se poistettiin.</string>
     <string name="update_err_generic">Jotain meni pieleen päivitystä ladattaessa.</string>
+
+    <!-- ===================== update / whats new / shortcuts ===================== -->
+    <string name="theme_oled">OLED musta</string>
+    <string name="activity_search">Etsi tapahtumia</string>
+    <string name="activity_search_hint">Osoite, tapahtumatunnus, muistiinpano tai yhteystieto</string>
+    <string name="activity_search_clear">Tyhjennä haku</string>
+    <string name="activity_search_no_match">Yksikään tapahtuma ei vastaa hakua ”%1$s”.</string>
+    <string name="update_available">Päivitys saatavilla</string>
+    <string name="update_screen_title">Päivitys</string>
+    <string name="update_hero_title">Päivitetään PocketPRL:ää</string>
+    <string name="update_install_slide_hint">Liu’uta tai kaksoisnapauta asentaaksesi päivityksen</string>
+    <string name="update_install_not_ready">Valmistellaan päivitystä…</string>
+    <string name="whatsnew_title">Uutta</string>
+    <string name="whatsnew_heading">Päivitetty versioon %1$s</string>
+    <string name="whatsnew_intro">PocketPRL päivitettiin. Tässä muutokset:</string>
+    <string name="whatsnew_empty">Virhekorjauksia ja parannuksia.</string>
+    <string name="whatsnew_done">Selvä</string>
+    <string name="shortcut_send">Lähetä</string>
+    <string name="shortcut_send_long">Lähetä maksu</string>
+    <string name="shortcut_receive">Vastaanota</string>
+    <string name="shortcut_receive_long">Näytä vastaanotto-osoitteeni</string>
+    <string name="shortcut_scan">Skannaa</string>
+    <string name="shortcut_scan_long">Skannaa maksun QR-koodi</string>
 </resources>

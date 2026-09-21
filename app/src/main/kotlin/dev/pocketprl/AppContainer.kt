@@ -14,6 +14,8 @@ import dev.pocketprl.data.notify.PriceAlertJob
 import dev.pocketprl.data.notify.PriceAlertNotifier
 import dev.pocketprl.data.price.PriceApi
 import dev.pocketprl.data.update.AppUpdater
+import dev.pocketprl.data.update.ReleaseInfo
+import dev.pocketprl.data.update.UpdateChecker
 import dev.pocketprl.data.vault.SeedMaterial
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +28,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
+
+/** An action a home-screen app shortcut asked for. */
+enum class Shortcut { SEND, RECEIVE, SCAN }
 
 /**
  * Manual dependency wiring; built once by [PocketPrlApp]. Holds the global
@@ -50,6 +55,37 @@ class AppContainer(val appContext: Context) {
 
     /** A `pearl:` payment URI handed to the app (link tap, QR from another app) that Send should pick up. */
     val pendingPaymentUri = MutableStateFlow<String?>(null)
+
+    /** A `pocketprl://tx/<txid>` deep link (a tapped payment notification) to open once unlocked. */
+    val pendingTxid = MutableStateFlow<String?>(null)
+
+    /** A home-screen shortcut the app was opened with. */
+    val pendingShortcut = MutableStateFlow<Shortcut?>(null)
+
+    /** Set when the scan shortcut should pop the QR scanner inside Send. */
+    val requestScan = MutableStateFlow(false)
+
+    private val _latestRelease = MutableStateFlow<ReleaseInfo?>(null)
+
+    /** Newest release read from GitHub, for the About screen and the update dot. */
+    val latestRelease: StateFlow<ReleaseInfo?> = _latestRelease
+
+    private val _updateAvailable = MutableStateFlow(false)
+    val updateAvailable: StateFlow<Boolean> = _updateAvailable
+
+    @Volatile private var lastUpdateCheck = 0L
+
+    /** Checks GitHub for a newer release, throttled unless [force]. Never throws. */
+    fun checkForUpdate(force: Boolean = false) {
+        val now = System.currentTimeMillis()
+        if (!force && now - lastUpdateCheck < UPDATE_CHECK_TTL_MS) return
+        lastUpdateCheck = now
+        scope.launch {
+            val release = runCatching { UpdateChecker.latest() }.getOrNull() ?: return@launch
+            _latestRelease.value = release
+            _updateAvailable.value = UpdateChecker.compare(release.version, BuildConfig.VERSION_NAME) > 0
+        }
+    }
 
     @Volatile var isInForeground = false
         private set
@@ -116,6 +152,9 @@ class AppContainer(val appContext: Context) {
             runCatching { PriceAlertNotifier.ensureChannel(appContext) }
             runCatching { PriceAlertJob.schedule(appContext) }
         }
+
+        // Background check so the update dot can appear without opening About.
+        checkForUpdate()
     }
 
     /** Opens (or returns the already open) context for a registered wallet. */
@@ -219,5 +258,8 @@ class AppContainer(val appContext: Context) {
 
         /** How often the idle timer is examined while the app is on screen. */
         private const val IDLE_CHECK_MS = 10_000L
+
+        /** How long a GitHub release check is trusted before checking again. */
+        private const val UPDATE_CHECK_TTL_MS = 6 * 3600_000L
     }
 }

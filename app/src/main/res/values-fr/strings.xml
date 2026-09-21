@@ -696,4 +696,27 @@
     <string name="update_err_too_large">Le téléchargement était plus volumineux que prévu et a été interrompu.</string>
     <string name="update_err_incomplete">Le téléchargement était incomplet et a été supprimé.</string>
     <string name="update_err_generic">Une erreur est survenue lors du téléchargement de la mise à jour.</string>
+
+    <!-- ===================== search / update / what's new ===================== -->
+    <string name="theme_oled">Noir OLED</string>
+    <string name="activity_search">Rechercher des transactions</string>
+    <string name="activity_search_hint">Adresse, txid, note ou contact</string>
+    <string name="activity_search_clear">Effacer la recherche</string>
+    <string name="activity_search_no_match">Aucune transaction ne correspond à « %1$s ».</string>
+    <string name="update_available">Mise à jour disponible</string>
+    <string name="update_screen_title">Mise à jour</string>
+    <string name="update_hero_title">Mise à jour de PocketPRL</string>
+    <string name="update_install_slide_hint">Glissez ou touchez deux fois pour installer la mise à jour</string>
+    <string name="update_install_not_ready">Préparation de la mise à jour…</string>
+    <string name="whatsnew_title">Nouveautés</string>
+    <string name="whatsnew_heading">Mis à jour vers %1$s</string>
+    <string name="whatsnew_intro">PocketPRL a été mis à jour. Voici ce qui a changé :</string>
+    <string name="whatsnew_empty">Corrections de bugs et améliorations.</string>
+    <string name="whatsnew_done">D’accord</string>
+    <string name="shortcut_send">Envoyer</string>
+    <string name="shortcut_send_long">Envoyer un paiement</string>
+    <string name="shortcut_receive">Recevoir</string>
+    <string name="shortcut_receive_long">Afficher mon adresse de réception</string>
+    <string name="shortcut_scan">Scanner</string>
+    <string name="shortcut_scan_long">Scanner un code QR de paiement</string>
 </resources>
