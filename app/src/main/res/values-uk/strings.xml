@@ -656,4 +656,39 @@
     <string name="send_err_auth_required">Перед надсиланням цього платежу потрібна автентифікація.</string>
     <string name="send_external_warning_title">Зовнішній запит на платіж</string>
     <string name="send_external_warning">Ця адреса, сума та мітка надійшли з посилання або QR-коду, а не від вас. Перед надсиланням перевірте повну адресу нижче.</string>
+    <!-- ===================== erase / unlock attempts ===================== -->
+    <string name="unlock_error_incorrect_left">Неправильний пароль. Залишилося %1$d спроб до видалення цього гаманця.</string>
+    <string name="unlock_error_locked">Забагато спроб. Спробуйте ще раз через %1$s.</string>
+    <string name="unlock_error_wiped">Забагато невдалих спроб. Цей гаманець видалено.</string>
+    <string name="send_auth_left">Неправильний пароль. Залишилося %1$d спроб до видалення цього гаманця.</string>
+    <string name="settings_wipe_attempts">Видаляти після невдалих спроб</string>
+    <string name="settings_wipe_attempts_sub">Видаляти цей гаманець після 10 неправильних паролів</string>
+    <string name="settings_password_error_left">Поточний пароль неправильний. Залишилося %1$d спроб до видалення цього гаманця.</string>
+    <string name="settings_password_slide">Оновити пароль</string>
+    <string name="settings_password_slide_hint">Суньте або двічі торкніться, щоб оновити пароль</string>
+    <string name="settings_password_updating">Оновлення</string>
+    <string name="settings_password_not_ready">Спочатку введіть обидва паролі</string>
+    <string name="erase_title">Видалити гаманець</string>
+    <string name="erase_heading">Видалити «%1$s»?</string>
+    <string name="erase_body">Ключі цього гаманця, кешована історія, контакти та нотатки на цьому телефоні будуть видалені. Інші гаманці не постраждають. Повернути кошти можна лише за допомогою фрази відновлення.</string>
+    <string name="erase_type_label">Введіть ERASE для підтвердження</string>
+    <string name="erase_slider">Видалити</string>
+    <string name="erase_slider_hint">Суньте або двічі торкніться, щоб видалити цей гаманець</string>
+    <string name="erase_slider_locked">Спочатку введіть ERASE</string>
+    <string name="erase_working">Видалення…</string>
+    <string name="settings_seed_slide_hint">Суньте або двічі торкніться, щоб показати фразу відновлення</string>
+    <string name="settings_seed_not_ready">Спочатку введіть пароль</string>
+    <string name="settings_seed_revealing">Показ</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d секунда</item>
+        <item quantity="few">%1$d секунди</item>
+        <item quantity="many">%1$d секунд</item>
+        <item quantity="other">%1$d секунди</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d хвилина</item>
+        <item quantity="few">%1$d хвилини</item>
+        <item quantity="many">%1$d хвилин</item>
+        <item quantity="other">%1$d хвилини</item>
+    </plurals>
 </resources>

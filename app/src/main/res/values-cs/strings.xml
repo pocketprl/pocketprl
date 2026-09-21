@@ -656,4 +656,38 @@
     <string name="send_err_auth_required">Před odesláním této platby je nutné ověření.</string>
     <string name="send_external_warning_title">Externí žádost o platbu</string>
     <string name="send_external_warning">Tato adresa, částka a štítek pocházejí z odkazu nebo QR kódu, ne od vás. Před odesláním zkontrolujte celou adresu níže.</string>
+    <string name="unlock_error_incorrect_left">Nesprávné heslo. Do vymazání této peněženky zbývá %1$d pokusů.</string>
+    <string name="unlock_error_locked">Příliš mnoho pokusů. Zkuste to znovu za %1$s.</string>
+    <string name="unlock_error_wiped">Příliš mnoho neúspěšných pokusů. Tato peněženka byla vymazána.</string>
+    <string name="send_auth_left">Nesprávné heslo. Do vymazání této peněženky zbývá %1$d pokusů.</string>
+    <string name="settings_wipe_attempts">Vymazat po neúspěšných pokusech</string>
+    <string name="settings_wipe_attempts_sub">Vymazat tuto peněženku po 10 nesprávných heslech</string>
+    <string name="settings_password_error_left">Aktuální heslo je nesprávné. Do vymazání této peněženky zbývá %1$d pokusů.</string>
+    <string name="settings_password_slide">Aktualizovat heslo</string>
+    <string name="settings_password_slide_hint">Posunutím nebo dvojitým klepnutím aktualizujte heslo</string>
+    <string name="settings_password_updating">Aktualizace</string>
+    <string name="settings_password_not_ready">Nejprve vyplňte obě hesla</string>
+    <string name="erase_title">Vymazat peněženku</string>
+    <string name="erase_heading">Vymazat „%1$s“?</string>
+    <string name="erase_body">Klíče této peněženky, uložená historie, kontakty a poznámky v tomto telefonu budou smazány. Ostatní peněženky nebudou ovlivněny. Prostředky lze získat zpět pouze pomocí fráze pro obnovení.</string>
+    <string name="erase_type_label">Zadejte ERASE pro potvrzení</string>
+    <string name="erase_slider">Vymazat</string>
+    <string name="erase_slider_hint">Posunutím nebo dvojitým klepnutím vymažete tuto peněženku</string>
+    <string name="erase_slider_locked">Nejprve zadejte ERASE</string>
+    <string name="erase_working">Vymazávání…</string>
+    <string name="settings_seed_slide_hint">Posunutím nebo dvojitým klepnutím zobrazíte frázi pro obnovení</string>
+    <string name="settings_seed_not_ready">Nejprve zadejte heslo</string>
+    <string name="settings_seed_revealing">Zobrazování</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d sekunda</item>
+        <item quantity="few">%1$d sekundy</item>
+        <item quantity="many">%1$d sekundy</item>
+        <item quantity="other">%1$d sekund</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minuta</item>
+        <item quantity="few">%1$d minuty</item>
+        <item quantity="many">%1$d minuty</item>
+        <item quantity="other">%1$d minut</item>
+    </plurals>
 </resources>

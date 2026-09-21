@@ -641,4 +641,34 @@
     <string name="send_err_auth_required">A fizetés elküldése előtt hitelesítés szükséges.</string>
     <string name="send_external_warning_title">Külső fizetési kérés</string>
     <string name="send_external_warning">Ez a cím, összeg és címke egy hivatkozásból vagy QR-kódból származik, nem tőled. Küldés előtt ellenőrizd a teljes címet lent.</string>
+    <string name="unlock_error_incorrect_left">Hibás jelszó. %1$d próbálkozás maradt, mielőtt ez a pénztárca törlődik.</string>
+    <string name="unlock_error_locked">Túl sok próbálkozás. Próbáld újra %1$s múlva.</string>
+    <string name="unlock_error_wiped">Túl sok sikertelen próbálkozás. Ez a pénztárca törölve lett.</string>
+    <string name="send_auth_left">Hibás jelszó. %1$d próbálkozás maradt, mielőtt ez a pénztárca törlődik.</string>
+    <string name="settings_wipe_attempts">Törlés sikertelen próbálkozások után</string>
+    <string name="settings_wipe_attempts_sub">A pénztárca törlése 10 hibás jelszó után</string>
+    <string name="settings_password_error_left">A jelenlegi jelszó helytelen. %1$d próbálkozás maradt, mielőtt ez a pénztárca törlődik.</string>
+    <string name="settings_password_slide">Jelszó frissítése</string>
+    <string name="settings_password_slide_hint">Csúsztasd vagy koppints duplán a jelszó frissítéséhez</string>
+    <string name="settings_password_updating">Frissítés</string>
+    <string name="settings_password_not_ready">Először töltsd ki mindkét jelszót</string>
+    <string name="erase_title">Pénztárca törlése</string>
+    <string name="erase_heading">Törlöd a(z) „%1$s” pénztárcát?</string>
+    <string name="erase_body">A pénztárca kulcsai, a gyorsítótárazott előzmények, a névjegyek és a jegyzetek törlődnek erről a telefonról. Más pénztárcákra ez nincs hatással. A pénzt csak a helyreállítási frázissal kaphatod vissza.</string>
+    <string name="erase_type_label">A megerősítéshez írd be: ERASE</string>
+    <string name="erase_slider">Törlés</string>
+    <string name="erase_slider_hint">Csúsztasd vagy koppints duplán a pénztárca törléséhez</string>
+    <string name="erase_slider_locked">Először írd be: ERASE</string>
+    <string name="erase_working">Törlés…</string>
+    <string name="settings_seed_slide_hint">Csúsztasd vagy koppints duplán a helyreállítási frázis megjelenítéséhez</string>
+    <string name="settings_seed_not_ready">Először add meg a jelszavad</string>
+    <string name="settings_seed_revealing">Felfedés</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d másodperc</item>
+        <item quantity="other">%1$d másodperc</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d perc</item>
+        <item quantity="other">%1$d perc</item>
+    </plurals>
 </resources>

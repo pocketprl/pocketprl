@@ -642,4 +642,34 @@
     <string name="send_err_auth_required">Authenticatie is vereist voordat deze betaling kan worden verzonden.</string>
     <string name="send_external_warning_title">Extern betalingsverzoek</string>
     <string name="send_external_warning">Dit adres, bedrag en label komen uit een link of QR-code, niet van jou. Controleer het volledige adres hieronder voordat je verzendt.</string>
+    <string name="unlock_error_incorrect_left">Onjuist wachtwoord. Nog %1$d pogingen voordat deze wallet wordt gewist.</string>
+    <string name="unlock_error_locked">Te veel pogingen. Probeer het over %1$s opnieuw.</string>
+    <string name="unlock_error_wiped">Te veel mislukte pogingen. Deze wallet is gewist.</string>
+    <string name="send_auth_left">Onjuist wachtwoord. Nog %1$d pogingen voordat deze wallet wordt gewist.</string>
+    <string name="settings_wipe_attempts">Wissen na mislukte pogingen</string>
+    <string name="settings_wipe_attempts_sub">Wis deze wallet na 10 verkeerde wachtwoorden</string>
+    <string name="settings_password_error_left">Huidig wachtwoord is onjuist. Nog %1$d pogingen voordat deze wallet wordt gewist.</string>
+    <string name="settings_password_slide">Wachtwoord bijwerken</string>
+    <string name="settings_password_slide_hint">Schuif of dubbeltik om het wachtwoord bij te werken</string>
+    <string name="settings_password_updating">Bijwerken</string>
+    <string name="settings_password_not_ready">Vul eerst beide wachtwoorden in</string>
+    <string name="erase_title">Wallet wissen</string>
+    <string name="erase_heading">“%1$s” wissen?</string>
+    <string name="erase_body">De sleutels, cache-geschiedenis, contacten en notities van deze wallet op deze telefoon worden verwijderd. Andere wallets blijven ongewijzigd. Je kunt het geld alleen terugkrijgen met de herstelzin.</string>
+    <string name="erase_type_label">Typ ERASE om te bevestigen</string>
+    <string name="erase_slider">Wissen</string>
+    <string name="erase_slider_hint">Schuif of dubbeltik om deze wallet te wissen</string>
+    <string name="erase_slider_locked">Typ eerst ERASE</string>
+    <string name="erase_working">Wissen…</string>
+    <string name="settings_seed_slide_hint">Schuif of dubbeltik om de herstelzin te tonen</string>
+    <string name="settings_seed_not_ready">Voer eerst je wachtwoord in</string>
+    <string name="settings_seed_revealing">Tonen</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d seconde</item>
+        <item quantity="other">%1$d seconden</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minuut</item>
+        <item quantity="other">%1$d minuten</item>
+    </plurals>
 </resources>

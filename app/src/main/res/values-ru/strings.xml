@@ -656,4 +656,38 @@
     <string name="send_err_auth_required">Перед отправкой этого платежа требуется аутентификация.</string>
     <string name="send_external_warning_title">Внешний запрос на платёж</string>
     <string name="send_external_warning">Этот адрес, сумма и метка получены из ссылки или QR-кода, а не от вас. Перед отправкой проверьте полный адрес ниже.</string>
+    <string name="unlock_error_incorrect_left">Неверный пароль. Осталось %1$d попыток до удаления этого кошелька.</string>
+    <string name="unlock_error_locked">Слишком много попыток. Повторите попытку через %1$s.</string>
+    <string name="unlock_error_wiped">Слишком много неудачных попыток. Этот кошелёк удалён.</string>
+    <string name="send_auth_left">Неверный пароль. Осталось %1$d попыток до удаления этого кошелька.</string>
+    <string name="settings_wipe_attempts">Удалять после неудачных попыток</string>
+    <string name="settings_wipe_attempts_sub">Удалить этот кошелёк после 10 неверных паролей</string>
+    <string name="settings_password_error_left">Текущий пароль неверен. Осталось %1$d попыток до удаления этого кошелька.</string>
+    <string name="settings_password_slide">Обновить пароль</string>
+    <string name="settings_password_slide_hint">Сдвиньте или дважды коснитесь, чтобы обновить пароль</string>
+    <string name="settings_password_updating">Обновление</string>
+    <string name="settings_password_not_ready">Сначала заполните оба поля пароля</string>
+    <string name="erase_title">Удалить кошелёк</string>
+    <string name="erase_heading">Удалить «%1$s»?</string>
+    <string name="erase_body">Ключи этого кошелька, кэшированная история, контакты и заметки на этом телефоне будут удалены. Другие кошельки не затронуты. Вернуть средства можно только с помощью фразы восстановления.</string>
+    <string name="erase_type_label">Введите ERASE для подтверждения</string>
+    <string name="erase_slider">Удалить</string>
+    <string name="erase_slider_hint">Сдвиньте или дважды коснитесь, чтобы удалить этот кошелёк</string>
+    <string name="erase_slider_locked">Сначала введите ERASE</string>
+    <string name="erase_working">Удаление…</string>
+    <string name="settings_seed_slide_hint">Сдвиньте или дважды коснитесь, чтобы показать фразу восстановления</string>
+    <string name="settings_seed_not_ready">Сначала введите пароль</string>
+    <string name="settings_seed_revealing">Показ</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d секунда</item>
+        <item quantity="few">%1$d секунды</item>
+        <item quantity="many">%1$d секунд</item>
+        <item quantity="other">%1$d секунды</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d минута</item>
+        <item quantity="few">%1$d минуты</item>
+        <item quantity="many">%1$d минут</item>
+        <item quantity="other">%1$d минуты</item>
+    </plurals>
 </resources>

@@ -689,14 +689,26 @@ fun RevealSeedScreen(vm: SettingsViewModel, onBack: () -> Unit) {
                 InfoBanner(stringResource(R.string.settings_seed_warning), BannerKind.WARNING)
                 PasswordField(password, { password = it; error = null }, stringResource(R.string.settings_seed_password), imeAction = ImeAction.Done)
                 error?.let { InfoBanner(it, BannerKind.ERROR) }
-                PrimaryButton(stringResource(R.string.settings_seed_reveal), loading = busy, enabled = password.isNotEmpty(), onClick = {
-                    busy = true
-                    scope.launch {
-                        val err = vm.checkPassword(password)
-                        busy = false
-                        if (err == null) material = runCatching { vm.revealSeed() }.getOrElse { error = it.message; null } else error = err
-                    }
-                })
+                SlideToConfirm(
+                    onComplete = {
+                        if (password.isEmpty() || busy) return@SlideToConfirm
+                        busy = true
+                        scope.launch {
+                            val err = vm.checkPassword(password)
+                            busy = false
+                            if (err == null) material = runCatching { vm.revealSeed() }.getOrElse { error = it.message; null } else error = err
+                        }
+                    },
+                    label = stringResource(R.string.settings_seed_reveal),
+                    enabled = password.isNotEmpty() && !busy,
+                    held = busy,
+                    busy = busy,
+                    icon = AppIcons.Shield,
+                    notReady = stringResource(R.string.settings_seed_not_ready),
+                    sending = stringResource(R.string.settings_seed_revealing),
+                    confirming = stringResource(R.string.settings_seed_revealing),
+                    slideHint = stringResource(R.string.settings_seed_slide_hint),
+                )
             } else {
                 when (m) {
                     is SeedMaterial.Mnemonic -> SectionCard { WordGrid(m.words.split(' ')) }

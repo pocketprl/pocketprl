@@ -642,4 +642,34 @@
     <string name="send_err_auth_required">Vor dem Senden dieser Zahlung ist eine Authentifizierung erforderlich.</string>
     <string name="send_external_warning_title">Externe Zahlungsanforderung</string>
     <string name="send_external_warning">Diese Adresse, der Betrag und die Bezeichnung stammen aus einem Link oder QR-Code, nicht von dir. Prüfe vor dem Senden die vollständige Adresse unten.</string>
+    <string name="unlock_error_incorrect_left">Falsches Passwort. Noch %1$d Versuche, bevor dieses Wallet gelöscht wird.</string>
+    <string name="unlock_error_locked">Zu viele Versuche. Versuche es in %1$s erneut.</string>
+    <string name="unlock_error_wiped">Zu viele fehlgeschlagene Versuche. Dieses Wallet wurde gelöscht.</string>
+    <string name="send_auth_left">Falsches Passwort. Noch %1$d Versuche, bevor dieses Wallet gelöscht wird.</string>
+    <string name="settings_wipe_attempts">Nach fehlgeschlagenen Versuchen löschen</string>
+    <string name="settings_wipe_attempts_sub">Dieses Wallet nach 10 falschen Passwörtern löschen</string>
+    <string name="settings_password_error_left">Das aktuelle Passwort ist falsch. Noch %1$d Versuche, bevor dieses Wallet gelöscht wird.</string>
+    <string name="settings_password_slide">Passwort aktualisieren</string>
+    <string name="settings_password_slide_hint">Zum Aktualisieren des Passworts schieben oder doppelt tippen</string>
+    <string name="settings_password_updating">Wird aktualisiert</string>
+    <string name="settings_password_not_ready">Zuerst beide Passwörter eingeben</string>
+    <string name="erase_title">Wallet löschen</string>
+    <string name="erase_heading">„%1$s“ löschen?</string>
+    <string name="erase_body">Die Schlüssel dieses Wallets, die zwischengespeicherte Historie, Kontakte und Notizen auf diesem Telefon werden gelöscht. Andere Wallets sind nicht betroffen. Du kannst das Guthaben nur mit der Wiederherstellungsphrase zurückbekommen.</string>
+    <string name="erase_type_label">Zum Bestätigen ERASE eingeben</string>
+    <string name="erase_slider">Löschen</string>
+    <string name="erase_slider_hint">Zum Löschen dieses Wallets schieben oder doppelt tippen</string>
+    <string name="erase_slider_locked">Zuerst ERASE eingeben</string>
+    <string name="erase_working">Wird gelöscht…</string>
+    <string name="settings_seed_slide_hint">Zum Anzeigen der Wiederherstellungsphrase schieben oder doppelt tippen</string>
+    <string name="settings_seed_not_ready">Zuerst dein Passwort eingeben</string>
+    <string name="settings_seed_revealing">Wird angezeigt</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d Sekunde</item>
+        <item quantity="other">%1$d Sekunden</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d Minute</item>
+        <item quantity="other">%1$d Minuten</item>
+    </plurals>
 </resources>

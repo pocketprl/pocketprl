@@ -641,4 +641,35 @@
     <string name="send_err_auth_required">Απαιτείται έλεγχος ταυτότητας πριν από την αποστολή αυτής της πληρωμής.</string>
     <string name="send_external_warning_title">Εξωτερικό αίτημα πληρωμής</string>
     <string name="send_external_warning">Αυτή η διεύθυνση, το ποσό και η ετικέτα προήλθαν από σύνδεσμο ή κωδικό QR, όχι από εσάς. Ελέγξτε την πλήρη διεύθυνση παρακάτω πριν από την αποστολή.</string>
+
+    <string name="unlock_error_incorrect_left">Λανθασμένος κωδικός. Απομένουν %1$d προσπάθειες πριν διαγραφεί αυτό το πορτοφόλι.</string>
+    <string name="unlock_error_locked">Πολλές προσπάθειες. Δοκιμάστε ξανά σε %1$s.</string>
+    <string name="unlock_error_wiped">Πολλές αποτυχημένες προσπάθειες. Αυτό το πορτοφόλι έχει διαγραφεί.</string>
+    <string name="send_auth_left">Λανθασμένος κωδικός. Απομένουν %1$d προσπάθειες πριν διαγραφεί αυτό το πορτοφόλι.</string>
+    <string name="settings_wipe_attempts">Διαγραφή μετά από αποτυχημένες προσπάθειες</string>
+    <string name="settings_wipe_attempts_sub">Διαγραφή αυτού του πορτοφολιού μετά από 10 λανθασμένους κωδικούς</string>
+    <string name="settings_password_error_left">Ο τρέχων κωδικός είναι λανθασμένος. Απομένουν %1$d προσπάθειες πριν διαγραφεί αυτό το πορτοφόλι.</string>
+    <string name="settings_password_slide">Ενημέρωση κωδικού</string>
+    <string name="settings_password_slide_hint">Σύρετε ή πατήστε διπλά για ενημέρωση του κωδικού</string>
+    <string name="settings_password_updating">Ενημέρωση</string>
+    <string name="settings_password_not_ready">Συμπληρώστε πρώτα και τους δύο κωδικούς</string>
+    <string name="erase_title">Διαγραφή πορτοφολιού</string>
+    <string name="erase_heading">Διαγραφή «%1$s»;</string>
+    <string name="erase_body">Τα κλειδιά αυτού του πορτοφολιού, το προσωρινά αποθηκευμένο ιστορικό, οι επαφές και οι σημειώσεις σε αυτό το τηλέφωνο θα διαγραφούν. Τα άλλα πορτοφόλια δεν επηρεάζονται. Μπορείτε να ανακτήσετε τα χρήματα μόνο με τη φράση ανάκτησης.</string>
+    <string name="erase_type_label">Πληκτρολογήστε ERASE για επιβεβαίωση</string>
+    <string name="erase_slider">Διαγραφή</string>
+    <string name="erase_slider_hint">Σύρετε ή πατήστε διπλά για διαγραφή αυτού του πορτοφολιού</string>
+    <string name="erase_slider_locked">Πληκτρολογήστε πρώτα ERASE</string>
+    <string name="erase_working">Διαγραφή…</string>
+    <string name="settings_seed_slide_hint">Σύρετε ή πατήστε διπλά για αποκάλυψη της φράσης ανάκτησης</string>
+    <string name="settings_seed_not_ready">Εισαγάγετε πρώτα τον κωδικό σας</string>
+    <string name="settings_seed_revealing">Αποκάλυψη</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d δευτερόλεπτο</item>
+        <item quantity="other">%1$d δευτερόλεπτα</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d λεπτό</item>
+        <item quantity="other">%1$d λεπτά</item>
+    </plurals>
 </resources>

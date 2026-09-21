@@ -18,8 +18,11 @@
   type `ERASE`, and a red slide-to-erase control that arms only once the word
   matches. Reached from both the unlock screen ("forgot password") and Settings ›
   Danger zone.
-* **Slide-to-confirm for other big actions.** Changing the wallet password now
-  uses the same slide control as sending, instead of a plain button.
+* **Slide-to-confirm everywhere it matters.** The slide control is now one
+  reusable element used for every consequential action, not just two: send,
+  erase wallet, change wallet password and reveal recovery phrase all use it.
+* The new security, erase and slider strings are translated into all 18
+  supported languages.
 * **Fix:** the custom fee rate and the "pay in fiat" field now decide their
   decimal separator the same careful way the amount field does. A comma typed as
   a thousands separator (en-US `1,000`) was being read as `1.0` PRL/kB, a 1000x

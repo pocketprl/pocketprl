@@ -656,4 +656,38 @@
     <string name="send_err_auth_required">Przed wysłaniem tej płatności wymagane jest uwierzytelnienie.</string>
     <string name="send_external_warning_title">Zewnętrzne żądanie płatności</string>
     <string name="send_external_warning">Ten adres, kwota i etykieta pochodzą z linku lub kodu QR, a nie od Ciebie. Przed wysłaniem sprawdź pełny adres poniżej.</string>
+    <string name="unlock_error_incorrect_left">Nieprawidłowe hasło. Pozostało %1$d prób przed usunięciem tego portfela.</string>
+    <string name="unlock_error_locked">Zbyt wiele prób. Spróbuj ponownie za %1$s.</string>
+    <string name="unlock_error_wiped">Zbyt wiele nieudanych prób. Ten portfel został usunięty.</string>
+    <string name="send_auth_left">Nieprawidłowe hasło. Pozostało %1$d prób przed usunięciem tego portfela.</string>
+    <string name="settings_wipe_attempts">Usuwaj po nieudanych próbach</string>
+    <string name="settings_wipe_attempts_sub">Usuń ten portfel po 10 nieprawidłowych hasłach</string>
+    <string name="settings_password_error_left">Bieżące hasło jest nieprawidłowe. Pozostało %1$d prób przed usunięciem tego portfela.</string>
+    <string name="settings_password_slide">Zaktualizuj hasło</string>
+    <string name="settings_password_slide_hint">Przesuń lub dotknij dwukrotnie, aby zaktualizować hasło</string>
+    <string name="settings_password_updating">Aktualizowanie</string>
+    <string name="settings_password_not_ready">Najpierw wypełnij oba hasła</string>
+    <string name="erase_title">Usuń portfel</string>
+    <string name="erase_heading">Usunąć „%1$s”?</string>
+    <string name="erase_body">Klucze tego portfela, historia w pamięci podręcznej, kontakty i notatki na tym telefonie zostaną usunięte. Nie wpłynie to na inne portfele. Środki odzyskasz tylko za pomocą frazy odzyskiwania.</string>
+    <string name="erase_type_label">Wpisz ERASE, aby potwierdzić</string>
+    <string name="erase_slider">Usuń</string>
+    <string name="erase_slider_hint">Przesuń lub dotknij dwukrotnie, aby usunąć ten portfel</string>
+    <string name="erase_slider_locked">Najpierw wpisz ERASE</string>
+    <string name="erase_working">Usuwanie…</string>
+    <string name="settings_seed_slide_hint">Przesuń lub dotknij dwukrotnie, aby pokazać frazę odzyskiwania</string>
+    <string name="settings_seed_not_ready">Najpierw wprowadź hasło</string>
+    <string name="settings_seed_revealing">Pokazywanie</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d sekunda</item>
+        <item quantity="few">%1$d sekundy</item>
+        <item quantity="many">%1$d sekund</item>
+        <item quantity="other">%1$d sekundy</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minuta</item>
+        <item quantity="few">%1$d minuty</item>
+        <item quantity="many">%1$d minut</item>
+        <item quantity="other">%1$d minuty</item>
+    </plurals>
 </resources>

@@ -405,6 +405,9 @@
     <string name="settings_seed_title">Recovery phrase</string>
     <string name="settings_seed_warning">Never share your recovery phrase. PocketPRL staff or Pearl developers will never ask for it.</string>
     <string name="settings_seed_reveal">Reveal</string>
+    <string name="settings_seed_slide_hint">Slide or double-tap to reveal the recovery phrase</string>
+    <string name="settings_seed_not_ready">Enter your password first</string>
+    <string name="settings_seed_revealing">Revealing</string>
     <string name="settings_seed_hex">Hex seed</string>
     <string name="settings_seed_written_hint">Write it down on paper. Screenshots are blocked on this screen.</string>
     <string name="settings_rename_title">Rename wallet</string>

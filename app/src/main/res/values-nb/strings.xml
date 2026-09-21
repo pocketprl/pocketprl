@@ -641,4 +641,34 @@
     <string name="send_err_auth_required">Autentisering kreves før denne betalingen kan sendes.</string>
     <string name="send_external_warning_title">Ekstern betalingsforespørsel</string>
     <string name="send_external_warning">Denne adressen, beløpet og etiketten kom fra en lenke eller QR-kode, ikke fra deg. Sjekk hele adressen nedenfor før du sender.</string>
+    <string name="unlock_error_incorrect_left">Feil passord. %1$d forsøk igjen før denne lommeboken slettes.</string>
+    <string name="unlock_error_locked">For mange forsøk. Prøv igjen om %1$s.</string>
+    <string name="unlock_error_wiped">For mange mislykkede forsøk. Denne lommeboken er slettet.</string>
+    <string name="send_auth_left">Feil passord. %1$d forsøk igjen før denne lommeboken slettes.</string>
+    <string name="settings_wipe_attempts">Slett etter mislykkede forsøk</string>
+    <string name="settings_wipe_attempts_sub">Slett denne lommeboken etter 10 feil passord</string>
+    <string name="settings_password_error_left">Gjeldende passord er feil. %1$d forsøk igjen før denne lommeboken slettes.</string>
+    <string name="settings_password_slide">Oppdater passord</string>
+    <string name="settings_password_slide_hint">Skyv eller dobbelttrykk for å oppdatere passordet</string>
+    <string name="settings_password_updating">Oppdaterer</string>
+    <string name="settings_password_not_ready">Fyll inn begge passordene først</string>
+    <string name="erase_title">Slett lommebok</string>
+    <string name="erase_heading">Slette “%1$s”?</string>
+    <string name="erase_body">Nøklene til denne lommeboken, hurtiglagerhistorikk, kontakter og notater på denne telefonen blir slettet. Andre lommebøker påvirkes ikke. Du kan bare få midlene tilbake med gjenopprettingsfrasen.</string>
+    <string name="erase_type_label">Skriv ERASE for å bekrefte</string>
+    <string name="erase_slider">Slett</string>
+    <string name="erase_slider_hint">Skyv eller dobbelttrykk for å slette denne lommeboken</string>
+    <string name="erase_slider_locked">Skriv ERASE først</string>
+    <string name="erase_working">Sletter…</string>
+    <string name="settings_seed_slide_hint">Skyv eller dobbelttrykk for å vise gjenopprettingsfrasen</string>
+    <string name="settings_seed_not_ready">Skriv inn passordet ditt først</string>
+    <string name="settings_seed_revealing">Viser</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d sekund</item>
+        <item quantity="other">%1$d sekunder</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minutt</item>
+        <item quantity="other">%1$d minutter</item>
+    </plurals>
 </resources>

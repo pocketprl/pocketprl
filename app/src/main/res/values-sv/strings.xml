@@ -642,4 +642,35 @@
     <string name="send_err_auth_required">Autentisering krävs innan denna betalning kan skickas.</string>
     <string name="send_external_warning_title">Extern betalningsbegäran</string>
     <string name="send_external_warning">Denna adress, summa och etikett kom från en länk eller QR-kod, inte från dig. Kontrollera hela adressen nedan innan du skickar.</string>
+    <!-- ===================== erase / unlock attempts ===================== -->
+    <string name="unlock_error_incorrect_left">Felaktigt lösenord. %1$d försök kvar innan den här plånboken raderas.</string>
+    <string name="unlock_error_locked">För många försök. Försök igen om %1$s.</string>
+    <string name="unlock_error_wiped">För många misslyckade försök. Den här plånboken har raderats.</string>
+    <string name="send_auth_left">Felaktigt lösenord. %1$d försök kvar innan den här plånboken raderas.</string>
+    <string name="settings_wipe_attempts">Radera efter misslyckade försök</string>
+    <string name="settings_wipe_attempts_sub">Radera den här plånboken efter 10 felaktiga lösenord</string>
+    <string name="settings_password_error_left">Nuvarande lösenord är felaktigt. %1$d försök kvar innan den här plånboken raderas.</string>
+    <string name="settings_password_slide">Uppdatera lösenord</string>
+    <string name="settings_password_slide_hint">Dra eller dubbeltryck för att uppdatera lösenordet</string>
+    <string name="settings_password_updating">Uppdaterar</string>
+    <string name="settings_password_not_ready">Fyll i båda lösenorden först</string>
+    <string name="erase_title">Radera plånbok</string>
+    <string name="erase_heading">Radera “%1$s”?</string>
+    <string name="erase_body">Den här plånbokens nycklar, cachelagrade historik, kontakter och anteckningar på den här telefonen tas bort. Andra plånböcker påverkas inte. Du kan bara få tillbaka pengarna med återställningsfrasen.</string>
+    <string name="erase_type_label">Skriv ERASE för att bekräfta</string>
+    <string name="erase_slider">Radera</string>
+    <string name="erase_slider_hint">Dra eller dubbeltryck för att radera den här plånboken</string>
+    <string name="erase_slider_locked">Skriv ERASE först</string>
+    <string name="erase_working">Raderar…</string>
+    <string name="settings_seed_slide_hint">Dra eller dubbeltryck för att visa återställningsfrasen</string>
+    <string name="settings_seed_not_ready">Ange ditt lösenord först</string>
+    <string name="settings_seed_revealing">Visar</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d sekund</item>
+        <item quantity="other">%1$d sekunder</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minut</item>
+        <item quantity="other">%1$d minuter</item>
+    </plurals>
 </resources>

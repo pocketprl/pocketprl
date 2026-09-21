@@ -648,4 +648,36 @@
     <string name="send_err_auth_required">Este necesară autentificarea înainte de a trimite această plată.</string>
     <string name="send_external_warning_title">Cerere de plată externă</string>
     <string name="send_external_warning">Această adresă, suma și eticheta provin dintr-un link sau cod QR, nu de la tine. Verifică adresa completă de mai jos înainte de a trimite.</string>
+    <string name="unlock_error_incorrect_left">Parolă incorectă. Au mai rămas %1$d încercări înainte ca acest portofel să fie șters.</string>
+    <string name="unlock_error_locked">Prea multe încercări. Încearcă din nou în %1$s.</string>
+    <string name="unlock_error_wiped">Prea multe încercări eșuate. Acest portofel a fost șters.</string>
+    <string name="send_auth_left">Parolă incorectă. Au mai rămas %1$d încercări înainte ca acest portofel să fie șters.</string>
+    <string name="settings_wipe_attempts">Șterge după încercări eșuate</string>
+    <string name="settings_wipe_attempts_sub">Șterge acest portofel după 10 parole greșite</string>
+    <string name="settings_password_error_left">Parola actuală este incorectă. Au mai rămas %1$d încercări înainte ca acest portofel să fie șters.</string>
+    <string name="settings_password_slide">Actualizează parola</string>
+    <string name="settings_password_slide_hint">Glisează sau atinge de două ori pentru a actualiza parola</string>
+    <string name="settings_password_updating">Se actualizează</string>
+    <string name="settings_password_not_ready">Completează mai întâi ambele parole</string>
+    <string name="erase_title">Șterge portofelul</string>
+    <string name="erase_heading">Ștergi „%1$s”?</string>
+    <string name="erase_body">Cheile acestui portofel, istoricul din cache, contactele și notele de pe acest telefon vor fi șterse. Alte portofele nu sunt afectate. Poți recupera fondurile doar cu fraza de recuperare.</string>
+    <string name="erase_type_label">Scrie ERASE pentru a confirma</string>
+    <string name="erase_slider">Șterge</string>
+    <string name="erase_slider_hint">Glisează sau atinge de două ori pentru a șterge acest portofel</string>
+    <string name="erase_slider_locked">Scrie mai întâi ERASE</string>
+    <string name="erase_working">Se șterge…</string>
+    <string name="settings_seed_slide_hint">Glisează sau atinge de două ori pentru a dezvălui fraza de recuperare</string>
+    <string name="settings_seed_not_ready">Introdu mai întâi parola</string>
+    <string name="settings_seed_revealing">Se dezvăluie</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d secundă</item>
+        <item quantity="few">%1$d secunde</item>
+        <item quantity="other">%1$d de secunde</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minut</item>
+        <item quantity="few">%1$d minute</item>
+        <item quantity="other">%1$d de minute</item>
+    </plurals>
 </resources>

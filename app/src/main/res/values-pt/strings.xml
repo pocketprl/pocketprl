@@ -642,4 +642,34 @@
     <string name="send_err_auth_required">É necessária autenticação antes de enviar este pagamento.</string>
     <string name="send_external_warning_title">Pedido de pagamento externo</string>
     <string name="send_external_warning">Este endereço, montante e etiqueta vieram de uma ligação ou código QR, não de si. Verifique o endereço completo abaixo antes de enviar.</string>
+    <string name="unlock_error_incorrect_left">Palavra-passe incorreta. Restam %1$d tentativas antes de esta carteira ser apagada.</string>
+    <string name="unlock_error_locked">Demasiadas tentativas. Tente novamente em %1$s.</string>
+    <string name="unlock_error_wiped">Demasiadas tentativas falhadas. Esta carteira foi apagada.</string>
+    <string name="send_auth_left">Palavra-passe incorreta. Restam %1$d tentativas antes de esta carteira ser apagada.</string>
+    <string name="settings_wipe_attempts">Apagar após tentativas falhadas</string>
+    <string name="settings_wipe_attempts_sub">Apagar esta carteira após 10 palavras-passe erradas</string>
+    <string name="settings_password_error_left">A palavra-passe atual está incorreta. Restam %1$d tentativas antes de esta carteira ser apagada.</string>
+    <string name="settings_password_slide">Atualizar palavra-passe</string>
+    <string name="settings_password_slide_hint">Deslize ou toque duas vezes para atualizar a palavra-passe</string>
+    <string name="settings_password_updating">A atualizar</string>
+    <string name="settings_password_not_ready">Preencha primeiro as duas palavras-passe</string>
+    <string name="erase_title">Apagar carteira</string>
+    <string name="erase_heading">Apagar “%1$s”?</string>
+    <string name="erase_body">As chaves desta carteira, o histórico em cache, os contactos e as notas neste telefone serão eliminados. As outras carteiras não são afetadas. Só poderá recuperar os fundos com a frase de recuperação.</string>
+    <string name="erase_type_label">Escreva ERASE para confirmar</string>
+    <string name="erase_slider">Apagar</string>
+    <string name="erase_slider_hint">Deslize ou toque duas vezes para apagar esta carteira</string>
+    <string name="erase_slider_locked">Escreva primeiro ERASE</string>
+    <string name="erase_working">A apagar…</string>
+    <string name="settings_seed_slide_hint">Deslize ou toque duas vezes para revelar a frase de recuperação</string>
+    <string name="settings_seed_not_ready">Introduza primeiro a sua palavra-passe</string>
+    <string name="settings_seed_revealing">A revelar</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d segundo</item>
+        <item quantity="other">%1$d segundos</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minuto</item>
+        <item quantity="other">%1$d minutos</item>
+    </plurals>
 </resources>

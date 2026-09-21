@@ -642,4 +642,36 @@
     <string name="send_err_auth_required">È necessaria l’autenticazione prima di poter inviare questo pagamento.</string>
     <string name="send_external_warning_title">Richiesta di pagamento esterna</string>
     <string name="send_external_warning">Questo indirizzo, l’importo e l’etichetta provengono da un link o da un codice QR, non da te. Controlla l’indirizzo completo qui sotto prima di inviare.</string>
+    <string name="unlock_error_incorrect_left">Password errata. %1$d tentativi rimasti prima che questo portafoglio venga cancellato.</string>
+    <string name="unlock_error_locked">Troppi tentativi. Riprova tra %1$s.</string>
+    <string name="unlock_error_wiped">Troppi tentativi non riusciti. Questo portafoglio è stato cancellato.</string>
+    <string name="send_auth_left">Password errata. %1$d tentativi rimasti prima che questo portafoglio venga cancellato.</string>
+    <string name="settings_wipe_attempts">Cancella dopo tentativi non riusciti</string>
+    <string name="settings_wipe_attempts_sub">Cancella questo portafoglio dopo 10 password errate</string>
+    <string name="settings_password_error_left">La password attuale non è corretta. %1$d tentativi rimasti prima che questo portafoglio venga cancellato.</string>
+    <string name="settings_password_slide">Aggiorna password</string>
+    <string name="settings_password_slide_hint">Scorri o tocca due volte per aggiornare la password</string>
+    <string name="settings_password_updating">Aggiornamento</string>
+    <string name="settings_password_not_ready">Compila prima entrambe le password</string>
+    <string name="erase_title">Cancella portafoglio</string>
+    <string name="erase_heading">Cancellare «%1$s»?</string>
+    <string name="erase_body">Le chiavi di questo portafoglio, la cronologia in cache, i contatti e le note su questo telefono verranno eliminati. Gli altri portafogli non sono interessati. Puoi riavere i fondi solo con la frase di recupero.</string>
+    <string name="erase_type_label">Digita ERASE per confermare</string>
+    <string name="erase_slider">Cancella</string>
+    <string name="erase_slider_hint">Scorri o tocca due volte per cancellare questo portafoglio</string>
+    <string name="erase_slider_locked">Digita prima ERASE</string>
+    <string name="erase_working">Cancellazione…</string>
+    <string name="settings_seed_slide_hint">Scorri o tocca due volte per rivelare la frase di recupero</string>
+    <string name="settings_seed_not_ready">Inserisci prima la password</string>
+    <string name="settings_seed_revealing">Rivelazione</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d secondo</item>
+        <item quantity="many">%1$d secondi</item>
+        <item quantity="other">%1$d secondi</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minuto</item>
+        <item quantity="many">%1$d minuti</item>
+        <item quantity="other">%1$d minuti</item>
+    </plurals>
 </resources>

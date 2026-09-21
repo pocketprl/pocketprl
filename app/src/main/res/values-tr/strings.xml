@@ -641,4 +641,35 @@
     <string name="send_err_auth_required">Bu ödeme gönderilmeden önce kimlik doğrulama gerekir.</string>
     <string name="send_external_warning_title">Harici ödeme isteği</string>
     <string name="send_external_warning">Bu adres, tutar ve etiket bir bağlantıdan veya QR koddan geldi, sizden değil. Göndermeden önce aşağıdaki tam adresi kontrol edin.</string>
+    <!-- ===================== erase / unlock attempts ===================== -->
+    <string name="unlock_error_incorrect_left">Yanlış parola. Bu cüzdan silinmeden önce %1$d deneme kaldı.</string>
+    <string name="unlock_error_locked">Çok fazla deneme. %1$s sonra tekrar deneyin.</string>
+    <string name="unlock_error_wiped">Çok fazla başarısız deneme. Bu cüzdan silindi.</string>
+    <string name="send_auth_left">Yanlış parola. Bu cüzdan silinmeden önce %1$d deneme kaldı.</string>
+    <string name="settings_wipe_attempts">Başarısız denemelerden sonra sil</string>
+    <string name="settings_wipe_attempts_sub">10 yanlış paroladan sonra bu cüzdanı sil</string>
+    <string name="settings_password_error_left">Mevcut parola yanlış. Bu cüzdan silinmeden önce %1$d deneme kaldı.</string>
+    <string name="settings_password_slide">Parolayı güncelle</string>
+    <string name="settings_password_slide_hint">Parolayı güncellemek için kaydırın veya çift dokunun</string>
+    <string name="settings_password_updating">Güncelleniyor</string>
+    <string name="settings_password_not_ready">Önce her iki parolayı da doldurun</string>
+    <string name="erase_title">Cüzdanı sil</string>
+    <string name="erase_heading">“%1$s” silinsin mi?</string>
+    <string name="erase_body">Bu cüzdanın anahtarları, önbelleğe alınmış geçmişi, kişileri ve notları bu telefondan silinecek. Diğer cüzdanlar etkilenmez. Parayı yalnızca kurtarma ifadesiyle geri alabilirsiniz.</string>
+    <string name="erase_type_label">Onaylamak için ERASE yazın</string>
+    <string name="erase_slider">Sil</string>
+    <string name="erase_slider_hint">Bu cüzdanı silmek için kaydırın veya çift dokunun</string>
+    <string name="erase_slider_locked">Önce ERASE yazın</string>
+    <string name="erase_working">Siliniyor…</string>
+    <string name="settings_seed_slide_hint">Kurtarma ifadesini göstermek için kaydırın veya çift dokunun</string>
+    <string name="settings_seed_not_ready">Önce parolanızı girin</string>
+    <string name="settings_seed_revealing">Gösteriliyor</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d saniye</item>
+        <item quantity="other">%1$d saniye</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d dakika</item>
+        <item quantity="other">%1$d dakika</item>
+    </plurals>
 </resources>

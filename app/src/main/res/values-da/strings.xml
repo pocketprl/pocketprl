@@ -642,4 +642,34 @@
     <string name="send_err_auth_required">Der kræves godkendelse, før denne betaling kan sendes.</string>
     <string name="send_external_warning_title">Ekstern betalingsanmodning</string>
     <string name="send_external_warning">Denne adresse, beløb og etiket kom fra et link eller en QR-kode, ikke fra dig. Kontroller hele adressen nedenfor, før du sender.</string>
+    <string name="unlock_error_incorrect_left">Forkert adgangskode. %1$d forsøg tilbage, før denne tegnebog slettes.</string>
+    <string name="unlock_error_locked">For mange forsøg. Prøv igen om %1$s.</string>
+    <string name="unlock_error_wiped">For mange mislykkede forsøg. Denne tegnebog er blevet slettet.</string>
+    <string name="send_auth_left">Forkert adgangskode. %1$d forsøg tilbage, før denne tegnebog slettes.</string>
+    <string name="settings_wipe_attempts">Slet efter mislykkede forsøg</string>
+    <string name="settings_wipe_attempts_sub">Slet denne tegnebog efter 10 forkerte adgangskoder</string>
+    <string name="settings_password_error_left">Den nuværende adgangskode er forkert. %1$d forsøg tilbage, før denne tegnebog slettes.</string>
+    <string name="settings_password_slide">Opdater adgangskode</string>
+    <string name="settings_password_slide_hint">Træk eller dobbelttryk for at opdatere adgangskoden</string>
+    <string name="settings_password_updating">Opdaterer</string>
+    <string name="settings_password_not_ready">Udfyld begge adgangskoder først</string>
+    <string name="erase_title">Slet tegnebog</string>
+    <string name="erase_heading">Slet “%1$s”?</string>
+    <string name="erase_body">Denne tegnebogs nøgler, cachelagrede historik, kontakter og noter på denne telefon slettes. Andre tegnebøger påvirkes ikke. Du kan kun få midlerne tilbage med gendannelsessætningen.</string>
+    <string name="erase_type_label">Skriv ERASE for at bekræfte</string>
+    <string name="erase_slider">Slet</string>
+    <string name="erase_slider_hint">Træk eller dobbelttryk for at slette denne tegnebog</string>
+    <string name="erase_slider_locked">Skriv ERASE først</string>
+    <string name="erase_working">Sletter…</string>
+    <string name="settings_seed_slide_hint">Træk eller dobbelttryk for at vise gendannelsessætningen</string>
+    <string name="settings_seed_not_ready">Indtast din adgangskode først</string>
+    <string name="settings_seed_revealing">Viser</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d sekund</item>
+        <item quantity="other">%1$d sekunder</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minut</item>
+        <item quantity="other">%1$d minutter</item>
+    </plurals>
 </resources>

@@ -642,4 +642,35 @@
     <string name="send_err_auth_required">Se requiere autenticación antes de poder enviar este pago.</string>
     <string name="send_external_warning_title">Solicitud de pago externa</string>
     <string name="send_external_warning">Esta dirección, el importe y la etiqueta provienen de un enlace o código QR, no de ti. Revisa la dirección completa a continuación antes de enviar.</string>
+
+    <string name="unlock_error_incorrect_left">Contraseña incorrecta. Quedan %1$d intentos antes de que se borre esta cartera.</string>
+    <string name="unlock_error_locked">Demasiados intentos. Vuelve a intentarlo en %1$s.</string>
+    <string name="unlock_error_wiped">Demasiados intentos fallidos. Esta cartera se ha borrado.</string>
+    <string name="send_auth_left">Contraseña incorrecta. Quedan %1$d intentos antes de que se borre esta cartera.</string>
+    <string name="settings_wipe_attempts">Borrar tras intentos fallidos</string>
+    <string name="settings_wipe_attempts_sub">Borrar esta cartera tras 10 contraseñas incorrectas</string>
+    <string name="settings_password_error_left">La contraseña actual es incorrecta. Quedan %1$d intentos antes de que se borre esta cartera.</string>
+    <string name="settings_password_slide">Actualizar contraseña</string>
+    <string name="settings_password_slide_hint">Desliza o toca dos veces para actualizar la contraseña</string>
+    <string name="settings_password_updating">Actualizando</string>
+    <string name="settings_password_not_ready">Rellena primero ambas contraseñas</string>
+    <string name="erase_title">Borrar cartera</string>
+    <string name="erase_heading">¿Borrar “%1$s”?</string>
+    <string name="erase_body">Se eliminarán de este teléfono las claves de esta cartera, el historial en caché, los contactos y las notas. Las demás carteras no se verán afectadas. Solo podrás recuperar los fondos con la frase de recuperación.</string>
+    <string name="erase_type_label">Escribe ERASE para confirmar</string>
+    <string name="erase_slider">Borrar</string>
+    <string name="erase_slider_hint">Desliza o toca dos veces para borrar esta cartera</string>
+    <string name="erase_slider_locked">Escribe ERASE primero</string>
+    <string name="erase_working">Borrando…</string>
+    <string name="settings_seed_slide_hint">Desliza o toca dos veces para mostrar la frase de recuperación</string>
+    <string name="settings_seed_not_ready">Introduce primero tu contraseña</string>
+    <string name="settings_seed_revealing">Mostrando</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d segundo</item>
+        <item quantity="other">%1$d segundos</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minuto</item>
+        <item quantity="other">%1$d minutos</item>
+    </plurals>
 </resources>

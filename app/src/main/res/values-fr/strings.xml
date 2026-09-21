@@ -642,4 +642,36 @@
     <string name="send_err_auth_required">Une authentification est requise avant de pouvoir envoyer ce paiement.</string>
     <string name="send_external_warning_title">Demande de paiement externe</string>
     <string name="send_external_warning">Cette adresse, ce montant et ce libellé proviennent d’un lien ou d’un QR code, pas de vous. Vérifiez l’adresse complète ci-dessous avant d’envoyer.</string>
+    <string name="unlock_error_incorrect_left">Mot de passe incorrect. %1$d tentatives restantes avant l’effacement de ce portefeuille.</string>
+    <string name="unlock_error_locked">Trop de tentatives. Réessayez dans %1$s.</string>
+    <string name="unlock_error_wiped">Trop de tentatives échouées. Ce portefeuille a été effacé.</string>
+    <string name="send_auth_left">Mot de passe incorrect. %1$d tentatives restantes avant l’effacement de ce portefeuille.</string>
+    <string name="settings_wipe_attempts">Effacer après des tentatives échouées</string>
+    <string name="settings_wipe_attempts_sub">Effacer ce portefeuille après 10 mots de passe incorrects</string>
+    <string name="settings_password_error_left">Le mot de passe actuel est incorrect. %1$d tentatives restantes avant l’effacement de ce portefeuille.</string>
+    <string name="settings_password_slide">Mettre à jour le mot de passe</string>
+    <string name="settings_password_slide_hint">Glissez ou touchez deux fois pour mettre à jour le mot de passe</string>
+    <string name="settings_password_updating">Mise à jour</string>
+    <string name="settings_password_not_ready">Remplissez d’abord les deux mots de passe</string>
+    <string name="erase_title">Effacer le portefeuille</string>
+    <string name="erase_heading">Effacer « %1$s » ?</string>
+    <string name="erase_body">Les clés, l’historique en cache, les contacts et les notes de ce portefeuille sur ce téléphone seront supprimés. Les autres portefeuilles ne sont pas affectés. Vous ne pourrez récupérer les fonds qu’avec la phrase de récupération.</string>
+    <string name="erase_type_label">Saisissez ERASE pour confirmer</string>
+    <string name="erase_slider">Effacer</string>
+    <string name="erase_slider_hint">Glissez ou touchez deux fois pour effacer ce portefeuille</string>
+    <string name="erase_slider_locked">Saisissez d’abord ERASE</string>
+    <string name="erase_working">Effacement…</string>
+    <string name="settings_seed_slide_hint">Glissez ou touchez deux fois pour révéler la phrase de récupération</string>
+    <string name="settings_seed_not_ready">Saisissez d’abord votre mot de passe</string>
+    <string name="settings_seed_revealing">Révélation</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d seconde</item>
+        <item quantity="many">%1$d secondes</item>
+        <item quantity="other">%1$d secondes</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="many">%1$d minutes</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
 </resources>

@@ -641,4 +641,35 @@
     <string name="send_err_auth_required">Tämä maksu edellyttää todennusta ennen lähettämistä.</string>
     <string name="send_external_warning_title">Ulkoinen maksupyyntö</string>
     <string name="send_external_warning">Tämä osoite, summa ja tunniste tulivat linkistä tai QR-koodista, eivät sinulta. Tarkista koko osoite alta ennen lähettämistä.</string>
+
+    <string name="unlock_error_incorrect_left">Väärä salasana. %1$d yritystä jäljellä ennen kuin tämä lompakko poistetaan.</string>
+    <string name="unlock_error_locked">Liian monta yritystä. Yritä uudelleen %1$s kuluttua.</string>
+    <string name="unlock_error_wiped">Liian monta epäonnistunutta yritystä. Tämä lompakko on poistettu.</string>
+    <string name="send_auth_left">Väärä salasana. %1$d yritystä jäljellä ennen kuin tämä lompakko poistetaan.</string>
+    <string name="settings_wipe_attempts">Poista epäonnistuneiden yritysten jälkeen</string>
+    <string name="settings_wipe_attempts_sub">Poista tämä lompakko 10 väärän salasanan jälkeen</string>
+    <string name="settings_password_error_left">Nykyinen salasana on väärä. %1$d yritystä jäljellä ennen kuin tämä lompakko poistetaan.</string>
+    <string name="settings_password_slide">Päivitä salasana</string>
+    <string name="settings_password_slide_hint">Liu’uta tai kaksoisnapauta päivittääksesi salasanan</string>
+    <string name="settings_password_updating">Päivitetään</string>
+    <string name="settings_password_not_ready">Täytä ensin molemmat salasanat</string>
+    <string name="erase_title">Poista lompakko</string>
+    <string name="erase_heading">Poistetaanko ”%1$s”?</string>
+    <string name="erase_body">Tämän lompakon avaimet, välimuistiin tallennettu historia, yhteystiedot ja muistiinpanot poistetaan tästä puhelimesta. Muut lompakot eivät muutu. Voit saada varat takaisin vain palautuslauseella.</string>
+    <string name="erase_type_label">Kirjoita ERASE vahvistaaksesi</string>
+    <string name="erase_slider">Poista</string>
+    <string name="erase_slider_hint">Liu’uta tai kaksoisnapauta poistaaksesi tämän lompakon</string>
+    <string name="erase_slider_locked">Kirjoita ensin ERASE</string>
+    <string name="erase_working">Poistetaan…</string>
+    <string name="settings_seed_slide_hint">Liu’uta tai kaksoisnapauta näyttääksesi palautuslauseen</string>
+    <string name="settings_seed_not_ready">Syötä ensin salasanasi</string>
+    <string name="settings_seed_revealing">Näytetään</string>
+    <plurals name="duration_secs">
+        <item quantity="one">%1$d sekunti</item>
+        <item quantity="other">%1$d sekuntia</item>
+    </plurals>
+    <plurals name="duration_mins">
+        <item quantity="one">%1$d minuutti</item>
+        <item quantity="other">%1$d minuuttia</item>
+    </plurals>
 </resources>
