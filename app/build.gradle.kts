@@ -12,8 +12,8 @@ android {
         applicationId = "dev.pocketprl.wallet"
         minSdk = 28
         targetSdk = 37
-        versionCode = 14
-        versionName = "2.3.1"
+        versionCode = 15
+        versionName = "2.3.2"
         ndk {
             abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
         }

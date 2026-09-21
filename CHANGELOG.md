@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.3.2
+
+* **Release notes render as Markdown.** The "what's new" screen now formats the
+  GitHub release body properly — headings, bullet and numbered lists, block
+  quotes, horizontal rules, fenced code, and inline bold / italic / code / links
+  — instead of showing the raw markup.
+
 ## 2.3.1
 
 * **Selectable app icon.** Settings › Appearance › App icon switches the launcher

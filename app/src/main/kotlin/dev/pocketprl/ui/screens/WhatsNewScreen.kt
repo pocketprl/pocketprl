@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import dev.pocketprl.R
 import dev.pocketprl.ui.components.HeroIcon
+import dev.pocketprl.ui.components.MarkdownText
 import dev.pocketprl.ui.components.PrimaryButton
 import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SectionCard
@@ -55,12 +56,11 @@ fun WhatsNewScreen(version: String, notes: String, onDone: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             SectionCard {
-                Text(
-                    formatNotes(notes).ifEmpty { stringResource(R.string.whatsnew_empty) },
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.fillMaxWidth(),
-                )
+                if (notes.isBlank()) {
+                    Text(stringResource(R.string.whatsnew_empty), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface)
+                } else {
+                    MarkdownText(notes)
+                }
             }
             Spacer(Modifier.height(4.dp))
             PrimaryButton(stringResource(R.string.whatsnew_done), onClick = onDone)
@@ -68,15 +68,3 @@ fun WhatsNewScreen(version: String, notes: String, onDone: () -> Unit) {
         }
     }
 }
-
-/** Turns the release body's light markdown into readable plain text for the block. */
-private fun formatNotes(raw: String): String = raw.lines().mapNotNull { line ->
-    val t = line.trim()
-    when {
-        t.isEmpty() -> null
-        t.startsWith("#") -> t.trimStart('#').trim()
-        t.startsWith("- ") || t.startsWith("* ") -> "• " + t.drop(2)
-        t == "-" || t == "*" -> null
-        else -> t
-    }
-}.joinToString("\n").trim()
