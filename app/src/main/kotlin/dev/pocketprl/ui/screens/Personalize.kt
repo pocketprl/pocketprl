@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.pocketprl.Locales
@@ -247,7 +248,7 @@ private fun <T> Segmented(options: List<T>, selected: T, label: @Composable (T) 
                     .clickable { onSelect(option) }.padding(vertical = 10.dp),
                 contentAlignment = Alignment.Center,
             ) {
-                Text(label(option), color = fg, style = MaterialTheme.typography.labelLarge, maxLines = 1)
+                Text(label(option), color = fg, style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
         }
     }

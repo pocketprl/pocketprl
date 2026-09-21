@@ -285,7 +285,7 @@ private fun MiniStat(label: String, value: String, accent: Color, modifier: Modi
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(6.dp).background(accent, CircleShape))
             Spacer(Modifier.width(5.dp))
-            Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
+            Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
         Spacer(Modifier.height(2.dp))
         Text(value, style = MaterialTheme.typography.titleMedium.merge(TabularNumbers).copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.onBackground, maxLines = 1, overflow = TextOverflow.Ellipsis)
@@ -317,9 +317,10 @@ private fun PriceLine(network: Network, usdPerPrl: Double, change24h: Double?, s
                 style = MaterialTheme.typography.labelMedium.merge(TabularNumbers).copy(fontWeight = FontWeight.Bold), color = fg,
                 modifier = Modifier.background(bg, CircleShape).padding(horizontal = 8.dp, vertical = 2.dp).semantics { contentDescription = desc },
                 maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
         }
-        Text("${network.ticker} ${Amount.usdPrice(usdPerPrl)}", style = MaterialTheme.typography.labelSmall.merge(TabularNumbers), color = cs.onSurfaceVariant, maxLines = 1)
+        Text("${network.ticker} ${Amount.usdPrice(usdPerPrl)}", style = MaterialTheme.typography.labelSmall.merge(TabularNumbers), color = cs.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
 

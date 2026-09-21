@@ -140,7 +140,7 @@ fun ScreenScaffold(
                             Text(title, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f, fill = false))
                             if (onTitleClick != null) Icon(Icons.Filled.ArrowDropDown, contentDescription = stringResource(R.string.action_switch_wallet), tint = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
-                        if (subtitle != null) Text(subtitle, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
+                        if (subtitle != null) Text(subtitle, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
                     }
                 },
                 navigationIcon = {
@@ -160,7 +160,7 @@ fun ScreenScaffold(
 fun PrimaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true, loading: Boolean = false) {
     Button(onClick = onClick, enabled = enabled && !loading, modifier = modifier.fillMaxWidth().heightIn(min = ButtonHeight), shape = ButtonShape) {
         if (loading) CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp, color = MaterialTheme.colorScheme.onPrimary)
-        else Text(text, style = MaterialTheme.typography.titleMedium)
+        else Text(text, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
 
@@ -305,14 +305,14 @@ fun SectionTitle(text: String, modifier: Modifier = Modifier, color: Color = Mat
     Text(
         text.uppercase(),
         style = MaterialTheme.typography.labelMedium.copy(letterSpacing = 1.2.sp, fontWeight = FontWeight.SemiBold),
-        color = color, modifier = modifier.padding(top = 8.dp, bottom = 2.dp),
+        color = color, modifier = modifier.padding(top = 6.dp, bottom = 0.dp),
     )
 }
 
 @Composable
 fun SettingRow(title: String, subtitle: String? = null, onClick: (() -> Unit)? = null, icon: ImageVector? = null, enabled: Boolean = true, trailing: @Composable (() -> Unit)? = null) {
     Row(
-        modifier = Modifier.fillMaxWidth().let { if (onClick != null && enabled) it.clickable(onClick = onClick) else it }.heightIn(min = 56.dp).padding(vertical = 8.dp).alpha(if (enabled) 1f else DisabledContentAlpha),
+        modifier = Modifier.fillMaxWidth().let { if (onClick != null && enabled) it.clickable(onClick = onClick) else it }.heightIn(min = 48.dp).padding(vertical = 4.dp).alpha(if (enabled) 1f else DisabledContentAlpha),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         if (icon != null) {

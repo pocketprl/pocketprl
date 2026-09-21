@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.2.1
+
+* **Tighter settings.** The settings list rows and section cards use less
+  padding, so more of the screen is content and less is air.
+* **No clipped labels.** Buttons, the slide-to-confirm label and small captions
+  now stay on a single line and ellipsize instead of being cut when a translation
+  or a large font scale runs long; the slide label also keeps clear of the thumb.
+
+This release exists to exercise the 2.2.0 in-app self-updater.
+
 ## 2.2.0
 
 * **In-app updates.** "Check for updates" now downloads the release APK itself:

@@ -43,6 +43,7 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -249,11 +250,11 @@ private fun StatRow(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Top,
     ) {
-        Text(label, color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(0.42f), maxLines = 2)
+        Text(label, color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(0.42f), maxLines = 2, overflow = TextOverflow.Ellipsis)
         Spacer(Modifier.width(12.dp))
         Column(modifier = Modifier.weight(0.58f), horizontalAlignment = Alignment.End) {
-            Text(value, color = valueColor, style = MaterialTheme.typography.bodyLarge.merge(TabularNumbers).copy(fontWeight = FontWeight.SemiBold), textAlign = TextAlign.End, maxLines = 2)
-            if (sub != null) Text(sub, color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodySmall, textAlign = TextAlign.End, maxLines = 2)
+            Text(value, color = valueColor, style = MaterialTheme.typography.bodyLarge.merge(TabularNumbers).copy(fontWeight = FontWeight.SemiBold), textAlign = TextAlign.End, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            if (sub != null) Text(sub, color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodySmall, textAlign = TextAlign.End, maxLines = 2, overflow = TextOverflow.Ellipsis)
         }
     }
 }
@@ -335,9 +336,9 @@ private fun AxisLabels(top: Long, mid: Long, bottom: Long, height: androidx.comp
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.End,
     ) {
-        Text(axisLabel(top), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
-        Text(axisLabel(mid), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
-        Text(axisLabel(bottom), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
+        Text(axisLabel(top), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text(axisLabel(mid), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text(axisLabel(bottom), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
 
@@ -386,7 +387,7 @@ private fun WeeklyFlowChart(weeks: List<FlowBucket>, network: Network, hide: Boo
                 Row(modifier = Modifier.fillMaxWidth()) {
                     weeks.forEachIndexed { i, w ->
                         Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
-                            if (i % 2 == 0) Text(shortDate(w.start), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1)
+                            if (i % 2 == 0) Text(shortDate(w.start), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         }
                     }
                 }

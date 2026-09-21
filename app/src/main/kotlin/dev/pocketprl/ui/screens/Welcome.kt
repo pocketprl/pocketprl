@@ -31,6 +31,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import dev.pocketprl.R
 import dev.pocketprl.core.chain.Network
@@ -82,7 +83,7 @@ fun WelcomeScreen(network: Network, onNetworkChange: (Network) -> Unit, onCreate
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text(stringResource(R.string.welcome_network), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 for (n in Network.entries) {
-                    FilterChip(selected = n == network, onClick = { onNetworkChange(n) }, label = { Text(n.displayName, maxLines = 1) })
+                    FilterChip(selected = n == network, onClick = { onNetworkChange(n) }, label = { Text(n.displayName, maxLines = 1, overflow = TextOverflow.Ellipsis) })
                 }
             }
             Spacer(Modifier.height(16.dp))

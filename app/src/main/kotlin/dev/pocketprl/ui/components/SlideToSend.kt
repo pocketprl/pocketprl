@@ -39,6 +39,8 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.onClick
@@ -194,9 +196,18 @@ fun SlideToConfirm(
     ) {
         Text(
             if (!enabled) notReady else label,
-            modifier = Modifier.align(Alignment.Center).graphicsLayer { alpha = (1f - progress * 1.6f).coerceIn(0f, 1f) }.clearAndSetSemantics {},
+            // Keep the label clear of the thumb at both ends, on one line, and ellipsized
+            // rather than clipped when a translation or a large font scale runs long.
+            modifier = Modifier.align(Alignment.Center)
+                .fillMaxWidth()
+                .padding(horizontal = trackHeight)
+                .graphicsLayer { alpha = (1f - progress * 1.6f).coerceIn(0f, 1f) }
+                .clearAndSetSemantics {},
             style = MaterialTheme.typography.titleMedium,
             color = labelColor,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center,
         )
         Box(
             modifier = Modifier

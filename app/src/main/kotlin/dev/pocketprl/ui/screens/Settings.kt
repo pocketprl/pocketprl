@@ -53,6 +53,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.fragment.app.FragmentActivity
@@ -189,9 +190,9 @@ fun SettingsScreen(
     }
 
     ScreenScaffold(title = stringResource(R.string.settings_title), onBack = onBack) {
-        Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 6.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             SectionTitle(stringResource(R.string.settings_section_wallet))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_name), vm.walletName, onClick = { showRename = true }, icon = Icons.Filled.Edit)
                 HorizontalDivider()
                 SettingRow(stringResource(R.string.label_network), vm.network.displayName, icon = AppIcons.Globe)
@@ -208,12 +209,12 @@ fun SettingsScreen(
             }
 
             SectionTitle(stringResource(R.string.settings_section_language))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_language), languageLabel(settings.appLanguage), onClick = { showLanguage = true }, icon = AppIcons.Globe)
             }
 
             SectionTitle(stringResource(R.string.settings_section_appearance))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_theme), themeLabel(settings.themeMode), onClick = { showTheme = true }, icon = AppIcons.Palette)
                 HorizontalDivider()
                 SettingRow(stringResource(R.string.settings_accent), accentLabel(settings.accentTheme), onClick = { showAccent = true }, icon = AppIcons.Palette)
@@ -245,7 +246,7 @@ fun SettingsScreen(
             }
 
             SectionTitle(stringResource(R.string.settings_section_numbers))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_show_fiat), icon = AppIcons.Dollar) {
                     Switch(checked = settings.showFiat, onCheckedChange = { haptics.toggle(it); vm.setShowFiat(it) })
                 }
@@ -260,7 +261,7 @@ fun SettingsScreen(
             }
 
             SectionTitle(stringResource(R.string.settings_section_dashboard))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_hero), heroLabel(settings.heroSpendable), onClick = { showHero = true }, icon = AppIcons.Wallet)
                 HorizontalDivider()
                 SettingRow(stringResource(R.string.settings_show_change), stringResource(R.string.settings_show_change_sub), icon = AppIcons.TrendingUp) {
@@ -283,7 +284,7 @@ fun SettingsScreen(
             }
 
             SectionTitle(stringResource(R.string.settings_section_security))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_change_password), onClick = onChangePassword, icon = Icons.Filled.Lock)
                 HorizontalDivider()
                 SettingRow(stringResource(R.string.settings_biometric), if (bioAvailable) stringResource(R.string.settings_biometric_sub) else stringResource(R.string.settings_biometric_none), icon = AppIcons.Fingerprint) {
@@ -320,7 +321,7 @@ fun SettingsScreen(
             }
 
             SectionTitle(stringResource(R.string.settings_section_notifications))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_notify_incoming), stringResource(R.string.settings_notify_incoming_sub, stringResource(R.string.notif_period)), icon = Icons.Filled.Notifications) {
                     Switch(checked = settings.notifyIncoming, onCheckedChange = { want ->
                         haptics.toggle(want)
@@ -361,17 +362,17 @@ fun SettingsScreen(
             }
 
             SectionTitle(stringResource(R.string.settings_section_network))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_indexer), vm.blockbookUrl().substringAfter("://").trimEnd('/'), onClick = onNetwork, icon = AppIcons.Server)
             }
 
             SectionTitle(stringResource(R.string.settings_section_backup))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.settings_reveal_seed), stringResource(R.string.settings_reveal_seed_sub), onClick = onRevealSeed, icon = AppIcons.Shield)
             }
 
             SectionTitle(stringResource(R.string.settings_section_about))
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 SettingRow(stringResource(R.string.app_name), stringResource(R.string.settings_about_version, BuildConfig.VERSION_NAME), onClick = onAbout, icon = Icons.Filled.Info)
             }
 
@@ -630,7 +631,7 @@ private fun DialogOptionRow(selected: Boolean, label: String, onSelect: () -> Un
     ) {
         RadioButton(selected = selected, onClick = onSelect)
         Spacer(Modifier.width(8.dp))
-        Text(label)
+        Text(label, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
 
@@ -716,8 +717,8 @@ fun RevealSeedScreen(vm: SettingsViewModel, onBack: () -> Unit) {
                 )
             } else {
                 when (m) {
-                    is SeedMaterial.Mnemonic -> SectionCard { WordGrid(m.words.split(' ')) }
-                    is SeedMaterial.Hex -> SectionCard { Text(stringResource(R.string.settings_seed_hex), style = MaterialTheme.typography.labelLarge); MonoText(m.bytes.toHex()) }
+                    is SeedMaterial.Mnemonic -> SectionCard(padding = 12.dp) { WordGrid(m.words.split(' ')) }
+                    is SeedMaterial.Hex -> SectionCard(padding = 12.dp) { Text(stringResource(R.string.settings_seed_hex), style = MaterialTheme.typography.labelLarge); MonoText(m.bytes.toHex()) }
                 }
                 InfoBanner(stringResource(R.string.settings_seed_written_hint), BannerKind.WARNING)
                 PrimaryButton(stringResource(R.string.action_done), onClick = onBack)
@@ -855,7 +856,7 @@ fun AboutScreen(vm: SettingsViewModel, onBack: () -> Unit) {
 
     ScreenScaffold(title = stringResource(R.string.settings_about_title), onBack = onBack) {
         Column(modifier = Modifier.verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-            SectionCard {
+            SectionCard(padding = 12.dp) {
                 KeyValueRow(stringResource(R.string.settings_about_version_label), BuildConfig.VERSION_NAME)
                 KeyValueRow(stringResource(R.string.settings_about_network), vm.network.displayName)
                 KeyValueRow(stringResource(R.string.settings_about_coin_type), vm.network.coinType.toString())

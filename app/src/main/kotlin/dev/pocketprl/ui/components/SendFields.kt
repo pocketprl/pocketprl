@@ -45,6 +45,7 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.pocketprl.R
@@ -129,7 +130,7 @@ fun AmountHero(
         // Reserved height so the pills below do not jump while typing.
         Box(modifier = Modifier.heightIn(min = 24.dp), contentAlignment = Alignment.Center) {
             val line = error ?: secondary
-            if (line != null) Text(line, style = t.titleMedium.merge(TabularNumbers), color = if (error != null) cs.error else muted, maxLines = 1)
+            if (line != null) Text(line, style = t.titleMedium.merge(TabularNumbers), color = if (error != null) cs.error else muted, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
         if (onSwap != null || onMax != null) {
             Spacer(Modifier.height(12.dp))
@@ -173,7 +174,7 @@ fun SmallPill(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, 
         verticalAlignment = Alignment.CenterVertically,
     ) {
         if (icon != null) { Icon(icon, contentDescription = null, tint = fg, modifier = Modifier.size(16.dp)); Spacer(Modifier.width(6.dp)) }
-        Text(text, style = MaterialTheme.typography.labelLarge, color = fg, maxLines = 1)
+        Text(text, style = MaterialTheme.typography.labelLarge, color = fg, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
 
@@ -215,7 +216,7 @@ fun RecipientField(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     if (contactName != null) stringResource(R.string.send_to_contact, contactName) else stringResource(R.string.send_to),
-                    style = MaterialTheme.typography.labelSmall, color = if (contactName != null) cs.primary else cs.onSurfaceVariant, maxLines = 1,
+                    style = MaterialTheme.typography.labelSmall, color = if (contactName != null) cs.primary else cs.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis,
                 )
                 Spacer(Modifier.height(2.dp))
                 BasicTextField(
@@ -273,10 +274,10 @@ fun <T> FeeTierPicker(options: List<FeeOption<T>>, selected: T, onSelect: (T) ->
                     .clickable { if (!sel) haptics.tick(); onSelect(o.key) }.padding(vertical = 12.dp, horizontal = 8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Text(o.title, style = MaterialTheme.typography.labelLarge, color = fg, maxLines = 1)
-                Text(o.eta, style = MaterialTheme.typography.bodySmall, color = sub, maxLines = 1)
+                Text(o.title, style = MaterialTheme.typography.labelLarge, color = fg, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(o.eta, style = MaterialTheme.typography.bodySmall, color = sub, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 Spacer(Modifier.height(4.dp))
-                Text(o.rate ?: "…", style = MaterialTheme.typography.labelSmall.merge(TabularNumbers), color = sub, maxLines = 1)
+                Text(o.rate ?: "…", style = MaterialTheme.typography.labelSmall.merge(TabularNumbers), color = sub, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
         }
     }
