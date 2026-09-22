@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.5.5
+
+* **Much smaller download: 7.1 MB, down from 10.4 MB.** The release APK now ships
+  `arm64-v8a` only (the 32-bit ARM and x86_64 libs were dead weight on real
+  phones), keeps only the languages the app is actually translated into, and drops
+  an unused OkHttp data file plus the coroutines debug probe. Debug builds still
+  carry every ABI for emulators.
+* **Release notes wrap correctly.** A list item that spans several lines in a
+  GitHub release body now stays inside its bullet instead of breaking out to the
+  left margin partway through the sentence. Long words hyphenate and continue on
+  the next line.
+
 ## 2.5.4
 
 * **Biometric unlock is set up immediately on first run.** Asking for biometrics

@@ -92,7 +92,7 @@ fun MarkdownText(markdown: String, modifier: Modifier = Modifier, color: Color =
  */
 private fun TextStyle.notes(): TextStyle = copy(hyphens = Hyphens.Auto)
 
-private sealed interface MdBlock {
+internal sealed interface MdBlock {
     data class Heading(val level: Int, val text: String) : MdBlock
     data class Bullet(val text: String) : MdBlock
     data class Numbered(val number: Int, val text: String) : MdBlock
@@ -108,9 +108,12 @@ private val NUMBERED = Regex("""^\s*(\d+)[.)]\s+(.*)$""")
 private val QUOTE = Regex("""^\s*>\s?(.*)$""")
 private val RULE = Regex("""^\s*([-*_])\1{2,}\s*$""")
 
-private fun parseMarkdown(markdown: String): List<MdBlock> {
+internal fun parseMarkdown(markdown: String): List<MdBlock> {
     val out = ArrayList<MdBlock>()
     val paragraph = StringBuilder()
+    val item = StringBuilder()
+    var itemNumber: Int? = null
+    var inItem = false
     var fenced = false
     val code = StringBuilder()
 
@@ -119,26 +122,56 @@ private fun parseMarkdown(markdown: String): List<MdBlock> {
         paragraph.clear()
     }
 
+    // A GitHub release body wraps a list item across several source lines. The
+    // continuation lines must stay *inside* the item, otherwise they render as a
+    // separate paragraph that jumps back to the card's left edge and looks broken.
+    fun flushItem() {
+        if (inItem && item.isNotBlank()) {
+            val text = item.toString().trim()
+            out.add(itemNumber?.let { MdBlock.Numbered(it, text) } ?: MdBlock.Bullet(text))
+        }
+        inItem = false
+        item.clear()
+        itemNumber = null
+    }
+
+    fun flushAll() { flushParagraph(); flushItem() }
+
     for (raw in markdown.replace("\r\n", "\n").split('\n')) {
         val line = raw.trimEnd()
         if (line.trimStart().startsWith("```")) {
+            flushAll()
             if (fenced) { out.add(MdBlock.Code(code.toString().trimEnd())); code.clear(); fenced = false }
-            else { flushParagraph(); fenced = true }
+            else { fenced = true }
             continue
         }
         if (fenced) { code.append(line).append('\n'); continue }
         when {
-            line.isBlank() -> flushParagraph()
-            RULE.matches(line) -> { flushParagraph(); out.add(MdBlock.Rule) }
-            HEADING.matches(line) -> { flushParagraph(); val m = HEADING.find(line)!!; out.add(MdBlock.Heading(m.groupValues[1].length, m.groupValues[2].trim())) }
-            BULLET.matches(line) -> { flushParagraph(); out.add(MdBlock.Bullet(BULLET.find(line)!!.groupValues[1].trim())) }
-            NUMBERED.matches(line) -> { flushParagraph(); val m = NUMBERED.find(line)!!; out.add(MdBlock.Numbered(m.groupValues[1].toIntOrNull() ?: 0, m.groupValues[2].trim())) }
-            QUOTE.matches(line) -> { flushParagraph(); out.add(MdBlock.Quote(QUOTE.find(line)!!.groupValues[1].trim())) }
-            else -> { if (paragraph.isNotEmpty()) paragraph.append(' '); paragraph.append(line.trim()) }
+            line.isBlank() -> flushAll()
+            RULE.matches(line) -> { flushAll(); out.add(MdBlock.Rule) }
+            HEADING.matches(line) -> { flushAll(); val m = HEADING.find(line)!!; out.add(MdBlock.Heading(m.groupValues[1].length, m.groupValues[2].trim())) }
+            BULLET.matches(line) -> { flushAll(); inItem = true; itemNumber = null; item.append(BULLET.find(line)!!.groupValues[1].trim()) }
+            NUMBERED.matches(line) -> {
+                flushAll()
+                val m = NUMBERED.find(line)!!
+                inItem = true
+                itemNumber = m.groupValues[1].toIntOrNull() ?: 0
+                item.append(m.groupValues[2].trim())
+            }
+            QUOTE.matches(line) -> { flushAll(); out.add(MdBlock.Quote(QUOTE.find(line)!!.groupValues[1].trim())) }
+            else -> {
+                val t = line.trim()
+                if (inItem) {
+                    item.append(' ').append(t)
+                } else {
+                    if (paragraph.isNotEmpty()) paragraph.append(' ')
+                    paragraph.append(t)
+                }
+            }
         }
     }
     if (fenced && code.isNotEmpty()) out.add(MdBlock.Code(code.toString().trimEnd()))
-    flushParagraph()
+    flushAll()
     return out
 }
 

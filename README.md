@@ -13,7 +13,7 @@ contacts, notes, and "you got paid" notifications. It derives **exactly the
 same addresses as the official desktop wallet (oyster)** from the same recovery
 phrase, so you can move between the two freely.
 
-* Release APK around 9 MB, no Go runtime, no chain download, no telemetry.
+* Release APK around 7 MB on 64-bit ARM, no Go runtime, no chain download, no telemetry.
 * Min. Android 9 (API 28), target Android 16 (API 37).
 
 **No iOS port is planned as of now.** Best of luck to anyone who may attempt it.

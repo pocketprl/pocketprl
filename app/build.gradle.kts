@@ -24,10 +24,13 @@ android {
         // over a newer one. See docs/VERSIONING.md. The literal is only a fallback
         // for builds that do not resolve the property.
         versionCode = (project.findProperty("pocketprl.versionCode") as String?)?.toIntOrNull() ?: 15
-        versionName = "2.5.4"
+        versionName = "2.5.5"
         buildConfigField("long", "NORMAL_VERSION_CODE", "${pocketprlNormalVersionCode}L")
         ndk {
-            abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
+            // Real phones are arm64. The 32-bit arm and x86_64 ABIs are debug-only:
+            // shipping them would add ~1.3 MB (armeabi-v7a) and ~1.5 MB (x86_64) of
+            // libsecp256k1 that essentially no install needs.
+            abiFilters += listOf("arm64-v8a")
         }
     }
 
@@ -71,6 +74,8 @@ android {
         }
         debug {
             applicationIdSuffix = ".debug"
+            // Keep the older arm and emulator ABIs for development only.
+            ndk { abiFilters += listOf("armeabi-v7a", "x86_64") }
         }
     }
 
@@ -86,7 +91,25 @@ android {
 
 
     packaging {
-        resources.excludes += setOf("/META-INF/{AL2.0,LGPL2.1}", "/META-INF/versions/9/OSGI-INF/MANIFEST.MF")
+        resources.excludes += setOf(
+            "/META-INF/{AL2.0,LGPL2.1}",
+            "/META-INF/versions/9/OSGI-INF/MANIFEST.MF",
+            // Coroutines' debug-agent probe, unused in release.
+            "/DebugProbesKt.bin",
+        )
+    }
+
+    // Ship only the locales the app is actually translated into. Without this,
+    // every AndroidX / Material resource brings its own ~80-locale translations
+    // along, all of it dead weight in resources.arsc.
+    androidResources {
+        localeFilters += listOf(
+            "en", "de", "nl", "fr", "it", "es", "pt", "pl", "cs",
+            "ru", "uk", "sv", "da", "nb", "fi", "el", "tr", "ro", "hu",
+        )
+        // OkHttp's public-suffix list (~130 KB) backs HttpUrl.topPrivateDomain(),
+        // which this wallet never calls; it only parses full URLs.
+        ignoreAssetsPatterns += "PublicSuffixDatabase.list"
     }
 
     testOptions {
