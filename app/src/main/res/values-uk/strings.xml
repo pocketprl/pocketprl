@@ -695,6 +695,7 @@
     <string name="update_downloading_title">Завантаження оновлення</string>
     <string name="update_progress_kb">%1$s / %2$s КБ</string>
     <string name="update_downloaded_kb">Завантажено %1$s КБ</string>
+    <string name="update_speed_kbps">%1$s КБ/с</string>
     <string name="update_verifying_title">Перевірка завантаження</string>
     <string name="update_verifying_body">Перевірка контрольної суми SHA-256…</string>
     <string name="update_ready_title">Готово до встановлення</string>

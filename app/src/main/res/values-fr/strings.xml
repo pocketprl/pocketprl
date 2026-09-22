@@ -679,6 +679,7 @@
     <string name="update_downloading_title">Téléchargement de la mise à jour</string>
     <string name="update_progress_kb">%1$s / %2$s Ko</string>
     <string name="update_downloaded_kb">%1$s Ko téléchargés</string>
+    <string name="update_speed_kbps">%1$s Ko/s</string>
     <string name="update_verifying_title">Vérification du téléchargement</string>
     <string name="update_verifying_body">Vérification de la somme de contrôle SHA-256…</string>
     <string name="update_ready_title">Prêt à installer</string>

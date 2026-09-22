@@ -676,6 +676,7 @@
     <string name="update_downloading_title">Güncelleme indiriliyor</string>
     <string name="update_progress_kb">%1$s / %2$s KB</string>
     <string name="update_downloaded_kb">%1$s KB indirildi</string>
+    <string name="update_speed_kbps">%1$s KB/sn</string>
     <string name="update_verifying_title">İndirme doğrulanıyor</string>
     <string name="update_verifying_body">SHA-256 sağlama toplamı kontrol ediliyor…</string>
     <string name="update_ready_title">Kuruluma hazır</string>

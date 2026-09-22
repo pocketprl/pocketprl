@@ -678,6 +678,7 @@
     <string name="update_downloading_title">Descargando actualización</string>
     <string name="update_progress_kb">%1$s / %2$s KB</string>
     <string name="update_downloaded_kb">%1$s KB descargados</string>
+    <string name="update_speed_kbps">%1$s KB/s</string>
     <string name="update_verifying_title">Verificando la descarga</string>
     <string name="update_verifying_body">Comprobando la suma de verificación SHA-256…</string>
     <string name="update_ready_title">Listo para instalar</string>

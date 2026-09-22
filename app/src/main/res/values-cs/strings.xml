@@ -695,6 +695,7 @@
     <string name="update_downloading_title">Stahování aktualizace</string>
     <string name="update_progress_kb">%1$s / %2$s KB</string>
     <string name="update_downloaded_kb">Staženo %1$s KB</string>
+    <string name="update_speed_kbps">%1$s KB/s</string>
     <string name="update_verifying_title">Ověřování stažení</string>
     <string name="update_verifying_body">Kontrola kontrolního součtu SHA-256…</string>
     <string name="update_ready_title">Připraveno k instalaci</string>

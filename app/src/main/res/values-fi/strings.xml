@@ -677,6 +677,7 @@
     <string name="update_downloading_title">Ladataan päivitystä</string>
     <string name="update_progress_kb">%1$s / %2$s KB</string>
     <string name="update_downloaded_kb">%1$s KB ladattu</string>
+    <string name="update_speed_kbps">%1$s KB/s</string>
     <string name="update_verifying_title">Vahvistetaan latausta</string>
     <string name="update_verifying_body">Tarkistetaan SHA-256-tarkistussummaa…</string>
     <string name="update_ready_title">Valmis asennettavaksi</string>

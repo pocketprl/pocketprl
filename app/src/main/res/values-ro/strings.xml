@@ -685,6 +685,7 @@
     <string name="update_downloading_title">Se descarcă actualizarea</string>
     <string name="update_progress_kb">%1$s / %2$s KB</string>
     <string name="update_downloaded_kb">%1$s KB descărcați</string>
+    <string name="update_speed_kbps">%1$s KB/s</string>
     <string name="update_verifying_title">Se verifică descărcarea</string>
     <string name="update_verifying_body">Se verifică suma de control SHA-256…</string>
     <string name="update_ready_title">Gata de instalare</string>

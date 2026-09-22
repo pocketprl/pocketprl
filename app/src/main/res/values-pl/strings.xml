@@ -694,6 +694,7 @@
     <string name="update_downloading_title">Pobieranie aktualizacji</string>
     <string name="update_progress_kb">%1$s / %2$s KB</string>
     <string name="update_downloaded_kb">Pobrano %1$s KB</string>
+    <string name="update_speed_kbps">%1$s KB/s</string>
     <string name="update_verifying_title">Weryfikowanie pobranego pliku</string>
     <string name="update_verifying_body">Sprawdzanie sumy kontrolnej SHA-256…</string>
     <string name="update_ready_title">Gotowe do instalacji</string>

@@ -676,6 +676,7 @@
     <string name="update_downloading_title">Frissítés letöltése</string>
     <string name="update_progress_kb">%1$s / %2$s KB</string>
     <string name="update_downloaded_kb">%1$s KB letöltve</string>
+    <string name="update_speed_kbps">%1$s KB/s</string>
     <string name="update_verifying_title">Letöltés ellenőrzése</string>
     <string name="update_verifying_body">SHA-256 ellenőrzőösszeg vizsgálata…</string>
     <string name="update_ready_title">Telepítésre kész</string>
