@@ -241,7 +241,7 @@ fun TxDetailScreen(vm: WalletViewModel, txid: String, onBack: () -> Unit) {
                 )
                 if (tx.kind == TxKind.MINED && conf in 1 until Network.COINBASE_MATURITY) {
                     Spacer(Modifier.height(8.dp))
-                    LinearProgressIndicator(progress = { conf / Network.COINBASE_MATURITY.toFloat() }, modifier = Modifier.fillMaxWidth().height(6.dp), color = palette.accent, trackColor = MaterialTheme.colorScheme.surfaceVariant)
+                    LinearProgressIndicator(progress = { conf / Network.COINBASE_MATURITY.toFloat() }, modifier = Modifier.fillMaxWidth().height(6.dp), color = palette.accent, trackColor = MaterialTheme.colorScheme.surfaceVariant, drawStopIndicator = {})
                     Spacer(Modifier.height(4.dp))
                     Text(stringResource(R.string.activity_spendable_in, Network.COINBASE_MATURITY - conf, etaBlocks(Network.COINBASE_MATURITY - conf, secondsPerBlock)), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }

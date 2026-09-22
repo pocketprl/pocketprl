@@ -45,10 +45,20 @@ fun DownloadStatus(state: AppUpdater.State, installError: String?, modifier: Mod
                 LinearProgressIndicator(
                     progress = { if (st.total > 0) (st.bytes.toFloat() / st.total).coerceIn(0f, 1f) else 0f },
                     modifier = Modifier.fillMaxWidth(),
+                    drawStopIndicator = {},
                 )
+                val sizeText = if (st.total > 0) {
+                    stringResource(R.string.update_progress_kb, Amount.group(st.bytes / 1024), Amount.group(st.total / 1024))
+                } else {
+                    stringResource(R.string.update_downloaded_kb, Amount.group(st.bytes / 1024))
+                }
+                val speedText = if (st.bytesPerSecond > 0) {
+                    "  ·  " + stringResource(R.string.update_speed_kbps, Amount.group(st.bytesPerSecond / 1024))
+                } else {
+                    ""
+                }
                 Text(
-                    if (st.total > 0) stringResource(R.string.update_progress_kb, Amount.group(st.bytes / 1024), Amount.group(st.total / 1024))
-                    else stringResource(R.string.update_downloaded_kb, Amount.group(st.bytes / 1024)),
+                    sizeText + speedText,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

@@ -24,15 +24,18 @@ import kotlin.math.abs
 /**
  * Price alerts: a JobScheduler job polls the price feed and raises one
  * notification when the 24 h change first reaches each multiple of the user's
- * threshold, in either direction. The last band and direction are remembered,
- * so a once-a-minute poll cannot repeat the same alert.
+ * threshold, in either direction. The highest band already announced *for each
+ * direction* is remembered, so a price wobbling back and forth across a multiple
+ * of the threshold — or a poll repeating the same value — cannot alert twice. A
+ * move in the opposite direction is tracked separately.
  */
 object PriceAlertNotifier {
     const val CHANNEL_ID = "price.v1"
     const val TAG = "PocketPRL/price"
     private const val PREFS = "pocketprl.price_alert"
-    private const val KEY_LAST_BAND = "last_band"
-    private const val KEY_LAST_SIGN = "last_sign"
+    private const val KEY_BAND_UP = "last_band_up"
+    private const val KEY_BAND_DOWN = "last_band_down"
+    private const val KEY_LAST_SEEN = "last_seen_at"
     private const val NOTIFICATION_ID = 0x50524C41 // "PRLA"
 
     fun ensureChannel(context: Context) {
@@ -47,15 +50,36 @@ object PriceAlertNotifier {
         }
     }
 
-    /** Forget which band was last announced, so re-enabling the alert starts fresh. */
+    /** Forget which bands were last announced, so re-enabling the alert starts fresh. */
     fun reset(context: Context) {
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().clear().apply()
     }
 
+    /** The prefs key holding the highest announced band for a given direction. */
+    private fun bandKey(sign: Int) = if (sign >= 0) KEY_BAND_UP else KEY_BAND_DOWN
+
     /**
-     * Fires one notification when [change24h] first crosses a multiple of
-     * [threshold]. A later, larger move in the same direction fires again at the
-     * next multiple; a reversal fires immediately.
+     * Records that the user is now in the app: the move they can see is marked as
+     * seen, so the background poll will not alert for it (or for anything smaller
+     * in the same direction), and the visit is stamped so the alert knows when the
+     * user was last here.
+     */
+    fun markSeen(context: Context, change24h: Double?, threshold: Double) {
+        val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        val edit = prefs.edit().putLong(KEY_LAST_SEEN, System.currentTimeMillis())
+        if (change24h != null && change24h.isFinite() && threshold > 0) {
+            val band = (abs(change24h) / threshold).toInt()
+            val key = bandKey(if (change24h >= 0) 1 else -1)
+            if (band > prefs.getInt(key, 0)) edit.putInt(key, band)
+        }
+        edit.apply()
+    }
+
+    /**
+     * Fires one notification when [change24h] first reaches a new multiple of
+     * [threshold] in its direction. The band is only ever allowed to grow per
+     * direction, so an oscillation across a multiple (9% → 11% → 9%) is announced
+     * once, not on every poll.
      */
     fun maybeNotify(context: Context, change24h: Double?, price: Double, threshold: Double) {
         if (change24h == null || !change24h.isFinite()) return
@@ -69,8 +93,10 @@ object PriceAlertNotifier {
         }
         val sign = if (change24h >= 0) 1 else -1
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-        if (prefs.getInt(KEY_LAST_BAND, 0) == band && prefs.getInt(KEY_LAST_SIGN, 0) == sign) return
-        prefs.edit().putInt(KEY_LAST_BAND, band).putInt(KEY_LAST_SIGN, sign).apply()
+        val key = bandKey(sign)
+        // Already announced (or already seen in the app) this band or a higher one.
+        if (band <= prefs.getInt(key, 0)) return
+        prefs.edit().putInt(key, band).putLong(KEY_LAST_SEEN, System.currentTimeMillis()).apply()
 
         ensureChannel(context)
         val direction = context.getString(if (change24h >= 0) R.string.price_dir_up else R.string.price_dir_down)

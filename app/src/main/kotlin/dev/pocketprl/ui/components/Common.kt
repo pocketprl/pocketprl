@@ -250,7 +250,7 @@ fun PasswordStrength(password: String, modifier: Modifier = Modifier) {
         label = "strength",
     )
     Column(modifier = modifier.fillMaxWidth()) {
-        LinearProgressIndicator(progress = { animated }, modifier = Modifier.fillMaxWidth().height(6.dp), color = color, trackColor = MaterialTheme.colorScheme.surfaceVariant)
+        LinearProgressIndicator(progress = { animated }, modifier = Modifier.fillMaxWidth().height(6.dp), color = color, trackColor = MaterialTheme.colorScheme.surfaceVariant, drawStopIndicator = {})
         Spacer(Modifier.height(4.dp))
         Text(stringResource(R.string.pwd_strength, label), style = MaterialTheme.typography.labelSmall, color = color)
     }

@@ -114,6 +114,13 @@ class AppContainer(val appContext: Context) {
 
             override fun onStart(owner: LifecycleOwner) {
                 isInForeground = true
+                // The user can see the current price now; mark that move as seen so the
+                // background alert does not notify them about something already on screen.
+                if (settings.priceAlert) {
+                    runCatching {
+                        PriceAlertNotifier.markSeen(appContext, active?.repository?.priceState?.value?.change24h, settings.priceAlertPercent)
+                    }
+                }
                 val timeout = settings.autoLockSeconds
                 if (backgroundedAt > 0 && timeout >= 0) {
                     val away = System.currentTimeMillis() - backgroundedAt

@@ -181,7 +181,7 @@ private fun StepProgress(current: Int, total: Int) {
         animationSpec = tween(durationMillis = 200, easing = FastOutSlowInEasing),
         label = "step",
     )
-    LinearProgressIndicator(progress = { animated }, modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp))
+    LinearProgressIndicator(progress = { animated }, modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp), drawStopIndicator = {})
 }
 
 @Composable

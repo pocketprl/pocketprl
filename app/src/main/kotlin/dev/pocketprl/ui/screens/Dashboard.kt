@@ -372,7 +372,7 @@ private fun MiningCard(m: MiningStats, network: Network, hide: Boolean, secondsP
         if (m.immature > 0 && m.nextMatureIn != null) {
             Spacer(Modifier.height(12.dp))
             val progress = 1f - m.nextMatureIn / Network.COINBASE_MATURITY.toFloat()
-            LinearProgressIndicator(progress = { progress.coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth().height(6.dp), color = accent, trackColor = MaterialTheme.colorScheme.surfaceVariant)
+            LinearProgressIndicator(progress = { progress.coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth().height(6.dp), color = accent, trackColor = MaterialTheme.colorScheme.surfaceVariant, drawStopIndicator = {})
             Spacer(Modifier.height(6.dp))
             val progressText = if (hide) stringResource(R.string.dash_mining_rewards_maturing)
                 else stringResource(R.string.dash_mining_progress, "${Amount.pretty(m.immature)} ${network.ticker}", m.nextMatureIn, etaBlocks(m.nextMatureIn, secondsPerBlock))

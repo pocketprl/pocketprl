@@ -41,7 +41,7 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
     sealed interface State {
         object Idle : State
         /** [total] is 0 when GitHub did not report a size. */
-        data class Downloading(val fileName: String, val bytes: Long, val total: Long) : State
+        data class Downloading(val fileName: String, val bytes: Long, val total: Long, val bytesPerSecond: Long = 0) : State
         object Verifying : State
         /**
          * [expected] is null when the release published no checksum. [versionCode]
@@ -126,6 +126,11 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
                     if (total > MAX_BYTES) throw DownloadException(Failure.TOO_LARGE)
                     var read = 0L
                     val buffer = ByteArray(64 * 1024)
+                    // Smoothed download rate, sampled a few times a second so the
+                    // shown speed does not flicker with every 64 KB chunk.
+                    var rate = 0.0
+                    var sampleAt = System.currentTimeMillis()
+                    var sampleBytes = 0L
                     body.byteStream().use { input ->
                         file.outputStream().use { out ->
                             while (true) {
@@ -135,7 +140,15 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
                                 digest.update(buffer, 0, n)
                                 read += n
                                 if (read > MAX_BYTES) throw DownloadException(Failure.TOO_LARGE)
-                                _state.value = State.Downloading(file.name, read, total)
+                                val now = System.currentTimeMillis()
+                                val dt = now - sampleAt
+                                if (dt >= 250) {
+                                    val instant = (read - sampleBytes) * 1000.0 / dt
+                                    rate = if (rate == 0.0) instant else rate * 0.6 + instant * 0.4
+                                    sampleAt = now
+                                    sampleBytes = read
+                                }
+                                _state.value = State.Downloading(file.name, read, total, rate.toLong())
                             }
                             out.flush()
                         }

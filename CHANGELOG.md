@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.5.6
+
+* **Progress bars no longer show a stray dot at the end.** The Material 3 linear
+  indicator's "stop" dot is gone, so an empty bar now reads as fully empty.
+* **Download speed.** The self-updater shows the current rate in KB/s next to the
+  size while an update or a version switch is downloading.
+* **Price alerts stop repeating.** A 24 h move is announced once per threshold it
+  crosses, in each direction; a price wobbling back and forth across a multiple no
+  longer re-notifies. Opening the app marks the move you have just seen, so the
+  background check will not tell you about something already on your screen.
+
 ## 2.5.5
 
 * **Much smaller download: 7.1 MB, down from 10.4 MB.** The release APK now ships
