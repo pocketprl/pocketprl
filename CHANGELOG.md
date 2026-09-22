@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.5.4
+
+* **Biometric unlock is set up immediately on first run.** Asking for biometrics
+  during onboarding now raises the system prompt right there, while the
+  create/restore screen is still on top, instead of a deferred prompt that could
+  arrive late or be silently dropped after the app rebuilt itself. Cancelling the
+  prompt no longer leaves you stuck mid-onboarding.
+* **Release notes wrap cleanly.** Long words in what's-new and the version history
+  hyphenate and continue on the next line instead of jumping down whole and leaving
+  a ragged, misaligned line; two-digit list markers line up.
+* A release note with an absurdly long numbered list item no longer crashes the
+  notes renderer.
+* Resetting to a regular build now saves the APK under the version you are
+  switching *to*, not the build you are leaving.
+
 ## 2.5.3
 
 * **Consolidate outputs.** A new button in Settings > Addresses sweeps every

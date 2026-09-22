@@ -1,5 +1,6 @@
 package dev.pocketprl.ui.screens
 
+import androidx.activity.compose.LocalActivity
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -33,8 +34,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.fragment.app.FragmentActivity
 import dev.pocketprl.R
 import dev.pocketprl.core.crypto.Bip39
+import dev.pocketprl.ui.Biometrics
 import dev.pocketprl.ui.components.BannerKind
 import dev.pocketprl.ui.components.FieldShape
 import dev.pocketprl.ui.components.InfoBanner
@@ -52,6 +55,7 @@ import dev.pocketprl.ui.components.WordChip
 import dev.pocketprl.ui.components.passwordScore
 import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.vm.OnboardingViewModel
+import dev.pocketprl.ui.vm.appContainer
 import java.security.SecureRandom
 
 private enum class CreateStep { SETUP, SEED, VERIFY, WORKING }
@@ -60,6 +64,45 @@ private enum class CreateStep { SETUP, SEED, VERIFY, WORKING }
  * Passwords and phrases below use `remember`, not `rememberSaveable`: saved instance
  * state is handed to the system process and must never carry secrets.
  */
+
+/**
+ * The last thing that runs during first-run creation/restore. When onboarding asked
+ * for biometric unlock, the wallet was created *inactive* so the system prompt can be
+ * shown here, while this screen still owns the foreground, instead of being deferred
+ * to a cross-screen effect after the navigation tree rebuilds. It then activates the
+ * wallet unconditionally, so a cancelled or failed prompt never strands the user.
+ */
+@Composable
+private fun FinishOnboarding(vm: OnboardingViewModel, onDone: () -> Unit) {
+    val container = appContainer()
+    val activity = LocalActivity.current
+    val state by vm.state.collectAsStateWithLifecycle()
+    var handled by remember { mutableStateOf(false) }
+    LaunchedEffect(state.done, activity) {
+        if (!state.done || handled) return@LaunchedEffect
+        handled = true
+        val ctx = vm.createdContext()
+        val act = activity as? FragmentActivity
+        if (state.awaitingBiometric && act != null && ctx != null && !ctx.vault.biometricEnabled) {
+            val cipher = runCatching { ctx.vault.biometricEncryptCipher() }.getOrNull()
+            if (cipher != null) {
+                when (val r = Biometrics.authenticate(
+                    act,
+                    act.getString(R.string.settings_biometric_prompt),
+                    act.getString(R.string.app_name),
+                    cipher,
+                    negative = act.getString(R.string.action_cancel),
+                )) {
+                    is Biometrics.Outcome.Success -> runCatching { ctx.session.withDek { dek -> ctx.vault.enableBiometric(dek, r.cipher) } }
+                    else -> Unit
+                }
+            }
+        }
+        container.settings.pendingBiometricSetup = false
+        vm.activateCreated()
+        onDone()
+    }
+}
 
 @Composable
 fun CreateWalletScreen(vm: OnboardingViewModel, onDone: () -> Unit, onBack: () -> Unit) {
@@ -72,7 +115,7 @@ fun CreateWalletScreen(vm: OnboardingViewModel, onDone: () -> Unit, onBack: () -
     var confirm by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) { if (state.mnemonic == null) vm.generateMnemonic() }
-    LaunchedEffect(state.done) { if (state.done) onDone() }
+    FinishOnboarding(vm, onDone)
 
     // `step` survives process death but the phrase and password do not; restart the flow rather
     // than quiz on an empty phrase or create a wallet with no password.
@@ -199,7 +242,7 @@ fun RestoreWalletScreen(vm: OnboardingViewModel, onDone: () -> Unit, onBack: () 
     var password by remember { mutableStateOf("") }
     var confirm by remember { mutableStateOf("") }
     val check = remember(phrase) { vm.checkSeedInput(phrase) }
-    LaunchedEffect(state.done) { if (state.done) onDone() }
+    FinishOnboarding(vm, onDone)
 
     ScreenScaffold(title = stringResource(R.string.onboard_restore_title), subtitle = network.displayName, onBack = if (state.busy) null else onBack) {
         SecureWindow()

@@ -46,7 +46,14 @@ class WalletRegistry(private val dir: File) {
 
     private fun load(): WalletList {
         if (file.exists()) {
-            runCatching { json.decodeFromString(WalletList.serializer(), file.readText()) }.getOrNull()?.let { return it }
+            runCatching { json.decodeFromString(WalletList.serializer(), file.readText()) }.getOrNull()?.let {
+                // A wallet may have been registered without being activated (first-run
+                // biometric setup, or a crash in between). Never strand the user on the
+                // onboarding flow with a wallet they cannot reach.
+                val fixed = it.withResolvedActive()
+                if (fixed != it) persist(fixed)
+                return fixed
+            }
         }
         val legacy = File(dir, LEGACY_VAULT)
         if (legacy.exists()) {
@@ -92,10 +99,28 @@ class WalletRegistry(private val dir: File) {
         return WalletEntry(id, name.trim().ifBlank { "Wallet" }, network.id, System.currentTimeMillis(), "vault-$id.json", "wallet-$id.db", "$LEGACY_ALIAS.$id")
     }
 
+    /** Falls back to the most recently created wallet when [activeId] is missing or dangling. */
+    private fun WalletList.withResolvedActive(): WalletList =
+        if (wallets.isNotEmpty() && (activeId == null || wallets.none { it.id == activeId })) {
+            copy(activeId = wallets.maxByOrNull { it.createdAt }?.id)
+        } else {
+            this
+        }
+
     fun add(entry: WalletEntry, makeActive: Boolean = true) {
         val cur = _state.value
         val list = cur.wallets.filter { it.id != entry.id } + entry
         save(cur.copy(wallets = list, activeId = if (makeActive || cur.activeId == null) entry.id else cur.activeId))
+    }
+
+    /**
+     * Registers a wallet without making it active. Used when first-run creation
+     * defers activation until biometric setup has finished, so the onboarding
+     * screen stays put instead of the tree rebuilding underneath the system prompt.
+     */
+    fun addInactive(entry: WalletEntry) {
+        val cur = _state.value
+        save(cur.copy(wallets = cur.wallets.filter { it.id != entry.id } + entry))
     }
 
     /** Removes the entry; if it was active, the most recently created remaining wallet becomes active. */

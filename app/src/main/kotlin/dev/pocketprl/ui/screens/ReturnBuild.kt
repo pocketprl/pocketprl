@@ -27,7 +27,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.pocketprl.BuildConfig
 import dev.pocketprl.R
 import dev.pocketprl.data.BuildInfo
 import dev.pocketprl.data.VersionLane
@@ -139,7 +138,7 @@ fun ResetBuildScreen(version: String, onBack: () -> Unit) {
                                 askStorage()
                             } else {
                                 scope.launch {
-                                    val n = updater.exportToDownloads(ready.file, "PocketPRL-${BuildConfig.VERSION_NAME}.apk")
+                                    val n = updater.exportToDownloads(ready.file, "PocketPRL-$version.apk")
                                     if (n == null) saveError = context.getString(R.string.return_build_reset_save_failed) else savedName = n
                                 }
                             }

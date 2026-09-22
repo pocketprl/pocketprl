@@ -19,9 +19,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.text.withStyle
@@ -46,24 +48,24 @@ fun MarkdownText(markdown: String, modifier: Modifier = Modifier, color: Color =
                         1 -> MaterialTheme.typography.titleLarge
                         2 -> MaterialTheme.typography.titleMedium
                         else -> MaterialTheme.typography.titleSmall
-                    },
+                    }.notes(),
                     color = color,
                     modifier = Modifier.padding(top = if (block.level <= 2) 6.dp else 2.dp),
                 )
 
                 is MdBlock.Bullet -> Row(modifier = Modifier.fillMaxWidth()) {
                     Text("•", color = color, modifier = Modifier.width(18.dp))
-                    Text(inlineAnnotated(block.text, color), style = MaterialTheme.typography.bodyMedium, color = color, modifier = Modifier.weight(1f))
+                    Text(inlineAnnotated(block.text, color), style = MaterialTheme.typography.bodyMedium.notes(), color = color, modifier = Modifier.weight(1f))
                 }
 
                 is MdBlock.Numbered -> Row(modifier = Modifier.fillMaxWidth()) {
-                    Text("${block.number}.", color = color, modifier = Modifier.width(24.dp))
-                    Text(inlineAnnotated(block.text, color), style = MaterialTheme.typography.bodyMedium, color = color, modifier = Modifier.weight(1f))
+                    Text("${block.number}.", color = color, modifier = Modifier.width(28.dp))
+                    Text(inlineAnnotated(block.text, color), style = MaterialTheme.typography.bodyMedium.notes(), color = color, modifier = Modifier.weight(1f))
                 }
 
                 is MdBlock.Quote -> Text(
                     inlineAnnotated(block.text, color),
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodyMedium.notes(),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(8.dp)).padding(10.dp),
                 )
@@ -77,11 +79,18 @@ fun MarkdownText(markdown: String, modifier: Modifier = Modifier, color: Color =
 
                 MdBlock.Rule -> Spacer(Modifier.fillMaxWidth().height(1.dp).background(MaterialTheme.colorScheme.outlineVariant))
 
-                is MdBlock.Paragraph -> Text(inlineAnnotated(block.text, color), style = MaterialTheme.typography.bodyMedium, color = color)
+                is MdBlock.Paragraph -> Text(inlineAnnotated(block.text, color), style = MaterialTheme.typography.bodyMedium.notes(), color = color)
             }
         }
     }
 }
+
+/**
+ * Release notes read as prose. Soft hyphenation lets a long word break with a
+ * hyphen and continue on the next line instead of jumping down whole and leaving
+ * a ragged, misaligned line behind it.
+ */
+private fun TextStyle.notes(): TextStyle = copy(hyphens = Hyphens.Auto)
 
 private sealed interface MdBlock {
     data class Heading(val level: Int, val text: String) : MdBlock
@@ -123,7 +132,7 @@ private fun parseMarkdown(markdown: String): List<MdBlock> {
             RULE.matches(line) -> { flushParagraph(); out.add(MdBlock.Rule) }
             HEADING.matches(line) -> { flushParagraph(); val m = HEADING.find(line)!!; out.add(MdBlock.Heading(m.groupValues[1].length, m.groupValues[2].trim())) }
             BULLET.matches(line) -> { flushParagraph(); out.add(MdBlock.Bullet(BULLET.find(line)!!.groupValues[1].trim())) }
-            NUMBERED.matches(line) -> { flushParagraph(); val m = NUMBERED.find(line)!!; out.add(MdBlock.Numbered(m.groupValues[1].toInt(), m.groupValues[2].trim())) }
+            NUMBERED.matches(line) -> { flushParagraph(); val m = NUMBERED.find(line)!!; out.add(MdBlock.Numbered(m.groupValues[1].toIntOrNull() ?: 0, m.groupValues[2].trim())) }
             QUOTE.matches(line) -> { flushParagraph(); out.add(MdBlock.Quote(QUOTE.find(line)!!.groupValues[1].trim())) }
             else -> { if (paragraph.isNotEmpty()) paragraph.append(' '); paragraph.append(line.trim()) }
         }

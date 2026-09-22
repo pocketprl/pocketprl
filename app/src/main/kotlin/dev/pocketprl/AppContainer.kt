@@ -196,13 +196,13 @@ class AppContainer(val appContext: Context) {
         previous?.session?.lock()
     }
 
-    suspend fun createWallet(name: String, network: Network, material: SeedMaterial, password: CharArray, onProgress: (String) -> Unit): WalletContext =
-        openNew(name, network) { it.repository.createWallet(name, network, material, password, onProgress) }
+    suspend fun createWallet(name: String, network: Network, material: SeedMaterial, password: CharArray, onProgress: (String) -> Unit, activate: Boolean = true): WalletContext =
+        openNew(name, network, activate) { it.repository.createWallet(name, network, material, password, onProgress) }
 
-    suspend fun restoreWallet(name: String, network: Network, material: SeedMaterial, password: CharArray, onProgress: (String) -> Unit): WalletContext =
-        openNew(name, network) { it.repository.restoreWallet(name, network, material, password, onProgress) }
+    suspend fun restoreWallet(name: String, network: Network, material: SeedMaterial, password: CharArray, onProgress: (String) -> Unit, activate: Boolean = true): WalletContext =
+        openNew(name, network, activate) { it.repository.restoreWallet(name, network, material, password, onProgress) }
 
-    private suspend fun openNew(name: String, network: Network, setup: suspend (WalletContext) -> Unit): WalletContext {
+    private suspend fun openNew(name: String, network: Network, activate: Boolean, setup: suspend (WalletContext) -> Unit): WalletContext {
         val entry = registry.newEntry(name, network)
         val ctx = WalletContext(entry, appContext, settings, userAgent, priceApi)
         try {
@@ -217,10 +217,25 @@ class AppContainer(val appContext: Context) {
         val previous = active
         synchronized(this) { contexts[entry.id] = ctx }
         watchIncoming(ctx)
-        registry.add(entry, makeActive = true)
-        previous?.session?.lock()
-        if (settings.notifyIncoming) runCatching { PaymentCheckJob.schedule(appContext) }
+        if (activate) {
+            registry.add(entry, makeActive = true)
+            previous?.session?.lock()
+            if (settings.notifyIncoming) runCatching { PaymentCheckJob.schedule(appContext) }
+        } else {
+            registry.addInactive(entry)
+        }
         return ctx
+    }
+
+    /**
+     * Makes a created-but-inactive wallet the shown one, once first-run biometric
+     * setup has finished. Locks whichever wallet was active before.
+     */
+    fun activateWallet(id: String) {
+        val previous = active
+        registry.setActive(id)
+        if (previous?.id != id) previous?.session?.lock()
+        if (settings.notifyIncoming) runCatching { PaymentCheckJob.schedule(appContext) }
     }
 
     /** Removes one wallet completely: keys, database, Keystore alias, registry entry. */

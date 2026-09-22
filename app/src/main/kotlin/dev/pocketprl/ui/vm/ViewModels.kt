@@ -52,6 +52,7 @@ import dev.pocketprl.data.vault.TooManyAttemptsException
 import dev.pocketprl.data.vault.VaultUnreadableException
 import dev.pocketprl.data.vault.WalletWipeException
 import dev.pocketprl.data.vault.WrongPasswordException
+import dev.pocketprl.ui.Biometrics
 import dev.pocketprl.ui.Export
 import dev.pocketprl.ui.Qr
 import kotlinx.coroutines.Dispatchers
@@ -228,11 +229,23 @@ class OnboardingViewModel(private val c: AppContainer) : ViewModel() {
         val error: String? = null,
         val mnemonic: String? = null,
         val done: Boolean = false,
+        /** The wallet was created but left inactive so onboarding can run the biometric prompt first. */
+        val awaitingBiometric: Boolean = false,
     )
 
     private val _state = MutableStateFlow(State())
     val state: StateFlow<State> = _state
     val hasWallets: Boolean get() = c.registry.wallets.isNotEmpty()
+
+    /** The just-created wallet, before it becomes active; set once [state].done is true. */
+    private var created: WalletContext? = null
+    fun createdContext(): WalletContext? = created
+
+    /** Makes the created wallet active (after any biometric setup) and clears the handle. */
+    fun activateCreated() {
+        created?.let { c.activateWallet(it.id) }
+        created = null
+    }
 
     val network: StateFlow<Network> = c.settings.state.map { it.preferredNetwork }
         .stateIn(viewModelScope, SharingStarted.Eagerly, c.settings.preferredNetwork)
@@ -250,15 +263,24 @@ class OnboardingViewModel(private val c: AppContainer) : ViewModel() {
         _state.update { it.copy(busy = true, error = null) }
         viewModelScope.launch {
             try {
-                c.createWallet(name.trim(), network.value, SeedMaterial.Mnemonic(m), password.toCharArray()) { p ->
+                // If onboarding asked for biometric unlock, create the wallet but keep it
+                // inactive: the create screen runs the system prompt while it still owns the
+                // foreground, then activates. Otherwise activate immediately as before.
+                val wantBio = wantsBiometricAtCreation()
+                if (!wantBio) c.settings.pendingBiometricSetup = false
+                val ctx = c.createWallet(name.trim(), network.value, SeedMaterial.Mnemonic(m), password.toCharArray(), { p ->
                     _state.update { it.copy(progress = p) }
-                }
-                _state.update { it.copy(busy = false, done = true, progress = null) }
+                }, activate = !wantBio)
+                created = ctx
+                _state.update { it.copy(busy = false, done = true, awaitingBiometric = wantBio, progress = null) }
             } catch (e: Exception) {
                 _state.update { it.copy(busy = false, error = e.message ?: c.appContext.getString(R.string.onboard_err_create_failed), progress = null) }
             }
         }
     }
+
+    private fun wantsBiometricAtCreation(): Boolean =
+        c.settings.pendingBiometricSetup && Biometrics.available(c.appContext)
 
     sealed class SeedCheck {
         class Ok(val material: SeedMaterial, val description: String) : SeedCheck()
@@ -297,10 +319,13 @@ class OnboardingViewModel(private val c: AppContainer) : ViewModel() {
         _state.update { it.copy(busy = true, error = null, progress = c.appContext.getString(R.string.onboard_preparing)) }
         viewModelScope.launch {
             try {
-                c.restoreWallet(name.trim(), network.value, material, password.toCharArray()) { p ->
+                val wantBio = wantsBiometricAtCreation()
+                if (!wantBio) c.settings.pendingBiometricSetup = false
+                val ctx = c.restoreWallet(name.trim(), network.value, material, password.toCharArray(), { p ->
                     _state.update { it.copy(progress = p) }
-                }
-                _state.update { it.copy(busy = false, done = true, progress = null) }
+                }, activate = !wantBio)
+                created = ctx
+                _state.update { it.copy(busy = false, done = true, awaitingBiometric = wantBio, progress = null) }
             } catch (e: Exception) {
                 _state.update { it.copy(busy = false, error = e.message ?: c.appContext.getString(R.string.onboard_err_restore_failed), progress = null) }
             }
