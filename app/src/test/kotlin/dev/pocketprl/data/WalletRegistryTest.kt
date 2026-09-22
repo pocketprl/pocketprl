@@ -40,6 +40,19 @@ class WalletRegistryTest {
     }
 
     @Test
+    fun corruptWalletsFileIsFlaggedButLeftInPlace() {
+        val dir = tempDir()
+        val corrupt = File(dir, WalletRegistry.FILE_NAME)
+        corrupt.writeText("{ not json")
+        val r = WalletRegistry(dir)
+        assertTrue("a corrupt wallets.json must be reported", r.loadFailed.value)
+        assertTrue("the corrupt file must not be parsed into wallets", r.wallets.isEmpty())
+        assertNull(r.activeId)
+        assertTrue("the corrupt file must not be deleted", corrupt.exists())
+        assertEquals("{ not json", corrupt.readText())
+    }
+
+    @Test
     fun addRemoveSwitchRename() {
         val dir = tempDir()
         val r = WalletRegistry(dir)

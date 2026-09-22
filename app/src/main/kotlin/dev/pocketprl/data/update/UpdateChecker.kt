@@ -11,6 +11,8 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.ResponseBody
+import okio.Buffer
 import java.util.concurrent.TimeUnit
 
 /** Latest published GitHub release of PocketPRL, or null when it cannot be read. */
@@ -95,6 +97,9 @@ object UpdateChecker {
     private const val PAGE_SIZE = 100
     private const val MAX_PAGES = 5
 
+    /** Hard cap on a release response body so a hostile host cannot OOM the app. */
+    private const val MAX_BODY_BYTES = 4L * 1024 * 1024
+
     private val json = Json { ignoreUnknownKeys = true; isLenient = true }
 
     private val client: OkHttpClient = OkHttpClient.Builder()
@@ -104,12 +109,25 @@ object UpdateChecker {
         .retryOnConnectionFailure(true)
         .build()
 
+    /** Reads the body into memory only up to [MAX_BODY_BYTES]; null when it would exceed the cap. */
+    private fun ResponseBody.readBounded(): String? {
+        val buffer = Buffer()
+        val source = source()
+        while (true) {
+            val n = source.read(buffer, 64 * 1024L)
+            if (n == -1L) break
+            if (buffer.size > MAX_BODY_BYTES) return null
+        }
+        return buffer.readUtf8()
+    }
+
     suspend fun latest(): ReleaseInfo? = withContext(Dispatchers.IO) {
         val req = request(LATEST_RELEASE_URL)
         runCatching {
             client.newCall(req).execute().use { resp ->
                 if (!resp.isSuccessful) return@use null
-                parseRelease(json.parseToJsonElement(resp.body.string()).jsonObject)
+                val body = resp.body.readBounded() ?: return@use null
+                parseRelease(json.parseToJsonElement(body).jsonObject)
             }
         }.getOrNull()
     }
@@ -127,7 +145,7 @@ object UpdateChecker {
             val body = runCatching {
                 client.newCall(request("$RELEASES_URL?per_page=$PAGE_SIZE&page=$page")).execute().use { resp ->
                     if (!resp.isSuccessful) return@use null
-                    resp.body.string()
+                    resp.body.readBounded()
                 }
             }.getOrNull() ?: break
             val parsed = parseReleasesJson(body)

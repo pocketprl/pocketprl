@@ -65,6 +65,10 @@
     <string name="welcome_network">Сеть</string>
     <string name="welcome_create">Создать новый кошелёк</string>
     <string name="welcome_restore">Восстановить из фразы восстановления</string>
+    <string name="wallet_registry_corrupt_title">Список кошельков нечитаем</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL обнаружил на этом устройстве файлы кошельков, но не смог прочитать свой список кошельков и поэтому остановился, а не создал поверх них новый кошелёк. Ваши средства в безопасности, если у вас есть фраза восстановления. Не создавайте новый кошелёк: восстановите из своей фразы (или переустановите приложение и восстановите), чтобы снова получить доступ к своим существующим средствам.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Мой кошелёк Pearl</string>

@@ -37,23 +37,40 @@ class WalletRegistry(private val dir: File) {
     private val file = File(dir, FILE_NAME)
     private val json = Json { ignoreUnknownKeys = true }
     private val random = SecureRandom()
+
+    /** True when `wallets.json` exists but could not be decoded; the file is left untouched. */
+    private val _loadFailed = MutableStateFlow(false)
+
+    /**
+     * The wallet list on disk exists but is unreadable. Returning an empty list
+     * keeps the app from crashing, but the UI must not treat it as a fresh
+     * install: that would orphan the existing `vault-*.json`/`wallet-*.db` files.
+     */
+    val loadFailed: StateFlow<Boolean> = _loadFailed
+
     private val _state = MutableStateFlow(load())
     val state: StateFlow<WalletList> = _state
 
     val wallets: List<WalletEntry> get() = _state.value.wallets
     val activeId: String? get() = _state.value.activeId
+
     fun get(id: String): WalletEntry? = wallets.firstOrNull { it.id == id }
 
     private fun load(): WalletList {
         if (file.exists()) {
-            runCatching { json.decodeFromString(WalletList.serializer(), file.readText()) }.getOrNull()?.let {
-                // A wallet may have been registered without being activated (first-run
-                // biometric setup, or a crash in between). Never strand the user on the
-                // onboarding flow with a wallet they cannot reach.
-                val fixed = it.withResolvedActive()
-                if (fixed != it) persist(fixed)
-                return fixed
+            val parsed = runCatching { json.decodeFromString(WalletList.serializer(), file.readText()) }.getOrNull()
+            if (parsed == null) {
+                // Leave the corrupt file exactly where it is; a user-driven restore
+                // (or manual repair) can still recover the wallets it indexes.
+                _loadFailed.value = true
+                return WalletList()
             }
+            // A wallet may have been registered without being activated (first-run
+            // biometric setup, or a crash in between). Never strand the user on the
+            // onboarding flow with a wallet they cannot reach.
+            val fixed = parsed.withResolvedActive()
+            if (fixed != parsed) persist(fixed)
+            return fixed
         }
         val legacy = File(dir, LEGACY_VAULT)
         if (legacy.exists()) {
@@ -86,6 +103,8 @@ class WalletRegistry(private val dir: File) {
     @Synchronized
     private fun save(v: WalletList) {
         persist(v)
+        // A successful write replaces the unreadable list, so the app may leave the error screen.
+        _loadFailed.value = false
         _state.value = v
     }
 

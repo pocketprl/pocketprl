@@ -65,6 +65,10 @@
     <string name="welcome_network">Nätverk</string>
     <string name="welcome_create">Skapa en ny plånbok</string>
     <string name="welcome_restore">Återställ från återställningsfras</string>
+    <string name="wallet_registry_corrupt_title">Plånbokslistan kan inte läsas</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL hittade plånboksfiler på den här enheten men kunde inte läsa sin plånbokslista, så det stannade i stället för att skapa en ny plånbok ovanpå dem. Dina medel är säkra om du har din återställningsfras. Skapa inte en ny plånbok: återställ från din fras (eller installera om och återställ) för att nå dina befintliga medel igen.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Min Pearl-plånbok</string>

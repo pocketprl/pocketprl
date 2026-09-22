@@ -70,7 +70,7 @@ fun WelcomeScreen(network: Network, onNetworkChange: (Network) -> Unit, onCreate
                 Spacer(Modifier.height(20.dp))
                 InfoBanner(stringResource(R.string.welcome_one_unlocked), BannerKind.INFO)
             } else {
-                Text("PocketPRL", style = MaterialTheme.typography.displaySmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground)
+                Text(stringResource(R.string.app_name), style = MaterialTheme.typography.displaySmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground)
                 Spacer(Modifier.height(4.dp))
                 Text(stringResource(R.string.welcome_tagline), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
                 Spacer(Modifier.height(28.dp))

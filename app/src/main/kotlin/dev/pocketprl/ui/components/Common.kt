@@ -339,6 +339,15 @@ fun AddressText(address: String, modifier: Modifier = Modifier, color: Color = M
     Text(grouped, fontFamily = Mono, modifier = modifier, color = color, style = style, textAlign = textAlign)
 }
 
+/** A txid (or other hash) in monospace, grouped in fours like [AddressText]. */
+@Composable
+fun TxidText(txid: String, modifier: Modifier = Modifier, color: Color = MaterialTheme.colorScheme.onSurface, style: TextStyle = MaterialTheme.typography.bodyMedium, textAlign: TextAlign? = null) {
+    AddressText(txid, modifier = modifier, color = color, style = style, textAlign = textAlign)
+}
+
+/** The one truncation policy for addresses/txids in a list, so every screen reads the same. */
+fun shortAddress(id: String): String = dev.pocketprl.core.chain.Address.short(id, head = 14, tail = 10)
+
 @Composable
 fun AmountText(
     grain: Long,
@@ -495,7 +504,12 @@ object SecureFlags {
     }
 }
 
-fun copyToClipboard(context: Context, label: String, text: String, sensitive: Boolean = false, toast: Boolean = true) {
+/**
+ * Copies [text] to the clipboard. Marked sensitive by default: every call site in
+ * the app copies an address or a txid, which must not appear in the Android 13+
+ * clipboard preview / recents.
+ */
+fun copyToClipboard(context: Context, label: String, text: String, sensitive: Boolean = true, toast: Boolean = true) {
     val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText(label, text)
     if (sensitive && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -568,10 +582,12 @@ fun etaBlocks(blocks: Int, secondsPerBlock: Long = Network.TARGET_BLOCK_SECONDS)
     }
 }
 
-private val DAY_FORMAT: DateTimeFormatter = DateTimeFormatter.ofPattern("EEE, d MMM")
-private val DAY_YEAR_FORMAT: DateTimeFormatter = DateTimeFormatter.ofPattern("d MMM yyyy")
+private fun localizedDayFormat(skeleton: String): java.text.SimpleDateFormat {
+    val locale = java.util.Locale.getDefault()
+    return java.text.SimpleDateFormat(android.text.format.DateFormat.getBestDateTimePattern(locale, skeleton), locale)
+}
 
-/** "Today" / "Yesterday" / "Tue, 3 Sep" / "3 Sep 2025" group header for a timestamp. */
+/** "Today" / "Yesterday" / a locale-ordered day header for a timestamp. */
 @Composable
 fun dayLabel(epochSeconds: Long, now: LocalDate = LocalDate.now()): String {
     if (epochSeconds <= 0) return stringResource(R.string.time_pending)
@@ -579,9 +595,24 @@ fun dayLabel(epochSeconds: Long, now: LocalDate = LocalDate.now()): String {
     return when {
         day == now -> stringResource(R.string.day_today)
         day == now.minusDays(1) -> stringResource(R.string.day_yesterday)
-        day.year == now.year -> DAY_FORMAT.format(day)
-        else -> DAY_YEAR_FORMAT.format(day)
+        day.year == now.year -> localizedDayFormat("EEEMMMd").format(Date(epochSeconds * 1000))
+        else -> localizedDayFormat("yMMMd").format(Date(epochSeconds * 1000))
     }
+}
+
+/** Formats an ISO-8601 release timestamp (GitHub `publishedAt`) in the user's locale; null if unparseable. */
+fun releaseDateLabel(iso: String?): String? {
+    if (iso.isNullOrBlank()) return null
+    return runCatching {
+        java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM).format(Date(Instant.parse(iso).toEpochMilli()))
+    }.getOrNull()
+}
+
+/** A percent value using the user's decimal separator, e.g. "+3.2%" / "-3.2%". */
+fun formatPercent(value: Double, decimals: Int = 1): String {
+    val sep = dev.pocketprl.core.format.Format.config.decimalSeparator.char
+    val s = String.format(java.util.Locale.US, "%+.${decimals}f", value)
+    return (if (sep == '.') s else s.replace('.', sep)) + "%"
 }
 
 @Composable

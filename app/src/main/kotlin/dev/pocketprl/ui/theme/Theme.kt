@@ -268,8 +268,11 @@ fun PocketPrlTheme(
             if (dark) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         else -> withAccent(base, accentPrimary(accentTheme, dark), dark)
     }
+    // The semantic palette follows the chosen accent so charts, mining and maturity
+    // marks are not stuck on the default teal.
+    val palette = (if (dark) DarkPalette else LightPalette).copy(accent = accentPrimary(accentTheme, dark))
     CompositionLocalProvider(
-        LocalPearlPalette provides if (dark) DarkPalette else LightPalette,
+        LocalPearlPalette provides palette,
         LocalReducedMotion provides reducedMotion,
     ) {
         MaterialTheme(colorScheme = scheme, typography = AppTypography, content = content)

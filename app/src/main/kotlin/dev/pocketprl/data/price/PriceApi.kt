@@ -15,6 +15,8 @@ import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.ResponseBody
+import okio.Buffer
 import java.util.concurrent.TimeUnit
 
 @Serializable private data class CoinexTicker(val last: String = "", val open: String = "")
@@ -25,6 +27,21 @@ import java.util.concurrent.TimeUnit
 data class PriceQuote(val fiat: Double, val change24h: Double?)
 
 private fun Double?.finiteOrNull(): Double? = this?.takeIf { it.isFinite() }
+
+/** Hard cap on a provider response body so a hostile host cannot OOM the app. */
+private const val MAX_BODY_BYTES = 4L * 1024 * 1024
+
+/** Reads the body into memory only up to [MAX_BODY_BYTES]; null when it would exceed the cap. */
+private fun ResponseBody.readBounded(): String? {
+    val buffer = Buffer()
+    val source = source()
+    while (true) {
+        val n = source.read(buffer, 64 * 1024L)
+        if (n == -1L) break
+        if (buffer.size > MAX_BODY_BYTES) return null
+    }
+    return buffer.readUtf8()
+}
 
 /**
  * Live PRL price, no API key, in the user's selected fiat. Order: CoinPaprika,
@@ -44,7 +61,7 @@ class PriceApi(private val userAgent: String) {
         val req = Request.Builder().url(url)
             .header("User-Agent", userAgent).header("Accept", "application/json").get().build()
         client.newCall(req).execute().use { resp ->
-            val body = resp.body.string()
+            val body = resp.body.readBounded() ?: error("response too large")
             check(resp.isSuccessful) { "HTTP ${resp.code}" }
             body
         }

@@ -65,6 +65,10 @@
     <string name="welcome_network">Hálózat</string>
     <string name="welcome_create">Új pénztárca létrehozása</string>
     <string name="welcome_restore">Visszaállítás helyreállítási frázisból</string>
+    <string name="wallet_registry_corrupt_title">A pénztárcalista nem olvasható</string>
+    <string name="wallet_registry_corrupt_body">A PocketPRL pénztárcafájlokat talált ezen az eszközön, de nem tudta beolvasni a pénztárcalistáját, ezért leállt ahelyett, hogy új pénztárcát hozott volna létre föléjük. A pénzed biztonságban van, ha megvan a helyreállítási frázisod. Ne hozz létre új pénztárcát: állítsd helyre a frázisodból (vagy telepítsd újra és állítsd helyre), hogy újra elérhesd a meglévő pénzedet.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Pearl pénztárcám</string>

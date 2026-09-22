@@ -55,6 +55,18 @@ object PriceAlertNotifier {
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().clear().apply()
     }
 
+    /**
+     * Forget which bands were last announced while keeping [KEY_LAST_SEEN]. Used when
+     * the threshold changes: the stored bands are in the old threshold's units, so
+     * they must be discarded or they would suppress (or burst) alerts at the new one.
+     */
+    fun clearBands(context: Context) {
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
+            .remove(KEY_BAND_UP)
+            .remove(KEY_BAND_DOWN)
+            .apply()
+    }
+
     /** The prefs key holding the highest announced band for a given direction. */
     private fun bandKey(sign: Int) = if (sign >= 0) KEY_BAND_UP else KEY_BAND_DOWN
 

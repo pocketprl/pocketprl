@@ -53,6 +53,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.fragment.app.FragmentActivity
@@ -89,6 +90,7 @@ import dev.pocketprl.ui.components.SlideToSend
 import dev.pocketprl.ui.components.addressErrorText
 import dev.pocketprl.ui.components.etaBlocks
 import dev.pocketprl.ui.components.readClipboard
+import dev.pocketprl.ui.components.shortAddress
 import dev.pocketprl.ui.theme.LocalReducedMotion
 import dev.pocketprl.ui.vm.FeeTier
 import dev.pocketprl.ui.vm.SendViewModel
@@ -166,7 +168,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
             txid = txid,
             amountGrain = p?.build?.amount ?: 0L,
             network = snap.network,
-            toLabel = s.contactName ?: p?.let { Address.short(it.toAddress, 12, 8) } ?: "",
+            toLabel = s.contactName ?: p?.let { shortAddress(it.toAddress) } ?: "",
             onExplorer = { leavingApp(); runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, explorerUrl(txid).toUri())) } },
             onDone = { vm.reset(); onBack() },
             animate = !reduced,
@@ -187,7 +189,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
     fun fiatTextFor(grain: Long?): String {
         val group = Format.config.groupingSeparator.char?.toString() ?: ""
         val decimal = Format.config.decimalSeparator.char.toString()
-        return grain?.let { Amount.fiat(it, usd) }?.removePrefix(Format.config.fiat.symbol)?.replace(group, "")?.replace(decimal, ".") ?: ""
+        return grain?.let { Amount.fiat(it, usd) }?.let { Amount.stripFiatSymbol(it) }?.replace(group, "")?.replace(decimal, ".") ?: ""
     }
     // MAX or a payment link can rewrite the PRL amount underneath the USD field.
     LaunchedEffect(s.amountText) { if (fiatMode && s.amountText != pushed) fiatText = fiatTextFor(amountGrain) }
@@ -292,7 +294,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                     KeyValueRow(stringResource(R.string.send_inputs), inputsValue)
                     KeyValueRow(
                         stringResource(R.string.send_to),
-                        s.contactName ?: if (s.externalRequest) p.toAddress else Address.short(p.toAddress, 14, 10),
+                        s.contactName ?: if (s.externalRequest) p.toAddress else shortAddress(p.toAddress),
                     )
                 }
             }
@@ -315,7 +317,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
                             authBusy = true
                             scope.launch {
                                 val title = context.getString(R.string.send_title, "${Amount.pretty(p.build.amount, 8)} $ticker")
-                                val to = context.getString(R.string.sent_to, s.contactName ?: Address.short(p.toAddress, 14, 10))
+                                val to = context.getString(R.string.sent_to, s.contactName ?: shortAddress(p.toAddress))
                                 when (val r = Biometrics.authenticate(activity!!, title, to, cipher, negative = context.getString(R.string.action_cancel))) {
                                     is Biometrics.Outcome.Success -> if (vm.confirmBiometric(r.cipher)) { authBusy = false; vm.authorizeSend(p); vm.send(p) } else failAuth(context.getString(R.string.send_auth_failed))
                                     is Biometrics.Outcome.Error -> failAuth(r.message)
@@ -372,7 +374,7 @@ fun SendScreen(vm: SendViewModel, walletVm: WalletViewModel, onBack: () -> Unit,
             title = { Text(stringResource(R.string.send_password_title)) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(stringResource(R.string.send_password_body, Amount.pretty(p.build.amount, 8), snap.network.ticker, s.contactName ?: Address.short(p.toAddress, 14, 10)), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(stringResource(R.string.send_password_body, Amount.pretty(p.build.amount, 8), snap.network.ticker, s.contactName ?: shortAddress(p.toAddress)), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     PasswordField(authPassword, { authPassword = it; authError = null }, stringResource(R.string.send_password_title), imeAction = ImeAction.Done, onDone = { submit() })
                     authError?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
                 }
@@ -397,8 +399,8 @@ private fun ContactPickerSheet(contacts: List<Contact>, onDismiss: () -> Unit, o
                         ContactAvatar(c.name)
                         Spacer(Modifier.width(14.dp))
                         Column {
-                            Text(c.name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
-                            Text(Address.short(c.address, 14, 8), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text(c.name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text(shortAddress(c.address), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         }
                     }
                     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant, modifier = Modifier.padding(horizontal = 24.dp))

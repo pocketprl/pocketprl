@@ -61,6 +61,7 @@ import dev.pocketprl.ui.components.MarkdownText
 import dev.pocketprl.ui.components.MonoText
 import dev.pocketprl.ui.components.PrimaryButton
 import dev.pocketprl.ui.components.ScreenScaffold
+import dev.pocketprl.ui.components.releaseDateLabel
 import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.components.SectionCard
 import dev.pocketprl.ui.components.SlideToConfirm
@@ -422,9 +423,9 @@ private fun ReleaseRow(release: ReleaseInfo, isCurrent: Boolean, onClick: () -> 
                         )
                     }
                 }
-                release.publishedAt?.let {
+                releaseDateLabel(release.publishedAt)?.let { date ->
                     Text(
-                        stringResource(R.string.downgrade_published, it.take(10)),
+                        stringResource(R.string.downgrade_published, date),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 1,
@@ -454,7 +455,7 @@ private fun CurrentBuildCard(version: String) {
         VersionLane.ROLLBACK -> R.string.build_lane_rollback to R.string.build_lane_rollback_body
         VersionLane.BACK -> R.string.build_lane_back to R.string.build_lane_back_body
     }
-    val heading = stringResource(R.string.build_lane_you_are_on) + ": " + stringResource(titleRes) + " v$version"
+    val heading = stringResource(R.string.build_lane_heading, stringResource(R.string.build_lane_you_are_on), stringResource(titleRes), version)
     if (BuildInfo.isPrimary) {
         SectionCard(padding = 14.dp) {
             Text(stringResource(R.string.build_lane_you_are_on), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -487,9 +488,9 @@ private fun ReleaseMeta(release: ReleaseInfo, isCurrent: Boolean) {
                 )
             }
         }
-        release.publishedAt?.let {
+        releaseDateLabel(release.publishedAt)?.let { date ->
             Text(
-                stringResource(R.string.downgrade_published, it.take(10)),
+                stringResource(R.string.downgrade_published, date),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )

@@ -26,6 +26,9 @@ class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Android 12+ drops touches while another app draws over this window; older
+        // versions need this flag or an overlay could drive the send/erase sliders.
+        window.decorView.filterTouchesWhenObscured = true
         enableEdgeToEdge()
         handleIntent(intent)
         setContent {
@@ -73,7 +76,9 @@ class MainActivity : FragmentActivity() {
                 "send" -> container.pendingShortcut.value = Shortcut.SEND
                 "receive" -> container.pendingShortcut.value = Shortcut.RECEIVE
                 "scan" -> container.pendingShortcut.value = Shortcut.SCAN
-                "tx" -> uri.lastPathSegment?.takeIf { it.isNotBlank() }?.let { container.pendingTxid.value = it }
+                "tx" -> uri.lastPathSegment
+                    ?.takeIf { it.isNotBlank() && it.matches(Regex("^[0-9a-fA-F]{64}$")) }
+                    ?.let { container.pendingTxid.value = it }
             }
             return
         }

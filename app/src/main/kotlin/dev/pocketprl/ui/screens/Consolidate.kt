@@ -44,7 +44,6 @@ import androidx.core.net.toUri
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.pocketprl.R
-import dev.pocketprl.core.chain.Address
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.format.Format
 import dev.pocketprl.data.WalletRepository
@@ -62,6 +61,7 @@ import dev.pocketprl.ui.components.SectionCard
 import dev.pocketprl.ui.components.SectionTitle
 import dev.pocketprl.ui.components.SlideToConfirm
 import dev.pocketprl.ui.components.etaBlocks
+import dev.pocketprl.ui.components.shortAddress
 import dev.pocketprl.ui.rememberLeaveAppMarker
 import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.theme.LocalReducedMotion
@@ -177,7 +177,7 @@ fun ConsolidateScreen(vm: ConsolidateViewModel, walletVm: WalletViewModel, onBac
                             KeyValueRow(stringResource(R.string.label_total), "${Amount.pretty(p.build.amount + p.build.fee, 8)} $ticker")
                             if (vm.showFiat) Amount.fiat(p.build.amount + p.build.fee, usd)?.let { KeyValueRow(stringResource(R.string.send_fiat_approx, Format.config.fiat.code.uppercase()), it) }
                             KeyValueRow(stringResource(R.string.send_inputs), "${p.build.selected.size}")
-                            KeyValueRow(stringResource(R.string.consolidate_to_self), s.target?.let { Address.short(it, 14, 10) } ?: "")
+                            KeyValueRow(stringResource(R.string.consolidate_to_self), s.target?.let { shortAddress(it) } ?: "")
                         }
                     }
 

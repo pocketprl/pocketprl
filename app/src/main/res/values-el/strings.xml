@@ -65,6 +65,10 @@
     <string name="welcome_network">Δίκτυο</string>
     <string name="welcome_create">Δημιουργία νέου πορτοφολιού</string>
     <string name="welcome_restore">Επαναφορά από φράση ανάκτησης</string>
+    <string name="wallet_registry_corrupt_title">Η λίστα πορτοφολιών δεν είναι αναγνώσιμη</string>
+    <string name="wallet_registry_corrupt_body">Το PocketPRL βρήκε αρχεία πορτοφολιών σε αυτή τη συσκευή αλλά δεν μπόρεσε να διαβάσει τη λίστα πορτοφολιών του, οπότε σταμάτησε αντί να δημιουργήσει ένα νέο πορτοφόλι πάνω από αυτά. Τα χρήματά σας είναι ασφαλή αν έχετε τη φράση ανάκτησης. Μην δημιουργήσετε νέο πορτοφόλι: κάντε επαναφορά από τη φράση σας (ή επανεγκαταστήστε και κάντε επαναφορά) για να αποκτήσετε ξανά πρόσβαση στα υπάρχοντα χρήματά σας.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Το πορτοφόλι Pearl μου</string>

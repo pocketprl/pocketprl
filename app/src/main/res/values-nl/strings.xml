@@ -65,6 +65,10 @@
     <string name="welcome_network">Netwerk</string>
     <string name="welcome_create">Een nieuwe wallet aanmaken</string>
     <string name="welcome_restore">Herstellen vanuit herstelzin</string>
+    <string name="wallet_registry_corrupt_title">Walletlijst onleesbaar</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL heeft wallet-bestanden op dit apparaat gevonden, maar kon de walletlijst niet lezen en is daarom gestopt in plaats van er een nieuwe wallet overheen te maken. Je geld is veilig als je je herstelzin hebt. Maak geen nieuwe wallet aan: herstel vanuit je herstelzin (of installeer opnieuw en herstel) om weer bij je bestaande geld te komen.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Mijn Pearl-wallet</string>

@@ -65,6 +65,10 @@
     <string name="welcome_network">Red</string>
     <string name="welcome_create">Crear una cartera nueva</string>
     <string name="welcome_restore">Restaurar desde la frase de recuperación</string>
+    <string name="wallet_registry_corrupt_title">Lista de carteras ilegible</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL encontró archivos de cartera en este dispositivo, pero no pudo leer su lista de carteras, así que se detuvo en lugar de crear una cartera nueva encima de ellos. Tus fondos están seguros si tienes tu frase de recuperación. No crees una cartera nueva: restaura desde tu frase (o reinstala y restaura) para volver a acceder a tus fondos existentes.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Mi cartera Pearl</string>

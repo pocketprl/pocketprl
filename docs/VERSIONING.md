@@ -10,17 +10,18 @@ the lanes cannot express.
 
 | Lane | Code | Role |
 |---|---|---|
-| **P** primary | monotonic counter in `gradle.properties` (currently `100047`) | Fresh installs and normal updates land here. Bumped for every published primary build, never reused. |
+| **P** primary | monotonic counter in `gradle.properties` (currently `100048`) | Fresh installs and normal updates land here. Bumped for every published primary build, never reused. |
 | **R** rollback | `250000 - e` | Older versions get a higher code, so they install *down* over a primary in place. |
 | **B** back | `300000 + e` | Above the rollback lane, so a downgraded install can climb back up. |
 
 `e` is a monotonic per-version index assigned at release (`1.0.0 = 1`, …, `2.4.1 = 14`,
-`2.5.0 = 15`, `2.5.1 = 16`, `2.5.2 = 17`, `2.5.3 = 18`, `2.5.4 = 19`, `2.5.5 = 20`, `2.5.6 = 21`). It governs the **R and B** codes only; the P code is an
+`2.5.0 = 15`, `2.5.1 = 16`, `2.5.2 = 17`, `2.5.3 = 18`, `2.5.4 = 19`, `2.5.5 = 20`, `2.5.6 = 21`, `2.6.0 = 22`). It governs the **R and B** codes only; the P code is an
 independent counter that moves on its own (2.4.0 went out as `100013`, 2.4.1 as
 `100027`, 2.5.0 as `100041`, 2.5.1 as `100042`, 2.5.2 as `100043`, 2.5.3 as `100044`,
-2.5.4 as `100045`, 2.5.5 as `100046`, 2.5.6 as `100047`). Every code is fixed when its build is published and never rebuilt.
+2.5.4 as `100045`, 2.5.5 as `100046`, 2.5.6 as `100047`, 2.6.0 as `100048`). Every code is fixed when its build is published and never rebuilt.
 
-Examples: `2.5.6` is `P 100047`, `R 249979`, `B 300021`; `2.5.5` is `P 100046`,
+Examples: `2.6.0` is `P 100048`, `R 249978`, `B 300022`; `2.5.6` is `P 100047`,
+`R 249979`, `B 300021`; `2.5.5` is `P 100046`,
 `R 249980`, `B 300020`; `2.5.4` is `P 100045`,
 `R 249981`, `B 300019`; `2.5.3` is `P 100044`,
 `R 249982`, `B 300018`; `2.5.2` is `P 100043`,

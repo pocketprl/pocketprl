@@ -22,8 +22,11 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.pocketprl.R
 import dev.pocketprl.data.update.AppUpdater
+import dev.pocketprl.ui.components.BannerKind
 import dev.pocketprl.ui.components.HeroIcon
+import dev.pocketprl.ui.components.InfoBanner
 import dev.pocketprl.ui.components.ScreenScaffold
+import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.rememberLeaveAppMarker
 import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.vm.appContainer
@@ -61,39 +64,50 @@ fun UpdateScreen(onBack: () -> Unit) {
 
             DownloadStatus(state, installError)
 
+            val ready = state as? AppUpdater.State.Ready
+            if (ready != null && !ready.installableInPlace) {
+                InfoBanner(stringResource(R.string.downgrade_not_installable), BannerKind.WARNING)
+            }
+
             Spacer(Modifier.weight(1f))
 
-            DownloadControls(
-                state = state,
-                icon = AppIcons.Update,
-                installLabel = stringResource(R.string.update_install),
-                slideHint = stringResource(R.string.update_install_slide_hint),
-                notReady = stringResource(R.string.update_install_not_ready),
-                resetKey = installNonce,
-                onInstall = {
-                    installError = null
-                    (state as? AppUpdater.State.Ready)?.let { st ->
-                        // Stage the "what's new" popup before handing off to the installer, so
-                        // the next launch on the new version shows it after unlocking.
-                        container.settings.stageWhatsNew(st.release.version, st.release.body)
-                        when (updater.install(st.file)) {
-                            AppUpdater.Install.LAUNCHED -> leaving()
-                            AppUpdater.Install.NEED_PERMISSION -> {
-                                installError = context.getString(R.string.update_install_permission)
-                                installNonce += 1
-                                leaving()
-                                updater.openInstallPermissionSettings()
-                            }
-                            AppUpdater.Install.FAILED -> {
-                                installError = context.getString(R.string.update_install_failed)
-                                installNonce += 1
+            if (ready != null && !ready.installableInPlace) {
+                // Android will not install this build over the running one; explain and
+                // offer only a close, since there is nothing the updater can do here.
+                SecondaryButton(stringResource(R.string.action_close), onClick = { updater.reset(); onBack() })
+            } else {
+                DownloadControls(
+                    state = state,
+                    icon = AppIcons.Update,
+                    installLabel = stringResource(R.string.update_install),
+                    slideHint = stringResource(R.string.update_install_slide_hint),
+                    notReady = stringResource(R.string.update_install_not_ready),
+                    resetKey = installNonce,
+                    onInstall = {
+                        installError = null
+                        (state as? AppUpdater.State.Ready)?.let { st ->
+                            // Stage the "what's new" popup before handing off to the installer, so
+                            // the next launch on the new version shows it after unlocking.
+                            container.settings.stageWhatsNew(st.release.version, st.release.body)
+                            when (updater.install(st.file)) {
+                                AppUpdater.Install.LAUNCHED -> leaving()
+                                AppUpdater.Install.NEED_PERMISSION -> {
+                                    installError = context.getString(R.string.update_install_permission)
+                                    installNonce += 1
+                                    leaving()
+                                    updater.openInstallPermissionSettings()
+                                }
+                                AppUpdater.Install.FAILED -> {
+                                    installError = context.getString(R.string.update_install_failed)
+                                    installNonce += 1
+                                }
                             }
                         }
-                    }
-                },
-                onCancel = { updater.reset(); onBack() },
-                onClose = { updater.reset(); onBack() },
-            )
+                    },
+                    onCancel = { updater.reset(); onBack() },
+                    onClose = { updater.reset(); onBack() },
+                )
+            }
             Spacer(Modifier.height(8.dp))
         }
     }

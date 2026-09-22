@@ -78,6 +78,13 @@ object Amount {
         else -> "${currency.symbol}$number"
     }
 
+    /** Removes the configured fiat symbol from typed input, prefix or suffix, with its optional space. */
+    fun stripFiatSymbol(value: String): String {
+        val c = Format.config.fiat
+        val t = value.trim()
+        return if (c.suffix) t.removeSuffix(c.symbol).trimEnd() else t.removePrefix(c.symbol).trimStart()
+    }
+
     /** "$1 234.56" for a grain amount at [pricePerPrl]; null when no price is known. */
     fun fiat(grain: Long, pricePerPrl: Double?): String? {
         if (pricePerPrl == null || !pricePerPrl.isFinite() || pricePerPrl <= 0) return null
@@ -183,7 +190,7 @@ object Amount {
     /** Inverse of [fiat] for amount entry: how many grain does [fiat] buy at [pricePerPrl]? */
     fun grainForFiat(fiat: String, pricePerPrl: Double?): Long? {
         if (pricePerPrl == null || !pricePerPrl.isFinite() || pricePerPrl <= 0) return null
-        val cleaned = fiat.trim().removePrefix(Format.config.fiat.symbol).removePrefix("$").trim()
+        val cleaned = stripFiatSymbol(fiat).removePrefix("$").trim()
         val t = normalizeDecimal(cleaned) ?: return null
         val bd = try { BigDecimal(t) } catch (_: NumberFormatException) { return null }
         val grain = bd.divide(BigDecimal(pricePerPrl), 8, RoundingMode.DOWN).multiply(PRL_SCALE).setScale(0, RoundingMode.DOWN)

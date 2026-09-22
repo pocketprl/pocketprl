@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -39,6 +40,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -98,7 +102,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
         Text(stringResource(R.string.personalize_subtitle), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
 
         Spacer(Modifier.height(22.dp))
-        PreviewCard(accent = accent, preview = preview, fiat = previewFiat, fiatCode = settings.fiatCurrency.code.uppercase(), reducedMotion = settings.reducedMotion, haptics = settings.odometerHaptics)
+        PreviewCard(accent = accent, preview = preview, ticker = settings.preferredNetwork.ticker, fiat = previewFiat, reducedMotion = settings.reducedMotion, haptics = settings.odometerHaptics)
 
         Spacer(Modifier.height(SectionGap))
         SectionTitle(stringResource(R.string.settings_section_language))
@@ -126,6 +130,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
                     AccentSwatch(
                         color = accentPrimary(theme, dark),
                         selected = settings.accentTheme == theme,
+                        label = accentLabel(theme),
                         onClick = { haptics.tick(); container.settings.accentTheme = theme },
                     )
                 }
@@ -244,7 +249,7 @@ fun PersonalizeScreen(next: String, onCreate: () -> Unit, onRestore: () -> Unit,
 
 /** Animated card that previews the chosen accent and the live number format. */
 @Composable
-private fun PreviewCard(accent: Color, preview: String, fiat: String?, fiatCode: String, reducedMotion: Boolean, haptics: Boolean) {
+private fun PreviewCard(accent: Color, preview: String, ticker: String, fiat: String?, reducedMotion: Boolean, haptics: Boolean) {
     val cs = MaterialTheme.colorScheme
     val bg by animateColorAsState(accent.copy(alpha = 0.16f).compositeOver(cs.surface), label = "previewBg")
     val border by animateColorAsState(accent.copy(alpha = 0.45f), label = "previewBorder")
@@ -254,7 +259,7 @@ private fun PreviewCard(accent: Color, preview: String, fiat: String?, fiatCode:
         Text(stringResource(R.string.personalize_preview), style = MaterialTheme.typography.labelMedium, color = cs.onSurfaceVariant)
         Spacer(Modifier.height(8.dp))
         OdometerText(
-            text = "$preview PRL",
+            text = "$preview $ticker",
             style = MaterialTheme.typography.headlineLarge,
             color = cs.onSurface,
             animate = !reducedMotion,
@@ -263,7 +268,7 @@ private fun PreviewCard(accent: Color, preview: String, fiat: String?, fiatCode:
         )
         if (fiat != null) {
             Spacer(Modifier.height(2.dp))
-            OdometerText(text = "≈ $fiat $fiatCode", style = MaterialTheme.typography.titleMedium, color = cs.onSurfaceVariant, animate = !reducedMotion, haptics = haptics)
+            OdometerText(text = stringResource(R.string.send_fiat_approx, fiat), style = MaterialTheme.typography.titleMedium, color = cs.onSurfaceVariant, animate = !reducedMotion, haptics = haptics)
         }
     }
 }
@@ -313,14 +318,32 @@ private fun <T> SegmentedCell(option: T, isSelected: Boolean, label: @Composable
 }
 
 @Composable
-private fun AccentSwatch(color: Color, selected: Boolean, onClick: () -> Unit) {
+private fun AccentSwatch(color: Color, selected: Boolean, label: String, onClick: () -> Unit) {
     val scale by animateFloatAsState(if (selected) 1.12f else 1f, animationSpec = spring(dampingRatio = 0.5f), label = "swatchScale")
+    // A 48dp selectable box keeps the touch target accessible; the visible circle stays 36dp.
     Box(
-        modifier = Modifier.size(36.dp).graphicsLayer { scaleX = scale; scaleY = scale }.clip(CircleShape).background(color)
-            .then(if (selected) Modifier.border(3.dp, MaterialTheme.colorScheme.onBackground, CircleShape) else Modifier)
-            .clickable(onClick = onClick),
-    )
+        modifier = Modifier.size(48.dp).clip(CircleShape)
+            .selectable(selected = selected, role = Role.RadioButton, onClick = onClick)
+            .semantics { contentDescription = label },
+        contentAlignment = Alignment.Center,
+    ) {
+        Box(
+            modifier = Modifier.size(36.dp).graphicsLayer { scaleX = scale; scaleY = scale }.clip(CircleShape).background(color)
+                .then(if (selected) Modifier.border(3.dp, MaterialTheme.colorScheme.onBackground, CircleShape) else Modifier),
+        )
+    }
 }
+
+@Composable
+private fun accentLabel(accent: AccentTheme): String = stringResource(when (accent) {
+    AccentTheme.PEARL -> R.string.accent_pearl
+    AccentTheme.OCEAN -> R.string.accent_ocean
+    AccentTheme.SUNSET -> R.string.accent_sunset
+    AccentTheme.VIOLET -> R.string.accent_violet
+    AccentTheme.FOREST -> R.string.accent_forest
+    AccentTheme.ROSE -> R.string.accent_rose
+    AccentTheme.MONO -> R.string.accent_mono
+})
 
 @Composable
 private fun FiatChip(fiat: FiatCurrency, selected: Boolean, onClick: () -> Unit) {

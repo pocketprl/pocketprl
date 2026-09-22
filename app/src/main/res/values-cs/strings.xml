@@ -65,6 +65,10 @@
     <string name="welcome_network">Síť</string>
     <string name="welcome_create">Vytvořit novou peněženku</string>
     <string name="welcome_restore">Obnovit z fráze pro obnovení</string>
+    <string name="wallet_registry_corrupt_title">Seznam peněženek nečitelný</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL našel v tomto zařízení soubory peněženek, ale nedokázal přečíst svůj seznam peněženek, a proto se zastavil, místo aby přes ně vytvořil novou peněženku. Vaše prostředky jsou v bezpečí, pokud máte svou frázi pro obnovení. Nevytvářejte novou peněženku: obnovte ji ze své fráze (nebo přeinstalujte a obnovte), abyste se znovu dostali ke svým stávajícím prostředkům.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Moje peněženka Pearl</string>

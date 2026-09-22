@@ -56,6 +56,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.pocketprl.R
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.chain.Network
+import dev.pocketprl.core.format.Format
 import dev.pocketprl.data.Balances
 import dev.pocketprl.data.MiningStats
 import dev.pocketprl.data.PriceState
@@ -74,6 +75,7 @@ import dev.pocketprl.ui.components.SectionTitle
 import dev.pocketprl.ui.components.rememberHaptics
 import dev.pocketprl.ui.components.rememberNowSeconds
 import dev.pocketprl.ui.components.etaBlocks
+import dev.pocketprl.ui.components.formatPercent
 import dev.pocketprl.ui.components.timeAgo
 import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.theme.LocalReducedMotion
@@ -82,7 +84,6 @@ import dev.pocketprl.ui.theme.TabularNumbers
 import dev.pocketprl.ui.components.UpdateDot
 import dev.pocketprl.ui.vm.WalletViewModel
 import dev.pocketprl.ui.vm.appContainer
-import java.util.Locale
 import kotlin.math.abs
 
 @Composable
@@ -231,7 +232,7 @@ private fun BalanceHero(b: Balances, network: Network, sync: SyncState, hide: Bo
         if (fiat != null || usd != null) {
             Spacer(Modifier.height(4.dp))
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (fiat != null) OdometerText("≈ $fiat", style = MaterialTheme.typography.titleMedium, color = cs.onSurfaceVariant, spinning = sync.syncing, animate = odometer, haptics = odometerHaptics)
+                if (fiat != null) OdometerText(stringResource(R.string.send_fiat_approx, fiat), style = MaterialTheme.typography.titleMedium, color = cs.onSurfaceVariant, spinning = sync.syncing, animate = odometer, haptics = odometerHaptics)
                 if (usd != null) PriceLine(network, usd, quote.change24h, showChange24h)
             }
         }
@@ -265,9 +266,10 @@ private fun BigAmount(grain: Long, network: Network, hide: Boolean, spinning: Bo
     val pretty = Amount.pretty(grain)
     val hiddenText = stringResource(R.string.hidden_placeholder)
     val hiddenDesc = stringResource(R.string.balance_hidden)
-    val whole = if (hide) hiddenText else pretty.substringBefore('.')
-    val frac = if (hide) "" else pretty.substringAfter('.', "")
-    val tail = (if (frac.isEmpty()) "" else ".$frac") + " " + network.ticker
+    val dec = Format.config.decimalSeparator.char
+    val whole = if (hide) hiddenText else pretty.substringBefore(dec)
+    val frac = if (hide) "" else pretty.substringAfter(dec, "")
+    val tail = (if (frac.isEmpty()) "" else "$dec$frac") + " " + network.ticker
     val chars = whole.length + tail.length
     // (big style, small style, bottom padding on the small text so the baselines meet)
     val (big, small, lift) = when {
@@ -318,10 +320,15 @@ private fun PriceLine(network: Network, usdPerPrl: Double, change24h: Double?, s
                 else -> cs.error to cs.errorContainer
             }
             val arrow = when { flat -> "–"; change24h > 0 -> "▲"; else -> "▼" }
-            val pct = "%.1f".format(Locale.US, abs(change24h))
-            val desc = stringResource(R.string.dash_price_content_desc, arrow, pct)
+            val magnitude = formatPercent(abs(change24h), 1).removePrefix("+")
+            val dir = when {
+                flat -> "–"
+                change24h > 0 -> stringResource(R.string.price_dir_up)
+                else -> stringResource(R.string.price_dir_down)
+            }
+            val desc = stringResource(R.string.dash_price_content_desc, dir, magnitude.removeSuffix("%"))
             Text(
-                "$arrow $pct%",
+                "$arrow $magnitude",
                 style = MaterialTheme.typography.labelMedium.merge(TabularNumbers).copy(fontWeight = FontWeight.Bold), color = fg,
                 modifier = Modifier.background(bg, CircleShape).padding(horizontal = 8.dp, vertical = 2.dp).semantics { contentDescription = desc },
                 maxLines = 1,

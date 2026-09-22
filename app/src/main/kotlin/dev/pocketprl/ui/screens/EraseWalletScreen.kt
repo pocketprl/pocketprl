@@ -28,6 +28,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -41,9 +42,6 @@ import dev.pocketprl.ui.components.SlideToConfirm
 import dev.pocketprl.ui.components.rememberHaptics
 import kotlinx.coroutines.launch
 
-/** The word the user must type before the erase slider arms. */
-private const val ERASE_WORD = "ERASE"
-
 /**
  * Fullscreen erase confirmation. A red trash mark, the warning, and a typed
  * word gate a red slide-to-erase control: the same pattern as sending, for the
@@ -53,9 +51,11 @@ private const val ERASE_WORD = "ERASE"
 @Composable
 fun EraseWalletScreen(walletName: String, onBack: () -> Unit, onErased: suspend () -> Unit) {
     SecureWindow()
+    val context = LocalContext.current
+    val eraseWord = context.getString(R.string.erase_word)
     var typed by remember { mutableStateOf("") }
     var busy by remember { mutableStateOf(false) }
-    val armed = typed.trim() == ERASE_WORD
+    val armed = typed.trim() == eraseWord
     val scope = rememberCoroutineScope()
     val haptics = rememberHaptics()
 

@@ -1,5 +1,44 @@
 # Changelog
 
+## 2.6.0
+
+Security and robustness:
+* A malformed `pocketprl://tx/…` link, or a transaction id with unexpected
+  characters from the indexer, can no longer crash the app; ids are validated
+  before they are used to open a screen.
+* The updater writes downloads to a fixed, sanitised file name, so a compromised
+  release listing cannot point the download outside the update cache.
+* Update and price responses are read with a hard size cap, so a hostile server
+  cannot exhaust memory.
+* An update that Android would refuse to install over the running build is no
+  longer offered, and the update dot only appears for an installable build.
+* Touches over an obscured window are dropped (tapjacking), and copied addresses
+  and txids are marked sensitive so they stay out of the clipboard preview.
+
+Data:
+* A corrupt `wallets.json` now shows an explicit “wallet list unreadable” screen
+  with a restore path, instead of silently starting onboarding over the wallet
+  files already on the device. Covered by a test.
+* Consolidating outputs is recorded as a self-transfer, so the balance no longer
+  dips and the history no longer shows a payment to yourself.
+* A future schema downgrade keeps contacts and transaction notes.
+
+Interface:
+* The accent you pick now reaches the mining, maturity and stats marks, not just
+  the Material widgets.
+* Fiat amounts in suffix currencies (zł, kr, Kč, Ft, lei) render and edit in the
+  right place.
+* Balance decimals and odometer slots follow the comma/period setting.
+* Addresses and txids are truncated and grouped the same way on every screen;
+  a few untranslated strings are localised, and time and percent formatting now
+  follows the device locale. The up/down and send/receive icons mirror in RTL.
+* Chart and price content descriptions are localised, accent swatches are
+  announced to screen readers, and small touch targets meet 48 dp.
+
+Size:
+* The release APK is about 7 MB; the barcode formats the app never uses and the
+  release logging are stripped.
+
 ## 2.5.6
 
 * **Progress bars no longer show a stray dot at the end.** The Material 3 linear

@@ -65,6 +65,10 @@
     <string name="welcome_network">Nettverk</string>
     <string name="welcome_create">Opprett en ny lommebok</string>
     <string name="welcome_restore">Gjenopprett fra gjenopprettingsfrase</string>
+    <string name="wallet_registry_corrupt_title">Lommeboklisten kan ikke leses</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL fant lommeboksfiler på denne enheten, men kunne ikke lese lommeboklisten sin, så den stoppet i stedet for å opprette en ny lommebok oppå dem. Midlene dine er trygge hvis du har gjenopprettingsfrasen. Ikke opprett en ny lommebok: gjenopprett fra frasen (eller installer på nytt og gjenopprett) for å få tilgang til de eksisterende midlene dine igjen.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Min Pearl-lommebok</string>

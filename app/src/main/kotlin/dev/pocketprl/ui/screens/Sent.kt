@@ -13,6 +13,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,6 +27,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,6 +51,7 @@ import dev.pocketprl.ui.components.PrimaryButton
 import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.components.SectionCard
+import dev.pocketprl.ui.components.TxidText
 import dev.pocketprl.ui.components.copyToClipboard
 import dev.pocketprl.ui.components.etaBlocks
 import dev.pocketprl.ui.components.rememberHaptics
@@ -163,7 +166,10 @@ fun SentContent(
                     SectionCard {
                         Text(stringResource(R.string.sent_txid), style = MaterialTheme.typography.labelLarge, color = cs.onSurfaceVariant)
                         val txidLabel = stringResource(R.string.clipboard_txid)
-                        AddressLine(txid) { haptics.confirm(); copyToClipboard(context, txidLabel, txid) }
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            TxidText(txid, modifier = Modifier.weight(1f), style = MaterialTheme.typography.bodySmall)
+                            IconButton(onClick = { haptics.confirm(); copyToClipboard(context, txidLabel, txid) }) { Icon(AppIcons.Copy, contentDescription = stringResource(R.string.action_copy)) }
+                        }
                     }
                     SecondaryButton(stringResource(R.string.sent_view_explorer), icon = AppIcons.OpenInNew, onClick = onExplorer)
                     PrimaryButton(stringResource(R.string.sent_done), onClick = onDone)

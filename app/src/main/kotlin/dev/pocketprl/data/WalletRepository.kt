@@ -803,20 +803,42 @@ class WalletRepository(
     /** Optimistic local update so the UI reflects the spend without waiting for a sync. */
     private fun recordOwnSend(p: PreparedSend, txid: String, nIn: Int, nOut: Int, vsize: Int) {
         val now = System.currentTimeMillis() / 1000
+        // A consolidation (and any send to one of our own addresses) is a self-transfer: the
+        // coins never left the wallet, so it must not count as an outgoing payment.
+        val destination = db.addresses().firstOrNull { it.address == p.toAddress }
         db.transaction {
             for (u in p.build.selected) db.deleteUtxo(u.txid, u.vout)
-            p.changeAddress?.let { ch ->
-                db.insertUtxo(UtxoRow(txid, 1, p.build.change, ch.address, ch.branch, ch.index, 0))
-                db.markUsed(ch.address)
+            if (destination != null) {
+                // Output 0 is the swept/recipient output, already paid out of the deleted coins.
+                db.insertUtxo(UtxoRow(txid, 0, p.build.amount, destination.address, destination.branch, destination.index, 0))
+                db.markUsed(destination.address)
+                p.changeAddress?.let { ch ->
+                    db.insertUtxo(UtxoRow(txid, 1, p.build.change, ch.address, ch.branch, ch.index, 0))
+                    db.markUsed(ch.address)
+                }
+                db.upsertTx(
+                    TxRow(
+                        txid = txid, height = 0, blockTime = 0, firstSeen = now, fee = p.build.fee, kind = TxKind.SELF,
+                        amount = 0, ownIn = p.build.selected.sumOf { it.value },
+                        ownOut = p.build.amount + (p.changeAddress?.let { p.build.change } ?: 0L),
+                        ownAddress = destination.address,
+                        counterparty = null, nIn = nIn, nOut = nOut, vsize = vsize, coinbase = false,
+                    ),
+                )
+            } else {
+                p.changeAddress?.let { ch ->
+                    db.insertUtxo(UtxoRow(txid, 1, p.build.change, ch.address, ch.branch, ch.index, 0))
+                    db.markUsed(ch.address)
+                }
+                db.upsertTx(
+                    TxRow(
+                        txid = txid, height = 0, blockTime = 0, firstSeen = now, fee = p.build.fee, kind = TxKind.SENT,
+                        amount = p.build.amount, ownIn = p.build.selected.sumOf { it.value }, ownOut = p.build.change,
+                        ownAddress = p.build.selected.first().address,
+                        counterparty = p.toAddress, nIn = nIn, nOut = nOut, vsize = vsize, coinbase = false,
+                    ),
+                )
             }
-            db.upsertTx(
-                TxRow(
-                    txid = txid, height = 0, blockTime = 0, firstSeen = now, fee = p.build.fee, kind = TxKind.SENT,
-                    amount = p.build.amount, ownIn = p.build.selected.sumOf { it.value }, ownOut = p.build.change,
-                    ownAddress = p.build.selected.first().address,
-                    counterparty = p.toAddress, nIn = nIn, nOut = nOut, vsize = vsize, coinbase = false,
-                ),
-            )
         }
     }
 

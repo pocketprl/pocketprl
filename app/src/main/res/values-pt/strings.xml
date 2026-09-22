@@ -65,6 +65,10 @@
     <string name="welcome_network">Rede</string>
     <string name="welcome_create">Criar uma nova carteira</string>
     <string name="welcome_restore">Restaurar a partir da frase de recuperação</string>
+    <string name="wallet_registry_corrupt_title">Lista de carteiras ilegível</string>
+    <string name="wallet_registry_corrupt_body">O PocketPRL encontrou ficheiros de carteira neste dispositivo, mas não conseguiu ler a sua lista de carteiras, por isso parou em vez de criar uma carteira nova por cima deles. Os seus fundos estão seguros se tiver a sua frase de recuperação. Não crie uma carteira nova: restaure a partir da sua frase (ou reinstale e restaure) para voltar a aceder aos seus fundos existentes.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">A minha carteira Pearl</string>

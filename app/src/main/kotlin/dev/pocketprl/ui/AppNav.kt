@@ -10,12 +10,26 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavBackStackEntry
@@ -34,6 +48,7 @@ import dev.pocketprl.data.BuildInfo
 import dev.pocketprl.data.VersionLane
 import dev.pocketprl.data.WalletContext
 import dev.pocketprl.ui.Biometrics
+import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.screens.AboutScreen
 import dev.pocketprl.ui.screens.ActivityScreen
 import dev.pocketprl.ui.screens.AddressesScreen
@@ -96,6 +111,7 @@ object Routes {
     fun resetBuild(version: String) = "resetbuild/$version"
     const val ERASE = "erase"
     const val WHATS_NEW = "whatsnew"
+    const val REGISTRY_CORRUPT = "registry_corrupt"
 
     fun personalize(next: String) = "personalize/$next"
 
@@ -106,6 +122,10 @@ object Routes {
 }
 
 private fun NavHostController.resetTo(route: String) = navigate(route) { popUpTo(0) { inclusive = true }; launchSingleTop = true }
+
+/** Nav routes embed the txid; only a plain 64-char hex string may be navigated to. */
+private fun isTxid(s: String): Boolean =
+    s.length == 64 && s.all { it in '0'..'9' || it in 'a'..'f' || it in 'A'..'F' }
 
 // ---------------------------------------------------------------- transitions
 //
@@ -157,9 +177,65 @@ private val predictivePopExit: AnimatedContentTransitionScope<NavBackStackEntry>
 fun AppNav() {
     val container = appContainer()
     val activeId by container.activeId.collectAsStateWithLifecycle()
-    key(activeId) {
-        val ctx = activeId?.let { container.context(it) }
-        if (ctx == null) OnboardingNav() else WalletNav(container, ctx)
+    val loadFailed by container.registry.loadFailed.collectAsStateWithLifecycle()
+    if (loadFailed) {
+        // wallets.json exists but could not be read. Do not fall into onboarding:
+        // that would look like a fresh install and hide the wallets already on disk.
+        RegistryCorruptNav()
+    } else {
+        key(activeId) {
+            val ctx = activeId?.let { container.context(it) }
+            if (ctx == null) OnboardingNav() else WalletNav(container, ctx)
+        }
+    }
+}
+
+/**
+ * Shown when the wallet index is unreadable. Lets the user restore from a
+ * recovery phrase (which writes a fresh, valid index) instead of onboarding.
+ */
+@Composable
+private fun RegistryCorruptNav() {
+    val nav = rememberNavController()
+    NavHost(
+        navController = nav,
+        startDestination = Routes.REGISTRY_CORRUPT,
+        enterTransition = enter,
+        exitTransition = exit,
+        popEnterTransition = popEnter,
+        popExitTransition = popExit,
+        predictivePopEnterTransition = predictivePopEnter,
+        predictivePopExitTransition = predictivePopExit,
+    ) {
+        composable(Routes.REGISTRY_CORRUPT) {
+            RegistryCorruptScreen(onRestore = { nav.navigate(Routes.RESTORE) })
+        }
+        onboardingRoutes(nav, addMode = false)
+    }
+}
+
+@Composable
+private fun RegistryCorruptScreen(onRestore: () -> Unit) {
+    Column(
+        modifier = Modifier.fillMaxSize().safeDrawingPadding().padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text(
+            stringResource(R.string.wallet_registry_corrupt_title),
+            style = MaterialTheme.typography.headlineSmall,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
+        Spacer(Modifier.height(12.dp))
+        Text(
+            stringResource(R.string.wallet_registry_corrupt_body),
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(24.dp))
+        SecondaryButton(stringResource(R.string.welcome_restore), onRestore)
     }
 }
 
@@ -249,7 +325,7 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
     // A tapped payment notification opens its transaction.
     LaunchedEffect(pendingTxid, unlocked, route) {
         val txid = pendingTxid ?: return@LaunchedEffect
-        if (unlocked && route != null && route !in Routes.PUBLIC) {
+        if (unlocked && route != null && route !in Routes.PUBLIC && isTxid(txid)) {
             nav.navigate("tx/$txid") { launchSingleTop = true }
             container.pendingTxid.value = null
         }
@@ -326,13 +402,13 @@ private fun WalletNav(container: AppContainer, ctx: WalletContext) {
                 onSend = { nav.navigate(Routes.SEND) },
                 onReceive = { nav.navigate(Routes.RECEIVE) },
                 onActivity = { nav.navigate(Routes.ACTIVITY) },
-                onTx = { nav.navigate("tx/$it") },
+                onTx = { if (isTxid(it)) nav.navigate("tx/$it") },
                 onSettings = { nav.navigate(Routes.SETTINGS) },
                 onLock = { walletVm.lock() },
                 onAddWallet = addWallet,
             )
         }
-        composable(Routes.ACTIVITY) { ActivityScreen(walletVm, onTx = { nav.navigate("tx/$it") }, onBack = { nav.popBackStack() }) }
+        composable(Routes.ACTIVITY) { ActivityScreen(walletVm, onTx = { if (isTxid(it)) nav.navigate("tx/$it") }, onBack = { nav.popBackStack() }) }
         composable(Routes.TX) { entry ->
             TxDetailScreen(walletVm, txid = entry.arguments?.getString("txid") ?: "", onBack = { nav.popBackStack() })
         }

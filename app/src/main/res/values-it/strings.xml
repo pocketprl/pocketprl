@@ -65,6 +65,10 @@
     <string name="welcome_network">Rete</string>
     <string name="welcome_create">Crea un nuovo portafoglio</string>
     <string name="welcome_restore">Ripristina dalla frase di recupero</string>
+    <string name="wallet_registry_corrupt_title">Elenco dei portafogli illeggibile</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL ha trovato file di portafoglio su questo dispositivo, ma non è riuscito a leggere il suo elenco dei portafogli, quindi si è fermato invece di creare un nuovo portafoglio sopra di essi. I tuoi fondi sono al sicuro se hai la tua frase di recupero. Non creare un nuovo portafoglio: ripristina dalla tua frase (oppure reinstalla e ripristina) per raggiungere di nuovo i tuoi fondi esistenti.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Il mio portafoglio Pearl</string>

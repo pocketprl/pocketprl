@@ -65,6 +65,10 @@
     <string name="welcome_network">Ağ</string>
     <string name="welcome_create">Yeni cüzdan oluştur</string>
     <string name="welcome_restore">Kurtarma ifadesinden geri yükle</string>
+    <string name="wallet_registry_corrupt_title">Cüzdan listesi okunamıyor</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL bu cihazda cüzdan dosyaları buldu ancak cüzdan listesini okuyamadı, bu yüzden üzerlerine yeni bir cüzdan oluşturmak yerine durdu. Kurtarma ifadeniz varsa paranız güvende. Yeni bir cüzdan oluşturmayın: mevcut paranıza yeniden ulaşmak için ifadenizden geri yükleyin (veya yeniden yükleyip geri yükleyin).</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Pearl Cüzdanım</string>

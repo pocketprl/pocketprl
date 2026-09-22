@@ -16,6 +16,20 @@
 -dontwarn org.bouncycastle.**
 -dontwarn org.openjsse.**
 
-# ZXing
+# ZXing: the app only scans and generates QR codes. Keep the QR path and the
+# journeyapps scanner; let R8 shrink the unused barcode formats (PDF417,
+# DataMatrix, Aztec, the 1D/RSS family, MaxiCode) instead of pinning all of them.
 -keep class com.journeyapps.barcodescanner.** { *; }
--keep class com.google.zxing.** { *; }
+-keep class com.google.zxing.qrcode.** { *; }
+-keep class com.google.zxing.client.result.** { *; }
+-dontwarn com.google.zxing.**
+
+# Strip logging in release: less dex, no logcat noise, and no chance of a wallet
+# name or address leaking through Log on a shared device.
+-assumenosideeffects class android.util.Log {
+    public static *** v(...);
+    public static *** d(...);
+    public static *** i(...);
+    public static *** w(...);
+    public static *** e(...);
+}

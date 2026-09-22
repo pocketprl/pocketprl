@@ -65,6 +65,10 @@
     <string name="welcome_network">Sieć</string>
     <string name="welcome_create">Utwórz nowy portfel</string>
     <string name="welcome_restore">Przywróć z frazy odzyskiwania</string>
+    <string name="wallet_registry_corrupt_title">Lista portfeli nieczytelna</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL znalazł na tym urządzeniu pliki portfeli, ale nie mógł odczytać swojej listy portfeli, więc zatrzymał się, zamiast utworzyć nad nimi nowy portfel. Twoje środki są bezpieczne, jeśli masz frazę odzyskiwania. Nie twórz nowego portfela: przywróć z frazy odzyskiwania (lub zainstaluj ponownie i przywróć), aby ponownie uzyskać dostęp do istniejących środków.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Mój portfel Pearl</string>

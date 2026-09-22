@@ -5,6 +5,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import dev.pocketprl.core.chain.Network
+import dev.pocketprl.data.BuildInfo
 import dev.pocketprl.data.LauncherIconManager
 import dev.pocketprl.data.Settings
 import dev.pocketprl.data.WalletContext
@@ -17,6 +18,7 @@ import dev.pocketprl.data.price.PriceApi
 import dev.pocketprl.data.update.AppUpdater
 import dev.pocketprl.data.update.ReleaseInfo
 import dev.pocketprl.data.update.UpdateChecker
+import dev.pocketprl.data.update.assetFor
 import dev.pocketprl.data.vault.SeedMaterial
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -84,7 +86,11 @@ class AppContainer(val appContext: Context) {
         scope.launch {
             val release = runCatching { UpdateChecker.latest() }.getOrNull() ?: return@launch
             _latestRelease.value = release
-            _updateAvailable.value = UpdateChecker.compare(release.version, BuildConfig.VERSION_NAME) > 0
+            // Only advertise an update when this release actually has a build Android
+            // will install over the running one; otherwise the update screen would
+            // offer something the installer refuses.
+            val installable = release.assetFor(BuildInfo.code, BuildConfig.VERSION_NAME, BuildInfo.lane) != null
+            _updateAvailable.value = installable && UpdateChecker.compare(release.version, BuildConfig.VERSION_NAME) > 0
         }
     }
 

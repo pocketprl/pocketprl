@@ -25,6 +25,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -70,12 +71,13 @@ fun UnlockScreen(vm: UnlockViewModel, onUnlocked: () -> Unit, onAddWallet: () ->
     var bioLaunched by rememberSaveable { mutableStateOf(false) }
     val unlockTitle = stringResource(R.string.unlock_title, vm.walletName)
     val biometricKeyUnavailable = stringResource(R.string.unlock_error_biometric)
+    val context = LocalContext.current
 
     fun biometric() {
         val act = activity ?: return
         val cipher = vm.biometricCipher() ?: run { vm.setError(biometricKeyUnavailable); return }
         scope.launch {
-            when (val r = Biometrics.authenticate(act, unlockTitle, "PocketPRL", cipher)) {
+            when (val r = Biometrics.authenticate(act, unlockTitle, context.getString(R.string.app_name), cipher)) {
                 is Biometrics.Outcome.Success -> vm.unlockWithBiometric(r.cipher)
                 is Biometrics.Outcome.Error -> vm.setError(r.message)
                 is Biometrics.Outcome.Cancelled -> Unit

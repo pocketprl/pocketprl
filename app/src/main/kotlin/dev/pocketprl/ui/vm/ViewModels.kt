@@ -831,7 +831,12 @@ class SettingsViewModel(private val c: AppContainer, private val ctx: WalletCont
         }
     }
 
-    fun setPriceAlertPercent(p: Double) { c.settings.priceAlertPercent = p }
+    fun setPriceAlertPercent(p: Double) {
+        if (c.settings.priceAlertPercent == p) return
+        c.settings.priceAlertPercent = p
+        // Bands are stored as floor(change/threshold); a new threshold makes them meaningless.
+        runCatching { PriceAlertNotifier.clearBands(c.appContext) }
+    }
 
     fun blockbookUrl(): String = c.settings.blockbookUrl(network)
     fun defaultBlockbookUrl(): String = network.defaultBlockbookUrl

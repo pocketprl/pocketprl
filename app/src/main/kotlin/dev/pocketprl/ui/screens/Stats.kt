@@ -66,9 +66,8 @@ import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.theme.PearlTheme
 import dev.pocketprl.ui.theme.TabularNumbers
 import dev.pocketprl.ui.vm.SettingsViewModel
-import java.text.SimpleDateFormat
+import java.text.DateFormat
 import java.util.Date
-import java.util.Locale
 
 /**
  * A look back over everything this wallet has ever done, rolled up from the
@@ -279,7 +278,7 @@ private fun date(epochSeconds: Long?): String =
 
 @Composable
 private fun shortDate(epochSeconds: Long): String =
-    SimpleDateFormat("d MMM", Locale.getDefault()).format(Date(epochSeconds * 1000))
+    DateFormat.getDateInstance(DateFormat.MEDIUM).format(Date(epochSeconds * 1000))
 
 /** Compact y-axis level: fewer decimals as the amount grows, respecting the configured separators. */
 private fun axisLabel(grain: Long): String {
@@ -462,8 +461,8 @@ private fun BalanceChart(series: List<DatedAmount>, network: Network, hide: Bool
         Row(modifier = Modifier.fillMaxWidth()) {
             Spacer(Modifier.width(66.dp))
             Row(modifier = Modifier.weight(1f), horizontalArrangement = Arrangement.SpaceBetween) {
-                Text(shortDate(series.first().time), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Text(shortDate(series.last().time), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(shortDate(series.first().time), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(shortDate(series.last().time), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
         }
         selected?.takeIf { it in series.indices }?.let { i ->

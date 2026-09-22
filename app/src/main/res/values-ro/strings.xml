@@ -65,6 +65,10 @@
     <string name="welcome_network">Rețea</string>
     <string name="welcome_create">Creează un portofel nou</string>
     <string name="welcome_restore">Restaurează din fraza de recuperare</string>
+    <string name="wallet_registry_corrupt_title">Lista de portofele nu poate fi citită</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL a găsit fișiere de portofel pe acest dispozitiv, dar nu a putut citi lista de portofele, așa că s-a oprit în loc să creeze un portofel nou peste ele. Fondurile tale sunt în siguranță dacă ai fraza de recuperare. Nu crea un portofel nou: restaurează din frază (sau reinstalează și restaurează) pentru a-ți accesa din nou fondurile existente.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Portofelul meu Pearl</string>

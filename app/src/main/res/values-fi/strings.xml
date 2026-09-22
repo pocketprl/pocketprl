@@ -65,6 +65,10 @@
     <string name="welcome_network">Verkko</string>
     <string name="welcome_create">Luo uusi lompakko</string>
     <string name="welcome_restore">Palauta palautuslauseesta</string>
+    <string name="wallet_registry_corrupt_title">Lompakkoluetteloa ei voi lukea</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL löysi tältä laitteelta lompakkotiedostoja mutta ei voinut lukea lompakkoluetteloaan, joten se pysähtyi sen sijaan, että olisi luonut uuden lompakon niiden päälle. Varasi ovat turvassa, jos sinulla on palautuslause. Älä luo uutta lompakkoa: palauta lauseestasi (tai asenna uudelleen ja palauta) päästäksesi taas käsiksi olemassa oleviin varoihisi.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Oma Pearl-lompakko</string>

@@ -69,9 +69,11 @@ class WalletDb(context: Context, name: String = "wallet.db") : SQLiteOpenHelper(
     }
 
     override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Chain state is re-derivable from the seed and the indexer; contacts and notes are the only loss.
-        for (t in listOf("addresses", "txs", "utxos", "meta", "contacts", "tx_notes")) db.execSQL("DROP TABLE IF EXISTS $t")
-        onCreate(db)
+        // Chain state is re-derivable from the seed and the indexer, so it is safe to reset.
+        // contacts and tx_notes are user data that cannot be recovered from anywhere else, so
+        // they must survive a schema downgrade intact.
+        for (t in listOf("addresses", "txs", "utxos", "meta")) db.execSQL("DROP TABLE IF EXISTS $t")
+        createChainTables(db)
     }
 
     // ---- meta ----

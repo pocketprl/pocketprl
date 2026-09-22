@@ -106,7 +106,7 @@ fun ReceiveScreen(vm: WalletViewModel, onBack: () -> Unit) {
         amountText = amountText,
         onAmountChange = { amountText = it },
         amountError = if (amountText.isNotBlank() && amount == null) stringResource(R.string.send_enter_valid_amount_short) else null,
-        fiatHint = fiat?.let { "≈ $it" },
+        fiatHint = fiat?.let { stringResource(R.string.send_fiat_approx, it) },
         label = label,
         onLabelChange = { label = it.take(60) },
         rotating = rotating,

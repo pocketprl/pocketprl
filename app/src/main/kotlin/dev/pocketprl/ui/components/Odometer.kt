@@ -44,6 +44,7 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import dev.pocketprl.core.format.Format
 import dev.pocketprl.ui.theme.TabularNumbers
 import kotlin.math.abs
 import kotlin.math.floor
@@ -89,7 +90,7 @@ fun OdometerText(
     val cellWidth = with(density) { cell.width.toDp() }
     val cellHeight = with(density) { cell.height.toDp() }
 
-    val anchor = text.indexOf('.').let { if (it >= 0) it else text.length }
+    val anchor = text.indexOf(Format.config.decimalSeparator.char).let { if (it >= 0) it else text.length }
 
     // Ticks only exist while the rollers can actually move; the driver holds
     // the only reference, so disabled rollers keep no watcher at all.

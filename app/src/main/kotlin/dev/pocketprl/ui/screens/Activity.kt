@@ -47,6 +47,7 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -67,7 +68,7 @@ import dev.pocketprl.ui.components.KeyValueRow
 import dev.pocketprl.ui.components.LoadingBlock
 import dev.pocketprl.ui.components.etaBlocks
 import dev.pocketprl.ui.components.rememberHaptics
-import dev.pocketprl.ui.components.MonoText
+import dev.pocketprl.ui.components.TxidText
 import dev.pocketprl.ui.components.ScreenScaffold
 import dev.pocketprl.ui.components.SecondaryButton
 import dev.pocketprl.ui.components.SectionCard
@@ -190,7 +191,7 @@ fun ActivityScreen(vm: WalletViewModel, onTx: (String) -> Unit, onBack: () -> Un
                     // Keyed by the opening transaction, not the label: block timestamps can go
                     // backwards, so the same day label can head two groups.
                     item(key = "h:${tx.txid}") {
-                        Text(dayLabel(labelEpoch), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 14.dp, bottom = 2.dp))
+                        Text(dayLabel(labelEpoch), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 14.dp, bottom = 2.dp))
                     }
                 }
                 item(key = tx.txid) {
@@ -294,7 +295,7 @@ fun TxDetailScreen(vm: WalletViewModel, txid: String, onBack: () -> Unit) {
                 Text(stringResource(R.string.activity_txid), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Spacer(Modifier.height(6.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    MonoText(tx.txid, modifier = Modifier.weight(1f), style = MaterialTheme.typography.bodySmall)
+                    TxidText(tx.txid, modifier = Modifier.weight(1f), style = MaterialTheme.typography.bodySmall)
                     val haptics = rememberHaptics()
                     val txidLabel = stringResource(R.string.clipboard_txid)
                     IconButton(onClick = { haptics.confirm(); copyToClipboard(context, txidLabel, tx.txid) }) { Icon(AppIcons.Copy, contentDescription = stringResource(R.string.action_copy)) }

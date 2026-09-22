@@ -63,7 +63,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.pocketprl.BuildConfig
 import dev.pocketprl.Locales
 import dev.pocketprl.R
-import dev.pocketprl.core.chain.Address
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.crypto.toHex
 import dev.pocketprl.core.format.DecimalSeparator
@@ -86,6 +85,7 @@ import dev.pocketprl.ui.Permissions
 import dev.pocketprl.ui.rememberLeaveAppMarker
 import dev.pocketprl.ui.rememberPermissionRequest
 import dev.pocketprl.ui.components.AddressText
+import dev.pocketprl.ui.components.shortAddress
 import dev.pocketprl.ui.components.BannerKind
 import dev.pocketprl.ui.components.ContactAvatar
 import dev.pocketprl.ui.components.HIDDEN
@@ -401,7 +401,7 @@ fun SettingsScreen(
             }
 
             SectionTitle(stringResource(R.string.settings_section_danger), color = MaterialTheme.colorScheme.error)
-            SecondaryButton(stringResource(R.string.settings_delete), danger = true, onClick = onErase)
+            SecondaryButton(stringResource(R.string.erase_title), danger = true, onClick = onErase)
             Spacer(Modifier.height(24.dp))
         }
     }
@@ -818,7 +818,7 @@ fun AddressesScreen(vm: SettingsViewModel, onBack: () -> Unit, onConsolidate: ()
                         Text(if (r.variant == AddressVariant.PQ) stringResource(R.string.settings_addresses_pq, base) else base, style = MaterialTheme.typography.labelLarge, modifier = Modifier.weight(1f))
                         if (r.used) Text(stringResource(R.string.settings_addresses_used), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
-                    MonoText(r.address, style = MaterialTheme.typography.bodySmall)
+                    AddressText(r.address, style = MaterialTheme.typography.bodySmall)
                     if (r.balance != 0L || r.unconfirmed != 0L) Text("${if (settings.hideBalance) HIDDEN else Amount.pretty(r.balance + r.unconfirmed)} ${vm.network.ticker}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
                 }
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
@@ -854,8 +854,8 @@ fun ContactsScreen(vm: SettingsViewModel, onBack: () -> Unit) {
                         ContactAvatar(c.name)
                         Spacer(Modifier.width(14.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(c.name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
-                            Text(Address.short(c.address, 16, 10), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text(c.name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text(shortAddress(c.address), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         }
                         val haptics = rememberHaptics()
                         IconButton(onClick = { haptics.confirm(); copyToClipboard(context, c.name, c.address) }) { Icon(AppIcons.Copy, contentDescription = stringResource(R.string.settings_copy_address)) }

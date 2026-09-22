@@ -65,6 +65,10 @@
     <string name="welcome_network">Netzwerk</string>
     <string name="welcome_create">Neues Wallet erstellen</string>
     <string name="welcome_restore">Aus Wiederherstellungsphrase wiederherstellen</string>
+    <string name="wallet_registry_corrupt_title">Wallet-Liste nicht lesbar</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL hat auf diesem Gerät Wallet-Dateien gefunden, konnte seine Wallet-Liste aber nicht lesen und hat deshalb abgebrochen, statt ein neues Wallet darüber anzulegen. Deine Gelder sind sicher, wenn du deine Wiederherstellungsphrase hast. Erstelle kein neues Wallet: Stelle stattdessen aus deiner Phrase wieder her (oder installiere neu und stelle wieder her), um wieder an deine vorhandenen Gelder zu kommen.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Mein Pearl-Wallet</string>

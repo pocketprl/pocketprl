@@ -113,7 +113,7 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
                     ?: assets.firstOrNull { it.versionCode == null }
                     ?: assets.firstOrNull()
             }
-            val file = File(dir, chosen?.name ?: DEFAULT_APK_NAME)
+            val file = safeCacheFile(dir, safeLeafName(chosen?.name))
             try {
                 val url = chosen?.url ?: throw DownloadException(Failure.NO_APK)
                 _state.value = State.Downloading(file.name, 0, chosen.size)
@@ -237,7 +237,16 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
                     put(MediaStore.Downloads.IS_PENDING, 1)
                 }
                 val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values) ?: return@runCatching null
-                resolver.openOutputStream(uri)?.use { out -> file.inputStream().use { it.copyTo(out) } }
+                val out = resolver.openOutputStream(uri)
+                if (out == null) {
+                    runCatching { resolver.delete(uri, null, null) }
+                    return@runCatching null
+                }
+                val copied = out.use { sink -> file.inputStream().use { it.copyTo(sink) } }
+                if (copied != file.length()) {
+                    runCatching { resolver.delete(uri, null, null) }
+                    return@runCatching null
+                }
                 values.clear()
                 values.put(MediaStore.Downloads.IS_PENDING, 0)
                 resolver.update(uri, values, null, null)
@@ -265,6 +274,27 @@ class AppUpdater(private val context: Context, private val scope: CoroutineScope
     fun archiveVersionCode(file: File): Long? = runCatching {
         context.packageManager.getPackageArchiveInfo(file.absolutePath, 0)?.longVersionCode
     }.getOrNull()
+
+    /**
+     * The leaf file name to store an asset under. A remote name from GitHub is
+     * untrusted, so drop any directory part and refuse anything blank or holding
+     * "..", falling back to [DEFAULT_APK_NAME].
+     */
+    private fun safeLeafName(remoteName: String?): String {
+        val leaf = remoteName?.substringAfterLast('/')?.substringAfterLast('\\')?.trim()
+        if (leaf.isNullOrBlank() || leaf.contains("..")) return DEFAULT_APK_NAME
+        return leaf
+    }
+
+    /** Resolves [name] under [dir], falling back to the default when it would escape the directory. */
+    private fun safeCacheFile(dir: File, name: String): File {
+        val candidate = File(dir, name)
+        val inside = runCatching {
+            val base = dir.canonicalPath.trimEnd(File.separatorChar) + File.separator
+            candidate.canonicalPath.startsWith(base)
+        }.getOrDefault(false)
+        return if (inside) candidate else File(dir, DEFAULT_APK_NAME)
+    }
 
     private class DownloadException(val reason: Failure) : IOException(reason.name)
 

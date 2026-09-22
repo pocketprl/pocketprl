@@ -49,6 +49,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.pocketprl.R
+import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.format.Format
 import dev.pocketprl.ui.theme.AppIcons
 import dev.pocketprl.ui.theme.Mono
@@ -91,10 +92,17 @@ fun AmountHero(
     val style = t.displayMedium.merge(TabularNumbers).copy(fontSize = size, lineHeight = size * 1.15f, fontWeight = FontWeight.ExtraBold, letterSpacing = (-1.5).sp, color = cs.onBackground, textAlign = TextAlign.Center)
     val muted = cs.onSurfaceVariant
     val maxDecimals = if (fiatMode) 2 else 8
+    // The symbol may be prefixed or suffixed; strip whatever the caller left in so it is drawn once, on the right side.
+    val currency = Format.config.fiat
+    val fieldText = if (fiatMode) Amount.stripFiatSymbol(text) else text
+    val fiatPrefix = fiatMode && !currency.suffix
+    val fiatSuffix = fiatMode && currency.suffix
+    // Same spacing rules as amount rendering; the editable number is the empty string.
+    val fiatSymbol = Amount.applyFiatSymbol("")
     // A text field's intrinsic width is not its text's width; size it to the measured text plus room for the cursor.
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
-    val fieldWidth = with(density) { measurer.measure(text.ifEmpty { "0" }, style).size.width.toDp() } + 6.dp
+    val fieldWidth = with(density) { measurer.measure(fieldText.ifEmpty { "0" }, style).size.width.toDp() } + 6.dp
     Column(
         modifier = modifier.fillMaxWidth().clickable(interactionSource = tap, indication = null) { focus.requestFocus() },
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -104,23 +112,24 @@ fun AmountHero(
             Spacer(Modifier.height(6.dp))
         }
         Row(verticalAlignment = Alignment.Bottom) {
-            if (fiatMode) Text(Format.config.fiat.symbol, style = style.copy(fontSize = size * 0.6f, color = muted), modifier = Modifier.alignByBaseline().padding(end = 2.dp))
+            if (fiatPrefix) Text(fiatSymbol, style = style.copy(fontSize = size * 0.6f, color = muted), modifier = Modifier.alignByBaseline().padding(end = 2.dp))
             BasicTextField(
-                value = text,
+                value = fieldText,
                 onValueChange = { onTextChange(sanitizeAmount(it, maxDecimals)) },
                 // An empty field draws its cursor where its text would start; end-aligned puts it after the placeholder.
-                textStyle = style.copy(textAlign = if (text.isEmpty()) TextAlign.End else TextAlign.Center),
+                textStyle = style.copy(textAlign = if (fieldText.isEmpty()) TextAlign.End else TextAlign.Center),
                 singleLine = true,
                 cursorBrush = SolidColor(cs.primary),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal, imeAction = ImeAction.Done),
                 modifier = Modifier.alignByBaseline().width(fieldWidth).focusRequester(focus),
                 decorationBox = { inner ->
                     Box(contentAlignment = Alignment.CenterStart) {
-                        if (text.isEmpty()) Text(stringResource(R.string.send_amount_placeholder), style = style.copy(color = muted.copy(alpha = 0.4f)))
+                        if (fieldText.isEmpty()) Text(stringResource(R.string.send_amount_placeholder), style = style.copy(color = muted.copy(alpha = 0.4f)))
                         inner()
                     }
                 },
             )
+            if (fiatSuffix) Text(fiatSymbol, style = style.copy(fontSize = size * 0.6f, color = muted), modifier = Modifier.alignByBaseline().padding(start = 2.dp))
             if (!fiatMode) {
                 Spacer(Modifier.width(6.dp))
                 Text(ticker, style = t.headlineSmall.copy(fontWeight = FontWeight.SemiBold), color = muted, modifier = Modifier.alignByBaseline())
@@ -250,7 +259,7 @@ fun RecipientField(
 
 @Composable
 private fun FieldIcon(icon: ImageVector, label: String, onClick: () -> Unit) {
-    IconButton(onClick = onClick, modifier = Modifier.size(40.dp)) {
+    IconButton(onClick = onClick, modifier = Modifier.size(48.dp)) {
         Icon(icon, contentDescription = label, tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(20.dp))
     }
 }

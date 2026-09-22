@@ -65,6 +65,8 @@
     <string name="welcome_network">Network</string>
     <string name="welcome_create">Create a new wallet</string>
     <string name="welcome_restore">Restore from recovery phrase</string>
+    <string name="wallet_registry_corrupt_title">Wallet list unreadable</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL found wallet files on this device but could not read its wallet list, so it stopped instead of starting a fresh wallet over them. Your funds are safe if you have your recovery phrase. Do not create a new wallet: restore from your phrase (or reinstall and restore) to reach your existing funds again.</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">My Pearl Wallet</string>
@@ -408,6 +410,7 @@
     <string name="erase_heading">Erase “%1$s”?</string>
     <string name="erase_body">This wallet’s keys, cached history, contacts and notes on this phone will be deleted. Other wallets are not affected. You can only get the funds back with the recovery phrase.</string>
     <string name="erase_type_label">Type ERASE to confirm</string>
+    <string name="erase_word">ERASE</string>
     <string name="erase_slider">Erase</string>
     <string name="erase_slider_hint">Slide or double-tap to erase this wallet</string>
     <string name="erase_slider_locked">Type ERASE first</string>
@@ -547,6 +550,7 @@
     <string name="return_build_reset_prepare">Save the build</string>
     <string name="return_build_reset_saved">Saved to Downloads/%1$s. Uninstall PocketPRL, install that file, then restore from your recovery phrase.</string>
     <string name="build_lane_you_are_on">You’re on</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
     <string name="build_lane_primary">Regular build</string>
     <string name="build_lane_primary_body">Regular release line: normal updates install here. From here you can go anywhere freely. Any older version installs in place, and newer releases arrive as normal updates.</string>
     <string name="build_lane_rollback">Alternate rollback build</string>

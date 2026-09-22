@@ -65,6 +65,10 @@
     <string name="welcome_network">Мережа</string>
     <string name="welcome_create">Створити новий гаманець</string>
     <string name="welcome_restore">Відновити з фрази відновлення</string>
+    <string name="wallet_registry_corrupt_title">Список гаманців не читається</string>
+    <string name="wallet_registry_corrupt_body">PocketPRL знайшов на цьому пристрої файли гаманців, але не зміг прочитати свій список гаманців, тому зупинився, а не створив новий гаманець поверх них. Ваші кошти в безпеці, якщо у вас є фраза відновлення. Не створюйте новий гаманець: відновіть із фрази (або переінсталюйте й відновіть), щоб знову отримати доступ до наявних коштів.</string>
+    <string name="erase_word">ERASE</string>
+    <string name="build_lane_heading">%1$s: %2$s v%3$s</string>
 
     <!-- ===================== onboarding ===================== -->
     <string name="onboard_default_wallet_name">Мій гаманець Pearl</string>

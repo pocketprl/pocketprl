@@ -3,6 +3,7 @@ package dev.pocketprl.ui
 import android.content.Context
 import android.content.Intent
 import androidx.core.content.FileProvider
+import dev.pocketprl.R
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.chain.Network
 import dev.pocketprl.data.db.TxKind
@@ -48,6 +49,6 @@ object Export {
             putExtra(Intent.EXTRA_SUBJECT, fileName)
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-        return Intent.createChooser(send, "Export history")
+        return Intent.createChooser(send, context.getString(R.string.export_chooser))
     }
 }
