@@ -3,17 +3,31 @@ package dev.pocketprl.data
 import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import dev.pocketprl.R
 
 /**
  * Launcher icon choices. Each maps to an `<activity-alias>` in the manifest, so
  * the launcher entry can be moved between icons at runtime.
+ *
+ * [iconRes] is the same adaptive icon the alias declares. It is kept here so the
+ * chosen icon can also be rendered onto the system surfaces the alias cannot
+ * reach — the task-switcher entry and the notification large icon — which read
+ * the activity/application icon rather than the launcher alias.
  */
-enum class AppIcon(val id: String, val component: String) {
-    DEFAULT("default", "dev.pocketprl.LauncherDefault"),
+enum class AppIcon(
+    val id: String,
+    val component: String,
+    @DrawableRes val iconRes: Int,
+) {
+    DEFAULT("default", "dev.pocketprl.LauncherDefault", R.mipmap.ic_launcher),
     /** Single-colour mark that flips with the system theme. */
-    MONO("mono", "dev.pocketprl.LauncherMono"),
-    LIGHT("light", "dev.pocketprl.LauncherLight"),
-    DARK("dark", "dev.pocketprl.LauncherDark"),
+    MONO("mono", "dev.pocketprl.LauncherMono", R.mipmap.ic_launcher_mono),
+    LIGHT("light", "dev.pocketprl.LauncherLight", R.mipmap.ic_launcher_light),
+    DARK("dark", "dev.pocketprl.LauncherDark", R.mipmap.ic_launcher_dark),
     ;
 
     companion object {
@@ -44,6 +58,19 @@ object LauncherIconManager {
             AppIcon.entries.all { it == icon || stateOf(pm, context, it) == DISABLED }
         if (!already) apply(context, icon)
     }
+
+    /**
+     * The chosen icon as a square bitmap for the surfaces that read the
+     * application/activity icon: the task switcher ([android.app.Activity.setTaskDescription])
+     * and the notification large icon. Null when the drawable cannot be read.
+     */
+    fun bitmap(context: Context, icon: AppIcon, sizePx: Int): Bitmap? = runCatching {
+        val drawable = ContextCompat.getDrawable(context, icon.iconRes) ?: return@runCatching null
+        val bitmap = Bitmap.createBitmap(sizePx, sizePx, Bitmap.Config.ARGB_8888)
+        drawable.setBounds(0, 0, sizePx, sizePx)
+        drawable.draw(Canvas(bitmap))
+        bitmap
+    }.getOrNull()
 
     private fun stateOf(pm: PackageManager, context: Context, icon: AppIcon): Int =
         runCatching { pm.getComponentEnabledSetting(ComponentName(context.packageName, icon.component)) }.getOrDefault(0)

@@ -16,6 +16,8 @@ import dev.pocketprl.MainActivity
 import dev.pocketprl.PocketPrlApp
 import dev.pocketprl.R
 import dev.pocketprl.core.chain.Amount
+import dev.pocketprl.data.AppIcon
+import dev.pocketprl.data.LauncherIconManager
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -93,7 +95,7 @@ object PriceAlertNotifier {
      * direction, so an oscillation across a multiple (9% → 11% → 9%) is announced
      * once, not on every poll.
      */
-    fun maybeNotify(context: Context, change24h: Double?, price: Double, threshold: Double) {
+    fun maybeNotify(context: Context, change24h: Double?, price: Double, threshold: Double, icon: AppIcon) {
         if (change24h == null || !change24h.isFinite()) return
         if (!price.isFinite() || price <= 0) return
         if (threshold <= 0) return
@@ -120,6 +122,7 @@ object PriceAlertNotifier {
         )
         val n = Notification.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
+            .setLargeIcon(LauncherIconManager.bitmap(context, icon, context.resources.getDimensionPixelSize(android.R.dimen.notification_large_icon_width)))
             .setContentTitle(context.getString(R.string.notif_price_title))
             .setContentText(text)
             .setContentIntent(open)
@@ -146,7 +149,7 @@ class PriceAlertJob : JobService() {
             try {
                 val quote = c.priceApi.prlFiat()
                 if (quote != null) {
-                    PriceAlertNotifier.maybeNotify(applicationContext, quote.change24h, quote.fiat, c.settings.priceAlertPercent)
+                    PriceAlertNotifier.maybeNotify(applicationContext, quote.change24h, quote.fiat, c.settings.priceAlertPercent, c.settings.appIcon)
                 } else {
                     Log.i(PriceAlertNotifier.TAG, "no quote available")
                 }

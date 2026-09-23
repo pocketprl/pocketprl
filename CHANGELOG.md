@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.6.1
+
+Interface:
+* **The app icon you pick now reaches notifications and the task switcher.** The
+  selected icon was only applied to the home-screen entry; notifications kept a
+  separate, generic mark and the recents thumbnail kept the default icon.
+  Notifications now carry the app's real mark, with the chosen icon as their
+  large icon, and the task-switcher entry is set to the icon you selected.
+
 ## 2.6.0
 
 Security and robustness:

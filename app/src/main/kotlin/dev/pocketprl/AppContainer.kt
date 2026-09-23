@@ -192,8 +192,8 @@ class AppContainer(val appContext: Context) {
                 if (!settings.notifyIncoming) return@collect
                 val name = if (registry.wallets.size > 1) registry.get(ctx.id)?.name ?: ctx.entry.name else null
                 runCatching {
-                    PaymentNotifier.notify(appContext, event.fresh, ctx.repository.network, settings.hideBalance, walletName = name)
-                    PaymentNotifier.notify(appContext, event.confirmed, ctx.repository.network, settings.hideBalance, walletName = name, confirmed = true)
+                    PaymentNotifier.notify(appContext, event.fresh, ctx.repository.network, settings.appIcon, settings.hideBalance, walletName = name)
+                    PaymentNotifier.notify(appContext, event.confirmed, ctx.repository.network, settings.appIcon, settings.hideBalance, walletName = name, confirmed = true)
                 }
             }
         }

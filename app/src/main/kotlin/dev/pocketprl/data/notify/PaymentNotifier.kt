@@ -21,6 +21,8 @@ import dev.pocketprl.PocketPrlApp
 import dev.pocketprl.R
 import dev.pocketprl.core.chain.Amount
 import dev.pocketprl.core.chain.Network
+import dev.pocketprl.data.AppIcon
+import dev.pocketprl.data.LauncherIconManager
 import dev.pocketprl.data.db.TxKind
 import dev.pocketprl.data.db.TxRow
 import kotlinx.coroutines.Job
@@ -56,11 +58,14 @@ object PaymentNotifier {
             context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
 
     /** One notification per transaction, keyed by txid, so a [confirmed] one replaces the pending one. */
-    fun notify(context: Context, txs: List<TxRow>, network: Network, hideAmounts: Boolean, walletName: String? = null, confirmed: Boolean = false) {
+    fun notify(context: Context, txs: List<TxRow>, network: Network, icon: AppIcon, hideAmounts: Boolean, walletName: String? = null, confirmed: Boolean = false) {
         if (txs.isEmpty()) return
         if (!canPost(context)) { Log.w(TAG, "${txs.size} new incoming, but POST_NOTIFICATIONS is not granted"); return }
         Log.i(TAG, "notifying ${txs.size} ${if (confirmed) "confirmed" else "new"} incoming for ${walletName ?: "the wallet"}")
         ensureChannel(context)
+        // The launcher alias controls the home-screen icon; the large icon is how the
+        // chosen icon reaches the notification, which the alias cannot touch.
+        val large = LauncherIconManager.bitmap(context, icon, context.resources.getDimensionPixelSize(android.R.dimen.notification_large_icon_width))
         val nm = context.getSystemService(NotificationManager::class.java)
         for (tx in txs) {
             val base = when {
@@ -89,6 +94,7 @@ object PaymentNotifier {
             )
             val n = Notification.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification)
+                .setLargeIcon(large)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setContentIntent(open)

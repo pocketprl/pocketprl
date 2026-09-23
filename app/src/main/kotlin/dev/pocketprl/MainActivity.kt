@@ -1,5 +1,6 @@
 package dev.pocketprl
 
+import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -12,6 +13,8 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.pocketprl.data.AppIcon
+import dev.pocketprl.data.LauncherIconManager
 import dev.pocketprl.ui.AppNav
 import dev.pocketprl.ui.Qr
 import dev.pocketprl.ui.components.SecureFlags
@@ -44,6 +47,12 @@ class MainActivity : FragmentActivity() {
             // App-wide screenshot blocking, toggled in Settings › Security.
             DisposableEffect(settings.secureAllScreens) {
                 SecureFlags.setAppWide(window, settings.secureAllScreens)
+                onDispose {}
+            }
+            // The launcher alias only moves the home-screen icon; the task-switcher
+            // entry reads the activity icon, so set it from the chosen icon.
+            DisposableEffect(settings.appIcon) {
+                applyTaskIcon(settings.appIcon)
                 onDispose {}
             }
             PocketPrlTheme(
@@ -89,5 +98,14 @@ class MainActivity : FragmentActivity() {
     override fun onUserInteraction() {
         super.onUserInteraction()
         (application as PocketPrlApp).container.active?.session?.touch()
+    }
+
+    /** Puts the chosen app icon on the task-switcher entry, which the launcher alias cannot reach. */
+    @Suppress("DEPRECATION")
+    private fun applyTaskIcon(icon: AppIcon) {
+        val label = getString(R.string.app_name)
+        val px = resources.getDimensionPixelSize(android.R.dimen.notification_large_icon_width)
+        val bitmap = LauncherIconManager.bitmap(this, icon, px)
+        setTaskDescription(if (bitmap != null) ActivityManager.TaskDescription(label, bitmap) else ActivityManager.TaskDescription(label))
     }
 }
